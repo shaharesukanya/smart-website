@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | SmartTools</title>
+
+    <meta name="description"
+        content="Contact SmartTools for questions, suggestions, feedback and support regarding our online calculators, converters and text tools.">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="container nav-container">
+
+        <a href="index.html" class="logo">
+            <span>Smart</span>Tools
+        </a>
+
+
+        <nav class="nav">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#tools">
+                Tools
+            </a>
+
+            <a href="index.html#guides">
+                Guides
+            </a>
+
+            <a href="index.html#about">
+                About
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="tool-page-hero">
+
+    <div class="container">
+
+        <span class="badge">
+            Get In Touch
+        </span>
+
+        <h1>
+            Contact SmartTools
+        </h1>
+
+        <p>
+            Have a question, suggestion or feedback?
+            We'd love to hear from you.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CONTACT SECTION ================= -->
+
+<section class="information-section">
+
+    <div class="container">
+
+        <div class="contact-grid">
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="calculator-box contact-info">
+
+                <h2>
+                    Get In Touch
+                </h2>
+
+                <p>
+                    If you have questions about our tools,
+                    found an issue or have a suggestion for
+                    a new calculator or converter, feel free
+                    to contact us.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        📧
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Email
+                        </h3>
+
+                        <p>
+                            support@smarttools.example
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        💡
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Suggestions
+                        </h3>
+
+                        <p>
+                            Have an idea for a new tool?
+                            Let us know.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        🛠️
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Tool Issues
+                        </h3>
+
+                        <p>
+                            Tell us if you find a problem
+                            with any SmartTools calculator
+                            or utility.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONTACT FORM -->
+
+            <div class="calculator-box">
+
+                <h2>
+                    Send Us a Message
+                </h2>
+
+
+                <form
+                    onsubmit="sendContactMessage(event)"
+                >
+
+
+                    <label for="contactName">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contactName"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+
+
+                    <label for="contactEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+
+
+                    <label for="contactSubject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contactSubject"
+                        placeholder="Enter subject"
+                        required
+                    >
+
+
+
+                    <label for="contactMessage">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="contactMessage"
+                        rows="7"
+                        placeholder="Write your message..."
+                        required
+                    ></textarea>
+
+
+
+                    <button
+                        type="submit"
+                        class="tool-button"
+                    >
+                        Send Message
+                    </button>
+
+
+                </form>
+
+
+                <div
+                    id="contactStatus"
+                    class="result"
+                    style="display:none;"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FAQ ================= -->
+
+<section class="information-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="badge">
+                Contact FAQ
+            </span>
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+        </div>
+
+
+        <div class="faq">
+
+
+            <div class="faq-item">
+
+                <h3>
+                    How can I report a problem?
+                </h3>
+
+                <p>
+                    You can use the contact form above and
+                    describe the problem in detail.
+                </p>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <h3>
+                    Can I suggest a new tool?
+                </h3>
+
+                <p>
+                    Yes. We welcome suggestions for useful
+                    calculators, converters and text tools.
+                </p>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <h3>
+                    Are SmartTools calculators free?
+                </h3>
+
+                <p>
+                    Yes. SmartTools is designed to provide
+                    useful online tools that visitors can
+                    use without a paid subscription.
+                </p>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <h3>
+                    Do I need an account to use the tools?
+                </h3>
+
+                <p>
+                    Most SmartTools tools can be used directly
+                    without creating an account.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <a
+                    href="index.html"
+                    class="logo"
+                >
+                    <span>Smart</span>Tools
+                </a>
+
+                <p>
+                    Simple and useful online calculators,
+                    converters and text tools.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#tools">
+                    Tools
+                </a>
+
+                <a href="index.html#guides">
+                    Guides
+                </a>
+
+                <a href="index.html#about">
+                    About
+                </a>
+
+                <a href="privacy-policy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms & Conditions
+                </a>
+
+                <a href="contact.html">
+                    Contact Us
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SmartTools. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

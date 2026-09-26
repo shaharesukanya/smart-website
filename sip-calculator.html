@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIP Calculator - Calculate SIP Returns Online | SmartTools</title>
+
+    <meta name="description"
+        content="Use the free SmartTools SIP Calculator to estimate your investment value, total investment and potential returns based on monthly investment, expected return and investment period.">
+
+    <meta name="keywords"
+        content="SIP calculator, SIP calculator online, mutual fund SIP calculator, SIP return calculator, investment calculator, monthly SIP calculator">
+
+    <meta name="author" content="SmartTools">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+        href="https://YOUR-DOMAIN.com/sip-calculator.html">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="container">
+
+            <div class="logo">
+                Smart<span>Tools</span>
+            </div>
+
+
+            <nav class="nav">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#tools">
+                    Tools
+                </a>
+
+                <a href="index.html#guides">
+                    Guides
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="tool-page-hero">
+
+        <div class="container">
+
+            <span class="badge">
+                FREE INVESTMENT CALCULATOR
+            </span>
+
+            <h1>
+                SIP Calculator
+            </h1>
+
+            <p>
+                Estimate your SIP investment value,
+                total investment and potential returns.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CALCULATOR ================= -->
+
+    <section class="calculator-section">
+
+        <div class="container">
+
+            <div class="calculator-box">
+
+                <h2>
+                    Calculate SIP Returns
+                </h2>
+
+                <p>
+                    Enter your monthly investment, expected
+                    annual return and investment period.
+                </p>
+
+
+                <label for="monthlyInvestment">
+                    Monthly Investment (₹)
+                </label>
+
+                <input
+                    type="number"
+                    id="monthlyInvestment"
+                    placeholder="Example: 5000"
+                    min="0"
+                    step="0.01"
+                >
+
+
+                <label for="expectedReturn">
+                    Expected Annual Return (%)
+                </label>
+
+                <input
+                    type="number"
+                    id="expectedReturn"
+                    placeholder="Example: 12"
+                    min="0"
+                    step="0.01"
+                >
+
+
+                <label for="investmentPeriod">
+                    Investment Period (Years)
+                </label>
+
+                <input
+                    type="number"
+                    id="investmentPeriod"
+                    placeholder="Example: 10"
+                    min="1"
+                    step="1"
+                >
+
+
+                <button
+                    class="tool-button"
+                    onclick="calculateSIP()">
+
+                    Calculate SIP
+
+                </button>
+
+
+                <div
+                    class="result"
+                    id="sipResult">
+
+                    Your SIP result will appear here.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= INFORMATION ================= -->
+
+    <section class="information-section">
+
+        <div class="container">
+
+            <div class="calculator-box">
+
+
+                <h2>
+                    What is SIP?
+                </h2>
+
+                <p>
+                    SIP stands for Systematic Investment Plan.
+                    It is a method of investing a fixed amount
+                    at regular intervals, commonly in mutual funds.
+                </p>
+
+                <p>
+                    A SIP calculator can help estimate how an
+                    investment may grow over a selected period
+                    based on an assumed rate of return.
+                </p>
+
+
+
+                <h2>
+                    How Does a SIP Calculator Work?
+                </h2>
+
+                <p>
+                    The calculator uses your monthly investment,
+                    assumed annual rate of return and investment
+                    period to estimate the future value.
+                </p>
+
+                <p>
+                    The calculation uses a monthly compounding
+                    assumption based on the annual return entered.
+                </p>
+
+
+
+                <h2>
+                    How to Use the SIP Calculator
+                </h2>
+
+                <ol>
+
+                    <li>
+                        Enter your monthly investment amount.
+                    </li>
+
+                    <li>
+                        Enter the expected annual return.
+                    </li>
+
+                    <li>
+                        Enter the investment period in years.
+                    </li>
+
+                    <li>
+                        Click the "Calculate SIP" button.
+                    </li>
+
+                    <li>
+                        View the estimated total investment,
+                        estimated returns and future value.
+                    </li>
+
+                </ol>
+
+
+
+                <h2>
+                    SIP Calculation Example
+                </h2>
+
+                <p>
+                    Suppose you invest ₹5,000 every month for
+                    10 years and assume an annual return of 12%.
+                </p>
+
+                <p>
+                    Enter these values into the calculator to
+                    estimate the total amount invested and the
+                    potential future value.
+                </p>
+
+
+
+                <h2>
+                    Important Information
+                </h2>
+
+                <p>
+                    SIP returns are not guaranteed. Actual
+                    investment returns can vary depending on
+                    market conditions and the performance of
+                    the investment.
+                </p>
+
+                <p>
+                    This calculator is provided for educational
+                    and informational purposes and should not be
+                    considered financial advice.
+                </p>
+
+
+
+                <h2>
+                    Frequently Asked Questions
+                </h2>
+
+
+                <div class="faq">
+
+
+                    <h3>
+                        What does SIP stand for?
+                    </h3>
+
+                    <p>
+                        SIP stands for Systematic Investment Plan.
+                    </p>
+
+
+                    <h3>
+                        Is this SIP Calculator free?
+                    </h3>
+
+                    <p>
+                        Yes. The SmartTools SIP Calculator is
+                        free to use online.
+                    </p>
+
+
+                    <h3>
+                        What information is required?
+                    </h3>
+
+                    <p>
+                        You need your monthly investment amount,
+                        expected annual return and investment period.
+                    </p>
+
+
+                    <h3>
+                        Are SIP returns guaranteed?
+                    </h3>
+
+                    <p>
+                        No. Market-linked investment returns are
+                        subject to market conditions and are not
+                        guaranteed.
+                    </p>
+
+
+                    <h3>
+                        Can I use this calculator on mobile?
+                    </h3>
+
+                    <p>
+                        Yes. The calculator works in modern
+                        web browsers on mobile devices.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= MORE TOOLS ================= -->
+
+    <section class="tools-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="badge">
+                    MORE CALCULATORS
+                </span>
+
+                <h2>
+                    Explore More SmartTools
+                </h2>
+
+                <p>
+                    Try our other free online calculators.
+                </p>
+
+            </div>
+
+
+            <div class="hero-buttons">
+
+
+                <a
+                    href="age-calculator.html"
+                    class="tool-button">
+
+                    Age Calculator
+
+                </a>
+
+
+                <a
+                    href="emi-calculator.html"
+                    class="tool-button secondary">
+
+                    EMI Calculator
+
+                </a>
+
+
+                <a
+                    href="gst-calculator.html"
+                    class="tool-button secondary">
+
+                    GST Calculator
+
+                </a>
+
+
+                <a
+                    href="index.html#tools"
+                    class="tool-button secondary">
+
+                    View All Tools
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-content">
+
+
+                <div>
+
+                    <h3>
+                        SmartTools
+                    </h3>
+
+                    <p>
+                        Simple and useful online tools
+                        for everyday needs.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Quick Links
+                    </h4>
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="index.html#tools">
+                        Tools
+                    </a>
+
+                    <a href="index.html#guides">
+                        Guides
+                    </a>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Legal
+                    </h4>
+
+                    <a href="privacy-policy.html">
+                        Privacy Policy
+                    </a>
+
+                    <a href="terms.html">
+                        Terms & Conditions
+                    </a>
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 SmartTools. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

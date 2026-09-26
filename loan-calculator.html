@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Loan Calculator - Calculate Monthly Loan Payment | SmartTools</title>
+
+    <meta name="description"
+        content="Use the free SmartTools Loan Calculator to estimate your monthly loan payment, total interest and total repayment based on loan amount, interest rate and tenure.">
+
+    <meta name="keywords"
+        content="loan calculator, loan payment calculator, loan calculator online, monthly loan payment calculator, interest calculator, repayment calculator">
+
+    <meta name="author" content="SmartTools">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+        href="https://YOUR-DOMAIN.com/loan-calculator.html">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="container">
+
+            <div class="logo">
+                Smart<span>Tools</span>
+            </div>
+
+
+            <nav class="nav">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#tools">
+                    Tools
+                </a>
+
+                <a href="index.html#guides">
+                    Guides
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="tool-page-hero">
+
+        <div class="container">
+
+            <span class="badge">
+                FREE LOAN CALCULATOR
+            </span>
+
+            <h1>
+                Loan Calculator
+            </h1>
+
+            <p>
+                Estimate your monthly loan payment,
+                total interest and total repayment.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CALCULATOR ================= -->
+
+    <section class="calculator-section">
+
+        <div class="container">
+
+            <div class="calculator-box">
+
+                <h2>
+                    Calculate Your Loan Payment
+                </h2>
+
+                <p>
+                    Enter your loan details below to estimate
+                    your monthly payment and total repayment.
+                </p>
+
+
+                <label for="loanAmount">
+                    Loan Amount (₹)
+                </label>
+
+                <input
+                    type="number"
+                    id="loanAmount"
+                    placeholder="Example: 500000"
+                    min="0"
+                    step="0.01"
+                >
+
+
+                <label for="interestRate">
+                    Annual Interest Rate (%)
+                </label>
+
+                <input
+                    type="number"
+                    id="interestRate"
+                    placeholder="Example: 10"
+                    min="0"
+                    step="0.01"
+                >
+
+
+                <label for="loanTenure">
+                    Loan Tenure (Years)
+                </label>
+
+                <input
+                    type="number"
+                    id="loanTenure"
+                    placeholder="Example: 5"
+                    min="1"
+                    step="1"
+                >
+
+
+                <button
+                    class="tool-button"
+                    onclick="calculateLoan()">
+
+                    Calculate Loan
+
+                </button>
+
+
+                <div
+                    class="result"
+                    id="loanResult">
+
+                    Your loan result will appear here.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= INFORMATION ================= -->
+
+    <section class="information-section">
+
+        <div class="container">
+
+            <div class="calculator-box">
+
+
+                <h2>
+                    What is a Loan Calculator?
+                </h2>
+
+                <p>
+                    A loan calculator is an online tool that
+                    helps estimate the regular payment required
+                    to repay a loan based on the loan amount,
+                    interest rate and repayment period.
+                </p>
+
+
+
+                <h2>
+                    How Does a Loan Calculator Work?
+                </h2>
+
+                <p>
+                    The calculator uses the loan amount,
+                    annual interest rate and loan tenure to
+                    estimate the monthly payment.
+                </p>
+
+                <p>
+                    The calculation also estimates the total
+                    amount paid and the total interest over
+                    the selected loan period.
+                </p>
+
+
+
+                <h2>
+                    How to Use the Loan Calculator
+                </h2>
+
+                <ol>
+
+                    <li>
+                        Enter the loan amount.
+                    </li>
+
+                    <li>
+                        Enter the annual interest rate.
+                    </li>
+
+                    <li>
+                        Enter the loan tenure in years.
+                    </li>
+
+                    <li>
+                        Click the "Calculate Loan" button.
+                    </li>
+
+                    <li>
+                        View the estimated monthly payment,
+                        total interest and total payment.
+                    </li>
+
+                </ol>
+
+
+
+                <h2>
+                    Example Loan Calculation
+                </h2>
+
+                <p>
+                    Suppose you borrow ₹5,00,000 at an annual
+                    interest rate of 10% for 5 years.
+                </p>
+
+                <p>
+                    Enter these values into the calculator to
+                    estimate your monthly payment and total
+                    repayment.
+                </p>
+
+
+
+                <h2>
+                    Loan Calculator vs EMI Calculator
+                </h2>
+
+                <p>
+                    A loan calculator and an EMI calculator can
+                    use similar loan information and formulas.
+                    The terminology may differ depending on
+                    the type of loan and the calculation being
+                    performed.
+                </p>
+
+
+
+                <h2>
+                    Important Information
+                </h2>
+
+                <p>
+                    The result provided by this calculator is
+                    an estimate. Actual loan payments may vary
+                    depending on lender terms, processing fees,
+                    taxes, insurance, charges and other conditions.
+                </p>
+
+
+
+                <h2>
+                    Frequently Asked Questions
+                </h2>
+
+
+                <div class="faq">
+
+
+                    <h3>
+                        Is this Loan Calculator free?
+                    </h3>
+
+                    <p>
+                        Yes. The SmartTools Loan Calculator is
+                        free to use online.
+                    </p>
+
+
+                    <h3>
+                        What information do I need?
+                    </h3>
+
+                    <p>
+                        You need the loan amount, annual interest
+                        rate and loan tenure.
+                    </p>
+
+
+                    <h3>
+                        Can I use this calculator for different loans?
+                    </h3>
+
+                    <p>
+                        You can use it for loans where the
+                        repayment calculation follows the
+                        standard fixed-payment loan formula.
+                    </p>
+
+
+                    <h3>
+                        Does the calculator include additional fees?
+                    </h3>
+
+                    <p>
+                        No. The basic calculation does not include
+                        lender-specific fees, taxes, insurance or
+                        other additional charges.
+                    </p>
+
+
+                    <h3>
+                        Can I use it on mobile?
+                    </h3>
+
+                    <p>
+                        Yes. The calculator works in modern
+                        web browsers on mobile devices.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= MORE TOOLS ================= -->
+
+    <section class="tools-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="badge">
+                    MORE CALCULATORS
+                </span>
+
+                <h2>
+                    Explore More SmartTools
+                </h2>
+
+                <p>
+                    Try our other free online calculators.
+                </p>
+
+            </div>
+
+
+            <div class="hero-buttons">
+
+
+                <a
+                    href="age-calculator.html"
+                    class="tool-button">
+
+                    Age Calculator
+
+                </a>
+
+
+                <a
+                    href="emi-calculator.html"
+                    class="tool-button secondary">
+
+                    EMI Calculator
+
+                </a>
+
+
+                <a
+                    href="sip-calculator.html"
+                    class="tool-button secondary">
+
+                    SIP Calculator
+
+                </a>
+
+
+                <a
+                    href="index.html#tools"
+                    class="tool-button secondary">
+
+                    View All Tools
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-content">
+
+
+                <div>
+
+                    <h3>
+                        SmartTools
+                    </h3>
+
+                    <p>
+                        Simple and useful online tools
+                        for everyday needs.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Quick Links
+                    </h4>
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="index.html#tools">
+                        Tools
+                    </a>
+
+                    <a href="index.html#guides">
+                        Guides
+                    </a>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Legal
+                    </h4>
+
+                    <a href="privacy-policy.html">
+                        Privacy Policy
+                    </a>
+
+                    <a href="terms.html">
+                        Terms & Conditions
+                    </a>
+
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 SmartTools. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
