@@ -1,73 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/age-calculator.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/age-calculator.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/emi-calculator.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/emi-calculator.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/percentage-calculator.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/percentage-calculator.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/gst-calculator.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/gst-calculator.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/sip-calculator.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/sip-calculator.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/loan-calculator.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/loan-calculator.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/discount-calculator.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/discount-calculator.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/km-to-miles.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/km-to-miles.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/word-counter.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/word-counter.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/character-counter.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/character-counter.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/case-converter.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/case-converter.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/remove-duplicate-lines.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/remove-duplicate-lines.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/about.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/about.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/contact.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/contact.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/privacy-policy.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/privacy-policy.html</loc>
     </url>
 
     <url>
-        <loc>https://YOUR-DOMAIN.com/terms.html</loc>
+        <loc>https://shaharesukanya.github.io/smart-website/terms.html</loc>
+    </url>
+
+    <url>
+        <loc>https://shaharesukanya.github.io/smart-website/404.html</loc>
     </url>
 
 </urlset>
