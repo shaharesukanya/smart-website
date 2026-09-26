@@ -5,14 +5,765 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Contact Us | SmartTools</title>
+    <title>Contact SmartTools | Get in Touch</title>
 
-    <meta name="description"
-        content="Contact SmartTools for questions, suggestions, feedback and support regarding our online calculators, converters and text tools.">
+    <meta
+        name="description"
+        content="Contact SmartTools by Sukanya Shahare for questions, feedback, suggestions and website-related enquiries."
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="author"
+        content="Sukanya Shahare"
+    >
+
+    <link
+        rel="canonical"
+        href="https://shaharesukanya.github.io/smart-website/contact.html"
+    >
+
+    <meta
+        property="og:title"
+        content="Contact SmartTools | Get in Touch"
+    >
+
+    <meta
+        property="og:description"
+        content="Get in touch with SmartTools for questions, feedback and suggestions."
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="https://shaharesukanya.github.io/smart-website/contact.html"
+    >
+
+    <meta
+        property="og:site_name"
+        content="SmartTools"
+    >
+
+
+    <style>
+
+        :root {
+            --primary: #5b5ff5;
+            --primary-dark: #474be3;
+            --purple: #7b53f6;
+
+            --ink: #101828;
+            --muted: #667085;
+            --light: #f7f8fc;
+
+            --white: #ffffff;
+            --border: #e7e9f0;
+
+            --dark: #101522;
+
+            --shadow-sm:
+                0 8px 24px rgba(16, 24, 40, 0.05);
+
+            --shadow-md:
+                0 18px 55px rgba(16, 24, 40, 0.08);
+
+            --shadow-lg:
+                0 28px 85px rgba(16, 24, 40, 0.12);
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            color: var(--ink);
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+
+        /* TOP BAR */
+
+        .topbar {
+            background:
+                linear-gradient(
+                    90deg,
+                    #101522,
+                    #171c30
+                );
+
+            color: #ffffff;
+
+            font-size: 13px;
+        }
+
+
+        .topbar-inner {
+            min-height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .topbar-right {
+            display: flex;
+            gap: 18px;
+            opacity: 0.9;
+        }
+
+
+        /* HEADER */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background:
+                rgba(255,255,255,0.94);
+
+            backdrop-filter: blur(15px);
+
+            border-bottom:
+                1px solid rgba(231,233,240,0.9);
+        }
+
+
+        .header-inner {
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 24px;
+        }
+
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 14px;
+
+            display: grid;
+            place-items: center;
+
+            color: white;
+            font-size: 19px;
+            font-weight: 800;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--purple)
+                );
+
+            box-shadow:
+                0 10px 24px rgba(91,95,245,0.28);
+        }
+
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+        }
+
+
+        .brand-tagline {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+
+        nav a {
+            font-size: 14px;
+            font-weight: 700;
+            color: #475467;
+
+            transition: 0.25s ease;
+        }
+
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary);
+        }
+
+
+        .nav-button {
+            padding: 11px 18px;
+            border-radius: 12px;
+
+            color: white !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--purple)
+                );
+        }
+
+
+        /* HERO */
+
+        .hero {
+            padding: 85px 0 70px;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(91,95,245,0.11),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    180deg,
+                    #ffffff,
+                    #f8f9fd
+                );
+        }
+
+
+        .breadcrumb {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 22px;
+        }
+
+
+        .breadcrumb a {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 55px;
+
+            align-items: center;
+        }
+
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 1.4px;
+
+            color: var(--primary);
+
+            margin-bottom: 20px;
+        }
+
+
+        .eyebrow-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+
+            background: var(--primary);
+        }
+
+
+        h1 {
+            font-size: clamp(42px, 5vw, 64px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2.5px;
+
+            margin-bottom: 20px;
+        }
+
+
+        h1 span {
+            color: var(--primary);
+        }
+
+
+        .hero-text {
+            color: var(--muted);
+
+            font-size: 18px;
+
+            max-width: 650px;
+        }
+
+
+        /* CONTACT CARD */
+
+        .contact-card {
+            background: #ffffff;
+
+            border: 1px solid var(--border);
+
+            border-radius: 24px;
+
+            padding: 30px;
+
+            box-shadow: var(--shadow-lg);
+        }
+
+
+        .contact-card h2 {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+
+        .contact-card > p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+
+        label {
+            display: block;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            margin-bottom: 7px;
+        }
+
+
+        input,
+        textarea {
+            width: 100%;
+
+            border: 1px solid var(--border);
+
+            background: #fbfcff;
+
+            border-radius: 12px;
+
+            padding: 14px 15px;
+
+            font: inherit;
+
+            color: var(--ink);
+
+            outline: none;
+
+            transition: 0.2s ease;
+        }
+
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--primary);
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px rgba(91,95,245,0.10);
+        }
+
+
+        textarea {
+            min-height: 145px;
+            resize: vertical;
+        }
+
+
+        .submit-btn {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 13px;
+
+            padding: 14px 18px;
+
+            color: white;
+
+            font-size: 15px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--purple)
+                );
+
+            box-shadow:
+                0 12px 28px rgba(91,95,245,0.22);
+        }
+
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+        }
+
+
+        .form-note {
+            margin-top: 14px;
+
+            font-size: 12px;
+
+            color: var(--muted);
+
+            text-align: center;
+        }
+
+
+        /* INFO SECTION */
+
+        .section {
+            padding: 85px 0;
+        }
+
+
+        .section-heading {
+            max-width: 720px;
+            margin-bottom: 40px;
+        }
+
+
+        .section-label {
+            display: inline-block;
+
+            color: var(--primary);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 1.3px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-heading h2 {
+            font-size: 37px;
+
+            letter-spacing: -1.5px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .info-card {
+            padding: 27px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 20px;
+
+            background: white;
+
+            box-shadow: var(--shadow-sm);
+        }
+
+
+        .info-icon {
+            width: 46px;
+            height: 46px;
+
+            border-radius: 14px;
+
+            display: grid;
+            place-items: center;
+
+            background:
+                #f0f1ff;
+
+            color: var(--primary);
+
+            font-size: 20px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .info-card h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+
+        .info-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+
+        /* CTA */
+
+        .cta {
+            padding: 20px 0 90px;
+        }
+
+
+        .cta-card {
+            border-radius: 26px;
+
+            padding: 55px 35px;
+
+            text-align: center;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #101522,
+                    #1d2341
+                );
+
+            box-shadow: var(--shadow-lg);
+        }
+
+
+        .cta-card h2 {
+            font-size: 36px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .cta-card p {
+            color: #c7ccda;
+
+            max-width: 650px;
+
+            margin: 0 auto 25px;
+        }
+
+
+        .cta-btn {
+            display: inline-block;
+
+            padding: 13px 22px;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: var(--ink);
+
+            font-weight: 800;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            background: #101522;
+            color: white;
+
+            padding: 60px 0 25px;
+        }
+
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+
+            gap: 45px;
+        }
+
+
+        footer h3 {
+            margin-bottom: 13px;
+        }
+
+
+        footer p {
+            color: #aab1c2;
+            font-size: 14px;
+            max-width: 330px;
+        }
+
+
+        footer a {
+            display: block;
+
+            color: #b8becc;
+
+            font-size: 14px;
+
+            margin-bottom: 9px;
+        }
+
+
+        footer a:hover {
+            color: white;
+        }
+
+
+        .footer-bottom {
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+
+            margin-top: 40px;
+            padding-top: 20px;
+
+            color: #8e97aa;
+
+            font-size: 12px;
+        }
+
+
+        @media (max-width: 900px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 620px) {
+
+            .topbar-right {
+                display: none;
+            }
+
+            nav a:not(.nav-button) {
+                display: none;
+            }
+
+            .header-inner {
+                min-height: 70px;
+            }
+
+            .hero {
+                padding-top: 55px;
+            }
+
+            .hero-grid {
+                gap: 30px;
+            }
+
+            h1 {
+                letter-spacing: -1.8px;
+            }
+
+            .info-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                padding: 22px;
+            }
+
+            .section {
+                padding: 65px 0;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -20,18 +771,53 @@
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<div class="topbar">
 
-<header class="header">
+    <div class="container topbar-inner">
 
-    <div class="container nav-container">
+        <div>
+            SmartTools — simple tools for everyday needs.
+        </div>
 
-        <a href="index.html" class="logo">
-            <span>Smart</span>Tools
+        <div class="topbar-right">
+
+            <span>✓ Free to use</span>
+            <span>✓ Mobile friendly</span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<header>
+
+    <div class="container header-inner">
+
+        <a
+            href="index.html"
+            class="brand"
+        >
+
+            <div class="brand-icon">
+                S
+            </div>
+
+            <div>
+                <div class="brand-name">
+                    SmartTools
+                </div>
+
+                <div class="brand-tagline">
+                    Free • Fast • Useful
+                </div>
+            </div>
+
         </a>
 
 
-        <nav class="nav">
+        <nav aria-label="Main navigation">
 
             <a href="index.html">
                 Home
@@ -45,8 +831,15 @@
                 Guides
             </a>
 
-            <a href="index.html#about">
+            <a href="about.html">
                 About
+            </a>
+
+            <a
+                href="contact.html"
+                class="active nav-button"
+            >
+                Contact
             </a>
 
         </nav>
@@ -56,208 +849,139 @@
 </header>
 
 
-
-<!-- ================= HERO ================= -->
-
-<section class="tool-page-hero">
-
-    <div class="container">
-
-        <span class="badge">
-            Get In Touch
-        </span>
-
-        <h1>
-            Contact SmartTools
-        </h1>
-
-        <p>
-            Have a question, suggestion or feedback?
-            We'd love to hear from you.
-        </p>
-
-    </div>
-
-</section>
+<main>
 
 
-
-<!-- ================= CONTACT SECTION ================= -->
-
-<section class="information-section">
+<section class="hero">
 
     <div class="container">
 
-        <div class="contact-grid">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            &nbsp; / &nbsp;
+            Contact
+        </div>
 
 
-            <!-- CONTACT INFORMATION -->
+        <div class="hero-grid">
 
-            <div class="calculator-box contact-info">
+            <div>
 
-                <h2>
-                    Get In Touch
-                </h2>
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    GET IN TOUCH
+                </div>
 
-                <p>
-                    If you have questions about our tools,
-                    found an issue or have a suggestion for
-                    a new calculator or converter, feel free
-                    to contact us.
+                <h1>
+                    We'd love to
+                    <span>hear from you.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Have a question, suggestion, correction or
+                    feedback about SmartTools? Send us a message
+                    and share your thoughts.
                 </p>
-
-
-                <div class="contact-item">
-
-                    <div class="contact-icon">
-                        📧
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Email
-                        </h3>
-
-                        <p>
-                            support@smarttools.example
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <div class="contact-icon">
-                        💡
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Suggestions
-                        </h3>
-
-                        <p>
-                            Have an idea for a new tool?
-                            Let us know.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="contact-item">
-
-                    <div class="contact-icon">
-                        🛠️
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Tool Issues
-                        </h3>
-
-                        <p>
-                            Tell us if you find a problem
-                            with any SmartTools calculator
-                            or utility.
-                        </p>
-
-                    </div>
-
-                </div>
 
             </div>
 
 
-
-            <!-- CONTACT FORM -->
-
-            <div class="calculator-box">
+            <div class="contact-card">
 
                 <h2>
-                    Send Us a Message
+                    Send a Message
                 </h2>
+
+                <p>
+                    Fill out the form below to prepare an email.
+                </p>
 
 
                 <form
-                    onsubmit="sendContactMessage(event)"
+                    id="contactForm"
                 >
 
+                    <div class="form-group">
 
-                    <label for="contactName">
-                        Your Name
-                    </label>
+                        <label for="name">
+                            Your Name
+                        </label>
 
-                    <input
-                        type="text"
-                        id="contactName"
-                        placeholder="Enter your name"
-                        required
-                    >
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
 
-
-
-                    <label for="contactEmail">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="contactEmail"
-                        placeholder="Enter your email"
-                        required
-                    >
+                    </div>
 
 
+                    <div class="form-group">
 
-                    <label for="contactSubject">
-                        Subject
-                    </label>
+                        <label for="email">
+                            Your Email
+                        </label>
 
-                    <input
-                        type="text"
-                        id="contactSubject"
-                        placeholder="Enter subject"
-                        required
-                    >
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+
+                    </div>
 
 
+                    <div class="form-group">
 
-                    <label for="contactMessage">
-                        Message
-                    </label>
+                        <label for="subject">
+                            Subject
+                        </label>
 
-                    <textarea
-                        id="contactMessage"
-                        rows="7"
-                        placeholder="Write your message..."
-                        required
-                    ></textarea>
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            placeholder="How can we help?"
+                            required
+                        >
 
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Write your message here..."
+                            required
+                        ></textarea>
+
+                    </div>
 
 
                     <button
                         type="submit"
-                        class="tool-button"
+                        class="submit-btn"
                     >
-                        Send Message
+                        Open Email App →
                     </button>
 
 
+                    <div class="form-note">
+                        Your default email application will open
+                        with the message prepared.
+                    </div>
+
                 </form>
-
-
-                <div
-                    id="contactStatus"
-                    class="result"
-                    style="display:none;"
-                ></div>
 
             </div>
 
@@ -269,83 +993,85 @@
 
 
 
-<!-- ================= FAQ ================= -->
-
-<section class="information-section">
+<section class="section">
 
     <div class="container">
 
         <div class="section-heading">
 
-            <span class="badge">
-                Contact FAQ
+            <span class="section-label">
+                CONTACT SMARTTOOLS
             </span>
 
             <h2>
-                Frequently Asked Questions
+                What can you contact us about?
             </h2>
+
+            <p>
+                Your feedback helps us improve the quality,
+                clarity and usefulness of SmartTools.
+            </p>
 
         </div>
 
 
-        <div class="faq">
+        <div class="info-grid">
 
 
-            <div class="faq-item">
+            <article class="info-card">
+
+                <div class="info-icon">
+                    💡
+                </div>
 
                 <h3>
-                    How can I report a problem?
+                    Suggestions
                 </h3>
 
                 <p>
-                    You can use the contact form above and
-                    describe the problem in detail.
+                    Have an idea for a new calculator,
+                    converter or productivity tool?
+                    We welcome useful suggestions.
                 </p>
 
-            </div>
+            </article>
 
 
-            <div class="faq-item">
+            <article class="info-card">
+
+                <div class="info-icon">
+                    🛠
+                </div>
 
                 <h3>
-                    Can I suggest a new tool?
+                    Report an Issue
                 </h3>
 
                 <p>
-                    Yes. We welcome suggestions for useful
-                    calculators, converters and text tools.
+                    Tell us if a calculator, page or
+                    feature is not behaving as expected.
                 </p>
 
-            </div>
+            </article>
 
 
-            <div class="faq-item">
+            <article class="info-card">
+
+                <div class="info-icon">
+                    💬
+                </div>
 
                 <h3>
-                    Are SmartTools calculators free?
+                    General Feedback
                 </h3>
 
                 <p>
-                    Yes. SmartTools is designed to provide
-                    useful online tools that visitors can
-                    use without a paid subscription.
+                    Share your experience, questions or
+                    ideas for making the website better.
                 </p>
 
-            </div>
+            </article>
 
-
-            <div class="faq-item">
-
-                <h3>
-                    Do I need an account to use the tools?
-                </h3>
-
-                <p>
-                    Most SmartTools tools can be used directly
-                    without creating an account.
-                </p>
-
-            </div>
 
         </div>
 
@@ -355,33 +1081,70 @@
 
 
 
-<!-- ================= FOOTER ================= -->
+<section class="cta">
+
+    <div class="container">
+
+        <div class="cta-card">
+
+            <h2>
+                Explore SmartTools
+            </h2>
+
+            <p>
+                Use calculators, converters and productivity
+                tools for everyday tasks.
+            </p>
+
+            <a
+                href="index.html#tools"
+                class="cta-btn"
+            >
+                Explore All Tools →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
 
 <footer>
 
     <div class="container">
 
-        <div class="footer-content">
+        <div class="footer-grid">
 
 
             <div>
 
-                <a
-                    href="index.html"
-                    class="logo"
-                >
-                    <span>Smart</span>Tools
-                </a>
+                <h3>
+                    SmartTools
+                </h3>
 
                 <p>
-                    Simple and useful online calculators,
-                    converters and text tools.
+                    Free online calculators, converters
+                    and useful productivity tools.
+                </p>
+
+                <p style="margin-top:12px;">
+                    Created and maintained by
+                    Sukanya Shahare.
                 </p>
 
             </div>
 
 
-            <div class="footer-links">
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
 
                 <a href="index.html">
                     Home
@@ -395,33 +1158,40 @@
                     Guides
                 </a>
 
-                <a href="index.html#about">
+                <a href="about.html">
                     About
                 </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Legal
+                </h3>
 
                 <a href="privacy-policy.html">
                     Privacy Policy
                 </a>
 
                 <a href="terms.html">
-                    Terms & Conditions
-                </a>
-
-                <a href="contact.html">
-                    Contact Us
+                    Terms &amp; Conditions
                 </a>
 
             </div>
+
 
         </div>
 
 
         <div class="footer-bottom">
-
-            <p>
-                © 2026 SmartTools. All rights reserved.
-            </p>
-
+            © 2026 SmartTools.
+            Created &amp; maintained by Sukanya Shahare.
         </div>
 
     </div>
@@ -430,9 +1200,77 @@
 
 
 
-<script src="script.js"></script>
+<script>
+
+    document
+        .getElementById("contactForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document
+                        .getElementById("name")
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const subject =
+                    document
+                        .getElementById("subject")
+                        .value
+                        .trim();
+
+
+                const message =
+                    document
+                        .getElementById("message")
+                        .value
+                        .trim();
+
+
+                const receiver =
+                    "YOUR-EMAIL@example.com";
+
+
+                const mailSubject =
+                    encodeURIComponent(
+                        subject
+                    );
+
+
+                const mailBody =
+                    encodeURIComponent(
+                        "Name: " + name +
+                        "\nEmail: " + email +
+                        "\n\nMessage:\n" +
+                        message
+                    );
+
+
+                window.location.href =
+                    "mailto:" +
+                    receiver +
+                    "?subject=" +
+                    mailSubject +
+                    "&body=" +
+                    mailBody;
+
+            }
+        );
+
+</script>
 
 
 </body>
-
 </html>

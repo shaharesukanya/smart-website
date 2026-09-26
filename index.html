@@ -1,23 +1,1504 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SmartTools - Free Online Calculators & Useful Tools</title>
+    <title>SmartTools | Free Online Calculators & Useful Tools</title>
 
     <meta name="description"
-        content="SmartTools offers free online calculators, converters and productivity tools including EMI, GST, SIP, loan, percentage, age and text tools.">
+          content="SmartTools by Sukanya Shahare offers free online calculators, converters and productivity tools for everyday needs.">
 
     <meta name="keywords"
-        content="online tools, free calculators, EMI calculator, GST calculator, SIP calculator, loan calculator, percentage calculator, age calculator, word counter">
+          content="free online calculators, EMI calculator, GST calculator, SIP calculator, loan calculator, age calculator, percentage calculator, discount calculator, word counter, character counter, case converter, KM to miles">
 
-    <meta name="author" content="SmartTools">
+    <meta name="author" content="Sukanya Shahare">
+    <meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="canonical"
+          href="https://shaharesukanya.github.io/smart-website/">
+
+    <meta property="og:title"
+          content="SmartTools | Free Online Calculators & Useful Tools">
+
+    <meta property="og:description"
+          content="Free online calculators, converters and productivity tools for everyday needs.">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:url"
+          content="https://shaharesukanya.github.io/smart-website/">
+
+    <meta property="og:site_name" content="SmartTools">
+
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "SmartTools",
+        "url": "https://shaharesukanya.github.io/smart-website/",
+        "description": "Free online calculators, converters and useful productivity tools for everyday needs."
+    }
+    </script>
+
+
+    <style>
+
+        :root {
+            --primary: #5b5ff5;
+            --primary-dark: #474be3;
+            --accent: #12b886;
+            --ink: #101828;
+            --muted: #667085;
+            --muted-2: #8b95a7;
+            --white: #ffffff;
+            --soft: #f7f8fc;
+            --soft-blue: #f7f7ff;
+            --border: #e7e9f1;
+            --dark: #101522;
+            --shadow-sm: 0 8px 25px rgba(16,24,40,.05);
+            --shadow-md: 0 18px 55px rgba(16,24,40,.08);
+            --shadow-lg: 0 28px 80px rgba(16,24,40,.12);
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family:
+                Inter,
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: var(--ink);
+            background: var(--white);
+            line-height: 1.6;
+
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        button,
+        input {
+            font: inherit;
+        }
+
+
+        button {
+            border: 0;
+        }
+
+
+        img {
+            max-width: 100%;
+        }
+
+
+        .container {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+        }
+
+
+        .section {
+            padding: 90px 0;
+        }
+
+
+        /* ============================================
+           ANNOUNCEMENT BAR
+        ============================================ */
+
+        .announcement-bar {
+            background: #0f1522;
+            color: #d7dee8;
+            font-size: 12px;
+        }
+
+
+        .announcement-inner {
+            min-height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+
+        .announcement-right {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+
+        .announcement-right span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+
+        .announcement-check {
+            color: #62ddb9;
+            font-weight: 900;
+        }
+
+
+        /* ============================================
+           HEADER
+        ============================================ */
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(231,233,241,.95);
+        }
+
+
+        .header-inner {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .brand-icon {
+            width: 41px;
+            height: 41px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #5b5ff5, #7553ee);
+            font-size: 18px;
+            font-weight: 900;
+            box-shadow: 0 10px 22px rgba(91,95,245,.22);
+        }
+
+
+        .brand-content {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.05;
+        }
+
+
+        .brand-name {
+            font-size: 27px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+
+        .brand-tagline {
+            margin-top: 4px;
+            color: var(--muted-2);
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+        }
+
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            color: #4b5563;
+            font-size: 14px;
+            font-weight: 750;
+        }
+
+
+        .nav a {
+            transition: color .2s ease;
+        }
+
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+
+        .nav-contact {
+            padding: 10px 15px;
+            border-radius: 10px;
+            background: #f0f1ff;
+            color: var(--primary) !important;
+        }
+
+
+        /* ============================================
+           HERO
+        ============================================ */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 96px 0 90px;
+
+            background:
+                radial-gradient(circle at 8% 20%, #ddd9ff 0, transparent 28%),
+                radial-gradient(circle at 92% 25%, #ebe8ff 0, transparent 28%),
+                linear-gradient(180deg, #f1f0ff 0%, #fafaff 70%, #ffffff 100%);
+        }
+
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.08fr .92fr;
+            gap: 58px;
+            align-items: center;
+        }
+
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 13px;
+            margin-bottom: 19px;
+
+            border: 1px solid rgba(255,255,255,.9);
+            border-radius: 999px;
+            background: rgba(255,255,255,.9);
+
+            color: var(--primary);
+
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1.6px;
+
+            box-shadow: 0 8px 24px rgba(40,40,100,.06);
+        }
+
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+
+        .hero h1 {
+            max-width: 780px;
+            font-size: clamp(46px, 6.2vw, 76px);
+            line-height: 1.01;
+            letter-spacing: -4px;
+            font-weight: 900;
+        }
+
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+
+        .hero-description {
+            max-width: 700px;
+            margin: 24px 0 29px;
+            color: #607087;
+            font-size: 18px;
+            line-height: 1.72;
+        }
+
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+
+            padding: 13px 19px;
+            border-radius: 12px;
+
+            font-size: 14px;
+            font-weight: 850;
+
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+
+        .btn-primary {
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--primary), #7353ee);
+            box-shadow: 0 12px 27px rgba(91,95,245,.21);
+        }
+
+
+        .btn-light {
+            color: #344054;
+            background: rgba(255,255,255,.9);
+            border: 1px solid var(--border);
+        }
+
+
+        .hero-proof {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            color: #687386;
+            font-size: 12px;
+            font-weight: 750;
+        }
+
+
+        .hero-proof span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+
+        .green {
+            color: var(--accent);
+        }
+
+
+        /* HERO DASHBOARD */
+
+        .hero-visual {
+            min-height: 360px;
+            position: relative;
+            display: grid;
+            place-items: center;
+        }
+
+
+        .hero-orbit {
+            width: 315px;
+            height: 315px;
+            position: absolute;
+            border: 1px dashed #c9c6fb;
+            border-radius: 50%;
+        }
+
+
+        .hero-orbit:after {
+            content: "";
+            position: absolute;
+            top: 22px;
+            right: 24px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+
+        .dashboard {
+            position: relative;
+            width: min(370px, 100%);
+            padding: 28px;
+
+            background: rgba(255,255,255,.95);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+
+            box-shadow: var(--shadow-lg);
+        }
+
+
+        .dashboard-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+
+        .dashboard-label {
+            color: #7b8697;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+
+        .dashboard-online {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 8px;
+            border-radius: 999px;
+            background: #e9fbf4;
+            color: #0b9c6b;
+            font-size: 9px;
+            font-weight: 900;
+        }
+
+
+        .dashboard-online i {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+
+        .dashboard h3 {
+            margin-bottom: 8px;
+            max-width: 300px;
+            font-size: 25px;
+            line-height: 1.15;
+        }
+
+
+        .dashboard p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+
+        .dashboard-value {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f4f3ff, #faf9ff);
+            border: 1px solid #ebe9ff;
+        }
+
+
+        .dashboard-value small {
+            display: block;
+            color: #8791a2;
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+
+        .dashboard-value strong {
+            display: block;
+            margin: 2px 0;
+            color: var(--primary);
+            font-size: 31px;
+            line-height: 1.2;
+        }
+
+
+        .dashboard-value span {
+            color: #7a8597;
+            font-size: 11px;
+        }
+
+
+        .dashboard-row {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 9px;
+            margin-top: 10px;
+        }
+
+
+        .dashboard-mini {
+            padding: 11px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: #fff;
+        }
+
+
+        .dashboard-mini b {
+            display: block;
+            font-size: 13px;
+        }
+
+
+        .dashboard-mini span {
+            color: #8791a2;
+            font-size: 9px;
+        }
+
+
+        /* ============================================
+           FOUNDER
+        ============================================ */
+
+        .founder-section {
+            padding: 82px 0;
+            background: var(--soft);
+            border-top: 1px solid #eceef4;
+            border-bottom: 1px solid #eceef4;
+        }
+
+
+        .founder-card {
+            display: grid;
+            grid-template-columns: 285px 1fr;
+            gap: 50px;
+            align-items: center;
+
+            padding: 42px;
+
+            border: 1px solid var(--border);
+            border-radius: 29px;
+            background: #fff;
+            box-shadow: var(--shadow-md);
+        }
+
+
+        .founder-photo-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .photo-frame {
+            position: relative;
+            padding: 9px;
+            border-radius: 50%;
+            background: linear-gradient(145deg,#dcd9ff,#fff 60%,#ecebff);
+            box-shadow: 0 18px 42px rgba(35,40,70,.13);
+        }
+
+
+        .founder-photo {
+            width: 220px;
+            height: 220px;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+            border: 5px solid #fff;
+            border-radius: 50%;
+        }
+
+
+        .founder-label {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1.8px;
+        }
+
+
+        .founder-card h2 {
+            margin-bottom: 6px;
+            font-size: clamp(33px,4vw,47px);
+            line-height: 1.08;
+            letter-spacing: -1.7px;
+        }
+
+
+        .founder-card h2 span {
+            color: var(--primary);
+        }
+
+
+        .founder-title {
+            margin-bottom: 14px;
+            color: #344054;
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+
+        .founder-text {
+            max-width: 740px;
+            margin-bottom: 20px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+
+        .founder-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 21px;
+        }
+
+
+        .founder-badge {
+            padding: 8px 11px;
+            border-radius: 10px;
+            border: 1px solid #e3e4fb;
+            background: #f6f6ff;
+            color: #42485a;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        .updated-box {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            padding: 13px 15px;
+
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            background: #f1f5f9;
+        }
+
+
+        .updated-icon {
+            width: 29px;
+            height: 29px;
+            min-width: 29px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+            background: #d8faed;
+            color: #078f62;
+            font-weight: 900;
+        }
+
+
+        .updated-box strong {
+            display: block;
+            font-size: 12px;
+        }
+
+
+        .updated-box small {
+            display: block;
+            margin-top: 2px;
+            color: #718096;
+            font-size: 10px;
+        }
+
+
+        /* ============================================
+           STATS
+        ============================================ */
+
+        .stats {
+            padding: 30px 0;
+            background: #fff;
+        }
+
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(20,25,55,.03);
+        }
+
+
+        .stat {
+            padding: 22px;
+            text-align: center;
+        }
+
+
+        .stat + .stat {
+            border-left: 1px solid var(--border);
+        }
+
+
+        .stat strong {
+            display: block;
+            color: var(--primary);
+            font-size: 27px;
+            line-height: 1.15;
+        }
+
+
+        .stat span {
+            color: #788396;
+            font-size: 11px;
+            font-weight: 750;
+        }
+
+
+        /* ============================================
+           SECTION HEAD
+        ============================================ */
+
+        .section-head {
+            max-width: 770px;
+            margin: 0 auto 42px;
+            text-align: center;
+        }
+
+
+        .section-kicker {
+            display: inline-block;
+            padding: 7px 11px;
+            margin-bottom: 12px;
+
+            border-radius: 999px;
+            background: #f0f1ff;
+            color: var(--primary);
+
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1.4px;
+        }
+
+
+        .section-head h2 {
+            margin-bottom: 10px;
+            font-size: clamp(31px,4vw,43px);
+            line-height: 1.15;
+            letter-spacing: -1.2px;
+        }
+
+
+        .section-head p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+
+        /* ============================================
+           POPULAR
+        ============================================ */
+
+        .popular-grid {
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+            gap: 13px;
+        }
+
+
+        .popular-card {
+            padding: 18px 12px;
+            text-align: center;
+
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: var(--shadow-sm);
+
+            transition: .2s ease;
+        }
+
+
+        .popular-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 32px rgba(20,25,55,.08);
+        }
+
+
+        .popular-icon {
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+            place-items: center;
+
+            margin: 0 auto 9px;
+
+            border-radius: 12px;
+            background: #f3f2ff;
+
+            font-size: 21px;
+        }
+
+
+        .popular-card h3 {
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+
+
+        .popular-card span {
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+
+        /* ============================================
+           TOOL SEARCH + ALL TOOLS
+        ============================================ */
+
+        .tools-section {
+            padding-top: 72px;
+        }
+
+
+        .tool-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 24px;
+        }
+
+
+        .tool-search {
+            width: min(430px,100%);
+        }
+
+
+        .tool-search input {
+            width: 100%;
+            padding: 13px 15px;
+
+            outline: none;
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: #fff;
+
+            color: var(--ink);
+            font-size: 13px;
+
+            box-shadow: 0 5px 18px rgba(20,25,55,.03);
+        }
+
+
+        .tool-search input:focus {
+            border-color: #b8baf7;
+
+            box-shadow:
+                0 0 0 4px rgba(91,95,245,.08);
+        }
+
+
+        .tool-count {
+            color: #7b8798;
+            font-size: 12px;
+            font-weight: 750;
+        }
+
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+
+        .tool-card {
+            padding: 25px;
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: #fff;
+
+            box-shadow: var(--shadow-sm);
+
+            transition: .22s ease;
+        }
+
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+
+        .tool-card.hidden {
+            display: none;
+        }
+
+
+        .tool-icon {
+            width: 46px;
+            height: 46px;
+
+            display: grid;
+            place-items: center;
+
+            margin-bottom: 14px;
+
+            border-radius: 13px;
+            background: #f3f2ff;
+
+            font-size: 21px;
+        }
+
+
+        .tool-card h3 {
+            margin-bottom: 7px;
+            font-size: 18px;
+        }
+
+
+        .tool-card p {
+            min-height: 48px;
+            margin-bottom: 15px;
+
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+
+        .tool-link {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+
+        .tool-link:hover {
+            text-decoration: underline;
+        }
+
+
+        .no-results {
+            display: none;
+            padding: 30px;
+
+            text-align: center;
+
+            color: var(--muted);
+
+            border:
+                1px dashed var(--border);
+
+            border-radius: 16px;
+        }
+
+
+        /* ============================================
+           WHY
+        ============================================ */
+
+        .why-section {
+            background: var(--soft);
+        }
+
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 17px;
+        }
+
+
+        .why-card {
+            padding: 23px;
+
+            background: #fff;
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+
+        .why-icon {
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+            place-items: center;
+
+            margin-bottom: 12px;
+
+            border-radius: 12px;
+            background: #f5f5ff;
+
+            font-size: 20px;
+        }
+
+
+        .why-card h3 {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+
+        .why-card p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+
+        /* ============================================
+           GUIDES
+        ============================================ */
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 19px;
+        }
+
+
+        .guide-card {
+            padding: 28px;
+
+            border: 1px solid var(--border);
+            border-radius: 19px;
+            background: #fff;
+
+            box-shadow: var(--shadow-sm);
+        }
+
+
+        .guide-card h3 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+
+        .guide-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+
+        .guide-link {
+            display: inline-block;
+            margin-top: 14px;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+
+        /* ============================================
+           FAQ
+        ============================================ */
+
+        .faq-section {
+            background: var(--soft);
+        }
+
+
+        .faq-wrap {
+            max-width: 900px;
+            margin: auto;
+        }
+
+
+        .faq-item {
+            overflow: hidden;
+            margin-bottom: 11px;
+
+            border: 1px solid var(--border);
+            border-radius: 15px;
+
+            background: #fff;
+        }
+
+
+        .faq-question {
+            width: 100%;
+
+            padding: 17px 19px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            cursor: pointer;
+
+            background: #fff;
+            color: var(--ink);
+
+            text-align: left;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+
+        .faq-plus {
+            width: 26px;
+            height: 26px;
+            min-width: 26px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+            background: #f0f1ff;
+            color: var(--primary);
+
+            font-size: 18px;
+
+            transition: .2s ease;
+        }
+
+
+        .faq-answer {
+            display: none;
+
+            padding: 0 19px 17px;
+
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+
+        .faq-item.active .faq-plus {
+            transform: rotate(45deg);
+        }
+
+
+        /* ============================================
+           CTA
+        ============================================ */
+
+        .cta-section {
+            background:
+                radial-gradient(
+                    circle at 50% 0,
+                    #e6e3ff 0,
+                    transparent 45%
+                ),
+                #fafaff;
+        }
+
+
+        .cta-card {
+            padding: 58px 30px;
+
+            text-align: center;
+
+            border: 1px solid #e3e4f8;
+            border-radius: 27px;
+
+            background: rgba(255,255,255,.78);
+
+            box-shadow: var(--shadow-md);
+        }
+
+
+        .cta-card h2 {
+            margin-bottom: 10px;
+            font-size: clamp(31px,4vw,45px);
+            letter-spacing: -1.2px;
+        }
+
+
+        .cta-card p {
+            max-width: 740px;
+            margin: 0 auto 24px;
+
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+
+        footer {
+            padding: 58px 0 24px;
+            background: var(--dark);
+            color: white;
+        }
+
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+        }
+
+
+        footer h3 {
+            margin-bottom: 12px;
+        }
+
+
+        footer p,
+        footer a {
+            display: block;
+
+            margin: 7px 0;
+
+            color: #b9c2d0;
+
+            font-size: 13px;
+        }
+
+
+        footer a:hover {
+            color: white;
+        }
+
+
+        .footer-bottom {
+            margin-top: 33px;
+            padding-top: 19px;
+
+            border-top: 1px solid #354052;
+
+            color: #8f99aa;
+
+            text-align: center;
+
+            font-size: 12px;
+        }
+
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+
+        @media (max-width: 1050px) {
+
+            .hero-grid,
+            .founder-card {
+                grid-template-columns: 1fr;
+            }
+
+
+            .hero-visual {
+                order: -1;
+                min-height: 290px;
+            }
+
+
+            .founder-card {
+                text-align: center;
+            }
+
+
+            .founder-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .founder-badges {
+                justify-content: center;
+            }
+
+
+            .popular-grid {
+                grid-template-columns:
+                    repeat(3,1fr);
+            }
+
+
+            .tools-grid,
+            .guide-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+
+            .why-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+
+            .footer-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .announcement-right {
+                display: none;
+            }
+
+
+            .announcement-inner {
+                justify-content: center;
+            }
+
+
+            .header-inner {
+                min-height: 72px;
+            }
+
+
+            .brand-name {
+                font-size: 24px;
+            }
+
+
+            .brand-tagline {
+                font-size: 7px;
+            }
+
+
+            .nav {
+                gap: 11px;
+                font-size: 12px;
+            }
+
+
+            .nav a:nth-child(3),
+            .nav-contact {
+                display: none;
+            }
+
+
+            .hero {
+                padding: 70px 0 65px;
+            }
+
+
+            .hero h1 {
+                font-size: 44px;
+                letter-spacing: -2.3px;
+            }
+
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+
+            .hero-proof {
+                display: grid;
+                gap: 8px;
+            }
+
+
+            .dashboard {
+                width: 300px;
+            }
+
+
+            .founder-card {
+                padding: 29px 18px;
+                gap: 27px;
+            }
+
+
+            .founder-photo {
+                width: 155px;
+                height: 155px;
+            }
+
+
+            .founder-card h2 {
+                font-size: 32px;
+            }
+
+
+            .updated-box {
+                text-align: left;
+            }
+
+
+            .stats-grid,
+            .popular-grid,
+            .tools-grid,
+            .why-grid,
+            .guide-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .stat + .stat {
+                border-left: 0;
+                border-top: 1px solid var(--border);
+            }
+
+
+            .popular-card {
+                display: grid;
+
+                grid-template-columns:
+                    42px 1fr auto;
+
+                gap: 11px;
+
+                align-items: center;
+
+                text-align: left;
+            }
+
+
+            .popular-icon {
+                margin: 0;
+            }
+
+
+            .popular-card h3 {
+                margin: 0;
+            }
+
+
+            .popular-card span {
+                justify-self: end;
+            }
+
+
+            .tool-toolbar {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+
+            .tool-search {
+                width: 100%;
+            }
+
+
+            .section {
+                padding: 64px 0;
+            }
+
+
+            .cta-card {
+                padding: 45px 20px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -25,81 +1506,318 @@
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+     ANNOUNCEMENT BAR
+===================================================== -->
+
+<div class="announcement-bar">
+
+    <div class="container announcement-inner">
+
+        <div>
+            SmartTools — simple tools for everyday needs.
+        </div>
+
+
+        <div class="announcement-right">
+
+            <span>
+                <b class="announcement-check">✓</b>
+                Free to use
+            </span>
+
+
+            <span>
+                <b class="announcement-check">✓</b>
+                Mobile friendly
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="header">
 
-    <div class="logo">
-        SmartTools
+    <div class="container header-inner">
+
+
+        <a href="index.html" class="brand">
+
+            <div class="brand-icon">
+                S
+            </div>
+
+
+            <div class="brand-content">
+
+                <div class="brand-name">
+                    SmartTools
+                </div>
+
+
+                <div class="brand-tagline">
+                    Free • Fast • Useful
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <nav class="nav" aria-label="Main navigation">
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="#tools">
+                Tools
+            </a>
+
+
+            <a href="#guides">
+                Guides
+            </a>
+
+
+            <a href="about.html">
+                About
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="nav-contact"
+            >
+                Contact
+            </a>
+
+        </nav>
+
+
     </div>
-
-
-    <nav>
-
-        <a href="index.html">
-            Home
-        </a>
-
-        <a href="#tools">
-            Tools
-        </a>
-
-        <a href="#guides">
-            Guides
-        </a>
-
-        <a href="about.html">
-            About
-        </a>
-
-    </nav>
 
 </header>
 
 
 
-<!-- ================= HERO ================= -->
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
-    <div class="container">
-
-        <span class="badge">
-            FREE ONLINE TOOLS
-        </span>
+    <div class="container hero-grid">
 
 
-        <h1>
-            Smart Tools for
-            <span>Everyday Needs</span>
-        </h1>
+        <div>
 
 
-        <p>
-            Calculate, convert and simplify everyday tasks
-            with our collection of fast and easy-to-use
-            online tools.
-        </p>
+            <div class="eyebrow">
+
+                <span class="eyebrow-dot"></span>
+
+                FREE ONLINE TOOLS
+
+            </div>
 
 
-        <div class="hero-buttons">
+            <h1>
 
-            <button
-                class="tool-button"
-                onclick="scrollToTools()"
-            >
-                Explore Tools
-            </button>
+                Smart tools for
+                <span>everyday needs.</span>
+
+            </h1>
 
 
-            <button
-                class="tool-button secondary"
-                onclick="window.location.href='about.html'"
-            >
-                About SmartTools
-            </button>
+            <p class="hero-description">
+
+                Calculate, convert and simplify everyday tasks
+                with a clean collection of useful calculators,
+                converters and productivity tools.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+
+                <a
+                    href="#tools"
+                    class="btn btn-primary"
+                >
+
+                    Explore Tools →
+
+                </a>
+
+
+                <a
+                    href="about.html"
+                    class="btn btn-light"
+                >
+
+                    Meet the Creator
+
+                </a>
+
+
+            </div>
+
+
+            <div class="hero-proof">
+
+
+                <span>
+                    <b class="green">✓</b>
+                    Free to use
+                </span>
+
+
+                <span>
+                    <b class="green">✓</b>
+                    Simple interface
+                </span>
+
+
+                <span>
+                    <b class="green">✓</b>
+                    Mobile friendly
+                </span>
+
+
+            </div>
+
 
         </div>
+
+
+
+        <div class="hero-visual">
+
+
+            <div class="hero-orbit"></div>
+
+
+            <div class="dashboard">
+
+
+                <div class="dashboard-top">
+
+
+                    <span class="dashboard-label">
+                        SMARTTOOLS DASHBOARD
+                    </span>
+
+
+                    <span class="dashboard-online">
+
+                        <i></i>
+
+                        ONLINE
+
+                    </span>
+
+
+                </div>
+
+
+                <h3>
+                    Everything useful,
+                    in one place.
+                </h3>
+
+
+                <p>
+
+                    Calculators, conversions and
+                    productivity tools for everyday work.
+
+                </p>
+
+
+                <div class="dashboard-value">
+
+                    <small>
+                        TOOLS AVAILABLE
+                    </small>
+
+
+                    <strong>
+                        12+
+                    </strong>
+
+
+                    <span>
+                        Free online tools
+                    </span>
+
+                </div>
+
+
+                <div class="dashboard-row">
+
+
+                    <div class="dashboard-mini">
+
+                        <b>
+                            EMI
+                        </b>
+
+                        <span>
+                            Finance
+                        </span>
+
+                    </div>
+
+
+                    <div class="dashboard-mini">
+
+                        <b>
+                            GST
+                        </b>
+
+                        <span>
+                            Tax
+                        </span>
+
+                    </div>
+
+
+                    <div class="dashboard-mini">
+
+                        <b>
+                            SIP
+                        </b>
+
+                        <span>
+                            Investment
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
 
     </div>
 
@@ -107,588 +1825,1643 @@
 
 
 
-<!-- ================= TOOLS ================= -->
+<!-- =====================================================
+     FOUNDER
+===================================================== -->
 
-<section
-    class="tools-section"
-    id="tools"
->
+<section class="founder-section">
+
 
     <div class="container">
 
 
-        <div class="section-heading">
+        <div class="founder-card">
 
-            <span class="badge">
-                OUR TOOLS
-            </span>
+
+            <div class="founder-photo-area">
+
+
+                <div class="photo-frame">
+
+
+                    <img
+
+                        class="founder-photo"
+
+                        src="data:image/jpeg;base64,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ZmozhWMxR7be5XU5dJeE9r4HpltV53mv1Xk+9l6OEscevhKpR7cs5xnR0Od0cuZlLUESFe50+e+LKm7WVc6wil3B0zCJmy1TN27TecRKxkjagZuvAqOSPUdg5b0vFnSbVJ0xjpGb66Jw6eBiduecmo6Bm87dDvbxz3o+NCvZN5VFkwf/xAAC/9oADAMBAAIAAwAAACH33333333333333333333333z33333333TnTn333333333333333333UEGkTn333333333333333n/AJFRs1tR999999999999999wNWz/AD6R9fffffffffffffQIFL/hoG5NPffffffffffffZUky1Dkcpe/ffffffffffffTLNg9PVrE3PffffffffffffSMQPRRSa4HvfffffffffffbTWfOR5F+0effffffffffffeE0oUbY2x6Rvfffffffffffbp+gAVZ68r/fffffffffffffSrptiiMqkL/ffffffffffffecB3Szn+vvfffffffffffffb+Pm/yT56FfffffffffffffeMde4ZefNm9P/fffffffeJHt91cplgA17ueISPPffeNVFYQtDKlEFPfgwzaaD3/bkHUbsEgO9rgMD6iDUWeXCfcL3EXfZtJzfCRQ6MVKCrbV/BVXtpXjYjHL5C7FvY1hdt7c3KvRvJmaqs1APOJrX6HBP2wI5FFIZZSDADQETlrfQwf8+sAimYGqTcSUERHmD2cBeW8QsmJnhBmZhRyPtBdkfVCyfrdA3aqQuPpdHanGuWnQHOQUWdzHPPIvIggAQ/v4o3QQPgYvgf8A/8QAAv/aAAwDAQACAAMAAAAQ/wDP/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/f8A/wD/AP8A/wD/AMM/tv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8AvsEENLT/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wAAAEEIAPP/AP8A/wD/AP8A/wD/AP8A/wD/APrCBDCACCB//wD/AP8A/wD/AP8A/wD/AP8A/gDADDBBDA+//wD/AP8A/wD/AP8A/wD/AP8ACABCFJBBDU//AP8A/wD/AP8A/wD/AP8A/wDDABCRBDBAA/8A/wD/AP8A/wD/AP8A/wD/APDBCBBBACA2/wD/AP8A/wD/AP8A/wD/AP8A/ABC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"
+
+                        alt="Sukanya Shahare - Founder and Creator of SmartTools"
+
+                        loading="eager"
+
+                    >
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div>
+
+
+                <div class="founder-label">
+
+                    FOUNDER &amp; CREATOR • SMARTTOOLS
+
+                </div>
+
+
+                <h2>
+
+                    Meet
+                    <span>Sukanya Shahare</span>
+
+                </h2>
+
+
+                <div class="founder-title">
+
+                    Founder &amp; Creator of SmartTools
+
+                </div>
+
+
+                <p class="founder-text">
+
+                    SmartTools is created and maintained by
+                    Sukanya Shahare to bring useful online
+                    calculators, converters and productivity
+                    tools together in one simple experience.
+
+                </p>
+
+
+                <div class="founder-badges">
+
+
+                    <div class="founder-badge">
+                        ✓ Free Online Tools
+                    </div>
+
+
+                    <div class="founder-badge">
+                        ✓ Simple &amp; Easy to Use
+                    </div>
+
+
+                    <div class="founder-badge">
+                        ✓ Regularly Improved
+                    </div>
+
+
+                </div>
+
+
+                <div class="updated-box">
+
+
+                    <div class="updated-icon">
+                        ✓
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Last updated: 26 September 2026
+                        </strong>
+
+
+                        <small>
+
+                            Website tools and content are regularly
+                            reviewed and improved.
+
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats-section stats">
+
+
+    <div class="container">
+
+
+        <div class="stats-grid">
+
+
+            <div class="stat">
+
+                <strong>
+                    12+
+                </strong>
+
+                <span>
+                    Online Tools
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    Free
+                </strong>
+
+                <span>
+                    Everyday Access
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    Mobile
+                </strong>
+
+                <span>
+                    Friendly Experience
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     POPULAR TOOLS
+===================================================== -->
+
+<section class="section popular-section">
+
+
+    <div class="container">
+
+
+        <div class="section-head">
+
+
+            <div class="section-kicker">
+                POPULAR TOOLS
+            </div>
+
 
             <h2>
-                Useful Online Tools
+                Start with what you need
             </h2>
 
+
             <p>
-                Simple, fast and easy-to-use tools for
-                calculations, conversions and everyday tasks.
+
+                Quick access to some of the most useful
+                calculators on SmartTools.
+
             </p>
+
 
         </div>
 
 
 
-        <div class="tools-grid">
+        <div class="popular-grid">
 
 
-            <!-- AGE -->
+            <a
+                href="emi-calculator.html"
+                class="popular-card"
+            >
 
-            <div class="tool-card">
+                <div class="popular-icon">
+                    💰
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        EMI Calculator
+                    </h3>
+
+                </div>
+
+
+                <span>
+                    Open →
+                </span>
+
+            </a>
+
+
+            <a
+                href="gst-calculator.html"
+                class="popular-card"
+            >
+
+                <div class="popular-icon">
+                    🧾
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        GST Calculator
+                    </h3>
+
+                </div>
+
+
+                <span>
+                    Open →
+                </span>
+
+            </a>
+
+
+            <a
+                href="sip-calculator.html"
+                class="popular-card"
+            >
+
+                <div class="popular-icon">
+                    📈
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        SIP Calculator
+                    </h3>
+
+                </div>
+
+
+                <span>
+                    Open →
+                </span>
+
+            </a>
+
+
+            <a
+                href="age-calculator.html"
+                class="popular-card"
+            >
+
+                <div class="popular-icon">
+                    🎂
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Age Calculator
+                    </h3>
+
+                </div>
+
+
+                <span>
+                    Open →
+                </span>
+
+            </a>
+
+
+            <a
+                href="percentage-calculator.html"
+                class="popular-card"
+            >
+
+                <div class="popular-icon">
+                    📊
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Percentage
+                    </h3>
+
+                </div>
+
+
+                <span>
+                    Open →
+                </span>
+
+            </a>
+
+
+            <a
+                href="loan-calculator.html"
+                class="popular-card"
+            >
+
+                <div class="popular-icon">
+                    🏦
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Loan Calculator
+                    </h3>
+
+                </div>
+
+
+                <span>
+                    Open →
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     ALL TOOLS + SEARCH
+===================================================== -->
+
+<section
+    class="section tools-section"
+    id="tools"
+>
+
+
+    <div class="container">
+
+
+        <div class="section-head">
+
+
+            <div class="section-kicker">
+                ALL TOOLS
+            </div>
+
+
+            <h2>
+                Calculators &amp; useful tools
+            </h2>
+
+
+            <p>
+
+                Search a tool by name or browse
+                the complete SmartTools collection.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="tool-toolbar">
+
+
+            <div class="tool-search">
+
+                <input
+                    type="search"
+                    id="toolSearch"
+                    placeholder="Search tools..."
+                    aria-label="Search SmartTools"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div
+                class="tool-count"
+                id="toolCount"
+            >
+                12 tools
+            </div>
+
+
+        </div>
+
+
+
+        <div
+            class="tools-grid"
+            id="toolsGrid"
+        >
+
+
+            <article
+                class="tool-card"
+                data-search="age calculator birthday date"
+            >
 
                 <div class="tool-icon">
                     🎂
                 </div>
 
+
                 <h3>
                     Age Calculator
                 </h3>
+
 
                 <p>
                     Calculate your exact age in years,
                     months and days.
                 </p>
 
+
                 <a
                     href="age-calculator.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Calculator →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- EMI -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="emi calculator loan monthly payment interest"
+            >
 
                 <div class="tool-icon">
                     💰
                 </div>
 
+
                 <h3>
                     EMI Calculator
                 </h3>
 
+
                 <p>
-                    Calculate monthly loan EMI,
-                    total interest and payment.
+                    Calculate monthly EMI,
+                    interest and total payment.
                 </p>
+
 
                 <a
                     href="emi-calculator.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Calculator →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- PERCENTAGE -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="percentage calculator percent percentage"
+            >
 
                 <div class="tool-icon">
                     📊
                 </div>
 
+
                 <h3>
                     Percentage Calculator
                 </h3>
 
+
                 <p>
-                    Calculate percentages quickly
-                    and easily.
+                    Calculate percentages
+                    quickly and easily.
                 </p>
+
 
                 <a
                     href="percentage-calculator.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Calculator →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- GST -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="gst calculator tax goods services"
+            >
 
                 <div class="tool-icon">
                     🧾
                 </div>
 
+
                 <h3>
                     GST Calculator
                 </h3>
 
+
                 <p>
-                    Calculate GST amount and final
-                    price instantly.
+                    Calculate GST amount
+                    and final price.
                 </p>
+
 
                 <a
                     href="gst-calculator.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Calculator →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- SIP -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="sip calculator investment return future"
+            >
 
                 <div class="tool-icon">
                     📈
                 </div>
 
+
                 <h3>
                     SIP Calculator
                 </h3>
 
+
                 <p>
-                    Estimate SIP investment returns
+                    Estimate SIP investment
                     and future value.
                 </p>
 
+
                 <a
                     href="sip-calculator.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Calculator →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- LOAN -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="loan calculator interest payment"
+            >
 
                 <div class="tool-icon">
                     🏦
                 </div>
 
+
                 <h3>
                     Loan Calculator
                 </h3>
 
+
                 <p>
-                    Calculate monthly loan payments,
-                    interest and total payment.
+                    Calculate monthly payment,
+                    interest and total.
                 </p>
+
 
                 <a
                     href="loan-calculator.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Calculator →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- DISCOUNT -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="discount calculator sale savings price"
+            >
 
                 <div class="tool-icon">
                     🏷️
                 </div>
 
+
                 <h3>
                     Discount Calculator
                 </h3>
 
+
                 <p>
-                    Calculate discount amount,
+                    Calculate discount,
                     savings and final price.
                 </p>
 
+
                 <a
                     href="discount-calculator.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Calculator →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- KM TO MILES -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="km miles kilometer converter conversion"
+            >
 
                 <div class="tool-icon">
                     🚗
                 </div>
 
+
                 <h3>
                     KM to Miles
                 </h3>
 
+
                 <p>
-                    Convert kilometers to miles
-                    quickly and accurately.
+                    Convert kilometers
+                    to miles accurately.
                 </p>
+
 
                 <a
                     href="km-to-miles.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Convert Now →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- WORD COUNTER -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="word counter word text count"
+            >
 
                 <div class="tool-icon">
                     📝
                 </div>
 
+
                 <h3>
                     Word Counter
                 </h3>
 
+
                 <p>
-                    Count words, characters and
-                    characters without spaces.
+                    Count words and
+                    characters in text.
                 </p>
+
 
                 <a
                     href="word-counter.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Tool →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- CHARACTER COUNTER -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="character counter characters text count"
+            >
 
                 <div class="tool-icon">
                     🔢
                 </div>
 
+
                 <h3>
                     Character Counter
                 </h3>
 
+
                 <p>
-                    Count characters, words and
-                    lines in your text.
+                    Count characters,
+                    words and lines.
                 </p>
+
 
                 <a
                     href="character-counter.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Tool →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- CASE CONVERTER -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="case converter uppercase lowercase title case text"
+            >
 
                 <div class="tool-icon">
                     🔠
                 </div>
 
+
                 <h3>
                     Case Converter
                 </h3>
 
+
                 <p>
-                    Convert text to uppercase,
-                    lowercase and title case.
+                    Convert text to useful
+                    letter cases.
                 </p>
+
 
                 <a
                     href="case-converter.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Tool →
                 </a>
 
-            </div>
+            </article>
 
 
 
-            <!-- DUPLICATE REMOVER -->
-
-            <div class="tool-card">
+            <article
+                class="tool-card"
+                data-search="remove duplicate lines clean text duplicates"
+            >
 
                 <div class="tool-icon">
                     🧹
                 </div>
 
+
                 <h3>
                     Remove Duplicate Lines
                 </h3>
 
+
                 <p>
-                    Remove repeated lines and
-                    clean your text easily.
+                    Remove repeated lines
+                    and clean your text.
                 </p>
+
 
                 <a
                     href="remove-duplicate-lines.html"
-                    class="tool-button"
+                    class="tool-link"
                 >
-                    Open Tool
+                    Use Tool →
                 </a>
+
+            </article>
+
+
+        </div>
+
+
+
+        <div
+            class="no-results"
+            id="noResults"
+        >
+            No matching tool found. Try another search.
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY SMARTTOOLS
+===================================================== -->
+
+<section class="section why-section">
+
+
+    <div class="container">
+
+
+        <div class="section-head">
+
+
+            <div class="section-kicker">
+                WHY SMARTTOOLS
+            </div>
+
+
+            <h2>
+                Designed for everyday use
+            </h2>
+
+
+            <p>
+
+                A clean experience focused on useful tools,
+                readable results and simple navigation.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="why-grid">
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    ⚡
+                </div>
+
+
+                <h3>
+                    Fast Results
+                </h3>
+
+
+                <p>
+                    Get calculations and conversions
+                    without unnecessary steps.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    🧭
+                </div>
+
+
+                <h3>
+                    Easy Navigation
+                </h3>
+
+
+                <p>
+                    Find the right tool with clear
+                    sections and labels.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    📱
+                </div>
+
+
+                <h3>
+                    Mobile Friendly
+                </h3>
+
+
+                <p>
+                    Responsive layouts for different
+                    screen sizes.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    🔄
+                </div>
+
+
+                <h3>
+                    Regular Improvements
+                </h3>
+
+
+                <p>
+                    Tools and content can be reviewed
+                    and improved over time.
+                </p>
 
             </div>
 
 
         </div>
 
+
     </div>
+
 
 </section>
 
 
 
-<!-- ================= GUIDES ================= -->
+<!-- =====================================================
+     GUIDES
+===================================================== -->
 
 <section
-    class="guides"
+    class="section"
     id="guides"
 >
+
 
     <div class="container">
 
 
-        <div class="section-heading">
+        <div class="section-head">
 
-            <span class="badge">
+
+            <div class="section-kicker">
                 USEFUL GUIDES
-            </span>
+            </div>
+
 
             <h2>
-                Learn & Understand
+                Learn before you calculate
             </h2>
 
+
             <p>
-                Simple information to help you
-                understand common calculations.
+
+                Simple explanations for common
+                calculations and everyday tools.
+
             </p>
 
+
         </div>
+
 
 
         <div class="guide-grid">
 
 
-            <div class="guide-card">
+            <article class="guide-card">
 
                 <h3>
                     How EMI is Calculated
                 </h3>
 
+
                 <p>
-                    Understand how monthly loan EMI,
-                    interest and total payment are calculated.
+                    Understand EMI, loan interest
+                    and total payment.
                 </p>
 
-            </div>
+
+                <a
+                    href="emi-calculator.html"
+                    class="guide-link"
+                >
+                    Explore EMI Calculator →
+                </a>
+
+            </article>
 
 
-            <div class="guide-card">
+            <article class="guide-card">
 
                 <h3>
                     Understanding GST
                 </h3>
 
+
                 <p>
-                    Learn how GST is added to prices
-                    and how the final amount is calculated.
+                    Learn how GST affects prices
+                    and final amounts.
                 </p>
 
-            </div>
+
+                <a
+                    href="gst-calculator.html"
+                    class="guide-link"
+                >
+                    Explore GST Calculator →
+                </a>
+
+            </article>
 
 
-            <div class="guide-card">
+            <article class="guide-card">
 
                 <h3>
                     SIP Investment Basics
                 </h3>
 
+
                 <p>
-                    Understand monthly SIP investments,
+                    Understand monthly investment,
                     estimated returns and future value.
                 </p>
+
+
+                <a
+                    href="sip-calculator.html"
+                    class="guide-link"
+                >
+                    Explore SIP Calculator →
+                </a>
+
+            </article>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section class="section faq-section">
+
+
+    <div class="container">
+
+
+        <div class="section-head">
+
+
+            <div class="section-kicker">
+                FAQ
+            </div>
+
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <p>
+                Quick answers about SmartTools
+                and its tools.
+            </p>
+
+
+        </div>
+
+
+
+        <div class="faq-wrap">
+
+
+            <div class="faq-item">
+
+
+                <button
+                    type="button"
+                    class="faq-question"
+                >
+
+                    <span>
+                        What is SmartTools?
+                    </span>
+
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    SmartTools is a collection of online
+                    calculators, converters and productivity
+                    tools designed for everyday tasks.
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="faq-item">
+
+
+                <button
+                    type="button"
+                    class="faq-question"
+                >
+
+                    <span>
+                        Are the tools free to use?
+                    </span>
+
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    The tools currently provided on SmartTools
+                    are intended to be available for free use.
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="faq-item">
+
+
+                <button
+                    type="button"
+                    class="faq-question"
+                >
+
+                    <span>
+                        Do I need to create an account?
+                    </span>
+
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    The calculator pages are designed for
+                    straightforward access without requiring
+                    an account for basic use.
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="faq-item">
+
+
+                <button
+                    type="button"
+                    class="faq-question"
+                >
+
+                    <span>
+                        Can I use SmartTools on mobile?
+                    </span>
+
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    Yes. The website uses responsive layouts
+                    designed for desktop, tablet and mobile screens.
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="faq-item">
+
+
+                <button
+                    type="button"
+                    class="faq-question"
+                >
+
+                    <span>
+                        Who created SmartTools?
+                    </span>
+
+
+                    <span class="faq-plus">
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    SmartTools is created and maintained
+                    by Sukanya Shahare.
+
+                </div>
+
 
             </div>
 
 
         </div>
 
+
     </div>
+
 
 </section>
 
 
 
-<!-- ================= ABOUT ================= -->
+<!-- =====================================================
+     PREMIUM CTA
+===================================================== -->
 
-<section
-    class="about"
-    id="about"
->
+<section class="section cta-section">
+
 
     <div class="container">
 
 
-        <div class="section-heading">
+        <div class="cta-card">
 
-            <span class="badge">
-                ABOUT SMARTTOOLS
-            </span>
+
+            <div class="section-kicker">
+                SMARTTOOLS
+            </div>
+
 
             <h2>
-                Simple Tools for Everyday Tasks
+                Useful tools. Clear results.
             </h2>
 
+
             <p>
-                SmartTools provides simple online calculators,
-                converters and productivity tools designed
-                to make everyday tasks faster and easier.
+
+                Explore calculators, converters and productivity
+                tools created to make everyday tasks simpler.
+
             </p>
 
 
             <a
-                href="about.html"
-                class="tool-button"
+                href="#tools"
+                class="btn btn-primary"
             >
-                Learn More About Us
+                Explore All Tools →
             </a>
+
 
         </div>
 
+
     </div>
+
 
 </section>
 
 
+</main>
 
-<!-- ================= FOOTER ================= -->
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-    <div class="footer-content">
+
+    <div class="container">
 
 
-        <div>
+        <div class="footer-grid">
 
-            <h3>
-                SmartTools
-            </h3>
 
-            <p>
-                Simple and useful online tools
-                for everyday tasks.
-            </p>
+            <div>
+
+
+                <h3>
+                    SmartTools
+                </h3>
+
+
+                <p>
+
+                    Free online calculators,
+                    converters and productivity
+                    tools for everyday needs.
+
+                </p>
+
+
+                <p>
+
+                    Created and maintained by
+                    Sukanya Shahare.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div>
+
+
+                <h3>
+                    Quick Links
+                </h3>
+
+
+                <a href="index.html">
+                    Home
+                </a>
+
+
+                <a href="#tools">
+                    Tools
+                </a>
+
+
+                <a href="#guides">
+                    Guides
+                </a>
+
+
+                <a href="about.html">
+                    About
+                </a>
+
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+
+            </div>
+
+
+
+            <div>
+
+
+                <h3>
+                    Legal
+                </h3>
+
+
+                <a href="privacy-policy.html">
+                    Privacy Policy
+                </a>
+
+
+                <a href="terms.html">
+                    Terms
+                </a>
+
+
+            </div>
+
 
         </div>
 
 
 
-        <div>
+        <div class="footer-bottom">
 
-            <h3>
-                Quick Links
-            </h3>
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="#tools">
-                Tools
-            </a>
-
-            <a href="#guides">
-                Guides
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-        </div>
-
-
-
-        <div>
-
-            <h3>
-                Legal
-            </h3>
-
-            <a href="privacy-policy.html">
-                Privacy Policy
-            </a>
-
-            <a href="terms.html">
-                Terms
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
+            © 2026 SmartTools.
+            Created &amp; maintained by
+            Sukanya Shahare.
 
         </div>
 
 
     </div>
 
-
-
-    <div class="footer-bottom">
-
-        © 2026 SmartTools. All rights reserved.
-
-    </div>
 
 </footer>
 
 
 
-<script src="script.js"></script>
+<script>
+
+    /* =============================================
+       FAQ ACCORDION
+    ============================================= */
+
+    document
+        .querySelectorAll(".faq-question")
+        .forEach(function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    var currentItem =
+                        button.parentElement;
+
+
+                    document
+                        .querySelectorAll(".faq-item")
+                        .forEach(function(item) {
+
+                            if (item !== currentItem) {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            }
+
+                        });
+
+
+                    currentItem.classList.toggle(
+                        "active"
+                    );
+
+                }
+            );
+
+        });
+
+
+
+    /* =============================================
+       TOOL SEARCH
+    ============================================= */
+
+    var searchInput =
+        document.getElementById("toolSearch");
+
+    var cards =
+        Array.from(
+            document.querySelectorAll(".tool-card")
+        );
+
+    var counter =
+        document.getElementById("toolCount");
+
+    var noResults =
+        document.getElementById("noResults");
+
+
+    function filterTools() {
+
+        var query =
+            searchInput.value
+                .toLowerCase()
+                .trim();
+
+
+        var visibleCount = 0;
+
+
+        cards.forEach(function(card) {
+
+            var searchableText =
+                (
+                    card.innerText +
+                    " " +
+                    (
+                        card.getAttribute(
+                            "data-search"
+                        ) || ""
+                    )
+                ).toLowerCase();
+
+
+            var matches =
+                searchableText.includes(query);
+
+
+            if (matches) {
+
+                card.classList.remove(
+                    "hidden"
+                );
+
+                visibleCount++;
+
+            } else {
+
+                card.classList.add(
+                    "hidden"
+                );
+
+            }
+
+        });
+
+
+        counter.textContent =
+            visibleCount + " tool" +
+            (
+                visibleCount === 1
+                    ? ""
+                    : "s"
+            );
+
+
+        noResults.style.display =
+            visibleCount === 0
+                ? "block"
+                : "none";
+
+    }
+
+
+    searchInput.addEventListener(
+        "input",
+        filterTools
+    );
+
+</script>
 
 
 </body>
