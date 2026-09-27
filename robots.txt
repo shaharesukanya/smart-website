@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
 Sitemap: https://shaharesukanya.github.io/smart-website/sitemap.xml
