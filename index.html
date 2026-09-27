@@ -1811,6 +1811,7 @@ table {
 }
 </style>
 <!-- SMARTTOOLS_PHASE6_CSS_END -->
+ powershell -NoProfile -Command "$p='index.html'; $tag=Get-Clipboard; if($tag -notmatch 'google-site-verification'){Write-Host 'ERROR: Google verification tag clipboard mein nahi mila.' -ForegroundColor Red; exit 1}; $x=Get-Content $p -Raw; $x=[regex]::Replace($x,'(?is)\s*<meta\s+name=[''""'']google-site-verification[''""''][^>]*>\s*',''); $x=[regex]::Replace($x,'(?i)</head>',('    '+$tag.Trim()+[Environment]::NewLine+'</head>'),1); [System.IO.File]::WriteAllText($p,$x,[System.Text.UTF8Encoding]::new($false)); Write-Host 'Google verification tag index.html mein successfully add ho gaya.' -ForegroundColor Green"
 </head>
 
 
@@ -1826,20 +1827,20 @@ table {
     <div class="container announcement-inner">
 
         <div>
-            SmartTools — simple tools for everyday needs.
+            SmartTools â€” simple tools for everyday needs.
         </div>
 
 
         <div class="announcement-right">
 
             <span>
-                <b class="announcement-check">✓</b>
+                <b class="announcement-check">âœ“</b>
                 Free to use
             </span>
 
 
             <span>
-                <b class="announcement-check">✓</b>
+                <b class="announcement-check">âœ“</b>
                 Mobile friendly
             </span>
 
@@ -1875,7 +1876,7 @@ table {
 
 
                 <div class="brand-tagline">
-                    Free • Fast • Useful
+                    Free â€¢ Fast â€¢ Useful
                 </div>
 
             </div>
@@ -1971,7 +1972,7 @@ table {
                     class="btn btn-primary"
                 >
 
-                    Explore Tools →
+                    Explore Tools â†’
 
                 </a>
 
@@ -1993,19 +1994,19 @@ table {
 
 
                 <span>
-                    <b class="green">✓</b>
+                    <b class="green">âœ“</b>
                     Free to use
                 </span>
 
 
                 <span>
-                    <b class="green">✓</b>
+                    <b class="green">âœ“</b>
                     Simple interface
                 </span>
 
 
                 <span>
-                    <b class="green">✓</b>
+                    <b class="green">âœ“</b>
                     Mobile friendly
                 </span>
 
@@ -2180,7 +2181,7 @@ table {
 
                 <div class="founder-label">
 
-                    FOUNDER &amp; CREATOR • SMARTTOOLS
+                    FOUNDER &amp; CREATOR â€¢ SMARTTOOLS
 
                 </div>
 
@@ -2214,17 +2215,17 @@ table {
 
 
                     <div class="founder-badge">
-                        ✓ Free Online Tools
+                        âœ“ Free Online Tools
                     </div>
 
 
                     <div class="founder-badge">
-                        ✓ Simple &amp; Easy to Use
+                        âœ“ Simple &amp; Easy to Use
                     </div>
 
 
                     <div class="founder-badge">
-                        ✓ Regularly Improved
+                        âœ“ Regularly Improved
                     </div>
 
 
@@ -2235,7 +2236,7 @@ table {
 
 
                     <div class="updated-icon">
-                        ✓
+                        âœ“
                     </div>
 
 
@@ -2378,7 +2379,7 @@ table {
             >
 
                 <div class="popular-icon">
-                    💰
+                    ðŸ’°
                 </div>
 
 
@@ -2392,7 +2393,7 @@ table {
 
 
                 <span>
-                    Open →
+                    Open â†’
                 </span>
 
             </a>
@@ -2404,7 +2405,7 @@ table {
             >
 
                 <div class="popular-icon">
-                    🧾
+                    ðŸ§¾
                 </div>
 
 
@@ -2418,7 +2419,7 @@ table {
 
 
                 <span>
-                    Open →
+                    Open â†’
                 </span>
 
             </a>
@@ -2430,7 +2431,7 @@ table {
             >
 
                 <div class="popular-icon">
-                    📈
+                    ðŸ“ˆ
                 </div>
 
 
@@ -2444,7 +2445,7 @@ table {
 
 
                 <span>
-                    Open →
+                    Open â†’
                 </span>
 
             </a>
@@ -2456,7 +2457,7 @@ table {
             >
 
                 <div class="popular-icon">
-                    🎂
+                    ðŸŽ‚
                 </div>
 
 
@@ -2470,7 +2471,7 @@ table {
 
 
                 <span>
-                    Open →
+                    Open â†’
                 </span>
 
             </a>
@@ -2482,7 +2483,7 @@ table {
             >
 
                 <div class="popular-icon">
-                    📊
+                    ðŸ“Š
                 </div>
 
 
@@ -2496,7 +2497,7 @@ table {
 
 
                 <span>
-                    Open →
+                    Open â†’
                 </span>
 
             </a>
@@ -2508,7 +2509,7 @@ table {
             >
 
                 <div class="popular-icon">
-                    🏦
+                    ðŸ¦
                 </div>
 
 
@@ -2522,7 +2523,7 @@ table {
 
 
                 <span>
-                    Open →
+                    Open â†’
                 </span>
 
             </a>
@@ -2616,7 +2617,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    🎂
+                    ðŸŽ‚
                 </div>
 
 
@@ -2635,7 +2636,7 @@ table {
                     href="age-calculator.html"
                     class="tool-link"
                 >
-                    Use Calculator →
+                    Use Calculator â†’
                 </a>
 
             </article>
@@ -2648,7 +2649,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    💰
+                    ðŸ’°
                 </div>
 
 
@@ -2667,7 +2668,7 @@ table {
                     href="emi-calculator.html"
                     class="tool-link"
                 >
-                    Use Calculator →
+                    Use Calculator â†’
                 </a>
 
             </article>
@@ -2680,7 +2681,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    📊
+                    ðŸ“Š
                 </div>
 
 
@@ -2699,7 +2700,7 @@ table {
                     href="percentage-calculator.html"
                     class="tool-link"
                 >
-                    Use Calculator →
+                    Use Calculator â†’
                 </a>
 
             </article>
@@ -2712,7 +2713,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    🧾
+                    ðŸ§¾
                 </div>
 
 
@@ -2731,7 +2732,7 @@ table {
                     href="gst-calculator.html"
                     class="tool-link"
                 >
-                    Use Calculator →
+                    Use Calculator â†’
                 </a>
 
             </article>
@@ -2744,7 +2745,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    📈
+                    ðŸ“ˆ
                 </div>
 
 
@@ -2763,7 +2764,7 @@ table {
                     href="sip-calculator.html"
                     class="tool-link"
                 >
-                    Use Calculator →
+                    Use Calculator â†’
                 </a>
 
             </article>
@@ -2776,7 +2777,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    🏦
+                    ðŸ¦
                 </div>
 
 
@@ -2795,7 +2796,7 @@ table {
                     href="loan-calculator.html"
                     class="tool-link"
                 >
-                    Use Calculator →
+                    Use Calculator â†’
                 </a>
 
             </article>
@@ -2808,7 +2809,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    🏷️
+                    ðŸ·ï¸
                 </div>
 
 
@@ -2827,7 +2828,7 @@ table {
                     href="discount-calculator.html"
                     class="tool-link"
                 >
-                    Use Calculator →
+                    Use Calculator â†’
                 </a>
 
             </article>
@@ -2840,7 +2841,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    🚗
+                    ðŸš—
                 </div>
 
 
@@ -2859,7 +2860,7 @@ table {
                     href="km-to-miles.html"
                     class="tool-link"
                 >
-                    Convert Now →
+                    Convert Now â†’
                 </a>
 
             </article>
@@ -2872,7 +2873,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    📝
+                    ðŸ“
                 </div>
 
 
@@ -2891,7 +2892,7 @@ table {
                     href="word-counter.html"
                     class="tool-link"
                 >
-                    Use Tool →
+                    Use Tool â†’
                 </a>
 
             </article>
@@ -2904,7 +2905,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    🔢
+                    ðŸ”¢
                 </div>
 
 
@@ -2923,7 +2924,7 @@ table {
                     href="character-counter.html"
                     class="tool-link"
                 >
-                    Use Tool →
+                    Use Tool â†’
                 </a>
 
             </article>
@@ -2936,7 +2937,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    🔠
+                    ðŸ” 
                 </div>
 
 
@@ -2955,7 +2956,7 @@ table {
                     href="case-converter.html"
                     class="tool-link"
                 >
-                    Use Tool →
+                    Use Tool â†’
                 </a>
 
             </article>
@@ -2968,7 +2969,7 @@ table {
             >
 
                 <div class="tool-icon">
-                    🧹
+                    ðŸ§¹
                 </div>
 
 
@@ -2987,7 +2988,7 @@ table {
                     href="remove-duplicate-lines.html"
                     class="tool-link"
                 >
-                    Use Tool →
+                    Use Tool â†’
                 </a>
 
             </article>
@@ -3053,7 +3054,7 @@ table {
             <div class="why-card">
 
                 <div class="why-icon">
-                    ⚡
+                    âš¡
                 </div>
 
 
@@ -3073,7 +3074,7 @@ table {
             <div class="why-card">
 
                 <div class="why-icon">
-                    🧭
+                    ðŸ§­
                 </div>
 
 
@@ -3093,7 +3094,7 @@ table {
             <div class="why-card">
 
                 <div class="why-icon">
-                    📱
+                    ðŸ“±
                 </div>
 
 
@@ -3113,7 +3114,7 @@ table {
             <div class="why-card">
 
                 <div class="why-icon">
-                    🔄
+                    ðŸ”„
                 </div>
 
 
@@ -3198,7 +3199,7 @@ table {
                     href="emi-calculator.html"
                     class="guide-link"
                 >
-                    Explore EMI Calculator →
+                    Explore EMI Calculator â†’
                 </a>
 
             </article>
@@ -3221,7 +3222,7 @@ table {
                     href="gst-calculator.html"
                     class="guide-link"
                 >
-                    Explore GST Calculator →
+                    Explore GST Calculator â†’
                 </a>
 
             </article>
@@ -3244,7 +3245,7 @@ table {
                     href="sip-calculator.html"
                     class="guide-link"
                 >
-                    Explore SIP Calculator →
+                    Explore SIP Calculator â†’
                 </a>
 
             </article>
@@ -3502,7 +3503,7 @@ table {
                 href="#tools"
                 class="btn btn-primary"
             >
-                Explore All Tools →
+                Explore All Tools â†’
             </a>
 
 
@@ -3625,7 +3626,7 @@ table {
 
         <div class="footer-bottom">
 
-            © 2026 SmartTools.
+            Â© 2026 SmartTools.
             Created &amp; maintained by
             Sukanya Shahare.
 
