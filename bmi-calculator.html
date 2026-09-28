@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BMI Calculator - Calculate Body Mass Index Online | SmartTools</title>
+
+    <meta name="description"
+          content="Use the free SmartTools BMI Calculator to calculate Body Mass Index from your height and weight. Get your BMI value and category instantly.">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+          href="https://shaharesukanya.github.io/smart-website/bmi-calculator.html">
+
+    <meta property="og:title"
+          content="BMI Calculator - Calculate Body Mass Index Online | SmartTools">
+
+    <meta property="og:description"
+          content="Calculate BMI instantly using your height and weight with the free SmartTools BMI Calculator.">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:url"
+          content="https://shaharesukanya.github.io/smart-website/bmi-calculator.html">
+
+    <meta property="og:site_name" content="SmartTools">
+
+    <style>
+        :root {
+            --primary: #5b5ff5;
+            --primary-dark: #494dd6;
+            --text: #16181d;
+            --muted: #667085;
+            --border: #e8eaf0;
+            --bg: #f7f8fc;
+            --white: #ffffff;
+            --shadow: 0 18px 50px rgba(25, 31, 56, 0.09);
+            --radius: 22px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .brand img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-btn {
+            background: var(--primary);
+            color: #fff !important;
+            padding: 11px 17px;
+            border-radius: 12px;
+        }
+
+        .contact-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 70px 0 35px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #eef0ff;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.08;
+            margin: 18px auto 15px;
+            max-width: 800px;
+            letter-spacing: -0.035em;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        /* CALCULATOR */
+
+        .calculator-wrap {
+            padding: 25px 0 70px;
+        }
+
+        .calculator-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            max-width: 850px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .calculator-top {
+            padding: 27px 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .calculator-top h2 {
+            font-size: 25px;
+            margin-bottom: 4px;
+        }
+
+        .calculator-top p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .calculator-body {
+            padding: 30px;
+        }
+
+        .unit-tabs {
+            display: flex;
+            gap: 8px;
+            background: #f1f2f6;
+            padding: 5px;
+            border-radius: 12px;
+            width: fit-content;
+            margin-bottom: 25px;
+        }
+
+        .unit-tab {
+            border: none;
+            background: transparent;
+            padding: 10px 18px;
+            border-radius: 9px;
+            cursor: pointer;
+            color: #596174;
+            font-weight: 700;
+        }
+
+        .unit-tab.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .field input {
+            width: 100%;
+            border: 1px solid var(--border);
+            background: #fbfbfd;
+            padding: 14px 15px;
+            border-radius: 12px;
+            outline: none;
+            transition: 0.2s ease;
+        }
+
+        .field input:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(91, 95, 245, 0.09);
+        }
+
+        .calculate-btn {
+            width: 100%;
+            border: none;
+            margin-top: 22px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .calculate-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .result {
+            display: none;
+            margin-top: 26px;
+            border-radius: 18px;
+            padding: 25px;
+            background: #f7f8ff;
+            border: 1px solid #e2e4ff;
+            text-align: center;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result-label {
+            font-size: 13px;
+            color: var(--muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .bmi-value {
+            font-size: 54px;
+            line-height: 1;
+            font-weight: 900;
+            margin: 10px 0;
+        }
+
+        .category {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #fff;
+            border: 1px solid var(--border);
+            font-weight: 800;
+        }
+
+        .error {
+            display: none;
+            margin-top: 14px;
+            color: #b42318;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* CONTENT */
+
+        .content-section {
+            padding: 70px 0;
+            background: white;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .content-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 28px;
+        }
+
+        .content-card h2 {
+            margin-bottom: 12px;
+            font-size: 25px;
+        }
+
+        .content-card h3 {
+            margin: 22px 0 8px;
+            font-size: 18px;
+        }
+
+        .content-card p {
+            color: #596174;
+            margin-bottom: 10px;
+        }
+
+        .formula {
+            padding: 18px;
+            background: #f7f8fc;
+            border-radius: 14px;
+            font-weight: 800;
+            margin-top: 18px;
+            text-align: center;
+        }
+
+        .example {
+            padding: 18px;
+            background: #fafafa;
+            border-left: 4px solid var(--primary);
+            margin-top: 18px;
+            border-radius: 10px;
+        }
+
+        /* FAQ */
+
+        .faq-section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+        }
+
+        .faq {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 19px 20px;
+            background: white;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            cursor: pointer;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 20px;
+            color: var(--muted);
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* RELATED */
+
+        .related-section {
+            padding: 70px 0;
+            background: white;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .related-card {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 22px;
+            transition: 0.2s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .related-card h3 {
+            margin-bottom: 6px;
+        }
+
+        .related-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .related-card a {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+        }
+
+        footer p {
+            color: #aab1bf;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #d8dce5;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .fields,
+            .content-grid,
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+
+            .calculator-body,
+            .calculator-top,
+            .content-card {
+                padding: 22px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .navbar {
+                min-height: 68px;
+            }
+
+            .brand {
+                font-size: 18px;
+            }
+
+            .brand img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .unit-tabs {
+                width: 100%;
+            }
+
+            .unit-tab {
+                flex: 1;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "BMI Calculator",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "description": "Free BMI calculator for calculating Body Mass Index from height and weight.",
+        "url": "https://shaharesukanya.github.io/smart-website/bmi-calculator.html",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "SmartTools",
+                "item": "https://shaharesukanya.github.io/smart-website/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "BMI Calculator",
+                "item": "https://shaharesukanya.github.io/smart-website/bmi-calculator.html"
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+
+<header>
+    <div class="container navbar">
+
+        <a href="index.html" class="brand">
+            <img src="smarttools-logo-transparent.png"
+                 alt="SmartTools logo"
+                 onerror="this.style.display='none'">
+            <span>SmartTools</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#tools">All Tools</a>
+            <a href="index.html#guides">Guides</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="contact-btn">Contact</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <section class="hero">
+        <div class="container">
+
+            <span class="eyebrow">Health Calculator</span>
+
+            <h1>Free BMI Calculator</h1>
+
+            <p>
+                Calculate your Body Mass Index using your height and weight,
+                and get an instant BMI value with a simple category result.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="calculator-wrap">
+        <div class="container">
+
+            <div class="calculator-card">
+
+                <div class="calculator-top">
+                    <h2>Calculate Your BMI</h2>
+                    <p>Enter your measurements below to calculate your BMI.</p>
+                </div>
+
+                <div class="calculator-body">
+
+                    <div class="unit-tabs">
+                        <button class="unit-tab active" id="metricBtn">
+                            Metric
+                        </button>
+
+                        <button class="unit-tab" id="imperialBtn">
+                            Imperial
+                        </button>
+                    </div>
+
+                    <div id="metricFields">
+
+                        <div class="fields">
+
+                            <div class="field">
+                                <label for="heightCm">
+                                    Height (cm)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="heightCm"
+                                    min="50"
+                                    max="300"
+                                    step="0.1"
+                                    placeholder="Example: 170"
+                                >
+                            </div>
+
+                            <div class="field">
+                                <label for="weightKg">
+                                    Weight (kg)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="weightKg"
+                                    min="10"
+                                    max="500"
+                                    step="0.1"
+                                    placeholder="Example: 65"
+                                >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="imperialFields" style="display:none;">
+
+                        <div class="fields">
+
+                            <div class="field">
+                                <label for="heightFt">
+                                    Height (feet)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="heightFt"
+                                    min="1"
+                                    max="8"
+                                    step="0.1"
+                                    placeholder="Example: 5"
+                                >
+                            </div>
+
+                            <div class="field">
+                                <label for="heightIn">
+                                    Height (inches)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="heightIn"
+                                    min="0"
+                                    max="11.99"
+                                    step="0.1"
+                                    placeholder="Example: 7"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="field" style="margin-top:18px;">
+                            <label for="weightLb">
+                                Weight (lb)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="weightLb"
+                                min="20"
+                                max="1100"
+                                step="0.1"
+                                placeholder="Example: 143"
+                            >
+                        </div>
+
+                    </div>
+
+                    <button class="calculate-btn" id="calculateBtn">
+                        Calculate BMI
+                    </button>
+
+                    <div class="error" id="errorMessage">
+                        Please enter valid height and weight values.
+                    </div>
+
+                    <div class="result" id="result">
+
+                        <div class="result-label">
+                            Your BMI
+                        </div>
+
+                        <div class="bmi-value" id="bmiValue">
+                            0.0
+                        </div>
+
+                        <div class="category" id="category">
+                            -
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="content-section">
+
+        <div class="container content-grid">
+
+            <article class="content-card">
+
+                <h2>What is BMI?</h2>
+
+                <p>
+                    BMI, or Body Mass Index, is a number calculated from
+                    a person's height and weight. It is commonly used as
+                    one general screening measure related to body weight.
+                </p>
+
+                <p>
+                    Enter your measurements above and SmartTools will
+                    calculate the BMI value instantly.
+                </p>
+
+                <h3>BMI Formula</h3>
+
+                <div class="formula">
+                    BMI = Weight (kg) / Height² (m)
+                </div>
+
+                <h3>Example</h3>
+
+                <div class="example">
+                    A person weighing 65 kg with a height of 1.70 m has
+                    a BMI of approximately 22.5.
+                </div>
+
+            </article>
+
+            <article class="content-card">
+
+                <h2>BMI Categories</h2>
+
+                <p>
+                    For adults, BMI values are commonly grouped into
+                    standard screening categories.
+                </p>
+
+                <h3>Underweight</h3>
+                <p>BMI below 18.5</p>
+
+                <h3>Normal range</h3>
+                <p>BMI from 18.5 to 24.9</p>
+
+                <h3>Overweight</h3>
+                <p>BMI from 25.0 to 29.9</p>
+
+                <h3>Obesity</h3>
+                <p>BMI 30.0 or above</p>
+
+                <p style="margin-top:18px; font-size:13px;">
+                    BMI is a general screening measure and is not a
+                    medical diagnosis.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <section class="faq-section">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about BMI calculation.</p>
+            </div>
+
+            <div class="faq">
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        What does BMI stand for?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        BMI stands for Body Mass Index. It is a
+                        height-to-weight calculation commonly used
+                        as a general screening measure.
+                    </div>
+
+                </div>
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Can BMI be used for everyone?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        BMI has limitations and may not give a complete
+                        picture of health or body composition. Different
+                        considerations may apply to children, athletes,
+                        older adults and other groups.
+                    </div>
+
+                </div>
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Is the SmartTools BMI Calculator free?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        Yes. The SmartTools BMI Calculator is available
+                        online for free.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="related-section">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Related Tools</h2>
+                <p>Explore more useful SmartTools.</p>
+            </div>
+
+            <div class="related-grid">
+
+                <div class="related-card">
+                    <h3>Age Calculator</h3>
+                    <p>
+                        Calculate age in years, months and days.
+                    </p>
+                    <a href="age-calculator.html">
+                        Open Tool →
+                    </a>
+                </div>
+
+                <div class="related-card">
+                    <h3>Percentage Calculator</h3>
+                    <p>
+                        Solve common percentage calculations quickly.
+                    </p>
+                    <a href="percentage-calculator.html">
+                        Open Tool →
+                    </a>
+                </div>
+
+                <div class="related-card">
+                    <h3>Average Calculator</h3>
+                    <p>
+                        Calculate the average of multiple numbers.
+                    </p>
+                    <a href="average-calculator.html">
+                        Open Tool →
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <p>
+            © 2026 SmartTools. All rights reserved.
+        </p>
+
+        <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+
+    const metricBtn = document.getElementById("metricBtn");
+    const imperialBtn = document.getElementById("imperialBtn");
+
+    const metricFields = document.getElementById("metricFields");
+    const imperialFields = document.getElementById("imperialFields");
+
+    const calculateBtn = document.getElementById("calculateBtn");
+
+    const result = document.getElementById("result");
+    const bmiValue = document.getElementById("bmiValue");
+    const category = document.getElementById("category");
+    const errorMessage = document.getElementById("errorMessage");
+
+    let currentUnit = "metric";
+
+    metricBtn.addEventListener("click", function () {
+
+        currentUnit = "metric";
+
+        metricBtn.classList.add("active");
+        imperialBtn.classList.remove("active");
+
+        metricFields.style.display = "block";
+        imperialFields.style.display = "none";
+
+        result.classList.remove("show");
+        errorMessage.style.display = "none";
+    });
+
+    imperialBtn.addEventListener("click", function () {
+
+        currentUnit = "imperial";
+
+        imperialBtn.classList.add("active");
+        metricBtn.classList.remove("active");
+
+        imperialFields.style.display = "block";
+        metricFields.style.display = "none";
+
+        result.classList.remove("show");
+        errorMessage.style.display = "none";
+    });
+
+    calculateBtn.addEventListener("click", function () {
+
+        let bmi = 0;
+
+        if (currentUnit === "metric") {
+
+            const heightCm =
+                parseFloat(document.getElementById("heightCm").value);
+
+            const weightKg =
+                parseFloat(document.getElementById("weightKg").value);
+
+            if (
+                !heightCm ||
+                !weightKg ||
+                heightCm <= 0 ||
+                weightKg <= 0
+            ) {
+                showError();
+                return;
+            }
+
+            const heightM = heightCm / 100;
+
+            bmi = weightKg / (heightM * heightM);
+
+        } else {
+
+            const feet =
+                parseFloat(document.getElementById("heightFt").value);
+
+            const inches =
+                parseFloat(document.getElementById("heightIn").value) || 0;
+
+            const weightLb =
+                parseFloat(document.getElementById("weightLb").value);
+
+            if (
+                !feet ||
+                !weightLb ||
+                feet <= 0 ||
+                weightLb <= 0
+            ) {
+                showError();
+                return;
+            }
+
+            const totalInches = (feet * 12) + inches;
+
+            bmi = (weightLb / (totalInches * totalInches)) * 703;
+        }
+
+        errorMessage.style.display = "none";
+
+        bmiValue.textContent = bmi.toFixed(1);
+
+        if (bmi < 18.5) {
+
+            category.textContent = "Underweight";
+
+        } else if (bmi < 25) {
+
+            category.textContent = "Normal range";
+
+        } else if (bmi < 30) {
+
+            category.textContent = "Overweight";
+
+        } else {
+
+            category.textContent = "Obesity";
+        }
+
+        result.classList.add("show");
+    });
+
+    function showError() {
+
+        errorMessage.style.display = "block";
+        result.classList.remove("show");
+    }
+
+    document.querySelectorAll(".faq-question").forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const item = button.parentElement;
+
+            item.classList.toggle("open");
+
+            const symbol = button.querySelector("span");
+
+            if (item.classList.contains("open")) {
+
+                symbol.textContent = "−";
+
+            } else {
+
+                symbol.textContent = "+";
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

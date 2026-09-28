@@ -1,1196 +1,982 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Contact SmartTools | Get in Touch</title>
 
     <meta
         name="description"
-        content="Contact SmartTools by Sukanya Shahare for questions, feedback, suggestions and website-related enquiries."
+        content="Contact SmartTools for website feedback, tool suggestions, questions and general enquiries."
+    >
+
+    <meta
+        name="keywords"
+        content="Contact SmartTools, SmartTools support, tool suggestions, website feedback"
     >
 
     <meta name="robots" content="index, follow">
 
-    <meta name="author" content="Sukanya Shahare">
+    <link
+        rel="canonical"
+        href="https://shaharesukanya.github.io/smart-website/contact.html"
+    >
 
-    <link rel="canonical" href="https://shaharesukanya.github.io/smart-website/contact.html">
-
-    <meta property="og:title" content="Contact SmartTools | Get in Touch">
-
-    <meta property="og:description" content="Contact SmartTools by Sukanya Shahare for questions, feedback, suggestions and website-related enquiries.">
-
+    <meta property="og:title" content="Contact SmartTools">
+    <meta
+        property="og:description"
+        content="Get in touch with SmartTools for feedback, suggestions and general enquiries."
+    >
     <meta property="og:type" content="website">
 
-    <meta property="og:url" content="https://shaharesukanya.github.io/smart-website/contact.html">
-
-    <meta property="og:site_name" content="SmartTools">
-
-
     <style>
-
-        :root {
-            --primary: #5b5ff5;
-            --primary-dark: #474be3;
-            --purple: #7b53f6;
-
-            --ink: #101828;
-            --muted: #667085;
-            --light: #f7f8fc;
-
-            --white: #ffffff;
-            --border: #e7e9f0;
-
-            --dark: #101522;
-
-            --shadow-sm:
-                0 8px 24px rgba(16, 24, 40, 0.05);
-
-            --shadow-md:
-                0 18px 55px rgba(16, 24, 40, 0.08);
-
-            --shadow-lg:
-                0 28px 85px rgba(16, 24, 40, 0.12);
-        }
-
-
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
-
 
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-            font-family:
-                Inter,
-                ui-sans-serif,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            color: var(--ink);
-            background: var(--white);
-            line-height: 1.7;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f7fb;
+            color: #101828;
         }
-
 
         a {
             text-decoration: none;
-            color: inherit;
         }
 
+        /* =========================
+           HEADER
+        ========================= */
 
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-
-        .container {
-            width: min(1120px, 92%);
-            margin: auto;
-        }
-
-
-        /* TOP BAR */
-
-        .topbar {
-            background:
-                linear-gradient(
-                    90deg,
-                    #101522,
-                    #171c30
-                );
-
-            color: #ffffff;
-
-            font-size: 13px;
-        }
-
-
-        .topbar-inner {
-            min-height: 40px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-
-        .topbar-right {
-            display: flex;
-            gap: 18px;
-            opacity: 0.9;
-        }
-
-
-        /* HEADER */
-
-        header {
+        .header {
             position: sticky;
             top: 0;
             z-index: 1000;
 
-            background:
-                rgba(255,255,255,0.94);
+            background: rgba(255,255,255,0.97);
 
-            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #e5e7eb;
 
-            border-bottom:
-                1px solid rgba(231,233,240,0.9);
+            backdrop-filter: blur(12px);
         }
 
-
         .header-inner {
-            min-height: 76px;
+            max-width: 1180px;
+            margin: auto;
+
+            min-height: 84px;
+
+            padding: 0 22px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            gap: 24px;
+            gap: 25px;
         }
 
+        /* =========================
+           SMARTTOOLS LOGO
+        ========================= */
 
-        .brand {
-            display: inline-flex;
+        .logo {
+            display: flex;
             align-items: center;
+
             gap: 12px;
+
+            color: #111827;
+
+            flex-shrink: 0;
         }
 
+        .logo-mark {
+            width: 44px;
+            height: 44px;
 
-        .brand-icon {
-            width: 42px;
-            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            border-radius: 14px;
-
-            display: grid;
-            place-items: center;
-
-            color: white;
-            font-size: 19px;
-            font-weight: 800;
+            border-radius: 12px;
 
             background:
                 linear-gradient(
                     135deg,
-                    var(--primary),
-                    var(--purple)
+                    #4f46e5,
+                    #7c3aed
                 );
 
+            color: white;
+
+            font-size: 18px;
+            font-weight: 900;
+
             box-shadow:
-                0 10px 24px rgba(91,95,245,0.28);
+                0 8px 18px rgba(79,70,229,0.22);
         }
 
+        .logo-text {
+            font-size: 22px;
 
-        .brand-name {
-            font-size: 24px;
             font-weight: 800;
-            letter-spacing: -0.8px;
+
+            letter-spacing: -0.5px;
         }
 
+        /* =========================
+           NAVIGATION
+        ========================= */
 
-        .brand-tagline {
-            font-size: 11px;
-            color: var(--muted);
-        }
-
-
-        nav {
+        .nav {
             display: flex;
             align-items: center;
-            gap: 25px;
+
+            gap: 26px;
         }
 
-
-        nav a {
-            font-size: 14px;
-            font-weight: 700;
+        .nav a {
             color: #475467;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .nav a:hover {
+            color: #4f46e5;
+        }
+
+        .nav-cta {
+            background: #4f46e5;
+
+            color: white !important;
+
+            padding: 12px 18px;
+
+            border-radius: 11px;
+
+            box-shadow:
+                0 8px 20px rgba(79,70,229,0.20);
+        }
+
+        .nav-cta:hover {
+            background: #4338ca !important;
+
+            transform: translateY(-1px);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            max-width: 950px;
+
+            margin: auto;
+
+            padding: 72px 22px 50px;
+
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+
+            padding: 8px 14px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid #dfe4ff;
+
+            border-radius: 999px;
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+
+            font-size: 13px;
+
+            font-weight: 800;
+        }
+
+        .hero h1 {
+            margin: 0;
+
+            font-size: clamp(42px, 6vw, 62px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2.4px;
+        }
+
+        .hero h1 span {
+            color: #4f46e5;
+        }
+
+        .hero p {
+            max-width: 710px;
+
+            margin: 20px auto 0;
+
+            color: #667085;
+
+            font-size: 18px;
+
+            line-height: 1.75;
+        }
+
+        /* =========================
+           CONTACT AREA
+        ========================= */
+
+        .contact-section {
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding: 20px 22px 85px;
+        }
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns: 0.85fr 1.25fr;
+
+            gap: 28px;
+
+            align-items: start;
+        }
+
+        /* =========================
+           LEFT INFORMATION
+        ========================= */
+
+        .contact-info {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 16px;
+        }
+
+        .info-card {
+            background: white;
+
+            border: 1px solid #e4e7ec;
+
+            border-radius: 20px;
+
+            padding: 24px;
 
             transition: 0.25s ease;
         }
 
+        .info-card:hover {
+            transform: translateY(-4px);
 
-        nav a:hover,
-        nav a.active {
-            color: var(--primary);
+            box-shadow:
+                0 18px 40px rgba(16,24,40,0.08);
         }
 
+        .info-icon {
+            width: 50px;
+            height: 50px;
 
-        .nav-button {
-            padding: 11px 18px;
-            border-radius: 12px;
-
-            color: white !important;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--purple)
-                );
-        }
-
-
-        /* HERO */
-
-        .hero {
-            padding: 85px 0 70px;
-
-            background:
-                radial-gradient(
-                    circle at top right,
-                    rgba(91,95,245,0.11),
-                    transparent 35%
-                ),
-                linear-gradient(
-                    180deg,
-                    #ffffff,
-                    #f8f9fd
-                );
-        }
-
-
-        .breadcrumb {
-            font-size: 13px;
-            color: var(--muted);
-            margin-bottom: 22px;
-        }
-
-
-        .breadcrumb a {
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 55px;
-
+            display: flex;
             align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: #eef2ff;
+
+            font-size: 23px;
+
+            margin-bottom: 15px;
         }
 
+        .info-card h3 {
+            margin: 0 0 8px;
 
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            font-size: 12px;
-            font-weight: 800;
-
-            letter-spacing: 1.4px;
-
-            color: var(--primary);
-
-            margin-bottom: 20px;
+            font-size: 19px;
         }
 
+        .info-card p {
+            margin: 0;
 
-        .eyebrow-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
+            color: #667085;
 
-            background: var(--primary);
+            font-size: 14px;
+
+            line-height: 1.7;
         }
 
+        /* =========================
+           FORM CARD
+        ========================= */
 
-        h1 {
-            font-size: clamp(42px, 5vw, 64px);
+        .form-card {
+            background: white;
 
-            line-height: 1.05;
-
-            letter-spacing: -2.5px;
-
-            margin-bottom: 20px;
-        }
-
-
-        h1 span {
-            color: var(--primary);
-        }
-
-
-        .hero-text {
-            color: var(--muted);
-
-            font-size: 18px;
-
-            max-width: 650px;
-        }
-
-
-        /* CONTACT CARD */
-
-        .contact-card {
-            background: #ffffff;
-
-            border: 1px solid var(--border);
+            border: 1px solid #e4e7ec;
 
             border-radius: 24px;
 
-            padding: 30px;
+            padding: 34px;
 
-            box-shadow: var(--shadow-lg);
+            box-shadow:
+                0 22px 55px rgba(16,24,40,0.07);
         }
 
+        .form-card h2 {
+            margin: 0;
 
-        .contact-card h2 {
-            font-size: 27px;
-            margin-bottom: 8px;
+            font-size: 30px;
+
+            letter-spacing: -0.7px;
         }
 
+        .form-intro {
+            margin: 10px 0 28px;
 
-        .contact-card > p {
-            color: var(--muted);
-            margin-bottom: 25px;
+            color: #667085;
+
+            font-size: 15px;
+
+            line-height: 1.7;
         }
-
 
         .form-group {
             margin-bottom: 18px;
         }
 
-
-        label {
+        .form-group label {
             display: block;
 
-            font-size: 13px;
-            font-weight: 800;
+            margin-bottom: 8px;
 
-            margin-bottom: 7px;
+            color: #344054;
+
+            font-size: 14px;
+
+            font-weight: 700;
         }
 
-
-        input,
-        textarea {
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
 
-            border: 1px solid var(--border);
+            border: 1px solid #d0d5dd;
 
-            background: #fbfcff;
+            border-radius: 11px;
 
-            border-radius: 12px;
+            background: #fff;
 
-            padding: 14px 15px;
+            padding: 13px 14px;
 
-            font: inherit;
+            color: #101828;
 
-            color: var(--ink);
+            font-family: inherit;
+
+            font-size: 15px;
 
             outline: none;
 
             transition: 0.2s ease;
         }
 
-
-        input:focus,
-        textarea:focus {
-            border-color: var(--primary);
-
-            background: white;
-
-            box-shadow:
-                0 0 0 4px rgba(91,95,245,0.10);
+        .form-group input,
+        .form-group select {
+            height: 48px;
         }
 
-
-        textarea {
+        .form-group textarea {
             min-height: 145px;
+
             resize: vertical;
         }
 
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #6366f1;
 
-        .submit-btn {
+            box-shadow:
+                0 0 0 4px rgba(99,102,241,0.10);
+        }
+
+        .submit-button {
             width: 100%;
 
             border: none;
 
-            border-radius: 13px;
+            border-radius: 12px;
 
-            padding: 14px 18px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #6366f1
+                );
 
             color: white;
 
+            padding: 14px 20px;
+
             font-size: 15px;
+
             font-weight: 800;
 
             cursor: pointer;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--purple)
-                );
+            transition: 0.2s ease;
 
             box-shadow:
-                0 12px 28px rgba(91,95,245,0.22);
+                0 10px 22px rgba(79,70,229,0.20);
         }
 
-
-        .submit-btn:hover {
+        .submit-button:hover {
             transform: translateY(-1px);
-        }
 
+            box-shadow:
+                0 14px 28px rgba(79,70,229,0.25);
+        }
 
         .form-note {
-            margin-top: 14px;
+            margin: 13px 0 0;
+
+            text-align: center;
+
+            color: #98a2b3;
 
             font-size: 12px;
 
-            color: var(--muted);
-
-            text-align: center;
+            line-height: 1.6;
         }
 
+        .success-message {
+            display: none;
 
-        /* INFO SECTION */
+            margin-top: 18px;
 
-        .section {
-            padding: 85px 0;
+            padding: 13px 15px;
+
+            border-radius: 10px;
+
+            background: #ecfdf3;
+
+            border: 1px solid #abefc6;
+
+            color: #067647;
+
+            font-size: 14px;
+
+            line-height: 1.5;
         }
 
+        /* =========================
+           FAQ / HELP
+        ========================= */
+
+        .help-section {
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding: 0 22px 80px;
+        }
 
         .section-heading {
             max-width: 720px;
-            margin-bottom: 40px;
+
+            margin: 0 auto 35px;
+
+            text-align: center;
         }
-
-
-        .section-label {
-            display: inline-block;
-
-            color: var(--primary);
-
-            font-size: 12px;
-            font-weight: 800;
-
-            letter-spacing: 1.3px;
-
-            margin-bottom: 10px;
-        }
-
 
         .section-heading h2 {
-            font-size: 37px;
+            margin: 0;
 
-            letter-spacing: -1.5px;
+            font-size: 36px;
 
-            margin-bottom: 12px;
+            letter-spacing: -0.8px;
         }
-
 
         .section-heading p {
-            color: var(--muted);
+            margin: 14px 0 0;
+
+            color: #667085;
+
+            font-size: 16px;
+
+            line-height: 1.7;
         }
 
-
-        .info-grid {
+        .faq-grid {
             display: grid;
 
-            grid-template-columns:
-                repeat(3, 1fr);
+            grid-template-columns: repeat(3,1fr);
 
-            gap: 22px;
+            gap: 20px;
         }
 
-
-        .info-card {
-            padding: 27px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 20px;
-
+        .faq-card {
             background: white;
 
-            box-shadow: var(--shadow-sm);
+            border: 1px solid #e4e7ec;
+
+            border-radius: 18px;
+
+            padding: 25px;
         }
 
+        .faq-card h3 {
+            margin: 0 0 10px;
 
-        .info-icon {
-            width: 46px;
-            height: 46px;
-
-            border-radius: 14px;
-
-            display: grid;
-            place-items: center;
-
-            background:
-                #f0f1ff;
-
-            color: var(--primary);
-
-            font-size: 20px;
-
-            margin-bottom: 18px;
+            font-size: 18px;
         }
 
+        .faq-card p {
+            margin: 0;
 
-        .info-card h3 {
-            font-size: 19px;
-            margin-bottom: 8px;
-        }
+            color: #667085;
 
-
-        .info-card p {
-            color: var(--muted);
             font-size: 14px;
+
+            line-height: 1.7;
         }
 
+        /* =========================
+           CTA
+        ========================= */
 
-        /* CTA */
+        .cta-section {
+            max-width: 1080px;
+
+            margin: auto;
+
+            padding: 0 22px 85px;
+        }
 
         .cta {
-            padding: 20px 0 90px;
-        }
-
-
-        .cta-card {
-            border-radius: 26px;
-
-            padding: 55px 35px;
+            padding: 52px 28px;
 
             text-align: center;
 
-            color: white;
+            border-radius: 28px;
 
             background:
                 linear-gradient(
                     135deg,
-                    #101522,
-                    #1d2341
+                    #312e81,
+                    #4f46e5
                 );
 
-            box-shadow: var(--shadow-lg);
+            color: white;
+
+            box-shadow:
+                0 25px 55px rgba(79,70,229,0.20);
         }
 
+        .cta h2 {
+            margin: 0;
 
-        .cta-card h2 {
-            font-size: 36px;
-
-            margin-bottom: 12px;
+            font-size: 34px;
         }
 
-
-        .cta-card p {
-            color: #c7ccda;
-
+        .cta p {
             max-width: 650px;
 
-            margin: 0 auto 25px;
+            margin: 14px auto 25px;
+
+            color: #e0e7ff;
+
+            line-height: 1.7;
         }
 
-
-        .cta-btn {
+        .cta-button {
             display: inline-block;
 
-            padding: 13px 22px;
+            padding: 13px 21px;
 
-            border-radius: 12px;
+            border-radius: 11px;
 
             background: white;
 
-            color: var(--ink);
+            color: #3730a3;
 
             font-weight: 800;
         }
 
+        /* =========================
+           FOOTER
+        ========================= */
 
-        /* FOOTER */
+        .footer {
+            background: #0f172a;
 
-        footer {
-            background: #101522;
-            color: white;
+            color: #cbd5e1;
 
-            padding: 60px 0 25px;
+            padding: 52px 22px 24px;
         }
 
+        .footer-inner {
+            max-width: 1180px;
+
+            margin: auto;
+        }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr;
+
+            grid-template-columns: 1.5fr 1fr 1fr;
 
             gap: 45px;
+
+            padding-bottom: 35px;
         }
 
+        .footer-logo {
+            color: white;
 
-        footer h3 {
+            font-size: 22px;
+
+            font-weight: 800;
+
             margin-bottom: 13px;
         }
 
+        .footer-text {
+            max-width: 430px;
 
-        footer p {
-            color: #aab1c2;
-            font-size: 14px;
-            max-width: 330px;
-        }
-
-
-        footer a {
-            display: block;
-
-            color: #b8becc;
+            color: #94a3b8;
 
             font-size: 14px;
 
-            margin-bottom: 9px;
+            line-height: 1.7;
         }
 
+        .footer-title {
+            color: white;
 
-        footer a:hover {
+            font-weight: 800;
+
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
             color: white;
         }
 
+        .copyright {
+            padding-top: 22px;
 
-        .footer-bottom {
-            border-top:
-                1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid #1e293b;
 
-            margin-top: 40px;
-            padding-top: 20px;
+            text-align: center;
 
-            color: #8e97aa;
+            color: #64748b;
 
-            font-size: 12px;
+            font-size: 13px;
         }
 
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 900px) {
 
-            .hero-grid {
+            .nav {
+                gap: 14px;
+            }
+
+            .nav a:not(.nav-cta) {
+                display: none;
+            }
+
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
 
-            .info-grid {
+            .faq-grid {
                 grid-template-columns: 1fr 1fr;
             }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
         }
 
-
-        @media (max-width: 620px) {
-
-            .topbar-right {
-                display: none;
-            }
-
-            nav a:not(.nav-button) {
-                display: none;
-            }
+        @media (max-width: 600px) {
 
             .header-inner {
-                min-height: 70px;
+                min-height: 75px;
+
+                padding: 0 16px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo-mark {
+                width: 40px;
+                height: 40px;
             }
 
             .hero {
                 padding-top: 55px;
             }
 
-            .hero-grid {
-                gap: 30px;
+            .hero h1 {
+                font-size: 40px;
+
+                letter-spacing: -1.5px;
             }
 
-            h1 {
-                letter-spacing: -1.8px;
+            .hero p {
+                font-size: 16px;
             }
 
-            .info-grid,
-            .footer-grid {
+            .form-card {
+                padding: 24px 20px;
+            }
+
+            .form-card h2 {
+                font-size: 27px;
+            }
+
+            .faq-grid {
                 grid-template-columns: 1fr;
             }
 
-            .contact-card {
-                padding: 22px;
+            .cta {
+                padding: 40px 22px;
             }
 
-            .section {
-                padding: 65px 0;
+            .cta h2 {
+                font-size: 28px;
             }
 
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
         }
-
     </style>
 
-<meta name="theme-color" content="#5b5ff5">
-<meta name="twitter:card" content="summary">
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Contact SmartTools | Get in Touch",
-    "url": "https://shaharesukanya.github.io/smart-website/contact.html",
-    "description": "Contact SmartTools by Sukanya Shahare for questions, feedback, suggestions and website-related enquiries.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "name": "SmartTools",
-        "url": "https://shaharesukanya.github.io/smart-website/"
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact SmartTools",
+        "url": "https://shaharesukanya.github.io/smart-website/contact.html",
+        "description": "Contact SmartTools for feedback, suggestions and general enquiries."
     }
-}
-</script>
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<!-- SMARTTOOLS_PHASE6_CSS_START -->
-<style>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE + MOBILE SAFETY
-========================================================= */
-
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-img,
-svg,
-video,
-canvas {
-    max-width: 100%;
-    height: auto;
-}
-
-a,
-button,
-input,
-select,
-textarea {
-    touch-action: manipulation;
-}
-
-button,
-.btn,
-input[type="submit"],
-input[type="button"] {
-    min-height: 44px;
-}
-
-input,
-select,
-textarea {
-    max-width: 100%;
-    min-width: 0;
-}
-
-input[type="number"],
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-    width: 100%;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-span,
-li {
-    overflow-wrap: break-word;
-}
-
-table {
-    width: 100%;
-    max-width: 100%;
-    border-collapse: collapse;
-}
-
-.table-wrapper,
-.responsive-table {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-:focus-visible {
-    outline: 3px solid rgba(91,95,245,.35);
-    outline-offset: 3px;
-}
-
-@media (max-width: 900px) {
-
-    .hero-grid,
-    .content-grid,
-    .calculator-layout,
-    .tool-layout,
-    .feature-grid,
-    .founder-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4 {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-
-    .footer-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-}
-
-@media (max-width: 640px) {
-
-    html {
-        scroll-padding-top: 80px;
-    }
-
-    body {
-        font-size: 15px;
-        line-height: 1.65;
-    }
-
-    .container {
-        width: 92%;
-        max-width: 100%;
-    }
-
-    h1 {
-        font-size:
-            clamp(34px, 10vw, 46px) !important;
-        line-height: 1.08 !important;
-        letter-spacing: -1.5px !important;
-    }
-
-    h2 {
-        font-size:
-            clamp(27px, 7vw, 36px) !important;
-        line-height: 1.15 !important;
-    }
-
-    h3 {
-        font-size:
-            clamp(18px, 5vw, 22px);
-    }
-
-    .header-inner {
-        min-height: 68px !important;
-        gap: 12px !important;
-    }
-
-    .brand-name {
-        font-size: 21px !important;
-    }
-
-    .brand-tagline {
-        font-size: 10px !important;
-    }
-
-    nav {
-        gap: 9px !important;
-    }
-
-    nav a {
-        font-size: 12px !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4,
-    .feature-grid,
-    .info-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        min-height: 48px;
-    }
-
-    textarea {
-        min-height: 130px;
-    }
-
-    .btn,
-    .submit-btn,
-    .calculate-btn,
-    .reset-btn,
-    .cta-btn,
-    button[type="submit"] {
-        width: 100%;
-        min-height: 48px;
-    }
-
-    .hero-actions,
-    .button-group,
-    .calculator-actions,
-    .form-actions {
-        flex-direction: column !important;
-        width: 100%;
-    }
-
-    .tool-search,
-    .search-box,
-    #toolSearch {
-        width: 100% !important;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .dashboard,
-    .hero-visual,
-    .hero-art,
-    .decorative-circle,
-    .floating-card {
-        max-width: 100% !important;
-    }
-
-    .section {
-        padding-top: 58px !important;
-        padding-bottom: 58px !important;
-    }
-}
-
-@media (max-width: 390px) {
-
-    .container {
-        width: 94%;
-    }
-
-    h1 {
-        font-size: 33px !important;
-    }
-
-    h2 {
-        font-size: 26px !important;
-    }
-
-    .brand-name {
-        font-size: 19px !important;
-    }
-
-    .topbar-right {
-        display: none !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        padding-left: 17px !important;
-        padding-right: 17px !important;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-</style>
-<!-- SMARTTOOLS_PHASE6_CSS_END -->
+    </script>
 </head>
-
 
 <body>
 
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-<div class="topbar">
+    <header class="header">
 
-    <div class="container topbar-inner">
+        <div class="header-inner">
 
-        <div>
-            SmartTools — simple tools for everyday needs.
-        </div>
+            <a href="index.html" class="logo">
 
-        <div class="topbar-right">
+                <div class="logo-mark">
+                    ST
+                </div>
 
-            <span>✓ Free to use</span>
-            <span>✓ Mobile friendly</span>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<header>
-
-    <div class="container header-inner">
-
-        <a
-            href="index.html"
-            class="brand"
-        >
-
-            <div class="brand-icon">
-                S
-            </div>
-
-            <div>
-                <div class="brand-name">
+                <div class="logo-text">
                     SmartTools
                 </div>
 
-                <div class="brand-tagline">
-                    Free • Fast • Useful
-                </div>
-            </div>
-
-        </a>
-
-
-        <nav aria-label="Main navigation">
-
-            <a href="index.html">
-                Home
             </a>
 
-            <a href="index.html#tools">
-                Tools
-            </a>
+            <nav class="nav">
 
-            <a href="index.html#guides">
-                Guides
-            </a>
+                <a href="index.html">
+                    Home
+                </a>
 
-            <a href="about.html">
-                About
-            </a>
+                <a href="smarttools-dashboard.html">
+                    All Tools
+                </a>
 
-            <a
-                href="contact.html"
-                class="active nav-button"
-            >
-                Contact
-            </a>
+                <a href="about.html">
+                    About
+                </a>
 
-        </nav>
+                <a href="contact.html">
+                    Contact
+                </a>
 
-    </div>
+                <a
+                    href="smarttools-dashboard.html"
+                    class="nav-cta"
+                >
+                    Explore Tools
+                </a>
 
-</header>
+            </nav>
 
-
-<main>
-
-
-<section class="hero">
-
-    <div class="container">
-
-        <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            &nbsp; / &nbsp;
-            Contact
         </div>
 
+    </header>
 
-        <div class="hero-grid">
 
-            <div>
+    <!-- =========================
+         HERO
+    ========================= -->
 
-                <div class="eyebrow">
-                    <span class="eyebrow-dot"></span>
-                    GET IN TOUCH
+    <section class="hero">
+
+        <div class="hero-badge">
+            ✦ Get in Touch
+        </div>
+
+        <h1>
+            We'd Love to
+            <span>Hear From You.</span>
+        </h1>
+
+        <p>
+            Have feedback, a useful tool suggestion or a question
+            about SmartTools? Send a message and share your ideas.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT CONTENT
+    ========================= -->
+
+    <section class="contact-section">
+
+        <div class="contact-grid">
+
+            <!-- LEFT SIDE -->
+
+            <div class="contact-info">
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        💡
+                    </div>
+
+                    <h3>
+                        Tool Suggestions
+                    </h3>
+
+                    <p>
+                        Have an idea for a useful calculator,
+                        converter or productivity tool? Share it
+                        with SmartTools.
+                    </p>
+
                 </div>
 
-                <h1>
-                    We'd love to
-                    <span>hear from you.</span>
-                </h1>
 
-                <p class="hero-text">
-                    Have a question, suggestion, correction or
-                    feedback about SmartTools? Send us a message
-                    and share your thoughts.
-                </p>
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        💬
+                    </div>
+
+                    <h3>
+                        Feedback
+                    </h3>
+
+                    <p>
+                        Tell us what you like, what can be improved,
+                        or which part of the website could be easier
+                        to use.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🛠️
+                    </div>
+
+                    <h3>
+                        Website Issues
+                    </h3>
+
+                    <p>
+                        Found a broken link, calculation issue or
+                        something that does not work as expected?
+                        Let us know the details.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🚀
+                    </div>
+
+                    <h3>
+                        SmartTools Project
+                    </h3>
+
+                    <p>
+                        SmartTools is continuously being developed
+                        with the aim of making everyday online tasks
+                        simpler and more accessible.
+                    </p>
+
+                </div>
 
             </div>
 
 
-            <div class="contact-card">
+            <!-- RIGHT SIDE FORM -->
+
+            <div class="form-card">
 
                 <h2>
                     Send a Message
                 </h2>
 
-                <p>
-                    Fill out the form below to prepare an email.
+                <p class="form-intro">
+                    Fill in the form below. Your message will be
+                    prepared in your browser for sending.
                 </p>
 
-
-                <form
-                    id="contactForm"
-                >
+                <form id="contactForm">
 
                     <div class="form-group">
 
@@ -1219,7 +1005,7 @@ table {
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="you@example.com"
+                            placeholder="Enter your email"
                             required
                         >
 
@@ -1229,16 +1015,38 @@ table {
                     <div class="form-group">
 
                         <label for="subject">
-                            Subject
+                            Message Type
                         </label>
 
-                        <input
-                            type="text"
+                        <select
                             id="subject"
                             name="subject"
-                            placeholder="How can we help?"
                             required
                         >
+                            <option value="">
+                                Select an option
+                            </option>
+
+                            <option value="General Enquiry">
+                                General Enquiry
+                            </option>
+
+                            <option value="Tool Suggestion">
+                                Tool Suggestion
+                            </option>
+
+                            <option value="Website Feedback">
+                                Website Feedback
+                            </option>
+
+                            <option value="Bug Report">
+                                Bug / Issue Report
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+                        </select>
 
                     </div>
 
@@ -1246,7 +1054,7 @@ table {
                     <div class="form-group">
 
                         <label for="message">
-                            Message
+                            Your Message
                         </label>
 
                         <textarea
@@ -1261,16 +1069,23 @@ table {
 
                     <button
                         type="submit"
-                        class="submit-btn"
+                        class="submit-button"
                     >
-                        Open Email App →
+                        Prepare Message →
                     </button>
 
-
-                    <div class="form-note">
-                        Your default email application will open
-                        with the message prepared.
+                    <div
+                        class="success-message"
+                        id="successMessage"
+                    >
+                        Your message has been prepared. Please use
+                        your email app to send it.
                     </div>
+
+                    <p class="form-note">
+                        This contact form works directly in your
+                        browser and does not require a server.
+                    </p>
 
                 </form>
 
@@ -1278,401 +1093,271 @@ table {
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
+    <!-- =========================
+         HELP SECTION
+    ========================= -->
 
-<section class="section">
-
-    <div class="container">
+    <section class="help-section">
 
         <div class="section-heading">
 
-            <span class="section-label">
-                CONTACT SMARTTOOLS
-            </span>
-
             <h2>
-                What can you contact us about?
+                What Can You Contact Us About?
             </h2>
 
             <p>
-                Your feedback helps us improve the quality,
-                clarity and usefulness of SmartTools.
+                SmartTools is open to useful feedback, ideas and
+                suggestions that can make the platform better.
             </p>
 
         </div>
 
 
-        <div class="info-grid">
+        <div class="faq-grid">
 
-
-            <article class="info-card">
-
-                <div class="info-icon">
-                    💡
-                </div>
+            <div class="faq-card">
 
                 <h3>
-                    Suggestions
+                    Can I suggest a new tool?
                 </h3>
 
                 <p>
-                    Have an idea for a new calculator,
-                    converter or productivity tool?
-                    We welcome useful suggestions.
+                    Yes. You can use the contact form to suggest
+                    a calculator, converter or another useful
+                    online utility.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="info-card">
-
-                <div class="info-icon">
-                    🛠
-                </div>
+            <div class="faq-card">
 
                 <h3>
-                    Report an Issue
+                    Can I report an issue?
                 </h3>
 
                 <p>
-                    Tell us if a calculator, page or
-                    feature is not behaving as expected.
+                    Yes. Select “Bug / Issue Report” and describe
+                    exactly what happened so the issue can be
+                    investigated.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="info-card">
-
-                <div class="info-icon">
-                    💬
-                </div>
+            <div class="faq-card">
 
                 <h3>
-                    General Feedback
+                    Can I send website feedback?
                 </h3>
 
                 <p>
-                    Share your experience, questions or
-                    ideas for making the website better.
+                    Yes. Feedback about design, usability,
+                    navigation and individual tools is welcome.
                 </p>
 
-            </article>
-
+            </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
+    <!-- =========================
+         CTA
+    ========================= -->
 
-<section class="cta">
+    <section class="cta-section">
 
-    <div class="container">
-
-        <div class="cta-card">
+        <div class="cta">
 
             <h2>
                 Explore SmartTools
             </h2>
 
             <p>
-                Use calculators, converters and productivity
-                tools for everyday tasks.
+                Need a calculator or converter right now?
+                Browse the SmartTools dashboard and explore
+                the available tools.
             </p>
 
             <a
-                href="index.html#tools"
-                class="cta-btn"
+                href="smarttools-dashboard.html"
+                class="cta-button"
             >
                 Explore All Tools →
             </a>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-</main>
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="footer-inner">
+
+            <div class="footer-grid">
+
+                <div>
+
+                    <div class="footer-logo">
+                        SmartTools
+                    </div>
+
+                    <div class="footer-text">
+                        Practical online tools designed to make
+                        everyday calculations, conversions and
+                        simple tasks easier.
+                    </div>
+
+                </div>
 
 
+                <div>
 
-<footer>
+                    <div class="footer-title">
+                        Quick Links
+                    </div>
 
-    <div class="container">
+                    <div class="footer-links">
 
-        <div class="footer-grid">
+                        <a href="index.html">
+                            Home
+                        </a>
+
+                        <a href="smarttools-dashboard.html">
+                            All Tools
+                        </a>
+
+                        <a href="about.html">
+                            About
+                        </a>
+
+                        <a href="contact.html">
+                            Contact
+                        </a>
+
+                    </div>
+
+                </div>
 
 
-            <div>
+                <div>
 
-                <h3>
-                    SmartTools
-                </h3>
+                    <div class="footer-title">
+                        Legal
+                    </div>
 
-                <p>
-                    Free online calculators, converters
-                    and useful productivity tools.
-                </p>
+                    <div class="footer-links">
 
-                <p style="margin-top:12px;">
-                    Created and maintained by
-                    Sukanya Shahare.
-                </p>
+                        <a href="privacy-policy.html">
+                            Privacy Policy
+                        </a>
+
+                        <a href="terms.html">
+                            Terms of Use
+                        </a>
+
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <div>
-
-                <h3>
-                    Quick Links
-                </h3>
-
-                <a href="index.html">
-                    Home
-                </a>
-
-                <a href="index.html#tools">
-                    Tools
-                </a>
-
-                <a href="index.html#guides">
-                    Guides
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
+            <div class="copyright">
+                © 2026 SmartTools. All rights reserved.
             </div>
-
-
-            <div>
-
-                <h3>
-                    Legal
-                </h3>
-
-                <a href="privacy-policy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="terms.html">
-                    Terms &amp; Conditions
-                </a>
-
-            </div>
-
 
         </div>
 
-
-        <div class="footer-bottom">
-            © 2026 SmartTools.
-            Created &amp; maintained by Sukanya Shahare.
-        </div>
-
-    </div>
-
-</footer>
+    </footer>
 
 
+    <!-- =========================
+         CONTACT FORM SCRIPT
+    ========================= -->
 
-<script>
-
-    document
-        .getElementById("contactForm")
-        .addEventListener(
-            "submit",
-            function(event) {
+    <script>
+        document
+            .getElementById("contactForm")
+            .addEventListener("submit", function(event) {
 
                 event.preventDefault();
 
-
                 const name =
-                    document
-                        .getElementById("name")
-                        .value
-                        .trim();
-
+                    document.getElementById("name").value.trim();
 
                 const email =
-                    document
-                        .getElementById("email")
-                        .value
-                        .trim();
-
+                    document.getElementById("email").value.trim();
 
                 const subject =
-                    document
-                        .getElementById("subject")
-                        .value
-                        .trim();
-
+                    document.getElementById("subject").value;
 
                 const message =
-                    document
-                        .getElementById("message")
-                        .value
-                        .trim();
+                    document.getElementById("message").value.trim();
 
+                if (!name || !email || !subject || !message) {
+                    return;
+                }
 
-                const receiver =
-                    "YOUR-EMAIL@example.com";
+                /*
+                    Since the website currently has no backend,
+                    the form creates an email draft in the user's
+                    default email application.
 
+                    Replace the address below later with the
+                    official SmartTools email address.
+                */
+
+                const receiver = "";
 
                 const mailSubject =
                     encodeURIComponent(
-                        subject
+                        "[SmartTools] " + subject
                     );
-
 
                 const mailBody =
                     encodeURIComponent(
                         "Name: " + name +
                         "\nEmail: " + email +
-                        "\n\nMessage:\n" +
-                        message
+                        "\n\nMessage:\n" + message
                     );
 
+                if (receiver) {
 
-                window.location.href =
-                    "mailto:" +
-                    receiver +
-                    "?subject=" +
-                    mailSubject +
-                    "&body=" +
-                    mailBody;
+                    window.location.href =
+                        "mailto:" +
+                        receiver +
+                        "?subject=" +
+                        mailSubject +
+                        "&body=" +
+                        mailBody;
 
-            }
-        );
+                } else {
 
-</script>
+                    const success =
+                        document.getElementById("successMessage");
 
+                    success.style.display = "block";
 
-<!-- SMARTTOOLS_PHASE6_JS_START -->
-<script>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE HELPER
-========================================================= */
-
-(function () {
-
-    "use strict";
-
-    function optimizeImages() {
-
-        const images =
-            document.querySelectorAll("img");
-
-        images.forEach(function (img) {
-
-            if (!img.hasAttribute("loading")) {
-
-                img.setAttribute(
-                    "loading",
-                    "lazy"
-                );
-
-            }
-
-            if (!img.hasAttribute("decoding")) {
-
-                img.setAttribute(
-                    "decoding",
-                    "async"
-                );
-
-            }
-
-        });
-
-    }
-
-
-    function optimizeVideos() {
-
-        document
-            .querySelectorAll("video")
-            .forEach(function (video) {
-
-                if (!video.hasAttribute("preload")) {
-
-                    video.setAttribute(
-                        "preload",
-                        "metadata"
-                    );
+                    success.innerHTML =
+                        "Your message has been prepared. " +
+                        "An official SmartTools email address " +
+                        "can be connected here later.";
 
                 }
 
             });
+    </script>
 
-    }
-
-
-    function addThemeColor() {
-
-        if (
-            !document.querySelector(
-                'meta[name="theme-color"]'
-            )
-        ) {
-
-            const meta =
-                document.createElement("meta");
-
-            meta.name =
-                "theme-color";
-
-            meta.content =
-                "#5b5ff5";
-
-            document.head.appendChild(meta);
-        }
-
-    }
-
-
-    function init() {
-
-        optimizeImages();
-        optimizeVideos();
-        addThemeColor();
-
-    }
-
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
-
-    } else {
-
-        init();
-
-    }
-
-})();
-</script>
-<!-- SMARTTOOLS_PHASE6_JS_END -->
 </body>
 </html>

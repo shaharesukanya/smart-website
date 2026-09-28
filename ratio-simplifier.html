@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ratio Simplifier - Simplify Ratios Online | SmartTools</title>
+
+  <meta
+    name="description"
+    content="Simplify ratios online instantly. Enter two numbers to find the simplest ratio, common factor, and equivalent ratio with SmartTools."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://shaharesukanya.github.io/smart-website/ratio-simplifier.html"
+  >
+
+  <meta property="og:title" content="Ratio Simplifier - SmartTools">
+  <meta
+    property="og:description"
+    content="Simplify any ratio quickly and easily with the SmartTools Ratio Simplifier."
+  >
+  <meta
+    property="og:url"
+    content="https://shaharesukanya.github.io/smart-website/ratio-simplifier.html"
+  >
+  <meta property="og:type" content="website">
+
+  <style>
+    :root{
+      --primary:#5b5ff5;
+      --primary-dark:#4549d8;
+      --text:#16181d;
+      --muted:#667085;
+      --border:#e7e9ef;
+      --bg:#f6f7fb;
+      --white:#ffffff;
+      --soft:#f7f8ff;
+      --success:#168a52;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(1120px,92%);
+      margin:auto;
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:22px;
+      font-weight:800;
+      color:var(--text);
+    }
+
+    .brand img{
+      width:42px;
+      height:42px;
+      object-fit:contain;
+      border-radius:10px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .nav-links a{
+      color:#4b5565;
+      transition:.2s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+    }
+
+    /* Hero */
+    .hero{
+      padding:78px 0 42px;
+      text-align:center;
+      background:
+        radial-gradient(circle at top left, rgba(91,95,245,.10), transparent 30%),
+        radial-gradient(circle at top right, rgba(91,95,245,.08), transparent 28%);
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border:1px solid #dfe2ff;
+      background:#f1f2ff;
+      color:var(--primary-dark);
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-size:clamp(34px,5vw,56px);
+      line-height:1.08;
+      margin-bottom:18px;
+      letter-spacing:-1.5px;
+    }
+
+    .hero p{
+      max-width:720px;
+      margin:auto;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    /* Calculator */
+    .calculator-wrap{
+      padding:24px 0 70px;
+    }
+
+    .calculator-card{
+      max-width:760px;
+      margin:auto;
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:34px;
+      box-shadow:0 18px 50px rgba(20,24,40,.08);
+    }
+
+    .calculator-card h2{
+      text-align:center;
+      font-size:26px;
+      margin-bottom:8px;
+    }
+
+    .calculator-subtitle{
+      text-align:center;
+      color:var(--muted);
+      margin-bottom:28px;
+    }
+
+    .ratio-row{
+      display:grid;
+      grid-template-columns:1fr 90px 1fr;
+      gap:14px;
+      align-items:end;
+    }
+
+    .field label{
+      display:block;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .field input{
+      width:100%;
+      padding:15px 16px;
+      border:1px solid #d9dde7;
+      border-radius:14px;
+      font-size:17px;
+      outline:none;
+      transition:.2s ease;
+      background:#fff;
+    }
+
+    .field input:focus{
+      border-color:var(--primary);
+      box-shadow:0 0 0 4px rgba(91,95,245,.10);
+    }
+
+    .colon{
+      height:52px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+      font-weight:800;
+      color:var(--primary);
+      border-radius:14px;
+      background:var(--soft);
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .btn{
+      flex:1;
+      border:none;
+      cursor:pointer;
+      padding:14px 18px;
+      border-radius:14px;
+      font-size:15px;
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:var(--primary);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:var(--primary-dark);
+      transform:translateY(-1px);
+    }
+
+    .btn-secondary{
+      background:#eef0f5;
+      color:#30343d;
+    }
+
+    .btn-secondary:hover{
+      background:#e4e7ee;
+    }
+
+    .result{
+      margin-top:26px;
+      padding:24px;
+      background:var(--soft);
+      border:1px solid #e1e4ff;
+      border-radius:18px;
+      display:none;
+    }
+
+    .result.show{
+      display:block;
+    }
+
+    .result-main{
+      text-align:center;
+      margin-bottom:22px;
+    }
+
+    .result-label{
+      font-size:13px;
+      font-weight:700;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.8px;
+    }
+
+    .result-value{
+      font-size:38px;
+      font-weight:900;
+      color:var(--primary-dark);
+      margin-top:4px;
+    }
+
+    .result-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .result-item{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:16px;
+      text-align:center;
+    }
+
+    .result-item strong{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:4px;
+    }
+
+    .result-item span{
+      font-size:19px;
+      font-weight:800;
+    }
+
+    .error{
+      margin-top:15px;
+      color:#c62828;
+      font-size:14px;
+      text-align:center;
+      font-weight:600;
+      display:none;
+    }
+
+    .error.show{
+      display:block;
+    }
+
+    /* Content */
+    section.content-section{
+      padding:70px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 36px;
+    }
+
+    .section-title h2{
+      font-size:34px;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:var(--muted);
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:24px;
+    }
+
+    .info-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:28px;
+    }
+
+    .info-card h3{
+      font-size:21px;
+      margin-bottom:12px;
+    }
+
+    .info-card p{
+      color:#596273;
+      margin-bottom:12px;
+    }
+
+    .formula{
+      margin-top:16px;
+      padding:16px;
+      border-radius:14px;
+      background:#f3f4f8;
+      font-weight:800;
+      text-align:center;
+      font-size:18px;
+    }
+
+    .example{
+      margin-top:12px;
+      padding:16px;
+      border-left:4px solid var(--primary);
+      background:#fafbff;
+      border-radius:10px;
+    }
+
+    /* Steps */
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .step-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:24px;
+    }
+
+    .step-number{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:12px;
+      background:var(--primary);
+      color:white;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .step-card h3{
+      margin-bottom:8px;
+    }
+
+    .step-card p{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* FAQ */
+    .faq-list{
+      max-width:820px;
+      margin:auto;
+    }
+
+    .faq-item{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:16px;
+      margin-bottom:12px;
+      overflow:hidden;
+    }
+
+    .faq-question{
+      width:100%;
+      background:white;
+      border:none;
+      padding:20px;
+      text-align:left;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .faq-answer{
+      display:none;
+      padding:0 20px 20px;
+      color:var(--muted);
+    }
+
+    .faq-item.active .faq-answer{
+      display:block;
+    }
+
+    .faq-icon{
+      font-size:22px;
+      color:var(--primary);
+      flex-shrink:0;
+    }
+
+    /* Related */
+    .related-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .related-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:20px;
+      transition:.2s ease;
+    }
+
+    .related-card:hover{
+      transform:translateY(-3px);
+      border-color:#cfd2ff;
+      box-shadow:0 12px 28px rgba(20,24,40,.07);
+    }
+
+    .related-card h3{
+      font-size:17px;
+      margin-bottom:6px;
+    }
+
+    .related-card p{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* Disclaimer */
+    .disclaimer{
+      max-width:900px;
+      margin:0 auto;
+      padding:20px;
+      background:#fffdf3;
+      border:1px solid #f0e6bb;
+      border-radius:16px;
+      color:#665d38;
+      font-size:14px;
+    }
+
+    /* Footer */
+    footer{
+      background:#17191f;
+      color:#fff;
+      margin-top:40px;
+    }
+
+    .footer-inner{
+      padding:44px 0 24px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      gap:30px;
+    }
+
+    .footer-brand{
+      font-size:23px;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .footer-text{
+      color:#aeb4c0;
+      max-width:420px;
+      font-size:14px;
+    }
+
+    .footer-col h4{
+      margin-bottom:12px;
+      font-size:15px;
+    }
+
+    .footer-col a{
+      display:block;
+      color:#b8bdc8;
+      margin-bottom:8px;
+      font-size:14px;
+    }
+
+    .footer-col a:hover{
+      color:white;
+    }
+
+    .copyright{
+      border-top:1px solid rgba(255,255,255,.09);
+      padding:18px 0;
+      color:#9ea5b2;
+      font-size:13px;
+      text-align:center;
+    }
+
+    @media (max-width:800px){
+      .nav-links{
+        display:none;
+      }
+
+      .content-grid{
+        grid-template-columns:1fr;
+      }
+
+      .steps{
+        grid-template-columns:1fr;
+      }
+
+      .related-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-inner{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .result-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:520px){
+      .hero{
+        padding-top:56px;
+      }
+
+      .calculator-card{
+        padding:22px;
+        border-radius:18px;
+      }
+
+      .ratio-row{
+        grid-template-columns:1fr;
+      }
+
+      .colon{
+        height:40px;
+      }
+
+      .actions{
+        flex-direction:column;
+      }
+
+      .related-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Ratio Simplifier",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"Web",
+    "description":"Free online ratio simplifier for reducing ratios to their simplest form.",
+    "url":"https://shaharesukanya.github.io/smart-website/ratio-simplifier.html",
+    "offers":{
+      "@type":"Offer",
+      "price":"0",
+      "priceCurrency":"USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "name":"Home",
+        "item":"https://shaharesukanya.github.io/smart-website/"
+      },
+      {
+        "@type":"ListItem",
+        "position":2,
+        "name":"Ratio Simplifier",
+        "item":"https://shaharesukanya.github.io/smart-website/ratio-simplifier.html"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="brand">
+        <img
+          src="smarttools-logo-transparent.png"
+          alt="SmartTools logo"
+          onerror="this.style.display='none'"
+        >
+        <span>SmartTools</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#tools">All Tools</a>
+        <a href="index.html#guides">Guides</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="tag">🔢 Math & Productivity Tool</div>
+
+        <h1>Ratio Simplifier</h1>
+
+        <p>
+          Simplify any ratio instantly by dividing both numbers by their
+          greatest common factor (GCF).
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calculator-wrap">
+      <div class="container">
+
+        <div class="calculator-card">
+
+          <h2>Simplify Your Ratio</h2>
+
+          <p class="calculator-subtitle">
+            Enter two positive numbers below.
+          </p>
+
+          <div class="ratio-row">
+
+            <div class="field">
+              <label for="numberA">First Number</label>
+              <input
+                type="number"
+                id="numberA"
+                min="0.000001"
+                step="any"
+                placeholder="e.g. 18"
+              >
+            </div>
+
+            <div class="colon">:</div>
+
+            <div class="field">
+              <label for="numberB">Second Number</label>
+              <input
+                type="number"
+                id="numberB"
+                min="0.000001"
+                step="any"
+                placeholder="e.g. 24"
+              >
+            </div>
+
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" onclick="simplifyRatio()">
+              Simplify Ratio
+            </button>
+
+            <button class="btn btn-secondary" onclick="resetCalculator()">
+              Reset
+            </button>
+          </div>
+
+          <div id="error" class="error"></div>
+
+          <div id="result" class="result">
+
+            <div class="result-main">
+              <div class="result-label">Simplified Ratio</div>
+              <div id="simplifiedRatio" class="result-value">--</div>
+            </div>
+
+            <div class="result-grid">
+
+              <div class="result-item">
+                <strong>Common Factor</strong>
+                <span id="commonFactor">--</span>
+              </div>
+
+              <div class="result-item">
+                <strong>First Value</strong>
+                <span id="firstValue">--</span>
+              </div>
+
+              <div class="result-item">
+                <strong>Second Value</strong>
+                <span id="secondValue">--</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="content-section">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>How to Simplify a Ratio</h2>
+          <p>
+            A ratio is simplified by dividing all parts by their greatest
+            common factor.
+          </p>
+        </div>
+
+        <div class="steps">
+
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Enter the Numbers</h3>
+            <p>
+              Enter the two values that make up your ratio, such as 18 and 24.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Find the GCF</h3>
+            <p>
+              The calculator finds the greatest common factor shared by both
+              numbers.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Get the Simplified Ratio</h3>
+            <p>
+              Both numbers are divided by the GCF to produce the simplest form.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Explanation -->
+    <section class="content-section">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Ratio Simplifier Formula</h2>
+          <p>
+            Understanding the calculation makes ratios easier to work with.
+          </p>
+        </div>
+
+        <div class="content-grid">
+
+          <div class="info-card">
+
+            <h3>Greatest Common Factor</h3>
+
+            <p>
+              First, find the greatest common factor (GCF) of the two numbers.
+              Then divide both values by that factor.
+            </p>
+
+            <div class="formula">
+              Simplified Ratio =
+              A ÷ GCF : B ÷ GCF
+            </div>
+
+          </div>
+
+          <div class="info-card">
+
+            <h3>Example</h3>
+
+            <p>
+              Suppose the ratio is <strong>18 : 24</strong>.
+            </p>
+
+            <div class="example">
+              GCF of 18 and 24 = 6<br>
+              18 ÷ 6 = 3<br>
+              24 ÷ 6 = 4<br><br>
+              <strong>Final Ratio = 3 : 4</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- More Information -->
+    <section class="content-section">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Why Simplify Ratios?</h2>
+          <p>
+            Simplified ratios are easier to understand, compare and use.
+          </p>
+        </div>
+
+        <div class="content-grid">
+
+          <div class="info-card">
+            <h3>Math Problems</h3>
+            <p>
+              Simplified ratios are commonly used in school mathematics,
+              proportions, fractions and word problems.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>Real-World Uses</h3>
+            <p>
+              Ratios can represent recipes, mixtures, maps, scales,
+              measurements, budgets and many everyday comparisons.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="content-section">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+          <p>
+            Common questions about simplifying ratios.
+          </p>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+
+            <button class="faq-question" onclick="toggleFaq(this)">
+              What is a simplified ratio?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              A simplified ratio is a ratio reduced to its smallest whole-number
+              form by dividing all parts by their greatest common factor.
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button class="faq-question" onclick="toggleFaq(this)">
+              How do I simplify 18:24?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              The greatest common factor of 18 and 24 is 6. Dividing both by 6
+              gives the simplified ratio 3:4.
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button class="faq-question" onclick="toggleFaq(this)">
+              What is GCF?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              GCF means Greatest Common Factor. It is the largest positive
+              number that divides both values without leaving a remainder.
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Can this calculator handle decimal values?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              Yes. Decimal values are supported. For ratios that are expected
+              to be whole-number ratios, using whole numbers is usually
+              clearer.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="content-section">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Related SmartTools</h2>
+          <p>
+            More useful tools for math and everyday calculations.
+          </p>
+        </div>
+
+        <div class="related-grid">
+
+          <a href="average-calculator.html" class="related-card">
+            <h3>Average Calculator</h3>
+            <p>Find average, sum, count, minimum and maximum.</p>
+          </a>
+
+          <a href="percentage-calculator.html" class="related-card">
+            <h3>Percentage Calculator</h3>
+            <p>Calculate percentages quickly and accurately.</p>
+          </a>
+
+          <a href="fraction-calculator.html" class="related-card">
+            <h3>Fraction Calculator</h3>
+            <p>Work with fractions and simplify mathematical values.</p>
+          </a>
+
+          <a href="speed-distance-time-calculator.html" class="related-card">
+            <h3>Speed Distance Time</h3>
+            <p>Calculate speed, distance or travel time.</p>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="content-section" style="padding-top:0;">
+      <div class="container">
+
+        <div class="disclaimer">
+          <strong>Note:</strong>
+          Ratio calculations are mathematical estimates based on the values
+          entered. Always review your inputs and expected units before using
+          results in important work.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        <div class="footer-brand">SmartTools</div>
+
+        <p class="footer-text">
+          Free online calculators and productivity tools designed to make
+          everyday tasks simpler and faster.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 SmartTools. All rights reserved.
+    </div>
+
+  </footer>
+
+  <script>
+    function gcd(a, b) {
+      a = Math.abs(a);
+      b = Math.abs(b);
+
+      while (b !== 0) {
+        const temp = b;
+        b = a % b;
+        a = temp;
+      }
+
+      return a;
+    }
+
+    function cleanNumber(value) {
+      return Number.isInteger(value)
+        ? value.toString()
+        : parseFloat(value.toFixed(10)).toString();
+    }
+
+    function simplifyRatio() {
+      const inputA = document.getElementById("numberA");
+      const inputB = document.getElementById("numberB");
+
+      const error = document.getElementById("error");
+      const result = document.getElementById("result");
+
+      const a = parseFloat(inputA.value);
+      const b = parseFloat(inputB.value);
+
+      error.classList.remove("show");
+      result.classList.remove("show");
+
+      if (
+        !Number.isFinite(a) ||
+        !Number.isFinite(b) ||
+        a <= 0 ||
+        b <= 0
+      ) {
+        error.textContent =
+          "Please enter two positive numbers greater than 0.";
+        error.classList.add("show");
+        return;
+      }
+
+      /*
+        Convert decimals into integers where possible.
+        Example:
+        1.5 : 2.5 → 15 : 25
+      */
+
+      const decimalPlaces = Math.max(
+        getDecimalPlaces(a),
+        getDecimalPlaces(b)
+      );
+
+      const multiplier = Math.pow(10, Math.min(decimalPlaces, 10));
+
+      const integerA = Math.round(a * multiplier);
+      const integerB = Math.round(b * multiplier);
+
+      const factor = gcd(integerA, integerB);
+
+      if (factor === 0) {
+        error.textContent = "Unable to simplify this ratio.";
+        error.classList.add("show");
+        return;
+      }
+
+      const simplifiedA = integerA / factor;
+      const simplifiedB = integerB / factor;
+
+      document.getElementById("simplifiedRatio").textContent =
+        cleanNumber(simplifiedA) + " : " + cleanNumber(simplifiedB);
+
+      document.getElementById("commonFactor").textContent =
+        factor.toLocaleString();
+
+      document.getElementById("firstValue").textContent =
+        cleanNumber(simplifiedA);
+
+      document.getElementById("secondValue").textContent =
+        cleanNumber(simplifiedB);
+
+      result.classList.add("show");
+    }
+
+    function getDecimalPlaces(number) {
+      const text = number.toString();
+
+      if (!text.includes(".")) {
+        return 0;
+      }
+
+      return text.split(".")[1].length;
+    }
+
+    function resetCalculator() {
+      document.getElementById("numberA").value = "";
+      document.getElementById("numberB").value = "";
+
+      document.getElementById("error").classList.remove("show");
+      document.getElementById("result").classList.remove("show");
+    }
+
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      item.classList.toggle("active");
+
+      const icon = button.querySelector(".faq-icon");
+
+      if (item.classList.contains("active")) {
+        icon.textContent = "−";
+      } else {
+        icon.textContent = "+";
+      }
+    }
+
+    // Enter key support
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        simplifyRatio();
+      }
+    });
+  </script>
+
+</body>
+</html>

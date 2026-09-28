@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tip Calculator - Calculate Tip & Bill Per Person | SmartTools</title>
+
+    <meta name="description"
+        content="Use the free SmartTools Tip Calculator to calculate tip amount, total bill and bill amount per person quickly and easily.">
+
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <link rel="canonical"
+        href="https://shaharesukanya.github.io/smart-website/tip-calculator.html">
+
+    <meta property="og:title"
+        content="Tip Calculator - SmartTools">
+
+    <meta property="og:description"
+        content="Calculate tip, total bill and amount per person with the free SmartTools Tip Calculator.">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:url"
+        content="https://shaharesukanya.github.io/smart-website/tip-calculator.html">
+
+    <meta property="og:site_name" content="SmartTools">
+
+    <style>
+        :root {
+            --primary: #5b5ff5;
+            --primary-dark: #4549d8;
+            --text: #16181d;
+            --muted: #667085;
+            --border: #e7e9ef;
+            --bg: #f6f7fb;
+            --white: #ffffff;
+            --soft: #f7f8ff;
+            --danger: #b42318;
+            --shadow: 0 18px 50px rgba(20, 25, 50, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            min-height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .brand img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: #50576a;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-btn {
+            background: var(--primary);
+            color: #ffffff !important;
+            padding: 10px 16px;
+            border-radius: 11px;
+        }
+
+        .contact-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 70px 0 35px;
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 30px;
+            background: #eef0ff;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            max-width: 850px;
+            margin: 18px auto 14px;
+            font-size: clamp(36px, 5vw, 56px);
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        /* CALCULATOR */
+
+        .calculator-section {
+            padding: 20px 0 75px;
+        }
+
+        .calculator {
+            max-width: 900px;
+            margin: auto;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .calculator-header {
+            padding: 28px 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .calculator-header h2 {
+            font-size: 25px;
+            margin-bottom: 4px;
+        }
+
+        .calculator-header p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .calculator-body {
+            padding: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: #fbfbfd;
+            outline: none;
+            transition: 0.2s ease;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(91, 95, 245, 0.08);
+        }
+
+        .hint {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .quick-tips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 3px 0 20px;
+        }
+
+        .tip-button {
+            border: 1px solid var(--border);
+            background: #ffffff;
+            color: #4f5668;
+            padding: 8px 13px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .tip-button:hover,
+        .tip-button.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #eef0ff;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 4px;
+            border: 0;
+            border-radius: 13px;
+            background: var(--primary);
+            color: #ffffff;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .error {
+            display: none;
+            margin-top: 14px;
+            color: var(--danger);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* RESULT */
+
+        .result {
+            display: none;
+            margin-top: 28px;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .main-result {
+            padding: 25px;
+            text-align: center;
+            border: 1px solid #e1e4ff;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #eef0ff, #f8f9ff);
+        }
+
+        .main-result small {
+            color: var(--muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .main-result h3 {
+            margin-top: 8px;
+            font-size: 44px;
+            line-height: 1.1;
+        }
+
+        .main-result p {
+            margin-top: 7px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 16px;
+        }
+
+        .result-card {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--soft);
+        }
+
+        .result-card span {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .result-card strong {
+            font-size: 23px;
+        }
+
+        /* INFO */
+
+        .content-section {
+            padding: 70px 0;
+            background: #ffffff;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 25px;
+        }
+
+        .content-card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: #ffffff;
+        }
+
+        .content-card h2 {
+            margin-bottom: 12px;
+            font-size: 25px;
+        }
+
+        .content-card h3 {
+            margin: 22px 0 8px;
+            font-size: 18px;
+        }
+
+        .content-card p {
+            margin-bottom: 10px;
+            color: #596174;
+        }
+
+        .formula {
+            margin-top: 16px;
+            padding: 18px;
+            border-radius: 14px;
+            background: #f7f8fc;
+            text-align: center;
+            font-weight: 800;
+            font-size: 17px;
+        }
+
+        .example {
+            margin-top: 16px;
+            padding: 17px;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            background: #fafafa;
+            color: #4f5668;
+        }
+
+        /* FAQ */
+
+        .faq-section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+        }
+
+        .faq-list {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .faq-item {
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            border: 0;
+            background: #ffffff;
+            text-align: left;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 18px;
+            color: var(--muted);
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* RELATED */
+
+        .related-section {
+            padding: 0 0 75px;
+            background: #ffffff;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .related-card {
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            transition: 0.2s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .related-card h3 {
+            margin-bottom: 7px;
+        }
+
+        .related-card p {
+            margin-bottom: 12px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .related-card a {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 40px 0;
+            background: #111827;
+            color: #ffffff;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        footer p {
+            color: #aab1bf;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #d8dce5;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .grid,
+            .content-grid,
+            .result-grid,
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-body,
+            .calculator-header,
+            .content-card {
+                padding: 22px;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+
+            .main-result h3 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .brand {
+                font-size: 18px;
+            }
+
+            .brand img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+        }
+    </style>
+
+    <!-- STRUCTURED DATA -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Tip Calculator",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "description": "Free online tip calculator for calculating tip amount, total bill and bill amount per person.",
+        "url": "https://shaharesukanya.github.io/smart-website/tip-calculator.html",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "SmartTools",
+                "item": "https://shaharesukanya.github.io/smart-website/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Tip Calculator",
+                "item": "https://shaharesukanya.github.io/smart-website/tip-calculator.html"
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+
+<header>
+
+    <div class="container nav">
+
+        <a href="index.html" class="brand">
+
+            <img
+                src="smarttools-logo-transparent.png"
+                alt="SmartTools logo"
+                onerror="this.style.display='none'"
+            >
+
+            <span>SmartTools</span>
+
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#tools">
+                All Tools
+            </a>
+
+            <a href="index.html#guides">
+                Guides
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html" class="contact-btn">
+                Contact
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <span class="tag">
+                Everyday Calculator
+            </span>
+
+            <h1>
+                Free Tip Calculator
+            </h1>
+
+            <p>
+                Calculate your tip amount, total bill and
+                estimated amount per person quickly and easily.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CALCULATOR -->
+
+    <section class="calculator-section">
+
+        <div class="container">
+
+            <div class="calculator">
+
+                <div class="calculator-header">
+
+                    <h2>
+                        Calculate Your Tip
+                    </h2>
+
+                    <p>
+                        Enter your bill amount, choose a tip percentage
+                        and add the number of people sharing the bill.
+                    </p>
+
+                </div>
+
+
+                <div class="calculator-body">
+
+                    <div class="grid">
+
+                        <div class="field">
+
+                            <label for="billAmount">
+                                Bill Amount (₹)
+                            </label>
+
+                            <input
+                                id="billAmount"
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                placeholder="Example: 2500"
+                            >
+
+                            <div class="hint">
+                                Enter the total bill before tip.
+                            </div>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="tipPercent">
+                                Tip Percentage (%)
+                            </label>
+
+                            <input
+                                id="tipPercent"
+                                type="number"
+                                min="0"
+                                max="100"
+                                step="0.5"
+                                value="10"
+                                placeholder="Example: 10"
+                            >
+
+                            <div class="hint">
+                                Choose a percentage or enter your own.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <label>
+                        Quick Tip Percentage
+                    </label>
+
+                    <div class="quick-tips">
+
+                        <button class="tip-button" data-tip="5">
+                            5%
+                        </button>
+
+                        <button class="tip-button" data-tip="10">
+                            10%
+                        </button>
+
+                        <button class="tip-button" data-tip="12">
+                            12%
+                        </button>
+
+                        <button class="tip-button" data-tip="15">
+                            15%
+                        </button>
+
+                        <button class="tip-button" data-tip="18">
+                            18%
+                        </button>
+
+                        <button class="tip-button" data-tip="20">
+                            20%
+                        </button>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="people">
+                            Number of People
+                        </label>
+
+                        <input
+                            id="people"
+                            type="number"
+                            min="1"
+                            step="1"
+                            value="1"
+                            placeholder="Example: 4"
+                        >
+
+                        <div class="hint">
+                            Enter 1 when the bill is not being split.
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        id="calculateBtn"
+                        class="btn"
+                    >
+                        Calculate Tip
+                    </button>
+
+
+                    <div
+                        id="error"
+                        class="error"
+                    >
+                        Please enter a valid bill amount, tip percentage
+                        and number of people.
+                    </div>
+
+
+                    <!-- RESULT -->
+
+                    <div
+                        id="result"
+                        class="result"
+                    >
+
+                        <div class="main-result">
+
+                            <small>
+                                Total Per Person
+                            </small>
+
+                            <h3 id="perPerson">
+                                ₹0
+                            </h3>
+
+                            <p>
+                                Estimated amount for each person including tip.
+                            </p>
+
+                        </div>
+
+
+                        <div class="result-grid">
+
+                            <div class="result-card">
+
+                                <span>
+                                    Original Bill
+                                </span>
+
+                                <strong id="billOut">
+                                    ₹0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="result-card">
+
+                                <span>
+                                    Tip Amount
+                                </span>
+
+                                <strong id="tipOut">
+                                    ₹0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="result-card">
+
+                                <span>
+                                    Total Bill
+                                </span>
+
+                                <strong id="totalOut">
+                                    ₹0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMATION -->
+
+    <section class="content-section">
+
+        <div class="container content-grid">
+
+            <article class="content-card">
+
+                <h2>
+                    What is a Tip Calculator?
+                </h2>
+
+                <p>
+                    A tip calculator helps calculate the amount of
+                    gratuity to add to a restaurant, service or other
+                    bill based on a percentage.
+                </p>
+
+                <p>
+                    You can also use it to divide the final bill
+                    between multiple people.
+                </p>
+
+
+                <h3>
+                    Tip Formula
+                </h3>
+
+                <div class="formula">
+                    Tip = Bill Amount × Tip % ÷ 100
+                </div>
+
+
+                <h3>
+                    Total Bill Formula
+                </h3>
+
+                <div class="formula">
+                    Total Bill = Bill + Tip
+                </div>
+
+
+                <h3>
+                    Per Person Formula
+                </h3>
+
+                <div class="formula">
+                    Per Person = Total Bill ÷ Number of People
+                </div>
+
+
+                <h3>
+                    Example
+                </h3>
+
+                <div class="example">
+                    For a ₹2,500 bill with a 10% tip,
+                    the tip is ₹250 and the total is ₹2,750.
+                    If 5 people share the bill, each person pays ₹550.
+                </div>
+
+            </article>
+
+
+            <article class="content-card">
+
+                <h2>
+                    How to Use
+                </h2>
+
+                <p>
+                    Enter the bill amount first.
+                </p>
+
+                <p>
+                    Select or enter the tip percentage.
+                </p>
+
+                <p>
+                    Enter the number of people sharing the bill.
+                </p>
+
+                <p>
+                    Click <strong>Calculate Tip</strong> to see
+                    the complete breakdown.
+                </p>
+
+
+                <h3>
+                    Helpful Note
+                </h3>
+
+                <p>
+                    Tip practices vary by location, business and
+                    personal preference. Use the calculator to perform
+                    the arithmetic based on the percentage you choose.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+
+    <section class="faq-section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Frequently Asked Questions
+                </h2>
+
+                <p>
+                    Common questions about tip calculations.
+                </p>
+
+            </div>
+
+
+            <div class="faq-list">
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        How is the tip amount calculated?
+
+                        <span>+</span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        The tip is calculated by multiplying the
+                        bill amount by the selected tip percentage
+                        and dividing by 100.
+
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        Can I split the bill between people?
+
+                        <span>+</span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        Yes. Enter the number of people and the
+                        calculator divides the final bill, including
+                        the tip, equally.
+
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        Can I enter a custom tip percentage?
+
+                        <span>+</span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        Yes. You can type any percentage from 0 to 100
+                        in the tip percentage field.
+
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+
+                        Is this calculator free?
+
+                        <span>+</span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        Yes. The SmartTools Tip Calculator is free
+                        to use online.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RELATED TOOLS -->
+
+    <section class="related-section">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Related Tools
+                </h2>
+
+                <p>
+                    Explore more useful SmartTools.
+                </p>
+
+            </div>
+
+
+            <div class="related-grid">
+
+                <div class="related-card">
+
+                    <h3>
+                        Bill Split Calculator
+                    </h3>
+
+                    <p>
+                        Divide a bill between multiple people quickly.
+                    </p>
+
+                    <a href="bill-split-calculator.html">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+
+                <div class="related-card">
+
+                    <h3>
+                        Percentage Calculator
+                    </h3>
+
+                    <p>
+                        Calculate percentages and percentage changes.
+                    </p>
+
+                    <a href="percentage-calculator.html">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+
+                <div class="related-card">
+
+                    <h3>
+                        Discount Calculator
+                    </h3>
+
+                    <p>
+                        Calculate discounts and final prices.
+                    </p>
+
+                    <a href="discount-calculator.html">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <p>
+            © 2026 SmartTools. All rights reserved.
+        </p>
+
+        <div class="footer-links">
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="privacy-policy.html">
+                Privacy
+            </a>
+
+            <a href="terms.html">
+                Terms
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    const billAmount =
+        document.getElementById("billAmount");
+
+    const tipPercent =
+        document.getElementById("tipPercent");
+
+    const people =
+        document.getElementById("people");
+
+    const calculateBtn =
+        document.getElementById("calculateBtn");
+
+    const error =
+        document.getElementById("error");
+
+    const result =
+        document.getElementById("result");
+
+
+    function formatINR(value) {
+
+        return new Intl.NumberFormat("en-IN", {
+
+            style: "currency",
+
+            currency: "INR",
+
+            maximumFractionDigits: 2
+
+        }).format(value);
+
+    }
+
+
+    // QUICK TIP BUTTONS
+
+    document
+        .querySelectorAll(".tip-button")
+        .forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const value =
+                    button.getAttribute("data-tip");
+
+                tipPercent.value = value;
+
+
+                document
+                    .querySelectorAll(".tip-button")
+                    .forEach(function(item) {
+
+                        item.classList.remove("active");
+
+                    });
+
+
+                button.classList.add("active");
+
+            });
+
+        });
+
+
+    // CALCULATE
+
+    calculateBtn.addEventListener("click", function() {
+
+        const bill =
+            parseFloat(billAmount.value);
+
+        const tip =
+            parseFloat(tipPercent.value);
+
+        const numberOfPeople =
+            parseInt(people.value);
+
+
+        const valid =
+            Number.isFinite(bill) &&
+            Number.isFinite(tip) &&
+            Number.isFinite(numberOfPeople) &&
+            bill >= 0 &&
+            tip >= 0 &&
+            tip <= 100 &&
+            numberOfPeople >= 1;
+
+
+        if (!valid) {
+
+            error.style.display = "block";
+
+            result.classList.remove("show");
+
+            return;
+
+        }
+
+
+        error.style.display = "none";
+
+
+        const tipAmount =
+            bill * (tip / 100);
+
+
+        const totalBill =
+            bill + tipAmount;
+
+
+        const perPerson =
+            totalBill / numberOfPeople;
+
+
+        document.getElementById("billOut").textContent =
+            formatINR(bill);
+
+
+        document.getElementById("tipOut").textContent =
+            formatINR(tipAmount);
+
+
+        document.getElementById("totalOut").textContent =
+            formatINR(totalBill);
+
+
+        document.getElementById("perPerson").textContent =
+            formatINR(perPerson);
+
+
+        result.classList.add("show");
+
+    });
+
+
+    // FAQ
+
+    document
+        .querySelectorAll(".faq-question")
+        .forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const item =
+                    button.parentElement;
+
+                const icon =
+                    button.querySelector("span");
+
+
+                item.classList.toggle("open");
+
+
+                icon.textContent =
+                    item.classList.contains("open")
+                    ? "−"
+                    : "+";
+
+            });
+
+        });
+
+</script>
+
+</body>
+</html>

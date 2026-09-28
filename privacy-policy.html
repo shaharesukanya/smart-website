@@ -2,1214 +2,649 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Privacy Policy | SmartTools</title>
 
     <meta
         name="description"
-        content="Read the SmartTools Privacy Policy to understand how information may be handled when you use our website, calculators and online tools."
+        content="Read the SmartTools Privacy Policy to understand how information, browser-based tools, cookies and third-party services may be handled."
     >
 
-    <meta name="robots" content="index, follow">
+    <meta
+        name="robots"
+        content="index, follow"
+    >
 
-    <meta name="author" content="Sukanya Shahare">
+    <link
+        rel="canonical"
+        href="https://shaharesukanya.github.io/smart-website/privacy-policy.html"
+    >
 
-    <link rel="canonical" href="https://shaharesukanya.github.io/smart-website/privacy-policy.html">
+    <meta property="og:title" content="Privacy Policy | SmartTools">
+
+    <meta
+        property="og:description"
+        content="Learn how SmartTools handles information and browser-based tool usage."
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
 
     <style>
-
-        :root {
-            --primary: #5b5ff5;
-            --purple: #7b53f6;
-
-            --ink: #101828;
-            --muted: #667085;
-
-            --white: #ffffff;
-            --soft: #f7f8fc;
-
-            --border: #e7e9f0;
-
-            --dark: #101522;
-
-            --shadow:
-                0 20px 60px rgba(16,24,40,0.08);
-        }
-
-
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
-
 
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-            font-family:
-                Inter,
-                ui-sans-serif,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            color: var(--ink);
-            background: var(--soft);
-
-            line-height: 1.8;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f7fb;
+            color: #101828;
         }
-
 
         a {
             text-decoration: none;
-            color: inherit;
         }
 
+        /* =========================
+           HEADER
+        ========================= */
 
-        .container {
-            width: min(1080px, 92%);
-            margin: auto;
-        }
-
-
-        /* HEADER */
-
-        header {
+        .header {
             position: sticky;
             top: 0;
             z-index: 1000;
 
-            background:
-                rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.97);
 
-            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #e5e7eb;
 
-            border-bottom:
-                1px solid var(--border);
+            backdrop-filter: blur(12px);
         }
 
-
         .header-inner {
-            min-height: 76px;
+            max-width: 1180px;
+            margin: auto;
+
+            min-height: 84px;
+
+            padding: 0 22px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            gap: 25px;
         }
 
+        /* =========================
+           LOGO
+        ========================= */
 
-        .brand {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 11px;
+
+            gap: 12px;
+
+            color: #111827;
+
+            flex-shrink: 0;
         }
 
+        .logo-mark {
+            width: 44px;
+            height: 44px;
 
-        .brand-icon {
-            width: 42px;
-            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            border-radius: 14px;
-
-            display: grid;
-            place-items: center;
-
-            color: white;
-            font-weight: 800;
-            font-size: 18px;
+            border-radius: 12px;
 
             background:
                 linear-gradient(
                     135deg,
-                    var(--primary),
-                    var(--purple)
+                    #4f46e5,
+                    #7c3aed
                 );
+
+            color: white;
+
+            font-size: 18px;
+            font-weight: 900;
+
+            box-shadow:
+                0 8px 18px rgba(79, 70, 229, 0.22);
         }
 
+        .logo-text {
+            font-size: 22px;
 
-        .brand-name {
-            font-size: 23px;
             font-weight: 800;
-            letter-spacing: -0.8px;
+
+            letter-spacing: -0.5px;
         }
 
+        /* =========================
+           NAV
+        ========================= */
 
-        .brand-tagline {
-            color: var(--muted);
-            font-size: 11px;
-        }
-
-
-        nav {
+        .nav {
             display: flex;
-            gap: 24px;
+            align-items: center;
+
+            gap: 26px;
         }
 
-
-        nav a {
-            font-size: 14px;
-            font-weight: 700;
+        .nav a {
             color: #475467;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
         }
 
-
-        nav a:hover {
-            color: var(--primary);
+        .nav a:hover {
+            color: #4f46e5;
         }
 
+        .nav-cta {
+            background: #4f46e5;
 
-        /* HERO */
+            color: white !important;
+
+            padding: 12px 18px;
+
+            border-radius: 11px;
+
+            box-shadow:
+                0 8px 20px rgba(79, 70, 229, 0.20);
+        }
+
+        .nav-cta:hover {
+            background: #4338ca !important;
+
+            transform: translateY(-1px);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
-            padding: 75px 0 50px;
+            max-width: 900px;
 
-            background:
-                linear-gradient(
-                    180deg,
-                    #ffffff,
-                    var(--soft)
-                );
+            margin: auto;
+
+            padding: 70px 22px 45px;
+
+            text-align: center;
         }
 
+        .hero-badge {
+            display: inline-flex;
 
-        .breadcrumb {
-            color: var(--muted);
+            padding: 8px 14px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid #dfe4ff;
+
+            border-radius: 999px;
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+
             font-size: 13px;
-            margin-bottom: 20px;
-        }
 
-
-        .breadcrumb a {
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-
-        .hero-card {
-            max-width: 830px;
-        }
-
-
-        .eyebrow {
-            display: inline-block;
-
-            color: var(--primary);
-
-            font-size: 12px;
             font-weight: 800;
-
-            letter-spacing: 1.3px;
-
-            margin-bottom: 12px;
         }
 
+        .hero h1 {
+            margin: 0;
 
-        h1 {
             font-size: clamp(40px, 5vw, 58px);
 
             line-height: 1.08;
 
             letter-spacing: -2px;
-
-            margin-bottom: 18px;
         }
 
+        .hero h1 span {
+            color: #4f46e5;
+        }
 
-        .hero-text {
-            color: var(--muted);
+        .hero p {
+            max-width: 700px;
+
+            margin: 18px auto 0;
+
+            color: #667085;
+
             font-size: 17px;
+
+            line-height: 1.75;
         }
 
+        .updated {
+            margin-top: 13px;
 
-        /* CONTENT */
+            color: #98a2b3;
 
-        .content-area {
-            padding: 25px 0 90px;
+            font-size: 13px;
         }
 
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .policy-section {
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 20px 22px 85px;
+        }
 
         .policy-card {
             background: white;
 
-            border:
-                1px solid var(--border);
+            border: 1px solid #e4e7ec;
 
             border-radius: 24px;
 
-            padding:
-                45px clamp(22px, 5vw, 55px);
+            padding: 42px;
 
-            box-shadow: var(--shadow);
+            box-shadow:
+                0 20px 50px rgba(16, 24, 40, 0.06);
         }
 
+        .policy-intro {
+            padding: 18px 20px;
 
-        .updated {
-            display: inline-flex;
+            margin-bottom: 30px;
 
-            padding: 8px 12px;
+            border-radius: 14px;
 
-            border-radius: 10px;
+            background: #f8faff;
 
-            background: #f1f2ff;
+            border: 1px solid #e0e7ff;
 
-            color: var(--primary);
+            color: #475467;
 
-            font-size: 12px;
+            line-height: 1.7;
 
-            font-weight: 800;
+            font-size: 15px;
+        }
+
+        .policy-section-block {
+            padding-bottom: 28px;
 
             margin-bottom: 28px;
+
+            border-bottom: 1px solid #eaecf0;
         }
 
-
-        .policy-section {
-            padding:
-                0 0 31px;
-
-            margin-bottom: 31px;
-
-            border-bottom:
-                1px solid var(--border);
-        }
-
-
-        .policy-section:last-child {
+        .policy-section-block:last-child {
             border-bottom: none;
+
+            margin-bottom: 0;
+
+            padding-bottom: 0;
+        }
+
+        .policy-section-block h2 {
+            margin: 0 0 12px;
+
+            color: #101828;
+
+            font-size: 24px;
+
+            letter-spacing: -0.4px;
+        }
+
+        .policy-section-block h3 {
+            margin: 20px 0 8px;
+
+            font-size: 17px;
+
+            color: #344054;
+        }
+
+        .policy-section-block p {
+            margin: 0 0 13px;
+
+            color: #667085;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+        .policy-section-block p:last-child {
             margin-bottom: 0;
         }
 
+        .policy-list {
+            margin: 10px 0 0;
 
-        .policy-section h2 {
-            font-size: 25px;
-            margin-bottom: 12px;
+            padding-left: 21px;
+
+            color: #667085;
+
+            font-size: 15px;
+
+            line-height: 1.85;
         }
 
-
-        .policy-section h3 {
-            font-size: 18px;
-            margin: 20px 0 7px;
-        }
-
-
-        .policy-section p {
-            color: #4b5565;
-            margin-bottom: 11px;
-        }
-
-
-        .policy-section ul {
-            padding-left: 20px;
-            color: #4b5565;
-        }
-
-
-        .policy-section li {
+        .policy-list li {
             margin-bottom: 7px;
         }
 
+        .policy-list li:last-child {
+            margin-bottom: 0;
+        }
 
-        .note {
-            padding: 18px;
+        .highlight-box {
+            margin-top: 17px;
 
-            border-radius: 15px;
+            padding: 16px 18px;
 
-            background: #f8f9ff;
+            border-radius: 12px;
 
-            border:
-                1px solid #e0e3ff;
+            background: #f8fafc;
 
-            color: #4b5565;
+            border: 1px solid #e4e7ec;
+
+            color: #475467;
 
             font-size: 14px;
+
+            line-height: 1.7;
         }
 
+        /* =========================
+           CTA
+        ========================= */
 
-        /* FOOTER */
+        .cta-section {
+            max-width: 1080px;
 
-        footer {
-            background: var(--dark);
+            margin: auto;
+
+            padding: 0 22px 85px;
+        }
+
+        .cta {
+            padding: 50px 28px;
+
+            text-align: center;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #312e81,
+                    #4f46e5
+                );
+
             color: white;
-            padding: 55px 0 25px;
+
+            box-shadow:
+                0 25px 55px rgba(79, 70, 229, 0.20);
         }
 
+        .cta h2 {
+            margin: 0;
+
+            font-size: 34px;
+        }
+
+        .cta p {
+            max-width: 650px;
+
+            margin: 14px auto 25px;
+
+            color: #e0e7ff;
+
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+
+            padding: 13px 21px;
+
+            border-radius: 11px;
+
+            background: white;
+
+            color: #3730a3;
+
+            font-weight: 800;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: #0f172a;
+
+            color: #cbd5e1;
+
+            padding: 52px 22px 24px;
+        }
+
+        .footer-inner {
+            max-width: 1180px;
+            margin: auto;
+        }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr;
+
+            grid-template-columns: 1.5fr 1fr 1fr;
+
             gap: 45px;
+
+            padding-bottom: 35px;
         }
 
+        .footer-logo {
+            color: white;
 
-        footer h3 {
-            margin-bottom: 12px;
+            font-size: 22px;
+
+            font-weight: 800;
+
+            margin-bottom: 13px;
         }
 
+        .footer-text {
+            max-width: 430px;
 
-        footer p,
-        footer a {
-            color: #aeb5c6;
+            color: #94a3b8;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .footer-title {
+            color: white;
+
+            font-weight: 800;
+
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+
             font-size: 14px;
         }
 
-
-        footer a {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-
-        footer a:hover {
+        .footer-links a:hover {
             color: white;
         }
 
+        .copyright {
+            padding-top: 22px;
 
-        .footer-bottom {
-            border-top:
-                1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid #1e293b;
 
-            margin-top: 35px;
-            padding-top: 18px;
+            text-align: center;
 
-            color: #8992a7;
+            color: #64748b;
 
-            font-size: 12px;
+            font-size: 13px;
         }
 
+        /* =========================
+           MOBILE
+        ========================= */
 
-        @media (max-width: 760px) {
+        @media (max-width: 900px) {
 
-            nav {
-                gap: 12px;
+            .nav {
+                gap: 14px;
             }
 
-            nav a:nth-child(2),
-            nav a:nth-child(3) {
+            .nav a:not(.nav-cta) {
                 display: none;
+            }
+
+            .policy-card {
+                padding: 30px 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .header-inner {
+                min-height: 75px;
+
+                padding: 0 16px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo-mark {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero {
+                padding-top: 52px;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+
+                letter-spacing: -1.4px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .policy-card {
+                padding: 25px 20px;
+
+                border-radius: 18px;
+            }
+
+            .policy-section-block h2 {
+                font-size: 21px;
+            }
+
+            .policy-section-block p,
+            .policy-list {
+                font-size: 14px;
+            }
+
+            .cta {
+                padding: 40px 22px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-
-            .policy-card {
-                padding: 28px 20px;
-            }
-
         }
-
     </style>
 
-<meta name="theme-color" content="#5b5ff5">
-<meta property="og:title" content="Privacy Policy | SmartTools">
-<meta property="og:description" content="Read the SmartTools Privacy Policy to understand how information may be handled when you use our website, calculators and online tools.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://shaharesukanya.github.io/smart-website/privacy-policy.html">
-<meta property="og:site_name" content="SmartTools">
-<meta name="twitter:card" content="summary">
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Privacy Policy | SmartTools",
-    "url": "https://shaharesukanya.github.io/smart-website/privacy-policy.html",
-    "description": "Read the SmartTools Privacy Policy to understand how information may be handled when you use our website, calculators and online tools.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "name": "SmartTools",
-        "url": "https://shaharesukanya.github.io/smart-website/"
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Privacy Policy",
+        "url": "https://shaharesukanya.github.io/smart-website/privacy-policy.html",
+        "description": "Privacy Policy for SmartTools."
     }
-}
-</script>
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<!-- SMARTTOOLS_PHASE6_CSS_START -->
-<style>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE + MOBILE SAFETY
-========================================================= */
+    </script>
 
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-img,
-svg,
-video,
-canvas {
-    max-width: 100%;
-    height: auto;
-}
-
-a,
-button,
-input,
-select,
-textarea {
-    touch-action: manipulation;
-}
-
-button,
-.btn,
-input[type="submit"],
-input[type="button"] {
-    min-height: 44px;
-}
-
-input,
-select,
-textarea {
-    max-width: 100%;
-    min-width: 0;
-}
-
-input[type="number"],
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-    width: 100%;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-span,
-li {
-    overflow-wrap: break-word;
-}
-
-table {
-    width: 100%;
-    max-width: 100%;
-    border-collapse: collapse;
-}
-
-.table-wrapper,
-.responsive-table {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-:focus-visible {
-    outline: 3px solid rgba(91,95,245,.35);
-    outline-offset: 3px;
-}
-
-@media (max-width: 900px) {
-
-    .hero-grid,
-    .content-grid,
-    .calculator-layout,
-    .tool-layout,
-    .feature-grid,
-    .founder-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4 {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-
-    .footer-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-}
-
-@media (max-width: 640px) {
-
-    html {
-        scroll-padding-top: 80px;
-    }
-
-    body {
-        font-size: 15px;
-        line-height: 1.65;
-    }
-
-    .container {
-        width: 92%;
-        max-width: 100%;
-    }
-
-    h1 {
-        font-size:
-            clamp(34px, 10vw, 46px) !important;
-        line-height: 1.08 !important;
-        letter-spacing: -1.5px !important;
-    }
-
-    h2 {
-        font-size:
-            clamp(27px, 7vw, 36px) !important;
-        line-height: 1.15 !important;
-    }
-
-    h3 {
-        font-size:
-            clamp(18px, 5vw, 22px);
-    }
-
-    .header-inner {
-        min-height: 68px !important;
-        gap: 12px !important;
-    }
-
-    .brand-name {
-        font-size: 21px !important;
-    }
-
-    .brand-tagline {
-        font-size: 10px !important;
-    }
-
-    nav {
-        gap: 9px !important;
-    }
-
-    nav a {
-        font-size: 12px !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4,
-    .feature-grid,
-    .info-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        min-height: 48px;
-    }
-
-    textarea {
-        min-height: 130px;
-    }
-
-    .btn,
-    .submit-btn,
-    .calculate-btn,
-    .reset-btn,
-    .cta-btn,
-    button[type="submit"] {
-        width: 100%;
-        min-height: 48px;
-    }
-
-    .hero-actions,
-    .button-group,
-    .calculator-actions,
-    .form-actions {
-        flex-direction: column !important;
-        width: 100%;
-    }
-
-    .tool-search,
-    .search-box,
-    #toolSearch {
-        width: 100% !important;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .dashboard,
-    .hero-visual,
-    .hero-art,
-    .decorative-circle,
-    .floating-card {
-        max-width: 100% !important;
-    }
-
-    .section {
-        padding-top: 58px !important;
-        padding-bottom: 58px !important;
-    }
-}
-
-@media (max-width: 390px) {
-
-    .container {
-        width: 94%;
-    }
-
-    h1 {
-        font-size: 33px !important;
-    }
-
-    h2 {
-        font-size: 26px !important;
-    }
-
-    .brand-name {
-        font-size: 19px !important;
-    }
-
-    .topbar-right {
-        display: none !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        padding-left: 17px !important;
-        padding-right: 17px !important;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-</style>
-<!-- SMARTTOOLS_PHASE6_CSS_END -->
 </head>
-
 
 <body>
 
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-<header>
+    <header class="header">
 
-    <div class="container header-inner">
+        <div class="header-inner">
 
-        <a
-            href="index.html"
-            class="brand"
-        >
+            <a href="index.html" class="logo">
 
-            <div class="brand-icon">
-                S
-            </div>
+                <div class="logo-mark">
+                    ST
+                </div>
 
-            <div>
-
-                <div class="brand-name">
+                <div class="logo-text">
                     SmartTools
                 </div>
 
-                <div class="brand-tagline">
-                    Free • Fast • Useful
-                </div>
-
-            </div>
-
-        </a>
-
-
-        <nav aria-label="Main navigation">
-
-            <a href="index.html">
-                Home
             </a>
 
-            <a href="index.html#tools">
-                Tools
-            </a>
 
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </nav>
-
-    </div>
-
-</header>
-
-
-
-<main>
-
-
-<section class="hero">
-
-    <div class="container">
-
-        <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            &nbsp; / &nbsp;
-            Privacy Policy
-        </div>
-
-
-        <div class="hero-card">
-
-            <div class="eyebrow">
-                SMARTTOOLS LEGAL
-            </div>
-
-            <h1>
-                Privacy Policy
-            </h1>
-
-            <p class="hero-text">
-                This page explains how SmartTools approaches
-                information and privacy when you use our website,
-                calculators, converters and productivity tools.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<section class="content-area">
-
-    <div class="container">
-
-        <div class="policy-card">
-
-            <div class="updated">
-                Last updated: 26 September 2026
-            </div>
-
-
-            <div class="policy-section">
-
-                <h2>
-                    1. Introduction
-                </h2>
-
-                <p>
-                    SmartTools is a collection of online calculators,
-                    converters and productivity tools created and
-                    maintained by Sukanya Shahare.
-                </p>
-
-                <p>
-                    We aim to keep the website simple, useful and
-                    respectful of user privacy. This Privacy Policy
-                    describes the general types of information that
-                    may be handled when you visit or use SmartTools.
-                </p>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    2. Information You Provide
-                </h2>
-
-                <p>
-                    Some SmartTools pages may allow you to voluntarily
-                    provide information, such as when you contact us.
-                </p>
-
-                <p>
-                    Depending on how you contact us, this may include:
-                </p>
-
-                <ul>
-
-                    <li>
-                        Your name
-                    </li>
-
-                    <li>
-                        Your email address
-                    </li>
-
-                    <li>
-                        The subject and content of your message
-                    </li>
-
-                    <li>
-                        Any other information you choose to include
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    3. Calculator and Tool Inputs
-                </h2>
-
-                <p>
-                    SmartTools calculators and productivity tools may
-                    require you to enter information in order to produce
-                    a result.
-                </p>
-
-                <p>
-                    Examples may include dates, numbers, text, financial
-                    values or conversion inputs.
-                </p>
-
-                <div class="note">
-                    Whenever possible, tool calculations are designed
-                    to be performed within your browser. You should
-                    avoid entering sensitive personal, financial,
-                    password or other confidential information into
-                    public website tools.
-                </div>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    4. Automatically Collected Information
-                </h2>
-
-                <p>
-                    Like many websites, basic technical information may
-                    be processed by the hosting platform or other
-                    services used to operate the website.
-                </p>
-
-                <p>
-                    Depending on the services enabled on the website,
-                    this may include information such as device type,
-                    browser type, approximate usage information,
-                    referring pages and technical request data.
-                </p>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    5. Cookies and Similar Technologies
-                </h2>
-
-                <p>
-                    SmartTools may use cookies or similar technologies
-                    where needed for website functionality, preferences,
-                    analytics or other supported services.
-                </p>
-
-                <p>
-                    Your browser may provide controls that allow you
-                    to manage or restrict cookies.
-                </p>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    6. Third-Party Services
-                </h2>
-
-                <p>
-                    SmartTools may use third-party services for hosting,
-                    analytics, security, performance monitoring or other
-                    website functionality.
-                </p>
-
-                <p>
-                    Those services may process information according to
-                    their own terms and privacy policies.
-                </p>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    7. How Information May Be Used
-                </h2>
-
-                <p>
-                    Information may be used to:
-                </p>
-
-                <ul>
-
-                    <li>
-                        Respond to messages and enquiries
-                    </li>
-
-                    <li>
-                        Improve website content and usability
-                    </li>
-
-                    <li>
-                        Understand technical problems
-                    </li>
-
-                    <li>
-                        Maintain website functionality and security
-                    </li>
-
-                    <li>
-                        Communicate when necessary about a request
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    8. Data Sharing
-                </h2>
-
-                <p>
-                    SmartTools does not intend to sell personal
-                    information simply because you use the website.
-                </p>
-
-                <p>
-                    Information may be shared with service providers
-                    when reasonably necessary to operate the website,
-                    respond to requests, maintain security or comply
-                    with applicable obligations.
-                </p>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    9. External Links
-                </h2>
-
-                <p>
-                    SmartTools may contain links to external websites
-                    or services. We are not responsible for the privacy
-                    practices or content of external websites.
-                </p>
-
-                <p>
-                    Review the privacy policy of any external website
-                    before providing information to it.
-                </p>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    10. Children's Privacy
-                </h2>
-
-                <p>
-                    SmartTools is a general-purpose website and is not
-                    specifically directed at collecting personal
-                    information from children.
-                </p>
-
-                <p>
-                    Parents or guardians should supervise children's
-                    use of online services where appropriate.
-                </p>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    11. Security
-                </h2>
-
-                <p>
-                    Reasonable efforts may be used to protect website
-                    information and maintain secure services. However,
-                    no internet transmission or online system can be
-                    guaranteed to be completely secure.
-                </p>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    12. Changes to This Policy
-                </h2>
-
-                <p>
-                    This Privacy Policy may be updated when the website,
-                    features or services change.
-                </p>
-
-                <p>
-                    The latest version will be published on this page
-                    with an updated date.
-                </p>
-
-            </div>
-
-
-
-            <div class="policy-section">
-
-                <h2>
-                    13. Contact
-                </h2>
-
-                <p>
-                    Questions about this Privacy Policy can be sent
-                    through the SmartTools Contact page.
-                </p>
-
-                <p>
-                    <a
-                        href="contact.html"
-                        style="
-                            color:#5b5ff5;
-                            font-weight:800;
-                        "
-                    >
-                        Go to Contact Page →
-                    </a>
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-
-<footer>
-
-    <div class="container">
-
-        <div class="footer-grid">
-
-
-            <div>
-
-                <h3>
-                    SmartTools
-                </h3>
-
-                <p>
-                    Free online calculators, converters
-                    and useful productivity tools.
-                </p>
-
-                <p style="margin-top:12px;">
-                    Created and maintained by
-                    Sukanya Shahare.
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    Quick Links
-                </h3>
+            <nav class="nav">
 
                 <a href="index.html">
                     Home
                 </a>
 
-                <a href="index.html#tools">
-                    Tools
+                <a href="smarttools-dashboard.html">
+                    All Tools
                 </a>
 
                 <a href="about.html">
@@ -1220,151 +655,488 @@ table {
                     Contact
                 </a>
 
+                <a
+                    href="smarttools-dashboard.html"
+                    class="nav-cta"
+                >
+                    Explore Tools
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-badge">
+            🔒 Privacy &amp; Transparency
+        </div>
+
+        <h1>
+            Privacy
+            <span>Policy.</span>
+        </h1>
+
+        <p>
+            This page explains how SmartTools approaches information,
+            browser-based tools, cookies and third-party services
+            used by the website.
+        </p>
+
+        <div class="updated">
+            Last updated: September 2026
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         POLICY
+    ========================= -->
+
+    <section class="policy-section">
+
+        <div class="policy-card">
+
+
+            <div class="policy-intro">
+
+                SmartTools is a collection of online calculators,
+                converters and productivity utilities. We aim to
+                keep our tools simple and transparent about how
+                information may be handled. This policy may be
+                updated as the website's features and services
+                change.
+
             </div>
 
 
-            <div>
+            <!-- 1 -->
 
-                <h3>
-                    Legal
-                </h3>
+            <div class="policy-section-block">
 
-                <a href="privacy-policy.html">
-                    Privacy Policy
-                </a>
+                <h2>
+                    1. Information You Provide
+                </h2>
 
-                <a href="terms.html">
-                    Terms &amp; Conditions
-                </a>
+                <p>
+                    Some parts of the website may allow you to
+                    voluntarily provide information, such as when
+                    using a contact form or sending feedback.
+                </p>
+
+                <p>
+                    Only provide information that is appropriate
+                    for the purpose of your message. Do not submit
+                    passwords, financial account credentials,
+                    government identification numbers or other
+                    highly sensitive information through a general
+                    contact form.
+                </p>
+
+            </div>
+
+
+            <!-- 2 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    2. Browser-Based Tools
+                </h2>
+
+                <p>
+                    Many SmartTools calculators and utilities are
+                    designed to perform their calculations directly
+                    in your web browser.
+                </p>
+
+                <p>
+                    For example, values entered into a calculator
+                    may be processed by JavaScript running on your
+                    device rather than being sent to a SmartTools
+                    server.
+                </p>
+
+                <div class="highlight-box">
+
+                    This does not mean every future SmartTools
+                    feature will necessarily work this way.
+                    Features may change as the website develops.
+
+                </div>
+
+            </div>
+
+
+            <!-- 3 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    3. Automatically Collected Information
+                </h2>
+
+                <p>
+                    Depending on the hosting environment, analytics,
+                    security services or other technologies used on
+                    the website, certain technical information may
+                    potentially be processed automatically.
+                </p>
+
+                <p>
+                    This can include information such as browser type,
+                    device information, approximate geographic region,
+                    referring pages and basic usage information.
+                </p>
+
+                <p>
+                    The exact information collected depends on the
+                    services enabled on the website at a particular
+                    time.
+                </p>
+
+            </div>
+
+
+            <!-- 4 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    4. Cookies and Similar Technologies
+                </h2>
+
+                <p>
+                    SmartTools may use cookies or similar technologies
+                    where needed for website functionality, preferences,
+                    analytics or third-party services.
+                </p>
+
+                <p>
+                    Your browser may allow you to control or block
+                    cookies through its settings. Blocking certain
+                    cookies may affect some website features.
+                </p>
+
+            </div>
+
+
+            <!-- 5 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    5. Third-Party Services
+                </h2>
+
+                <p>
+                    SmartTools may use third-party services to support
+                    hosting, analytics, advertising, security or other
+                    website functionality.
+                </p>
+
+                <p>
+                    These providers may process information according
+                    to their own privacy policies and terms.
+                </p>
+
+                <p>
+                    SmartTools does not control the privacy practices
+                    of external services that operate independently
+                    from this website.
+                </p>
+
+            </div>
+
+
+            <!-- 6 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    6. Links to Other Websites
+                </h2>
+
+                <p>
+                    SmartTools may contain links to external websites
+                    or services.
+                </p>
+
+                <p>
+                    Once you leave SmartTools and visit another website,
+                    that website's own privacy policy and terms apply.
+                </p>
+
+            </div>
+
+
+            <!-- 7 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    7. Children's Privacy
+                </h2>
+
+                <p>
+                    SmartTools is intended to provide general-purpose
+                    online tools and information. We do not knowingly
+                    request sensitive personal information from children.
+                </p>
+
+            </div>
+
+
+            <!-- 8 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    8. Data Security
+                </h2>
+
+                <p>
+                    Reasonable care may be taken to protect information
+                    handled through the website. However, no method of
+                    transmission or storage on the internet can be
+                    guaranteed to be completely secure.
+                </p>
+
+            </div>
+
+
+            <!-- 9 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    9. Your Choices
+                </h2>
+
+                <p>
+                    Depending on the feature or service involved, you
+                    may be able to control information by:
+                </p>
+
+                <ul class="policy-list">
+
+                    <li>
+                        Choosing whether to submit information through
+                        optional forms.
+                    </li>
+
+                    <li>
+                        Managing cookies through your browser settings.
+                    </li>
+
+                    <li>
+                        Disabling or limiting certain browser features.
+                    </li>
+
+                    <li>
+                        Choosing not to use third-party services linked
+                        from the website.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- 10 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    10. Changes to This Privacy Policy
+                </h2>
+
+                <p>
+                    SmartTools may update this Privacy Policy when the
+                    website, tools, technology or services change.
+                </p>
+
+                <p>
+                    The updated version will be published on this page
+                    with a revised "Last updated" date.
+                </p>
+
+            </div>
+
+
+            <!-- 11 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    11. Contact
+                </h2>
+
+                <p>
+                    For questions or feedback about this Privacy Policy,
+                    please visit the
+                    <a
+                        href="contact.html"
+                        style="color:#4f46e5;font-weight:700;"
+                    >
+                        Contact page
+                    </a>.
+                </p>
+
+            </div>
+
+
+            <!-- 12 -->
+
+            <div class="policy-section-block">
+
+                <h2>
+                    12. Important Disclaimer
+                </h2>
+
+                <p>
+                    SmartTools provides general-purpose online tools
+                    and information. Results from calculators should
+                    be treated as estimates or informational outputs
+                    unless a tool specifically states otherwise.
+                </p>
+
+                <p>
+                    For financial, tax, legal, medical or other
+                    important decisions, verify information with an
+                    appropriate qualified or official source.
+                </p>
 
             </div>
 
 
         </div>
 
+    </section>
 
-        <div class="footer-bottom">
 
-            © 2026 SmartTools.
-            Created &amp; maintained by Sukanya Shahare.
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="cta-section">
+
+        <div class="cta">
+
+            <h2>
+                Explore SmartTools
+            </h2>
+
+            <p>
+                Use practical calculators, converters and productivity
+                tools designed for everyday needs.
+            </p>
+
+            <a
+                href="smarttools-dashboard.html"
+                class="cta-button"
+            >
+                Explore All Tools →
+            </a>
 
         </div>
 
-    </div>
-
-</footer>
+    </section>
 
 
-<!-- SMARTTOOLS_PHASE6_JS_START -->
-<script>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE HELPER
-========================================================= */
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
-(function () {
+    <footer class="footer">
 
-    "use strict";
+        <div class="footer-inner">
 
-    function optimizeImages() {
+            <div class="footer-grid">
 
-        const images =
-            document.querySelectorAll("img");
+                <div>
 
-        images.forEach(function (img) {
+                    <div class="footer-logo">
+                        SmartTools
+                    </div>
 
-            if (!img.hasAttribute("loading")) {
+                    <div class="footer-text">
+                        Practical online tools designed to make
+                        everyday calculations, conversions and
+                        simple tasks easier.
+                    </div>
 
-                img.setAttribute(
-                    "loading",
-                    "lazy"
-                );
-
-            }
-
-            if (!img.hasAttribute("decoding")) {
-
-                img.setAttribute(
-                    "decoding",
-                    "async"
-                );
-
-            }
-
-        });
-
-    }
+                </div>
 
 
-    function optimizeVideos() {
+                <div>
 
-        document
-            .querySelectorAll("video")
-            .forEach(function (video) {
+                    <div class="footer-title">
+                        Quick Links
+                    </div>
 
-                if (!video.hasAttribute("preload")) {
+                    <div class="footer-links">
 
-                    video.setAttribute(
-                        "preload",
-                        "metadata"
-                    );
+                        <a href="index.html">
+                            Home
+                        </a>
 
-                }
+                        <a href="smarttools-dashboard.html">
+                            All Tools
+                        </a>
 
-            });
+                        <a href="about.html">
+                            About
+                        </a>
 
-    }
+                        <a href="contact.html">
+                            Contact
+                        </a>
 
+                    </div>
 
-    function addThemeColor() {
-
-        if (
-            !document.querySelector(
-                'meta[name="theme-color"]'
-            )
-        ) {
-
-            const meta =
-                document.createElement("meta");
-
-            meta.name =
-                "theme-color";
-
-            meta.content =
-                "#5b5ff5";
-
-            document.head.appendChild(meta);
-        }
-
-    }
+                </div>
 
 
-    function init() {
+                <div>
 
-        optimizeImages();
-        optimizeVideos();
-        addThemeColor();
+                    <div class="footer-title">
+                        Legal
+                    </div>
 
-    }
+                    <div class="footer-links">
+
+                        <a href="privacy-policy.html">
+                            Privacy Policy
+                        </a>
+
+                        <a href="terms.html">
+                            Terms of Use
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
-    if (
-        document.readyState ===
-        "loading"
-    ) {
+            <div class="copyright">
+                © 2026 SmartTools. All rights reserved.
+            </div>
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
+        </div>
 
-    } else {
+    </footer>
 
-        init();
-
-    }
-
-})();
-</script>
-<!-- SMARTTOOLS_PHASE6_JS_END -->
 </body>
+
 </html>

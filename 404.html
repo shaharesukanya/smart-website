@@ -1,624 +1,741 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
 
-    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - SmartTools</title>
 
-    <title>Page Not Found | SmartTools</title>
+  <meta
+    name="description"
+    content="The page you are looking for could not be found. Return to SmartTools and explore our free online calculators and tools."
+  >
 
-    <meta name="description"
-        content="The page you are looking for could not be found. Visit SmartTools to explore our free online calculators and useful tools.">
+  <meta name="robots" content="noindex, follow">
 
-    <meta name="robots" content="noindex, follow">
+  <style>
 
-    <link rel="stylesheet" href="style.css">
-
-<meta name="author" content="Sukanya Shahare">
-<meta name="theme-color" content="#5b5ff5">
-<meta property="og:title" content="Page Not Found | SmartTools">
-<meta property="og:description" content="The page you are looking for could not be found. Visit SmartTools to explore our free online calculators and useful tools.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://shaharesukanya.github.io/smart-website/404.html">
-<meta property="og:site_name" content="SmartTools">
-<meta name="twitter:card" content="summary">
-<!-- SMARTTOOLS_PHASE6_CSS_START -->
-<style>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE + MOBILE SAFETY
-========================================================= */
-
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-img,
-svg,
-video,
-canvas {
-    max-width: 100%;
-    height: auto;
-}
-
-a,
-button,
-input,
-select,
-textarea {
-    touch-action: manipulation;
-}
-
-button,
-.btn,
-input[type="submit"],
-input[type="button"] {
-    min-height: 44px;
-}
-
-input,
-select,
-textarea {
-    max-width: 100%;
-    min-width: 0;
-}
-
-input[type="number"],
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-    width: 100%;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-span,
-li {
-    overflow-wrap: break-word;
-}
-
-table {
-    width: 100%;
-    max-width: 100%;
-    border-collapse: collapse;
-}
-
-.table-wrapper,
-.responsive-table {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-:focus-visible {
-    outline: 3px solid rgba(91,95,245,.35);
-    outline-offset: 3px;
-}
-
-@media (max-width: 900px) {
-
-    .hero-grid,
-    .content-grid,
-    .calculator-layout,
-    .tool-layout,
-    .feature-grid,
-    .founder-grid {
-        grid-template-columns: 1fr !important;
+    :root{
+      --primary:#5b5ff5;
+      --primary-dark:#4549d8;
+      --text:#16181d;
+      --muted:#667085;
+      --border:#e7e9ef;
+      --bg:#f6f7fb;
+      --white:#ffffff;
+      --soft:#f7f8ff;
     }
 
-    .tools-grid,
-    .cards-grid,
-    .grid-4 {
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:var(--bg);
+
+      color:var(--text);
+
+      display:flex;
+      flex-direction:column;
+
+      line-height:1.6;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1120px,92%);
+      margin:auto;
+    }
+
+
+    /* ================= HEADER ================= */
+
+    header{
+      background:
+        rgba(255,255,255,.96);
+
+      backdrop-filter:blur(12px);
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+    .nav{
+      min-height:72px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      font-size:22px;
+
+      font-weight:900;
+    }
+
+    .brand img{
+      width:42px;
+      height:42px;
+
+      object-fit:contain;
+
+      border-radius:10px;
+    }
+
+    .nav-links{
+      display:flex;
+
+      align-items:center;
+
+      gap:24px;
+
+      font-size:14px;
+
+      font-weight:700;
+    }
+
+    .nav-links a{
+      color:#4b5565;
+
+      transition:.2s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+    }
+
+
+    /* ================= MAIN ================= */
+
+    main{
+      flex:1;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:
+        70px
+        0
+        90px;
+    }
+
+    .error-card{
+      width:min(760px,100%);
+
+      background:var(--white);
+
+      border:
+        1px solid var(--border);
+
+      border-radius:28px;
+
+      padding:
+        50px
+        30px;
+
+      text-align:center;
+
+      box-shadow:
+        0 20px 55px rgba(20,24,40,.08);
+    }
+
+
+    .error-number{
+      font-size:
+        clamp(90px,15vw,160px);
+
+      line-height:.9;
+
+      font-weight:950;
+
+      letter-spacing:-8px;
+
+      color:var(--primary);
+
+      margin-bottom:22px;
+    }
+
+
+    .error-card h1{
+      font-size:
+        clamp(30px,5vw,44px);
+
+      line-height:1.1;
+
+      margin-bottom:13px;
+    }
+
+
+    .error-card p{
+      max-width:600px;
+
+      margin:
+        0
+        auto;
+
+      color:var(--muted);
+
+      font-size:16px;
+    }
+
+
+    /* ================= BUTTONS ================= */
+
+    .actions{
+      display:flex;
+
+      justify-content:center;
+
+      flex-wrap:wrap;
+
+      gap:12px;
+
+      margin-top:28px;
+    }
+
+
+    .btn{
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:
+        13px
+        19px;
+
+      border-radius:13px;
+
+      font-size:14px;
+
+      font-weight:800;
+
+      transition:.2s ease;
+    }
+
+
+    .btn-primary{
+      background:var(--primary);
+
+      color:white;
+    }
+
+
+    .btn-primary:hover{
+      background:var(--primary-dark);
+
+      transform:translateY(-1px);
+    }
+
+
+    .btn-secondary{
+      background:#eef0f5;
+
+      color:#30343d;
+    }
+
+
+    .btn-secondary:hover{
+      background:#e4e7ee;
+    }
+
+
+    /* ================= QUICK LINKS ================= */
+
+    .quick-tools{
+      margin-top:35px;
+
+      padding-top:27px;
+
+      border-top:
+        1px solid var(--border);
+    }
+
+
+    .quick-tools h2{
+      font-size:18px;
+
+      margin-bottom:16px;
+    }
+
+
+    .quick-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:12px;
+    }
+
+
+    .quick-card{
+      background:var(--soft);
+
+      border:
+        1px solid #e2e4ff;
+
+      border-radius:13px;
+
+      padding:14px;
+
+      font-size:13px;
+
+      font-weight:800;
+
+      color:#404654;
+
+      transition:.2s ease;
+    }
+
+
+    .quick-card:hover{
+      border-color:#cfd2ff;
+
+      color:var(--primary-dark);
+
+      transform:translateY(-2px);
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    footer{
+      background:#17191f;
+
+      color:white;
+
+      margin-top:auto;
+    }
+
+
+    .footer-inner{
+      padding:
+        38px
+        0
+        22px;
+
+      display:grid;
+
+      grid-template-columns:
+        1.2fr
+        .8fr
+        .8fr;
+
+      gap:30px;
+    }
+
+
+    .footer-brand{
+      font-size:23px;
+
+      font-weight:900;
+
+      margin-bottom:9px;
+    }
+
+
+    .footer-text{
+      color:#aeb4c0;
+
+      max-width:420px;
+
+      font-size:14px;
+    }
+
+
+    .footer-col h4{
+      margin-bottom:12px;
+
+      font-size:15px;
+    }
+
+
+    .footer-col a{
+      display:block;
+
+      color:#b8bdc8;
+
+      margin-bottom:8px;
+
+      font-size:14px;
+    }
+
+
+    .footer-col a:hover{
+      color:white;
+    }
+
+
+    .copyright{
+      border-top:
+        1px solid rgba(255,255,255,.09);
+
+      padding:17px 0;
+
+      color:#9ea5b2;
+
+      font-size:13px;
+
+      text-align:center;
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:800px){
+
+      .nav-links{
+        display:none;
+      }
+
+      .error-card{
+        padding:
+          40px
+          20px;
+      }
+
+      .quick-grid{
         grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
+          repeat(2,1fr);
+      }
 
-    .footer-grid {
+      .footer-inner{
         grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-}
+          1fr 1fr;
+      }
 
-@media (max-width: 640px) {
-
-    html {
-        scroll-padding-top: 80px;
     }
 
-    body {
-        font-size: 15px;
-        line-height: 1.65;
+
+    @media(max-width:520px){
+
+      main{
+        padding:
+          50px
+          0
+          60px;
+      }
+
+      .error-number{
+        font-size:100px;
+
+        letter-spacing:-5px;
+      }
+
+      .actions{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .quick-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner{
+        grid-template-columns:1fr;
+      }
+
     }
 
-    .container {
-        width: 92%;
-        max-width: 100%;
-    }
+  </style>
 
-    h1 {
-        font-size:
-            clamp(34px, 10vw, 46px) !important;
-        line-height: 1.08 !important;
-        letter-spacing: -1.5px !important;
-    }
-
-    h2 {
-        font-size:
-            clamp(27px, 7vw, 36px) !important;
-        line-height: 1.15 !important;
-    }
-
-    h3 {
-        font-size:
-            clamp(18px, 5vw, 22px);
-    }
-
-    .header-inner {
-        min-height: 68px !important;
-        gap: 12px !important;
-    }
-
-    .brand-name {
-        font-size: 21px !important;
-    }
-
-    .brand-tagline {
-        font-size: 10px !important;
-    }
-
-    nav {
-        gap: 9px !important;
-    }
-
-    nav a {
-        font-size: 12px !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4,
-    .feature-grid,
-    .info-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        min-height: 48px;
-    }
-
-    textarea {
-        min-height: 130px;
-    }
-
-    .btn,
-    .submit-btn,
-    .calculate-btn,
-    .reset-btn,
-    .cta-btn,
-    button[type="submit"] {
-        width: 100%;
-        min-height: 48px;
-    }
-
-    .hero-actions,
-    .button-group,
-    .calculator-actions,
-    .form-actions {
-        flex-direction: column !important;
-        width: 100%;
-    }
-
-    .tool-search,
-    .search-box,
-    #toolSearch {
-        width: 100% !important;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .dashboard,
-    .hero-visual,
-    .hero-art,
-    .decorative-circle,
-    .floating-card {
-        max-width: 100% !important;
-    }
-
-    .section {
-        padding-top: 58px !important;
-        padding-bottom: 58px !important;
-    }
-}
-
-@media (max-width: 390px) {
-
-    .container {
-        width: 94%;
-    }
-
-    h1 {
-        font-size: 33px !important;
-    }
-
-    h2 {
-        font-size: 26px !important;
-    }
-
-    .brand-name {
-        font-size: 19px !important;
-    }
-
-    .topbar-right {
-        display: none !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        padding-left: 17px !important;
-        padding-right: 17px !important;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-</style>
-<!-- SMARTTOOLS_PHASE6_CSS_END -->
 </head>
 
 
 <body>
 
 
-<header class="header">
+  <!-- ================= HEADER ================= -->
 
-    <div class="logo">
-        SmartTools
-    </div>
+  <header>
+
+    <div class="container nav">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <img
+          src="smarttools-logo-transparent.png"
+          alt="SmartTools logo"
+          onerror="this.style.display='none'"
+        >
+
+        <span>
+          SmartTools
+        </span>
+
+      </a>
 
 
-    <nav>
+      <nav class="nav-links">
 
         <a href="index.html">
-            Home
+          Home
         </a>
 
-        <a href="index.html#tools">
-            Tools
-        </a>
-
-        <a href="index.html#guides">
-            Guides
+        <a href="smarttools-dashboard.html">
+          All Tools
         </a>
 
         <a href="about.html">
-            About
+          About
         </a>
 
-    </nav>
+        <a href="contact.html">
+          Contact
+        </a>
 
-</header>
+      </nav>
+
+    </div>
+
+  </header>
 
 
+  <!-- ================= MAIN ================= -->
 
-<section class="tool-page-hero">
+  <main>
 
     <div class="container">
 
-        <div class="badge">
-            404 ERROR
+      <div class="error-card">
+
+
+        <div class="error-number">
+          404
         </div>
+
 
         <h1>
-            Page Not Found
+          Page Not Found
         </h1>
 
+
         <p>
-            Sorry, the page you are looking for does not
-            exist or may have been moved.
+          Sorry, the page you're looking for doesn't exist or may have been
+          moved. Don't worry — you can continue exploring SmartTools.
         </p>
 
 
-        <div class="hero-buttons">
+        <div class="actions">
+
+          <a
+            href="index.html"
+            class="btn btn-primary"
+          >
+            ← Back to Home
+          </a>
+
+
+          <a
+            href="smarttools-dashboard.html"
+            class="btn btn-secondary"
+          >
+            Explore All Tools
+          </a>
+
+        </div>
+
+
+        <!-- Quick Tools -->
+
+        <div class="quick-tools">
+
+          <h2>
+            Popular SmartTools
+          </h2>
+
+
+          <div class="quick-grid">
+
 
             <a
-                href="index.html"
-                class="tool-button"
+              href="emi-calculator.html"
+              class="quick-card"
             >
-                Go to Homepage
+              💳 EMI Calculator
             </a>
 
 
             <a
-                href="index.html#tools"
-                class="tool-button secondary"
+              href="bmi-calculator.html"
+              class="quick-card"
             >
-                Explore Tools
+              ⚖️ BMI Calculator
             </a>
+
+
+            <a
+              href="percentage-calculator.html"
+              class="quick-card"
+            >
+              ％ Percentage Calculator
+            </a>
+
+
+            <a
+              href="password-generator.html"
+              class="quick-card"
+            >
+              🔐 Password Generator
+            </a>
+
+
+            <a
+              href="length-converter.html"
+              class="quick-card"
+            >
+              📏 Length Converter
+            </a>
+
+
+            <a
+              href="weight-converter.html"
+              class="quick-card"
+            >
+              ⚖️ Weight Converter
+            </a>
+
+
+            <a
+              href="average-calculator.html"
+              class="quick-card"
+            >
+              📊 Average Calculator
+            </a>
+
+
+            <a
+              href="word-counter.html"
+              class="quick-card"
+            >
+              📝 Word Counter
+            </a>
+
+          </div>
 
         </div>
 
+      </div>
+
     </div>
 
-</section>
+  </main>
 
 
+  <!-- ================= FOOTER ================= -->
 
-<section class="information-section">
+  <footer>
 
-    <div class="container">
+    <div class="container footer-inner">
 
-        <h2>
-            Looking for a Useful Tool?
-        </h2>
 
-        <p>
-            You can return to the SmartTools homepage and
-            explore our collection of free online calculators,
-            converters and productivity tools.
+      <div>
+
+        <div class="footer-brand">
+          SmartTools
+        </div>
+
+        <p class="footer-text">
+          Free online calculators and productivity tools designed to make
+          everyday tasks simpler and faster.
         </p>
 
-
-        <p>
-            Available tools include EMI Calculator, GST
-            Calculator, SIP Calculator, Loan Calculator,
-            Percentage Calculator, Word Counter,
-            Character Counter and more.
-        </p>
-
-    </div>
-
-</section>
+      </div>
 
 
+      <div class="footer-col">
 
-<footer>
+        <h4>
+          Quick Links
+        </h4>
 
-    <div class="footer-content">
+        <a href="index.html">
+          Home
+        </a>
 
+        <a href="smarttools-dashboard.html">
+          All Tools
+        </a>
 
-        <div>
+        <a href="about.html">
+          About
+        </a>
 
-            <h3>
-                SmartTools
-            </h3>
+        <a href="contact.html">
+          Contact
+        </a>
 
-            <p>
-                Simple and useful online tools
-                for everyday tasks.
-            </p>
-
-        </div>
-
-
-
-        <div>
-
-            <h3>
-                Quick Links
-            </h3>
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="index.html#tools">
-                Tools
-            </a>
-
-            <a href="index.html#guides">
-                Guides
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-        </div>
+      </div>
 
 
+      <div class="footer-col">
 
-        <div>
+        <h4>
+          Legal
+        </h4>
 
-            <h3>
-                Legal
-            </h3>
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
 
-            <a href="privacy-policy.html">
-                Privacy Policy
-            </a>
+        <a href="terms.html">
+          Terms & Conditions
+        </a>
 
-            <a href="terms.html">
-                Terms
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </div>
-
+      </div>
 
     </div>
 
 
-    <div class="footer-bottom">
-
-        © 2026 SmartTools. All rights reserved.
-
+    <div class="copyright">
+      © 2026 SmartTools. All rights reserved.
     </div>
 
-</footer>
+  </footer>
 
 
-<!-- SMARTTOOLS_PHASE6_JS_START -->
-<script>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE HELPER
-========================================================= */
-
-(function () {
-
-    "use strict";
-
-    function optimizeImages() {
-
-        const images =
-            document.querySelectorAll("img");
-
-        images.forEach(function (img) {
-
-            if (!img.hasAttribute("loading")) {
-
-                img.setAttribute(
-                    "loading",
-                    "lazy"
-                );
-
-            }
-
-            if (!img.hasAttribute("decoding")) {
-
-                img.setAttribute(
-                    "decoding",
-                    "async"
-                );
-
-            }
-
-        });
-
-    }
-
-
-    function optimizeVideos() {
-
-        document
-            .querySelectorAll("video")
-            .forEach(function (video) {
-
-                if (!video.hasAttribute("preload")) {
-
-                    video.setAttribute(
-                        "preload",
-                        "metadata"
-                    );
-
-                }
-
-            });
-
-    }
-
-
-    function addThemeColor() {
-
-        if (
-            !document.querySelector(
-                'meta[name="theme-color"]'
-            )
-        ) {
-
-            const meta =
-                document.createElement("meta");
-
-            meta.name =
-                "theme-color";
-
-            meta.content =
-                "#5b5ff5";
-
-            document.head.appendChild(meta);
-        }
-
-    }
-
-
-    function init() {
-
-        optimizeImages();
-        optimizeVideos();
-        addThemeColor();
-
-    }
-
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
-
-    } else {
-
-        init();
-
-    }
-
-})();
-</script>
-<!-- SMARTTOOLS_PHASE6_JS_END -->
 </body>
-
 </html>

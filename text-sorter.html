@@ -1,0 +1,2869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Text Sorter - Sort Lines A-Z, Z-A & Remove Duplicates | SmartTools</title>
+
+  <meta
+    name="description"
+    content="Free online text sorter. Sort lines alphabetically A-Z or Z-A, sort numbers, remove duplicate lines and clean text quickly with SmartTools."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://shaharesukanya.github.io/smart-website/text-sorter.html"
+  >
+
+  <meta property="og:title" content="Text Sorter - SmartTools">
+
+  <meta
+    property="og:description"
+    content="Sort text lines alphabetically, numerically or remove duplicates instantly."
+  >
+
+  <meta
+    property="og:url"
+    content="https://shaharesukanya.github.io/smart-website/text-sorter.html"
+  >
+
+  <meta property="og:type" content="website">
+
+
+  <style>
+
+    :root{
+      --primary:#5b5ff5;
+      --primary-dark:#4549d8;
+      --text:#16181d;
+      --muted:#667085;
+      --border:#e7e9ef;
+      --bg:#f6f7fb;
+      --white:#ffffff;
+      --soft:#f7f8ff;
+      --success:#168a52;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    textarea,
+    select{
+      font:inherit;
+    }
+
+    .container{
+      width:min(1120px,92%);
+      margin:auto;
+    }
+
+
+    /* ================= HEADER ================= */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+
+      background:rgba(255,255,255,.96);
+
+      backdrop-filter:blur(12px);
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+    .nav{
+      min-height:72px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+
+      font-size:22px;
+      font-weight:900;
+    }
+
+    .brand img{
+      width:42px;
+      height:42px;
+
+      object-fit:contain;
+
+      border-radius:10px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:24px;
+
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .nav-links a{
+      color:#4b5565;
+
+      transition:.2s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+    }
+
+
+    /* ================= HERO ================= */
+
+    .hero{
+      padding:76px 0 42px;
+
+      text-align:center;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(91,95,245,.10),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at top right,
+          rgba(91,95,245,.08),
+          transparent 28%
+        );
+    }
+
+    .tag{
+      display:inline-flex;
+
+      align-items:center;
+
+      padding:8px 14px;
+
+      border:
+        1px solid #dfe2ff;
+
+      background:#f1f2ff;
+
+      color:var(--primary-dark);
+
+      border-radius:999px;
+
+      font-size:13px;
+
+      font-weight:800;
+
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-size:
+        clamp(34px,5vw,56px);
+
+      line-height:1.08;
+
+      letter-spacing:-1.5px;
+
+      margin-bottom:18px;
+    }
+
+    .hero p{
+      max-width:770px;
+
+      margin:auto;
+
+      color:var(--muted);
+
+      font-size:17px;
+    }
+
+
+    /* ================= SORTER ================= */
+
+    .sorter-wrap{
+      padding:24px 0 70px;
+    }
+
+    .sorter-card{
+      max-width:1000px;
+
+      margin:auto;
+
+      background:var(--white);
+
+      border:
+        1px solid var(--border);
+
+      border-radius:24px;
+
+      padding:34px;
+
+      box-shadow:
+        0 18px 50px rgba(20,24,40,.08);
+    }
+
+    .sorter-card h2{
+      text-align:center;
+
+      font-size:26px;
+
+      margin-bottom:8px;
+    }
+
+    .sorter-subtitle{
+      text-align:center;
+
+      color:var(--muted);
+
+      margin-bottom:28px;
+    }
+
+
+    .editor-grid{
+      display:grid;
+
+      grid-template-columns:1fr 1fr;
+
+      gap:20px;
+    }
+
+
+    .editor-box{
+      background:#fafbff;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:18px;
+
+      padding:18px;
+    }
+
+
+    .editor-head{
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:12px;
+
+      margin-bottom:10px;
+    }
+
+    .editor-head h3{
+      font-size:16px;
+    }
+
+    .line-count{
+      color:var(--muted);
+
+      font-size:12px;
+
+      font-weight:700;
+    }
+
+
+    textarea{
+      width:100%;
+
+      min-height:320px;
+
+      resize:vertical;
+
+      border:
+        1px solid #d9dde7;
+
+      border-radius:14px;
+
+      padding:15px;
+
+      background:white;
+
+      color:var(--text);
+
+      outline:none;
+
+      font-size:14px;
+
+      line-height:1.6;
+    }
+
+    textarea:focus{
+      border-color:var(--primary);
+
+      box-shadow:
+        0 0 0 4px rgba(91,95,245,.10);
+    }
+
+
+    /* Controls */
+
+    .controls{
+      margin-top:20px;
+
+      display:grid;
+
+      grid-template-columns:1fr 1fr;
+
+      gap:14px;
+    }
+
+
+    .control-group label{
+      display:block;
+
+      font-size:13px;
+
+      font-weight:800;
+
+      margin-bottom:7px;
+    }
+
+
+    select{
+      width:100%;
+
+      padding:13px 14px;
+
+      border:
+        1px solid #d9dde7;
+
+      border-radius:12px;
+
+      background:white;
+
+      color:var(--text);
+
+      outline:none;
+
+      cursor:pointer;
+    }
+
+
+    .check-row{
+      margin-top:15px;
+
+      display:flex;
+
+      align-items:center;
+
+      flex-wrap:wrap;
+
+      gap:15px;
+    }
+
+
+    .check-item{
+      display:flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      color:#4f5663;
+
+      font-size:13px;
+
+      cursor:pointer;
+    }
+
+
+    .check-item input{
+      width:17px;
+      height:17px;
+
+      accent-color:var(--primary);
+
+      cursor:pointer;
+    }
+
+
+    /* Buttons */
+
+    .actions{
+      display:flex;
+
+      gap:12px;
+
+      margin-top:22px;
+    }
+
+
+    .btn{
+      flex:1;
+
+      border:none;
+
+      cursor:pointer;
+
+      padding:14px 18px;
+
+      border-radius:14px;
+
+      font-size:15px;
+
+      font-weight:800;
+
+      transition:.2s ease;
+    }
+
+
+    .btn-primary{
+      background:var(--primary);
+
+      color:white;
+    }
+
+
+    .btn-primary:hover{
+      background:var(--primary-dark);
+
+      transform:translateY(-1px);
+    }
+
+
+    .btn-secondary{
+      background:#eef0f5;
+
+      color:#30343d;
+    }
+
+
+    .btn-secondary:hover{
+      background:#e4e7ee;
+    }
+
+
+    .small-actions{
+      display:flex;
+
+      gap:10px;
+
+      margin-top:12px;
+    }
+
+
+    .small-btn{
+      border:
+        1px solid var(--border);
+
+      background:white;
+
+      color:#444b57;
+
+      padding:9px 12px;
+
+      border-radius:10px;
+
+      font-size:12px;
+
+      font-weight:800;
+
+      cursor:pointer;
+    }
+
+
+    .small-btn:hover{
+      border-color:#cfd2ff;
+
+      color:var(--primary);
+    }
+
+
+    .notice{
+      display:none;
+
+      margin-top:15px;
+
+      padding:13px 15px;
+
+      border-radius:12px;
+
+      background:#f1f8f4;
+
+      border:
+        1px solid #cfe9da;
+
+      color:#17613d;
+
+      font-size:13px;
+
+      font-weight:700;
+
+      text-align:center;
+    }
+
+
+    .notice.show{
+      display:block;
+    }
+
+
+    /* Stats */
+
+    .stats{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:12px;
+
+      margin-top:18px;
+    }
+
+
+    .stat-card{
+      background:white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:14px;
+
+      padding:15px;
+
+      text-align:center;
+    }
+
+
+    .stat-card strong{
+      display:block;
+
+      color:var(--primary-dark);
+
+      font-size:20px;
+    }
+
+
+    .stat-card span{
+      color:var(--muted);
+
+      font-size:12px;
+    }
+
+
+    /* ================= CONTENT ================= */
+
+    section.content-section{
+      padding:70px 0;
+    }
+
+
+    .section-title{
+      text-align:center;
+
+      max-width:780px;
+
+      margin:
+        0
+        auto
+        36px;
+    }
+
+
+    .section-title h2{
+      font-size:34px;
+
+      margin-bottom:10px;
+    }
+
+
+    .section-title p{
+      color:var(--muted);
+    }
+
+
+    .content-grid{
+      display:grid;
+
+      grid-template-columns:1fr 1fr;
+
+      gap:24px;
+    }
+
+
+    .info-card{
+      background:white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:20px;
+
+      padding:28px;
+    }
+
+
+    .info-card h3{
+      font-size:21px;
+
+      margin-bottom:12px;
+    }
+
+
+    .info-card p{
+      color:#596273;
+
+      margin-bottom:12px;
+    }
+
+
+    .formula{
+      margin-top:16px;
+
+      padding:16px;
+
+      border-radius:14px;
+
+      background:#f3f4f8;
+
+      text-align:center;
+
+      font-weight:800;
+
+      font-size:16px;
+    }
+
+
+    .example{
+      margin-top:12px;
+
+      padding:16px;
+
+      border-left:
+        4px solid var(--primary);
+
+      background:#fafbff;
+
+      border-radius:10px;
+    }
+
+
+    /* Features */
+
+    .features{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:18px;
+    }
+
+
+    .feature-card{
+      background:white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:18px;
+
+      padding:23px;
+    }
+
+
+    .feature-icon{
+      width:44px;
+      height:44px;
+
+      display:grid;
+
+      place-items:center;
+
+      background:var(--soft);
+
+      border-radius:12px;
+
+      font-size:20px;
+
+      margin-bottom:13px;
+    }
+
+
+    .feature-card h3{
+      margin-bottom:7px;
+
+      font-size:18px;
+    }
+
+
+    .feature-card p{
+      color:var(--muted);
+
+      font-size:14px;
+    }
+
+
+    /* FAQ */
+
+    .faq-list{
+      max-width:820px;
+
+      margin:auto;
+    }
+
+
+    .faq-item{
+      background:white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:16px;
+
+      margin-bottom:12px;
+
+      overflow:hidden;
+    }
+
+
+    .faq-question{
+      width:100%;
+
+      border:none;
+
+      background:white;
+
+      padding:20px;
+
+      text-align:left;
+
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:center;
+
+      gap:16px;
+
+      font-size:16px;
+
+      font-weight:800;
+
+      cursor:pointer;
+    }
+
+
+    .faq-answer{
+      display:none;
+
+      padding:
+        0
+        20px
+        20px;
+
+      color:var(--muted);
+    }
+
+
+    .faq-item.active .faq-answer{
+      display:block;
+    }
+
+
+    .faq-icon{
+      font-size:22px;
+
+      color:var(--primary);
+
+      flex-shrink:0;
+    }
+
+
+    /* Related */
+
+    .related-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:16px;
+    }
+
+
+    .related-card{
+      background:white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:16px;
+
+      padding:20px;
+
+      transition:.2s ease;
+    }
+
+
+    .related-card:hover{
+      transform:translateY(-3px);
+
+      border-color:#cfd2ff;
+
+      box-shadow:
+        0 12px 28px rgba(20,24,40,.07);
+    }
+
+
+    .related-card h3{
+      font-size:17px;
+
+      margin-bottom:6px;
+    }
+
+
+    .related-card p{
+      color:var(--muted);
+
+      font-size:13px;
+    }
+
+
+    /* Disclaimer */
+
+    .disclaimer{
+      max-width:900px;
+
+      margin:auto;
+
+      padding:20px;
+
+      background:#fffdf3;
+
+      border:
+        1px solid #f0e6bb;
+
+      border-radius:16px;
+
+      color:#665d38;
+
+      font-size:14px;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    footer{
+      background:#17191f;
+
+      color:white;
+
+      margin-top:40px;
+    }
+
+
+    .footer-inner{
+      padding:
+        44px
+        0
+        24px;
+
+      display:grid;
+
+      grid-template-columns:
+        1.2fr
+        .8fr
+        .8fr;
+
+      gap:30px;
+    }
+
+
+    .footer-brand{
+      font-size:23px;
+
+      font-weight:900;
+
+      margin-bottom:10px;
+    }
+
+
+    .footer-text{
+      color:#aeb4c0;
+
+      max-width:420px;
+
+      font-size:14px;
+    }
+
+
+    .footer-col h4{
+      margin-bottom:12px;
+
+      font-size:15px;
+    }
+
+
+    .footer-col a{
+      display:block;
+
+      color:#b8bdc8;
+
+      margin-bottom:8px;
+
+      font-size:14px;
+    }
+
+
+    .footer-col a:hover{
+      color:white;
+    }
+
+
+    .copyright{
+      border-top:
+        1px solid rgba(255,255,255,.09);
+
+      padding:18px 0;
+
+      color:#9ea5b2;
+
+      font-size:13px;
+
+      text-align:center;
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:800px){
+
+      .nav-links{
+        display:none;
+      }
+
+      .editor-grid,
+      .content-grid,
+      .controls{
+        grid-template-columns:1fr;
+      }
+
+      .features{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .related-grid{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .footer-inner{
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+    }
+
+
+    @media(max-width:520px){
+
+      .hero{
+        padding-top:54px;
+      }
+
+      .sorter-card{
+        padding:22px;
+
+        border-radius:18px;
+      }
+
+      textarea{
+        min-height:260px;
+      }
+
+      .actions,
+      .small-actions{
+        flex-direction:column;
+      }
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .features,
+      .related-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+
+
+  <!-- SoftwareApplication Schema -->
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Text Sorter",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"Web",
+    "description":"Free online text sorter for alphabetical sorting, numerical sorting and duplicate line removal.",
+    "url":"https://shaharesukanya.github.io/smart-website/text-sorter.html",
+    "offers":{
+      "@type":"Offer",
+      "price":"0",
+      "priceCurrency":"USD"
+    }
+  }
+  </script>
+
+
+  <!-- Breadcrumb Schema -->
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "name":"Home",
+        "item":"https://shaharesukanya.github.io/smart-website/"
+      },
+      {
+        "@type":"ListItem",
+        "position":2,
+        "name":"Text Sorter",
+        "item":"https://shaharesukanya.github.io/smart-website/text-sorter.html"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+
+<body>
+
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+
+    <div class="container nav">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <img
+          src="smarttools-logo-transparent.png"
+          alt="SmartTools logo"
+          onerror="this.style.display='none'"
+        >
+
+        <span>
+          SmartTools
+        </span>
+
+      </a>
+
+
+      <nav class="nav-links">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="index.html#tools">
+          All Tools
+        </a>
+
+        <a href="index.html#guides">
+          Guides
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="tag">
+          📝 Text & Productivity Tool
+        </div>
+
+
+        <h1>
+          Text Sorter
+        </h1>
+
+
+        <p>
+          Sort text lines alphabetically, numerically or reverse order,
+          remove duplicates and clean your data instantly.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= SORTER ================= -->
+
+    <section class="sorter-wrap">
+
+      <div class="container">
+
+        <div class="sorter-card">
+
+
+          <h2>
+            Sort Your Text
+          </h2>
+
+
+          <p class="sorter-subtitle">
+            Paste your text below. Each line will be treated as a separate
+            item.
+          </p>
+
+
+          <div class="editor-grid">
+
+
+            <!-- INPUT -->
+
+            <div class="editor-box">
+
+              <div class="editor-head">
+
+                <h3>
+                  Input Text
+                </h3>
+
+                <span
+                  id="inputCount"
+                  class="line-count"
+                >
+                  0 lines
+                </span>
+
+              </div>
+
+
+              <textarea
+                id="inputText"
+                placeholder="Example:
+Apple
+Orange
+Banana
+Apple
+Mango"
+              ></textarea>
+
+
+              <div class="small-actions">
+
+                <button
+                  class="small-btn"
+                  onclick="loadExample()"
+                >
+                  Load Example
+                </button>
+
+
+                <button
+                  class="small-btn"
+                  onclick="clearInput()"
+                >
+                  Clear Input
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <!-- OUTPUT -->
+
+            <div class="editor-box">
+
+              <div class="editor-head">
+
+                <h3>
+                  Sorted Output
+                </h3>
+
+                <span
+                  id="outputCount"
+                  class="line-count"
+                >
+                  0 lines
+                </span>
+
+              </div>
+
+
+              <textarea
+                id="outputText"
+                placeholder="Your sorted text will appear here..."
+                readonly
+              ></textarea>
+
+
+              <div class="small-actions">
+
+                <button
+                  class="small-btn"
+                  onclick="copyOutput()"
+                >
+                  Copy Output
+                </button>
+
+
+                <button
+                  class="small-btn"
+                  onclick="downloadOutput()"
+                >
+                  Download .txt
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- CONTROLS -->
+
+          <div class="controls">
+
+
+            <div class="control-group">
+
+              <label for="sortType">
+                Sort Order
+              </label>
+
+
+              <select id="sortType">
+
+                <option value="az">
+                  A → Z
+                </option>
+
+                <option value="za">
+                  Z → A
+                </option>
+
+                <option value="numericAsc">
+                  Number: Small → Large
+                </option>
+
+                <option value="numericDesc">
+                  Number: Large → Small
+                </option>
+
+                <option value="lengthAsc">
+                  Length: Short → Long
+                </option>
+
+                <option value="lengthDesc">
+                  Length: Long → Short
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="control-group">
+
+              <label for="trimMode">
+                Empty Lines
+              </label>
+
+
+              <select id="trimMode">
+
+                <option value="remove">
+                  Remove empty lines
+                </option>
+
+                <option value="keep">
+                  Keep empty lines
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <!-- OPTIONS -->
+
+          <div class="check-row">
+
+
+            <label class="check-item">
+
+              <input
+                type="checkbox"
+                id="removeDuplicates"
+              >
+
+              Remove duplicate lines
+
+            </label>
+
+
+            <label class="check-item">
+
+              <input
+                type="checkbox"
+                id="ignoreCase"
+                checked
+              >
+
+              Ignore letter case while sorting
+
+            </label>
+
+
+            <label class="check-item">
+
+              <input
+                type="checkbox"
+                id="trimSpaces"
+                checked
+              >
+
+              Remove extra spaces
+
+            </label>
+
+          </div>
+
+
+          <!-- ACTIONS -->
+
+          <div class="actions">
+
+            <button
+              class="btn btn-primary"
+              onclick="sortText()"
+            >
+              Sort Text
+            </button>
+
+
+            <button
+              class="btn btn-secondary"
+              onclick="clearAll()"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div
+            id="notice"
+            class="notice"
+          ></div>
+
+
+          <!-- STATS -->
+
+          <div class="stats">
+
+
+            <div class="stat-card">
+
+              <strong id="totalInput">
+                0
+              </strong>
+
+              <span>
+                Input Lines
+              </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <strong id="totalOutput">
+                0
+              </strong>
+
+              <span>
+                Output Lines
+              </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <strong id="duplicatesRemoved">
+                0
+              </strong>
+
+              <span>
+                Duplicates Removed
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="content-section">
+
+      <div class="container">
+
+
+        <div class="section-title">
+
+          <h2>
+            Text Sorter Features
+          </h2>
+
+          <p>
+            Quickly organize lists, text data and copied content.
+          </p>
+
+        </div>
+
+
+        <div class="features">
+
+
+          <div class="feature-card">
+
+            <div class="feature-icon">
+              A-Z
+            </div>
+
+            <h3>
+              Alphabetical Sorting
+            </h3>
+
+            <p>
+              Sort lines from A to Z or reverse them from Z to A.
+            </p>
+
+          </div>
+
+
+          <div class="feature-card">
+
+            <div class="feature-icon">
+              123
+            </div>
+
+            <h3>
+              Numeric Sorting
+            </h3>
+
+            <p>
+              Arrange numbers from smallest to largest or largest to smallest.
+            </p>
+
+          </div>
+
+
+          <div class="feature-card">
+
+            <div class="feature-icon">
+              🧹
+            </div>
+
+            <h3>
+              Remove Duplicates
+            </h3>
+
+            <p>
+              Remove repeated lines and keep one copy of each item.
+            </p>
+
+          </div>
+
+
+          <div class="feature-card">
+
+            <div class="feature-icon">
+              ↕️
+            </div>
+
+            <h3>
+              Length Sorting
+            </h3>
+
+            <p>
+              Sort text by character length from shortest to longest or the
+              reverse.
+            </p>
+
+          </div>
+
+
+          <div class="feature-card">
+
+            <div class="feature-icon">
+              ✂️
+            </div>
+
+            <h3>
+              Space Cleanup
+            </h3>
+
+            <p>
+              Automatically clean unnecessary spaces from each line.
+            </p>
+
+          </div>
+
+
+          <div class="feature-card">
+
+            <div class="feature-icon">
+              📋
+            </div>
+
+            <h3>
+              Copy & Download
+            </h3>
+
+            <p>
+              Copy your sorted result or download it as a plain text file.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= HOW IT WORKS ================= -->
+
+    <section class="content-section">
+
+      <div class="container">
+
+
+        <div class="section-title">
+
+          <h2>
+            How to Use the Text Sorter
+          </h2>
+
+          <p>
+            Organize your text in a few simple steps.
+          </p>
+
+        </div>
+
+
+        <div class="content-grid">
+
+
+          <div class="info-card">
+
+            <h3>
+              Step 1 — Paste Your Text
+            </h3>
+
+            <p>
+              Add your list or text to the input box. Each line is handled as a
+              separate item.
+            </p>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <h3>
+              Step 2 — Choose Sort Order
+            </h3>
+
+            <p>
+              Select alphabetical, numerical or text-length sorting.
+            </p>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <h3>
+              Step 3 — Choose Cleanup Options
+            </h3>
+
+            <p>
+              You can remove duplicate lines, clean spaces and ignore letter
+              case during sorting.
+            </p>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <h3>
+              Step 4 — Sort
+            </h3>
+
+            <p>
+              Click Sort Text to generate the organized output instantly.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= EXAMPLE ================= -->
+
+    <section class="content-section">
+
+      <div class="container">
+
+
+        <div class="section-title">
+
+          <h2>
+            Example
+          </h2>
+
+          <p>
+            See how duplicate lines and alphabetical sorting work.
+          </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+          <h3>
+            Input
+          </h3>
+
+
+          <div class="example">
+
+            Mango<br>
+            Apple<br>
+            Banana<br>
+            Apple<br>
+            Orange
+
+          </div>
+
+
+          <br>
+
+
+          <h3>
+            A → Z + Remove Duplicates
+          </h3>
+
+
+          <div class="example">
+
+            Apple<br>
+            Banana<br>
+            Mango<br>
+            Orange
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= FAQ ================= -->
+
+    <section class="content-section">
+
+      <div class="container">
+
+
+        <div class="section-title">
+
+          <h2>
+            Frequently Asked Questions
+          </h2>
+
+          <p>
+            Common questions about sorting text.
+          </p>
+
+        </div>
+
+
+        <div class="faq-list">
+
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+
+              Can I sort text alphabetically?
+
+              <span class="faq-icon">
+                +
+              </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+              Yes. Choose A → Z for alphabetical ascending order or Z → A for
+              reverse alphabetical order.
+
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+
+              Can this tool remove duplicate lines?
+
+              <span class="faq-icon">
+                +
+              </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+              Yes. Enable "Remove duplicate lines" and repeated lines will be
+              reduced to one occurrence.
+
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+
+              Can I sort numbers?
+
+              <span class="faq-icon">
+                +
+              </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+              Yes. Choose Number: Small → Large or Number: Large → Small.
+              Numeric sorting treats the lines as numbers when possible.
+
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+
+              Does the tool work on mobile?
+
+              <span class="faq-icon">
+                +
+              </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+              Yes. The page is responsive and can be used on phones, tablets
+              and desktop browsers.
+
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+
+              Is my text uploaded to a server?
+
+              <span class="faq-icon">
+                +
+              </span>
+
+            </button>
+
+
+            <div class="faq-answer">
+
+              The sorting operation is performed in the browser using
+              JavaScript. The tool does not need a server request to sort the
+              text.
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= RELATED ================= -->
+
+    <section class="content-section">
+
+      <div class="container">
+
+
+        <div class="section-title">
+
+          <h2>
+            Related SmartTools
+          </h2>
+
+          <p>
+            More useful text and productivity tools.
+          </p>
+
+        </div>
+
+
+        <div class="related-grid">
+
+
+          <a
+            href="remove-duplicate-lines.html"
+            class="related-card"
+          >
+
+            <h3>
+              Remove Duplicate Lines
+            </h3>
+
+            <p>
+              Remove repeated lines from text instantly.
+            </p>
+
+          </a>
+
+
+          <a
+            href="word-counter.html"
+            class="related-card"
+          >
+
+            <h3>
+              Word Counter
+            </h3>
+
+            <p>
+              Count words, characters and text statistics.
+            </p>
+
+          </a>
+
+
+          <a
+            href="character-counter.html"
+            class="related-card"
+          >
+
+            <h3>
+              Character Counter
+            </h3>
+
+            <p>
+              Count characters in your text.
+            </p>
+
+          </a>
+
+
+          <a
+            href="case-converter.html"
+            class="related-card"
+          >
+
+            <h3>
+              Case Converter
+            </h3>
+
+            <p>
+              Convert text to uppercase, lowercase and more.
+            </p>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= DISCLAIMER ================= -->
+
+    <section
+      class="content-section"
+      style="padding-top:0;"
+    >
+
+      <div class="container">
+
+        <div class="disclaimer">
+
+          <strong>Note:</strong>
+          Sorting results depend on the selected sorting method and the text
+          entered. Numeric sorting is intended for lines that contain numeric
+          values. Review the output before using it for important data.
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+
+      <div>
+
+        <div class="footer-brand">
+          SmartTools
+        </div>
+
+        <p class="footer-text">
+          Free online calculators and productivity tools designed to make
+          everyday tasks simpler and faster.
+        </p>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>
+          Quick Links
+        </h4>
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>
+          Legal
+        </h4>
+
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms.html">
+          Terms & Conditions
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 SmartTools. All rights reserved.
+    </div>
+
+  </footer>
+
+
+  <script>
+
+
+    /* ================= ELEMENTS ================= */
+
+    const inputText =
+      document.getElementById(
+        "inputText"
+      );
+
+
+    const outputText =
+      document.getElementById(
+        "outputText"
+      );
+
+
+    /* ================= LINE COUNT ================= */
+
+    function getRawLines(){
+
+      const text =
+        inputText.value;
+
+      if(text === ""){
+        return [];
+      }
+
+      return text.split(/\r?\n/);
+
+    }
+
+
+    function updateInputCount(){
+
+      const lines =
+        getRawLines();
+
+      const meaningfulLines =
+        lines.filter(
+          function(line){
+            return line.trim() !== "";
+          }
+        ).length;
+
+      document.getElementById(
+        "inputCount"
+      ).textContent =
+        meaningfulLines +
+        (
+          meaningfulLines === 1
+            ? " line"
+            : " lines"
+        );
+
+      document.getElementById(
+        "totalInput"
+      ).textContent =
+        meaningfulLines;
+
+    }
+
+
+    inputText.addEventListener(
+      "input",
+      updateInputCount
+    );
+
+
+    /* ================= CLEAN LINE ================= */
+
+    function cleanLine(line){
+
+      const trimSpaces =
+        document.getElementById(
+          "trimSpaces"
+        ).checked;
+
+      if(trimSpaces){
+
+        return line
+          .replace(/\s+/g," ")
+          .trim();
+
+      }
+
+      return line;
+
+    }
+
+
+    /* ================= SORT TEXT ================= */
+
+    function sortText(){
+
+      const rawLines =
+        getRawLines();
+
+
+      const notice =
+        document.getElementById(
+          "notice"
+        );
+
+
+      notice.classList.remove(
+        "show"
+      );
+
+
+      if(rawLines.length === 0){
+
+        showNotice(
+          "Please enter some text first."
+        );
+
+        return;
+
+      }
+
+
+      const trimMode =
+        document.getElementById(
+          "trimMode"
+        ).value;
+
+
+      let lines =
+        rawLines.map(
+          function(line){
+
+            return cleanLine(
+              line
+            );
+
+          }
+        );
+
+
+      if(
+        trimMode === "remove"
+      ){
+
+        lines =
+          lines.filter(
+            function(line){
+
+              return line !== "";
+
+            }
+          );
+
+      }
+
+
+      const inputBeforeDuplicates =
+        lines.length;
+
+
+      const removeDuplicates =
+        document.getElementById(
+          "removeDuplicates"
+        ).checked;
+
+
+      if(removeDuplicates){
+
+        const seen =
+          new Set();
+
+
+        const uniqueLines = [];
+
+
+        lines.forEach(
+          function(line){
+
+            const key =
+              document.getElementById(
+                "ignoreCase"
+              ).checked
+                ? line.toLowerCase()
+                : line;
+
+
+            if(
+              !seen.has(key)
+            ){
+
+              seen.add(key);
+
+              uniqueLines.push(
+                line
+              );
+
+            }
+
+          }
+        );
+
+
+        lines =
+          uniqueLines;
+
+      }
+
+
+      const duplicatesRemoved =
+        inputBeforeDuplicates -
+        lines.length;
+
+
+      const sortType =
+        document.getElementById(
+          "sortType"
+        ).value;
+
+
+      const ignoreCase =
+        document.getElementById(
+          "ignoreCase"
+        ).checked;
+
+
+      /* ================= ALPHABETICAL ================= */
+
+      if(
+        sortType === "az" ||
+        sortType === "za"
+      ){
+
+        lines.sort(
+          function(a,b){
+
+            const first =
+              ignoreCase
+                ? a.toLowerCase()
+                : a;
+
+
+            const second =
+              ignoreCase
+                ? b.toLowerCase()
+                : b;
+
+
+            return first.localeCompare(
+              second,
+              undefined,
+              {
+                numeric:true,
+                sensitivity:
+                  ignoreCase
+                    ? "base"
+                    : "variant"
+              }
+            );
+
+          }
+        );
+
+
+        if(
+          sortType === "za"
+        ){
+
+          lines.reverse();
+
+        }
+
+      }
+
+
+      /* ================= NUMERIC ================= */
+
+      else if(
+        sortType === "numericAsc" ||
+        sortType === "numericDesc"
+      ){
+
+        lines.sort(
+          function(a,b){
+
+            const numA =
+              parseFloat(
+                a.replace(/,/g,"")
+              );
+
+
+            const numB =
+              parseFloat(
+                b.replace(/,/g,"")
+              );
+
+
+            if(
+              Number.isNaN(numA) &&
+              Number.isNaN(numB)
+            ){
+
+              return a.localeCompare(
+                b,
+                undefined,
+                {
+                  numeric:true
+                }
+              );
+
+            }
+
+
+            if(
+              Number.isNaN(numA)
+            ){
+
+              return 1;
+
+            }
+
+
+            if(
+              Number.isNaN(numB)
+            ){
+
+              return -1;
+
+            }
+
+
+            return numA - numB;
+
+          }
+        );
+
+
+        if(
+          sortType === "numericDesc"
+        ){
+
+          lines.reverse();
+
+        }
+
+      }
+
+
+      /* ================= LENGTH ================= */
+
+      else if(
+        sortType === "lengthAsc" ||
+        sortType === "lengthDesc"
+      ){
+
+        lines.sort(
+          function(a,b){
+
+            const difference =
+              a.length -
+              b.length;
+
+
+            if(
+              difference === 0
+            ){
+
+              return a.localeCompare(
+                b,
+                undefined,
+                {
+                  numeric:true,
+                  sensitivity:
+                    ignoreCase
+                      ? "base"
+                      : "variant"
+                }
+              );
+
+            }
+
+
+            return difference;
+
+          }
+        );
+
+
+        if(
+          sortType === "lengthDesc"
+        ){
+
+          lines.reverse();
+
+        }
+
+      }
+
+
+      outputText.value =
+        lines.join("\n");
+
+
+      const outputCount =
+        lines.filter(
+          function(line){
+            return line.trim() !== "";
+          }
+        ).length;
+
+
+      document.getElementById(
+        "outputCount"
+      ).textContent =
+        outputCount +
+        (
+          outputCount === 1
+            ? " line"
+            : " lines"
+        );
+
+
+      document.getElementById(
+        "totalOutput"
+      ).textContent =
+        outputCount;
+
+
+      document.getElementById(
+        "duplicatesRemoved"
+      ).textContent =
+        duplicatesRemoved;
+
+
+      showNotice(
+        "Text sorted successfully."
+      );
+
+    }
+
+
+    /* ================= NOTICE ================= */
+
+    function showNotice(message){
+
+      const notice =
+        document.getElementById(
+          "notice"
+        );
+
+
+      notice.textContent =
+        message;
+
+
+      notice.classList.add(
+        "show"
+      );
+
+
+      setTimeout(
+        function(){
+
+          notice.classList.remove(
+            "show"
+          );
+
+        },
+        2200
+      );
+
+    }
+
+
+    /* ================= EXAMPLE ================= */
+
+    function loadExample(){
+
+      inputText.value =
+`Mango
+Apple
+Banana
+Apple
+Orange
+12
+5
+25
+10`;
+
+      updateInputCount();
+
+      showNotice(
+        "Example text loaded."
+      );
+
+    }
+
+
+    /* ================= CLEAR INPUT ================= */
+
+    function clearInput(){
+
+      inputText.value =
+        "";
+
+      updateInputCount();
+
+    }
+
+
+    /* ================= RESET ================= */
+
+    function clearAll(){
+
+      inputText.value =
+        "";
+
+      outputText.value =
+        "";
+
+
+      document.getElementById(
+        "sortType"
+      ).value =
+        "az";
+
+
+      document.getElementById(
+        "trimMode"
+      ).value =
+        "remove";
+
+
+      document.getElementById(
+        "removeDuplicates"
+      ).checked =
+        false;
+
+
+      document.getElementById(
+        "ignoreCase"
+      ).checked =
+        true;
+
+
+      document.getElementById(
+        "trimSpaces"
+      ).checked =
+        true;
+
+
+      document.getElementById(
+        "inputCount"
+      ).textContent =
+        "0 lines";
+
+
+      document.getElementById(
+        "outputCount"
+      ).textContent =
+        "0 lines";
+
+
+      document.getElementById(
+        "totalInput"
+      ).textContent =
+        "0";
+
+
+      document.getElementById(
+        "totalOutput"
+      ).textContent =
+        "0";
+
+
+      document.getElementById(
+        "duplicatesRemoved"
+      ).textContent =
+        "0";
+
+
+      document.getElementById(
+        "notice"
+      ).classList.remove(
+        "show"
+      );
+
+    }
+
+
+    /* ================= COPY OUTPUT ================= */
+
+    async function copyOutput(){
+
+      const output =
+        outputText.value;
+
+
+      if(!output){
+
+        showNotice(
+          "Sort some text first."
+        );
+
+        return;
+
+      }
+
+
+      try{
+
+        await navigator.clipboard.writeText(
+          output
+        );
+
+
+        showNotice(
+          "Output copied successfully."
+        );
+
+      }
+      catch(error){
+
+        outputText.select();
+
+        document.execCommand(
+          "copy"
+        );
+
+
+        showNotice(
+          "Output copied successfully."
+        );
+
+      }
+
+    }
+
+
+    /* ================= DOWNLOAD ================= */
+
+    function downloadOutput(){
+
+      const output =
+        outputText.value;
+
+
+      if(!output){
+
+        showNotice(
+          "Sort some text first."
+        );
+
+        return;
+
+      }
+
+
+      const blob =
+        new Blob(
+          [output],
+          {
+            type:"text/plain"
+          }
+        );
+
+
+      const url =
+        URL.createObjectURL(
+          blob
+        );
+
+
+      const link =
+        document.createElement(
+          "a"
+        );
+
+
+      link.href =
+        url;
+
+
+      link.download =
+        "sorted-text.txt";
+
+
+      document.body.appendChild(
+        link
+      );
+
+
+      link.click();
+
+
+      link.remove();
+
+
+      URL.revokeObjectURL(
+        url
+      );
+
+
+      showNotice(
+        "Text file downloaded."
+      );
+
+    }
+
+
+    /* ================= FAQ ================= */
+
+    function toggleFaq(button){
+
+      const item =
+        button.parentElement;
+
+
+      item.classList.toggle(
+        "active"
+      );
+
+
+      const icon =
+        button.querySelector(
+          ".faq-icon"
+        );
+
+
+      if(
+        item.classList.contains(
+          "active"
+        )
+      ){
+
+        icon.textContent =
+          "−";
+
+      }
+      else{
+
+        icon.textContent =
+          "+";
+
+      }
+
+    }
+
+
+    /* ================= INITIAL ================= */
+
+    updateInputCount();
+
+  </script>
+
+</body>
+</html>

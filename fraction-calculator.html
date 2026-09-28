@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fraction Calculator - Add, Subtract, Multiply & Divide | SmartTools</title>
+
+  <meta
+    name="description"
+    content="Free online fraction calculator. Add, subtract, multiply and divide fractions instantly. Get simplified results with step-by-step calculations."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://shaharesukanya.github.io/smart-website/fraction-calculator.html"
+  >
+
+  <meta property="og:title" content="Fraction Calculator - SmartTools">
+  <meta
+    property="og:description"
+    content="Calculate and simplify fractions with addition, subtraction, multiplication and division."
+  >
+  <meta
+    property="og:url"
+    content="https://shaharesukanya.github.io/smart-website/fraction-calculator.html"
+  >
+  <meta property="og:type" content="website">
+
+  <style>
+    :root{
+      --primary:#5b5ff5;
+      --primary-dark:#4549d8;
+      --text:#16181d;
+      --muted:#667085;
+      --border:#e7e9ef;
+      --bg:#f6f7fb;
+      --white:#ffffff;
+      --soft:#f7f8ff;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1120px,92%);
+      margin:auto;
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:22px;
+      font-weight:800;
+    }
+
+    .brand img{
+      width:42px;
+      height:42px;
+      object-fit:contain;
+      border-radius:10px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .nav-links a{
+      color:#4b5565;
+      transition:.2s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+    }
+
+    /* Hero */
+    .hero{
+      padding:76px 0 42px;
+      text-align:center;
+      background:
+        radial-gradient(circle at top left, rgba(91,95,245,.10), transparent 30%),
+        radial-gradient(circle at top right, rgba(91,95,245,.08), transparent 28%);
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 14px;
+      border:1px solid #dfe2ff;
+      background:#f1f2ff;
+      color:var(--primary-dark);
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-size:clamp(34px,5vw,56px);
+      line-height:1.08;
+      letter-spacing:-1.5px;
+      margin-bottom:18px;
+    }
+
+    .hero p{
+      max-width:760px;
+      margin:auto;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    /* Calculator */
+    .calculator-wrap{
+      padding:24px 0 70px;
+    }
+
+    .calculator-card{
+      max-width:820px;
+      margin:auto;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:34px;
+      box-shadow:0 18px 50px rgba(20,24,40,.08);
+    }
+
+    .calculator-card h2{
+      text-align:center;
+      font-size:26px;
+      margin-bottom:8px;
+    }
+
+    .calculator-subtitle{
+      text-align:center;
+      color:var(--muted);
+      margin-bottom:28px;
+    }
+
+    /* Operation */
+    .operation-row{
+      display:grid;
+      grid-template-columns:1fr 90px 1fr;
+      gap:16px;
+      align-items:end;
+    }
+
+    .fraction-box{
+      background:#fafbff;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:20px;
+    }
+
+    .fraction-box h3{
+      font-size:15px;
+      margin-bottom:14px;
+    }
+
+    .fraction-inputs{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+
+    .field label{
+      display:block;
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:6px;
+      color:#424855;
+    }
+
+    .field input{
+      width:100%;
+      padding:14px 15px;
+      border:1px solid #d9dde7;
+      border-radius:12px;
+      font-size:16px;
+      outline:none;
+      background:white;
+      transition:.2s ease;
+    }
+
+    .field input:focus{
+      border-color:var(--primary);
+      box-shadow:0 0 0 4px rgba(91,95,245,.10);
+    }
+
+    .operation-control{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .operation-control label{
+      text-align:center;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    select{
+      width:100%;
+      padding:14px 10px;
+      border-radius:12px;
+      border:1px solid #d9dde7;
+      background:white;
+      font-size:20px;
+      font-weight:800;
+      color:var(--primary-dark);
+      outline:none;
+      cursor:pointer;
+    }
+
+    select:focus{
+      border-color:var(--primary);
+      box-shadow:0 0 0 4px rgba(91,95,245,.10);
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .btn{
+      flex:1;
+      border:none;
+      cursor:pointer;
+      padding:14px 18px;
+      border-radius:14px;
+      font-size:15px;
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:var(--primary);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:var(--primary-dark);
+      transform:translateY(-1px);
+    }
+
+    .btn-secondary{
+      background:#eef0f5;
+      color:#30343d;
+    }
+
+    .btn-secondary:hover{
+      background:#e4e7ee;
+    }
+
+    /* Result */
+    .result{
+      display:none;
+      margin-top:26px;
+      padding:26px;
+      background:var(--soft);
+      border:1px solid #e1e4ff;
+      border-radius:18px;
+    }
+
+    .result.show{
+      display:block;
+    }
+
+    .result-title{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.7px;
+      margin-bottom:6px;
+    }
+
+    .result-value{
+      text-align:center;
+      color:var(--primary-dark);
+      font-size:42px;
+      font-weight:900;
+      margin-bottom:20px;
+      line-height:1.2;
+      word-break:break-word;
+    }
+
+    .calculation-box{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:18px;
+    }
+
+    .calculation-box h3{
+      font-size:15px;
+      margin-bottom:8px;
+    }
+
+    .calculation-text{
+      color:#4f5663;
+      font-family:monospace;
+      font-size:15px;
+      white-space:pre-line;
+      line-height:1.8;
+    }
+
+    .decimal-result{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:14px;
+      text-align:center;
+    }
+
+    .error{
+      display:none;
+      margin-top:16px;
+      color:#c62828;
+      font-size:14px;
+      text-align:center;
+      font-weight:700;
+    }
+
+    .error.show{
+      display:block;
+    }
+
+    /* Content */
+    section.content-section{
+      padding:70px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      max-width:780px;
+      margin:0 auto 36px;
+    }
+
+    .section-title h2{
+      font-size:34px;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:var(--muted);
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:24px;
+    }
+
+    .info-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:28px;
+    }
+
+    .info-card h3{
+      font-size:21px;
+      margin-bottom:12px;
+    }
+
+    .info-card p{
+      color:#596273;
+      margin-bottom:12px;
+    }
+
+    .formula{
+      padding:16px;
+      margin-top:16px;
+      border-radius:14px;
+      background:#f3f4f8;
+      text-align:center;
+      font-weight:800;
+      font-size:17px;
+    }
+
+    .example{
+      margin-top:12px;
+      padding:16px;
+      border-left:4px solid var(--primary);
+      background:#fafbff;
+      border-radius:10px;
+    }
+
+    /* Steps */
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .step-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:24px;
+    }
+
+    .step-number{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      background:var(--primary);
+      color:white;
+      border-radius:12px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .step-card h3{
+      margin-bottom:8px;
+    }
+
+    .step-card p{
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    /* FAQ */
+    .faq-list{
+      max-width:820px;
+      margin:auto;
+    }
+
+    .faq-item{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:16px;
+      margin-bottom:12px;
+      overflow:hidden;
+    }
+
+    .faq-question{
+      width:100%;
+      border:none;
+      background:white;
+      padding:20px;
+      text-align:left;
+      cursor:pointer;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      font-size:16px;
+      font-weight:800;
+    }
+
+    .faq-answer{
+      display:none;
+      padding:0 20px 20px;
+      color:var(--muted);
+    }
+
+    .faq-item.active .faq-answer{
+      display:block;
+    }
+
+    .faq-icon{
+      color:var(--primary);
+      font-size:22px;
+      flex-shrink:0;
+    }
+
+    /* Related */
+    .related-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .related-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:20px;
+      transition:.2s ease;
+    }
+
+    .related-card:hover{
+      transform:translateY(-3px);
+      border-color:#cfd2ff;
+      box-shadow:0 12px 28px rgba(20,24,40,.07);
+    }
+
+    .related-card h3{
+      font-size:17px;
+      margin-bottom:6px;
+    }
+
+    .related-card p{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Disclaimer */
+    .disclaimer{
+      max-width:900px;
+      margin:auto;
+      padding:20px;
+      background:#fffdf3;
+      border:1px solid #f0e6bb;
+      border-radius:16px;
+      color:#665d38;
+      font-size:14px;
+    }
+
+    /* Footer */
+    footer{
+      background:#17191f;
+      color:white;
+      margin-top:40px;
+    }
+
+    .footer-inner{
+      padding:44px 0 24px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      gap:30px;
+    }
+
+    .footer-brand{
+      font-size:23px;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .footer-text{
+      color:#aeb4c0;
+      max-width:420px;
+      font-size:14px;
+    }
+
+    .footer-col h4{
+      margin-bottom:12px;
+      font-size:15px;
+    }
+
+    .footer-col a{
+      display:block;
+      color:#b8bdc8;
+      margin-bottom:8px;
+      font-size:14px;
+    }
+
+    .footer-col a:hover{
+      color:white;
+    }
+
+    .copyright{
+      border-top:1px solid rgba(255,255,255,.09);
+      padding:18px 0;
+      color:#9ea5b2;
+      font-size:13px;
+      text-align:center;
+    }
+
+    @media (max-width:800px){
+
+      .nav-links{
+        display:none;
+      }
+
+      .operation-row{
+        grid-template-columns:1fr;
+      }
+
+      .content-grid{
+        grid-template-columns:1fr;
+      }
+
+      .steps{
+        grid-template-columns:1fr;
+      }
+
+      .related-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-inner{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width:520px){
+
+      .hero{
+        padding-top:54px;
+      }
+
+      .calculator-card{
+        padding:22px;
+        border-radius:18px;
+      }
+
+      .actions{
+        flex-direction:column;
+      }
+
+      .related-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner{
+        grid-template-columns:1fr;
+      }
+
+      .result-value{
+        font-size:34px;
+      }
+    }
+  </style>
+
+  <!-- SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Fraction Calculator",
+    "applicationCategory":"CalculatorApplication",
+    "operatingSystem":"Web",
+    "description":"Free online calculator for adding, subtracting, multiplying and dividing fractions.",
+    "url":"https://shaharesukanya.github.io/smart-website/fraction-calculator.html",
+    "offers":{
+      "@type":"Offer",
+      "price":"0",
+      "priceCurrency":"USD"
+    }
+  }
+  </script>
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "name":"Home",
+        "item":"https://shaharesukanya.github.io/smart-website/"
+      },
+      {
+        "@type":"ListItem",
+        "position":2,
+        "name":"Fraction Calculator",
+        "item":"https://shaharesukanya.github.io/smart-website/fraction-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+
+    <div class="container nav">
+
+      <a href="index.html" class="brand">
+        <img
+          src="smarttools-logo-transparent.png"
+          alt="SmartTools logo"
+          onerror="this.style.display='none'"
+        >
+        <span>SmartTools</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#tools">All Tools</a>
+        <a href="index.html#guides">Guides</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- Hero -->
+  <main>
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="tag">➗ Math Calculator</div>
+
+        <h1>Fraction Calculator</h1>
+
+        <p>
+          Add, subtract, multiply or divide fractions instantly and get the
+          simplified answer with the calculation shown clearly.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calculator-wrap">
+
+      <div class="container">
+
+        <div class="calculator-card">
+
+          <h2>Calculate Fractions</h2>
+
+          <p class="calculator-subtitle">
+            Enter the numerator and denominator for both fractions.
+          </p>
+
+          <div class="operation-row">
+
+            <!-- Fraction 1 -->
+            <div class="fraction-box">
+
+              <h3>First Fraction</h3>
+
+              <div class="fraction-inputs">
+
+                <div class="field">
+                  <label for="num1">Numerator</label>
+                  <input
+                    type="number"
+                    id="num1"
+                    step="1"
+                    placeholder="e.g. 3"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="den1">Denominator</label>
+                  <input
+                    type="number"
+                    id="den1"
+                    step="1"
+                    placeholder="e.g. 4"
+                  >
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Operation -->
+            <div class="operation-control">
+
+              <label for="operation">Operation</label>
+
+              <select id="operation">
+                <option value="+">+</option>
+                <option value="-">−</option>
+                <option value="*">×</option>
+                <option value="/">÷</option>
+              </select>
+
+            </div>
+
+            <!-- Fraction 2 -->
+            <div class="fraction-box">
+
+              <h3>Second Fraction</h3>
+
+              <div class="fraction-inputs">
+
+                <div class="field">
+                  <label for="num2">Numerator</label>
+                  <input
+                    type="number"
+                    id="num2"
+                    step="1"
+                    placeholder="e.g. 1"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="den2">Denominator</label>
+                  <input
+                    type="number"
+                    id="den2"
+                    step="1"
+                    placeholder="e.g. 2"
+                  >
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="actions">
+
+            <button
+              class="btn btn-primary"
+              onclick="calculateFraction()"
+            >
+              Calculate Fraction
+            </button>
+
+            <button
+              class="btn btn-secondary"
+              onclick="resetCalculator()"
+            >
+              Reset
+            </button>
+
+          </div>
+
+          <div id="error" class="error"></div>
+
+          <!-- Result -->
+          <div id="result" class="result">
+
+            <div class="result-title">
+              Simplified Result
+            </div>
+
+            <div id="resultValue" class="result-value">
+              --
+            </div>
+
+            <div class="calculation-box">
+
+              <h3>Calculation</h3>
+
+              <div
+                id="calculationText"
+                class="calculation-text"
+              ></div>
+
+              <div
+                id="decimalResult"
+                class="decimal-result"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- How It Works -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>How the Fraction Calculator Works</h2>
+
+          <p>
+            Select an operation and enter two fractions to get the answer
+            instantly.
+          </p>
+
+        </div>
+
+        <div class="steps">
+
+          <div class="step-card">
+
+            <div class="step-number">1</div>
+
+            <h3>Enter First Fraction</h3>
+
+            <p>
+              Enter the numerator and denominator of the first fraction.
+            </p>
+
+          </div>
+
+          <div class="step-card">
+
+            <div class="step-number">2</div>
+
+            <h3>Choose an Operation</h3>
+
+            <p>
+              Select addition, subtraction, multiplication or division.
+            </p>
+
+          </div>
+
+          <div class="step-card">
+
+            <div class="step-number">3</div>
+
+            <h3>Get the Simplified Answer</h3>
+
+            <p>
+              SmartTools calculates the result and reduces it to the simplest
+              form.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Formula -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>Fraction Formulas</h2>
+
+          <p>
+            These are the basic rules used for fraction calculations.
+          </p>
+
+        </div>
+
+        <div class="content-grid">
+
+          <div class="info-card">
+
+            <h3>Addition</h3>
+
+            <p>
+              For fractions with different denominators, convert them to a
+              common denominator before adding.
+            </p>
+
+            <div class="formula">
+              a/b + c/d = (ad + bc) / bd
+            </div>
+
+          </div>
+
+          <div class="info-card">
+
+            <h3>Subtraction</h3>
+
+            <p>
+              Multiply across to create a common denominator and then subtract
+              the numerators.
+            </p>
+
+            <div class="formula">
+              a/b − c/d = (ad − bc) / bd
+            </div>
+
+          </div>
+
+          <div class="info-card">
+
+            <h3>Multiplication</h3>
+
+            <p>
+              Multiply the numerators together and multiply the denominators
+              together.
+            </p>
+
+            <div class="formula">
+              a/b × c/d = ac/bd
+            </div>
+
+          </div>
+
+          <div class="info-card">
+
+            <h3>Division</h3>
+
+            <p>
+              To divide fractions, multiply the first fraction by the
+              reciprocal of the second fraction.
+            </p>
+
+            <div class="formula">
+              a/b ÷ c/d = ad/bc
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Example -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>Example Calculation</h2>
+
+          <p>
+            Here is a simple example of adding two fractions.
+          </p>
+
+        </div>
+
+        <div class="info-card">
+
+          <h3>Example: 3/4 + 1/2</h3>
+
+          <div class="example">
+
+            Common denominator = 4<br><br>
+
+            3/4 + 1/2<br>
+            = 3/4 + 2/4<br>
+            = 5/4<br><br>
+
+            <strong>
+              Answer = 5/4 = 1.25
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FAQ -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>Frequently Asked Questions</h2>
+
+          <p>
+            Common questions about calculating fractions.
+          </p>
+
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+              What is a fraction?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              A fraction represents a part of a whole and is written using a
+              numerator and denominator.
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+              Can I add fractions with different denominators?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              Yes. The fractions are first converted to a common denominator,
+              after which their numerators can be added.
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+              Why is my fraction simplified?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              The result is divided by the greatest common factor of the
+              numerator and denominator so that it is shown in its simplest
+              form.
+            </div>
+
+          </div>
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+              Can I divide by zero?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              No. A denominator cannot be zero, and division by a fraction
+              whose numerator is zero is also not defined.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Related Tools -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>Related SmartTools</h2>
+
+          <p>
+            Explore more useful math and calculation tools.
+          </p>
+
+        </div>
+
+        <div class="related-grid">
+
+          <a
+            href="ratio-simplifier.html"
+            class="related-card"
+          >
+            <h3>Ratio Simplifier</h3>
+            <p>
+              Simplify ratios using the greatest common factor.
+            </p>
+          </a>
+
+          <a
+            href="percentage-calculator.html"
+            class="related-card"
+          >
+            <h3>Percentage Calculator</h3>
+            <p>
+              Calculate percentages, increases and decreases.
+            </p>
+          </a>
+
+          <a
+            href="average-calculator.html"
+            class="related-card"
+          >
+            <h3>Average Calculator</h3>
+            <p>
+              Find average, sum, count, minimum and maximum.
+            </p>
+          </a>
+
+          <a
+            href="speed-distance-time-calculator.html"
+            class="related-card"
+          >
+            <h3>Speed Distance Time</h3>
+            <p>
+              Calculate speed, distance or travel time.
+            </p>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Disclaimer -->
+    <section
+      class="content-section"
+      style="padding-top:0;"
+    >
+
+      <div class="container">
+
+        <div class="disclaimer">
+
+          <strong>Note:</strong>
+          This calculator performs standard mathematical fraction operations
+          based on the values entered. Always check your inputs before using
+          the result in important calculations.
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+
+        <div class="footer-brand">
+          SmartTools
+        </div>
+
+        <p class="footer-text">
+          Free online calculators and productivity tools designed to make
+          everyday tasks simpler and faster.
+        </p>
+
+      </div>
+
+      <div class="footer-col">
+
+        <h4>Quick Links</h4>
+
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+      </div>
+
+      <div class="footer-col">
+
+        <h4>Legal</h4>
+
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms.html">
+          Terms & Conditions
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 SmartTools. All rights reserved.
+    </div>
+
+  </footer>
+
+  <script>
+
+    // Greatest Common Factor
+    function gcd(a, b) {
+
+      a = Math.abs(a);
+      b = Math.abs(b);
+
+      while (b !== 0) {
+
+        const temp = b;
+        b = a % b;
+        a = temp;
+
+      }
+
+      return a;
+    }
+
+    // Simplify fraction
+    function simplifyFraction(numerator, denominator) {
+
+      if (denominator === 0) {
+        throw new Error("Denominator cannot be zero.");
+      }
+
+      if (numerator === 0) {
+        return {
+          numerator: 0,
+          denominator: 1
+        };
+      }
+
+      // Keep denominator positive
+      if (denominator < 0) {
+
+        numerator *= -1;
+        denominator *= -1;
+
+      }
+
+      const factor = gcd(numerator, denominator);
+
+      return {
+        numerator: numerator / factor,
+        denominator: denominator / factor
+      };
+    }
+
+    // Convert fraction to readable format
+    function fractionString(fraction) {
+
+      if (fraction.denominator === 1) {
+        return fraction.numerator.toString();
+      }
+
+      return fraction.numerator + "/" + fraction.denominator;
+    }
+
+    // Convert to decimal
+    function fractionToDecimal(fraction) {
+
+      return fraction.numerator / fraction.denominator;
+    }
+
+    // Main calculation
+    function calculateFraction() {
+
+      const num1 = Number(
+        document.getElementById("num1").value
+      );
+
+      const den1 = Number(
+        document.getElementById("den1").value
+      );
+
+      const num2 = Number(
+        document.getElementById("num2").value
+      );
+
+      const den2 = Number(
+        document.getElementById("den2").value
+      );
+
+      const operation =
+        document.getElementById("operation").value;
+
+      const error =
+        document.getElementById("error");
+
+      const result =
+        document.getElementById("result");
+
+      error.classList.remove("show");
+      result.classList.remove("show");
+
+      // Validate numbers
+      if (
+        !Number.isInteger(num1) ||
+        !Number.isInteger(den1) ||
+        !Number.isInteger(num2) ||
+        !Number.isInteger(den2)
+      ) {
+
+        error.textContent =
+          "Please enter whole numbers for all numerator and denominator fields.";
+
+        error.classList.add("show");
+
+        return;
+      }
+
+      // Validate denominators
+      if (den1 === 0 || den2 === 0) {
+
+        error.textContent =
+          "Denominator cannot be zero.";
+
+        error.classList.add("show");
+
+        return;
+      }
+
+      // Division by zero fraction
+      if (operation === "/" && num2 === 0) {
+
+        error.textContent =
+          "You cannot divide by zero.";
+
+        error.classList.add("show");
+
+        return;
+      }
+
+      let resultNumerator;
+      let resultDenominator;
+
+      let symbol;
+
+      if (operation === "+") {
+
+        resultNumerator =
+          (num1 * den2) + (num2 * den1);
+
+        resultDenominator =
+          den1 * den2;
+
+        symbol = "+";
+
+      }
+
+      else if (operation === "-") {
+
+        resultNumerator =
+          (num1 * den2) - (num2 * den1);
+
+        resultDenominator =
+          den1 * den2;
+
+        symbol = "−";
+
+      }
+
+      else if (operation === "*") {
+
+        resultNumerator =
+          num1 * num2;
+
+        resultDenominator =
+          den1 * den2;
+
+        symbol = "×";
+
+      }
+
+      else if (operation === "/") {
+
+        resultNumerator =
+          num1 * den2;
+
+        resultDenominator =
+          den1 * num2;
+
+        symbol = "÷";
+
+      }
+
+      const simplified =
+        simplifyFraction(
+          resultNumerator,
+          resultDenominator
+        );
+
+      const firstFraction =
+        simplifyFraction(num1, den1);
+
+      const secondFraction =
+        simplifyFraction(num2, den2);
+
+      document.getElementById("resultValue").textContent =
+        fractionString(simplified);
+
+      const calculation =
+        fractionString(firstFraction) +
+        " " +
+        symbol +
+        " " +
+        fractionString(secondFraction) +
+        "\n\n" +
+        "Raw result: " +
+        resultNumerator +
+        "/" +
+        resultDenominator +
+        "\n" +
+        "Simplified: " +
+        fractionString(simplified);
+
+      document.getElementById(
+        "calculationText"
+      ).textContent = calculation;
+
+      const decimal =
+        fractionToDecimal(simplified);
+
+      document.getElementById(
+        "decimalResult"
+      ).textContent =
+        "Decimal value: " +
+        formatDecimal(decimal);
+
+      result.classList.add("show");
+    }
+
+    // Decimal formatting
+    function formatDecimal(value) {
+
+      if (Number.isInteger(value)) {
+        return value.toString();
+      }
+
+      return value.toFixed(8)
+        .replace(/\.?0+$/, "");
+    }
+
+    // Reset
+    function resetCalculator() {
+
+      document.getElementById("num1").value = "";
+      document.getElementById("den1").value = "";
+
+      document.getElementById("num2").value = "";
+      document.getElementById("den2").value = "";
+
+      document.getElementById("operation").value = "+";
+
+      document.getElementById("error")
+        .classList.remove("show");
+
+      document.getElementById("result")
+        .classList.remove("show");
+    }
+
+    // FAQ
+    function toggleFaq(button) {
+
+      const item = button.parentElement;
+
+      item.classList.toggle("active");
+
+      const icon =
+        button.querySelector(".faq-icon");
+
+      if (item.classList.contains("active")) {
+
+        icon.textContent = "−";
+
+      } else {
+
+        icon.textContent = "+";
+
+      }
+    }
+
+    // Enter key
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (event.key === "Enter") {
+
+          calculateFraction();
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,2355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SmartTools Dashboard - Free Online Calculators & Tools</title>
+
+  <meta
+    name="description"
+    content="SmartTools Dashboard with free online calculators, converters, productivity and security tools. Search, favorite and quickly access your tools."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://shaharesukanya.github.io/smart-website/smarttools-dashboard.html"
+  >
+
+  <style>
+
+    :root{
+      --primary:#5b5ff5;
+      --primary-dark:#4549d8;
+      --text:#16181d;
+      --muted:#667085;
+      --border:#e7e9ef;
+      --bg:#f6f7fb;
+      --white:#ffffff;
+      --soft:#f7f8ff;
+      --header:rgba(255,255,255,.96);
+      --shadow:0 14px 35px rgba(20,24,40,.07);
+    }
+
+    body.dark{
+      --text:#f4f5f7;
+      --muted:#a7afbd;
+      --border:#2c3240;
+      --bg:#10131a;
+      --white:#171b24;
+      --soft:#1c2130;
+      --header:rgba(23,27,36,.96);
+      --shadow:0 14px 35px rgba(0,0,0,.22);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+
+      transition:
+        background .25s ease,
+        color .25s ease;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    input{
+      font:inherit;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+
+    /* ================= HEADER ================= */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+
+      background:var(--header);
+
+      backdrop-filter:blur(14px);
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+    .nav{
+      min-height:72px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+
+      font-size:22px;
+      font-weight:900;
+    }
+
+    .brand img{
+      width:42px;
+      height:42px;
+
+      object-fit:contain;
+
+      border-radius:10px;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .nav-link{
+      padding:9px 13px;
+
+      border-radius:10px;
+
+      color:var(--muted);
+
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .nav-link:hover{
+      background:var(--soft);
+      color:var(--primary);
+    }
+
+    .theme-btn{
+      width:42px;
+      height:42px;
+
+      border:
+        1px solid var(--border);
+
+      background:var(--white);
+
+      color:var(--text);
+
+      border-radius:12px;
+
+      cursor:pointer;
+
+      display:grid;
+      place-items:center;
+
+      font-size:18px;
+    }
+
+
+    /* ================= HERO ================= */
+
+    .hero{
+      padding:68px 0 38px;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(91,95,245,.12),
+          transparent 31%
+        ),
+        radial-gradient(
+          circle at top right,
+          rgba(91,95,245,.09),
+          transparent 28%
+        );
+    }
+
+    .hero-content{
+      max-width:850px;
+
+      text-align:center;
+
+      margin:auto;
+    }
+
+    .tag{
+      display:inline-flex;
+
+      padding:8px 14px;
+
+      background:#f1f2ff;
+
+      border:
+        1px solid #dfe2ff;
+
+      color:var(--primary-dark);
+
+      border-radius:999px;
+
+      font-size:13px;
+      font-weight:800;
+
+      margin-bottom:16px;
+    }
+
+    body.dark .tag{
+      background:#212642;
+      border-color:#343c68;
+    }
+
+    .hero h1{
+      font-size:
+        clamp(36px,5vw,58px);
+
+      line-height:1.06;
+
+      letter-spacing:-1.8px;
+
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      max-width:730px;
+
+      margin:auto;
+
+      color:var(--muted);
+
+      font-size:17px;
+    }
+
+
+    /* ================= SEARCH ================= */
+
+    .search-wrap{
+      position:relative;
+
+      max-width:720px;
+
+      margin:27px auto 0;
+    }
+
+    .search-icon{
+      position:absolute;
+
+      left:18px;
+      top:50%;
+
+      transform:translateY(-50%);
+
+      color:var(--muted);
+
+      font-size:20px;
+    }
+
+    .search-box{
+      width:100%;
+
+      padding:
+        17px
+        18px
+        17px
+        52px;
+
+      background:var(--white);
+
+      color:var(--text);
+
+      border:
+        1px solid var(--border);
+
+      border-radius:17px;
+
+      outline:none;
+
+      font-size:16px;
+
+      box-shadow:var(--shadow);
+    }
+
+    .search-box:focus{
+      border-color:var(--primary);
+
+      box-shadow:
+        0 0 0 4px rgba(91,95,245,.10),
+        var(--shadow);
+    }
+
+
+    /* ================= STATS ================= */
+
+    .stats{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:16px;
+
+      margin:
+        20px
+        0
+        30px;
+    }
+
+    .stat-card{
+      background:var(--white);
+
+      border:
+        1px solid var(--border);
+
+      border-radius:17px;
+
+      padding:20px;
+
+      text-align:center;
+    }
+
+    .stat-card strong{
+      display:block;
+
+      font-size:26px;
+
+      color:var(--primary-dark);
+    }
+
+    .stat-card span{
+      color:var(--muted);
+
+      font-size:13px;
+    }
+
+
+    /* ================= DASHBOARD ================= */
+
+    .dashboard{
+      padding:
+        15px
+        0
+        70px;
+    }
+
+    .section-head{
+      display:flex;
+
+      align-items:end;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      margin-bottom:19px;
+    }
+
+    .section-head h2{
+      font-size:28px;
+    }
+
+    .section-head p{
+      color:var(--muted);
+
+      font-size:14px;
+    }
+
+
+    /* ================= MY TOOLS ================= */
+
+    .my-tools{
+      margin-bottom:38px;
+    }
+
+    .my-tools-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:15px;
+    }
+
+    .mini-card{
+      background:var(--white);
+
+      border:
+        1px solid var(--border);
+
+      border-radius:16px;
+
+      padding:17px;
+
+      cursor:pointer;
+
+      transition:.2s ease;
+
+      position:relative;
+    }
+
+    .mini-card:hover{
+      transform:translateY(-3px);
+
+      border-color:#cfd2ff;
+
+      box-shadow:var(--shadow);
+    }
+
+    .mini-icon{
+      width:42px;
+      height:42px;
+
+      display:grid;
+      place-items:center;
+
+      background:var(--soft);
+
+      border-radius:12px;
+
+      margin-bottom:11px;
+
+      font-size:20px;
+    }
+
+    .mini-card h3{
+      font-size:15px;
+
+      margin-bottom:4px;
+
+      padding-right:25px;
+    }
+
+    .mini-card p{
+      color:var(--muted);
+
+      font-size:12px;
+    }
+
+    .mini-star{
+      position:absolute;
+
+      top:12px;
+      right:12px;
+
+      color:#f4b400;
+
+      font-size:16px;
+    }
+
+
+    /* ================= MY TOOLS EMPTY ================= */
+
+    .empty-my-tools{
+      padding:26px;
+
+      background:var(--white);
+
+      border:
+        1px dashed var(--border);
+
+      border-radius:16px;
+
+      text-align:center;
+    }
+
+    .empty-my-tools strong{
+      display:block;
+
+      margin-bottom:4px;
+    }
+
+    .empty-my-tools span{
+      color:var(--muted);
+
+      font-size:13px;
+    }
+
+
+    /* ================= CATEGORY ================= */
+
+    .category-tabs{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:9px;
+
+      margin-bottom:25px;
+    }
+
+    .category-btn{
+      border:
+        1px solid var(--border);
+
+      background:var(--white);
+
+      color:var(--muted);
+
+      padding:
+        10px
+        15px;
+
+      border-radius:999px;
+
+      cursor:pointer;
+
+      font-size:13px;
+
+      font-weight:800;
+
+      transition:.2s ease;
+    }
+
+    .category-btn:hover{
+      border-color:#cfd2ff;
+
+      color:var(--primary);
+    }
+
+    .category-btn.active{
+      background:var(--primary);
+
+      border-color:var(--primary);
+
+      color:white;
+    }
+
+
+    /* ================= TOOL GRID ================= */
+
+    .tool-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:17px;
+    }
+
+    .tool-card{
+      background:var(--white);
+
+      border:
+        1px solid var(--border);
+
+      border-radius:19px;
+
+      padding:20px;
+
+      min-height:220px;
+
+      position:relative;
+
+      display:flex;
+
+      flex-direction:column;
+
+      transition:.2s ease;
+    }
+
+    .tool-card:hover{
+      transform:translateY(-4px);
+
+      border-color:#cfd2ff;
+
+      box-shadow:var(--shadow);
+    }
+
+    .tool-icon{
+      width:49px;
+      height:49px;
+
+      display:grid;
+      place-items:center;
+
+      background:var(--soft);
+
+      border-radius:14px;
+
+      font-size:23px;
+
+      margin-bottom:15px;
+    }
+
+    .tool-title{
+      font-size:17px;
+
+      font-weight:900;
+
+      padding-right:28px;
+
+      margin-bottom:6px;
+    }
+
+    .tool-description{
+      color:var(--muted);
+
+      font-size:13px;
+
+      line-height:1.55;
+
+      margin-bottom:13px;
+    }
+
+    .category-label{
+      width:max-content;
+
+      display:inline-flex;
+
+      padding:
+        5px
+        8px;
+
+      border-radius:7px;
+
+      background:var(--soft);
+
+      color:var(--muted);
+
+      font-size:11px;
+
+      font-weight:700;
+
+      margin-top:auto;
+
+      margin-bottom:10px;
+    }
+
+    .tool-bottom{
+      display:flex;
+
+      justify-content:flex-end;
+    }
+
+    .open-btn{
+      border:none;
+
+      background:var(--primary);
+
+      color:white;
+
+      padding:
+        9px
+        13px;
+
+      border-radius:10px;
+
+      cursor:pointer;
+
+      font-size:12px;
+
+      font-weight:800;
+    }
+
+    .open-btn:hover{
+      background:var(--primary-dark);
+    }
+
+    .favorite-btn{
+      position:absolute;
+
+      top:14px;
+      right:14px;
+
+      width:35px;
+      height:35px;
+
+      display:grid;
+      place-items:center;
+
+      border:
+        1px solid var(--border);
+
+      background:var(--white);
+
+      color:#98a0ae;
+
+      border-radius:10px;
+
+      cursor:pointer;
+
+      font-size:17px;
+    }
+
+    .favorite-btn.active{
+      color:#f4b400;
+
+      border-color:#efd681;
+
+      background:#fffbed;
+    }
+
+    body.dark .favorite-btn.active{
+      background:#2a2512;
+    }
+
+
+    /* ================= RECENT ================= */
+
+    .recent-tools{
+      display:none;
+
+      margin-top:37px;
+    }
+
+    .recent-tools.show{
+      display:block;
+    }
+
+    .recent-scroll{
+      display:flex;
+
+      gap:12px;
+
+      overflow-x:auto;
+
+      padding-bottom:5px;
+    }
+
+    .recent-card{
+      min-width:210px;
+
+      background:var(--white);
+
+      border:
+        1px solid var(--border);
+
+      border-radius:15px;
+
+      padding:15px;
+
+      cursor:pointer;
+
+      transition:.2s ease;
+    }
+
+    .recent-card:hover{
+      transform:translateY(-2px);
+
+      border-color:#cfd2ff;
+    }
+
+    .recent-card strong{
+      display:block;
+
+      font-size:14px;
+
+      margin-bottom:4px;
+    }
+
+    .recent-card span{
+      color:var(--muted);
+
+      font-size:12px;
+    }
+
+
+    /* ================= NO RESULTS ================= */
+
+    .no-results{
+      display:none;
+
+      text-align:center;
+
+      background:var(--white);
+
+      border:
+        1px solid var(--border);
+
+      border-radius:18px;
+
+      padding:45px 20px;
+    }
+
+    .no-results.show{
+      display:block;
+    }
+
+    .no-results strong{
+      display:block;
+
+      font-size:18px;
+
+      margin-bottom:4px;
+    }
+
+    .no-results span{
+      color:var(--muted);
+
+      font-size:14px;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    footer{
+      background:#17191f;
+
+      color:white;
+
+      margin-top:15px;
+    }
+
+    .footer-inner{
+      padding:
+        44px
+        0
+        24px;
+
+      display:grid;
+
+      grid-template-columns:
+        1.2fr
+        .8fr
+        .8fr;
+
+      gap:30px;
+    }
+
+    .footer-brand{
+      font-size:23px;
+
+      font-weight:900;
+
+      margin-bottom:9px;
+    }
+
+    .footer-text{
+      color:#aeb4c0;
+
+      max-width:420px;
+
+      font-size:14px;
+    }
+
+    .footer-col h4{
+      margin-bottom:12px;
+
+      font-size:15px;
+    }
+
+    .footer-col a{
+      display:block;
+
+      color:#b8bdc8;
+
+      margin-bottom:8px;
+
+      font-size:14px;
+    }
+
+    .footer-col a:hover{
+      color:white;
+    }
+
+    .copyright{
+      border-top:
+        1px solid rgba(255,255,255,.09);
+
+      padding:17px 0;
+
+      color:#9ea5b2;
+
+      font-size:13px;
+
+      text-align:center;
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:1050px){
+
+      .tool-grid{
+        grid-template-columns:
+          repeat(3,1fr);
+      }
+
+      .my-tools-grid{
+        grid-template-columns:
+          repeat(3,1fr);
+      }
+
+    }
+
+
+    @media(max-width:800px){
+
+      .nav-link{
+        display:none;
+      }
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .tool-grid{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .my-tools-grid{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .footer-inner{
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+    }
+
+
+    @media(max-width:520px){
+
+      .hero{
+        padding-top:50px;
+      }
+
+      .hero h1{
+        font-size:38px;
+      }
+
+      .tool-grid,
+      .my-tools-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner{
+        grid-template-columns:1fr;
+      }
+
+      .section-head{
+        display:block;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+
+    <div class="container nav">
+
+      <a
+        href="index.html"
+        class="brand"
+      >
+
+        <img
+          src="smarttools-logo-transparent.png"
+          alt="SmartTools logo"
+          onerror="this.style.display='none'"
+        >
+
+        <span>
+          SmartTools
+        </span>
+
+      </a>
+
+
+      <div class="nav-right">
+
+        <a
+          href="index.html"
+          class="nav-link"
+        >
+          Home
+        </a>
+
+
+        <a
+          href="about.html"
+          class="nav-link"
+        >
+          About
+        </a>
+
+
+        <a
+          href="contact.html"
+          class="nav-link"
+        >
+          Contact
+        </a>
+
+
+        <button
+          id="themeBtn"
+          class="theme-btn"
+          onclick="toggleTheme()"
+          title="Toggle dark mode"
+        >
+          🌙
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <div class="tag">
+        ⚡ SmartTools Dashboard
+      </div>
+
+
+      <h1>
+        All Your Tools in One Place
+      </h1>
+
+
+      <p>
+        Search, save and quickly access calculators, converters, productivity
+        and security tools.
+      </p>
+
+
+      <div class="search-wrap">
+
+        <span class="search-icon">
+          🔎
+        </span>
+
+        <input
+          type="search"
+          id="searchInput"
+          class="search-box"
+          placeholder="Search tools... e.g. EMI, BMI, GST, password"
+          autocomplete="off"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= STATS ================= -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="stats">
+
+        <div class="stat-card">
+
+          <strong id="toolCount">
+            0
+          </strong>
+
+          <span>
+            Available Tools
+          </span>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <strong id="favoriteCount">
+            0
+          </strong>
+
+          <span>
+            My Favorite Tools
+          </span>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <strong id="recentCount">
+            0
+          </strong>
+
+          <span>
+            Recently Used
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= DASHBOARD ================= -->
+
+  <main class="dashboard">
+
+    <div class="container">
+
+
+      <!-- ================= MY TOOLS ================= -->
+
+      <section class="my-tools">
+
+        <div class="section-head">
+
+          <div>
+
+            <h2>
+              ⭐ My Tools
+            </h2>
+
+            <p>
+              Your favorite tools appear here.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="myToolsGrid"
+          class="my-tools-grid"
+        ></div>
+
+
+        <div
+          id="emptyMyTools"
+          class="empty-my-tools"
+        >
+
+          <strong>
+            No favorite tools yet
+          </strong>
+
+          <span>
+            Click ☆ on any tool to add it to My Tools.
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= EXPLORE ================= -->
+
+      <section>
+
+        <div class="section-head">
+
+          <div>
+
+            <h2>
+              Explore Tools
+            </h2>
+
+            <p>
+              Choose a category or search for a tool.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Categories -->
+
+        <div class="category-tabs">
+
+          <button
+            class="category-btn active"
+            data-category="all"
+          >
+            All Tools
+          </button>
+
+
+          <button
+            class="category-btn"
+            data-category="Finance"
+          >
+            💰 Finance
+          </button>
+
+
+          <button
+            class="category-btn"
+            data-category="Math"
+          >
+            🔢 Math
+          </button>
+
+
+          <button
+            class="category-btn"
+            data-category="Converters"
+          >
+            🔄 Converters
+          </button>
+
+
+          <button
+            class="category-btn"
+            data-category="Text"
+          >
+            📝 Text
+          </button>
+
+
+          <button
+            class="category-btn"
+            data-category="Time"
+          >
+            ⏱️ Date & Time
+          </button>
+
+
+          <button
+            class="category-btn"
+            data-category="Health"
+          >
+            ❤️ Health
+          </button>
+
+
+          <button
+            class="category-btn"
+            data-category="Security"
+          >
+            🔐 Security
+          </button>
+
+        </div>
+
+
+        <!-- Tool Grid -->
+
+        <div
+          id="toolGrid"
+          class="tool-grid"
+        ></div>
+
+
+        <div
+          id="noResults"
+          class="no-results"
+        >
+
+          <strong>
+            No tools found
+          </strong>
+
+          <span>
+            Try another keyword or category.
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= RECENT ================= -->
+
+      <section
+        id="recentTools"
+        class="recent-tools"
+      >
+
+        <div class="section-head">
+
+          <div>
+
+            <h2>
+              🕘 Recently Used
+            </h2>
+
+            <p>
+              Quickly reopen tools you used recently.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="recentScroll"
+          class="recent-scroll"
+        ></div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+
+      <div>
+
+        <div class="footer-brand">
+          SmartTools
+        </div>
+
+        <p class="footer-text">
+          Free online calculators and productivity tools designed to make
+          everyday tasks simpler and faster.
+        </p>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>
+          Quick Links
+        </h4>
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>
+          Legal
+        </h4>
+
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms.html">
+          Terms & Conditions
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 SmartTools. All rights reserved.
+    </div>
+
+  </footer>
+
+
+  <script>
+
+
+    /* =====================================================
+       TOOL DATABASE
+    ===================================================== */
+
+    const tools = [
+
+      /* ================= FINANCE ================= */
+
+      {
+        name:"EMI Calculator",
+        file:"emi-calculator.html",
+        category:"Finance",
+        icon:"💳",
+        description:"Calculate monthly EMI, total interest and total payment."
+      },
+
+      {
+        name:"GST Calculator",
+        file:"gst-calculator.html",
+        category:"Finance",
+        icon:"🧾",
+        description:"Calculate GST amount and tax-inclusive or exclusive price."
+      },
+
+      {
+        name:"SIP Calculator",
+        file:"sip-calculator.html",
+        category:"Finance",
+        icon:"📈",
+        description:"Estimate SIP investment growth and expected returns."
+      },
+
+      {
+        name:"Loan Calculator",
+        file:"loan-calculator.html",
+        category:"Finance",
+        icon:"🏦",
+        description:"Estimate loan payment, interest and total repayment."
+      },
+
+      {
+        name:"Discount Calculator",
+        file:"discount-calculator.html",
+        category:"Finance",
+        icon:"🏷️",
+        description:"Calculate discount amount and final selling price."
+      },
+
+      {
+        name:"Compound Interest Calculator",
+        file:"compound-interest-calculator.html",
+        category:"Finance",
+        icon:"💹",
+        description:"Calculate compound interest and final investment value."
+      },
+
+      {
+        name:"Simple Interest Calculator",
+        file:"simple-interest-calculator.html",
+        category:"Finance",
+        icon:"💵",
+        description:"Calculate simple interest and total amount."
+      },
+
+      {
+        name:"Salary Breakdown Calculator",
+        file:"salary-breakdown-calculator.html",
+        category:"Finance",
+        icon:"💼",
+        description:"Estimate salary components, deductions and monthly in-hand."
+      },
+
+      {
+        name:"Tip Calculator",
+        file:"tip-calculator.html",
+        category:"Finance",
+        icon:"💰",
+        description:"Calculate tip, total bill and amount per person."
+      },
+
+      {
+        name:"Bill Split Calculator",
+        file:"bill-split-calculator.html",
+        category:"Finance",
+        icon:"🧮",
+        description:"Split a bill between multiple people with optional tip."
+      },
+
+      {
+        name:"Fuel Cost Calculator",
+        file:"fuel-cost-calculator.html",
+        category:"Finance",
+        icon:"⛽",
+        description:"Estimate fuel consumption and trip fuel cost."
+      },
+
+
+      /* ================= MATH ================= */
+
+      {
+        name:"Percentage Calculator",
+        file:"percentage-calculator.html",
+        category:"Math",
+        icon:"％",
+        description:"Calculate percentages, increase, decrease and differences."
+      },
+
+      {
+        name:"Average Calculator",
+        file:"average-calculator.html",
+        category:"Math",
+        icon:"📊",
+        description:"Find average, sum, count, minimum and maximum."
+      },
+
+      {
+        name:"Ratio Simplifier",
+        file:"ratio-simplifier.html",
+        category:"Math",
+        icon:"🔢",
+        description:"Simplify ratios using the greatest common factor."
+      },
+
+      {
+        name:"Fraction Calculator",
+        file:"fraction-calculator.html",
+        category:"Math",
+        icon:"➗",
+        description:"Add, subtract, multiply and divide fractions."
+      },
+
+      {
+        name:"Speed Distance Time",
+        file:"speed-distance-time-calculator.html",
+        category:"Math",
+        icon:"🚗",
+        description:"Calculate speed, distance or travel time."
+      },
+
+
+      /* ================= HEALTH ================= */
+
+      {
+        name:"BMI Calculator",
+        file:"bmi-calculator.html",
+        category:"Health",
+        icon:"⚖️",
+        description:"Calculate BMI using height and weight."
+      },
+
+
+      /* ================= CONVERTERS ================= */
+
+      {
+        name:"Length Converter",
+        file:"length-converter.html",
+        category:"Converters",
+        icon:"📏",
+        description:"Convert kilometers, meters, miles, feet and inches."
+      },
+
+      {
+        name:"Weight Converter",
+        file:"weight-converter.html",
+        category:"Converters",
+        icon:"⚖️",
+        description:"Convert kilograms, grams, tonnes, pounds and ounces."
+      },
+
+      {
+        name:"Temperature Converter",
+        file:"temperature-converter.html",
+        category:"Converters",
+        icon:"🌡️",
+        description:"Convert Celsius, Fahrenheit and Kelvin."
+      },
+
+      {
+        name:"Data Storage Converter",
+        file:"data-storage-converter.html",
+        category:"Converters",
+        icon:"💾",
+        description:"Convert bits, bytes, KB, MB, GB, TB and PB."
+      },
+
+      {
+        name:"KM to Miles",
+        file:"km-to-miles.html",
+        category:"Converters",
+        icon:"🛣️",
+        description:"Convert kilometers to miles and miles to kilometers."
+      },
+
+
+      /* ================= TIME ================= */
+
+      {
+        name:"Age Calculator",
+        file:"age-calculator.html",
+        category:"Time",
+        icon:"🎂",
+        description:"Calculate age from date of birth."
+      },
+
+      {
+        name:"Date Difference Calculator",
+        file:"date-difference-calculator.html",
+        category:"Time",
+        icon:"📅",
+        description:"Calculate days, weeks, months and years between dates."
+      },
+
+      {
+        name:"Time Duration Calculator",
+        file:"time-duration-calculator.html",
+        category:"Time",
+        icon:"⏱️",
+        description:"Calculate the duration between two times."
+      },
+
+      {
+        name:"Pace Calculator",
+        file:"pace-calculator.html",
+        category:"Time",
+        icon:"🏃",
+        description:"Calculate running pace, speed and time."
+      },
+
+
+      /* ================= TEXT ================= */
+
+      {
+        name:"Word Counter",
+        file:"word-counter.html",
+        category:"Text",
+        icon:"📝",
+        description:"Count words, characters and text statistics."
+      },
+
+      {
+        name:"Character Counter",
+        file:"character-counter.html",
+        category:"Text",
+        icon:"🔤",
+        description:"Count characters in your text instantly."
+      },
+
+      {
+        name:"Case Converter",
+        file:"case-converter.html",
+        category:"Text",
+        icon:"Aa",
+        description:"Convert text to uppercase, lowercase and other cases."
+      },
+
+      {
+        name:"Remove Duplicate Lines",
+        file:"remove-duplicate-lines.html",
+        category:"Text",
+        icon:"🧹",
+        description:"Remove duplicate lines from text quickly."
+      },
+
+
+      /* ================= SECURITY ================= */
+
+      {
+        name:"Password Generator",
+        file:"password-generator.html",
+        category:"Security",
+        icon:"🔐",
+        description:"Generate strong random passwords with customizable options."
+      }
+
+    ];
+
+
+    /* =====================================================
+       STATE
+    ===================================================== */
+
+    let favorites =
+      JSON.parse(
+        localStorage.getItem(
+          "smarttools-favorites"
+        ) || "[]"
+      );
+
+
+    let recent =
+      JSON.parse(
+        localStorage.getItem(
+          "smarttools-recent"
+        ) || "[]"
+      );
+
+
+    let activeCategory =
+      "all";
+
+
+    /* =====================================================
+       RENDER TOOLS
+    ===================================================== */
+
+    function renderTools(){
+
+      const grid =
+        document.getElementById(
+          "toolGrid"
+        );
+
+
+      const noResults =
+        document.getElementById(
+          "noResults"
+        );
+
+
+      const search =
+        document.getElementById(
+          "searchInput"
+        )
+        .value
+        .trim()
+        .toLowerCase();
+
+
+      grid.innerHTML = "";
+
+
+      const filtered =
+        tools.filter(
+          function(tool){
+
+            const matchesCategory =
+              activeCategory === "all" ||
+              tool.category === activeCategory;
+
+
+            const searchText =
+              (
+                tool.name +
+                " " +
+                tool.category +
+                " " +
+                tool.description
+              )
+              .toLowerCase();
+
+
+            const matchesSearch =
+              searchText.includes(
+                search
+              );
+
+
+            return (
+              matchesCategory &&
+              matchesSearch
+            );
+
+          }
+        );
+
+
+      if(
+        filtered.length === 0
+      ){
+
+        noResults.classList.add(
+          "show"
+        );
+
+        return;
+
+      }
+
+
+      noResults.classList.remove(
+        "show"
+      );
+
+
+      filtered.forEach(
+        function(tool){
+
+          const isFavorite =
+            favorites.includes(
+              tool.file
+            );
+
+
+          const card =
+            document.createElement(
+              "div"
+            );
+
+
+          card.className =
+            "tool-card";
+
+
+          card.innerHTML = `
+
+            <button
+              class="favorite-btn ${
+                isFavorite
+                  ? "active"
+                  : ""
+              }"
+              onclick="
+                toggleFavorite(
+                  '${tool.file}'
+                )
+              "
+              title="Favorite tool"
+              aria-label="Favorite ${tool.name}"
+            >
+              ${
+                isFavorite
+                  ? "★"
+                  : "☆"
+              }
+            </button>
+
+
+            <div class="tool-icon">
+              ${tool.icon}
+            </div>
+
+
+            <div class="tool-title">
+              ${tool.name}
+            </div>
+
+
+            <div class="tool-description">
+              ${tool.description}
+            </div>
+
+
+            <div class="category-label">
+              ${tool.category}
+            </div>
+
+
+            <div class="tool-bottom">
+
+              <button
+                class="open-btn"
+                onclick="
+                  openTool(
+                    '${tool.file}'
+                  )
+                "
+              >
+                Open Tool →
+              </button>
+
+            </div>
+
+          `;
+
+
+          grid.appendChild(
+            card
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       FAVORITE
+    ===================================================== */
+
+    function toggleFavorite(file){
+
+      if(
+        favorites.includes(file)
+      ){
+
+        favorites =
+          favorites.filter(
+            function(item){
+
+              return item !== file;
+
+            }
+          );
+
+      }
+      else{
+
+        favorites.push(
+          file
+        );
+
+      }
+
+
+      localStorage.setItem(
+        "smarttools-favorites",
+        JSON.stringify(
+          favorites
+        )
+      );
+
+
+      renderTools();
+
+      renderMyTools();
+
+      updateStats();
+
+    }
+
+
+    /* =====================================================
+       MY TOOLS
+    ===================================================== */
+
+    function renderMyTools(){
+
+      const grid =
+        document.getElementById(
+          "myToolsGrid"
+        );
+
+
+      const empty =
+        document.getElementById(
+          "emptyMyTools"
+        );
+
+
+      grid.innerHTML = "";
+
+
+      const favoriteTools =
+        favorites
+          .map(
+            function(file){
+
+              return tools.find(
+                function(tool){
+
+                  return tool.file === file;
+
+                }
+              );
+
+            }
+          )
+          .filter(Boolean);
+
+
+      if(
+        favoriteTools.length === 0
+      ){
+
+        empty.style.display =
+          "block";
+
+        return;
+
+      }
+
+
+      empty.style.display =
+        "none";
+
+
+      favoriteTools.forEach(
+        function(tool){
+
+          const card =
+            document.createElement(
+              "div"
+            );
+
+
+          card.className =
+            "mini-card";
+
+
+          card.onclick =
+            function(){
+
+              openTool(
+                tool.file
+              );
+
+            };
+
+
+          card.innerHTML = `
+
+            <div class="mini-star">
+              ★
+            </div>
+
+            <div class="mini-icon">
+              ${tool.icon}
+            </div>
+
+            <h3>
+              ${tool.name}
+            </h3>
+
+            <p>
+              ${tool.category}
+            </p>
+
+          `;
+
+
+          grid.appendChild(
+            card
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       OPEN TOOL
+    ===================================================== */
+
+    function openTool(file){
+
+      const existingIndex =
+        recent.indexOf(
+          file
+        );
+
+
+      if(
+        existingIndex !== -1
+      ){
+
+        recent.splice(
+          existingIndex,
+          1
+        );
+
+      }
+
+
+      recent.unshift(
+        file
+      );
+
+
+      recent =
+        recent.slice(
+          0,
+          8
+        );
+
+
+      localStorage.setItem(
+        "smarttools-recent",
+        JSON.stringify(
+          recent
+        )
+      );
+
+
+      updateRecent();
+
+      updateStats();
+
+
+      window.location.href =
+        file;
+
+    }
+
+
+    /* =====================================================
+       RECENT TOOLS
+    ===================================================== */
+
+    function updateRecent(){
+
+      const section =
+        document.getElementById(
+          "recentTools"
+        );
+
+
+      const scroll =
+        document.getElementById(
+          "recentScroll"
+        );
+
+
+      scroll.innerHTML = "";
+
+
+      const recentTools =
+        recent
+          .map(
+            function(file){
+
+              return tools.find(
+                function(tool){
+
+                  return tool.file === file;
+
+                }
+              );
+
+            }
+          )
+          .filter(Boolean);
+
+
+      if(
+        recentTools.length === 0
+      ){
+
+        section.classList.remove(
+          "show"
+        );
+
+        return;
+
+      }
+
+
+      section.classList.add(
+        "show"
+      );
+
+
+      recentTools.forEach(
+        function(tool){
+
+          const card =
+            document.createElement(
+              "div"
+            );
+
+
+          card.className =
+            "recent-card";
+
+
+          card.onclick =
+            function(){
+
+              openTool(
+                tool.file
+              );
+
+            };
+
+
+          card.innerHTML = `
+
+            <strong>
+              ${tool.icon}
+              ${tool.name}
+            </strong>
+
+            <span>
+              ${tool.category}
+            </span>
+
+          `;
+
+
+          scroll.appendChild(
+            card
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       STATS
+    ===================================================== */
+
+    function updateStats(){
+
+      document.getElementById(
+        "toolCount"
+      ).textContent =
+        tools.length;
+
+
+      document.getElementById(
+        "favoriteCount"
+      ).textContent =
+        favorites.length;
+
+
+      document.getElementById(
+        "recentCount"
+      ).textContent =
+        recent.length;
+
+    }
+
+
+    /* =====================================================
+       CATEGORY FILTER
+    ===================================================== */
+
+    document.querySelectorAll(
+      ".category-btn"
+    ).forEach(
+      function(button){
+
+        button.addEventListener(
+          "click",
+          function(){
+
+            document.querySelectorAll(
+              ".category-btn"
+            ).forEach(
+              function(btn){
+
+                btn.classList.remove(
+                  "active"
+                );
+
+              }
+            );
+
+
+            button.classList.add(
+              "active"
+            );
+
+
+            activeCategory =
+              button.dataset.category;
+
+
+            renderTools();
+
+          }
+        );
+
+      }
+    );
+
+
+    /* =====================================================
+       SEARCH
+    ===================================================== */
+
+    document.getElementById(
+      "searchInput"
+    ).addEventListener(
+      "input",
+      function(){
+
+        renderTools();
+
+      }
+    );
+
+
+    /* =====================================================
+       DARK MODE
+    ===================================================== */
+
+    function toggleTheme(){
+
+      document.body.classList.toggle(
+        "dark"
+      );
+
+
+      const dark =
+        document.body.classList.contains(
+          "dark"
+        );
+
+
+      localStorage.setItem(
+        "smarttools-dark-mode",
+        dark
+          ? "1"
+          : "0"
+      );
+
+
+      document.getElementById(
+        "themeBtn"
+      ).textContent =
+        dark
+          ? "☀️"
+          : "🌙";
+
+    }
+
+
+    function loadTheme(){
+
+      const dark =
+        localStorage.getItem(
+          "smarttools-dark-mode"
+        ) === "1";
+
+
+      if(dark){
+
+        document.body.classList.add(
+          "dark"
+        );
+
+
+        document.getElementById(
+          "themeBtn"
+        ).textContent =
+          "☀️";
+
+      }
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE
+    ===================================================== */
+
+    loadTheme();
+
+    renderTools();
+
+    renderMyTools();
+
+    updateRecent();
+
+    updateStats();
+
+  </script>
+
+</body>
+</html>

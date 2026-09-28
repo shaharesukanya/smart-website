@@ -1,71 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/about.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/age-calculator.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/case-converter.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/character-counter.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/contact.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/discount-calculator.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/emi-calculator.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/gst-calculator.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/km-to-miles.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/loan-calculator.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/percentage-calculator.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/privacy-policy.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/remove-duplicate-lines.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/sip-calculator.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/terms.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
-    <url>
-        <loc>https://shaharesukanya.github.io/smart-website/word-counter.html</loc>
-        <lastmod>2026-09-27</lastmod>
-    </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/smarttools-dashboard.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/emi-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/gst-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/sip-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/loan-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/discount-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/percentage-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/age-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/km-to-miles.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/word-counter.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/character-counter.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/case-converter.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/remove-duplicate-lines.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/bmi-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/compound-interest-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/simple-interest-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/salary-breakdown-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/tip-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/bill-split-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/fuel-cost-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/pace-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/speed-distance-time-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/average-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/ratio-simplifier.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/fraction-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/length-converter.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/weight-converter.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/temperature-converter.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/data-storage-converter.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/date-difference-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/time-duration-calculator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/password-generator.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/text-sorter.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/about.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/contact.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/privacy-policy.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://shaharesukanya.github.io/smart-website/terms.html</loc>
+    <lastmod>2026-09-28</lastmod>
+  </url>
+
 </urlset>

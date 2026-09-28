@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Weight Converter - kg, g, mg, Tonne, Pound & Ounce | SmartTools</title>
+
+  <meta
+    name="description"
+    content="Free online weight converter. Convert kilograms, grams, milligrams, tonnes, pounds and ounces instantly with SmartTools."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://shaharesukanya.github.io/smart-website/weight-converter.html"
+  >
+
+  <meta property="og:title" content="Weight Converter - SmartTools">
+
+  <meta
+    property="og:description"
+    content="Convert weight and mass between kilograms, grams, milligrams, tonnes, pounds and ounces."
+  >
+
+  <meta
+    property="og:url"
+    content="https://shaharesukanya.github.io/smart-website/weight-converter.html"
+  >
+
+  <meta property="og:type" content="website">
+
+  <style>
+    :root{
+      --primary:#5b5ff5;
+      --primary-dark:#4549d8;
+      --text:#16181d;
+      --muted:#667085;
+      --border:#e7e9ef;
+      --bg:#f6f7fb;
+      --white:#ffffff;
+      --soft:#f7f8ff;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1120px,92%);
+      margin:auto;
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:22px;
+      font-weight:800;
+    }
+
+    .brand img{
+      width:42px;
+      height:42px;
+      object-fit:contain;
+      border-radius:10px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .nav-links a{
+      color:#4b5565;
+      transition:.2s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+    }
+
+    /* Hero */
+    .hero{
+      padding:76px 0 42px;
+      text-align:center;
+      background:
+        radial-gradient(circle at top left, rgba(91,95,245,.10), transparent 30%),
+        radial-gradient(circle at top right, rgba(91,95,245,.08), transparent 28%);
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border:1px solid #dfe2ff;
+      background:#f1f2ff;
+      color:var(--primary-dark);
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-size:clamp(34px,5vw,56px);
+      line-height:1.08;
+      letter-spacing:-1.5px;
+      margin-bottom:18px;
+    }
+
+    .hero p{
+      max-width:760px;
+      margin:auto;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    /* Converter */
+    .converter-wrap{
+      padding:24px 0 70px;
+    }
+
+    .converter-card{
+      max-width:850px;
+      margin:auto;
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:34px;
+      box-shadow:0 18px 50px rgba(20,24,40,.08);
+    }
+
+    .converter-card h2{
+      text-align:center;
+      font-size:26px;
+      margin-bottom:8px;
+    }
+
+    .converter-subtitle{
+      text-align:center;
+      color:var(--muted);
+      margin-bottom:28px;
+    }
+
+    .field-group{
+      margin-bottom:20px;
+    }
+
+    .field-group label{
+      display:block;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    input,
+    select{
+      width:100%;
+      padding:15px 16px;
+      border:1px solid #d9dde7;
+      border-radius:14px;
+      font-size:16px;
+      background:white;
+      outline:none;
+      transition:.2s ease;
+    }
+
+    input:focus,
+    select:focus{
+      border-color:var(--primary);
+      box-shadow:0 0 0 4px rgba(91,95,245,.10);
+    }
+
+    select{
+      cursor:pointer;
+    }
+
+    .input-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .swap-btn{
+      width:52px;
+      height:52px;
+      display:grid;
+      place-items:center;
+      margin:18px auto;
+      border:1px solid #dfe2ff;
+      background:var(--soft);
+      color:var(--primary);
+      border-radius:50%;
+      cursor:pointer;
+      font-size:22px;
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .swap-btn:hover{
+      background:#eceeff;
+      transform:rotate(180deg);
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .btn{
+      flex:1;
+      border:none;
+      cursor:pointer;
+      padding:14px 18px;
+      border-radius:14px;
+      font-size:15px;
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:var(--primary);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:var(--primary-dark);
+      transform:translateY(-1px);
+    }
+
+    .btn-secondary{
+      background:#eef0f5;
+      color:#30343d;
+    }
+
+    .btn-secondary:hover{
+      background:#e4e7ee;
+    }
+
+    /* Result */
+    .result{
+      display:none;
+      margin-top:26px;
+      padding:26px;
+      background:var(--soft);
+      border:1px solid #e1e4ff;
+      border-radius:18px;
+    }
+
+    .result.show{
+      display:block;
+    }
+
+    .result-title{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.7px;
+      margin-bottom:7px;
+    }
+
+    .result-value{
+      text-align:center;
+      color:var(--primary-dark);
+      font-size:40px;
+      font-weight:900;
+      line-height:1.2;
+      word-break:break-word;
+    }
+
+    .result-unit{
+      text-align:center;
+      margin-top:4px;
+      color:#525967;
+      font-weight:700;
+    }
+
+    .conversion-line{
+      margin-top:18px;
+      padding:15px;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:13px;
+      text-align:center;
+      color:#4f5663;
+      font-size:14px;
+    }
+
+    .error{
+      display:none;
+      margin-top:15px;
+      color:#c62828;
+      font-size:14px;
+      text-align:center;
+      font-weight:700;
+    }
+
+    .error.show{
+      display:block;
+    }
+
+    /* Information */
+    section.content-section{
+      padding:70px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      max-width:780px;
+      margin:0 auto 36px;
+    }
+
+    .section-title h2{
+      font-size:34px;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:var(--muted);
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .info-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:28px;
+    }
+
+    .info-card h3{
+      font-size:21px;
+      margin-bottom:12px;
+    }
+
+    .info-card p{
+      color:#596273;
+      margin-bottom:12px;
+    }
+
+    .formula{
+      margin-top:16px;
+      padding:16px;
+      border-radius:14px;
+      background:#f3f4f8;
+      text-align:center;
+      font-weight:800;
+      font-size:17px;
+    }
+
+    .example{
+      margin-top:12px;
+      padding:16px;
+      border-left:4px solid var(--primary);
+      background:#fafbff;
+      border-radius:10px;
+    }
+
+    /* Units */
+    .unit-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .unit-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:22px;
+      text-align:center;
+    }
+
+    .unit-card strong{
+      display:block;
+      color:var(--primary-dark);
+      font-size:21px;
+      margin-bottom:6px;
+    }
+
+    .unit-card span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* FAQ */
+    .faq-list{
+      max-width:820px;
+      margin:auto;
+    }
+
+    .faq-item{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:16px;
+      margin-bottom:12px;
+      overflow:hidden;
+    }
+
+    .faq-question{
+      width:100%;
+      border:none;
+      background:white;
+      padding:20px;
+      text-align:left;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      font-size:16px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .faq-answer{
+      display:none;
+      padding:0 20px 20px;
+      color:var(--muted);
+    }
+
+    .faq-item.active .faq-answer{
+      display:block;
+    }
+
+    .faq-icon{
+      font-size:22px;
+      color:var(--primary);
+      flex-shrink:0;
+    }
+
+    /* Related */
+    .related-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .related-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:20px;
+      transition:.2s ease;
+    }
+
+    .related-card:hover{
+      transform:translateY(-3px);
+      border-color:#cfd2ff;
+      box-shadow:0 12px 28px rgba(20,24,40,.07);
+    }
+
+    .related-card h3{
+      font-size:17px;
+      margin-bottom:6px;
+    }
+
+    .related-card p{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Disclaimer */
+    .disclaimer{
+      max-width:900px;
+      margin:auto;
+      padding:20px;
+      background:#fffdf3;
+      border:1px solid #f0e6bb;
+      border-radius:16px;
+      color:#665d38;
+      font-size:14px;
+    }
+
+    /* Footer */
+    footer{
+      background:#17191f;
+      color:white;
+      margin-top:40px;
+    }
+
+    .footer-inner{
+      padding:44px 0 24px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      gap:30px;
+    }
+
+    .footer-brand{
+      font-size:23px;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .footer-text{
+      color:#aeb4c0;
+      max-width:420px;
+      font-size:14px;
+    }
+
+    .footer-col h4{
+      margin-bottom:12px;
+      font-size:15px;
+    }
+
+    .footer-col a{
+      display:block;
+      color:#b8bdc8;
+      margin-bottom:8px;
+      font-size:14px;
+    }
+
+    .footer-col a:hover{
+      color:white;
+    }
+
+    .copyright{
+      border-top:1px solid rgba(255,255,255,.09);
+      padding:18px 0;
+      color:#9ea5b2;
+      font-size:13px;
+      text-align:center;
+    }
+
+    @media (max-width:800px){
+
+      .nav-links{
+        display:none;
+      }
+
+      .input-row{
+        grid-template-columns:1fr;
+      }
+
+      .content-grid{
+        grid-template-columns:1fr;
+      }
+
+      .unit-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .related-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-inner{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width:520px){
+
+      .hero{
+        padding-top:54px;
+      }
+
+      .converter-card{
+        padding:22px;
+        border-radius:18px;
+      }
+
+      .actions{
+        flex-direction:column;
+      }
+
+      .unit-grid,
+      .related-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner{
+        grid-template-columns:1fr;
+      }
+
+      .result-value{
+        font-size:34px;
+      }
+    }
+  </style>
+
+  <!-- SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Weight Converter",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"Web",
+    "description":"Free online weight and mass converter for kilograms, grams, milligrams, tonnes, pounds and ounces.",
+    "url":"https://shaharesukanya.github.io/smart-website/weight-converter.html",
+    "offers":{
+      "@type":"Offer",
+      "price":"0",
+      "priceCurrency":"USD"
+    }
+  }
+  </script>
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "name":"Home",
+        "item":"https://shaharesukanya.github.io/smart-website/"
+      },
+      {
+        "@type":"ListItem",
+        "position":2,
+        "name":"Weight Converter",
+        "item":"https://shaharesukanya.github.io/smart-website/weight-converter.html"
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+
+    <div class="container nav">
+
+      <a href="index.html" class="brand">
+
+        <img
+          src="smarttools-logo-transparent.png"
+          alt="SmartTools logo"
+          onerror="this.style.display='none'"
+        >
+
+        <span>SmartTools</span>
+
+      </a>
+
+      <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="index.html#tools">All Tools</a>
+
+        <a href="index.html#guides">Guides</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- Main -->
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="tag">
+          ⚖️ Converter Tool
+        </div>
+
+        <h1>
+          Weight Converter
+        </h1>
+
+        <p>
+          Convert kilograms, grams, milligrams, tonnes, pounds and ounces
+          quickly and accurately.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Converter -->
+    <section class="converter-wrap">
+
+      <div class="container">
+
+        <div class="converter-card">
+
+          <h2>
+            Convert Weight
+          </h2>
+
+          <p class="converter-subtitle">
+            Enter a value and select the units you want to convert between.
+          </p>
+
+
+          <div class="field-group">
+
+            <label for="value">
+              Value
+            </label>
+
+            <input
+              type="number"
+              id="value"
+              step="any"
+              placeholder="Enter a value, e.g. 5"
+            >
+
+          </div>
+
+
+          <div class="input-row">
+
+            <div class="field-group">
+
+              <label for="fromUnit">
+                From
+              </label>
+
+              <select id="fromUnit">
+
+                <option value="kg">
+                  Kilogram (kg)
+                </option>
+
+                <option value="g">
+                  Gram (g)
+                </option>
+
+                <option value="mg">
+                  Milligram (mg)
+                </option>
+
+                <option value="tonne">
+                  Tonne (t)
+                </option>
+
+                <option value="lb">
+                  Pound (lb)
+                </option>
+
+                <option value="oz">
+                  Ounce (oz)
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="field-group">
+
+              <label for="toUnit">
+                To
+              </label>
+
+              <select id="toUnit">
+
+                <option value="g">
+                  Gram (g)
+                </option>
+
+                <option value="kg">
+                  Kilogram (kg)
+                </option>
+
+                <option value="mg">
+                  Milligram (mg)
+                </option>
+
+                <option value="tonne">
+                  Tonne (t)
+                </option>
+
+                <option value="lb">
+                  Pound (lb)
+                </option>
+
+                <option value="oz">
+                  Ounce (oz)
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <!-- Swap -->
+          <button
+            class="swap-btn"
+            onclick="swapUnits()"
+            title="Swap units"
+          >
+            ⇄
+          </button>
+
+
+          <div class="actions">
+
+            <button
+              class="btn btn-primary"
+              onclick="convertWeight()"
+            >
+              Convert Weight
+            </button>
+
+            <button
+              class="btn btn-secondary"
+              onclick="resetCalculator()"
+            >
+              Reset
+            </button>
+
+          </div>
+
+
+          <div id="error" class="error"></div>
+
+
+          <!-- Result -->
+          <div id="result" class="result">
+
+            <div class="result-title">
+              Converted Result
+            </div>
+
+            <div
+              id="resultValue"
+              class="result-value"
+            >
+              --
+            </div>
+
+            <div
+              id="resultUnit"
+              class="result-unit"
+            >
+              --
+            </div>
+
+            <div
+              id="conversionLine"
+              class="conversion-line"
+            >
+              --
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Supported Units -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>
+            Supported Weight Units
+          </h2>
+
+          <p>
+            Convert between common metric and imperial weight units.
+          </p>
+
+        </div>
+
+        <div class="unit-grid">
+
+          <div class="unit-card">
+            <strong>kg</strong>
+            <span>Kilogram</span>
+          </div>
+
+          <div class="unit-card">
+            <strong>g</strong>
+            <span>Gram</span>
+          </div>
+
+          <div class="unit-card">
+            <strong>mg</strong>
+            <span>Milligram</span>
+          </div>
+
+          <div class="unit-card">
+            <strong>t</strong>
+            <span>Tonne</span>
+          </div>
+
+          <div class="unit-card">
+            <strong>lb</strong>
+            <span>Pound</span>
+          </div>
+
+          <div class="unit-card">
+            <strong>oz</strong>
+            <span>Ounce</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Conversion Basics -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>
+            Weight Conversion Basics
+          </h2>
+
+          <p>
+            SmartTools uses kilograms as the base unit for the conversions.
+          </p>
+
+        </div>
+
+        <div class="content-grid">
+
+          <div class="info-card">
+
+            <h3>
+              Metric Units
+            </h3>
+
+            <p>
+              Kilograms, grams, milligrams and tonnes are commonly used metric
+              units for measuring mass.
+            </p>
+
+            <div class="formula">
+              1 kg = 1,000 g
+            </div>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <h3>
+              Imperial Units
+            </h3>
+
+            <p>
+              Pounds and ounces are commonly used in imperial and US customary
+              measurements.
+            </p>
+
+            <div class="formula">
+              1 pound = 16 ounces
+            </div>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <h3>
+              Common Conversions
+            </h3>
+
+            <div class="example">
+
+              <strong>1 tonne = 1,000 kg</strong><br><br>
+
+              <strong>1 kg = 1,000 g</strong><br><br>
+
+              <strong>1 g = 1,000 mg</strong><br><br>
+
+              <strong>1 kg ≈ 2.20462 lb</strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <h3>
+              Example
+            </h3>
+
+            <p>
+              Suppose you have 5 kilograms and want to convert it to grams.
+            </p>
+
+            <div class="formula">
+              5 × 1,000 = 5,000 g
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- How To Use -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>
+            How to Use the Weight Converter
+          </h2>
+
+          <p>
+            Convert weight in a few simple steps.
+          </p>
+
+        </div>
+
+        <div class="content-grid">
+
+          <div class="info-card">
+
+            <h3>
+              Step 1 — Enter Value
+            </h3>
+
+            <p>
+              Enter the weight or mass value you want to convert.
+            </p>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <h3>
+              Step 2 — Select From Unit
+            </h3>
+
+            <p>
+              Choose the original unit such as kilogram, gram or pound.
+            </p>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <h3>
+              Step 3 — Select To Unit
+            </h3>
+
+            <p>
+              Choose the unit in which you want the final result.
+            </p>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <h3>
+              Step 4 — Convert
+            </h3>
+
+            <p>
+              Click Convert Weight to instantly see the calculated result.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>
+            Frequently Asked Questions
+          </h2>
+
+          <p>
+            Common questions about weight conversion.
+          </p>
+
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+              How many grams are in one kilogram?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              One kilogram is equal to 1,000 grams.
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+              How many milligrams are in one gram?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              One gram is equal to 1,000 milligrams.
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+              How many ounces are in a pound?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              One avoirdupois pound is equal to 16 ounces.
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+              Can I convert decimal weights?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              Yes. You can enter decimal values such as 2.5 kg or 10.75 lb.
+            </div>
+
+          </div>
+
+
+          <div class="faq-item">
+
+            <button
+              class="faq-question"
+              onclick="toggleFaq(this)"
+            >
+              Is tonne the same as metric ton?
+              <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+              Yes. A metric tonne is equal to 1,000 kilograms.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Related Tools -->
+    <section class="content-section">
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>
+            Related SmartTools
+          </h2>
+
+          <p>
+            Explore more calculators and conversion tools.
+          </p>
+
+        </div>
+
+        <div class="related-grid">
+
+          <a
+            href="length-converter.html"
+            class="related-card"
+          >
+            <h3>
+              Length Converter
+            </h3>
+
+            <p>
+              Convert km, meter, cm, mile, foot and inch.
+            </p>
+          </a>
+
+
+          <a
+            href="km-to-miles.html"
+            class="related-card"
+          >
+            <h3>
+              KM to Miles
+            </h3>
+
+            <p>
+              Convert kilometers to miles and miles to kilometers.
+            </p>
+          </a>
+
+
+          <a
+            href="pace-calculator.html"
+            class="related-card"
+          >
+            <h3>
+              Pace Calculator
+            </h3>
+
+            <p>
+              Calculate pace and average running speed.
+            </p>
+          </a>
+
+
+          <a
+            href="average-calculator.html"
+            class="related-card"
+          >
+            <h3>
+              Average Calculator
+            </h3>
+
+            <p>
+              Find average, sum, minimum and maximum.
+            </p>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Disclaimer -->
+    <section
+      class="content-section"
+      style="padding-top:0;"
+    >
+
+      <div class="container">
+
+        <div class="disclaimer">
+
+          <strong>Note:</strong>
+          Conversion results are calculated using standard weight and mass
+          conversion factors. For legal, scientific, commercial or
+          precision-critical work, verify the applicable measurement standard.
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+
+        <div class="footer-brand">
+          SmartTools
+        </div>
+
+        <p class="footer-text">
+          Free online calculators and productivity tools designed to make
+          everyday tasks simpler and faster.
+        </p>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>
+          Quick Links
+        </h4>
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>
+          Legal
+        </h4>
+
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms.html">
+          Terms & Conditions
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 SmartTools. All rights reserved.
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    /*
+      All conversion factors are relative to 1 kilogram.
+    */
+
+    const unitFactors = {
+
+      kg: 1,
+
+      g: 0.001,
+
+      mg: 0.000001,
+
+      tonne: 1000,
+
+      lb: 0.45359237,
+
+      oz: 0.028349523125
+
+    };
+
+
+    const unitNames = {
+
+      kg: "Kilograms (kg)",
+
+      g: "Grams (g)",
+
+      mg: "Milligrams (mg)",
+
+      tonne: "Tonnes (t)",
+
+      lb: "Pounds (lb)",
+
+      oz: "Ounces (oz)"
+
+    };
+
+
+    function formatNumber(value){
+
+      if (!Number.isFinite(value)) {
+        return "0";
+      }
+
+      return value.toLocaleString(
+        "en-IN",
+        {
+          maximumFractionDigits:8
+        }
+      );
+
+    }
+
+
+    function convertWeight(){
+
+      const value =
+        parseFloat(
+          document.getElementById("value").value
+        );
+
+      const fromUnit =
+        document.getElementById("fromUnit").value;
+
+      const toUnit =
+        document.getElementById("toUnit").value;
+
+      const error =
+        document.getElementById("error");
+
+      const result =
+        document.getElementById("result");
+
+
+      error.classList.remove("show");
+      result.classList.remove("show");
+
+
+      if (!Number.isFinite(value)){
+
+        error.textContent =
+          "Please enter a valid number.";
+
+        error.classList.add("show");
+
+        return;
+
+      }
+
+
+      /*
+        Step 1:
+        Convert source value to kilograms.
+      */
+
+      const valueInKg =
+        value * unitFactors[fromUnit];
+
+
+      /*
+        Step 2:
+        Convert kilograms to target unit.
+      */
+
+      const convertedValue =
+        valueInKg / unitFactors[toUnit];
+
+
+      if (!Number.isFinite(convertedValue)){
+
+        error.textContent =
+          "Unable to complete this conversion.";
+
+        error.classList.add("show");
+
+        return;
+
+      }
+
+
+      document.getElementById(
+        "resultValue"
+      ).textContent =
+        formatNumber(convertedValue);
+
+
+      document.getElementById(
+        "resultUnit"
+      ).textContent =
+        unitNames[toUnit];
+
+
+      document.getElementById(
+        "conversionLine"
+      ).textContent =
+        formatNumber(value) +
+        " " +
+        unitNames[fromUnit] +
+        " = " +
+        formatNumber(convertedValue) +
+        " " +
+        unitNames[toUnit];
+
+
+      result.classList.add("show");
+
+    }
+
+
+    function swapUnits(){
+
+      const from =
+        document.getElementById("fromUnit");
+
+      const to =
+        document.getElementById("toUnit");
+
+
+      const temp = from.value;
+
+      from.value = to.value;
+
+      to.value = temp;
+
+
+      if (
+        document.getElementById("value").value !== ""
+      ){
+
+        convertWeight();
+
+      }
+
+    }
+
+
+    function resetCalculator(){
+
+      document.getElementById("value").value = "";
+
+      document.getElementById("fromUnit").value = "kg";
+
+      document.getElementById("toUnit").value = "g";
+
+      document.getElementById("error")
+        .classList.remove("show");
+
+      document.getElementById("result")
+        .classList.remove("show");
+
+    }
+
+
+    function toggleFaq(button){
+
+      const item =
+        button.parentElement;
+
+      item.classList.toggle("active");
+
+
+      const icon =
+        button.querySelector(".faq-icon");
+
+
+      if (
+        item.classList.contains("active")
+      ){
+
+        icon.textContent = "−";
+
+      } else {
+
+        icon.textContent = "+";
+
+      }
+
+    }
+
+
+    /*
+      Enter key support
+    */
+
+    document.addEventListener(
+      "keydown",
+      function(event){
+
+        if (
+          event.key === "Enter"
+        ){
+
+          convertWeight();
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>

@@ -2,1146 +2,673 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Terms & Conditions | SmartTools</title>
+    <title>Terms of Use | SmartTools</title>
 
     <meta
         name="description"
-        content="Read the SmartTools Terms and Conditions for using our free online calculators, converters and productivity tools."
+        content="Read the SmartTools Terms of Use covering access, calculator results, website content, acceptable use, third-party links and limitations."
     >
 
-    <meta name="robots" content="index, follow">
+    <meta
+        name="robots"
+        content="index, follow"
+    >
 
-    <meta name="author" content="Sukanya Shahare">
+    <link
+        rel="canonical"
+        href="https://shaharesukanya.github.io/smart-website/terms.html"
+    >
 
-    <link rel="canonical" href="https://shaharesukanya.github.io/smart-website/terms.html">
+    <meta property="og:title" content="Terms of Use | SmartTools">
+
+    <meta
+        property="og:description"
+        content="Review the terms that apply when using SmartTools online calculators, converters and productivity tools."
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
 
     <style>
-
-        :root {
-            --primary: #5b5ff5;
-            --purple: #7b53f6;
-
-            --ink: #101828;
-            --muted: #667085;
-
-            --white: #ffffff;
-            --soft: #f7f8fc;
-
-            --border: #e7e9f0;
-
-            --dark: #101522;
-        }
-
-
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
-
 
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-            font-family:
-                Inter,
-                ui-sans-serif,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            color: var(--ink);
-            background: var(--soft);
-
-            line-height: 1.8;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f7fb;
+            color: #101828;
         }
 
-
         a {
-            color: inherit;
             text-decoration: none;
         }
 
+        /* =========================
+           HEADER
+        ========================= */
 
-        .container {
-            width: min(1080px, 92%);
-            margin: auto;
-        }
-
-
-        /* HEADER */
-
-        header {
+        .header {
             position: sticky;
             top: 0;
             z-index: 1000;
 
-            background:
-                rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.97);
 
-            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #e5e7eb;
 
-            border-bottom:
-                1px solid var(--border);
+            backdrop-filter: blur(12px);
         }
 
-
         .header-inner {
-            min-height: 76px;
+            max-width: 1180px;
+            margin: auto;
+
+            min-height: 84px;
+
+            padding: 0 22px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            gap: 25px;
         }
 
+        /* =========================
+           LOGO
+        ========================= */
 
-        .brand {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 11px;
+
+            gap: 12px;
+
+            color: #111827;
+
+            flex-shrink: 0;
         }
 
+        .logo-mark {
+            width: 44px;
+            height: 44px;
 
-        .brand-icon {
-            width: 42px;
-            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            border-radius: 14px;
-
-            display: grid;
-            place-items: center;
+            border-radius: 12px;
 
             background:
                 linear-gradient(
                     135deg,
-                    var(--primary),
-                    var(--purple)
+                    #4f46e5,
+                    #7c3aed
                 );
 
             color: white;
 
+            font-size: 18px;
+            font-weight: 900;
+
+            box-shadow:
+                0 8px 18px rgba(79, 70, 229, 0.22);
+        }
+
+        .logo-text {
+            font-size: 22px;
+
             font-weight: 800;
+
+            letter-spacing: -0.5px;
         }
 
+        /* =========================
+           NAVIGATION
+        ========================= */
 
-        .brand-name {
-            font-size: 23px;
-            font-weight: 800;
-        }
-
-
-        .brand-tagline {
-            font-size: 11px;
-            color: var(--muted);
-        }
-
-
-        nav {
+        .nav {
             display: flex;
-            gap: 24px;
+            align-items: center;
+
+            gap: 26px;
         }
 
-
-        nav a {
-            font-size: 14px;
-            font-weight: 700;
+        .nav a {
             color: #475467;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
         }
 
-
-        nav a:hover {
-            color: var(--primary);
+        .nav a:hover {
+            color: #4f46e5;
         }
 
+        .nav-cta {
+            background: #4f46e5;
 
-        /* HERO */
+            color: white !important;
+
+            padding: 12px 18px;
+
+            border-radius: 11px;
+
+            box-shadow:
+                0 8px 20px rgba(79, 70, 229, 0.20);
+        }
+
+        .nav-cta:hover {
+            background: #4338ca !important;
+
+            transform: translateY(-1px);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
-            padding: 75px 0 50px;
+            max-width: 900px;
 
-            background:
-                linear-gradient(
-                    180deg,
-                    white,
-                    var(--soft)
-                );
+            margin: auto;
+
+            padding: 70px 22px 45px;
+
+            text-align: center;
         }
 
+        .hero-badge {
+            display: inline-flex;
 
-        .breadcrumb {
+            padding: 8px 14px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid #dfe4ff;
+
+            border-radius: 999px;
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+
             font-size: 13px;
-            color: var(--muted);
 
-            margin-bottom: 20px;
-        }
-
-
-        .breadcrumb a {
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-
-        .eyebrow {
-            color: var(--primary);
-
-            font-size: 12px;
             font-weight: 800;
-
-            letter-spacing: 1.3px;
-
-            margin-bottom: 12px;
         }
 
+        .hero h1 {
+            margin: 0;
 
-        h1 {
             font-size: clamp(40px, 5vw, 58px);
 
             line-height: 1.08;
 
             letter-spacing: -2px;
-
-            margin-bottom: 18px;
         }
 
+        .hero h1 span {
+            color: #4f46e5;
+        }
 
-        .hero-text {
-            max-width: 820px;
+        .hero p {
+            max-width: 710px;
 
-            color: var(--muted);
+            margin: 18px auto 0;
+
+            color: #667085;
 
             font-size: 17px;
+
+            line-height: 1.75;
         }
 
+        .updated {
+            margin-top: 13px;
 
-        /* CONTENT */
+            color: #98a2b3;
 
-        .content-area {
-            padding: 25px 0 90px;
+            font-size: 13px;
         }
 
+        /* =========================
+           TERMS CONTENT
+        ========================= */
+
+        .terms-section {
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 20px 22px 85px;
+        }
 
         .terms-card {
             background: white;
 
-            border:
-                1px solid var(--border);
+            border: 1px solid #e4e7ec;
 
             border-radius: 24px;
 
-            padding:
-                45px clamp(22px, 5vw, 55px);
+            padding: 42px;
 
             box-shadow:
-                0 20px 60px rgba(16,24,40,0.08);
+                0 20px 50px rgba(16, 24, 40, 0.06);
         }
 
+        .intro-box {
+            padding: 18px 20px;
 
-        .updated {
-            display: inline-block;
+            margin-bottom: 30px;
 
-            background: #f1f2ff;
+            border-radius: 14px;
 
-            color: var(--primary);
+            background: #f8faff;
 
-            border-radius: 10px;
+            border: 1px solid #e0e7ff;
 
-            padding: 8px 12px;
+            color: #475467;
 
-            font-size: 12px;
-            font-weight: 800;
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+        .terms-block {
+            padding-bottom: 28px;
 
             margin-bottom: 28px;
+
+            border-bottom: 1px solid #eaecf0;
         }
 
+        .terms-block:last-child {
+            margin-bottom: 0;
 
-        .terms-section {
-            padding-bottom: 31px;
+            padding-bottom: 0;
 
-            margin-bottom: 31px;
-
-            border-bottom:
-                1px solid var(--border);
-        }
-
-
-        .terms-section:last-child {
             border-bottom: none;
+        }
+
+        .terms-block h2 {
+            margin: 0 0 12px;
+
+            font-size: 24px;
+
+            letter-spacing: -0.4px;
+
+            color: #101828;
+        }
+
+        .terms-block h3 {
+            margin: 20px 0 8px;
+
+            font-size: 17px;
+
+            color: #344054;
+        }
+
+        .terms-block p {
+            margin: 0 0 13px;
+
+            color: #667085;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+        .terms-block p:last-child {
             margin-bottom: 0;
         }
 
+        .terms-list {
+            margin: 10px 0 0;
 
-        .terms-section h2 {
-            font-size: 25px;
-            margin-bottom: 12px;
+            padding-left: 21px;
+
+            color: #667085;
+
+            font-size: 15px;
+
+            line-height: 1.85;
         }
 
-
-        .terms-section h3 {
-            font-size: 18px;
-            margin: 18px 0 7px;
-        }
-
-
-        .terms-section p {
-            color: #4b5565;
-            margin-bottom: 11px;
-        }
-
-
-        .terms-section ul {
-            color: #4b5565;
-            padding-left: 20px;
-        }
-
-
-        .terms-section li {
+        .terms-list li {
             margin-bottom: 7px;
         }
 
-
-        .important {
-            padding: 18px;
-
-            border-radius: 15px;
-
-            background: #f8f9ff;
-
-            border:
-                1px solid #e0e3ff;
-
-            color: #4b5565;
-
-            font-size: 14px;
+        .terms-list li:last-child {
+            margin-bottom: 0;
         }
 
+        .notice-box {
+            margin-top: 16px;
 
-        /* FOOTER */
+            padding: 16px 18px;
 
-        footer {
-            background: var(--dark);
+            border-radius: 12px;
+
+            background: #f8fafc;
+
+            border: 1px solid #e4e7ec;
+
+            color: #475467;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .warning-box {
+            margin-top: 16px;
+
+            padding: 16px 18px;
+
+            border-radius: 12px;
+
+            background: #fffaf0;
+
+            border: 1px solid #fedf89;
+
+            color: #7a2e0e;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta-section {
+            max-width: 1080px;
+
+            margin: auto;
+
+            padding: 0 22px 85px;
+        }
+
+        .cta {
+            padding: 50px 28px;
+
+            text-align: center;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #312e81,
+                    #4f46e5
+                );
 
             color: white;
 
-            padding: 55px 0 25px;
+            box-shadow:
+                0 25px 55px rgba(79, 70, 229, 0.20);
         }
 
+        .cta h2 {
+            margin: 0;
+
+            font-size: 34px;
+        }
+
+        .cta p {
+            max-width: 650px;
+
+            margin: 14px auto 25px;
+
+            color: #e0e7ff;
+
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+
+            padding: 13px 21px;
+
+            border-radius: 11px;
+
+            background: white;
+
+            color: #3730a3;
+
+            font-weight: 800;
+        }
+
+        .cta-button:hover {
+            background: #f8fafc;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: #0f172a;
+
+            color: #cbd5e1;
+
+            padding: 52px 22px 24px;
+        }
+
+        .footer-inner {
+            max-width: 1180px;
+            margin: auto;
+        }
 
         .footer-grid {
             display: grid;
 
-            grid-template-columns:
-                1.4fr 1fr 1fr;
+            grid-template-columns: 1.5fr 1fr 1fr;
 
             gap: 45px;
+
+            padding-bottom: 35px;
         }
 
+        .footer-logo {
+            color: white;
 
-        footer h3 {
-            margin-bottom: 12px;
+            font-size: 22px;
+
+            font-weight: 800;
+
+            margin-bottom: 13px;
         }
 
+        .footer-text {
+            max-width: 430px;
 
-        footer p,
-        footer a {
-            color: #aeb5c6;
+            color: #94a3b8;
 
             font-size: 14px;
+
+            line-height: 1.7;
         }
 
+        .footer-title {
+            color: white;
 
-        footer a {
-            display: block;
-            margin-bottom: 8px;
+            font-weight: 800;
+
+            margin-bottom: 15px;
         }
 
+        .footer-links {
+            display: flex;
 
-        footer a:hover {
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+
+            font-size: 14px;
+
+            transition: 0.2s ease;
+        }
+
+        .footer-links a:hover {
             color: white;
         }
 
+        .copyright {
+            padding-top: 22px;
 
-        .footer-bottom {
-            border-top:
-                1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid #1e293b;
 
-            margin-top: 35px;
+            text-align: center;
 
-            padding-top: 18px;
+            color: #64748b;
 
-            color: #8992a7;
-
-            font-size: 12px;
+            font-size: 13px;
         }
 
+        /* =========================
+           MOBILE
+        ========================= */
 
-        @media (max-width: 760px) {
+        @media (max-width: 900px) {
 
-            nav {
-                gap: 12px;
+            .nav {
+                gap: 14px;
             }
 
-            nav a:nth-child(2),
-            nav a:nth-child(3) {
+            .nav a:not(.nav-cta) {
                 display: none;
+            }
+
+            .terms-card {
+                padding: 30px 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .header-inner {
+                min-height: 75px;
+
+                padding: 0 16px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo-mark {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero {
+                padding-top: 52px;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+
+                letter-spacing: -1.4px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .terms-card {
+                padding: 25px 20px;
+
+                border-radius: 18px;
+            }
+
+            .terms-block h2 {
+                font-size: 21px;
+            }
+
+            .terms-block p,
+            .terms-list {
+                font-size: 14px;
+            }
+
+            .cta {
+                padding: 40px 22px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-
-            .terms-card {
-                padding: 28px 20px;
-            }
-
         }
-
     </style>
 
-<meta name="theme-color" content="#5b5ff5">
-<meta property="og:title" content="Terms & Conditions | SmartTools">
-<meta property="og:description" content="Read the SmartTools Terms and Conditions for using our free online calculators, converters and productivity tools.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://shaharesukanya.github.io/smart-website/terms.html">
-<meta property="og:site_name" content="SmartTools">
-<meta name="twitter:card" content="summary">
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Terms & Conditions | SmartTools",
-    "url": "https://shaharesukanya.github.io/smart-website/terms.html",
-    "description": "Read the SmartTools Terms and Conditions for using our free online calculators, converters and productivity tools.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "name": "SmartTools",
-        "url": "https://shaharesukanya.github.io/smart-website/"
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Terms of Use",
+        "url": "https://shaharesukanya.github.io/smart-website/terms.html",
+        "description": "Terms of Use for SmartTools."
     }
-}
-</script>
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<!-- SMARTTOOLS_PHASE6_CSS_START -->
-<style>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE + MOBILE SAFETY
-========================================================= */
+    </script>
 
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-img,
-svg,
-video,
-canvas {
-    max-width: 100%;
-    height: auto;
-}
-
-a,
-button,
-input,
-select,
-textarea {
-    touch-action: manipulation;
-}
-
-button,
-.btn,
-input[type="submit"],
-input[type="button"] {
-    min-height: 44px;
-}
-
-input,
-select,
-textarea {
-    max-width: 100%;
-    min-width: 0;
-}
-
-input[type="number"],
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-    width: 100%;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-span,
-li {
-    overflow-wrap: break-word;
-}
-
-table {
-    width: 100%;
-    max-width: 100%;
-    border-collapse: collapse;
-}
-
-.table-wrapper,
-.responsive-table {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-:focus-visible {
-    outline: 3px solid rgba(91,95,245,.35);
-    outline-offset: 3px;
-}
-
-@media (max-width: 900px) {
-
-    .hero-grid,
-    .content-grid,
-    .calculator-layout,
-    .tool-layout,
-    .feature-grid,
-    .founder-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4 {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-
-    .footer-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-}
-
-@media (max-width: 640px) {
-
-    html {
-        scroll-padding-top: 80px;
-    }
-
-    body {
-        font-size: 15px;
-        line-height: 1.65;
-    }
-
-    .container {
-        width: 92%;
-        max-width: 100%;
-    }
-
-    h1 {
-        font-size:
-            clamp(34px, 10vw, 46px) !important;
-        line-height: 1.08 !important;
-        letter-spacing: -1.5px !important;
-    }
-
-    h2 {
-        font-size:
-            clamp(27px, 7vw, 36px) !important;
-        line-height: 1.15 !important;
-    }
-
-    h3 {
-        font-size:
-            clamp(18px, 5vw, 22px);
-    }
-
-    .header-inner {
-        min-height: 68px !important;
-        gap: 12px !important;
-    }
-
-    .brand-name {
-        font-size: 21px !important;
-    }
-
-    .brand-tagline {
-        font-size: 10px !important;
-    }
-
-    nav {
-        gap: 9px !important;
-    }
-
-    nav a {
-        font-size: 12px !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4,
-    .feature-grid,
-    .info-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        min-height: 48px;
-    }
-
-    textarea {
-        min-height: 130px;
-    }
-
-    .btn,
-    .submit-btn,
-    .calculate-btn,
-    .reset-btn,
-    .cta-btn,
-    button[type="submit"] {
-        width: 100%;
-        min-height: 48px;
-    }
-
-    .hero-actions,
-    .button-group,
-    .calculator-actions,
-    .form-actions {
-        flex-direction: column !important;
-        width: 100%;
-    }
-
-    .tool-search,
-    .search-box,
-    #toolSearch {
-        width: 100% !important;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .dashboard,
-    .hero-visual,
-    .hero-art,
-    .decorative-circle,
-    .floating-card {
-        max-width: 100% !important;
-    }
-
-    .section {
-        padding-top: 58px !important;
-        padding-bottom: 58px !important;
-    }
-}
-
-@media (max-width: 390px) {
-
-    .container {
-        width: 94%;
-    }
-
-    h1 {
-        font-size: 33px !important;
-    }
-
-    h2 {
-        font-size: 26px !important;
-    }
-
-    .brand-name {
-        font-size: 19px !important;
-    }
-
-    .topbar-right {
-        display: none !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        padding-left: 17px !important;
-        padding-right: 17px !important;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-</style>
-<!-- SMARTTOOLS_PHASE6_CSS_END -->
 </head>
-
 
 <body>
 
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-<header>
+    <header class="header">
 
-    <div class="container header-inner">
+        <div class="header-inner">
 
-        <a
-            href="index.html"
-            class="brand"
-        >
+            <a href="index.html" class="logo">
 
-            <div class="brand-icon">
-                S
-            </div>
+                <div class="logo-mark">
+                    ST
+                </div>
 
-            <div>
-
-                <div class="brand-name">
+                <div class="logo-text">
                     SmartTools
                 </div>
 
-                <div class="brand-tagline">
-                    Free • Fast • Useful
-                </div>
-
-            </div>
-
-        </a>
-
-
-        <nav aria-label="Main navigation">
-
-            <a href="index.html">
-                Home
             </a>
 
-            <a href="index.html#tools">
-                Tools
-            </a>
 
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </nav>
-
-    </div>
-
-</header>
-
-
-
-<main>
-
-
-<section class="hero">
-
-    <div class="container">
-
-        <div class="breadcrumb">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            &nbsp; / &nbsp;
-
-            Terms &amp; Conditions
-
-        </div>
-
-
-        <div class="eyebrow">
-            SMARTTOOLS LEGAL
-        </div>
-
-
-        <h1>
-            Terms &amp; Conditions
-        </h1>
-
-
-        <p class="hero-text">
-            These terms describe the general conditions for using
-            SmartTools and its online calculators, converters and
-            productivity tools.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<section class="content-area">
-
-    <div class="container">
-
-        <div class="terms-card">
-
-            <div class="updated">
-                Last updated: 26 September 2026
-            </div>
-
-
-            <div class="terms-section">
-
-                <h2>
-                    1. Acceptance of Terms
-                </h2>
-
-                <p>
-                    By accessing or using SmartTools, you acknowledge
-                    that you have read and understood these Terms and
-                    Conditions and agree to use the website responsibly.
-                </p>
-
-            </div>
-
-
-
-            <div class="terms-section">
-
-                <h2>
-                    2. About SmartTools
-                </h2>
-
-                <p>
-                    SmartTools is a collection of online calculators,
-                    converters and productivity tools created and
-                    maintained by Sukanya Shahare.
-                </p>
-
-                <p>
-                    The website is intended to provide convenient
-                    tools and general informational content for
-                    everyday use.
-                </p>
-
-            </div>
-
-
-
-            <div class="terms-section">
-
-                <h2>
-                    3. Use of the Website
-                </h2>
-
-                <p>
-                    You agree to use SmartTools only for lawful and
-                    appropriate purposes.
-                </p>
-
-                <p>
-                    You should not intentionally misuse the website,
-                    interfere with its operation or attempt to gain
-                    unauthorized access to its systems or services.
-                </p>
-
-            </div>
-
-
-
-            <div class="terms-section">
-
-                <h2>
-                    4. Calculator Results and General Information
-                </h2>
-
-                <p>
-                    SmartTools calculators are provided as convenient
-                    tools for general calculations and informational
-                    purposes.
-                </p>
-
-                <p>
-                    Results may depend on the values or assumptions
-                    entered by the user and may not cover every
-                    real-world situation.
-                </p>
-
-                <div class="important">
-                    Important: Calculator results should be checked
-                    independently before being used for important
-                    financial, legal, medical, business or other
-                    consequential decisions.
-                </div>
-
-            </div>
-
-
-
-            <div class="terms-section">
-
-                <h2>
-                    5. Accuracy and Availability
-                </h2>
-
-                <p>
-                    We aim to keep SmartTools useful and accurate,
-                    but we do not promise that every result,
-                    calculation, page or feature will always be
-                    completely error-free or continuously available.
-                </p>
-
-                <p>
-                    Website content and tools may be updated,
-                    changed or removed from time to time.
-                </p>
-
-            </div>
-
-
-
-            <div class="terms-section">
-
-                <h2>
-                    6. Intellectual Property
-                </h2>
-
-                <p>
-                    Unless otherwise stated, website text, design,
-                    branding, layout, original content and code are
-                    associated with SmartTools and may be protected
-                    by applicable intellectual property rights.
-                </p>
-
-                <p>
-                    You may use the tools for normal personal or
-                    legitimate website use, but you should not copy,
-                    redistribute or republish substantial portions of
-                    the website without appropriate permission.
-                </p>
-
-            </div>
-
-
-
-            <div class="terms-section">
-
-                <h2>
-                    7. External Links
-                </h2>
-
-                <p>
-                    SmartTools may link to third-party websites or
-                    resources for convenience.
-                </p>
-
-                <p>
-                    We do not control third-party websites and are
-                    not responsible for their content, availability,
-                    policies or practices.
-                </p>
-
-            </div>
-
-
-
-            <div class="terms-section">
-
-                <h2>
-                    8. User Feedback
-                </h2>
-
-                <p>
-                    If you voluntarily send suggestions or feedback,
-                    you understand that it may be used to improve
-                    SmartTools and its features.
-                </p>
-
-                <p>
-                    Please do not send passwords, confidential account
-                    credentials or highly sensitive personal
-                    information through the contact form.
-                </p>
-
-            </div>
-
-
-
-            <div class="terms-section">
-
-                <h2>
-                    9. Limitation of Responsibility
-                </h2>
-
-                <p>
-                    SmartTools is provided on an informational and
-                    convenience basis. You are responsible for
-                    independently reviewing results and information
-                    before relying on them.
-                </p>
-
-                <p>
-                    To the extent permitted by applicable law,
-                    SmartTools and its creator are not responsible for
-                    losses resulting from reliance on calculator
-                    outputs, website content, interruptions or
-                    third-party services.
-                </p>
-
-            </div>
-
-
-
-            <div class="terms-section">
-
-                <h2>
-                    10. Changes to These Terms
-                </h2>
-
-                <p>
-                    These Terms and Conditions may be updated when the
-                    website, services or practices change.
-                </p>
-
-                <p>
-                    The latest version will be published on this page
-                    with an updated date.
-                </p>
-
-            </div>
-
-
-
-            <div class="terms-section">
-
-                <h2>
-                    11. Contact
-                </h2>
-
-                <p>
-                    If you have questions about these Terms and
-                    Conditions, please use the SmartTools Contact page.
-                </p>
-
-                <p>
-
-                    <a
-                        href="contact.html"
-                        style="
-                            color:#5b5ff5;
-                            font-weight:800;
-                        "
-                    >
-                        Go to Contact Page →
-                    </a>
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-
-<footer>
-
-    <div class="container">
-
-        <div class="footer-grid">
-
-
-            <div>
-
-                <h3>
-                    SmartTools
-                </h3>
-
-                <p>
-                    Free online calculators, converters
-                    and useful productivity tools.
-                </p>
-
-                <p style="margin-top:12px;">
-                    Created and maintained by
-                    Sukanya Shahare.
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    Quick Links
-                </h3>
+            <nav class="nav">
 
                 <a href="index.html">
                     Home
                 </a>
 
-                <a href="index.html#tools">
-                    Tools
+                <a href="smarttools-dashboard.html">
+                    All Tools
                 </a>
 
                 <a href="about.html">
@@ -1152,151 +679,497 @@ table {
                     Contact
                 </a>
 
+                <a
+                    href="smarttools-dashboard.html"
+                    class="nav-cta"
+                >
+                    Explore Tools
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-badge">
+            📄 Terms &amp; Conditions
+        </div>
+
+        <h1>
+            Terms of
+            <span>Use.</span>
+        </h1>
+
+        <p>
+            These terms describe the general rules that apply when
+            using SmartTools calculators, converters, productivity
+            utilities and other website features.
+        </p>
+
+        <div class="updated">
+            Last updated: September 2026
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TERMS
+    ========================= -->
+
+    <section class="terms-section">
+
+        <div class="terms-card">
+
+
+            <div class="intro-box">
+
+                By accessing or using SmartTools, you agree to use
+                the website responsibly and in accordance with these
+                Terms of Use. These terms may be updated as the
+                website and its services develop.
+
             </div>
 
 
-            <div>
+            <!-- 1 -->
 
-                <h3>
-                    Legal
-                </h3>
+            <div class="terms-block">
 
-                <a href="privacy-policy.html">
-                    Privacy Policy
-                </a>
+                <h2>
+                    1. About SmartTools
+                </h2>
 
-                <a href="terms.html">
-                    Terms &amp; Conditions
-                </a>
+                <p>
+                    SmartTools is a collection of online calculators,
+                    converters, text utilities and other practical
+                    browser-based tools intended for general-purpose
+                    use.
+                </p>
+
+                <p>
+                    The website is continuously being developed and
+                    features, tools and content may change over time.
+                </p>
+
+            </div>
+
+
+            <!-- 2 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    2. Use of the Website
+                </h2>
+
+                <p>
+                    You may use SmartTools for lawful, personal,
+                    educational, professional or other legitimate
+                    purposes.
+                </p>
+
+                <p>
+                    You agree not to use the website in a way that
+                    could damage, disable, overload or interfere with
+                    the website or its normal operation.
+                </p>
+
+            </div>
+
+
+            <!-- 3 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    3. Calculator and Tool Results
+                </h2>
+
+                <p>
+                    SmartTools provides general-purpose calculations
+                    and conversions based on the information entered
+                    by the user and the formulas or logic implemented
+                    by each tool.
+                </p>
+
+                <p>
+                    Results may depend on assumptions, rounding,
+                    available inputs and the design of the individual
+                    tool.
+                </p>
+
+                <div class="warning-box">
+
+                    Calculator and tool results are intended as
+                    informational estimates. For financial, tax,
+                    medical, legal or other important decisions,
+                    verify the relevant information with an
+                    appropriate qualified or official source.
+
+                </div>
+
+            </div>
+
+
+            <!-- 4 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    4. Accuracy of Information
+                </h2>
+
+                <p>
+                    We aim to provide useful and understandable tools,
+                    but we do not guarantee that every calculation,
+                    conversion, article or piece of information will
+                    always be completely accurate, current or suitable
+                    for every situation.
+                </p>
+
+                <p>
+                    Users should independently verify important
+                    information before relying on it.
+                </p>
+
+            </div>
+
+
+            <!-- 5 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    5. Website Availability
+                </h2>
+
+                <p>
+                    SmartTools may occasionally be unavailable due to
+                    maintenance, hosting issues, technical problems,
+                    updates or circumstances outside our control.
+                </p>
+
+                <p>
+                    We do not guarantee uninterrupted or error-free
+                    availability of the website.
+                </p>
+
+            </div>
+
+
+            <!-- 6 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    6. Intellectual Property
+                </h2>
+
+                <p>
+                    Unless otherwise stated, the SmartTools website,
+                    branding, original text, design elements, code and
+                    other original materials are intended to remain the
+                    property of SmartTools or their respective owners.
+                </p>
+
+                <p>
+                    You should not copy, reproduce, redistribute or
+                    commercially exploit website content without
+                    appropriate permission where permission is required.
+                </p>
+
+            </div>
+
+
+            <!-- 7 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    7. User-Submitted Content
+                </h2>
+
+                <p>
+                    If you voluntarily submit feedback, suggestions or
+                    other content through SmartTools, you are responsible
+                    for ensuring that your submission is lawful and does
+                    not infringe the rights of others.
+                </p>
+
+                <p>
+                    Do not submit confidential credentials, passwords,
+                    payment information or other highly sensitive
+                    information through general website forms.
+                </p>
+
+            </div>
+
+
+            <!-- 8 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    8. Prohibited Activities
+                </h2>
+
+                <p>
+                    When using SmartTools, you should not:
+                </p>
+
+                <ul class="terms-list">
+
+                    <li>
+                        Attempt to disrupt or damage the website.
+                    </li>
+
+                    <li>
+                        Attempt unauthorized access to website
+                        systems or accounts.
+                    </li>
+
+                    <li>
+                        Use automated methods in a way that places
+                        unreasonable load on the service.
+                    </li>
+
+                    <li>
+                        Use the website for unlawful or fraudulent
+                        activities.
+                    </li>
+
+                    <li>
+                        Misrepresent SmartTools or its services.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- 9 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    9. Third-Party Links and Services
+                </h2>
+
+                <p>
+                    SmartTools may contain links to third-party
+                    websites, tools or services.
+                </p>
+
+                <p>
+                    Third-party websites are operated independently
+                    and may have their own terms, privacy policies
+                    and practices.
+                </p>
+
+                <p>
+                    SmartTools is not responsible for the content,
+                    availability or policies of external websites.
+                </p>
+
+            </div>
+
+
+            <!-- 10 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    10. Limitation of Liability
+                </h2>
+
+                <p>
+                    To the extent permitted by applicable law,
+                    SmartTools and its operators should not be
+                    considered responsible for losses, damages,
+                    decisions or outcomes resulting from reliance on
+                    website information, calculations or tools.
+                </p>
+
+                <p>
+                    Users remain responsible for reviewing outputs and
+                    deciding whether they are appropriate for their
+                    particular situation.
+                </p>
+
+            </div>
+
+
+            <!-- 11 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    11. Changes to These Terms
+                </h2>
+
+                <p>
+                    SmartTools may modify these Terms of Use when the
+                    website, tools, services or applicable requirements
+                    change.
+                </p>
+
+                <p>
+                    Updated terms will be published on this page along
+                    with a revised "Last updated" date.
+                </p>
+
+            </div>
+
+
+            <!-- 12 -->
+
+            <div class="terms-block">
+
+                <h2>
+                    12. Contact
+                </h2>
+
+                <p>
+                    For questions about these Terms of Use, visit the
+                    <a
+                        href="contact.html"
+                        style="color:#4f46e5;font-weight:700;"
+                    >
+                        Contact page
+                    </a>.
+                </p>
 
             </div>
 
 
         </div>
 
+    </section>
 
-        <div class="footer-bottom">
 
-            © 2026 SmartTools.
-            Created &amp; maintained by Sukanya Shahare.
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="cta-section">
+
+        <div class="cta">
+
+            <h2>
+                Ready to Use SmartTools?
+            </h2>
+
+            <p>
+                Explore practical calculators, converters and
+                productivity tools for everyday tasks.
+            </p>
+
+            <a
+                href="smarttools-dashboard.html"
+                class="cta-button"
+            >
+                Explore All Tools →
+            </a>
 
         </div>
 
-    </div>
-
-</footer>
+    </section>
 
 
-<!-- SMARTTOOLS_PHASE6_JS_START -->
-<script>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE HELPER
-========================================================= */
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
-(function () {
+    <footer class="footer">
 
-    "use strict";
+        <div class="footer-inner">
 
-    function optimizeImages() {
+            <div class="footer-grid">
 
-        const images =
-            document.querySelectorAll("img");
+                <div>
 
-        images.forEach(function (img) {
+                    <div class="footer-logo">
+                        SmartTools
+                    </div>
 
-            if (!img.hasAttribute("loading")) {
+                    <div class="footer-text">
+                        Practical online tools designed to make
+                        everyday calculations, conversions and
+                        simple tasks easier.
+                    </div>
 
-                img.setAttribute(
-                    "loading",
-                    "lazy"
-                );
-
-            }
-
-            if (!img.hasAttribute("decoding")) {
-
-                img.setAttribute(
-                    "decoding",
-                    "async"
-                );
-
-            }
-
-        });
-
-    }
+                </div>
 
 
-    function optimizeVideos() {
+                <div>
 
-        document
-            .querySelectorAll("video")
-            .forEach(function (video) {
+                    <div class="footer-title">
+                        Quick Links
+                    </div>
 
-                if (!video.hasAttribute("preload")) {
+                    <div class="footer-links">
 
-                    video.setAttribute(
-                        "preload",
-                        "metadata"
-                    );
+                        <a href="index.html">
+                            Home
+                        </a>
 
-                }
+                        <a href="smarttools-dashboard.html">
+                            All Tools
+                        </a>
 
-            });
+                        <a href="about.html">
+                            About
+                        </a>
 
-    }
+                        <a href="contact.html">
+                            Contact
+                        </a>
 
+                    </div>
 
-    function addThemeColor() {
-
-        if (
-            !document.querySelector(
-                'meta[name="theme-color"]'
-            )
-        ) {
-
-            const meta =
-                document.createElement("meta");
-
-            meta.name =
-                "theme-color";
-
-            meta.content =
-                "#5b5ff5";
-
-            document.head.appendChild(meta);
-        }
-
-    }
+                </div>
 
 
-    function init() {
+                <div>
 
-        optimizeImages();
-        optimizeVideos();
-        addThemeColor();
+                    <div class="footer-title">
+                        Legal
+                    </div>
 
-    }
+                    <div class="footer-links">
+
+                        <a href="privacy-policy.html">
+                            Privacy Policy
+                        </a>
+
+                        <a href="terms.html">
+                            Terms of Use
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
-    if (
-        document.readyState ===
-        "loading"
-    ) {
+            <div class="copyright">
+                © 2026 SmartTools. All rights reserved.
+            </div>
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
+        </div>
 
-    } else {
+    </footer>
 
-        init();
-
-    }
-
-})();
-</script>
-<!-- SMARTTOOLS_PHASE6_JS_END -->
 </body>
+
 </html>

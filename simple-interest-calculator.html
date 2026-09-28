@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Interest Calculator - Calculate Simple Interest Online | SmartTools</title>
+  <meta name="description" content="Use the free SmartTools Simple Interest Calculator to calculate interest and total amount from principal, rate and time.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://shaharesukanya.github.io/smart-website/simple-interest-calculator.html">
+  <meta property="og:title" content="Simple Interest Calculator - SmartTools">
+  <meta property="og:description" content="Calculate simple interest and final amount online with the free SmartTools calculator.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shaharesukanya.github.io/smart-website/simple-interest-calculator.html">
+  <meta property="og:site_name" content="SmartTools">
+
+  <style>
+    :root{--p:#5b5ff5;--pd:#4549d8;--text:#16181d;--muted:#667085;--border:#e7e9ef;--bg:#f6f7fb;--white:#fff;--shadow:0 18px 50px rgba(20,25,50,.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{text-decoration:none;color:inherit}.container{width:min(1120px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    .nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800}.brand img{width:42px;height:42px;object-fit:contain}
+    .links{display:flex;align-items:center;gap:24px}.links a{font-size:15px;font-weight:600;color:#50576a}.links a:hover{color:var(--p)}
+    .contact{background:var(--p);color:#fff!important;padding:10px 16px;border-radius:11px}
+    .hero{text-align:center;padding:70px 0 35px}.tag{display:inline-block;padding:7px 13px;border-radius:30px;background:#eef0ff;color:var(--p);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{max-width:850px;margin:18px auto 14px;font-size:clamp(36px,5vw,56px);line-height:1.08;letter-spacing:-.04em}
+    .hero p{max-width:730px;margin:auto;color:var(--muted);font-size:17px}
+    .calc-area{padding:20px 0 75px}.calc{max-width:900px;margin:auto;background:#fff;border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+    .calc-head{padding:28px 30px;border-bottom:1px solid var(--border)}.calc-head h2{font-size:25px;margin-bottom:4px}.calc-head p{color:var(--muted);font-size:14px}
+    .calc-body{padding:30px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.field{margin-bottom:18px}
+    label{display:block;margin-bottom:8px;font-size:14px;font-weight:700}
+    input{width:100%;padding:14px 15px;background:#fbfbfd;border:1px solid var(--border);border-radius:12px;outline:none}
+    input:focus{border-color:var(--p);background:#fff;box-shadow:0 0 0 4px rgba(91,95,245,.08)}
+    .hint{margin-top:6px;font-size:12px;color:var(--muted)}
+    .btn{width:100%;border:0;padding:15px;margin-top:4px;border-radius:13px;background:var(--p);color:#fff;font-weight:800;cursor:pointer}
+    .btn:hover{background:var(--pd)}
+    .error{display:none;margin-top:14px;color:#b42318;font-size:14px;font-weight:600}
+    .result{display:none;margin-top:25px}.result.show{display:block}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .result-card{padding:20px;border:1px solid var(--border);border-radius:18px;background:#f7f8ff}
+    .result-card span{display:block;font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px}
+    .result-card strong{font-size:25px}.main{margin-top:16px;padding:24px;text-align:center;border-radius:20px;background:#eef0ff;border:1px solid #e1e4ff}
+    .main small{color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}.main h3{margin-top:8px;font-size:44px;line-height:1.1}
+    .content{background:#fff;padding:70px 0}.two{display:grid;grid-template-columns:1.3fr 1fr;gap:25px}
+    .card{border:1px solid var(--border);border-radius:20px;padding:28px;background:#fff}.card h2{font-size:25px;margin-bottom:12px}.card h3{margin:22px 0 8px;font-size:18px}.card p{color:#596174;margin-bottom:10px}
+    .formula{margin-top:16px;padding:18px;background:#f7f8fc;border-radius:14px;text-align:center;font-weight:800;font-size:18px}
+    .example{margin-top:16px;padding:17px;border-left:4px solid var(--p);background:#fafafa;border-radius:8px;color:#4f5668}
+    .faq{padding:70px 0}.title{text-align:center;margin-bottom:30px}.title h2{font-size:34px}.title p{color:var(--muted)}
+    .faq-list{max-width:850px;margin:auto}.item{background:#fff;border:1px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden}
+    .q{width:100%;border:0;background:#fff;padding:18px 20px;display:flex;justify-content:space-between;cursor:pointer;text-align:left;font-weight:800}
+    .ans{display:none;padding:0 20px 18px;color:var(--muted)}.item.open .ans{display:block}
+    .related{background:#fff;padding:0 0 75px}.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.rel{border:1px solid var(--border);border-radius:18px;padding:22px}.rel h3{margin-bottom:7px}.rel p{color:var(--muted);font-size:14px;margin-bottom:12px}.rel a{color:var(--p);font-weight:800;font-size:14px}
+    footer{background:#111827;color:#fff;padding:40px 0}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer p{color:#aab1bf;font-size:14px}.flinks{display:flex;gap:18px;flex-wrap:wrap}.flinks a{color:#d8dce5;font-size:14px}
+    @media(max-width:800px){.links{display:none}.grid,.two,.rel-grid,.result-grid{grid-template-columns:1fr}.calc-body,.calc-head,.card{padding:22px}.hero{padding-top:50px}}
+    @media(max-width:520px){h1{font-size:38px}.hero p{font-size:15px}.main h3{font-size:36px}}
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Simple Interest Calculator",
+    "applicationCategory":"FinanceApplication",
+    "operatingSystem":"Any",
+    "description":"Free online calculator for simple interest and total amount.",
+    "url":"https://shaharesukanya.github.io/smart-website/simple-interest-calculator.html",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"SmartTools","item":"https://shaharesukanya.github.io/smart-website/"},
+      {"@type":"ListItem","position":2,"name":"Simple Interest Calculator","item":"https://shaharesukanya.github.io/smart-website/simple-interest-calculator.html"}
+    ]
+  }
+  </script>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="smarttools-logo-transparent.png" alt="SmartTools logo" onerror="this.style.display='none'">
+      <span>SmartTools</span>
+    </a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">All Tools</a>
+      <a href="index.html#guides">Guides</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <span class="tag">Finance Calculator</span>
+      <h1>Free Simple Interest Calculator</h1>
+      <p>Calculate simple interest and total amount using principal, annual interest rate and time.</p>
+    </div>
+  </section>
+
+  <section class="calc-area">
+    <div class="container">
+      <div class="calc">
+        <div class="calc-head">
+          <h2>Calculate Simple Interest</h2>
+          <p>Enter the values below to get an instant estimate.</p>
+        </div>
+
+        <div class="calc-body">
+          <div class="grid">
+            <div class="field">
+              <label for="principal">Principal Amount (₹)</label>
+              <input id="principal" type="number" min="0" step="0.01" placeholder="Example: 100000">
+              <div class="hint">Starting amount.</div>
+            </div>
+
+            <div class="field">
+              <label for="rate">Annual Interest Rate (%)</label>
+              <input id="rate" type="number" min="0" step="0.01" placeholder="Example: 8">
+              <div class="hint">Annual rate of interest.</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="time">Time (Years)</label>
+            <input id="time" type="number" min="0" step="0.1" placeholder="Example: 5">
+            <div class="hint">Enter the time period in years.</div>
+          </div>
+
+          <button class="btn" id="calculate">Calculate Simple Interest</button>
+
+          <div class="error" id="error">Please enter valid values greater than or equal to zero.</div>
+
+          <div class="result" id="result">
+            <div class="result-grid">
+              <div class="result-card">
+                <span>Principal</span>
+                <strong id="principalOut">₹0</strong>
+              </div>
+              <div class="result-card">
+                <span>Interest</span>
+                <strong id="interestOut">₹0</strong>
+              </div>
+              <div class="result-card">
+                <span>Rate</span>
+                <strong id="rateOut">0%</strong>
+              </div>
+            </div>
+
+            <div class="main">
+              <small>Total Amount</small>
+              <h3 id="amountOut">₹0</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container two">
+      <article class="card">
+        <h2>What is Simple Interest?</h2>
+        <p>Simple interest is interest calculated on the original principal amount for a specified period.</p>
+        <p>It is commonly used for straightforward interest calculations where interest does not compound.</p>
+
+        <h3>Simple Interest Formula</h3>
+        <div class="formula">SI = (P × R × T) ÷ 100</div>
+
+        <h3>Total Amount Formula</h3>
+        <div class="formula">A = P + SI</div>
+
+        <h3>Example</h3>
+        <div class="example">For ₹1,00,000 at 8% per year for 5 years, simple interest is ₹40,000 and the total amount is ₹1,40,000.</div>
+      </article>
+
+      <article class="card">
+        <h2>How It Works</h2>
+        <p><strong>P</strong> = Principal amount</p>
+        <p><strong>R</strong> = Annual interest rate</p>
+        <p><strong>T</strong> = Time in years</p>
+        <p><strong>SI</strong> = Simple interest</p>
+        <p><strong>A</strong> = Total amount</p>
+
+        <h3>Important Note</h3>
+        <p>Actual interest terms may differ by lender, financial product or agreement. Use the result as a calculation estimate.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <div class="title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Common questions about simple interest.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="item">
+          <button class="q">What is the formula for simple interest? <span>+</span></button>
+          <div class="ans">The formula is SI = (P × R × T) ÷ 100, where P is principal, R is annual rate and T is time in years.</div>
+        </div>
+        <div class="item">
+          <button class="q">What is the difference between simple and compound interest? <span>+</span></button>
+          <div class="ans">Simple interest is calculated on the original principal, while compound interest also accounts for interest accumulated during previous periods.</div>
+        </div>
+        <div class="item">
+          <button class="q">Is this calculator free? <span>+</span></button>
+          <div class="ans">Yes. The SmartTools Simple Interest Calculator is free to use online.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related">
+    <div class="container">
+      <div class="title">
+        <h2>Related Tools</h2>
+        <p>Explore more SmartTools calculators.</p>
+      </div>
+
+      <div class="rel-grid">
+        <div class="rel">
+          <h3>Compound Interest Calculator</h3>
+          <p>Calculate final amount and compound interest.</p>
+          <a href="compound-interest-calculator.html">Open Tool →</a>
+        </div>
+        <div class="rel">
+          <h3>Loan Calculator</h3>
+          <p>Estimate loan repayment and interest.</p>
+          <a href="loan-calculator.html">Open Tool →</a>
+        </div>
+        <div class="rel">
+          <h3>SIP Calculator</h3>
+          <p>Estimate SIP investment and future value.</p>
+          <a href="sip-calculator.html">Open Tool →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <p>© 2026 SmartTools. All rights reserved.</p>
+    <div class="flinks">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const principal = document.getElementById("principal");
+  const rate = document.getElementById("rate");
+  const time = document.getElementById("time");
+  const calculate = document.getElementById("calculate");
+  const error = document.getElementById("error");
+  const result = document.getElementById("result");
+
+  function inr(value){
+    return new Intl.NumberFormat("en-IN",{
+      style:"currency",
+      currency:"INR",
+      maximumFractionDigits:2
+    }).format(value);
+  }
+
+  calculate.addEventListener("click",()=>{
+    const p = parseFloat(principal.value);
+    const r = parseFloat(rate.value);
+    const t = parseFloat(time.value);
+
+    if(!Number.isFinite(p)||!Number.isFinite(r)||!Number.isFinite(t)||p<0||r<0||t<0){
+      error.style.display="block";
+      result.classList.remove("show");
+      return;
+    }
+
+    error.style.display="none";
+
+    const si = (p*r*t)/100;
+    const amount = p+si;
+
+    document.getElementById("principalOut").textContent = inr(p);
+    document.getElementById("interestOut").textContent = inr(si);
+    document.getElementById("rateOut").textContent = r.toFixed(2)+"%";
+    document.getElementById("amountOut").textContent = inr(amount);
+
+    result.classList.add("show");
+  });
+
+  document.querySelectorAll(".q").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const item=btn.parentElement;
+      item.classList.toggle("open");
+      btn.querySelector("span").textContent=item.classList.contains("open")?"−":"+";
+    });
+  });
+</script>
+</body>
+</html>
