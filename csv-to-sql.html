@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JSON to TypeScript Generator Online | SmartTools</title>
+
+<meta name="description" content="Convert JSON to TypeScript interfaces online for free. Generate TypeScript types and interfaces automatically from JSON data with SmartTools.">
+
+<meta name="keywords" content="JSON to TypeScript, JSON to TypeScript interface, TypeScript generator, JSON TypeScript converter, generate TypeScript types">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://smarttools.example/json-to-typescript.html">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top left,rgba(100,115,255,.14),transparent 30%),
+        radial-gradient(circle at bottom right,rgba(0,220,180,.08),transparent 30%),
+        #070b14;
+    color:#f5f7fb;
+    min-height:100vh;
+    line-height:1.6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.topbar{
+    text-align:center;
+    padding:9px 15px;
+    background:#101827;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    color:#aeb9d5;
+    font-size:13px;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(7,11,20,.86);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav{
+    max-width:1180px;
+    margin:auto;
+    padding:17px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#7d8aff;
+}
+
+.nav-links{
+    display:flex;
+    gap:24px;
+    color:#aab4cc;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.hero{
+    max-width:1050px;
+    margin:auto;
+    padding:75px 20px 35px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 14px;
+    border-radius:30px;
+    background:rgba(124,140,255,.1);
+    border:1px solid rgba(124,140,255,.25);
+    color:#9ca8ff;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:clamp(36px,6vw,62px);
+    line-height:1.05;
+    letter-spacing:-2px;
+    margin-bottom:18px;
+}
+
+.hero p{
+    max-width:760px;
+    margin:auto;
+    color:#9da8c0;
+    font-size:17px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+.tool-card{
+    background:rgba(16,23,38,.94);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:24px;
+    padding:25px;
+    box-shadow:0 25px 80px rgba(0,0,0,.3);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.panel-title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.panel-subtitle{
+    color:#8792aa;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+textarea{
+    width:100%;
+    min-height:440px;
+    resize:vertical;
+    padding:15px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#090e19;
+    color:#f3f5fa;
+    outline:none;
+    font-family:Consolas,Monaco,monospace;
+    font-size:13px;
+    line-height:1.55;
+}
+
+textarea:focus{
+    border-color:#7180ff;
+    box-shadow:0 0 0 3px rgba(113,128,255,.1);
+}
+
+.controls{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:18px;
+}
+
+.field label{
+    display:block;
+    color:#aeb7cc;
+    font-size:13px;
+    margin-bottom:7px;
+}
+
+input,
+select{
+    width:100%;
+    padding:12px 14px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#090e19;
+    color:white;
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:#7180ff;
+}
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    padding:12px 17px;
+    border-radius:12px;
+    font-weight:700;
+    font-size:13px;
+    transition:.2s ease;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+.primary{
+    background:linear-gradient(135deg,#7180ff,#5667ff);
+    color:white;
+}
+
+.secondary{
+    background:#171f33;
+    color:#dce2f0;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.danger{
+    background:rgba(255,80,100,.1);
+    color:#ff9aa8;
+    border:1px solid rgba(255,80,100,.18);
+}
+
+.status{
+    margin-top:15px;
+    padding:12px 14px;
+    border-radius:12px;
+    background:rgba(90,110,255,.08);
+    border:1px solid rgba(90,110,255,.15);
+    color:#aeb9ff;
+    font-size:13px;
+}
+
+.error{
+    display:none;
+    margin-top:12px;
+    padding:12px;
+    border-radius:12px;
+    color:#ffadb8;
+    background:rgba(255,70,90,.08);
+    border:1px solid rgba(255,70,90,.18);
+    font-size:13px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.stat{
+    background:#0b111e;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:15px;
+    padding:15px;
+}
+
+.stat small{
+    display:block;
+    color:#7f8ba4;
+}
+
+.stat strong{
+    display:block;
+    font-size:20px;
+    margin-top:3px;
+}
+
+.content-section{
+    max-width:1000px;
+    margin:60px auto;
+    padding:0 20px;
+}
+
+.content-section h2{
+    font-size:28px;
+    margin-bottom:14px;
+}
+
+.content-section h3{
+    font-size:20px;
+    margin-top:30px;
+    margin-bottom:8px;
+}
+
+.content-section p,
+.content-section li{
+    color:#9da8bd;
+    font-size:15px;
+}
+
+.content-section ul{
+    padding-left:20px;
+}
+
+.faq{
+    margin-top:15px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+    overflow:hidden;
+}
+
+.faq summary{
+    cursor:pointer;
+    padding:16px;
+    background:#101725;
+    font-weight:700;
+}
+
+.faq p{
+    padding:15px;
+    background:#0b111d;
+}
+
+footer{
+    margin-top:70px;
+    padding:30px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#77829b;
+    font-size:13px;
+}
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+
+    .hero{
+        padding-top:50px;
+    }
+
+    .tool-card{
+        padding:17px;
+    }
+
+    .controls{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .buttons button{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — simple tools for everyday needs.
+</div>
+
+<header>
+<nav class="nav">
+
+    <a href="index.html" class="logo">
+        Smart<span>Tools</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="data-analyst.html">Data Tools</a>
+        <a href="ai-tools.html">AI Tools</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+</nav>
+</header>
+
+<section class="hero">
+
+    <div class="badge">
+        Developer Tool
+    </div>
+
+    <h1>JSON to TypeScript</h1>
+
+    <p>
+        Convert JSON data into clean TypeScript interfaces and types
+        automatically.
+    </p>
+
+</section>
+
+<main class="container">
+
+<div class="tool-card">
+
+<div class="grid">
+
+<div>
+
+    <div class="panel-title">
+        JSON Input
+    </div>
+
+    <div class="panel-subtitle">
+        Paste a JSON object or an array of objects.
+    </div>
+
+    <textarea id="jsonInput" placeholder='{
+  "id": 1,
+  "name": "Sukanya",
+  "age": 24,
+  "active": true
+}'></textarea>
+
+    <div id="errorBox" class="error"></div>
+
+</div>
+
+<div>
+
+    <div class="panel-title">
+        TypeScript Output
+    </div>
+
+    <div class="panel-subtitle">
+        Generated interfaces will appear here.
+    </div>
+
+    <textarea id="tsOutput" readonly placeholder="Generated TypeScript will appear here..."></textarea>
+
+</div>
+
+</div>
+
+<div class="controls">
+
+    <div class="field">
+
+        <label for="interfaceName">
+            Root Interface Name
+        </label>
+
+        <input
+            id="interfaceName"
+            value="Root"
+            placeholder="User">
+
+    </div>
+
+    <div class="field">
+
+        <label for="style">
+            Output Style
+        </label>
+
+        <select id="style">
+
+            <option value="interface">
+                Interfaces
+            </option>
+
+            <option value="type">
+                Type Aliases
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+<div class="buttons">
+
+    <button class="primary" onclick="generateTypeScript()">
+        Generate TypeScript
+    </button>
+
+    <button class="secondary" onclick="validateJSON()">
+        Validate JSON
+    </button>
+
+    <button class="secondary" onclick="loadSample()">
+        Sample JSON
+    </button>
+
+    <button class="secondary" onclick="copyOutput()">
+        Copy TypeScript
+    </button>
+
+    <button class="secondary" onclick="downloadOutput()">
+        Download .ts
+    </button>
+
+    <button class="danger" onclick="clearAll()">
+        Clear
+    </button>
+
+</div>
+
+<div class="stats">
+
+    <div class="stat">
+        <small>JSON Type</small>
+        <strong id="jsonType">—</strong>
+    </div>
+
+    <div class="stat">
+        <small>Interfaces</small>
+        <strong id="interfaceCount">0</strong>
+    </div>
+
+    <div class="stat">
+        <small>Properties</small>
+        <strong id="propertyCount">0</strong>
+    </div>
+
+    <div class="stat">
+        <small>Output Size</small>
+        <strong id="outputSize">0 KB</strong>
+    </div>
+
+</div>
+
+<div id="status" class="status">
+    Ready. Add JSON to generate TypeScript.
+</div>
+
+</div>
+
+</main>
+
+<section class="content-section">
+
+<h2>JSON to TypeScript Converter Online</h2>
+
+<p>
+    SmartTools JSON to TypeScript Generator converts JSON data into
+    TypeScript interfaces or type aliases. It detects common JSON
+    structures including strings, numbers, booleans, arrays, objects
+    and null values.
+</p>
+
+<h3>Useful For Developers</h3>
+
+<ul>
+    <li>API response types</li>
+    <li>Frontend TypeScript projects</li>
+    <li>React and Next.js applications</li>
+    <li>Node.js projects</li>
+    <li>REST API development</li>
+    <li>Data modeling</li>
+</ul>
+
+<h3>How To Use</h3>
+
+<p>
+    Paste valid JSON into the input box, enter the root interface name,
+    choose Interfaces or Type Aliases and click Generate TypeScript.
+</p>
+
+<h3>Privacy</h3>
+
+<p>
+    JSON processing happens locally in your browser. Your JSON is not
+    intentionally uploaded to a SmartTools server.
+</p>
+
+<h3>Frequently Asked Questions</h3>
+
+<details class="faq">
+<summary>
+    Can I convert an API response to TypeScript?
+</summary>
+
+<p>
+    Yes. Paste the JSON response into the tool and generate TypeScript
+    interfaces from its structure.
+</p>
+</details>
+
+<details class="faq">
+<summary>
+    Does it support nested objects?
+</summary>
+
+<p>
+    Yes. Nested JSON objects are converted into separate TypeScript
+    interfaces.
+</p>
+</details>
+
+<details class="faq">
+<summary>
+    Does it support arrays?
+</summary>
+
+<p>
+    Yes. Arrays of strings, numbers, objects and mixed values are handled
+    by the generator.
+</p>
+</details>
+
+<details class="faq">
+<summary>
+    Can I download the TypeScript code?
+</summary>
+
+<p>
+    Yes. Use the Download .ts button to save the generated code.
+</p>
+</details>
+
+</section>
+
+<footer>
+    © 2026 SmartTools. Built for simple, useful everyday tools.
+</footer>
+
+<script>
+
+const jsonInput =
+    document.getElementById("jsonInput");
+
+const tsOutput =
+    document.getElementById("tsOutput");
+
+const errorBox =
+    document.getElementById("errorBox");
+
+const statusBox =
+    document.getElementById("status");
+
+
+let generatedInterfaces = [];
+
+let totalProperties = 0;
+
+
+function showError(message){
+
+    errorBox.textContent = message;
+    errorBox.style.display = "block";
+
+}
+
+
+function hideError(){
+
+    errorBox.textContent = "";
+    errorBox.style.display = "none";
+
+}
+
+
+function cleanName(name){
+
+    let result =
+        String(name)
+            .replace(/[^a-zA-Z0-9_$]/g,"_")
+            .replace(/^(\d)/,"_$1");
+
+    if(!result){
+        result = "Root";
+    }
+
+    return result;
+
+}
+
+
+function propertyName(name){
+
+    const text =
+        String(name);
+
+    if(/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(text)){
+        return text;
+    }
+
+    return JSON.stringify(text);
+
+}
+
+
+function pascalCase(name){
+
+    return String(name)
+        .replace(/[^a-zA-Z0-9]+/g," ")
+        .split(" ")
+        .filter(Boolean)
+        .map(word =>
+            word.charAt(0).toUpperCase() +
+            word.slice(1)
+        )
+        .join("") || "Root";
+
+}
+
+
+function primitiveType(value){
+
+    if(value === null){
+        return "null";
+    }
+
+    if(typeof value === "string"){
+        return "string";
+    }
+
+    if(typeof value === "number"){
+        return "number";
+    }
+
+    if(typeof value === "boolean"){
+        return "boolean";
+    }
+
+    return "unknown";
+
+}
+
+
+function uniqueTypes(types){
+
+    return [...new Set(types)];
+
+}
+
+
+function typeForValue(
+    value,
+    suggestedName,
+    definitions
+){
+
+    if(value === null){
+        return "null";
+    }
+
+    if(
+        typeof value === "string" ||
+        typeof value === "number" ||
+        typeof value === "boolean"
+    ){
+
+        return primitiveType(value);
+
+    }
+
+    if(Array.isArray(value)){
+
+        if(value.length === 0){
+            return "unknown[]";
+        }
+
+        const itemTypes = [];
+
+        value.forEach((item,index) => {
+
+            const type =
+                typeForValue(
+                    item,
+                    suggestedName + "Item",
+                    definitions
+                );
+
+            itemTypes.push(type);
+
+        });
+
+        const types =
+            uniqueTypes(itemTypes);
+
+        if(types.length === 1){
+
+            return types[0] + "[]";
+
+        }
+
+        return "(" +
+            types.join(" | ") +
+            ")[]";
+
+    }
+
+    if(typeof value === "object"){
+
+        const interfaceName =
+            cleanName(
+                pascalCase(suggestedName)
+            );
+
+        createInterface(
+            interfaceName,
+            value,
+            definitions
+        );
+
+        return interfaceName;
+
+    }
+
+    return "unknown";
+
+}
+
+
+function createInterface(
+    interfaceName,
+    object,
+    definitions
+){
+
+    if(definitions[interfaceName]){
+        return interfaceName;
+    }
+
+    definitions[interfaceName] = {
+        placeholder:true
+    };
+
+    const lines = [];
+
+    lines.push(
+        "export interface " +
+        interfaceName +
+        " {"
+    );
+
+    Object.keys(object).forEach(key => {
+
+        totalProperties++;
+
+        const value =
+            object[key];
+
+        let childName =
+            pascalCase(key);
+
+        if(
+            value !== null &&
+            typeof value === "object"
+        ){
+
+            childName =
+                interfaceName +
+                pascalCase(key);
+
+        }
+
+        const type =
+            typeForValue(
+                value,
+                childName,
+                definitions
+            );
+
+        lines.push(
+            "  " +
+            propertyName(key) +
+            ": " +
+            type +
+            ";"
+        );
+
+    });
+
+    lines.push("}");
+
+    definitions[interfaceName] = {
+        lines:lines
+    };
+
+    return interfaceName;
+
+}
+
+
+function createTypeAlias(
+    interfaceName,
+    object,
+    definitions
+){
+
+    if(definitions[interfaceName]){
+        return interfaceName;
+    }
+
+    definitions[interfaceName] = {
+        placeholder:true
+    };
+
+    const lines = [];
+
+    lines.push(
+        "export type " +
+        interfaceName +
+        " = {"
+    );
+
+    Object.keys(object).forEach(key => {
+
+        totalProperties++;
+
+        const value =
+            object[key];
+
+        let childName =
+            interfaceName +
+            pascalCase(key);
+
+        const type =
+            typeForValue(
+                value,
+                childName,
+                definitions
+            );
+
+        lines.push(
+            "  " +
+            propertyName(key) +
+            ": " +
+            type +
+            ";"
+        );
+
+    });
+
+    lines.push("};");
+
+    definitions[interfaceName] = {
+        lines:lines
+    };
+
+    return interfaceName;
+
+}
+
+
+function createArrayRoot(
+    rootName,
+    array,
+    definitions,
+    style
+){
+
+    if(array.length === 0){
+
+        if(style === "interface"){
+
+            return [
+                "export interface " +
+                rootName +
+                " {",
+                "}"
+            ];
+
+        }
+
+        return [
+            "export type " +
+            rootName +
+            " = unknown;"
+        ];
+
+    }
+
+    const first =
+        array[0];
+
+    if(
+        first !== null &&
+        typeof first === "object" &&
+        !Array.isArray(first)
+    ){
+
+        const itemName =
+            rootName + "Item";
+
+        if(style === "interface"){
+
+            createInterface(
+                itemName,
+                first,
+                definitions
+            );
+
+        }else{
+
+            createTypeAlias(
+                itemName,
+                first,
+                definitions
+            );
+
+        }
+
+        return [
+            "export type " +
+            rootName +
+            " = " +
+            itemName +
+            "[];"
+        ];
+
+    }
+
+    const itemTypes =
+        array.map(item =>
+            typeForValue(
+                item,
+                rootName + "Item",
+                definitions
+            )
+        );
+
+    const types =
+        uniqueTypes(itemTypes);
+
+    return [
+        "export type " +
+        rootName +
+        " = " +
+        (
+            types.length === 1
+                ? types[0]
+                : "(" + types.join(" | ") + ")"
+        ) +
+        "[];"
+    ];
+
+}
+
+
+function generateTypeScript(){
+
+    hideError();
+
+    totalProperties = 0;
+
+    generatedInterfaces = [];
+
+    const text =
+        jsonInput.value.trim();
+
+    if(!text){
+
+        showError(
+            "Please enter JSON first."
+        );
+
+        return;
+
+    }
+
+    let data;
+
+    try{
+
+        data =
+            JSON.parse(text);
+
+    }catch(error){
+
+        showError(
+            "Invalid JSON: " +
+            error.message
+        );
+
+        statusBox.textContent =
+            "Generation failed.";
+
+        return;
+
+    }
+
+    const rootName =
+        cleanName(
+            pascalCase(
+                document.getElementById("interfaceName")
+                    .value.trim() ||
+                "Root"
+            )
+        );
+
+    const style =
+        document.getElementById("style").value;
+
+    const definitions = {};
+
+    let rootCode = [];
+
+    if(
+        data !== null &&
+        typeof data === "object" &&
+        !Array.isArray(data)
+    ){
+
+        if(style === "interface"){
+
+            createInterface(
+                rootName,
+                data,
+                definitions
+            );
+
+        }else{
+
+            createTypeAlias(
+                rootName,
+                data,
+                definitions
+            );
+
+        }
+
+    }else if(Array.isArray(data)){
+
+        rootCode =
+            createArrayRoot(
+                rootName,
+                data,
+                definitions,
+                style
+            );
+
+    }else{
+
+        rootCode = [
+            "export type " +
+            rootName +
+            " = " +
+            primitiveType(data) +
+            ";"
+        ];
+
+    }
+
+    const blocks = [];
+
+    Object.keys(definitions).forEach(name => {
+
+        const definition =
+            definitions[name];
+
+        if(
+            definition &&
+            definition.lines
+        ){
+
+            blocks.push(
+                definition.lines.join("\n")
+            );
+
+        }
+
+    });
+
+    if(rootCode.length){
+
+        blocks.push(
+            rootCode.join("\n")
+        );
+
+    }
+
+    tsOutput.value =
+        blocks.join("\n\n");
+
+    const names =
+        Object.keys(definitions);
+
+    document.getElementById("interfaceCount")
+        .textContent =
+        names.length;
+
+    document.getElementById("propertyCount")
+        .textContent =
+        totalProperties;
+
+    document.getElementById("jsonType")
+        .textContent =
+        Array.isArray(data)
+            ? "Array"
+            : data === null
+                ? "Null"
+                : typeof data === "object"
+                    ? "Object"
+                    : typeof data;
+
+    const bytes =
+        new Blob([tsOutput.value]).size;
+
+    document.getElementById("outputSize")
+        .textContent =
+        bytes < 1024
+            ? bytes + " B"
+            : (bytes / 1024).toFixed(1) +
+              " KB";
+
+    statusBox.textContent =
+        "TypeScript generated successfully.";
+
+}
+
+
+function validateJSON(){
+
+    hideError();
+
+    const text =
+        jsonInput.value.trim();
+
+    if(!text){
+
+        showError(
+            "Please enter JSON first."
+        );
+
+        return;
+
+    }
+
+    try{
+
+        JSON.parse(text);
+
+        statusBox.textContent =
+            "Valid JSON. Ready to generate TypeScript.";
+
+    }catch(error){
+
+        showError(
+            "Invalid JSON: " +
+            error.message
+        );
+
+        statusBox.textContent =
+            "JSON validation failed.";
+
+    }
+
+}
+
+
+function loadSample(){
+
+    jsonInput.value = `{
+  "id": 101,
+  "name": "Sukanya Shahare",
+  "email": "sukanya@example.com",
+  "age": 24,
+  "active": true,
+  "address": {
+    "city": "Nagpur",
+    "country": "India",
+    "pincode": 440001
+  },
+  "skills": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ]
+}`;
+
+    document.getElementById("interfaceName")
+        .value = "User";
+
+    document.getElementById("style")
+        .value = "interface";
+
+    hideError();
+
+    statusBox.textContent =
+        "Sample JSON loaded. Click Generate TypeScript.";
+
+}
+
+
+async function copyOutput(){
+
+    if(!tsOutput.value.trim()){
+
+        alert("Generate TypeScript first.");
+
+        return;
+
+    }
+
+    try{
+
+        await navigator.clipboard.writeText(
+            tsOutput.value
+        );
+
+        statusBox.textContent =
+            "TypeScript copied to clipboard.";
+
+    }catch(error){
+
+        tsOutput.select();
+
+        document.execCommand("copy");
+
+        statusBox.textContent =
+            "TypeScript copied.";
+
+    }
+
+}
+
+
+function downloadOutput(){
+
+    if(!tsOutput.value.trim()){
+
+        alert("Generate TypeScript first.");
+
+        return;
+
+    }
+
+    const blob =
+        new Blob(
+            [tsOutput.value],
+            {type:"text/typescript;charset=utf-8"}
+        );
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const link =
+        document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+        "generated-types.ts";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+}
+
+
+function clearAll(){
+
+    jsonInput.value = "";
+
+    tsOutput.value = "";
+
+    document.getElementById("interfaceName")
+        .value = "Root";
+
+    document.getElementById("style")
+        .value = "interface";
+
+    document.getElementById("jsonType")
+        .textContent = "—";
+
+    document.getElementById("interfaceCount")
+        .textContent = "0";
+
+    document.getElementById("propertyCount")
+        .textContent = "0";
+
+    document.getElementById("outputSize")
+        .textContent = "0 KB";
+
+    hideError();
+
+    statusBox.textContent =
+        "Ready. Add JSON to generate TypeScript.";
+
+}
+
+</script>
+
+</body>
+</html>

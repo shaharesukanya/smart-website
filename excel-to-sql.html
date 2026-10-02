@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Excel to SQL Converter - Convert XLSX to SQL Online | SmartTools</title>
+
+    <meta name="description"
+        content="Convert Excel XLSX or XLS files to SQL CREATE TABLE and INSERT statements online. Supports MySQL, PostgreSQL, SQLite and SQL Server. Free browser-based Excel to SQL converter.">
+
+    <meta name="keywords"
+        content="Excel to SQL, XLSX to SQL, XLS to SQL, Excel SQL converter, CSV SQL converter, CREATE TABLE generator, INSERT SQL generator">
+
+    <meta name="author" content="Sukanya Shahare">
+
+    <link rel="canonical" href="https://smarttools.example/excel-to-sql.html">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(99,102,241,.18), transparent 35%),
+                radial-gradient(circle at top right, rgba(14,165,233,.14), transparent 30%),
+                #070b14;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(18px);
+            background: rgba(7,11,20,.82);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -.6px;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: auto;
+            padding: 55px 22px 80px;
+        }
+
+        .breadcrumb {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(96,165,250,.12);
+            border: 1px solid rgba(96,165,250,.25);
+            color: #93c5fd;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 62px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: auto;
+            color: #94a3b8;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .card {
+            background: rgba(15,23,42,.78);
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 25px 80px rgba(0,0,0,.28);
+            margin-bottom: 25px;
+        }
+
+        .upload-box {
+            border: 2px dashed rgba(96,165,250,.4);
+            border-radius: 20px;
+            padding: 38px 20px;
+            text-align: center;
+            background: rgba(15,23,42,.5);
+            transition: .25s;
+        }
+
+        .upload-box:hover {
+            border-color: #60a5fa;
+            transform: translateY(-2px);
+        }
+
+        .upload-box h2 {
+            margin-bottom: 8px;
+            font-size: 22px;
+        }
+
+        .upload-box p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            max-width: 500px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.1);
+            background: #0b1220;
+            color: #cbd5e1;
+        }
+
+        .settings {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .field label {
+            color: #cbd5e1;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.1);
+            background: #0b1220;
+            color: #fff;
+            outline: none;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: #60a5fa;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 13px 19px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s;
+            font-size: 14px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+        }
+
+        .secondary {
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .danger {
+            background: rgba(239,68,68,.12);
+            color: #fca5a5;
+            border: 1px solid rgba(239,68,68,.2);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 25px;
+        }
+
+        .stat {
+            padding: 20px;
+            background: rgba(15,23,42,.8);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 18px;
+        }
+
+        .stat span {
+            display: block;
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .stat strong {
+            font-size: 23px;
+        }
+
+        .status {
+            display: none;
+            padding: 14px 16px;
+            border-radius: 12px;
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        .success {
+            display: block;
+            background: rgba(34,197,94,.1);
+            border: 1px solid rgba(34,197,94,.25);
+            color: #86efac;
+        }
+
+        .error {
+            display: block;
+            background: rgba(239,68,68,.1);
+            border: 1px solid rgba(239,68,68,.25);
+            color: #fca5a5;
+        }
+
+        .preview {
+            overflow-x: auto;
+            margin-top: 20px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        th,
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+            text-align: left;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        th {
+            background: #111827;
+            color: #93c5fd;
+        }
+
+        td {
+            color: #cbd5e1;
+        }
+
+        .code-box {
+            background: #020617;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px;
+            padding: 18px;
+            overflow: auto;
+            max-height: 620px;
+            margin-top: 18px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: #dbeafe;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .section-text {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        .faq {
+            margin-top: 18px;
+        }
+
+        details {
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 14px;
+            padding: 17px 18px;
+            margin-bottom: 12px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding: 30px 22px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+            .settings {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .container {
+                padding: 35px 14px 60px;
+            }
+
+            .card {
+                padding: 18px;
+                border-radius: 18px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .buttons button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <a class="logo" href="index.html">Smart<span>Tools</span></a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="data-analyst.html">Data Analyst</a>
+            <a href="csv-analyzer.html">CSV Tools</a>
+            <a href="excel-analyzer.html">Excel Tools</a>
+            <a href="about.html">About</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> /
+        <a href="data-analyst.html">Data Analyst</a> /
+        Excel to SQL
+    </div>
+
+    <section class="hero">
+        <div class="badge">Developer & Data Analyst Tool</div>
+
+        <h1>Excel to SQL Converter</h1>
+
+        <p>
+            Convert XLSX and XLS Excel files into SQL
+            CREATE TABLE and INSERT statements.
+            Choose your SQL database and generate ready-to-use SQL code.
+        </p>
+    </section>
+
+    <section class="card">
+
+        <div class="upload-box">
+
+            <h2>Upload Excel File</h2>
+
+            <p>
+                Select an XLSX or XLS file from your computer.
+                Processing happens directly in your browser.
+            </p>
+
+            <input
+                type="file"
+                id="excelFile"
+                accept=".xlsx,.xls"
+            >
+
+        </div>
+
+        <div class="settings">
+
+            <div class="field">
+                <label for="sheetSelect">Worksheet</label>
+
+                <select id="sheetSelect" disabled>
+                    <option>Select worksheet</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="tableName">SQL Table Name</label>
+
+                <input
+                    type="text"
+                    id="tableName"
+                    value="my_table"
+                    placeholder="Enter table name"
+                >
+            </div>
+
+            <div class="field">
+                <label for="sqlDialect">SQL Database</label>
+
+                <select id="sqlDialect">
+                    <option value="mysql">MySQL</option>
+                    <option value="postgresql">PostgreSQL</option>
+                    <option value="sqlite">SQLite</option>
+                    <option value="sqlserver">SQL Server</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button class="primary" onclick="generateSQL()">
+                Generate SQL
+            </button>
+
+            <button class="secondary" onclick="loadSample()">
+                Sample Data
+            </button>
+
+            <button class="secondary" onclick="copySQL()">
+                Copy SQL
+            </button>
+
+            <button class="secondary" onclick="downloadSQL()">
+                Download SQL
+            </button>
+
+            <button class="danger" onclick="clearAll()">
+                Clear
+            </button>
+
+        </div>
+
+        <div id="status" class="status"></div>
+
+    </section>
+
+    <section class="stats">
+
+        <div class="stat">
+            <span>Rows</span>
+            <strong id="rowCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <span>Columns</span>
+            <strong id="columnCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <span>Worksheet</span>
+            <strong id="sheetCount">-</strong>
+        </div>
+
+        <div class="stat">
+            <span>SQL Size</span>
+            <strong id="sqlSize">0 KB</strong>
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2 class="section-title">Excel Data Preview</h2>
+
+        <p class="section-text">
+            Preview of the selected worksheet before generating SQL.
+        </p>
+
+        <div class="preview">
+            <table>
+                <thead id="previewHead"></thead>
+                <tbody id="previewBody"></tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2 class="section-title">Generated SQL</h2>
+
+        <p class="section-text">
+            The generated SQL contains a CREATE TABLE statement
+            followed by INSERT statements for your Excel data.
+        </p>
+
+        <div class="code-box">
+            <pre id="sqlOutput">SQL will appear here...</pre>
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2 class="section-title">Excel to SQL Converter</h2>
+
+        <p class="section-text">
+            Excel to SQL conversion is useful when importing spreadsheet
+            data into databases. This tool automatically reads column names,
+            detects common data types, creates a SQL table definition and
+            generates INSERT statements for the available rows.
+        </p>
+
+        <br>
+
+        <p class="section-text">
+            Supported database formats include MySQL, PostgreSQL, SQLite
+            and Microsoft SQL Server. The conversion is performed locally
+            in your browser, so your Excel data is not uploaded to a server
+            by this page.
+        </p>
+
+    </section>
+
+    <section class="card">
+
+        <h2 class="section-title">Frequently Asked Questions</h2>
+
+        <div class="faq">
+
+            <details>
+                <summary>Can I convert XLSX to SQL?</summary>
+
+                <p>
+                    Yes. Upload an XLSX or XLS file, select a worksheet,
+                    choose a database dialect and generate SQL.
+                </p>
+            </details>
+
+            <details>
+                <summary>Which SQL databases are supported?</summary>
+
+                <p>
+                    This converter supports MySQL, PostgreSQL, SQLite
+                    and SQL Server SQL syntax.
+                </p>
+            </details>
+
+            <details>
+                <summary>Is my Excel data uploaded?</summary>
+
+                <p>
+                    The conversion is performed inside your browser.
+                    The page does not send the Excel contents to a backend
+                    server.
+                </p>
+            </details>
+
+            <details>
+                <summary>Does it generate INSERT statements?</summary>
+
+                <p>
+                    Yes. The generated SQL includes a CREATE TABLE statement
+                    and INSERT statements for the spreadsheet rows.
+                </p>
+            </details>
+
+            <details>
+                <summary>What happens to empty Excel cells?</summary>
+
+                <p>
+                    Empty cells are converted to SQL NULL values.
+                </p>
+            </details>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    © 2026 SmartTools — Simple tools for everyday needs.
+</footer>
+
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+
+<script>
+
+let workbook = null;
+let currentData = [];
+let generatedSQL = "";
+
+const fileInput = document.getElementById("excelFile");
+const sheetSelect = document.getElementById("sheetSelect");
+
+fileInput.addEventListener("change", handleFile);
+
+sheetSelect.addEventListener("change", function () {
+    if (workbook) {
+        loadWorksheet(this.value);
+    }
+});
+
+async function handleFile(event) {
+
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    try {
+
+        const buffer = await file.arrayBuffer();
+
+        workbook = XLSX.read(buffer, {
+            type: "array",
+            cellDates: true
+        });
+
+        sheetSelect.innerHTML = "";
+
+        workbook.SheetNames.forEach(function(sheetName) {
+
+            const option = document.createElement("option");
+
+            option.value = sheetName;
+            option.textContent = sheetName;
+
+            sheetSelect.appendChild(option);
+
+        });
+
+        sheetSelect.disabled = false;
+
+        loadWorksheet(workbook.SheetNames[0]);
+
+        showStatus(
+            "Excel file loaded successfully.",
+            "success"
+        );
+
+    } catch (error) {
+
+        showStatus(
+            "Could not read this Excel file.",
+            "error"
+        );
+
+    }
+}
+
+function loadWorksheet(sheetName) {
+
+    const sheet = workbook.Sheets[sheetName];
+
+    currentData = XLSX.utils.sheet_to_json(sheet, {
+        defval: null,
+        raw: true
+    });
+
+    document.getElementById("sheetCount").textContent = sheetName;
+
+    renderPreview();
+
+    updateStats();
+
+}
+
+function renderPreview() {
+
+    const head = document.getElementById("previewHead");
+    const body = document.getElementById("previewBody");
+
+    head.innerHTML = "";
+    body.innerHTML = "";
+
+    if (!currentData.length) {
+
+        body.innerHTML =
+            "<tr><td>No data found in this worksheet.</td></tr>";
+
+        return;
+    }
+
+    const columns = Object.keys(currentData[0]);
+
+    const tr = document.createElement("tr");
+
+    columns.forEach(function(column) {
+
+        const th = document.createElement("th");
+
+        th.textContent = column;
+
+        tr.appendChild(th);
+
+    });
+
+    head.appendChild(tr);
+
+    currentData.slice(0, 10).forEach(function(row) {
+
+        const rowElement = document.createElement("tr");
+
+        columns.forEach(function(column) {
+
+            const td = document.createElement("td");
+
+            let value = row[column];
+
+            if (value instanceof Date) {
+                value = formatDate(value);
+            }
+
+            td.textContent =
+                value === null ||
+                value === undefined ||
+                value === ""
+                    ? "NULL"
+                    : String(value);
+
+            rowElement.appendChild(td);
+
+        });
+
+        body.appendChild(rowElement);
+
+    });
+
+}
+
+function updateStats() {
+
+    const rows = currentData.length;
+
+    const columns =
+        rows > 0
+            ? Object.keys(currentData[0]).length
+            : 0;
+
+    document.getElementById("rowCount").textContent = rows;
+
+    document.getElementById("columnCount").textContent = columns;
+
+}
+
+function detectType(values) {
+
+    const nonEmpty = values.filter(function(value) {
+        return value !== null &&
+               value !== undefined &&
+               value !== "";
+    });
+
+    if (!nonEmpty.length) {
+        return "string";
+    }
+
+    if (
+        nonEmpty.every(function(value) {
+            return typeof value === "boolean";
+        })
+    ) {
+        return "boolean";
+    }
+
+    if (
+        nonEmpty.every(function(value) {
+            return typeof value === "number" &&
+                   Number.isInteger(value);
+        })
+    ) {
+        return "integer";
+    }
+
+    if (
+        nonEmpty.every(function(value) {
+            return typeof value === "number";
+        })
+    ) {
+        return "number";
+    }
+
+    if (
+        nonEmpty.every(function(value) {
+            return value instanceof Date;
+        })
+    ) {
+        return "date";
+    }
+
+    return "string";
+}
+
+function sqlType(type, dialect) {
+
+    if (dialect === "mysql") {
+
+        if (type === "integer") return "INT";
+        if (type === "number") return "DECIMAL(18,4)";
+        if (type === "boolean") return "BOOLEAN";
+        if (type === "date") return "DATE";
+
+        return "VARCHAR(255)";
+    }
+
+    if (dialect === "postgresql") {
+
+        if (type === "integer") return "INTEGER";
+        if (type === "number") return "DOUBLE PRECISION";
+        if (type === "boolean") return "BOOLEAN";
+        if (type === "date") return "DATE";
+
+        return "TEXT";
+    }
+
+    if (dialect === "sqlite") {
+
+        if (type === "integer") return "INTEGER";
+        if (type === "number") return "REAL";
+        if (type === "boolean") return "INTEGER";
+        if (type === "date") return "TEXT";
+
+        return "TEXT";
+    }
+
+    if (dialect === "sqlserver") {
+
+        if (type === "integer") return "INT";
+        if (type === "number") return "DECIMAL(18,4)";
+        if (type === "boolean") return "BIT";
+        if (type === "date") return "DATE";
+
+        return "NVARCHAR(255)";
+    }
+
+    return "TEXT";
+}
+
+function quoteIdentifier(name, dialect) {
+
+    name = String(name)
+        .trim()
+        .replace(/\s+/g, "_");
+
+    if (!name) {
+        name = "column";
+    }
+
+    if (dialect === "mysql") {
+
+        return "`" +
+            name.replace(/`/g, "``") +
+            "`";
+    }
+
+    if (dialect === "sqlserver") {
+
+        return "[" +
+            name.replace(/\]/g, "]]") +
+            "]";
+    }
+
+    return '"' +
+        name.replace(/"/g, '""') +
+        '"';
+}
+
+function escapeSQLValue(value, type, dialect) {
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === ""
+    ) {
+        return "NULL";
+    }
+
+    if (type === "integer" || type === "number") {
+
+        const number = Number(value);
+
+        if (Number.isFinite(number)) {
+            return String(number);
+        }
+
+        return "NULL";
+    }
+
+    if (type === "boolean") {
+
+        if (dialect === "postgresql") {
+            return value ? "TRUE" : "FALSE";
+        }
+
+        if (dialect === "sqlserver") {
+            return value ? "1" : "0";
+        }
+
+        return value ? "1" : "0";
+    }
+
+    if (type === "date") {
+
+        const date = value instanceof Date
+            ? value
+            : new Date(value);
+
+        if (!isNaN(date.getTime())) {
+
+            const formatted =
+                date.getFullYear() +
+                "-" +
+                String(date.getMonth() + 1).padStart(2, "0") +
+                "-" +
+                String(date.getDate()).padStart(2, "0");
+
+            return "'" + formatted + "'";
+        }
+    }
+
+    const textValue = String(value)
+        .replace(/'/g, "''");
+
+    return "'" + textValue + "'";
+}
+
+function formatDate(date) {
+
+    if (!(date instanceof Date)) {
+        return date;
+    }
+
+    return (
+        date.getFullYear() +
+        "-" +
+        String(date.getMonth() + 1).padStart(2, "0") +
+        "-" +
+        String(date.getDate()).padStart(2, "0")
+    );
+}
+
+function generateSQL() {
+
+    if (!currentData.length) {
+
+        showStatus(
+            "Please upload an Excel file first.",
+            "error"
+        );
+
+        return;
+    }
+
+    let tableName =
+        document.getElementById("tableName")
+            .value
+            .trim();
+
+    if (!tableName) {
+
+        showStatus(
+            "Please enter a table name.",
+            "error"
+        );
+
+        return;
+    }
+
+    tableName = tableName
+        .replace(/\s+/g, "_")
+        .replace(/[^a-zA-Z0-9_$]/g, "_");
+
+    const dialect =
+        document.getElementById("sqlDialect").value;
+
+    const columns =
+        Object.keys(currentData[0]);
+
+    const columnDefinitions = [];
+
+    columns.forEach(function(column) {
+
+        const values = currentData.map(function(row) {
+            return row[column];
+        });
+
+        const type = detectType(values);
+
+        columnDefinitions.push(
+            quoteIdentifier(column, dialect) +
+            " " +
+            sqlType(type, dialect)
+        );
+
+    });
+
+    let sql = "";
+
+    sql += "-- Generated by SmartTools Excel to SQL Converter\n";
+    sql += "-- Database: " + dialect + "\n";
+    sql += "-- Rows: " + currentData.length + "\n\n";
+
+    sql += "CREATE TABLE " +
+        quoteIdentifier(tableName, dialect) +
+        " (\n";
+
+    sql += columnDefinitions
+        .map(function(definition) {
+            return "    " + definition;
+        })
+        .join(",\n");
+
+    sql += "\n);\n\n";
+
+    const quotedColumns =
+        columns.map(function(column) {
+            return quoteIdentifier(column, dialect);
+        }).join(", ");
+
+    currentData.forEach(function(row) {
+
+        const values = columns.map(function(column) {
+
+            const columnValues =
+                currentData.map(function(item) {
+                    return item[column];
+                });
+
+            const type = detectType(columnValues);
+
+            return escapeSQLValue(
+                row[column],
+                type,
+                dialect
+            );
+
+        });
+
+        sql +=
+            "INSERT INTO " +
+            quoteIdentifier(tableName, dialect) +
+            " (" +
+            quotedColumns +
+            ") VALUES (" +
+            values.join(", ") +
+            ");\n";
+
+    });
+
+    generatedSQL = sql;
+
+    document.getElementById("sqlOutput").textContent =
+        generatedSQL;
+
+    document.getElementById("sqlSize").textContent =
+        formatBytes(new Blob([generatedSQL]).size);
+
+    showStatus(
+        "SQL generated successfully.",
+        "success"
+    );
+
+}
+
+function formatBytes(bytes) {
+
+    if (bytes < 1024) {
+        return bytes + " B";
+    }
+
+    return (bytes / 1024).toFixed(2) + " KB";
+}
+
+async function copySQL() {
+
+    if (!generatedSQL) {
+
+        showStatus(
+            "Generate SQL first.",
+            "error"
+        );
+
+        return;
+    }
+
+    try {
+
+        await navigator.clipboard.writeText(generatedSQL);
+
+        showStatus(
+            "SQL copied to clipboard.",
+            "success"
+        );
+
+    } catch (error) {
+
+        showStatus(
+            "Copy failed. Please copy the SQL manually.",
+            "error"
+        );
+
+    }
+}
+
+function downloadSQL() {
+
+    if (!generatedSQL) {
+
+        showStatus(
+            "Generate SQL first.",
+            "error"
+        );
+
+        return;
+    }
+
+    const blob = new Blob(
+        [generatedSQL],
+        {
+            type: "text/sql;charset=utf-8"
+        }
+    );
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const link =
+        document.createElement("a");
+
+    link.href = url;
+
+    const tableName =
+        document.getElementById("tableName")
+            .value
+            .trim()
+            .replace(/\s+/g, "_") || "data";
+
+    link.download =
+        tableName + ".sql";
+
+    link.click();
+
+    URL.revokeObjectURL(url);
+
+    showStatus(
+        "SQL file downloaded.",
+        "success"
+    );
+}
+
+function loadSample() {
+
+    currentData = [
+        {
+            id: 1,
+            name: "Aarav",
+            email: "aarav@example.com",
+            age: 24,
+            salary: 45000,
+            active: true
+        },
+        {
+            id: 2,
+            name: "Neha",
+            email: "neha@example.com",
+            age: 27,
+            salary: 52000,
+            active: true
+        },
+        {
+            id: 3,
+            name: "Rohan",
+            email: "rohan@example.com",
+            age: 31,
+            salary: 68000,
+            active: false
+        }
+    ];
+
+    document.getElementById("tableName").value =
+        "employees";
+
+    document.getElementById("sheetCount").textContent =
+        "Sample";
+
+    renderPreview();
+
+    updateStats();
+
+    generateSQL();
+
+    showStatus(
+        "Sample Excel data loaded.",
+        "success"
+    );
+}
+
+function clearAll() {
+
+    workbook = null;
+
+    currentData = [];
+
+    generatedSQL = "";
+
+    fileInput.value = "";
+
+    sheetSelect.innerHTML =
+        "<option>Select worksheet</option>";
+
+    sheetSelect.disabled = true;
+
+    document.getElementById("tableName").value =
+        "my_table";
+
+    document.getElementById("rowCount").textContent =
+        "0";
+
+    document.getElementById("columnCount").textContent =
+        "0";
+
+    document.getElementById("sheetCount").textContent =
+        "-";
+
+    document.getElementById("sqlSize").textContent =
+        "0 KB";
+
+    document.getElementById("previewHead").innerHTML =
+        "";
+
+    document.getElementById("previewBody").innerHTML =
+        "";
+
+    document.getElementById("sqlOutput").textContent =
+        "SQL will appear here...";
+
+    document.getElementById("status").className =
+        "status";
+
+}
+
+function showStatus(message, type) {
+
+    const status =
+        document.getElementById("status");
+
+    status.textContent = message;
+
+    status.className =
+        "status " + type;
+
+}
+
+</script>
+
+</body>
+</html>

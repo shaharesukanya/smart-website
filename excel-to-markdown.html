@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Excel to Markdown Converter - XLSX to Markdown | SmartTools</title>
+
+    <meta name="description"
+        content="Convert Excel XLSX and XLS files to Markdown tables online. Generate clean Markdown tables for GitHub, README files, documentation and reports.">
+
+    <meta name="keywords"
+        content="Excel to Markdown, XLSX to Markdown, XLS to Markdown, Excel Markdown converter, Markdown table generator, spreadsheet to Markdown">
+
+    <meta name="author" content="Sukanya Shahare">
+
+    <link rel="canonical" href="https://smarttools.example/excel-to-markdown.html">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(99,102,241,.18), transparent 35%),
+                radial-gradient(circle at top right, rgba(14,165,233,.14), transparent 30%),
+                #070b14;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(18px);
+            background: rgba(7,11,20,.84);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -.6px;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: auto;
+            padding: 55px 22px 80px;
+        }
+
+        .breadcrumb {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .breadcrumb a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(96,165,250,.12);
+            border: 1px solid rgba(96,165,250,.25);
+            color: #93c5fd;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 62px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: auto;
+            color: #94a3b8;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .card {
+            background: rgba(15,23,42,.78);
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 25px 80px rgba(0,0,0,.28);
+            margin-bottom: 25px;
+        }
+
+        .upload-box {
+            border: 2px dashed rgba(96,165,250,.4);
+            border-radius: 20px;
+            padding: 38px 20px;
+            text-align: center;
+            background: rgba(15,23,42,.5);
+            transition: .25s;
+        }
+
+        .upload-box:hover {
+            border-color: #60a5fa;
+            transform: translateY(-2px);
+        }
+
+        .upload-box h2 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .upload-box p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            max-width: 500px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.1);
+            background: #0b1220;
+            color: #cbd5e1;
+        }
+
+        .settings {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .field label {
+            color: #cbd5e1;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.1);
+            background: #0b1220;
+            color: #fff;
+            outline: none;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: #60a5fa;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 13px 19px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s;
+            font-size: 14px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+        }
+
+        .secondary {
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .danger {
+            background: rgba(239,68,68,.12);
+            color: #fca5a5;
+            border: 1px solid rgba(239,68,68,.2);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 25px;
+        }
+
+        .stat {
+            padding: 20px;
+            background: rgba(15,23,42,.8);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 18px;
+        }
+
+        .stat span {
+            display: block;
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .stat strong {
+            font-size: 23px;
+        }
+
+        .status {
+            display: none;
+            padding: 14px 16px;
+            border-radius: 12px;
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        .success {
+            display: block;
+            background: rgba(34,197,94,.1);
+            border: 1px solid rgba(34,197,94,.25);
+            color: #86efac;
+        }
+
+        .error {
+            display: block;
+            background: rgba(239,68,68,.1);
+            border: 1px solid rgba(239,68,68,.25);
+            color: #fca5a5;
+        }
+
+        .preview {
+            overflow-x: auto;
+            margin-top: 20px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        th,
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+            text-align: left;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        th {
+            background: #111827;
+            color: #93c5fd;
+        }
+
+        td {
+            color: #cbd5e1;
+        }
+
+        .code-box {
+            background: #020617;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px;
+            padding: 18px;
+            overflow: auto;
+            max-height: 620px;
+            margin-top: 18px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: #dbeafe;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .section-text {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        .faq {
+            margin-top: 18px;
+        }
+
+        details {
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 14px;
+            padding: 17px 18px;
+            margin-bottom: 12px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding: 30px 22px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+            .settings {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .container {
+                padding: 35px 14px 60px;
+            }
+
+            .card {
+                padding: 18px;
+                border-radius: 18px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .buttons button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+
+        <a class="logo" href="index.html">
+            Smart<span>Tools</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="data-analyst.html">Data Analyst</a>
+            <a href="csv-analyzer.html">CSV Tools</a>
+            <a href="excel-analyzer.html">Excel Tools</a>
+            <a href="about.html">About</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> /
+        <a href="data-analyst.html">Data Analyst</a> /
+        Excel to Markdown
+    </div>
+
+    <section class="hero">
+
+        <div class="badge">
+            Developer & Documentation Tool
+        </div>
+
+        <h1>Excel to Markdown Converter</h1>
+
+        <p>
+            Convert XLSX and XLS Excel spreadsheets into clean
+            Markdown tables for GitHub README files, documentation,
+            reports and developer projects.
+        </p>
+
+    </section>
+
+    <section class="card">
+
+        <div class="upload-box">
+
+            <h2>Upload Excel File</h2>
+
+            <p>
+                Select an XLSX or XLS file from your computer.
+                Your spreadsheet is processed directly in your browser.
+            </p>
+
+            <input
+                type="file"
+                id="excelFile"
+                accept=".xlsx,.xls"
+            >
+
+        </div>
+
+        <div class="settings">
+
+            <div class="field">
+
+                <label for="sheetSelect">
+                    Worksheet
+                </label>
+
+                <select id="sheetSelect" disabled>
+                    <option>Select worksheet</option>
+                </select>
+
+            </div>
+
+            <div class="field">
+
+                <label for="tableTitle">
+                    Table Caption
+                </label>
+
+                <input
+                    type="text"
+                    id="tableTitle"
+                    placeholder="Optional caption"
+                >
+
+            </div>
+
+            <div class="field">
+
+                <label for="alignment">
+                    Column Alignment
+                </label>
+
+                <select id="alignment">
+
+                    <option value="none">
+                        Default
+                    </option>
+
+                    <option value="left">
+                        Left
+                    </option>
+
+                    <option value="center">
+                        Center
+                    </option>
+
+                    <option value="right">
+                        Right
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button class="primary" onclick="generateMarkdown()">
+                Generate Markdown
+            </button>
+
+            <button class="secondary" onclick="loadSample()">
+                Sample Data
+            </button>
+
+            <button class="secondary" onclick="copyMarkdown()">
+                Copy Markdown
+            </button>
+
+            <button class="secondary" onclick="downloadMarkdown()">
+                Download .md
+            </button>
+
+            <button class="danger" onclick="clearAll()">
+                Clear
+            </button>
+
+        </div>
+
+        <div id="status" class="status"></div>
+
+    </section>
+
+    <section class="stats">
+
+        <div class="stat">
+            <span>Rows</span>
+            <strong id="rowCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <span>Columns</span>
+            <strong id="columnCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <span>Worksheet</span>
+            <strong id="sheetName">-</strong>
+        </div>
+
+        <div class="stat">
+            <span>Markdown Size</span>
+            <strong id="markdownSize">0 KB</strong>
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2 class="section-title">
+            Excel Data Preview
+        </h2>
+
+        <p class="section-text">
+            Preview the first rows of your Excel worksheet.
+        </p>
+
+        <div class="preview">
+
+            <table>
+
+                <thead id="previewHead"></thead>
+
+                <tbody id="previewBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2 class="section-title">
+            Generated Markdown
+        </h2>
+
+        <p class="section-text">
+            Copy this Markdown directly into GitHub,
+            README files, documentation or other Markdown editors.
+        </p>
+
+        <div class="code-box">
+
+            <pre id="markdownOutput">Markdown will appear here...</pre>
+
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2 class="section-title">
+            Excel to Markdown Converter
+        </h2>
+
+        <p class="section-text">
+            Markdown tables are commonly used in GitHub README files,
+            technical documentation, project reports and developer notes.
+            This converter transforms spreadsheet rows and columns into
+            Markdown table syntax automatically.
+        </p>
+
+        <br>
+
+        <p class="section-text">
+            The conversion happens locally in your browser.
+            Your Excel file is not uploaded to a server by this page.
+            Large spreadsheets may produce large Markdown output.
+        </p>
+
+    </section>
+
+    <section class="card">
+
+        <h2 class="section-title">
+            Frequently Asked Questions
+        </h2>
+
+        <div class="faq">
+
+            <details>
+                <summary>
+                    Can I convert XLSX to Markdown?
+                </summary>
+
+                <p>
+                    Yes. Upload an XLSX or XLS spreadsheet,
+                    select the worksheet and generate a Markdown table.
+                </p>
+            </details>
+
+            <details>
+                <summary>
+                    Can I use the output in GitHub README files?
+                </summary>
+
+                <p>
+                    Yes. The generated output uses standard Markdown
+                    table syntax and can be pasted into compatible
+                    Markdown documents such as GitHub README files.
+                </p>
+            </details>
+
+            <details>
+                <summary>
+                    Is my Excel file uploaded?
+                </summary>
+
+                <p>
+                    No. The spreadsheet is processed directly in your
+                    browser using JavaScript.
+                </p>
+            </details>
+
+            <details>
+                <summary>
+                    Can I align Markdown columns?
+                </summary>
+
+                <p>
+                    Yes. You can choose default, left, center or right
+                    alignment before generating the Markdown.
+                </p>
+            </details>
+
+            <details>
+                <summary>
+                    Can I download the Markdown file?
+                </summary>
+
+                <p>
+                    Yes. Use the Download .md button to save the generated
+                    Markdown as a file.
+                </p>
+            </details>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    © 2026 SmartTools — Simple tools for everyday needs.
+</footer>
+
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+
+<script>
+
+let workbook = null;
+let currentData = [];
+let generatedMarkdown = "";
+
+const fileInput =
+    document.getElementById("excelFile");
+
+const sheetSelect =
+    document.getElementById("sheetSelect");
+
+fileInput.addEventListener("change", handleFile);
+
+sheetSelect.addEventListener("change", function () {
+
+    if (workbook) {
+        loadWorksheet(this.value);
+    }
+
+});
+
+async function handleFile(event) {
+
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    try {
+
+        const buffer =
+            await file.arrayBuffer();
+
+        workbook =
+            XLSX.read(buffer, {
+                type: "array",
+                cellDates: true
+            });
+
+        sheetSelect.innerHTML = "";
+
+        workbook.SheetNames.forEach(function(sheetName) {
+
+            const option =
+                document.createElement("option");
+
+            option.value = sheetName;
+
+            option.textContent = sheetName;
+
+            sheetSelect.appendChild(option);
+
+        });
+
+        sheetSelect.disabled = false;
+
+        loadWorksheet(
+            workbook.SheetNames[0]
+        );
+
+        showStatus(
+            "Excel file loaded successfully.",
+            "success"
+        );
+
+    } catch (error) {
+
+        showStatus(
+            "Could not read this Excel file.",
+            "error"
+        );
+
+    }
+
+}
+
+function loadWorksheet(sheetName) {
+
+    const sheet =
+        workbook.Sheets[sheetName];
+
+    currentData =
+        XLSX.utils.sheet_to_json(
+            sheet,
+            {
+                defval: null,
+                raw: true
+            }
+        );
+
+    document.getElementById("sheetName")
+        .textContent = sheetName;
+
+    renderPreview();
+
+    updateStats();
+
+}
+
+function renderPreview() {
+
+    const head =
+        document.getElementById("previewHead");
+
+    const body =
+        document.getElementById("previewBody");
+
+    head.innerHTML = "";
+
+    body.innerHTML = "";
+
+    if (!currentData.length) {
+
+        body.innerHTML =
+            "<tr><td>No data found.</td></tr>";
+
+        return;
+    }
+
+    const columns =
+        Object.keys(currentData[0]);
+
+    const headerRow =
+        document.createElement("tr");
+
+    columns.forEach(function(column) {
+
+        const th =
+            document.createElement("th");
+
+        th.textContent = column;
+
+        headerRow.appendChild(th);
+
+    });
+
+    head.appendChild(headerRow);
+
+    currentData
+        .slice(0, 10)
+        .forEach(function(row) {
+
+            const tr =
+                document.createElement("tr");
+
+            columns.forEach(function(column) {
+
+                const td =
+                    document.createElement("td");
+
+                let value =
+                    row[column];
+
+                if (value instanceof Date) {
+
+                    value =
+                        formatDate(value);
+
+                }
+
+                td.textContent =
+                    value === null ||
+                    value === undefined ||
+                    value === ""
+                        ? ""
+                        : String(value);
+
+                tr.appendChild(td);
+
+            });
+
+            body.appendChild(tr);
+
+        });
+
+}
+
+function updateStats() {
+
+    const rows =
+        currentData.length;
+
+    const columns =
+        rows > 0
+            ? Object.keys(currentData[0]).length
+            : 0;
+
+    document.getElementById("rowCount")
+        .textContent = rows;
+
+    document.getElementById("columnCount")
+        .textContent = columns;
+
+}
+
+function escapeMarkdown(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+        return "";
+    }
+
+    if (value instanceof Date) {
+
+        value =
+            formatDate(value);
+
+    }
+
+    return String(value)
+        .replace(/\|/g, "\\|")
+        .replace(/\r?\n/g, "<br>");
+
+}
+
+function formatDate(date) {
+
+    if (!(date instanceof Date)) {
+        return date;
+    }
+
+    return (
+        date.getFullYear() +
+        "-" +
+        String(
+            date.getMonth() + 1
+        ).padStart(2, "0") +
+        "-" +
+        String(
+            date.getDate()
+        ).padStart(2, "0")
+    );
+
+}
+
+function getAlignmentSyntax(alignment) {
+
+    if (alignment === "left") {
+        return ":---";
+    }
+
+    if (alignment === "center") {
+        return ":---:";
+    }
+
+    if (alignment === "right") {
+        return "---:";
+    }
+
+    return "---";
+
+}
+
+function generateMarkdown() {
+
+    if (!currentData.length) {
+
+        showStatus(
+            "Please upload an Excel file first.",
+            "error"
+        );
+
+        return;
+    }
+
+    const columns =
+        Object.keys(currentData[0]);
+
+    const alignment =
+        document.getElementById("alignment")
+            .value;
+
+    const separator =
+        getAlignmentSyntax(alignment);
+
+    let markdown = "";
+
+    const caption =
+        document.getElementById("tableTitle")
+            .value
+            .trim();
+
+    if (caption) {
+
+        markdown +=
+            "**" +
+            caption.replace(/\*/g, "") +
+            "**\n\n";
+
+    }
+
+    markdown += "| " +
+        columns
+            .map(function(column) {
+                return escapeMarkdown(column);
+            })
+            .join(" | ") +
+        " |\n";
+
+    markdown += "| " +
+        columns
+            .map(function() {
+                return separator;
+            })
+            .join(" | ") +
+        " |\n";
+
+    currentData.forEach(function(row) {
+
+        markdown += "| " +
+            columns
+                .map(function(column) {
+
+                    return escapeMarkdown(
+                        row[column]
+                    );
+
+                })
+                .join(" | ") +
+            " |\n";
+
+    });
+
+    generatedMarkdown =
+        markdown;
+
+    document.getElementById(
+        "markdownOutput"
+    ).textContent =
+        generatedMarkdown;
+
+    document.getElementById(
+        "markdownSize"
+    ).textContent =
+        formatBytes(
+            new Blob([
+                generatedMarkdown
+            ]).size
+        );
+
+    showStatus(
+        "Markdown table generated successfully.",
+        "success"
+    );
+
+}
+
+async function copyMarkdown() {
+
+    if (!generatedMarkdown) {
+
+        showStatus(
+            "Generate Markdown first.",
+            "error"
+        );
+
+        return;
+    }
+
+    try {
+
+        await navigator.clipboard.writeText(
+            generatedMarkdown
+        );
+
+        showStatus(
+            "Markdown copied to clipboard.",
+            "success"
+        );
+
+    } catch (error) {
+
+        showStatus(
+            "Copy failed. Please copy manually.",
+            "error"
+        );
+
+    }
+
+}
+
+function downloadMarkdown() {
+
+    if (!generatedMarkdown) {
+
+        showStatus(
+            "Generate Markdown first.",
+            "error"
+        );
+
+        return;
+    }
+
+    const blob =
+        new Blob(
+            [generatedMarkdown],
+            {
+                type: "text/markdown;charset=utf-8"
+            }
+        );
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const link =
+        document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+        "excel-table.md";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+    showStatus(
+        "Markdown file downloaded.",
+        "success"
+    );
+
+}
+
+function loadSample() {
+
+    currentData = [
+
+        {
+            Name: "Aarav",
+            Role: "Data Analyst",
+            Experience: 2,
+            Salary: 45000,
+            Location: "Mumbai"
+        },
+
+        {
+            Name: "Neha",
+            Role: "Developer",
+            Experience: 3,
+            Salary: 58000,
+            Location: "Pune"
+        },
+
+        {
+            Name: "Rohan",
+            Role: "Designer",
+            Experience: 4,
+            Salary: 62000,
+            Location: "Nagpur"
+        },
+
+        {
+            Name: "Priya",
+            Role: "Tester",
+            Experience: 2,
+            Salary: 42000,
+            Location: "Delhi"
+        }
+
+    ];
+
+    document.getElementById("tableTitle")
+        .value =
+        "Team Information";
+
+    document.getElementById("sheetName")
+        .textContent =
+        "Sample";
+
+    renderPreview();
+
+    updateStats();
+
+    generateMarkdown();
+
+    showStatus(
+        "Sample data loaded.",
+        "success"
+    );
+
+}
+
+function formatBytes(bytes) {
+
+    if (bytes < 1024) {
+        return bytes + " B";
+    }
+
+    return (
+        bytes / 1024
+    ).toFixed(2) + " KB";
+
+}
+
+function clearAll() {
+
+    workbook = null;
+
+    currentData = [];
+
+    generatedMarkdown = "";
+
+    fileInput.value = "";
+
+    sheetSelect.innerHTML =
+        "<option>Select worksheet</option>";
+
+    sheetSelect.disabled = true;
+
+    document.getElementById("tableTitle")
+        .value = "";
+
+    document.getElementById("rowCount")
+        .textContent = "0";
+
+    document.getElementById("columnCount")
+        .textContent = "0";
+
+    document.getElementById("sheetName")
+        .textContent = "-";
+
+    document.getElementById("markdownSize")
+        .textContent = "0 KB";
+
+    document.getElementById("previewHead")
+        .innerHTML = "";
+
+    document.getElementById("previewBody")
+        .innerHTML = "";
+
+    document.getElementById("markdownOutput")
+        .textContent =
+        "Markdown will appear here...";
+
+    document.getElementById("status")
+        .className =
+        "status";
+
+}
+
+function showStatus(message, type) {
+
+    const status =
+        document.getElementById("status");
+
+    status.textContent =
+        message;
+
+    status.className =
+        "status " + type;
+
+}
+
+</script>
+
+</body>
+</html>

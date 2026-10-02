@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Excel to PDF Converter - Convert XLSX to PDF | SmartTools</title>
+
+    <meta name="description"
+        content="Free Excel to PDF converter. Convert XLSX and XLS spreadsheets into downloadable PDF files directly in your browser.">
+
+    <meta name="keywords"
+        content="excel to pdf, xlsx to pdf, xls to pdf, convert excel to pdf, spreadsheet to pdf, online excel converter">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+        href="https://smarttools.example/excel-to-pdf.html">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            color: #eef4ff;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(124, 58, 237, 0.18),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at top right,
+                    rgba(6, 182, 212, 0.12),
+                    transparent 30%
+                ),
+                #07111f;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            text-align: center;
+            padding: 10px 20px;
+            background: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            color: #b9c7dc;
+            font-size: 13px;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(7,17,31,0.88);
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #7c3aed;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+
+            color: #b8c5d9;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 55px 20px 80px;
+        }
+
+        .hero {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+
+            padding: 8px 14px;
+            border-radius: 999px;
+
+            background:
+                rgba(124,58,237,0.14);
+
+            border:
+                1px solid rgba(124,58,237,0.35);
+
+            color: #c4b5fd;
+
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(38px,6vw,68px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            background:
+                linear-gradient(
+                    90deg,
+                    #8b5cf6,
+                    #22d3ee
+                );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #9fb0c7;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .tool-card {
+            margin-top: 45px;
+            padding: 30px;
+
+            border-radius: 24px;
+
+            background:
+                rgba(15,23,42,0.72);
+
+            border:
+                1px solid rgba(255,255,255,0.09);
+
+            box-shadow:
+                0 25px 80px rgba(0,0,0,0.3);
+        }
+
+        .upload-box {
+            border:
+                2px dashed rgba(139,92,246,0.45);
+
+            border-radius: 20px;
+
+            padding: 45px 25px;
+
+            text-align: center;
+
+            background:
+                rgba(124,58,237,0.05);
+
+            transition: 0.3s;
+        }
+
+        .upload-box:hover {
+            border-color: #8b5cf6;
+
+            background:
+                rgba(124,58,237,0.09);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .upload-box h2 {
+            margin-bottom: 8px;
+            font-size: 23px;
+        }
+
+        .upload-box p {
+            color: #93a4ba;
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .upload-btn {
+            display: inline-block;
+
+            padding: 13px 23px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #4f46e5
+                );
+
+            color: white;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .file-name {
+            margin-top: 18px;
+            color: #67e8f9;
+            font-size: 14px;
+        }
+
+        .controls {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 15px;
+
+            margin-top: 22px;
+        }
+
+        .control-box {
+            padding: 18px;
+
+            border-radius: 15px;
+
+            background: #101b2d;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+        }
+
+        .control-box label {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #aebdd0;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+        select {
+            width: 100%;
+
+            padding: 13px;
+
+            border-radius: 10px;
+
+            background: #162235;
+
+            color: white;
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            outline: none;
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 20px;
+        }
+
+        button {
+            border: 0;
+            cursor: pointer;
+
+            border-radius: 12px;
+
+            padding: 14px 20px;
+
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary {
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #4f46e5
+                );
+
+            color: white;
+        }
+
+        .secondary {
+            background: #162235;
+
+            color: #d8e1ef;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 15px;
+
+            margin-top: 28px;
+        }
+
+        .stat {
+            padding: 20px;
+
+            border-radius: 16px;
+
+            background: #101b2d;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+        }
+
+        .stat-label {
+            color: #8ea0b8;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .section {
+            margin-top: 28px;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background: #0d192a;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+        }
+
+        .section h2 {
+            margin-bottom: 18px;
+            font-size: 22px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+
+            border-radius: 14px;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 700px;
+        }
+
+        th,
+        td {
+            padding: 13px 15px;
+
+            text-align: left;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.06);
+
+            font-size: 14px;
+        }
+
+        th {
+            background: #142238;
+            color: #dce7f6;
+        }
+
+        td {
+            color: #aebdd0;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 30px;
+            color: #8092aa;
+        }
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 18px;
+
+            margin-top: 28px;
+        }
+
+        .info-card {
+            padding: 22px;
+
+            background: #0e1a2c;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            border-radius: 18px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .info-card p {
+            color: #91a2b9;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .content {
+            margin-top: 65px;
+            max-width: 900px;
+        }
+
+        .content h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            color: #9aabc0;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .faq {
+            margin-top: 55px;
+            max-width: 900px;
+        }
+
+        .faq h2 {
+            margin-bottom: 20px;
+        }
+
+        details {
+            background: #0d192a;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            border-radius: 14px;
+
+            padding: 17px 19px;
+
+            margin-bottom: 12px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            color: #9aabc0;
+            line-height: 1.7;
+            margin-top: 12px;
+        }
+
+        footer {
+            border-top:
+                1px solid rgba(255,255,255,0.07);
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            color: #75869d;
+
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media(max-width:850px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width:600px) {
+
+            .container {
+                padding:
+                    35px 15px 60px;
+            }
+
+            .tool-card {
+                padding: 18px;
+            }
+
+            .stats {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .upload-box {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                letter-spacing: -1px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — simple tools for everyday needs.
+</div>
+
+
+<header>
+
+    <nav class="nav">
+
+        <a href="index.html" class="logo">
+            Smart<span>Tools</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="data-analyst.html">
+                Data Analyst
+            </a>
+
+            <a href="ai-tools.html">
+                AI Tools
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+
+    <section class="hero">
+
+        <div class="badge">
+            📄 Document Converter
+        </div>
+
+        <h1>
+            Excel <span>to PDF</span>
+        </h1>
+
+        <p>
+            Convert your Excel spreadsheet into a clean,
+            downloadable PDF document directly in your browser.
+        </p>
+
+    </section>
+
+
+    <section class="tool-card">
+
+
+        <div class="upload-box">
+
+            <div class="upload-icon">
+                📊
+            </div>
+
+            <h2>
+                Upload Excel File
+            </h2>
+
+            <p>
+                Supports XLSX and XLS files.
+            </p>
+
+            <label
+                for="excelFile"
+                class="upload-btn">
+
+                Choose Excel File
+
+            </label>
+
+            <input
+                type="file"
+                id="excelFile"
+                class="file-input"
+                accept=".xlsx,.xls"
+            >
+
+            <div
+                id="fileName"
+                class="file-name">
+
+                No file selected
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="controls"
+            class="controls hidden">
+
+
+            <div class="control-box">
+
+                <label>
+                    Worksheet
+                </label>
+
+                <select
+                    id="sheetSelect">
+                </select>
+
+            </div>
+
+
+            <div class="control-box">
+
+                <label>
+                    PDF Orientation
+                </label>
+
+                <select id="orientation">
+
+                    <option value="portrait">
+                        Portrait
+                    </option>
+
+                    <option value="landscape">
+                        Landscape
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="button-row">
+
+            <button
+                class="primary"
+                onclick="generatePDF()">
+
+                Generate PDF
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="loadSample()">
+
+                Sample Data
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="clearAll()">
+
+                Clear
+
+            </button>
+
+        </div>
+
+
+        <div class="stats">
+
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Rows
+                </div>
+
+                <div
+                    id="rowsStat"
+                    class="stat-value">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Columns
+                </div>
+
+                <div
+                    id="columnsStat"
+                    class="stat-value">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Worksheets
+                </div>
+
+                <div
+                    id="sheetsStat"
+                    class="stat-value">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    PDF Pages
+                </div>
+
+                <div
+                    id="pagesStat"
+                    class="stat-value">
+
+                    —
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>
+                Spreadsheet Preview
+            </h2>
+
+            <div
+                id="preview"
+                class="empty">
+
+                Upload an Excel file to preview it.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="info-grid">
+
+
+        <div class="info-card">
+
+            <h3>
+                📄 PDF Export
+            </h3>
+
+            <p>
+                Turn spreadsheet data into a downloadable
+                PDF document.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                📐 Orientation
+            </h3>
+
+            <p>
+                Choose portrait or landscape orientation
+                according to your spreadsheet.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                🔒 Browser Based
+            </h3>
+
+            <p>
+                Spreadsheet processing happens directly
+                in the browser.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <section class="content">
+
+        <h2>
+            What is an Excel to PDF Converter?
+        </h2>
+
+        <p>
+            An Excel to PDF converter transforms spreadsheet
+            information into a portable PDF document that is
+            easier to share, print and view across different devices.
+        </p>
+
+        <p>
+            SmartTools Excel to PDF provides a simple browser-based
+            workflow for converting a selected Excel worksheet into
+            a PDF document.
+        </p>
+
+        <h2>
+            How does Excel to PDF conversion work?
+        </h2>
+
+        <p>
+            Upload your XLSX or XLS file, select a worksheet,
+            choose the PDF orientation and click Generate PDF.
+            The selected worksheet is then placed into a printable
+            PDF document.
+        </p>
+
+    </section>
+
+
+    <section class="faq">
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+
+        <details>
+
+            <summary>
+                Is Excel to PDF free?
+            </summary>
+
+            <p>
+                Yes. SmartTools provides this browser-based
+                converter without requiring an account.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Which Excel formats are supported?
+            </summary>
+
+            <p>
+                XLSX and XLS files are supported.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Can I choose a worksheet?
+            </summary>
+
+            <p>
+                Yes. If your Excel file contains multiple worksheets,
+                you can select the worksheet you want to convert.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Can I use landscape PDF?
+            </summary>
+
+            <p>
+                Yes. You can select portrait or landscape orientation
+                before generating the PDF.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Is my Excel data uploaded?
+            </summary>
+
+            <p>
+                The spreadsheet is processed in your browser.
+                The page does not intentionally send the spreadsheet
+                data to a SmartTools backend.
+            </p>
+
+        </details>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    © 2026 SmartTools.
+    Built for simple, useful everyday tools.
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+
+
+<script>
+
+let workbook = null;
+
+let currentData = [];
+
+let currentFileName = "";
+
+let currentSheetName = "";
+
+
+const excelFile =
+    document.getElementById(
+        "excelFile"
+    );
+
+
+excelFile.addEventListener(
+    "change",
+    function () {
+
+        const file =
+            this.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        currentFileName =
+            file.name;
+
+        document.getElementById(
+            "fileName"
+        ).textContent =
+            "Selected: " + file.name;
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function (event) {
+
+                try {
+
+                    const data =
+                        new Uint8Array(
+                            event.target.result
+                        );
+
+
+                    workbook =
+                        XLSX.read(
+                            data,
+                            {
+                                type: "array"
+                            }
+                        );
+
+
+                    const sheetSelect =
+                        document.getElementById(
+                            "sheetSelect"
+                        );
+
+
+                    sheetSelect.innerHTML =
+                        "";
+
+
+                    workbook.SheetNames.forEach(
+                        function (sheetName) {
+
+                            const option =
+                                document.createElement(
+                                    "option"
+                                );
+
+                            option.value =
+                                sheetName;
+
+                            option.textContent =
+                                sheetName;
+
+                            sheetSelect.appendChild(
+                                option
+                            );
+
+                        }
+                    );
+
+
+                    currentSheetName =
+                        workbook.SheetNames[0];
+
+
+                    document
+                        .getElementById(
+                            "controls"
+                        )
+                        .classList.remove(
+                            "hidden"
+                        );
+
+
+                    document.getElementById(
+                        "sheetsStat"
+                    ).textContent =
+                        workbook.SheetNames.length;
+
+
+                    loadSheet();
+
+                }
+
+                catch (error) {
+
+                    alert(
+                        "Unable to read this Excel file."
+                    );
+
+                    console.error(error);
+
+                }
+
+            };
+
+
+        reader.readAsArrayBuffer(file);
+
+    }
+);
+
+
+document
+    .getElementById("sheetSelect")
+    .addEventListener(
+        "change",
+        function () {
+
+            currentSheetName =
+                this.value;
+
+            loadSheet();
+
+        }
+    );
+
+
+function loadSheet() {
+
+    if (!workbook) {
+        return;
+    }
+
+
+    const sheet =
+        workbook.Sheets[
+            currentSheetName
+        ];
+
+
+    currentData =
+        XLSX.utils.sheet_to_json(
+            sheet,
+            {
+                header: 1,
+                defval: ""
+            }
+        );
+
+
+    renderStats();
+
+    renderPreview();
+
+}
+
+
+function renderStats() {
+
+    const rows =
+        Math.max(
+            currentData.length - 1,
+            0
+        );
+
+
+    const columns =
+        currentData.length
+            ? currentData[0].length
+            : 0;
+
+
+    document.getElementById(
+        "rowsStat"
+    ).textContent =
+        rows.toLocaleString();
+
+
+    document.getElementById(
+        "columnsStat"
+    ).textContent =
+        columns.toLocaleString();
+
+
+    document.getElementById(
+        "sheetsStat"
+    ).textContent =
+        workbook
+            ? workbook.SheetNames.length
+            : 0;
+
+}
+
+
+function renderPreview() {
+
+    const container =
+        document.getElementById(
+            "preview"
+        );
+
+
+    if (
+        !currentData ||
+        currentData.length === 0
+    ) {
+
+        container.innerHTML =
+            `
+            <div class="empty">
+                No spreadsheet data found.
+            </div>
+            `;
+
+        return;
+
+    }
+
+
+    const headers =
+        currentData[0];
+
+
+    const rows =
+        currentData
+            .slice(1,11);
+
+
+    let html =
+        `
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+        `;
+
+
+    headers.forEach(
+        function (header, index) {
+
+            html +=
+                `
+                <th>
+                    ${escapeHTML(
+                        header || 
+                        "Column " + (index + 1)
+                    )}
+                </th>
+                `;
+
+        }
+    );
+
+
+    html +=
+        `
+                    </tr>
+
+                </thead>
+
+                <tbody>
+        `;
+
+
+    rows.forEach(
+        function (row) {
+
+            html += "<tr>";
+
+
+            headers.forEach(
+                function (_, index) {
+
+                    html +=
+                        `
+                        <td>
+                            ${escapeHTML(
+                                row[index] ?? ""
+                            )}
+                        </td>
+                        `;
+
+                }
+            );
+
+
+            html += "</tr>";
+
+        }
+    );
+
+
+    html +=
+        `
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p style="
+            margin-top:15px;
+            color:#8092aa;
+            font-size:13px;
+        ">
+            Showing first ${rows.length} data rows.
+        </p>
+        `;
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+function loadSample() {
+
+    currentFileName =
+        "SmartTools-Sample.xlsx";
+
+
+    currentSheetName =
+        "Sales";
+
+
+    currentData = [
+
+        [
+            "Product",
+            "Month",
+            "Sales",
+            "Region"
+        ],
+
+        [
+            "Laptop",
+            "January",
+            120,
+            "North"
+        ],
+
+        [
+            "Phone",
+            "January",
+            180,
+            "South"
+        ],
+
+        [
+            "Tablet",
+            "January",
+            95,
+            "West"
+        ],
+
+        [
+            "Laptop",
+            "February",
+            145,
+            "North"
+        ],
+
+        [
+            "Phone",
+            "February",
+            210,
+            "South"
+        ],
+
+        [
+            "Tablet",
+            "February",
+            110,
+            "West"
+        ],
+
+        [
+            "Laptop",
+            "March",
+            170,
+            "North"
+        ],
+
+        [
+            "Phone",
+            "March",
+            235,
+            "South"
+        ],
+
+        [
+            "Tablet",
+            "March",
+            125,
+            "West"
+        ]
+
+    ];
+
+
+    workbook = {
+        SheetNames: ["Sales"]
+    };
+
+
+    document.getElementById(
+        "fileName"
+    ).textContent =
+        "Sample data loaded";
+
+
+    document
+        .getElementById("controls")
+        .classList.remove("hidden");
+
+
+    document.getElementById(
+        "sheetSelect"
+    ).innerHTML =
+        `<option value="Sales">
+            Sales
+        </option>`;
+
+
+    renderStats();
+
+    renderPreview();
+
+}
+
+
+function generatePDF() {
+
+    if (
+        !currentData ||
+        currentData.length < 2
+    ) {
+
+        alert(
+            "Please upload an Excel file first."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        typeof window.jspdf ===
+        "undefined"
+    ) {
+
+        alert(
+            "PDF library could not load. Please check your internet connection."
+        );
+
+        return;
+
+    }
+
+
+    const {
+        jsPDF
+    } = window.jspdf;
+
+
+    const orientation =
+        document.getElementById(
+            "orientation"
+        ).value;
+
+
+    const doc =
+        new jsPDF({
+            orientation:
+                orientation,
+            unit: "mm",
+            format: "a4"
+        });
+
+
+    const headers =
+        currentData[0].map(
+            function (header, index) {
+
+                return (
+                    header ||
+                    "Column " + (index + 1)
+                );
+
+            }
+        );
+
+
+    const body =
+        currentData
+            .slice(1)
+            .map(
+                function (row) {
+
+                    return headers.map(
+                        function (_, index) {
+
+                            return String(
+                                row[index] ?? ""
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+    doc.setFontSize(18);
+
+    doc.text(
+        "SmartTools Excel Report",
+        14,
+        16
+    );
+
+
+    doc.setFontSize(9);
+
+    doc.text(
+        "File: " + currentFileName,
+        14,
+        23
+    );
+
+
+    doc.text(
+        "Worksheet: " + currentSheetName,
+        14,
+        28
+    );
+
+
+    doc.autoTable({
+
+        head: [headers],
+
+        body: body,
+
+        startY: 34,
+
+        theme: "grid",
+
+        styles: {
+            fontSize: 7,
+            cellPadding: 2
+        },
+
+        headStyles: {
+            fontSize: 7,
+            fontStyle: "bold"
+        },
+
+        margin: {
+            left: 10,
+            right: 10
+        },
+
+        didDrawPage:
+            function (data) {
+
+                const pageNumber =
+                    doc.internal
+                        .getNumberOfPages();
+
+                doc.setFontSize(8);
+
+                doc.text(
+                    "SmartTools",
+                    10,
+                    290
+                );
+
+                doc.text(
+                    "Page " +
+                    pageNumber,
+                    185,
+                    290
+                );
+
+            }
+
+    });
+
+
+    const pages =
+        doc.internal
+            .getNumberOfPages();
+
+
+    document.getElementById(
+        "pagesStat"
+    ).textContent =
+        pages;
+
+
+    const baseName =
+        currentFileName
+            .replace(
+                /\.xlsx?$/i,
+                ""
+            );
+
+
+    doc.save(
+        baseName +
+        "-converted.pdf"
+    );
+
+}
+
+
+function clearAll() {
+
+    workbook = null;
+
+    currentData = [];
+
+    currentFileName = "";
+
+    currentSheetName = "";
+
+    excelFile.value = "";
+
+
+    document.getElementById(
+        "fileName"
+    ).textContent =
+        "No file selected";
+
+
+    document
+        .getElementById("controls")
+        .classList.add("hidden");
+
+
+    document.getElementById(
+        "rowsStat"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "columnsStat"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "sheetsStat"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "pagesStat"
+    ).textContent =
+        "—";
+
+
+    document.getElementById(
+        "preview"
+    ).innerHTML =
+        `
+        <div class="empty">
+            Upload an Excel file to preview it.
+        </div>
+        `;
+
+}
+
+</script>
+
+</body>
+</html>

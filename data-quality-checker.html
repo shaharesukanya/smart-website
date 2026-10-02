@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Data Quality Checker - Free CSV Data Quality Tool | SmartTools</title>
+
+<meta name="description"
+content="Check CSV data quality online for free. Find missing values, duplicate rows, empty columns, invalid numbers, email issues and potential date errors with SmartTools Data Quality Checker.">
+
+<meta name="keywords"
+content="data quality checker, csv data quality, csv validator, data cleaning tool, duplicate checker, missing value checker, data analyst tools">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical"
+href="https://smarttools.com/data-quality-checker.html">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top left,rgba(90,70,240,.22),transparent 35%),
+        radial-gradient(circle at bottom right,rgba(0,190,255,.12),transparent 35%),
+        #070b16;
+    color:#f5f7ff;
+    min-height:100vh;
+    line-height:1.6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.topbar{
+    text-align:center;
+    padding:9px 15px;
+    background:rgba(255,255,255,.04);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    color:#bfc8dc;
+    font-size:13px;
+}
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 6%;
+    background:rgba(7,11,22,.84);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:23px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#8b7cff;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    color:#b9c1d5;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.hero{
+    max-width:1100px;
+    margin:auto;
+    padding:65px 20px 35px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 13px;
+    border:1px solid rgba(139,124,255,.3);
+    background:rgba(139,124,255,.08);
+    color:#bdb4ff;
+    border-radius:50px;
+    font-size:12px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(36px,6vw,65px);
+    line-height:1.05;
+    letter-spacing:-2px;
+    margin-bottom:18px;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,#a99cff,#54d9ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:740px;
+    margin:auto;
+    color:#aeb7ca;
+    font-size:17px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.tool-card{
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 25px 70px rgba(0,0,0,.28);
+}
+
+.upload-box{
+    border:2px dashed rgba(139,124,255,.45);
+    border-radius:20px;
+    padding:40px 20px;
+    text-align:center;
+    background:rgba(139,124,255,.05);
+    cursor:pointer;
+    transition:.25s;
+}
+
+.upload-box:hover{
+    border-color:#8b7cff;
+    background:rgba(139,124,255,.09);
+    transform:translateY(-2px);
+}
+
+.upload-icon{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.upload-box h2{
+    font-size:21px;
+    margin-bottom:7px;
+}
+
+.upload-box p{
+    color:#9da8bd;
+    font-size:14px;
+}
+
+#fileInput{
+    display:none;
+}
+
+.file-name{
+    margin-top:15px;
+    text-align:center;
+    color:#cbd4e8;
+    font-size:14px;
+}
+
+.btn-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    padding:12px 18px;
+    border-radius:12px;
+    color:white;
+    font-weight:700;
+    background:linear-gradient(135deg,#7567ff,#4d9cff);
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(83,118,255,.25);
+}
+
+button.secondary{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+button.danger{
+    background:rgba(255,80,100,.12);
+    border:1px solid rgba(255,80,100,.25);
+}
+
+.message{
+    margin-top:18px;
+    padding:13px 16px;
+    border-radius:12px;
+    display:none;
+    font-size:14px;
+}
+
+.message.success{
+    display:block;
+    background:rgba(60,220,140,.08);
+    border:1px solid rgba(60,220,140,.2);
+    color:#91e9b8;
+}
+
+.message.error{
+    display:block;
+    background:rgba(255,80,100,.08);
+    border:1px solid rgba(255,80,100,.2);
+    color:#ff9eaa;
+}
+
+.score-card{
+    margin-top:25px;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    text-align:center;
+}
+
+.score-number{
+    font-size:48px;
+    font-weight:800;
+}
+
+.score-label{
+    color:#8f9ab0;
+    font-size:14px;
+}
+
+.progress{
+    height:10px;
+    margin:18px auto 0;
+    max-width:600px;
+    background:rgba(255,255,255,.08);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0;
+    border-radius:20px;
+    background:linear-gradient(90deg,#7567ff,#54d9ff);
+    transition:.6s;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    margin-top:25px;
+}
+
+.stat{
+    padding:20px;
+    border-radius:16px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.stat small{
+    display:block;
+    color:#8994aa;
+    margin-bottom:5px;
+}
+
+.stat strong{
+    font-size:24px;
+}
+
+.issues{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.issue-card{
+    padding:22px;
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.issue-card h3{
+    margin-bottom:7px;
+    font-size:17px;
+}
+
+.issue-card p{
+    color:#929db2;
+    font-size:13px;
+}
+
+.issue-count{
+    font-size:30px;
+    font-weight:800;
+    margin-bottom:5px;
+}
+
+.issue-good{
+    color:#85e5ad;
+}
+
+.issue-warning{
+    color:#ffd27b;
+}
+
+.issue-danger{
+    color:#ff9ba8;
+}
+
+.table-card{
+    margin-top:25px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.table-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.table-header h3{
+    font-size:16px;
+}
+
+.table-header span{
+    color:#8994aa;
+    font-size:12px;
+}
+
+.table-wrap{
+    overflow:auto;
+    max-height:500px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:850px;
+}
+
+th,td{
+    padding:13px 14px;
+    text-align:left;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    font-size:13px;
+}
+
+th{
+    background:rgba(255,255,255,.055);
+    color:#e0e6f3;
+    position:sticky;
+    top:0;
+}
+
+td{
+    color:#aeb8ca;
+}
+
+.badge-good,
+.badge-warning,
+.badge-danger{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+}
+
+.badge-good{
+    color:#8de5ad;
+    background:rgba(80,210,140,.1);
+}
+
+.badge-warning{
+    color:#ffd98a;
+    background:rgba(255,190,80,.1);
+}
+
+.badge-danger{
+    color:#ff9eaa;
+    background:rgba(255,80,100,.1);
+}
+
+.empty{
+    padding:60px 20px;
+    text-align:center;
+    color:#7f8aa0;
+}
+
+.content{
+    max-width:1000px;
+    margin:70px auto;
+    padding:0 20px;
+}
+
+.content-section{
+    margin-bottom:50px;
+}
+
+.content h2{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.content h3{
+    margin:22px 0 8px;
+    font-size:19px;
+}
+
+.content p,
+.content li{
+    color:#aab4c8;
+}
+
+.content ul{
+    padding-left:22px;
+}
+
+.faq{
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+details{
+    border-bottom:1px solid rgba(255,255,255,.1);
+    padding:17px 0;
+}
+
+summary{
+    cursor:pointer;
+    font-weight:700;
+}
+
+details p{
+    margin-top:10px;
+}
+
+footer{
+    margin-top:70px;
+    padding:35px 20px;
+    text-align:center;
+    color:#778298;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+@media(max-width:900px){
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .issues{
+        grid-template-columns:1fr;
+    }
+
+    .tool-card{
+        padding:18px;
+    }
+}
+
+@media(max-width:500px){
+
+    .hero{
+        padding-top:45px;
+    }
+
+    .hero h1{
+        font-size:39px;
+    }
+
+    .btn-row button{
+        width:100%;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — Free online tools for everyday work
+</div>
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        Smart<span>Tools</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="data-analyst.html">Data Analyst</a>
+        <a href="ai-tools.html">AI Tools</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+</nav>
+
+<header class="hero">
+
+    <div class="badge">
+        DATA QUALITY TOOL
+    </div>
+
+    <h1>
+        Data <span>Quality Checker</span>
+    </h1>
+
+    <p>
+        Upload a CSV dataset and automatically detect missing values,
+        duplicate rows, empty columns, invalid numbers, email issues
+        and potential date problems.
+    </p>
+
+</header>
+
+<main class="container">
+
+<section class="tool-card">
+
+    <label for="fileInput" class="upload-box">
+
+        <div class="upload-icon">🔍</div>
+
+        <h2>
+            Upload CSV Dataset
+        </h2>
+
+        <p>
+            Click here or drag & drop your CSV file
+        </p>
+
+        <input
+            type="file"
+            id="fileInput"
+            accept=".csv,.txt"
+        >
+
+    </label>
+
+    <div class="file-name" id="fileName">
+        No file selected
+    </div>
+
+    <div class="btn-row">
+
+        <button onclick="runQualityCheck()">
+            Check Data Quality
+        </button>
+
+        <button class="secondary" onclick="loadSample()">
+            Sample Data
+        </button>
+
+        <button class="secondary" onclick="downloadReport()">
+            Download Report
+        </button>
+
+        <button class="danger" onclick="clearTool()">
+            Clear
+        </button>
+
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <div class="score-card">
+
+        <div class="score-number" id="qualityScore">
+            —
+        </div>
+
+        <div class="score-label">
+            Data Quality Score
+        </div>
+
+        <div class="progress">
+            <div
+                class="progress-bar"
+                id="progressBar">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <small>Total Rows</small>
+            <strong id="rowCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Total Columns</small>
+            <strong id="columnCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Missing Cells</small>
+            <strong id="missingCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Duplicate Rows</small>
+            <strong id="duplicateCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Empty Columns</small>
+            <strong id="emptyColumnCount">0</strong>
+        </div>
+
+    </div>
+
+    <div class="issues">
+
+        <div class="issue-card">
+
+            <div
+                class="issue-count issue-good"
+                id="validNumberCount">
+                0
+            </div>
+
+            <h3>
+                Valid Numeric Values
+            </h3>
+
+            <p>
+                Numeric cells that can be interpreted as valid numbers.
+            </p>
+
+        </div>
+
+        <div class="issue-card">
+
+            <div
+                class="issue-count issue-danger"
+                id="invalidNumberCount">
+                0
+            </div>
+
+            <h3>
+                Invalid Numeric Values
+            </h3>
+
+            <p>
+                Values that appear numeric but cannot be converted safely.
+            </p>
+
+        </div>
+
+        <div class="issue-card">
+
+            <div
+                class="issue-count issue-good"
+                id="validEmailCount">
+                0
+            </div>
+
+            <h3>
+                Valid Email Values
+            </h3>
+
+            <p>
+                Values detected as correctly formatted email addresses.
+            </p>
+
+        </div>
+
+        <div class="issue-card">
+
+            <div
+                class="issue-count issue-warning"
+                id="invalidEmailCount">
+                0
+            </div>
+
+            <h3>
+                Possible Email Issues
+            </h3>
+
+            <p>
+                Values in email-like columns that may not be valid.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <h3>
+                Column Quality Report
+            </h3>
+
+            <span id="tableInfo">
+                No data
+            </span>
+
+        </div>
+
+        <div id="qualityTable" class="table-wrap">
+
+            <div class="empty">
+                Upload a CSV file to check its quality.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<section class="content">
+
+<div class="content-section">
+
+<h2>
+    What is Data Quality?
+</h2>
+
+<p>
+    Data quality describes how complete, consistent and usable a
+    dataset is. Poor-quality data can contain missing values,
+    duplicate records, inconsistent formatting and invalid fields.
+</p>
+
+<p style="margin-top:15px;">
+    This SmartTools utility performs a browser-based first-pass
+    quality check to help analysts identify common data issues
+    before further analysis.
+</p>
+
+</div>
+
+<div class="content-section">
+
+<h2>
+    Checks Included
+</h2>
+
+<ul>
+    <li>Missing cell detection</li>
+    <li>Duplicate row detection</li>
+    <li>Empty column detection</li>
+    <li>Numeric value validation</li>
+    <li>Email-format checks for email-like columns</li>
+    <li>Potential date-format checks</li>
+    <li>Column-level quality summary</li>
+    <li>Overall quality score</li>
+</ul>
+
+</div>
+
+<div class="content-section">
+
+<h2>
+    How to Check Your Dataset
+</h2>
+
+<h3>
+    1. Upload CSV
+</h3>
+
+<p>
+    Select the CSV dataset you want to inspect.
+</p>
+
+<h3>
+    2. Run the quality check
+</h3>
+
+<p>
+    Click Check Data Quality to analyze the dataset.
+</p>
+
+<h3>
+    3. Review detected issues
+</h3>
+
+<p>
+    Review missing cells, duplicate records and column-level
+    validation results.
+</p>
+
+<h3>
+    4. Download the report
+</h3>
+
+<p>
+    Save the generated quality report for your records.
+</p>
+
+</div>
+
+<div class="content-section">
+
+<h2>
+    Frequently Asked Questions
+</h2>
+
+<div class="faq">
+
+<details>
+<summary>
+What does this data quality checker detect?
+</summary>
+
+<p>
+It checks common issues including missing cells, duplicate rows,
+empty columns and selected format problems.
+</p>
+</details>
+
+<details>
+<summary>
+Is the quality score a guarantee that my data is correct?
+</summary>
+
+<p>
+No. The score is a simple automated indicator based on the checks
+performed by this tool. Domain-specific validation may still be
+required.
+</p>
+</details>
+
+<details>
+<summary>
+Does the tool upload my CSV?
+</summary>
+
+<p>
+No. The analysis runs directly in your browser.
+</p>
+</details>
+
+<details>
+<summary>
+Can I use this for large datasets?
+</summary>
+
+<p>
+The tool works best with reasonably sized CSV files that can be
+processed comfortably by your browser.
+</p>
+</details>
+
+<details>
+<summary>
+Can I download the results?
+</summary>
+
+<p>
+Yes. Click Download Report after the analysis is complete.
+</p>
+</details>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+    © 2026 SmartTools. Free online tools for everyday needs.
+</footer>
+
+<script>
+
+let currentRows = [];
+let currentHeaders = [];
+let currentReport = null;
+
+const fileInput =
+    document.getElementById("fileInput");
+
+const fileName =
+    document.getElementById("fileName");
+
+const message =
+    document.getElementById("message");
+
+const qualityTable =
+    document.getElementById("qualityTable");
+
+fileInput.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(!file){
+        return;
+    }
+
+    fileName.textContent = file.name;
+
+    const reader = new FileReader();
+
+    reader.onload = function(event){
+
+        try{
+
+            const parsed =
+                parseCSV(event.target.result);
+
+            currentHeaders =
+                parsed.headers;
+
+            currentRows =
+                parsed.rows;
+
+            runQualityCheck();
+
+        }catch(error){
+
+            showMessage(
+                error.message,
+                "error"
+            );
+
+        }
+
+    };
+
+    reader.readAsText(file);
+
+});
+
+function parseCSV(text){
+
+    text = text.replace(/^\uFEFF/, "");
+
+    const lines = [];
+
+    let row = [];
+    let cell = "";
+    let insideQuotes = false;
+
+    for(let i=0;i<text.length;i++){
+
+        const char = text[i];
+
+        const next = text[i+1];
+
+        if(char === '"' &&
+           insideQuotes &&
+           next === '"'){
+
+            cell += '"';
+            i++;
+            continue;
+        }
+
+        if(char === '"'){
+
+            insideQuotes =
+                !insideQuotes;
+
+            continue;
+        }
+
+        if(char === "," &&
+           !insideQuotes){
+
+            row.push(cell);
+            cell = "";
+
+            continue;
+        }
+
+        if((char === "\n" ||
+            char === "\r") &&
+           !insideQuotes){
+
+            if(char === "\r" &&
+               next === "\n"){
+
+                i++;
+            }
+
+            row.push(cell);
+            cell = "";
+
+            if(row.some(
+                value =>
+                value.trim() !== ""
+            )){
+
+                lines.push(row);
+
+            }
+
+            row = [];
+
+            continue;
+        }
+
+        cell += char;
+    }
+
+    if(cell !== "" || row.length){
+
+        row.push(cell);
+
+        if(row.some(
+            value =>
+            value.trim() !== ""
+        )){
+
+            lines.push(row);
+
+        }
+    }
+
+    if(lines.length < 2){
+
+        throw new Error(
+            "CSV must contain a header and at least one data row."
+        );
+
+    }
+
+    const headers =
+        lines[0].map(
+            (header,index) =>
+            header.trim() ||
+            `Column ${index+1}`
+        );
+
+    const rows =
+        lines.slice(1).map(values=>{
+
+            const object = {};
+
+            headers.forEach(
+                (header,index)=>{
+
+                    object[header] =
+                        values[index] !== undefined
+                        ? values[index].trim()
+                        : "";
+
+                }
+            );
+
+            return object;
+
+        });
+
+    return {
+        headers,
+        rows
+    };
+}
+
+function runQualityCheck(){
+
+    if(!currentRows.length ||
+       !currentHeaders.length){
+
+        showMessage(
+            "Please upload a CSV file or load sample data first.",
+            "error"
+        );
+
+        return;
+    }
+
+    let missingCells = 0;
+
+    let duplicateRows = 0;
+
+    let emptyColumns = 0;
+
+    let validNumbers = 0;
+
+    let invalidNumbers = 0;
+
+    let validEmails = 0;
+
+    let invalidEmails = 0;
+
+    const columnReports = [];
+
+    currentHeaders.forEach(header=>{
+
+        const values =
+            currentRows.map(
+                row => row[header] ?? ""
+            );
+
+        const missing =
+            values.filter(
+                value =>
+                String(value).trim() === ""
+            ).length;
+
+        missingCells += missing;
+
+        const nonEmpty =
+            values.filter(
+                value =>
+                String(value).trim() !== ""
+            );
+
+        if(nonEmpty.length === 0){
+
+            emptyColumns++;
+
+        }
+
+        const lowerName =
+            header.toLowerCase();
+
+        const looksNumeric =
+            lowerName.includes("age") ||
+            lowerName.includes("price") ||
+            lowerName.includes("amount") ||
+            lowerName.includes("salary") ||
+            lowerName.includes("sales") ||
+            lowerName.includes("revenue") ||
+            lowerName.includes("quantity") ||
+            lowerName.includes("count") ||
+            lowerName.includes("score") ||
+            lowerName.includes("number");
+
+        const looksEmail =
+            lowerName.includes("email") ||
+            lowerName.includes("e-mail");
+
+        let numericValid = 0;
+        let numericInvalid = 0;
+
+        if(looksNumeric){
+
+            nonEmpty.forEach(value=>{
+
+                const clean =
+                    String(value)
+                    .replace(/,/g,"")
+                    .trim();
+
+                if(clean !== "" &&
+                   !isNaN(Number(clean))){
+
+                    numericValid++;
+
+                }else{
+
+                    numericInvalid++;
+
+                }
+
+            });
+
+            validNumbers +=
+                numericValid;
+
+            invalidNumbers +=
+                numericInvalid;
+        }
+
+        let emailValid = 0;
+        let emailInvalid = 0;
+
+        if(looksEmail){
+
+            nonEmpty.forEach(value=>{
+
+                if(isValidEmail(value)){
+
+                    emailValid++;
+
+                }else{
+
+                    emailInvalid++;
+
+                }
+
+            });
+
+            validEmails +=
+                emailValid;
+
+            invalidEmails +=
+                emailInvalid;
+        }
+
+        const unique =
+            new Set(
+                nonEmpty.map(
+                    value =>
+                    String(value)
+                )
+            ).size;
+
+        const missingPercent =
+            values.length
+            ? (
+                missing /
+                values.length *
+                100
+              ).toFixed(1)
+            : "0.0";
+
+        let status = "Good";
+
+        if(
+            missingPercent > 20 ||
+            numericInvalid > 0 ||
+            emailInvalid > 0
+        ){
+
+            status = "Needs attention";
+
+        }else if(
+            missingPercent > 0
+        ){
+
+            status = "Review";
+
+        }
+
+        columnReports.push({
+
+            column:header,
+
+            total:values.length,
+
+            missing,
+
+            missingPercent,
+
+            unique,
+
+            numericValid,
+
+            numericInvalid,
+
+            emailValid,
+
+            emailInvalid,
+
+            status
+
+        });
+
+    });
+
+    const rowMap =
+        new Map();
+
+    currentRows.forEach(row=>{
+
+        const key =
+            currentHeaders
+            .map(
+                header =>
+                String(
+                    row[header] ?? ""
+                ).trim()
+            )
+            .join("||");
+
+        if(rowMap.has(key)){
+
+            duplicateRows++;
+
+        }else{
+
+            rowMap.set(key,true);
+
+        }
+
+    });
+
+    const totalCells =
+        currentRows.length *
+        currentHeaders.length;
+
+    const missingPenalty =
+        totalCells
+        ? (missingCells / totalCells) * 45
+        : 0;
+
+    const duplicatePenalty =
+        currentRows.length
+        ? (duplicateRows / currentRows.length) * 25
+        : 0;
+
+    const emptyColumnPenalty =
+        currentHeaders.length
+        ? (emptyColumns / currentHeaders.length) * 15
+        : 0;
+
+    const formatProblems =
+        invalidNumbers +
+        invalidEmails;
+
+    const formatPenalty =
+        totalCells
+        ? Math.min(
+            15,
+            (formatProblems / totalCells) * 15
+          )
+        : 0;
+
+    let score =
+        100 -
+        missingPenalty -
+        duplicatePenalty -
+        emptyColumnPenalty -
+        formatPenalty;
+
+    score =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                Math.round(score)
+            )
+        );
+
+    currentReport = {
+
+        rows:currentRows.length,
+
+        columns:currentHeaders.length,
+
+        missingCells,
+
+        duplicateRows,
+
+        emptyColumns,
+
+        validNumbers,
+
+        invalidNumbers,
+
+        validEmails,
+
+        invalidEmails,
+
+        score,
+
+        columnReports
+
+    };
+
+    renderReport();
+
+    showMessage(
+        "Data quality check completed.",
+        "success"
+    );
+}
+
+function renderReport(){
+
+    const report =
+        currentReport;
+
+    document.getElementById(
+        "qualityScore"
+    ).textContent =
+        report.score + "/100";
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        report.score + "%";
+
+    document.getElementById(
+        "rowCount"
+    ).textContent =
+        report.rows;
+
+    document.getElementById(
+        "columnCount"
+    ).textContent =
+        report.columns;
+
+    document.getElementById(
+        "missingCount"
+    ).textContent =
+        report.missingCells;
+
+    document.getElementById(
+        "duplicateCount"
+    ).textContent =
+        report.duplicateRows;
+
+    document.getElementById(
+        "emptyColumnCount"
+    ).textContent =
+        report.emptyColumns;
+
+    document.getElementById(
+        "validNumberCount"
+    ).textContent =
+        report.validNumbers;
+
+    document.getElementById(
+        "invalidNumberCount"
+    ).textContent =
+        report.invalidNumbers;
+
+    document.getElementById(
+        "validEmailCount"
+    ).textContent =
+        report.validEmails;
+
+    document.getElementById(
+        "invalidEmailCount"
+    ).textContent =
+        report.invalidEmails;
+
+    document.getElementById(
+        "tableInfo"
+    ).textContent =
+        `${report.columns} columns analyzed`;
+
+    let html = `
+        <table>
+
+        <thead>
+
+        <tr>
+            <th>Column</th>
+            <th>Total</th>
+            <th>Missing</th>
+            <th>Missing %</th>
+            <th>Unique</th>
+            <th>Numeric Issues</th>
+            <th>Email Issues</th>
+            <th>Status</th>
+        </tr>
+
+        </thead>
+
+        <tbody>
+    `;
+
+    report.columnReports.forEach(item=>{
+
+        let statusClass =
+            "badge-good";
+
+        if(item.status === "Review"){
+            statusClass =
+                "badge-warning";
+        }
+
+        if(item.status === "Needs attention"){
+            statusClass =
+                "badge-danger";
+        }
+
+        html += `
+
+        <tr>
+
+            <td>
+                <strong>
+                    ${escapeHTML(item.column)}
+                </strong>
+            </td>
+
+            <td>
+                ${item.total}
+            </td>
+
+            <td>
+                ${item.missing}
+            </td>
+
+            <td>
+                ${item.missingPercent}%
+            </td>
+
+            <td>
+                ${item.unique}
+            </td>
+
+            <td>
+                ${item.numericInvalid}
+            </td>
+
+            <td>
+                ${item.emailInvalid}
+            </td>
+
+            <td>
+                <span class="${statusClass}">
+                    ${item.status}
+                </span>
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+    html += `
+        </tbody>
+        </table>
+    `;
+
+    qualityTable.innerHTML =
+        html;
+}
+
+function isValidEmail(value){
+
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(
+            String(value).trim()
+        );
+}
+
+function loadSample(){
+
+    currentHeaders = [
+        "Name",
+        "Email",
+        "Age",
+        "Salary",
+        "City"
+    ];
+
+    currentRows = [
+
+        {
+            Name:"Aarav",
+            Email:"aarav@example.com",
+            Age:"24",
+            Salary:"55000",
+            City:"Mumbai"
+        },
+
+        {
+            Name:"Priya",
+            Email:"priya@example.com",
+            Age:"27",
+            Salary:"62000",
+            City:"Pune"
+        },
+
+        {
+            Name:"Rahul",
+            Email:"wrong-email",
+            Age:"thirty",
+            Salary:"",
+            City:"Nagpur"
+        },
+
+        {
+            Name:"Neha",
+            Email:"neha@example.com",
+            Age:"25",
+            Salary:"71000",
+            City:"Delhi"
+        },
+
+        {
+            Name:"Neha",
+            Email:"neha@example.com",
+            Age:"25",
+            Salary:"71000",
+            City:"Delhi"
+        }
+
+    ];
+
+    fileName.textContent =
+        "Sample dataset";
+
+    runQualityCheck();
+}
+
+function downloadReport(){
+
+    if(!currentReport){
+
+        showMessage(
+            "Please run the quality check first.",
+            "error"
+        );
+
+        return;
+    }
+
+    const r =
+        currentReport;
+
+    let text =
+        "SMARTTOOLS DATA QUALITY REPORT\n";
+
+    text +=
+        "================================\n\n";
+
+    text +=
+        `Quality Score: ${r.score}/100\n`;
+
+    text +=
+        `Rows: ${r.rows}\n`;
+
+    text +=
+        `Columns: ${r.columns}\n`;
+
+    text +=
+        `Missing Cells: ${r.missingCells}\n`;
+
+    text +=
+        `Duplicate Rows: ${r.duplicateRows}\n`;
+
+    text +=
+        `Empty Columns: ${r.emptyColumns}\n`;
+
+    text +=
+        `Valid Numeric Values: ${r.validNumbers}\n`;
+
+    text +=
+        `Invalid Numeric Values: ${r.invalidNumbers}\n`;
+
+    text +=
+        `Valid Emails: ${r.validEmails}\n`;
+
+    text +=
+        `Possible Email Issues: ${r.invalidEmails}\n\n`;
+
+    text +=
+        "COLUMN DETAILS\n";
+
+    text +=
+        "--------------\n\n";
+
+    r.columnReports.forEach(item=>{
+
+        text +=
+            `Column: ${item.column}\n`;
+
+        text +=
+            `Total: ${item.total}\n`;
+
+        text +=
+            `Missing: ${item.missing}\n`;
+
+        text +=
+            `Missing %: ${item.missingPercent}%\n`;
+
+        text +=
+            `Unique: ${item.unique}\n`;
+
+        text +=
+            `Numeric Issues: ${item.numericInvalid}\n`;
+
+        text +=
+            `Email Issues: ${item.emailInvalid}\n`;
+
+        text +=
+            `Status: ${item.status}\n\n`;
+
+    });
+
+    const blob =
+        new Blob(
+            [text],
+            {type:"text/plain"}
+        );
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const link =
+        document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+        "smarttools-data-quality-report.txt";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+    showMessage(
+        "Quality report downloaded.",
+        "success"
+    );
+}
+
+function clearTool(){
+
+    currentRows = [];
+
+    currentHeaders = [];
+
+    currentReport = null;
+
+    fileInput.value = "";
+
+    fileName.textContent =
+        "No file selected";
+
+    document.getElementById(
+        "qualityScore"
+    ).textContent =
+        "—";
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        "0%";
+
+    document.getElementById(
+        "rowCount"
+    ).textContent =
+        "0";
+
+    document.getElementById(
+        "columnCount"
+    ).textContent =
+        "0";
+
+    document.getElementById(
+        "missingCount"
+    ).textContent =
+        "0";
+
+    document.getElementById(
+        "duplicateCount"
+    ).textContent =
+        "0";
+
+    document.getElementById(
+        "emptyColumnCount"
+    ).textContent =
+        "0";
+
+    document.getElementById(
+        "validNumberCount"
+    ).textContent =
+        "0";
+
+    document.getElementById(
+        "invalidNumberCount"
+    ).textContent =
+        "0";
+
+    document.getElementById(
+        "validEmailCount"
+    ).textContent =
+        "0";
+
+    document.getElementById(
+        "invalidEmailCount"
+    ).textContent =
+        "0";
+
+    document.getElementById(
+        "tableInfo"
+    ).textContent =
+        "No data";
+
+    qualityTable.innerHTML = `
+        <div class="empty">
+            Upload a CSV file to check its quality.
+        </div>
+    `;
+
+    hideMessage();
+}
+
+function escapeHTML(value){
+
+    return value
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+function showMessage(text,type){
+
+    message.textContent =
+        text;
+
+    message.className =
+        "message " + type;
+}
+
+function hideMessage(){
+
+    message.textContent =
+        "";
+
+    message.className =
+        "message";
+}
+
+</script>
+
+</body>
+</html>

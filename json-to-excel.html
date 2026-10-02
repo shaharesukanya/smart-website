@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JSON to Excel Converter - Free Online Tool | SmartTools</title>
+
+    <meta name="description"
+          content="Convert JSON to Excel online for free. Paste JSON or load sample data, preview your records and download an Excel XLSX file instantly.">
+
+    <meta name="keywords"
+          content="json to excel, json to xlsx, json converter, json excel converter, online json converter, developer tools">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+          href="https://smarttools.com/json-to-excel.html">
+
+    <!-- SheetJS -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(90, 70, 240, .22), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(0, 190, 255, .12), transparent 35%),
+                #070b16;
+            color: #f5f7ff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .topbar {
+            text-align: center;
+            padding: 9px 15px;
+            background: rgba(255,255,255,.04);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            color: #bfc8dc;
+            font-size: 13px;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 6%;
+            background: rgba(7,11,22,.84);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -.5px;
+        }
+
+        .logo span {
+            color: #8b7cff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            color: #b9c1d5;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 65px 20px 35px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 13px;
+            border: 1px solid rgba(139,124,255,.3);
+            background: rgba(139,124,255,.08);
+            color: #bdb4ff;
+            border-radius: 50px;
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 65px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #a99cff, #54d9ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #aeb7ca;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .tool-card {
+            background: rgba(255,255,255,.045);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 25px 70px rgba(0,0,0,.28);
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 9px;
+            color: #dce3f1;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 420px;
+            resize: vertical;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 16px;
+            outline: none;
+            padding: 18px;
+            background: rgba(0,0,0,.2);
+            color: #c8edff;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            border-color: #8b7cff;
+            box-shadow: 0 0 0 3px rgba(139,124,255,.1);
+        }
+
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        button {
+            border: 0;
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7567ff, #4d9cff);
+            transition: .2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(83,118,255,.25);
+        }
+
+        button.secondary {
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.12);
+        }
+
+        button.danger {
+            background: rgba(255,80,100,.12);
+            border: 1px solid rgba(255,80,100,.25);
+        }
+
+        .message {
+            margin-top: 18px;
+            padding: 13px 16px;
+            border-radius: 12px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .message.success {
+            display: block;
+            background: rgba(60,220,140,.08);
+            border: 1px solid rgba(60,220,140,.2);
+            color: #91e9b8;
+        }
+
+        .message.error {
+            display: block;
+            background: rgba(255,80,100,.08);
+            border: 1px solid rgba(255,80,100,.2);
+            color: #ff9eaa;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 25px;
+        }
+
+        .stat {
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255,255,255,.045);
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .stat small {
+            display: block;
+            color: #8994aa;
+            margin-bottom: 5px;
+        }
+
+        .stat strong {
+            font-size: 24px;
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .panel {
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 18px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .panel-header h3 {
+            font-size: 15px;
+        }
+
+        .panel-header span {
+            color: #8893a8;
+            font-size: 12px;
+        }
+
+        .table-wrap {
+            max-height: 430px;
+            overflow: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 550px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 11px 13px;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+            font-size: 13px;
+        }
+
+        th {
+            background: rgba(255,255,255,.05);
+            color: #dce3f2;
+            position: sticky;
+            top: 0;
+        }
+
+        td {
+            color: #aeb8ca;
+        }
+
+        .empty {
+            padding: 50px 20px;
+            text-align: center;
+            color: #7f8aa0;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 70px auto;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            margin-bottom: 50px;
+        }
+
+        .content h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content h3 {
+            margin: 22px 0 8px;
+            font-size: 19px;
+        }
+
+        .content p,
+        .content li {
+            color: #aab4c8;
+        }
+
+        .content ul {
+            padding-left: 22px;
+        }
+
+        .faq {
+            border-top: 1px solid rgba(255,255,255,.1);
+        }
+
+        details {
+            border-bottom: 1px solid rgba(255,255,255,.1);
+            padding: 17px 0;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            margin-top: 10px;
+        }
+
+        footer {
+            margin-top: 70px;
+            padding: 35px 20px;
+            text-align: center;
+            color: #778298;
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-card {
+                padding: 18px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            .hero h1 {
+                font-size: 39px;
+            }
+
+            .btn-row button {
+                width: 100%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        SmartTools — Free online tools for everyday work
+    </div>
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            Smart<span>Tools</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="data-analyst.html">Data Analyst</a>
+            <a href="ai-tools.html">AI Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </nav>
+
+    <header class="hero">
+
+        <div class="badge">
+            DATA & DEVELOPER TOOL
+        </div>
+
+        <h1>
+            JSON <span>to Excel</span> Converter
+        </h1>
+
+        <p>
+            Convert JSON data into a downloadable Excel XLSX spreadsheet.
+            Preview your records, validate your JSON and export structured
+            data in seconds.
+        </p>
+
+    </header>
+
+    <main class="container">
+
+        <section class="tool-card">
+
+            <label class="input-label" for="jsonInput">
+                Paste JSON Data
+            </label>
+
+            <textarea
+                id="jsonInput"
+                placeholder='[
+  {
+    "Name": "Aarav",
+    "Age": 24,
+    "City": "Mumbai"
+  },
+  {
+    "Name": "Priya",
+    "Age": 27,
+    "City": "Pune"
+  }
+]'></textarea>
+
+            <div class="btn-row">
+
+                <button onclick="convertJSON()">
+                    Convert to Excel
+                </button>
+
+                <button class="secondary" onclick="validateJSON()">
+                    Validate JSON
+                </button>
+
+                <button class="secondary" onclick="loadSample('people')">
+                    People Sample
+                </button>
+
+                <button class="secondary" onclick="loadSample('products')">
+                    Products Sample
+                </button>
+
+                <button class="secondary" onclick="loadSample('sales')">
+                    Sales Sample
+                </button>
+
+                <button class="danger" onclick="clearTool()">
+                    Clear
+                </button>
+
+            </div>
+
+            <div id="message" class="message"></div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>Rows</small>
+                    <strong id="rowCount">0</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Columns</small>
+                    <strong id="columnCount">0</strong>
+                </div>
+
+                <div class="stat">
+                    <small>JSON Size</small>
+                    <strong id="jsonSize">0 KB</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Data Type</small>
+                    <strong id="dataType">—</strong>
+                </div>
+
+            </div>
+
+            <div class="workspace">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h3>
+                            Data Preview
+                        </h3>
+
+                        <span id="previewInfo">
+                            No data
+                        </span>
+
+                    </div>
+
+                    <div id="preview" class="table-wrap">
+
+                        <div class="empty">
+                            Paste JSON and convert it to preview your data.
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h3>
+                            Export
+                        </h3>
+
+                        <span>
+                            XLSX spreadsheet
+                        </span>
+
+                    </div>
+
+                    <div class="empty" style="min-height:430px;">
+
+                        <div style="font-size:55px; margin-bottom:12px;">
+                            📊
+                        </div>
+
+                        <h3 style="margin-bottom:8px;">
+                            Ready to export
+                        </h3>
+
+                        <p style="color:#7f8aa0;">
+                            Your JSON will be converted into an Excel
+                            spreadsheet when you click
+                            <b>Convert to Excel</b>.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <section class="content">
+
+        <div class="content-section">
+
+            <h2>
+                JSON to Excel Converter
+            </h2>
+
+            <p>
+                SmartTools JSON to Excel Converter helps developers,
+                analysts and students convert structured JSON data into
+                Excel spreadsheets quickly.
+            </p>
+
+            <p style="margin-top:15px;">
+                Simply paste an array of JSON objects, preview the records
+                and export the data as an XLSX file.
+            </p>
+
+        </div>
+
+        <div class="content-section">
+
+            <h2>
+                How to Convert JSON to Excel
+            </h2>
+
+            <h3>
+                1. Paste your JSON
+            </h3>
+
+            <p>
+                Add an array of JSON objects into the editor.
+            </p>
+
+            <h3>
+                2. Validate your data
+            </h3>
+
+            <p>
+                Use the Validate JSON button to check whether the JSON
+                syntax is valid.
+            </p>
+
+            <h3>
+                3. Convert to Excel
+            </h3>
+
+            <p>
+                Click Convert to Excel. The tool creates an Excel workbook
+                from your JSON records.
+            </p>
+
+            <h3>
+                4. Download the spreadsheet
+            </h3>
+
+            <p>
+                Your browser will automatically download the generated
+                XLSX spreadsheet.
+            </p>
+
+        </div>
+
+        <div class="content-section">
+
+            <h2>
+                Common Uses
+            </h2>
+
+            <ul>
+                <li>Convert API responses into Excel</li>
+                <li>Analyze JSON datasets in spreadsheets</li>
+                <li>Prepare developer data for reporting</li>
+                <li>Move structured JSON data into Excel</li>
+                <li>Quick data conversion for projects</li>
+                <li>Export small datasets for analysis</li>
+            </ul>
+
+        </div>
+
+        <div class="content-section">
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+            <div class="faq">
+
+                <details>
+                    <summary>
+                        Can I convert JSON to XLSX?
+                    </summary>
+
+                    <p>
+                        Yes. The converter creates an Excel XLSX workbook
+                        from an array of JSON objects.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        What JSON format should I use?
+                    </summary>
+
+                    <p>
+                        The recommended format is an array containing
+                        objects. For example:
+                        [{"Name":"Aarav","Age":24}].
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Can objects have different fields?
+                    </summary>
+
+                    <p>
+                        Yes. The converter collects the available keys
+                        across the records and creates spreadsheet columns.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Does the tool upload my JSON?
+                    </summary>
+
+                    <p>
+                        No. The conversion happens in your browser.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>
+                        Can I use this for API data?
+                    </summary>
+
+                    <p>
+                        Yes. JSON copied from an API response can be
+                        converted if it is structured as an array of
+                        objects.
+                    </p>
+                </details>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 SmartTools. Free online tools for everyday needs.
+    </footer>
+
+    <script>
+
+        const jsonInput =
+            document.getElementById("jsonInput");
+
+        const message =
+            document.getElementById("message");
+
+        const preview =
+            document.getElementById("preview");
+
+        let currentData = [];
+
+        function parseJSON() {
+
+            const text =
+                jsonInput.value.trim();
+
+            if (!text) {
+                throw new Error("Please enter JSON data.");
+            }
+
+            return JSON.parse(text);
+        }
+
+        function normalizeData(data) {
+
+            if (!Array.isArray(data)) {
+
+                if (
+                    data &&
+                    typeof data === "object"
+                ) {
+
+                    return [data];
+
+                }
+
+                throw new Error(
+                    "JSON must contain an object or an array of objects."
+                );
+            }
+
+            if (data.length === 0) {
+                throw new Error(
+                    "The JSON array is empty."
+                );
+            }
+
+            if (
+                !data.every(item =>
+                    item &&
+                    typeof item === "object" &&
+                    !Array.isArray(item)
+                )
+            ) {
+
+                throw new Error(
+                    "Each item in the JSON array must be an object."
+                );
+            }
+
+            return data;
+        }
+
+        function getColumns(data) {
+
+            const columns = [];
+
+            data.forEach(row => {
+
+                Object.keys(row).forEach(key => {
+
+                    if (!columns.includes(key)) {
+                        columns.push(key);
+                    }
+
+                });
+
+            });
+
+            return columns;
+        }
+
+        function convertJSON() {
+
+            hideMessage();
+
+            try {
+
+                const parsed =
+                    parseJSON();
+
+                currentData =
+                    normalizeData(parsed);
+
+                const columns =
+                    getColumns(currentData);
+
+                renderPreview(
+                    currentData,
+                    columns
+                );
+
+                updateStats(
+                    currentData,
+                    columns
+                );
+
+                const worksheetData =
+                    currentData.map(row => {
+
+                        const output = {};
+
+                        columns.forEach(column => {
+
+                            const value =
+                                row[column];
+
+                            output[column] =
+                                formatCellValue(value);
+
+                        });
+
+                        return output;
+
+                    });
+
+                const worksheet =
+                    XLSX.utils.json_to_sheet(
+                        worksheetData
+                    );
+
+                const workbook =
+                    XLSX.utils.book_new();
+
+                XLSX.utils.book_append_sheet(
+                    workbook,
+                    worksheet,
+                    "Data"
+                );
+
+                XLSX.writeFile(
+                    workbook,
+                    "smarttools-data.xlsx"
+                );
+
+                showMessage(
+                    "Excel file created and downloaded successfully.",
+                    "success"
+                );
+
+            } catch (error) {
+
+                showMessage(
+                    error.message,
+                    "error"
+                );
+            }
+        }
+
+        function validateJSON() {
+
+            hideMessage();
+
+            try {
+
+                const parsed =
+                    parseJSON();
+
+                const data =
+                    normalizeData(parsed);
+
+                showMessage(
+                    `Valid JSON. ${data.length} record${data.length === 1 ? "" : "s"} found.`,
+                    "success"
+                );
+
+            } catch (error) {
+
+                showMessage(
+                    "Invalid JSON: " + error.message,
+                    "error"
+                );
+            }
+        }
+
+        function renderPreview(data, columns) {
+
+            let html = "<table>";
+
+            html += "<thead><tr>";
+
+            columns.forEach(column => {
+
+                html += `
+                    <th>${escapeHTML(column)}</th>
+                `;
+
+            });
+
+            html += "</tr></thead>";
+
+            html += "<tbody>";
+
+            const rows =
+                data.slice(0, 100);
+
+            rows.forEach(row => {
+
+                html += "<tr>";
+
+                columns.forEach(column => {
+
+                    const value =
+                        row[column] === undefined
+                            ? ""
+                            : formatCellValue(row[column]);
+
+                    html += `
+                        <td>${escapeHTML(String(value))}</td>
+                    `;
+
+                });
+
+                html += "</tr>";
+
+            });
+
+            html += "</tbody></table>";
+
+            preview.innerHTML = html;
+
+            document.getElementById(
+                "previewInfo"
+            ).textContent =
+                `Showing ${Math.min(data.length, 100)} of ${data.length} rows`;
+        }
+
+        function updateStats(data, columns) {
+
+            document.getElementById(
+                "rowCount"
+            ).textContent =
+                data.length;
+
+            document.getElementById(
+                "columnCount"
+            ).textContent =
+                columns.length;
+
+            const size =
+                new Blob([
+                    jsonInput.value
+                ]).size / 1024;
+
+            document.getElementById(
+                "jsonSize"
+            ).textContent =
+                size.toFixed(1) + " KB";
+
+            document.getElementById(
+                "dataType"
+            ).textContent =
+                Array.isArray(JSON.parse(jsonInput.value))
+                    ? "Array"
+                    : "Object";
+        }
+
+        function formatCellValue(value) {
+
+            if (
+                value === null ||
+                value === undefined
+            ) {
+                return "";
+            }
+
+            if (
+                typeof value === "object"
+            ) {
+
+                return JSON.stringify(value);
+
+            }
+
+            return value;
+        }
+
+        function loadSample(type) {
+
+            let data;
+
+            if (type === "people") {
+
+                data = [
+                    {
+                        Name: "Aarav",
+                        Age: 24,
+                        City: "Mumbai",
+                        Role: "Developer"
+                    },
+                    {
+                        Name: "Priya",
+                        Age: 27,
+                        City: "Pune",
+                        Role: "Analyst"
+                    },
+                    {
+                        Name: "Rahul",
+                        Age: 31,
+                        City: "Nagpur",
+                        Role: "Designer"
+                    },
+                    {
+                        Name: "Neha",
+                        Age: 25,
+                        City: "Delhi",
+                        Role: "Developer"
+                    }
+                ];
+
+            } else if (type === "products") {
+
+                data = [
+                    {
+                        Product: "Laptop",
+                        Price: 65000,
+                        Category: "Electronics",
+                        Stock: 15
+                    },
+                    {
+                        Product: "Keyboard",
+                        Price: 1800,
+                        Category: "Accessories",
+                        Stock: 42
+                    },
+                    {
+                        Product: "Monitor",
+                        Price: 12500,
+                        Category: "Electronics",
+                        Stock: 20
+                    },
+                    {
+                        Product: "Mouse",
+                        Price: 900,
+                        Category: "Accessories",
+                        Stock: 70
+                    }
+                ];
+
+            } else {
+
+                data = [
+                    {
+                        Month: "January",
+                        Sales: 125000,
+                        Orders: 240,
+                        Region: "West"
+                    },
+                    {
+                        Month: "February",
+                        Sales: 142000,
+                        Orders: 275,
+                        Region: "West"
+                    },
+                    {
+                        Month: "March",
+                        Sales: 168000,
+                        Orders: 310,
+                        Region: "North"
+                    },
+                    {
+                        Month: "April",
+                        Sales: 154000,
+                        Orders: 290,
+                        Region: "South"
+                    }
+                ];
+
+            }
+
+            jsonInput.value =
+                JSON.stringify(
+                    data,
+                    null,
+                    2
+                );
+
+            convertJSON();
+        }
+
+        function clearTool() {
+
+            jsonInput.value = "";
+
+            currentData = [];
+
+            preview.innerHTML = `
+                <div class="empty">
+                    Paste JSON and convert it to preview your data.
+                </div>
+            `;
+
+            document.getElementById(
+                "previewInfo"
+            ).textContent =
+                "No data";
+
+            document.getElementById(
+                "rowCount"
+            ).textContent =
+                "0";
+
+            document.getElementById(
+                "columnCount"
+            ).textContent =
+                "0";
+
+            document.getElementById(
+                "jsonSize"
+            ).textContent =
+                "0 KB";
+
+            document.getElementById(
+                "dataType"
+            ).textContent =
+                "—";
+
+            hideMessage();
+        }
+
+        function escapeHTML(value) {
+
+            return value
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function showMessage(text, type) {
+
+            message.textContent =
+                text;
+
+            message.className =
+                "message " + type;
+        }
+
+        function hideMessage() {
+
+            message.textContent =
+                "";
+
+            message.className =
+                "message";
+        }
+
+    </script>
+
+</body>
+</html>

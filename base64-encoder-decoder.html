@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Base64 Encoder Decoder Online | Free Base64 Tool - SmartTools</title>
+
+    <meta name="description"
+          content="Free online Base64 Encoder and Decoder. Encode text to Base64 or decode Base64 back to readable text instantly in your browser.">
+
+    <meta name="keywords"
+          content="Base64 encoder, Base64 decoder, encode Base64 online, decode Base64 online, Base64 converter, developer tools">
+
+    <meta name="author" content="Sukanya Shahare">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+          href="https://yourdomain.com/base64-encoder-decoder.html">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(99,102,241,.18), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(14,165,233,.14), transparent 30%),
+                #070b14;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: linear-gradient(90deg, #111827, #172554, #111827);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7,11,20,.84);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .nav-inner {
+            max-width: 1180px;
+            margin: auto;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #818cf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #a5b4fc;
+        }
+
+        .hero {
+            max-width: 1050px;
+            margin: auto;
+            padding: 70px 20px 35px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(129,140,248,.25);
+            background: rgba(99,102,241,.09);
+            color: #a5b4fc;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #818cf8, #38bdf8);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #94a3b8;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .tool-wrapper {
+            max-width: 1100px;
+            margin: 25px auto 70px;
+            padding: 0 20px;
+        }
+
+        .tool-card {
+            background: rgba(15,23,42,.82);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 30px 80px rgba(0,0,0,.3);
+        }
+
+        .card-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card-title h2 {
+            font-size: 22px;
+        }
+
+        .privacy {
+            color: #86efac;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .field-label {
+            display: block;
+            color: #cbd5e1;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 9px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 230px;
+            resize: vertical;
+            padding: 18px;
+            border-radius: 16px;
+            border: 1px solid #263247;
+            background: #080d18;
+            color: #f8fafc;
+            outline: none;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.65;
+            transition: .25s ease;
+        }
+
+        textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99,102,241,.1);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .stat {
+            background: rgba(30,41,59,.65);
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 14px;
+            padding: 15px;
+        }
+
+        .stat small {
+            display: block;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .stat strong {
+            font-size: 18px;
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-weight: 700;
+            cursor: pointer;
+            color: white;
+            background: #1e293b;
+            border: 1px solid #334155;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            background: #293548;
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #6366f1, #2563eb);
+            border: none;
+        }
+
+        .primary:hover {
+            background: linear-gradient(135deg, #818cf8, #3b82f6);
+        }
+
+        .danger {
+            background: #3f1d2e;
+            border-color: #6b2948;
+        }
+
+        .message {
+            min-height: 22px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .info-card {
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(15,23,42,.75);
+            border: 1px solid rgba(255,255,255,.07);
+        }
+
+        .info-card h3 {
+            margin-bottom: 9px;
+            font-size: 17px;
+        }
+
+        .info-card p {
+            color: #94a3b8;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 0 auto 70px;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            margin-bottom: 35px;
+        }
+
+        .content-section h2 {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            padding-left: 22px;
+        }
+
+        .faq {
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 15px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            background: rgba(15,23,42,.65);
+        }
+
+        .faq button {
+            width: 100%;
+            text-align: left;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            padding: 17px;
+            font-size: 15px;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 17px 17px;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .cta {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 24px;
+            background: linear-gradient(
+                135deg,
+                rgba(79,70,229,.18),
+                rgba(14,165,233,.12)
+            );
+            border: 1px solid rgba(129,140,248,.15);
+        }
+
+        .cta h2 {
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding: 25px 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats,
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .tool-card {
+                padding: 18px;
+            }
+
+            .stats,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-title {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            textarea {
+                min-height: 210px;
+            }
+
+            .button-row button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — simple tools for everyday needs.
+</div>
+
+<nav class="navbar">
+
+    <div class="nav-inner">
+
+        <a href="index.html" class="logo">
+            Smart<span>Tools</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="data-analyst.html">Data Tools</a>
+            <a href="ai-tools.html">AI Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </div>
+
+</nav>
+
+<section class="hero">
+
+    <div class="badge">
+        Developer Utility • Browser Based
+    </div>
+
+    <h1>
+        Base64 <span>Encoder & Decoder</span>
+    </h1>
+
+    <p>
+        Encode text into Base64 or decode Base64 strings back into readable
+        text instantly. Fast, simple and processed directly in your browser.
+    </p>
+
+</section>
+
+<main class="tool-wrapper">
+
+    <div class="tool-card">
+
+        <div class="card-title">
+
+            <h2>Base64 Encoder / Decoder</h2>
+
+            <div class="privacy">
+                ✓ Your data stays in your browser
+            </div>
+
+        </div>
+
+        <label class="field-label" for="inputText">
+            Input
+        </label>
+
+        <textarea
+            id="inputText"
+            placeholder="Enter normal text or Base64 encoded text here..."
+        ></textarea>
+
+        <div class="stats">
+
+            <div class="stat">
+                <small>Input Characters</small>
+                <strong id="inputChars">0</strong>
+            </div>
+
+            <div class="stat">
+                <small>Output Characters</small>
+                <strong id="outputChars">0</strong>
+            </div>
+
+            <div class="stat">
+                <small>Operation</small>
+                <strong id="operation">Ready</strong>
+            </div>
+
+            <div class="stat">
+                <small>Status</small>
+                <strong id="status">Waiting</strong>
+            </div>
+
+        </div>
+
+        <div class="button-row">
+
+            <button class="primary" onclick="encodeBase64()">
+                Encode Base64
+            </button>
+
+            <button onclick="decodeBase64()">
+                Decode Base64
+            </button>
+
+            <button onclick="sampleText()">
+                Sample
+            </button>
+
+            <button onclick="copyOutput()">
+                Copy Output
+            </button>
+
+            <button class="danger" onclick="clearTool()">
+                Clear
+            </button>
+
+        </div>
+
+        <label class="field-label" for="outputText" style="margin-top:25px;">
+            Output
+        </label>
+
+        <textarea
+            id="outputText"
+            placeholder="Result will appear here..."
+            readonly
+        ></textarea>
+
+        <div class="message" id="message"></div>
+
+    </div>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <h3>🔐 Base64 Encoding</h3>
+
+            <p>
+                Converts text or binary data into a Base64 representation
+                that is commonly used in APIs, data transfer and web
+                development.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h3>🔓 Base64 Decoding</h3>
+
+            <p>
+                Converts a valid Base64 string back into readable text.
+                Invalid Base64 input will show an error.
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h3>⚡ Private Processing</h3>
+
+            <p>
+                This tool uses browser JavaScript for text conversion.
+                Your entered text is not sent to a server.
+            </p>
+        </div>
+
+    </div>
+
+</main>
+
+<section class="content">
+
+    <div class="content-section">
+
+        <h2>What is Base64?</h2>
+
+        <p>
+            Base64 is an encoding method that represents binary or text data
+            using a limited set of characters. It is frequently used in web
+            development, APIs, authentication systems, data transmission
+            and email-related technologies.
+        </p>
+
+    </div>
+
+    <div class="content-section">
+
+        <h2>Where is Base64 used?</h2>
+
+        <ul>
+            <li>API data transmission</li>
+            <li>Web development</li>
+            <li>Data URLs</li>
+            <li>JSON payloads</li>
+            <li>Authentication headers</li>
+            <li>Configuration files</li>
+            <li>Developer debugging</li>
+        </ul>
+
+    </div>
+
+    <div class="content-section">
+
+        <h2>Base64 is Encoding, Not Encryption</h2>
+
+        <p>
+            Base64 should not be treated as a security or encryption method.
+            Anyone who has a Base64 string can generally decode it. Sensitive
+            information should not be protected merely by Base64 encoding.
+        </p>
+
+    </div>
+
+    <div class="content-section">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                What is Base64 encoding?
+            </button>
+
+            <div class="faq-answer">
+                Base64 encoding converts data into a text representation
+                using a defined set of characters.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                Is Base64 encryption?
+            </button>
+
+            <div class="faq-answer">
+                No. Base64 is an encoding format, not an encryption method.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                Is this Base64 tool free?
+            </button>
+
+            <div class="faq-answer">
+                Yes. The SmartTools Base64 Encoder and Decoder is free to use.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                Does this tool upload my text?
+            </button>
+
+            <div class="faq-answer">
+                No. Text conversion is performed locally in your browser.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                Can Base64 contain spaces?
+            </button>
+
+            <div class="faq-answer">
+                Standard Base64 output normally uses a defined character
+                alphabet. Whitespace may appear in formatted or wrapped
+                Base64 data, so this tool removes surrounding whitespace
+                before decoding.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cta">
+
+    <h2>Explore More Developer Tools</h2>
+
+    <p>
+        Work with JSON, CSV, SQL, Excel, timestamps and other useful
+        developer utilities.
+    </p>
+
+    <a href="data-analyst.html">
+        <button class="primary">
+            Explore Data Tools →
+        </button>
+    </a>
+
+</section>
+
+<footer>
+    © 2026 SmartTools · Built by Sukanya Shahare
+</footer>
+
+<script>
+
+const inputText = document.getElementById("inputText");
+const outputText = document.getElementById("outputText");
+
+const inputChars = document.getElementById("inputChars");
+const outputChars = document.getElementById("outputChars");
+const operation = document.getElementById("operation");
+const status = document.getElementById("status");
+const message = document.getElementById("message");
+
+inputText.addEventListener("input", updateStats);
+
+function updateStats() {
+
+    inputChars.textContent = inputText.value.length;
+
+}
+
+function encodeBase64() {
+
+    const value = inputText.value;
+
+    if (!value) {
+        showError("Please enter text first.");
+        return;
+    }
+
+    try {
+
+        /*
+         * TextEncoder + byte conversion allows Unicode
+         * characters such as Hindi, emoji and other scripts.
+         */
+
+        const bytes = new TextEncoder().encode(value);
+
+        let binary = "";
+
+        const chunkSize = 0x8000;
+
+        for (let i = 0; i < bytes.length; i += chunkSize) {
+
+            const chunk = bytes.subarray(
+                i,
+                Math.min(i + chunkSize, bytes.length)
+            );
+
+            binary += String.fromCharCode(...chunk);
+
+        }
+
+        outputText.value = btoa(binary);
+
+        updateResult("Encode", "Success");
+
+        showSuccess("Text encoded to Base64 successfully.");
+
+    } catch (error) {
+
+        showError("Unable to encode the input.");
+
+    }
+
+}
+
+function decodeBase64() {
+
+    const value = inputText.value.trim();
+
+    if (!value) {
+        showError("Please enter Base64 text first.");
+        return;
+    }
+
+    try {
+
+        const cleanBase64 = value.replace(/\s/g, "");
+
+        const binary = atob(cleanBase64);
+
+        const bytes = Uint8Array.from(
+            binary,
+            char => char.charCodeAt(0)
+        );
+
+        const decoded = new TextDecoder(
+            "utf-8",
+            { fatal: true }
+        ).decode(bytes);
+
+        outputText.value = decoded;
+
+        updateResult("Decode", "Success");
+
+        showSuccess("Base64 decoded successfully.");
+
+    } catch (error) {
+
+        outputText.value = "";
+
+        outputChars.textContent = "0";
+
+        operation.textContent = "Decode";
+        status.textContent = "Error";
+
+        showError(
+            "Invalid Base64 text or the encoded data is not valid UTF-8."
+        );
+
+    }
+
+}
+
+function updateResult(mode, state) {
+
+    inputChars.textContent = inputText.value.length;
+    outputChars.textContent = outputText.value.length;
+
+    operation.textContent = mode;
+    status.textContent = state;
+
+}
+
+async function copyOutput() {
+
+    if (!outputText.value) {
+
+        showError("There is no output to copy.");
+
+        return;
+    }
+
+    try {
+
+        await navigator.clipboard.writeText(
+            outputText.value
+        );
+
+        showSuccess("Output copied to clipboard.");
+
+    } catch (error) {
+
+        outputText.select();
+
+        document.execCommand("copy");
+
+        showSuccess("Output copied.");
+
+    }
+
+}
+
+function sampleText() {
+
+    inputText.value =
+        "Hello SmartTools! Base64 encoding is useful for developers.";
+
+    outputText.value = "";
+
+    inputChars.textContent = inputText.value.length;
+    outputChars.textContent = "0";
+
+    operation.textContent = "Ready";
+    status.textContent = "Waiting";
+
+    showSuccess("Sample text loaded.");
+
+}
+
+function clearTool() {
+
+    inputText.value = "";
+    outputText.value = "";
+
+    inputChars.textContent = "0";
+    outputChars.textContent = "0";
+
+    operation.textContent = "Ready";
+    status.textContent = "Waiting";
+
+    message.textContent = "";
+
+}
+
+function showSuccess(text) {
+
+    message.textContent = "✓ " + text;
+    message.style.color = "#86efac";
+
+}
+
+function showError(text) {
+
+    message.textContent = "⚠ " + text;
+    message.style.color = "#fca5a5";
+
+    status.textContent = "Error";
+
+}
+
+function toggleFAQ(button) {
+
+    const answer = button.nextElementSibling;
+
+    const isOpen =
+        answer.style.display === "block";
+
+    document
+        .querySelectorAll(".faq-answer")
+        .forEach(item => {
+            item.style.display = "none";
+        });
+
+    answer.style.display =
+        isOpen ? "none" : "block";
+
+}
+
+</script>
+
+</body>
+</html>

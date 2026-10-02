@@ -3,375 +3,1723 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage Calculator - Calculate Percentages | SmartTools</title>
 
-    <title>Percentage Calculator - Calculate Percentages Online | SmartTools</title>
+<meta name="description"
+content="Use the free SmartTools Percentage Calculator to calculate percentages, percentage increases, decreases and find what percentage one number is of another.">
 
-    <meta name="description"
-        content="Use the free SmartTools Percentage Calculator to quickly calculate percentages of any number. Simple, fast and easy to use online.">
+<meta name="keywords"
+content="percentage calculator, percent calculator, percentage increase calculator, percentage decrease calculator, calculate percentage">
 
-    <meta name="keywords"
-        content="percentage calculator, calculate percentage, percentage calculator online, percent calculator, percentage formula">
+<meta name="robots" content="index, follow">
 
-    <meta name="author" content="Sukanya Shahare">
+<link rel="canonical"
+href="https://shaharesukanya.github.io/smart-website/percentage-calculator.html">
 
-    <meta name="robots" content="index, follow">
 
-    <link rel="canonical" href="https://shaharesukanya.github.io/smart-website/percentage-calculator.html">
-
-    <link rel="stylesheet" href="style.css">
-
-<meta name="theme-color" content="#5b5ff5">
-<meta property="og:title" content="Percentage Calculator - Calculate Percentages Online | SmartTools">
-<meta property="og:description" content="Use the free SmartTools Percentage Calculator to quickly calculate percentages of any number. Simple, fast and easy to use online.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://shaharesukanya.github.io/smart-website/percentage-calculator.html">
-<meta property="og:site_name" content="SmartTools">
-<meta name="twitter:card" content="summary">
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Percentage Calculator - Calculate Percentages Online | SmartTools",
-    "url": "https://shaharesukanya.github.io/smart-website/percentage-calculator.html",
-    "description": "Use the free SmartTools Percentage Calculator to quickly calculate percentages of any number. Simple, fast and easy to use online.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "name": "SmartTools",
-        "url": "https://shaharesukanya.github.io/smart-website/"
-    }
-}
-</script>
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<!-- SMARTTOOLS_PHASE6_CSS_START -->
 <style>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE + MOBILE SAFETY
-========================================================= */
 
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+:root{
+    --purple:#6559ef;
+    --purple-dark:#5145d6;
+    --purple-light:#f1efff;
+    --navy:#10182f;
+    --text:#263247;
+    --muted:#7c879a;
+    --bg:#f7f8fc;
+    --white:#ffffff;
+    --border:#e1e5ee;
+    --green:#16c997;
+    --shadow:0 18px 50px rgba(25,35,65,.08);
 }
 
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-img,
-svg,
-video,
-canvas {
-    max-width: 100%;
-    height: auto;
+html{
+    scroll-behavior:smooth;
 }
 
-a,
+body{
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
 button,
 input,
-select,
-textarea {
-    touch-action: manipulation;
+select{
+    font:inherit;
 }
 
-button,
-.btn,
-input[type="submit"],
-input[type="button"] {
-    min-height: 44px;
+
+/* TOP BAR */
+
+.topbar{
+    background:var(--navy);
+    color:#d8deea;
+    text-align:center;
+    padding:9px 15px;
+    font-size:11px;
+    font-weight:700;
 }
 
-input,
-select,
-textarea {
-    max-width: 100%;
-    min-width: 0;
+
+/* HEADER */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(14px);
 }
 
-input[type="number"],
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-    width: 100%;
+.nav{
+    width:min(1160px,92%);
+    min-height:72px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-span,
-li {
-    overflow-wrap: break-word;
+.logo{
+    font-size:24px;
+    font-weight:950;
+    letter-spacing:-1px;
+    color:var(--navy);
 }
 
-table {
-    width: 100%;
-    max-width: 100%;
-    border-collapse: collapse;
+.logo span{
+    color:var(--purple);
 }
 
-.table-wrapper,
-.responsive-table {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
 }
 
-:focus-visible {
-    outline: 3px solid rgba(91,95,245,.35);
-    outline-offset: 3px;
+.nav-links a{
+    color:#5d687b;
+    font-size:12px;
+    font-weight:800;
+    transition:.25s;
 }
 
-@media (max-width: 900px) {
+.nav-links a:hover{
+    color:var(--purple);
+}
 
-    .hero-grid,
-    .content-grid,
-    .calculator-layout,
-    .tool-layout,
-    .feature-grid,
-    .founder-grid {
-        grid-template-columns: 1fr !important;
+.nav-button{
+    background:var(--purple);
+    color:#fff!important;
+    padding:10px 17px;
+    border-radius:10px;
+    box-shadow:0 8px 22px rgba(101,89,239,.22);
+}
+
+
+/* HERO */
+
+.hero{
+    padding:78px 0 62px;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(101,89,239,.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(128,109,245,.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f5f3ff,
+            #ffffff 55%,
+            #f7f8fc
+        );
+
+    border-bottom:1px solid var(--border);
+}
+
+.container{
+    width:min(1160px,92%);
+    margin:auto;
+}
+
+.breadcrumb{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:22px;
+    color:#8994a7;
+    font-size:11px;
+}
+
+.breadcrumb a{
+    color:var(--purple);
+    font-weight:850;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:var(--purple-light);
+    border:1px solid #dedaff;
+    color:var(--purple);
+    font-size:10px;
+    font-weight:950;
+    letter-spacing:1px;
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 0 5px rgba(22,201,151,.10);
+}
+
+.hero h1{
+    margin-top:19px;
+    font-size:clamp(40px,5vw,60px);
+    line-height:1.04;
+    letter-spacing:-3px;
+    color:#172139;
+}
+
+.hero h1 span{
+    color:var(--purple);
+}
+
+.hero-description{
+    max-width:730px;
+    margin-top:14px;
+    color:var(--muted);
+    font-size:15px;
+    line-height:1.8;
+}
+
+
+/* MAIN */
+
+.main{
+    padding:58px 0 65px;
+}
+
+.main-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.55fr) minmax(280px,.72fr);
+    gap:22px;
+    align-items:start;
+}
+
+.card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+}
+
+
+/* CALCULATOR */
+
+.calculator-card{
+    position:relative;
+    padding:32px;
+    overflow:hidden;
+}
+
+.calculator-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:4px;
+    background:linear-gradient(
+        90deg,
+        var(--purple),
+        #806df5
+    );
+}
+
+.calculator-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:27px;
+}
+
+.calculator-header h2{
+    font-size:25px;
+    letter-spacing:-.8px;
+}
+
+.calculator-header p{
+    margin-top:5px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.calculator-icon{
+    width:50px;
+    height:50px;
+    flex:0 0 50px;
+    display:grid;
+    place-items:center;
+    border-radius:14px;
+    background:var(--purple-light);
+    color:var(--purple);
+    font-size:20px;
+    font-weight:950;
+}
+
+
+/* MODE SELECTOR */
+
+.mode-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-bottom:23px;
+}
+
+.mode-btn{
+    min-height:48px;
+    padding:9px 8px;
+    border:1px solid var(--border);
+    border-radius:11px;
+    background:#fafbfe;
+    color:#68748a;
+    font-size:10px;
+    font-weight:850;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.mode-btn:hover{
+    border-color:#c9c4ff;
+    color:var(--purple);
+}
+
+.mode-btn.active{
+    background:var(--purple-light);
+    border-color:#cfcaff;
+    color:var(--purple);
+}
+
+
+/* FORM */
+
+.form-group{
+    margin-bottom:19px;
+}
+
+.form-label{
+    display:block;
+    margin-bottom:9px;
+    color:#354057;
+    font-size:12px;
+    font-weight:850;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.input-wrap input{
+    width:100%;
+    height:53px;
+    padding:0 43px 0 15px;
+    border:1px solid #d8deea;
+    border-radius:12px;
+    outline:none;
+    background:#fff;
+    color:#263247;
+    font-size:14px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.input-wrap input:focus{
+    border-color:var(--purple);
+    box-shadow:0 0 0 4px rgba(101,89,239,.10);
+}
+
+.input-symbol{
+    position:absolute;
+    right:16px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#8a95a8;
+    font-weight:900;
+}
+
+
+/* BUTTON */
+
+.calculate-button{
+    width:100%;
+    height:54px;
+    margin-top:3px;
+    border:0;
+    border-radius:13px;
+    background:linear-gradient(
+        135deg,
+        var(--purple),
+        #806df5
+    );
+    color:#fff;
+    font-size:13px;
+    font-weight:950;
+    cursor:pointer;
+    box-shadow:0 13px 28px rgba(101,89,239,.24);
+    transition:.25s;
+}
+
+.calculate-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 35px rgba(101,89,239,.30);
+}
+
+
+/* RESULT */
+
+.result{
+    display:none;
+    margin-top:22px;
+}
+
+.result.show{
+    display:block;
+    animation:resultAppear .35s ease;
+}
+
+@keyframes resultAppear{
+    from{
+        opacity:0;
+        transform:translateY(10px);
     }
 
-    .tools-grid,
-    .cards-grid,
-    .grid-4 {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-
-    .footer-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
-@media (max-width: 640px) {
+.result-main{
+    padding:22px;
+    border:1px solid #ddd9ff;
+    border-radius:17px;
+    background:linear-gradient(
+        135deg,
+        #f2f0ff,
+        #fafaff
+    );
+}
 
-    html {
-        scroll-padding-top: 80px;
+.result-label{
+    color:#8994a7;
+    font-size:10px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+}
+
+.result-total{
+    margin-top:4px;
+    color:#3028a8;
+    font-size:31px;
+    font-weight:950;
+    letter-spacing:-1px;
+}
+
+.result-sub{
+    margin-top:5px;
+    color:#737e92;
+    font-size:11px;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:10px;
+}
+
+.result-item{
+    padding:16px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:#fff;
+}
+
+.result-item strong{
+    display:block;
+    margin-top:4px;
+    color:#344057;
+    font-size:16px;
+}
+
+
+/* CALCULATION */
+
+.calculation-box{
+    margin-top:12px;
+    padding:17px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:#fafbfe;
+}
+
+.calculation-title{
+    margin-bottom:8px;
+    color:#354057;
+    font-size:11px;
+    font-weight:900;
+}
+
+.calculation-text{
+    color:#737e92;
+    font-size:11px;
+    line-height:1.7;
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+    padding:26px;
+}
+
+.sidebar h3{
+    margin-bottom:10px;
+    font-size:18px;
+    letter-spacing:-.4px;
+}
+
+.sidebar-description{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.75;
+}
+
+.sidebar-list{
+    margin-top:17px;
+    padding-left:19px;
+}
+
+.sidebar-list li{
+    margin-bottom:7px;
+    color:#6f7b8f;
+    font-size:12px;
+}
+
+.trust-list{
+    display:grid;
+    gap:9px;
+    margin-top:21px;
+}
+
+.trust-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#fafbfe;
+}
+
+.trust-dot{
+    width:8px;
+    height:8px;
+    flex:0 0 8px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 0 4px rgba(22,201,151,.08);
+}
+
+.trust-item span{
+    color:#5f6b7f;
+    font-size:11px;
+    font-weight:750;
+}
+
+
+/* CONTENT */
+
+.content-section{
+    padding-bottom:25px;
+}
+
+.content-card{
+    padding:32px;
+}
+
+.content-card h2{
+    margin-bottom:11px;
+    color:#263247;
+    font-size:25px;
+    letter-spacing:-.7px;
+}
+
+.content-card h3{
+    margin-top:27px;
+    margin-bottom:8px;
+    color:#344057;
+    font-size:16px;
+}
+
+.content-card p,
+.content-card li{
+    color:#6f7b8f;
+    font-size:13px;
+    line-height:1.8;
+}
+
+.content-card ol{
+    padding-left:20px;
+    margin-top:9px;
+}
+
+.formula-box{
+    margin:19px 0;
+    padding:18px;
+    border:1px solid #e0dcff;
+    border-radius:14px;
+    background:#faf9ff;
+    color:#4d4772;
+    font-weight:850;
+}
+
+
+/* FAQ */
+
+.faq{
+    display:grid;
+    gap:9px;
+    margin-top:17px;
+}
+
+.faq details{
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:#fff;
+    overflow:hidden;
+}
+
+.faq summary{
+    padding:16px;
+    cursor:pointer;
+    color:#354057;
+    font-size:12px;
+    font-weight:850;
+}
+
+.faq-answer{
+    padding:0 16px 16px;
+    color:#6f7b8f;
+    font-size:12px;
+    line-height:1.7;
+}
+
+
+/* RELATED */
+
+.related-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.related-card{
+    padding:17px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:#fff;
+    transition:.25s;
+}
+
+.related-card:hover{
+    transform:translateY(-3px);
+    border-color:#cfcaff;
+    box-shadow:0 12px 25px rgba(30,40,70,.07);
+}
+
+.related-card strong{
+    display:block;
+    color:var(--purple);
+    font-size:12px;
+}
+
+.related-card span{
+    display:block;
+    margin-top:5px;
+    color:#8792a5;
+    font-size:10px;
+}
+
+
+/* FOOTER */
+
+.footer{
+    margin-top:35px;
+    background:linear-gradient(
+        135deg,
+        #0b1227,
+        #17183a
+    );
+    color:#fff;
+}
+
+.footer-inner{
+    width:min(1160px,92%);
+    margin:auto;
+    padding:50px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:35px;
+}
+
+.footer h3{
+    margin-bottom:12px;
+    font-size:18px;
+}
+
+.footer p,
+.footer a{
+    color:#aab5cf;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.footer a{
+    display:block;
+    margin:8px 0;
+    transition:.2s;
+}
+
+.footer a:hover{
+    color:#fff;
+    transform:translateX(3px);
+}
+
+.footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.10);
+    color:#8996b3;
+    font-size:10px;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+    .main-layout{
+        grid-template-columns:1fr;
     }
 
-    body {
-        font-size: 15px;
-        line-height: 1.65;
+    .related-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .container {
-        width: 92%;
-        max-width: 100%;
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    h1 {
-        font-size:
-            clamp(34px, 10vw, 46px) !important;
-        line-height: 1.08 !important;
-        letter-spacing: -1.5px !important;
+}
+
+@media(max-width:600px){
+
+    .nav-links{
+        display:none;
     }
 
-    h2 {
-        font-size:
-            clamp(27px, 7vw, 36px) !important;
-        line-height: 1.15 !important;
+    .hero{
+        padding:52px 0 43px;
     }
 
-    h3 {
-        font-size:
-            clamp(18px, 5vw, 22px);
+    .hero h1{
+        font-size:40px;
+        letter-spacing:-2px;
     }
 
-    .header-inner {
-        min-height: 68px !important;
-        gap: 12px !important;
+    .main{
+        padding-top:38px;
     }
 
-    .brand-name {
-        font-size: 21px !important;
-    }
-
-    .brand-tagline {
-        font-size: 10px !important;
-    }
-
-    nav {
-        gap: 9px !important;
-    }
-
-    nav a {
-        font-size: 12px !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4,
-    .feature-grid,
-    .info-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .card,
-    .tool-card,
     .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        width: 100%;
-        max-width: 100%;
+    .sidebar,
+    .content-card{
+        padding:22px;
     }
 
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        min-height: 48px;
+    .mode-grid{
+        grid-template-columns:1fr;
     }
 
-    textarea {
-        min-height: 130px;
+    .result-grid{
+        grid-template-columns:1fr;
     }
 
-    .btn,
-    .submit-btn,
-    .calculate-btn,
-    .reset-btn,
-    .cta-btn,
-    button[type="submit"] {
-        width: 100%;
-        min-height: 48px;
+    .related-grid{
+        grid-template-columns:1fr;
     }
 
-    .hero-actions,
-    .button-group,
-    .calculator-actions,
-    .form-actions {
-        flex-direction: column !important;
-        width: 100%;
+    .footer-grid{
+        grid-template-columns:1fr;
     }
 
-    .tool-search,
-    .search-box,
-    #toolSearch {
-        width: 100% !important;
+    .footer-bottom{
+        flex-direction:column;
     }
 
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .dashboard,
-    .hero-visual,
-    .hero-art,
-    .decorative-circle,
-    .floating-card {
-        max-width: 100% !important;
-    }
-
-    .section {
-        padding-top: 58px !important;
-        padding-bottom: 58px !important;
-    }
 }
 
-@media (max-width: 390px) {
-
-    .container {
-        width: 94%;
-    }
-
-    h1 {
-        font-size: 33px !important;
-    }
-
-    h2 {
-        font-size: 26px !important;
-    }
-
-    .brand-name {
-        font-size: 19px !important;
-    }
-
-    .topbar-right {
-        display: none !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        padding-left: 17px !important;
-        padding-right: 17px !important;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
 </style>
-<!-- SMARTTOOLS_PHASE6_CSS_END -->
+
 </head>
 
 
 <body>
 
 
-    <!-- ================= HEADER ================= -->
+<div class="topbar">
+    SmartTools — simple tools for everyday needs.
+</div>
 
-    <header class="header">
 
-        <div class="container">
+<header class="header">
 
-            <div class="logo">
-                Smart<span>Tools</span>
+    <div class="nav">
+
+        <a href="index.html" class="logo">
+            Smart<span>Tools</span>
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#tools">
+                Tools
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a
+                href="#calculator"
+                class="nav-button"
+            >
+                Calculate
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="breadcrumb">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <span>›</span>
+
+            <span>
+                Calculators
+            </span>
+
+            <span>›</span>
+
+            <span>
+                Percentage Calculator
+            </span>
+
+        </div>
+
+
+        <div class="badge">
+
+            <span class="badge-dot"></span>
+
+            PERCENTAGE CALCULATOR
+
+        </div>
+
+
+        <h1>
+            Percentage <span>Calculator</span>
+        </h1>
+
+
+        <p class="hero-description">
+
+            Quickly calculate percentages, find what
+            percentage one number is of another, and
+            calculate percentage increase or decrease.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<main
+    class="main"
+    id="calculator"
+>
+
+    <div class="container">
+
+        <div class="main-layout">
+
+
+            <section class="card calculator-card">
+
+
+                <div class="calculator-header">
+
+                    <div>
+
+                        <h2>
+                            Calculate Percentage
+                        </h2>
+
+                        <p>
+                            Choose a calculation and enter your values.
+                        </p>
+
+                    </div>
+
+
+                    <div class="calculator-icon">
+                        %
+                    </div>
+
+                </div>
+
+
+                <div class="mode-grid">
+
+
+                    <button
+                        class="mode-btn active"
+                        data-mode="percentOf"
+                        type="button"
+                    >
+                        What is X% of Y?
+                    </button>
+
+
+                    <button
+                        class="mode-btn"
+                        data-mode="whatPercent"
+                        type="button"
+                    >
+                        X is what % of Y?
+                    </button>
+
+
+                    <button
+                        class="mode-btn"
+                        data-mode="change"
+                        type="button"
+                    >
+                        Increase / Decrease
+                    </button>
+
+                </div>
+
+
+                <!-- MODE 1 -->
+
+                <div
+                    id="percentOfFields"
+                    class="mode-fields"
+                >
+
+                    <div class="form-group">
+
+                        <label class="form-label">
+                            Percentage
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                id="percentValue"
+                                type="number"
+                                step="0.01"
+                                value="20"
+                                placeholder="Example: 20"
+                            >
+
+                            <span class="input-symbol">
+                                %
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label class="form-label">
+                            Number
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                id="baseValue"
+                                type="number"
+                                step="0.01"
+                                value="500"
+                                placeholder="Example: 500"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MODE 2 -->
+
+                <div
+                    id="whatPercentFields"
+                    class="mode-fields"
+                    style="display:none"
+                >
+
+                    <div class="form-group">
+
+                        <label class="form-label">
+                            First Number
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                id="partValue"
+                                type="number"
+                                step="0.01"
+                                value="100"
+                                placeholder="Example: 100"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label class="form-label">
+                            Second Number
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                id="wholeValue"
+                                type="number"
+                                step="0.01"
+                                value="500"
+                                placeholder="Example: 500"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MODE 3 -->
+
+                <div
+                    id="changeFields"
+                    class="mode-fields"
+                    style="display:none"
+                >
+
+                    <div class="form-group">
+
+                        <label class="form-label">
+                            Original Value
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                id="originalValue"
+                                type="number"
+                                step="0.01"
+                                value="500"
+                                placeholder="Example: 500"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label class="form-label">
+                            New Value
+                        </label>
+
+                        <div class="input-wrap">
+
+                            <input
+                                id="newValue"
+                                type="number"
+                                step="0.01"
+                                value="600"
+                                placeholder="Example: 600"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="calculateButton"
+                    class="calculate-button"
+                    type="button"
+                >
+                    Calculate Percentage →
+                </button>
+
+
+                <div
+                    id="result"
+                    class="result"
+                >
+
+                    <div class="result-main">
+
+                        <div
+                            id="resultLabel"
+                            class="result-label"
+                        >
+                            RESULT
+                        </div>
+
+                        <div
+                            id="resultValue"
+                            class="result-total"
+                        >
+                            100
+                        </div>
+
+                        <div
+                            id="resultSub"
+                            class="result-sub"
+                        >
+                            20% of 500
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-grid">
+
+
+                        <div class="result-item">
+
+                            <div class="result-label">
+                                Formula
+                            </div>
+
+                            <strong id="formulaResult">
+                                500 × 20 ÷ 100
+                            </strong>
+
+                        </div>
+
+
+                        <div class="result-item">
+
+                            <div class="result-label">
+                                Calculation
+                            </div>
+
+                            <strong id="calculationResult">
+                                100
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="calculation-box">
+
+                        <div class="calculation-title">
+                            Working
+                        </div>
+
+                        <div
+                            id="workingResult"
+                            class="calculation-text"
+                        >
+                            20% × 500 = 100
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <aside class="card sidebar">
+
+                <h3>
+                    Quick Overview
+                </h3>
+
+                <p class="sidebar-description">
+
+                    Use the percentage calculator for common
+                    percentage calculations in seconds.
+
+                </p>
+
+
+                <ol class="sidebar-list">
+
+                    <li>
+                        Choose the calculation type.
+                    </li>
+
+                    <li>
+                        Enter your numbers.
+                    </li>
+
+                    <li>
+                        Click Calculate.
+                    </li>
+
+                    <li>
+                        View the result and working.
+                    </li>
+
+                </ol>
+
+
+                <div class="trust-list">
+
+
+                    <div class="trust-item">
+
+                        <span class="trust-dot"></span>
+
+                        <span>
+                            Instant calculation
+                        </span>
+
+                    </div>
+
+
+                    <div class="trust-item">
+
+                        <span class="trust-dot"></span>
+
+                        <span>
+                            Easy to use
+                        </span>
+
+                    </div>
+
+
+                    <div class="trust-item">
+
+                        <span class="trust-dot"></span>
+
+                        <span>
+                            Mobile friendly
+                        </span>
+
+                    </div>
+
+
+                    <div class="trust-item">
+
+                        <span class="trust-dot"></span>
+
+                        <span>
+                            Free to use
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<section class="content-section">
+
+    <div class="container">
+
+        <article class="card content-card">
+
+
+            <h2>
+                What is a Percentage Calculator?
+            </h2>
+
+
+            <p>
+
+                A percentage calculator is an online tool
+                that makes common percentage calculations
+                quick and easy.
+
+                You can calculate a percentage of a number,
+                find what percentage one number represents
+                of another, or calculate the percentage
+                increase or decrease between two values.
+
+            </p>
+
+
+            <h3>
+                Percentage Formula
+            </h3>
+
+
+            <div class="formula-box">
+
+                Percentage of a number:
+                <br>
+                <strong>
+                    Result = Percentage × Number ÷ 100
+                </strong>
+
+                <br><br>
+
+                What percentage:
+                <br>
+                <strong>
+                    Percentage = Part ÷ Whole × 100
+                </strong>
+
+                <br><br>
+
+                Percentage change:
+                <br>
+                <strong>
+                    Change % =
+                    (New Value − Original Value)
+                    ÷ Original Value × 100
+                </strong>
+
             </div>
 
 
-            <nav class="nav">
+            <h3>
+                How to Use the Percentage Calculator
+            </h3>
+
+
+            <ol>
+
+                <li>
+                    Choose the type of percentage calculation.
+                </li>
+
+                <li>
+                    Enter the required numbers.
+                </li>
+
+                <li>
+                    Click the Calculate Percentage button.
+                </li>
+
+                <li>
+                    Review the result and calculation working.
+                </li>
+
+            </ol>
+
+
+            <h3>
+                Example: What is 20% of 500?
+            </h3>
+
+
+            <p>
+
+                To calculate 20% of 500:
+
+                <br><br>
+
+                20 × 500 ÷ 100 = 100
+
+                <br><br>
+
+                Therefore, 20% of 500 is 100.
+
+            </p>
+
+
+            <h3>
+                Example: Percentage Increase
+            </h3>
+
+
+            <p>
+
+                If a value changes from 500 to 600:
+
+                <br><br>
+
+                (600 − 500) ÷ 500 × 100 = 20%
+
+                <br><br>
+
+                The percentage increase is 20%.
+
+            </p>
+
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section class="content-section">
+
+    <div class="container">
+
+        <article class="card content-card">
+
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <div class="faq">
+
+
+                <details>
+
+                    <summary>
+                        How do I calculate a percentage of a number?
+                    </summary>
+
+                    <div class="faq-answer">
+
+                        Multiply the percentage by the number
+                        and divide the result by 100.
+
+                        For example, 20% of 500 is
+                        20 × 500 ÷ 100 = 100.
+
+                    </div>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        How do I find what percentage one number is of another?
+                    </summary>
+
+                    <div class="faq-answer">
+
+                        Divide the first number by the second
+                        number and multiply by 100.
+
+                    </div>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        How is percentage increase calculated?
+                    </summary>
+
+                    <div class="faq-answer">
+
+                        Subtract the original value from the
+                        new value, divide by the original value
+                        and multiply by 100.
+
+                    </div>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Can this calculator calculate percentage decrease?
+                    </summary>
+
+                    <div class="faq-answer">
+
+                        Yes. Enter the original value and the
+                        new lower value. The calculator will
+                        show the percentage change.
+
+                    </div>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Can I use this calculator on mobile?
+                    </summary>
+
+                    <div class="faq-answer">
+
+                        Yes. The calculator is responsive and
+                        works on mobile, tablet and desktop
+                        browsers.
+
+                    </div>
+
+                </details>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section class="content-section">
+
+    <div class="container">
+
+        <article class="card content-card">
+
+
+            <h2>
+                Explore More Tools
+            </h2>
+
+
+            <div class="related-grid">
+
+
+                <a
+                    href="emi-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        EMI Calculator
+                    </strong>
+
+                    <span>
+                        Calculate monthly EMI →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="loan-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        Loan Calculator
+                    </strong>
+
+                    <span>
+                        Estimate loan payments →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="gst-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        GST Calculator
+                    </strong>
+
+                    <span>
+                        Calculate GST →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="discount-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        Discount Calculator
+                    </strong>
+
+                    <span>
+                        Calculate savings →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="sip-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        SIP Calculator
+                    </strong>
+
+                    <span>
+                        Estimate SIP returns →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="age-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        Age Calculator
+                    </strong>
+
+                    <span>
+                        Calculate exact age →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+
+        <div class="footer-grid">
+
+
+            <div>
+
+                <h3>
+                    SmartTools
+                </h3>
+
+                <p>
+                    Simple online calculators and useful tools
+                    for everyday needs.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Explore
+                </h3>
 
                 <a href="index.html">
                     Home
                 </a>
 
                 <a href="index.html#tools">
-                    Tools
-                </a>
-
-                <a href="index.html#guides">
-                    Guides
+                    All Tools
                 </a>
 
                 <a href="about.html">
@@ -382,574 +1730,449 @@ table {
                     Contact
                 </a>
 
-            </nav>
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Legal
+                </h3>
+
+                <a href="privacy-policy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms & Conditions
+                </a>
+
+            </div>
+
 
         </div>
 
-    </header>
 
+        <div class="footer-bottom">
 
-
-    <!-- ================= HERO ================= -->
-
-    <section class="tool-page-hero">
-
-        <div class="container">
-
-            <span class="badge">
-                FREE ONLINE CALCULATOR
+            <span>
+                © 2026 SmartTools.
+                Created & maintained by Sukanya Shahare.
             </span>
 
-            <h1>
-                Percentage Calculator
-            </h1>
-
-            <p>
-                Calculate percentages quickly and easily
-                with our free online percentage calculator.
-            </p>
+            <span>
+                Simple tools • Smart results.
+            </span>
 
         </div>
 
-    </section>
+    </div>
 
+</footer>
 
 
-    <!-- ================= CALCULATOR ================= -->
-
-    <section class="calculator-section">
-
-        <div class="container">
-
-            <div class="calculator-box">
-
-                <h2>
-                    Calculate a Percentage
-                </h2>
-
-                <p>
-                    Enter a percentage and a number to calculate
-                    the result instantly.
-                </p>
-
-
-                <label for="percentage">
-                    Percentage (%)
-                </label>
-
-                <input
-                    type="number"
-                    id="percentage"
-                    placeholder="Example: 20"
-                    step="0.01"
-                >
-
-
-                <label for="number">
-                    Number
-                </label>
-
-                <input
-                    type="number"
-                    id="number"
-                    placeholder="Example: 500"
-                    step="0.01"
-                >
-
-
-                <button
-                    class="tool-button"
-                    onclick="calculatePercentage()">
-
-                    Calculate Percentage
-
-                </button>
-
-
-                <div
-                    class="result"
-                    id="percentageResult">
-
-                    Your percentage result will appear here.
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= INFORMATION ================= -->
-
-    <section class="information-section">
-
-        <div class="container">
-
-            <div class="calculator-box">
-
-
-                <h2>
-                    What is a Percentage?
-                </h2>
-
-                <p>
-                    A percentage represents a number as a fraction
-                    of 100. The word percentage means "per hundred".
-                </p>
-
-                <p>
-                    Percentages are commonly used in discounts,
-                    marks, statistics, finance, business and
-                    everyday calculations.
-                </p>
-
-
-
-                <h2>
-                    How to Calculate a Percentage
-                </h2>
-
-                <p>
-                    To calculate a percentage of a number, use
-                    the following basic formula:
-                </p>
-
-                <p>
-                    <strong>
-                        Percentage Result = (Percentage ÷ 100) × Number
-                    </strong>
-                </p>
-
-
-                <h2>
-                    Example
-                </h2>
-
-                <p>
-                    Suppose you want to calculate 20% of 500.
-                </p>
-
-                <p>
-                    The calculation is:
-                </p>
-
-                <p>
-                    <strong>
-                        (20 ÷ 100) × 500 = 100
-                    </strong>
-                </p>
-
-                <p>
-                    Therefore, 20% of 500 is 100.
-                </p>
-
-
-
-                <h2>
-                    How to Use This Percentage Calculator
-                </h2>
-
-                <ol>
-
-                    <li>
-                        Enter the percentage you want to calculate.
-                    </li>
-
-                    <li>
-                        Enter the number.
-                    </li>
-
-                    <li>
-                        Click the "Calculate Percentage" button.
-                    </li>
-
-                    <li>
-                        The result will be displayed instantly.
-                    </li>
-
-                </ol>
-
-
-
-                <h2>
-                    Where Are Percentages Used?
-                </h2>
-
-                <p>
-                    Percentages are useful in many everyday situations,
-                    including:
-                </p>
-
-                <ul>
-
-                    <li>
-                        Shopping discounts
-                    </li>
-
-                    <li>
-                        Exam marks and scores
-                    </li>
-
-                    <li>
-                        Business calculations
-                    </li>
-
-                    <li>
-                        Financial calculations
-                    </li>
-
-                    <li>
-                        Statistics and data analysis
-                    </li>
-
-                    <li>
-                        Tax and price calculations
-                    </li>
-
-                </ul>
-
-
-
-                <h2>
-                    Frequently Asked Questions
-                </h2>
-
-
-                <div class="faq">
-
-
-                    <h3>
-                        Is this Percentage Calculator free?
-                    </h3>
-
-                    <p>
-                        Yes. You can use the SmartTools Percentage
-                        Calculator online for free.
-                    </p>
-
-
-                    <h3>
-                        What is 20% of 500?
-                    </h3>
-
-                    <p>
-                        20% of 500 is 100.
-                    </p>
-
-
-                    <h3>
-                        What formula is used?
-                    </h3>
-
-                    <p>
-                        The calculator uses:
-                        (percentage ÷ 100) × number.
-                    </p>
-
-
-                    <h3>
-                        Can I enter decimal values?
-                    </h3>
-
-                    <p>
-                        Yes. Decimal percentages and numbers
-                        can be entered.
-                    </p>
-
-
-                    <h3>
-                        Can I use this calculator on mobile?
-                    </h3>
-
-                    <p>
-                        Yes. The calculator works in modern
-                        web browsers on computers and mobile devices.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= MORE TOOLS ================= -->
-
-    <section class="tools-section">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span class="badge">
-                    MORE CALCULATORS
-                </span>
-
-                <h2>
-                    Explore More SmartTools
-                </h2>
-
-                <p>
-                    Try our other free online calculators.
-                </p>
-
-            </div>
-
-
-            <div class="hero-buttons">
-
-
-                <a
-                    href="age-calculator.html"
-                    class="tool-button">
-
-                    Age Calculator
-
-                </a>
-
-
-                <a
-                    href="emi-calculator.html"
-                    class="tool-button secondary">
-
-                    EMI Calculator
-
-                </a>
-
-
-                <a
-                    href="gst-calculator.html"
-                    class="tool-button secondary">
-
-                    GST Calculator
-
-                </a>
-
-
-                <a
-                    href="index.html#tools"
-                    class="tool-button secondary">
-
-                    View All Tools
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <div class="container">
-
-            <div class="footer-content">
-
-
-                <div>
-
-                    <h3>
-                        SmartTools
-                    </h3>
-
-                    <p>
-                        Simple and useful online tools
-                        for everyday needs.
-                    </p>
-
-                </div>
-
-
-                <div>
-
-                    <h4>
-                        Quick Links
-                    </h4>
-
-                    <a href="index.html">
-                        Home
-                    </a>
-
-                    <a href="index.html#tools">
-                        Tools
-                    </a>
-
-                    <a href="index.html#guides">
-                        Guides
-                    </a>
-
-                    <a href="about.html">
-                        About
-                    </a>
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                </div>
-
-
-                <div>
-
-                    <h4>
-                        Legal
-                    </h4>
-
-                    <a href="privacy-policy.html">
-                        Privacy Policy
-                    </a>
-
-                    <a href="terms.html">
-                        Terms & Conditions
-                    </a>
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="footer-bottom">
-
-                <p>
-                    © 2026 SmartTools. All rights reserved.
-                </p>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-
-    <script src="script.js"></script>
-
-<!-- SMARTTOOLS_PHASE6_JS_START -->
 <script>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE HELPER
-========================================================= */
 
-(function () {
+(function(){
 
-    "use strict";
 
-    function optimizeImages() {
+    let currentMode = "percentOf";
 
-        const images =
-            document.querySelectorAll("img");
 
-        images.forEach(function (img) {
+    const modeButtons =
+        document.querySelectorAll(".mode-btn");
 
-            if (!img.hasAttribute("loading")) {
 
-                img.setAttribute(
-                    "loading",
-                    "lazy"
-                );
+    const percentOfFields =
+        document.getElementById("percentOfFields");
 
+
+    const whatPercentFields =
+        document.getElementById("whatPercentFields");
+
+
+    const changeFields =
+        document.getElementById("changeFields");
+
+
+    const calculateButton =
+        document.getElementById("calculateButton");
+
+
+    const result =
+        document.getElementById("result");
+
+
+    const resultLabel =
+        document.getElementById("resultLabel");
+
+
+    const resultValue =
+        document.getElementById("resultValue");
+
+
+    const resultSub =
+        document.getElementById("resultSub");
+
+
+    const formulaResult =
+        document.getElementById("formulaResult");
+
+
+    const calculationResult =
+        document.getElementById("calculationResult");
+
+
+    const workingResult =
+        document.getElementById("workingResult");
+
+
+    function number(value){
+
+        return Number(value);
+
+    }
+
+
+    function format(value){
+
+        if(!Number.isFinite(value)){
+            return "—";
+        }
+
+        return value.toLocaleString(
+            "en-IN",
+            {
+                minimumFractionDigits:2,
+                maximumFractionDigits:2
             }
+        );
 
-            if (!img.hasAttribute("decoding")) {
+    }
 
-                img.setAttribute(
-                    "decoding",
-                    "async"
-                );
 
-            }
+    function setMode(mode){
+
+        currentMode = mode;
+
+
+        modeButtons.forEach(function(button){
+
+            button.classList.toggle(
+                "active",
+                button.dataset.mode === mode
+            );
 
         });
 
+
+        percentOfFields.style.display =
+            mode === "percentOf"
+            ? "block"
+            : "none";
+
+
+        whatPercentFields.style.display =
+            mode === "whatPercent"
+            ? "block"
+            : "none";
+
+
+        changeFields.style.display =
+            mode === "change"
+            ? "block"
+            : "none";
+
+
+        result.classList.remove("show");
+
     }
 
 
-    function optimizeVideos() {
+    modeButtons.forEach(function(button){
 
-        document
-            .querySelectorAll("video")
-            .forEach(function (video) {
+        button.addEventListener(
+            "click",
+            function(){
 
-                if (!video.hasAttribute("preload")) {
+                setMode(
+                    button.dataset.mode
+                );
 
-                    video.setAttribute(
-                        "preload",
-                        "metadata"
-                    );
+            }
+        );
+
+    });
+
+
+    function calculate(){
+
+
+        let value;
+
+
+        if(currentMode === "percentOf"){
+
+            const percentage =
+                number(
+                    document.getElementById(
+                        "percentValue"
+                    ).value
+                );
+
+
+            const base =
+                number(
+                    document.getElementById(
+                        "baseValue"
+                    ).value
+                );
+
+
+            if(
+                !Number.isFinite(percentage) ||
+                !Number.isFinite(base)
+            ){
+
+                showError(
+                    "Enter valid numbers."
+                );
+
+                return;
+
+            }
+
+
+            value =
+                percentage * base / 100;
+
+
+            resultLabel.textContent =
+                "RESULT";
+
+
+            resultValue.textContent =
+                format(value);
+
+
+            resultSub.textContent =
+                `${format(percentage)}% of ${format(base)}`;
+
+
+            formulaResult.textContent =
+                `${format(base)} × ${format(percentage)} ÷ 100`;
+
+
+            calculationResult.textContent =
+                format(value);
+
+
+            workingResult.textContent =
+                `${format(percentage)}% × ${format(base)} = ${format(value)}`;
+
+        }
+
+
+        else if(currentMode === "whatPercent"){
+
+            const part =
+                number(
+                    document.getElementById(
+                        "partValue"
+                    ).value
+                );
+
+
+            const whole =
+                number(
+                    document.getElementById(
+                        "wholeValue"
+                    ).value
+                );
+
+
+            if(
+                !Number.isFinite(part) ||
+                !Number.isFinite(whole) ||
+                whole === 0
+            ){
+
+                showError(
+                    "Enter valid numbers. The second number cannot be zero."
+                );
+
+                return;
+
+            }
+
+
+            value =
+                (part / whole) * 100;
+
+
+            resultLabel.textContent =
+                "PERCENTAGE";
+
+
+            resultValue.textContent =
+                format(value) + "%";
+
+
+            resultSub.textContent =
+                `${format(part)} is what percentage of ${format(whole)}?`;
+
+
+            formulaResult.textContent =
+                `${format(part)} ÷ ${format(whole)} × 100`;
+
+
+            calculationResult.textContent =
+                format(value) + "%";
+
+
+            workingResult.textContent =
+                `${format(part)} ÷ ${format(whole)} × 100 = ${format(value)}%`;
+
+        }
+
+
+        else{
+
+            const original =
+                number(
+                    document.getElementById(
+                        "originalValue"
+                    ).value
+                );
+
+
+            const newer =
+                number(
+                    document.getElementById(
+                        "newValue"
+                    ).value
+                );
+
+
+            if(
+                !Number.isFinite(original) ||
+                !Number.isFinite(newer) ||
+                original === 0
+            ){
+
+                showError(
+                    "Enter valid values. Original value cannot be zero."
+                );
+
+                return;
+
+            }
+
+
+            value =
+                ((newer - original) / original) * 100;
+
+
+            const direction =
+                value >= 0
+                ? "increase"
+                : "decrease";
+
+
+            resultLabel.textContent =
+                "PERCENTAGE CHANGE";
+
+
+            resultValue.textContent =
+                format(Math.abs(value)) + "%";
+
+
+            resultSub.textContent =
+                `Percentage ${direction}`;
+
+
+            formulaResult.textContent =
+                `(${format(newer)} − ${format(original)}) ÷ ${format(original)} × 100`;
+
+
+            calculationResult.textContent =
+                format(Math.abs(value)) + "%";
+
+
+            workingResult.textContent =
+                `The value changed by ${format(Math.abs(value))}% (${direction}).`;
+
+        }
+
+
+        result.classList.add("show");
+
+    }
+
+
+    function showError(message){
+
+        resultLabel.textContent =
+            "CHECK YOUR INPUT";
+
+
+        resultValue.textContent =
+            "Invalid";
+
+
+        resultSub.textContent =
+            message;
+
+
+        formulaResult.textContent =
+            "—";
+
+
+        calculationResult.textContent =
+            "—";
+
+
+        workingResult.textContent =
+            message;
+
+
+        result.classList.add("show");
+
+    }
+
+
+    calculateButton.addEventListener(
+        "click",
+        calculate
+    );
+
+
+    document.querySelectorAll(
+        "input"
+    ).forEach(function(input){
+
+        input.addEventListener(
+            "keydown",
+            function(event){
+
+                if(event.key === "Enter"){
+
+                    calculate();
 
                 }
 
-            });
-
-    }
-
-
-    function addThemeColor() {
-
-        if (
-            !document.querySelector(
-                'meta[name="theme-color"]'
-            )
-        ) {
-
-            const meta =
-                document.createElement("meta");
-
-            meta.name =
-                "theme-color";
-
-            meta.content =
-                "#5b5ff5";
-
-            document.head.appendChild(meta);
-        }
-
-    }
-
-
-    function init() {
-
-        optimizeImages();
-        optimizeVideos();
-        addThemeColor();
-
-    }
-
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
+            }
         );
 
-    } else {
+    });
 
-        init();
 
-    }
+    calculate();
 
 })();
-</script>
-<!-- SMARTTOOLS_PHASE6_JS_END -->
-</body>
 
+</script>
+
+
+</body>
 </html>

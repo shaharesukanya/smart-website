@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Text to Slug Converter | SEO URL Slug Generator | SmartTools</title>
+
+<meta name="description"
+content="Convert text into clean, SEO-friendly URL slugs instantly. Remove special characters, spaces and create readable URL slugs with SmartTools.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical"
+href="https://yourdomain.com/text-to-slug.html">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    color:#f8fafc;
+    background:
+        radial-gradient(circle at 10% 0%,rgba(99,102,241,.18),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(168,85,247,.13),transparent 28%),
+        #060912;
+    min-height:100vh;
+}
+
+.topbar{
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(90deg,#4f46e5,#7c3aed,#db2777);
+    font-size:13px;
+    font-weight:700;
+}
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(6,9,18,.78);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.nav{
+    max-width:1240px;
+    min-height:72px;
+    padding:0 24px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#fff;
+    text-decoration:none;
+    font-size:23px;
+    font-weight:850;
+    letter-spacing:-.8px;
+}
+
+.logo span{
+    color:#8b5cf6;
+}
+
+.nav-links{
+    display:flex;
+    gap:27px;
+}
+
+.nav-links a{
+    color:#aeb8cb;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.container{
+    width:min(1240px,calc(100% - 32px));
+    margin:auto;
+    padding:42px 0 90px;
+}
+
+.breadcrumb{
+    color:#748099;
+    font-size:13px;
+    margin-bottom:30px;
+}
+
+.breadcrumb span{
+    color:#a78bfa;
+}
+
+.hero{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:50px;
+    color:#c4b5fd;
+    background:rgba(139,92,246,.1);
+    border:1px solid rgba(139,92,246,.25);
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#8b5cf6;
+    box-shadow:0 0 12px #8b5cf6;
+}
+
+.hero h1{
+    font-size:clamp(40px,6vw,68px);
+    line-height:1.02;
+    letter-spacing:-3px;
+    margin-bottom:20px;
+}
+
+.gradient{
+    background:linear-gradient(
+        90deg,
+        #a78bfa,
+        #f472b6,
+        #60a5fa
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:720px;
+    margin:auto;
+    color:#98a5bb;
+    font-size:17px;
+    line-height:1.8;
+}
+
+/* TOOL */
+
+.tool{
+    margin-top:45px;
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:26px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,25,44,.94),
+            rgba(9,13,24,.96)
+        );
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.42),
+        inset 0 1px rgba(255,255,255,.04);
+    overflow:hidden;
+}
+
+.tool-header{
+    min-height:68px;
+    padding:0 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.tool-title{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.tool-icon{
+    width:39px;
+    height:39px;
+    display:grid;
+    place-items:center;
+    border-radius:11px;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    box-shadow:0 8px 25px rgba(99,102,241,.25);
+}
+
+.tool-title strong{
+    font-size:14px;
+}
+
+.tool-title small{
+    display:block;
+    color:#69758b;
+    font-size:11px;
+    margin-top:3px;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:#8490a5;
+    font-size:12px;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 10px rgba(34,197,94,.7);
+}
+
+/* CONVERTER */
+
+.converter{
+    padding:25px;
+}
+
+.field-label{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.field-label strong{
+    color:#e5eaf3;
+    font-size:13px;
+}
+
+.field-label span{
+    color:#59667b;
+    font-size:11px;
+}
+
+textarea{
+    width:100%;
+    min-height:185px;
+    resize:vertical;
+    outline:none;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    background:#080c16;
+    color:#e2e8f0;
+    padding:20px;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    font-size:16px;
+    line-height:1.7;
+    transition:.2s;
+}
+
+textarea:focus{
+    border-color:rgba(139,92,246,.5);
+    box-shadow:0 0 0 4px rgba(139,92,246,.07);
+}
+
+textarea::placeholder{
+    color:#3d485b;
+}
+
+/* OPTIONS */
+
+.options{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-top:18px;
+}
+
+.option{
+    padding:15px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:13px;
+    background:rgba(255,255,255,.025);
+}
+
+.option label{
+    display:block;
+    color:#8d9aae;
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    margin-bottom:9px;
+}
+
+select{
+    width:100%;
+    height:40px;
+    padding:0 11px;
+    border-radius:9px;
+    border:1px solid rgba(255,255,255,.08);
+    outline:none;
+    background:#0b101c;
+    color:#dce4f1;
+}
+
+/* CHECKBOX */
+
+.check{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:#b7c1d2;
+    font-size:12px;
+}
+
+.check input{
+    accent-color:#8b5cf6;
+    width:16px;
+    height:16px;
+}
+
+/* OUTPUT */
+
+.output-box{
+    margin-top:22px;
+    padding:20px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    background:#080c16;
+}
+
+.output-label{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:11px;
+}
+
+.output-label strong{
+    font-size:13px;
+}
+
+.output-label span{
+    color:#64748b;
+    font-size:11px;
+}
+
+.slug-output{
+    min-height:65px;
+    padding:17px;
+    border-radius:11px;
+    background:#050810;
+    border:1px solid rgba(255,255,255,.06);
+    color:#c4b5fd;
+    font-family:Consolas,monospace;
+    font-size:15px;
+    line-height:1.6;
+    word-break:break-all;
+}
+
+/* URL PREVIEW */
+
+.url-preview{
+    margin-top:14px;
+    padding:13px 15px;
+    border-radius:11px;
+    background:rgba(99,102,241,.06);
+    border:1px solid rgba(99,102,241,.12);
+    color:#8190a7;
+    font-family:Consolas,monospace;
+    font-size:12px;
+    word-break:break-all;
+}
+
+.url-preview strong{
+    color:#a78bfa;
+}
+
+/* BUTTONS */
+
+.toolbar{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-top:18px;
+}
+
+.btn{
+    height:42px;
+    padding:0 17px;
+    border:1px solid transparent;
+    border-radius:10px;
+    color:#fff;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    font-size:12px;
+    font-weight:750;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 9px 25px rgba(99,102,241,.22);
+}
+
+.btn.secondary{
+    background:rgba(255,255,255,.045);
+    border-color:rgba(255,255,255,.08);
+    color:#cbd5e1;
+}
+
+.btn.secondary:hover{
+    background:rgba(255,255,255,.08);
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+.stat{
+    padding:17px 20px;
+    border-right:1px solid rgba(255,255,255,.06);
+}
+
+.stat:last-child{
+    border-right:0;
+}
+
+.stat-label{
+    color:#68758a;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+    margin-bottom:7px;
+}
+
+.stat-value{
+    color:#e5eaf3;
+    font-size:17px;
+    font-weight:800;
+}
+
+/* CONTENT */
+
+.content{
+    max-width:950px;
+    margin:80px auto 0;
+}
+
+.content-section{
+    margin-bottom:55px;
+}
+
+.content-section h2{
+    font-size:30px;
+    letter-spacing:-.8px;
+    margin-bottom:15px;
+}
+
+.content-section p,
+.content-section li{
+    color:#98a5b8;
+    line-height:1.85;
+}
+
+.content-section ul{
+    padding-left:23px;
+}
+
+.content-section li{
+    margin-bottom:7px;
+}
+
+.faq{
+    margin-top:20px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+details{
+    padding:19px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+summary{
+    cursor:pointer;
+    list-style:none;
+    color:#e5eaf3;
+    font-weight:700;
+    font-size:15px;
+}
+
+summary::-webkit-details-marker{
+    display:none;
+}
+
+summary:after{
+    content:"+";
+    float:right;
+    color:#8b5cf6;
+    font-size:20px;
+}
+
+details[open] summary:after{
+    content:"−";
+}
+
+details p{
+    margin-top:12px;
+}
+
+/* CTA */
+
+.cta{
+    padding:45px 25px;
+    text-align:center;
+    border-radius:25px;
+    border:1px solid rgba(139,92,246,.16);
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(99,102,241,.12),
+            transparent 60%
+        ),
+        rgba(255,255,255,.025);
+}
+
+.cta h2{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.cta p{
+    color:#8f9bb0;
+    margin-bottom:22px;
+}
+
+.cta a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:44px;
+    padding:0 20px;
+    border-radius:11px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:750;
+    font-size:13px;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+}
+
+/* FOOTER */
+
+footer{
+    padding:30px 20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.07);
+    color:#58657a;
+    font-size:12px;
+}
+
+/* ANIMATION */
+
+.hero,
+.tool,
+.content{
+    animation:fadeUp .65s ease both;
+}
+
+.tool{
+    animation-delay:.08s;
+}
+
+.content{
+    animation-delay:.16s;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .options{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stat:nth-child(2){
+        border-right:0;
+    }
+}
+
+@media(max-width:520px){
+
+    .container{
+        width:calc(100% - 20px);
+        padding-top:28px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .tool{
+        border-radius:18px;
+    }
+
+    .converter{
+        padding:15px;
+    }
+
+    textarea{
+        min-height:170px;
+        padding:16px;
+        font-size:14px;
+    }
+
+    .toolbar{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat{
+        padding:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — simple tools for everyday needs.
+</div>
+
+<header class="header">
+    <nav class="nav">
+
+        <a href="index.html" class="logo">
+            Smart<span>Tools</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="data-analyst.html">Tools</a>
+            <a href="index.html#guides">Guides</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </nav>
+</header>
+
+
+<main class="container">
+
+    <div class="breadcrumb">
+        Home / Tools / <span>Text to Slug</span>
+    </div>
+
+
+    <section class="hero">
+
+        <div class="badge">
+            <span class="badge-dot"></span>
+            SEO & Developer Tool
+        </div>
+
+        <h1>
+            Text to
+            <span class="gradient">Slug</span>
+        </h1>
+
+        <p>
+            Convert titles and text into clean, readable and
+            SEO-friendly URL slugs instantly.
+        </p>
+
+    </section>
+
+
+    <section class="tool">
+
+        <div class="tool-header">
+
+            <div class="tool-title">
+
+                <div class="tool-icon">
+                    🔗
+                </div>
+
+                <div>
+                    <strong>Slug Generator</strong>
+                    <small>Clean URLs • SEO Friendly</small>
+                </div>
+
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                Browser based
+            </div>
+
+        </div>
+
+
+        <div class="converter">
+
+            <div class="field-label">
+
+                <strong>
+                    Enter your text
+                </strong>
+
+                <span id="inputCount">
+                    0 characters
+                </span>
+
+            </div>
+
+            <textarea
+                id="textInput"
+                placeholder="Example: How to Build a Professional Website in 2026"
+            ></textarea>
+
+
+            <div class="options">
+
+                <div class="option">
+
+                    <label>
+                        Separator
+                    </label>
+
+                    <select id="separator">
+
+                        <option value="-">
+                            Hyphen (-)
+                        </option>
+
+                        <option value="_">
+                            Underscore (_)
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="option">
+
+                    <label>
+                        Letter Style
+                    </label>
+
+                    <select id="caseStyle">
+
+                        <option value="lower">
+                            Lowercase
+                        </option>
+
+                        <option value="upper">
+                            Uppercase
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="option">
+
+                    <label>
+                        Options
+                    </label>
+
+                    <label class="check">
+
+                        <input
+                            type="checkbox"
+                            id="removeStopwords"
+                        >
+
+                        Remove common words
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="output-box">
+
+                <div class="output-label">
+
+                    <strong>
+                        Generated Slug
+                    </strong>
+
+                    <span id="slugLength">
+                        0 characters
+                    </span>
+
+                </div>
+
+                <div
+                    class="slug-output"
+                    id="slugOutput"
+                >
+                    Your slug will appear here
+                </div>
+
+                <div
+                    class="url-preview"
+                    id="urlPreview"
+                >
+                    <strong>/</strong> your-slug
+                </div>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <button
+                    class="btn"
+                    onclick="generateSlug()"
+                >
+                    Generate Slug
+                </button>
+
+                <button
+                    class="btn secondary"
+                    onclick="loadSample()"
+                >
+                    Sample
+                </button>
+
+                <button
+                    class="btn secondary"
+                    onclick="copySlug()"
+                >
+                    Copy Slug
+                </button>
+
+                <button
+                    class="btn secondary"
+                    onclick="clearTool()"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Input
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statInput"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Slug
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statSlug"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Words
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statWords"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Status
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statStatus"
+                >
+                    Ready
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="content">
+
+        <section class="content-section">
+
+            <h2>
+                What is a URL Slug?
+            </h2>
+
+            <p>
+                A URL slug is the readable part of a web address that
+                identifies a specific page. For example,
+                <strong>/best-web-design-tools</strong> is a slug.
+            </p>
+
+            <br>
+
+            <p>
+                Clean slugs can make URLs easier to read, share and
+                understand. They are commonly used for blog posts,
+                articles, product pages and documentation.
+            </p>
+
+        </section>
+
+
+        <section class="content-section">
+
+            <h2>
+                Why use a slug generator?
+            </h2>
+
+            <ul>
+
+                <li>
+                    Creates readable URLs quickly
+                </li>
+
+                <li>
+                    Removes unnecessary special characters
+                </li>
+
+                <li>
+                    Converts spaces into URL-friendly separators
+                </li>
+
+                <li>
+                    Helps maintain consistent URL formatting
+                </li>
+
+                <li>
+                    Useful for blogs, websites and developer projects
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <section class="content-section">
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+            <div class="faq">
+
+                <details>
+
+                    <summary>
+                        What is an SEO-friendly slug?
+                    </summary>
+
+                    <p>
+                        An SEO-friendly slug is a short, readable URL
+                        segment that clearly describes the page content.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Should URL slugs use hyphens?
+                    </summary>
+
+                    <p>
+                        Hyphens are commonly used to separate words in
+                        readable URLs.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Should a slug be lowercase?
+                    </summary>
+
+                    <p>
+                        Lowercase slugs are commonly used because they
+                        provide a consistent and clean URL format.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Can I use this tool for blog URLs?
+                    </summary>
+
+                    <p>
+                        Yes. You can convert blog titles, article titles,
+                        product names and other text into URL slugs.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Is my text uploaded anywhere?
+                    </summary>
+
+                    <p>
+                        No server is required. The conversion happens
+                        directly inside your browser.
+                    </p>
+
+                </details>
+
+            </div>
+
+        </section>
+
+
+        <section class="cta">
+
+            <h2>
+                Explore More SmartTools
+            </h2>
+
+            <p>
+                Discover developer, data and productivity tools.
+            </p>
+
+            <a href="data-analyst.html">
+                Explore Tools →
+            </a>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<footer>
+    © 2026 SmartTools. Built for simple everyday tasks.
+</footer>
+
+
+<script>
+
+const textInput =
+    document.getElementById("textInput");
+
+const slugOutput =
+    document.getElementById("slugOutput");
+
+const separator =
+    document.getElementById("separator");
+
+const caseStyle =
+    document.getElementById("caseStyle");
+
+const removeStopwords =
+    document.getElementById("removeStopwords");
+
+
+const stopwords = new Set([
+    "a",
+    "an",
+    "the",
+    "and",
+    "or",
+    "but",
+    "of",
+    "to",
+    "in",
+    "on",
+    "for",
+    "with",
+    "by",
+    "from",
+    "is",
+    "are",
+    "how",
+    "what",
+    "why"
+]);
+
+
+/* =========================
+   CREATE SLUG
+========================= */
+
+function createSlug(text){
+
+    let value = text
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"");
+
+    value = value
+        .replace(/&/g," and ");
+
+    value = value
+        .replace(/['’]/g,"");
+
+    value = value
+        .replace(/[^a-zA-Z0-9\s_-]/g," ");
+
+    value = value
+        .replace(/[_\s-]+/g," ")
+        .trim();
+
+
+    let words =
+        value.split(/\s+/);
+
+
+    if(removeStopwords.checked){
+
+        words =
+            words.filter(
+                word =>
+                    !stopwords.has(
+                        word.toLowerCase()
+                    )
+            );
+    }
+
+
+    let slug =
+        words.join(
+            separator.value
+        );
+
+
+    slug =
+        slug.replace(
+            new RegExp(
+                "\\" +
+                separator.value +
+                "+",
+                "g"
+            ),
+            separator.value
+        );
+
+
+    slug =
+        slug.replace(
+            new RegExp(
+                "^" +
+                "\\" +
+                separator.value +
+                "|" +
+                "\\" +
+                separator.value +
+                "$",
+                "g"
+            ),
+            ""
+        );
+
+
+    if(caseStyle.value === "lower"){
+
+        slug =
+            slug.toLowerCase();
+
+    }else{
+
+        slug =
+            slug.toUpperCase();
+    }
+
+
+    return slug;
+}
+
+
+/* =========================
+   GENERATE
+========================= */
+
+function generateSlug(){
+
+    const text =
+        textInput.value.trim();
+
+
+    if(!text){
+
+        slugOutput.textContent =
+            "Your slug will appear here";
+
+        document.getElementById(
+            "statStatus"
+        ).textContent =
+            "Ready";
+
+        updateStats();
+
+        return;
+    }
+
+
+    const slug =
+        createSlug(text);
+
+
+    slugOutput.textContent =
+        slug || "No slug generated";
+
+
+    document.getElementById(
+        "urlPreview"
+    ).innerHTML =
+        "<strong>/</strong> " +
+        (slug || "your-slug");
+
+
+    document.getElementById(
+        "slugLength"
+    ).textContent =
+        slug.length +
+        " characters";
+
+
+    document.getElementById(
+        "statStatus"
+    ).textContent =
+        "Generated";
+
+
+    updateStats();
+}
+
+
+/* =========================
+   SAMPLE
+========================= */
+
+function loadSample(){
+
+    textInput.value =
+        "How to Build a Professional Website in 2026";
+
+
+    generateSlug();
+}
+
+
+/* =========================
+   COPY
+========================= */
+
+function copySlug(){
+
+    const slug =
+        createSlug(
+            textInput.value
+        );
+
+
+    if(!slug){
+
+        alert(
+            "Please enter some text first."
+        );
+
+        return;
+    }
+
+
+    navigator.clipboard
+        .writeText(slug)
+        .then(function(){
+
+            const button =
+                event.target;
+
+            const oldText =
+                button.textContent;
+
+            button.textContent =
+                "Copied ✓";
+
+
+            setTimeout(
+                function(){
+
+                    button.textContent =
+                        oldText;
+
+                },
+                1400
+            );
+
+        })
+        .catch(function(){
+
+            alert(
+                "Copy failed. Please try again."
+            );
+
+        });
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+function clearTool(){
+
+    textInput.value = "";
+
+    slugOutput.textContent =
+        "Your slug will appear here";
+
+    document.getElementById(
+        "urlPreview"
+    ).innerHTML =
+        "<strong>/</strong> your-slug";
+
+    document.getElementById(
+        "slugLength"
+    ).textContent =
+        "0 characters";
+
+    document.getElementById(
+        "statStatus"
+    ).textContent =
+        "Ready";
+
+    updateStats();
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+function updateStats(){
+
+    const text =
+        textInput.value;
+
+    const slug =
+        text.trim()
+            ? createSlug(text)
+            : "";
+
+
+    document.getElementById(
+        "inputCount"
+    ).textContent =
+        text.length +
+        " characters";
+
+
+    document.getElementById(
+        "statInput"
+    ).textContent =
+        text.length;
+
+
+    document.getElementById(
+        "statSlug"
+    ).textContent =
+        slug.length;
+
+
+    const words =
+        text.trim()
+            ? text.trim().split(/\s+/).length
+            : 0;
+
+
+    document.getElementById(
+        "statWords"
+    ).textContent =
+        words;
+}
+
+
+/* =========================
+   LIVE INPUT
+========================= */
+
+textInput.addEventListener(
+    "input",
+    function(){
+
+        updateStats();
+
+        if(textInput.value.trim()){
+
+            generateSlug();
+        }
+    }
+);
+
+
+separator.addEventListener(
+    "change",
+    generateSlug
+);
+
+caseStyle.addEventListener(
+    "change",
+    generateSlug
+);
+
+removeStopwords.addEventListener(
+    "change",
+    generateSlug
+);
+
+
+updateStats();
+
+</script>
+
+</body>
+</html>

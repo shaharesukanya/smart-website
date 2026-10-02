@@ -1,425 +1,986 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Counter - Count Characters Online | SmartTools</title>
 
-    <title>Character Counter - Count Characters Online | SmartTools</title>
+<meta name="description" content="Free SmartTools Character Counter to count characters, characters without spaces, words, sentences and lines instantly. Fast, simple and mobile friendly.">
 
-    <meta name="description"
-        content="Free online character counter. Count characters, characters without spaces, words and lines quickly with SmartTools.">
+<meta name="keywords" content="character counter, character count, online character counter, letter counter, word counter, text counter">
 
-    <meta name="keywords"
-        content="character counter, character count, online character counter, count characters">
-
-    <meta name="author" content="Sukanya Shahare">
-
-    <link rel="stylesheet" href="style.css">
 <link rel="canonical" href="https://shaharesukanya.github.io/smart-website/character-counter.html">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#5b5ff5">
-<meta property="og:title" content="Character Counter - Count Characters Online | SmartTools">
-<meta property="og:description" content="Free online character counter. Count characters, characters without spaces, words and lines quickly with SmartTools.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://shaharesukanya.github.io/smart-website/character-counter.html">
-<meta property="og:site_name" content="SmartTools">
-<meta name="twitter:card" content="summary">
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Character Counter - Count Characters Online | SmartTools",
-    "url": "https://shaharesukanya.github.io/smart-website/character-counter.html",
-    "description": "Free online character counter. Count characters, characters without spaces, words and lines quickly with SmartTools.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "name": "SmartTools",
-        "url": "https://shaharesukanya.github.io/smart-website/"
-    }
-}
-</script>
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<!-- SMARTTOOLS_PHASE6_CSS_START -->
+
 <style>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE + MOBILE SAFETY
-========================================================= */
-
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+:root{
+    --purple:#6559ef;
+    --purple-dark:#5145d6;
+    --purple-light:#f1efff;
+    --navy:#10182f;
+    --text:#263247;
+    --muted:#7c879a;
+    --bg:#f7f8fc;
+    --white:#ffffff;
+    --border:#e1e5ee;
+    --green:#16c997;
+    --shadow:0 18px 50px rgba(25,35,65,.08);
 }
 
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-img,
-svg,
-video,
-canvas {
-    max-width: 100%;
-    height: auto;
+html{
+    scroll-behavior:smooth;
 }
 
-a,
+body{
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
 button,
-input,
-select,
-textarea {
-    touch-action: manipulation;
+textarea{
+    font-family:inherit;
 }
 
-button,
-.btn,
-input[type="submit"],
-input[type="button"] {
-    min-height: 44px;
+.container{
+    width:min(1160px,92%);
+    margin:auto;
 }
 
-input,
-select,
-textarea {
-    max-width: 100%;
-    min-width: 0;
+/* TOP BAR */
+
+.topbar{
+    background:var(--navy);
+    color:#fff;
+    text-align:center;
+    padding:9px 15px;
+    font-size:13px;
 }
 
-input[type="number"],
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-    width: 100%;
+.live-dot{
+    display:inline-block;
+    width:7px;
+    height:7px;
+    background:var(--green);
+    border-radius:50%;
+    margin-right:7px;
+    box-shadow:0 0 0 4px rgba(22,201,151,.12);
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-span,
-li {
-    overflow-wrap: break-word;
+/* NAVBAR */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(225,229,238,.8);
 }
 
-table {
-    width: 100%;
-    max-width: 100%;
-    border-collapse: collapse;
+.nav-inner{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
 }
 
-.table-wrapper,
-.responsive-table {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:22px;
+    font-weight:800;
+    color:var(--navy);
 }
 
-:focus-visible {
-    outline: 3px solid rgba(91,95,245,.35);
-    outline-offset: 3px;
+.logo-mark{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    font-weight:900;
+    background:linear-gradient(135deg,var(--purple),#8379ff);
+    box-shadow:0 8px 20px rgba(101,89,239,.25);
 }
 
-@media (max-width: 900px) {
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:26px;
+    font-size:14px;
+    font-weight:600;
+    color:#586276;
+}
 
-    .hero-grid,
-    .content-grid,
-    .calculator-layout,
-    .tool-layout,
-    .feature-grid,
-    .founder-grid {
-        grid-template-columns: 1fr !important;
+.nav-links a{
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--purple);
+}
+
+.nav-cta{
+    padding:10px 16px;
+    border-radius:10px;
+    background:var(--purple);
+    color:#fff!important;
+}
+
+.mobile-menu{
+    display:none;
+    border:0;
+    background:var(--purple-light);
+    color:var(--purple);
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    font-size:21px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:72px 0 55px;
+    background:
+        radial-gradient(circle at 85% 15%,rgba(101,89,239,.13),transparent 28%),
+        radial-gradient(circle at 10% 80%,rgba(101,89,239,.07),transparent 25%),
+        linear-gradient(180deg,#fff 0%,#f7f8fc 100%);
+}
+
+.breadcrumb{
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:24px;
+}
+
+.breadcrumb a{
+    color:var(--purple);
+    font-weight:600;
+}
+
+.hero-content{
+    max-width:820px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 13px;
+    background:var(--purple-light);
+    color:var(--purple-dark);
+    border-radius:999px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.5px;
+    margin-bottom:18px;
+}
+
+.badge span{
+    width:7px;
+    height:7px;
+    background:var(--green);
+    border-radius:50%;
+}
+
+.hero h1{
+    font-size:clamp(38px,6vw,64px);
+    line-height:1.05;
+    letter-spacing:-2.5px;
+    color:var(--navy);
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:var(--purple);
+}
+
+.hero p{
+    max-width:720px;
+    font-size:18px;
+    color:var(--muted);
+}
+
+/* TOOL */
+
+.tool-section{
+    padding:25px 0 75px;
+    margin-top:-10px;
+}
+
+.tool-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    animation:fadeUp .7s ease both;
+}
+
+.tool-top{
+    height:6px;
+    background:linear-gradient(90deg,var(--purple),#887eff);
+}
+
+.tool-body{
+    padding:34px;
+}
+
+.tool-heading{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:24px;
+}
+
+.tool-icon{
+    width:54px;
+    height:54px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    background:var(--purple-light);
+    color:var(--purple);
+    font-size:25px;
+}
+
+.tool-heading h2{
+    font-size:25px;
+    color:var(--navy);
+}
+
+.tool-heading p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* TEXTAREA */
+
+textarea{
+    width:100%;
+    min-height:320px;
+    resize:vertical;
+    border:2px solid var(--border);
+    border-radius:17px;
+    padding:20px;
+    outline:none;
+    font-size:16px;
+    line-height:1.7;
+    color:var(--text);
+    background:#fbfcff;
+    transition:.25s;
+}
+
+textarea:focus{
+    border-color:var(--purple);
+    box-shadow:0 0 0 4px rgba(101,89,239,.08);
+    background:#fff;
+}
+
+/* ACTIONS */
+
+.text-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-top:14px;
+}
+
+.action-group{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    border:0;
+    border-radius:11px;
+    padding:11px 18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn-primary{
+    background:var(--purple);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:var(--purple-dark);
+    transform:translateY(-2px);
+}
+
+.btn-light{
+    background:var(--purple-light);
+    color:var(--purple-dark);
+}
+
+.btn-light:hover{
+    background:#e7e4ff;
+    transform:translateY(-2px);
+}
+
+/* COUNTER GRID */
+
+.counter-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:24px;
+}
+
+.counter-box{
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:16px;
+    padding:22px 12px;
+    text-align:center;
+    transition:.25s;
+}
+
+.counter-box:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(25,35,65,.07);
+}
+
+.counter-number{
+    display:block;
+    color:var(--purple);
+    font-size:27px;
+    font-weight:800;
+}
+
+.counter-label{
+    display:block;
+    color:var(--muted);
+    font-size:12px;
+    font-weight:600;
+    margin-top:4px;
+}
+
+/* CHARACTER BREAKDOWN */
+
+.breakdown{
+    margin-top:20px;
+    padding:18px;
+    background:var(--purple-light);
+    border-radius:15px;
+}
+
+.breakdown-title{
+    font-weight:800;
+    color:var(--navy);
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+.progress-row{
+    margin-top:10px;
+}
+
+.progress-label{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:5px;
+}
+
+.progress{
+    height:7px;
+    background:#fff;
+    border-radius:99px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    width:0;
+    background:var(--purple);
+    border-radius:99px;
+    transition:.3s;
+}
+
+/* INFO */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+    padding-bottom:75px;
+}
+
+.info-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px;
+    box-shadow:0 10px 35px rgba(25,35,65,.04);
+}
+
+.info-card h3{
+    color:var(--navy);
+    font-size:21px;
+    margin-bottom:12px;
+}
+
+.info-card p{
+    color:var(--muted);
+    font-size:15px;
+}
+
+.info-card ul{
+    padding-left:20px;
+    color:var(--muted);
+}
+
+.info-card li{
+    margin:8px 0;
+}
+
+/* FAQ */
+
+.faq-section{
+    background:#fff;
+    padding:75px 0;
+}
+
+.section-kicker{
+    color:var(--purple);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    margin-bottom:10px;
+}
+
+.section-title{
+    color:var(--navy);
+    font-size:38px;
+    line-height:1.15;
+    margin-bottom:35px;
+}
+
+.faq-list{
+    max-width:850px;
+}
+
+.faq-item{
+    border:1px solid var(--border);
+    border-radius:15px;
+    margin-bottom:12px;
+    overflow:hidden;
+}
+
+.faq-question{
+    width:100%;
+    border:0;
+    background:#fff;
+    padding:19px 21px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    text-align:left;
+    color:var(--navy);
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.faq-question span{
+    color:var(--purple);
+    font-size:20px;
+}
+
+.faq-answer{
+    display:none;
+    padding:0 21px 20px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+.faq-item.active .faq-answer{
+    display:block;
+}
+
+/* RELATED */
+
+.related{
+    padding:75px 0;
+}
+
+.related-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+
+.related-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:22px;
+    transition:.25s;
+}
+
+.related-card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
+}
+
+.mini-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:var(--purple-light);
+    color:var(--purple);
+    margin-bottom:14px;
+    font-weight:800;
+}
+
+.related-card h3{
+    color:var(--navy);
+    font-size:17px;
+    margin-bottom:6px;
+}
+
+.related-card p{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:14px;
+}
+
+.related-card a{
+    color:var(--purple);
+    font-size:13px;
+    font-weight:800;
+}
+
+/* FOOTER */
+
+footer{
+    background:var(--navy);
+    color:#fff;
+    padding:55px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:45px;
+    padding-bottom:35px;
+}
+
+.footer-brand h2{
+    font-size:25px;
+    margin-bottom:12px;
+}
+
+.footer-brand p{
+    max-width:450px;
+    color:#aeb7ca;
+    font-size:14px;
+}
+
+footer h4{
+    margin-bottom:15px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    color:#aeb7ca;
+    font-size:14px;
+}
+
+.footer-links a:hover{
+    color:#fff;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    color:#8e99b0;
+    font-size:12px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
     }
 
-    .tools-grid,
-    .cards-grid,
-    .grid-4 {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-
-    .footer-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
-@media (max-width: 640px) {
+/* RESPONSIVE */
 
-    html {
-        scroll-padding-top: 80px;
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
     }
 
-    body {
-        font-size: 15px;
-        line-height: 1.65;
+    .mobile-menu{
+        display:block;
     }
 
-    .container {
-        width: 92%;
-        max-width: 100%;
+    .counter-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    h1 {
-        font-size:
-            clamp(34px, 10vw, 46px) !important;
-        line-height: 1.08 !important;
-        letter-spacing: -1.5px !important;
+    .related-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    h2 {
-        font-size:
-            clamp(27px, 7vw, 36px) !important;
-        line-height: 1.15 !important;
-    }
-
-    h3 {
-        font-size:
-            clamp(18px, 5vw, 22px);
-    }
-
-    .header-inner {
-        min-height: 68px !important;
-        gap: 12px !important;
-    }
-
-    .brand-name {
-        font-size: 21px !important;
-    }
-
-    .brand-tagline {
-        font-size: 10px !important;
-    }
-
-    nav {
-        gap: 9px !important;
-    }
-
-    nav a {
-        font-size: 12px !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4,
-    .feature-grid,
-    .info-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        min-height: 48px;
-    }
-
-    textarea {
-        min-height: 130px;
-    }
-
-    .btn,
-    .submit-btn,
-    .calculate-btn,
-    .reset-btn,
-    .cta-btn,
-    button[type="submit"] {
-        width: 100%;
-        min-height: 48px;
-    }
-
-    .hero-actions,
-    .button-group,
-    .calculator-actions,
-    .form-actions {
-        flex-direction: column !important;
-        width: 100%;
-    }
-
-    .tool-search,
-    .search-box,
-    #toolSearch {
-        width: 100% !important;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .dashboard,
-    .hero-visual,
-    .hero-art,
-    .decorative-circle,
-    .floating-card {
-        max-width: 100% !important;
-    }
-
-    .section {
-        padding-top: 58px !important;
-        padding-bottom: 58px !important;
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
     }
 }
 
-@media (max-width: 390px) {
+@media(max-width:650px){
 
-    .container {
-        width: 94%;
+    .hero{
+        padding:48px 0 40px;
     }
 
-    h1 {
-        font-size: 33px !important;
+    .hero h1{
+        letter-spacing:-1.5px;
     }
 
-    h2 {
-        font-size: 26px !important;
+    .hero p{
+        font-size:16px;
     }
 
-    .brand-name {
-        font-size: 19px !important;
+    .tool-body{
+        padding:20px;
     }
 
-    .topbar-right {
-        display: none !important;
+    textarea{
+        min-height:250px;
     }
 
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        padding-left: 17px !important;
-        padding-right: 17px !important;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
+    .text-actions{
+        flex-direction:column;
+        align-items:stretch;
     }
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
+    .action-group{
+        width:100%;
+    }
+
+    .action-group .btn{
+        flex:1;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .related-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
     }
 }
 </style>
-<!-- SMARTTOOLS_PHASE6_CSS_END -->
 </head>
 
 <body>
 
-<header class="header">
+<!-- TOP BAR -->
+<div class="topbar">
+    <span class="live-dot"></span>
+    SmartTools — simple tools for everyday needs.
+</div>
 
-    <div class="logo">
-        SmartTools
+<!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="index.html" class="logo">
+            <span class="logo-mark">S</span>
+            SmartTools
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="index.html#tools">Tools</a>
+
+            <a href="index.html#guides">Guides</a>
+
+            <a href="about.html">About</a>
+
+            <a href="contact.html">Contact</a>
+
+            <a href="index.html#tools" class="nav-cta">
+                Explore Tools
+            </a>
+
+        </nav>
+
+        <button
+            class="mobile-menu"
+            onclick="toggleMenu()"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
+
     </div>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#tools">Tools</a>
-        <a href="index.html#guides">Guides</a>
-        <a href="index.html#about">About</a>
-    </nav>
 
 </header>
 
+<!-- HERO -->
 
-<section class="tool-page-hero">
+<section class="hero">
 
     <div class="container">
 
-        <div class="badge">
-            Free Online Tool
+        <div class="breadcrumb">
+
+            <a href="index.html">Home</a>
+            &nbsp; / &nbsp;
+            Text Tools
+            &nbsp; / &nbsp;
+            Character Counter
+
         </div>
 
-        <h1>Character Counter</h1>
+        <div class="hero-content">
 
-        <p>
-            Count characters online quickly and easily.
-            Get character count, characters without spaces,
-            words and lines instantly.
-        </p>
+            <div class="badge">
+                <span></span>
+                FREE TEXT TOOL
+            </div>
+
+            <h1>
+                Character Counter for
+                <span>quick text checks.</span>
+            </h1>
+
+            <p>
+                Count every character in your text, with or without spaces.
+                Also check words, sentences and lines instantly.
+            </p>
+
+        </div>
 
     </div>
 
 </section>
 
+<!-- TOOL -->
 
-<section class="calculator-section">
+<section class="tool-section">
 
     <div class="container">
 
-        <div class="calculator-box">
+        <div class="tool-card">
 
-            <h2>Count Your Characters</h2>
+            <div class="tool-top"></div>
 
-            <p>
-                Type or paste your text into the box below.
-            </p>
+            <div class="tool-body">
 
+                <div class="tool-heading">
 
-            <label for="characterText">
-                Enter Your Text
-            </label>
+                    <div class="tool-icon">
+                        #
+                    </div>
 
-            <textarea
-                id="characterText"
-                rows="12"
-                placeholder="Type or paste your text here..."
-                style="width:100%; box-sizing:border-box; padding:15px; border:1px solid #d7d9e8; border-radius:12px; font-size:16px; resize:vertical;"
-            ></textarea>
+                    <div>
 
+                        <h2>Character Counter</h2>
 
-            <button
-                id="characterCountButton"
-                class="tool-button"
-                type="button"
-                style="border:none; cursor:pointer; width:100%; margin-top:20px;"
-            >
-                Count Characters
-            </button>
+                        <p>
+                            Type or paste your text below.
+                        </p>
 
+                    </div>
 
-            <div
-                id="characterResult"
-                class="result"
-                style="margin-top:20px;"
-            >
-                <strong>Character Count: 0</strong>
+                </div>
+
+                <textarea
+                    id="textInput"
+                    placeholder="Type or paste your text here..."
+                    spellcheck="true"
+                    aria-label="Enter text to count"
+                ></textarea>
+
+                <div class="text-actions">
+
+                    <span
+                        id="statusText"
+                        style="font-size:13px;color:var(--muted);"
+                    >
+                        Ready to count
+                    </span>
+
+                    <div class="action-group">
+
+                        <button
+                            class="btn btn-light"
+                            type="button"
+                            onclick="copyText()"
+                        >
+                            Copy
+                        </button>
+
+                        <button
+                            class="btn btn-light"
+                            type="button"
+                            onclick="clearText()"
+                        >
+                            Clear
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- COUNTERS -->
+
+                <div class="counter-grid">
+
+                    <div class="counter-box">
+
+                        <span
+                            class="counter-number"
+                            id="characters"
+                        >
+                            0
+                        </span>
+
+                        <span class="counter-label">
+                            Characters
+                        </span>
+
+                    </div>
+
+                    <div class="counter-box">
+
+                        <span
+                            class="counter-number"
+                            id="withoutSpaces"
+                        >
+                            0
+                        </span>
+
+                        <span class="counter-label">
+                            Without Spaces
+                        </span>
+
+                    </div>
+
+                    <div class="counter-box">
+
+                        <span
+                            class="counter-number"
+                            id="words"
+                        >
+                            0
+                        </span>
+
+                        <span class="counter-label">
+                            Words
+                        </span>
+
+                    </div>
+
+                    <div class="counter-box">
+
+                        <span
+                            class="counter-number"
+                            id="lines"
+                        >
+                            0
+                        </span>
+
+                        <span class="counter-label">
+                            Lines
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- BREAKDOWN -->
+
+                <div class="breakdown">
+
+                    <div class="breakdown-title">
+                        Character breakdown
+                    </div>
+
+                    <div class="progress-row">
+
+                        <div class="progress-label">
+                            <span>Characters with spaces</span>
+                            <span id="spacePercent">0%</span>
+                        </div>
+
+                        <div class="progress">
+                            <span id="spaceProgress"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="progress-row">
+
+                        <div class="progress-label">
+                            <span>Characters without spaces</span>
+                            <span id="nonSpacePercent">0%</span>
+                        </div>
+
+                        <div class="progress">
+                            <span id="nonSpaceProgress"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
@@ -428,254 +989,687 @@ table {
 
 </section>
 
+<!-- INFORMATION -->
 
-<section class="information-section">
+<section class="container">
 
-    <div class="container">
+    <div class="info-grid">
 
-        <h2>Character Counter Online</h2>
+        <article class="info-card">
 
-        <p>
-            SmartTools Character Counter is a simple and free online
-            tool for counting characters in your text. It is useful
-            for social media posts, essays, assignments, forms,
-            descriptions and other writing tasks.
-        </p>
+            <h3>
+                What is a Character Counter?
+            </h3>
 
+            <p>
+                A character counter measures how many characters are present
+                in your text. SmartTools shows both the complete character
+                count and the count after removing whitespace.
+            </p>
 
-        <h2>What Does This Tool Count?</h2>
+        </article>
 
-        <p>
-            This tool shows the total number of characters,
-            characters without spaces, total words and number of
-            lines in your text.
-        </p>
+        <article class="info-card">
 
+            <h3>
+                Why count characters?
+            </h3>
 
-        <h2>How to Use Character Counter?</h2>
+            <ul>
 
-        <p>
-            Enter or paste your text into the text box and click
-            the "Count Characters" button. Your results will
-            appear immediately.
-        </p>
+                <li>
+                    Check social media text limits
+                </li>
+
+                <li>
+                    Prepare short descriptions
+                </li>
+
+                <li>
+                    Check application or form limits
+                </li>
+
+                <li>
+                    Edit headlines and titles
+                </li>
+
+                <li>
+                    Keep written content concise
+                </li>
+
+            </ul>
+
+        </article>
+
+        <article class="info-card">
+
+            <h3>
+                Characters vs words
+            </h3>
+
+            <p>
+                A word is generally a group of text separated by whitespace,
+                while characters include letters, numbers, punctuation and
+                spaces. One word can therefore contain many characters.
+            </p>
+
+        </article>
+
+        <article class="info-card">
+
+            <h3>
+                Does punctuation count?
+            </h3>
+
+            <p>
+                Yes. Punctuation marks such as commas, periods, question
+                marks and exclamation marks are included in the character
+                count because they are characters in the text.
+            </p>
+
+        </article>
 
     </div>
 
 </section>
 
+<!-- FAQ -->
 
-<footer>
+<section class="faq-section">
 
-    <div class="footer-content">
+    <div class="container">
 
-        <div>
-            <h3>SmartTools</h3>
-            <p>
-                Simple and useful online tools for everyday tasks.
-            </p>
+        <div class="section-kicker">
+            CHARACTER COUNTER FAQ
         </div>
 
-        <div>
-            <h3>Quick Links</h3>
+        <h2 class="section-title">
+            Common questions about character counting.
+        </h2>
 
-            <a href="index.html">Home</a>
-            <a href="index.html#tools">Tools</a>
-            <a href="index.html#guides">Guides</a>
-            <a href="index.html#about">About</a>
-        </div>
+        <div class="faq-list">
 
-        <div>
-            <h3>Legal</h3>
+            <div class="faq-item">
 
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="terms.html">Terms</a>
-            <a href="contact.html">Contact</a>
+                <button
+                    class="faq-question"
+                    onclick="toggleFaq(this)"
+                >
+                    What does the character count include?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    The character count includes letters, numbers,
+                    punctuation, spaces and other characters present in
+                    the text.
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    onclick="toggleFaq(this)"
+                >
+                    What is characters without spaces?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    It is the character count after whitespace characters
+                    such as spaces, tabs and line breaks are removed.
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    onclick="toggleFaq(this)"
+                >
+                    Does this tool work on mobile?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Yes. The Character Counter is responsive and works on
+                    modern mobile, tablet and desktop browsers.
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    onclick="toggleFaq(this)"
+                >
+                    Is my text sent to a server?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Counting is performed directly in your browser with
+                    JavaScript. The counting feature does not require your
+                    text to be uploaded to a server.
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
-    <div class="footer-bottom">
-        © 2026 SmartTools. All rights reserved.
+</section>
+
+<!-- RELATED -->
+
+<section class="related">
+
+    <div class="container">
+
+        <div class="section-kicker">
+            MORE SMARTTOOLS
+        </div>
+
+        <h2 class="section-title">
+            Related tools
+        </h2>
+
+        <div class="related-grid">
+
+            <article class="related-card">
+
+                <div class="mini-icon">
+                    📝
+                </div>
+
+                <h3>
+                    Word Counter
+                </h3>
+
+                <p>
+                    Count words, characters, sentences and lines.
+                </p>
+
+                <a href="word-counter.html">
+                    Open Tool →
+                </a>
+
+            </article>
+
+            <article class="related-card">
+
+                <div class="mini-icon">
+                    Aa
+                </div>
+
+                <h3>
+                    Case Converter
+                </h3>
+
+                <p>
+                    Convert your text into useful letter cases.
+                </p>
+
+                <a href="case-converter.html">
+                    Open Tool →
+                </a>
+
+            </article>
+
+            <article class="related-card">
+
+                <div class="mini-icon">
+                    🧹
+                </div>
+
+                <h3>
+                    Remove Duplicate Lines
+                </h3>
+
+                <p>
+                    Remove repeated lines from text quickly.
+                </p>
+
+                <a href="remove-duplicate-lines.html">
+                    Open Tool →
+                </a>
+
+            </article>
+
+            <article class="related-card">
+
+                <div class="mini-icon">
+                    %
+                </div>
+
+                <h3>
+                    Percentage Calculator
+                </h3>
+
+                <p>
+                    Calculate percentages for everyday maths.
+                </p>
+
+                <a href="percentage-calculator.html">
+                    Open Calculator →
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <h2>
+                    SmartTools
+                </h2>
+
+                <p>
+                    Simple, useful and free online tools for everyday
+                    calculations, writing and productivity.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>
+                    Explore
+                </h4>
+
+                <div class="footer-links">
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="index.html#tools">
+                        All Tools
+                    </a>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div>
+
+                <h4>
+                    Popular Tools
+                </h4>
+
+                <div class="footer-links">
+
+                    <a href="emi-calculator.html">
+                        EMI Calculator
+                    </a>
+
+                    <a href="gst-calculator.html">
+                        GST Calculator
+                    </a>
+
+                    <a href="sip-calculator.html">
+                        SIP Calculator
+                    </a>
+
+                    <a href="age-calculator.html">
+                        Age Calculator
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 SmartTools. All rights reserved.
+            </span>
+
+            <span>
+
+                <a href="privacy-policy.html">
+                    Privacy
+                </a>
+
+                &nbsp; · &nbsp;
+
+                <a href="terms.html">
+                    Terms
+                </a>
+
+                &nbsp; · &nbsp;
+
+                <a href="404.html">
+                    404
+                </a>
+
+            </span>
+
+        </div>
+
     </div>
 
 </footer>
 
-
 <script>
 
-document
-    .getElementById("characterCountButton")
-    .addEventListener("click", function () {
+/* ELEMENTS */
 
-        const text =
-            document.getElementById("characterText").value;
+const textInput =
+    document.getElementById("textInput");
 
-        const result =
-            document.getElementById("characterResult");
+const characters =
+    document.getElementById("characters");
+
+const withoutSpaces =
+    document.getElementById("withoutSpaces");
+
+const words =
+    document.getElementById("words");
+
+const lines =
+    document.getElementById("lines");
+
+const statusText =
+    document.getElementById("statusText");
+
+const spacePercent =
+    document.getElementById("spacePercent");
+
+const nonSpacePercent =
+    document.getElementById("nonSpacePercent");
+
+const spaceProgress =
+    document.getElementById("spaceProgress");
+
+const nonSpaceProgress =
+    document.getElementById("nonSpaceProgress");
 
 
-        const characterCount =
-            text.length;
+/* LIVE COUNTING */
+
+textInput.addEventListener(
+    "input",
+    updateCounter
+);
 
 
-        const charactersWithoutSpaces =
-            text.replace(/\s/g, "").length;
+function updateCounter(){
+
+    const text =
+        textInput.value;
 
 
-        const words =
-            text.trim() === ""
-                ? 0
-                : text.trim().split(/\s+/).length;
+    /* TOTAL CHARACTERS */
+
+    const totalCharacters =
+        text.length;
 
 
-        const lines =
-            text === ""
-                ? 0
-                : text.split(/\r?\n/).length;
+    /* CHARACTERS WITHOUT SPACES */
+
+    const cleanText =
+        text.replace(/\s/g,"");
+
+    const charactersNoSpaces =
+        cleanText.length;
 
 
-        result.innerHTML = `
+    /* WORDS */
 
-            <strong>
-                Character Count: ${characterCount}
-            </strong>
+    const trimmed =
+        text.trim();
 
-            <br><br>
+    const wordTotal =
+        trimmed
+            ? trimmed
+                .split(/\s+/)
+                .filter(Boolean)
+                .length
+            : 0;
 
-            <strong>
-                Characters Without Spaces:
-                ${charactersWithoutSpaces}
-            </strong>
 
-            <br><br>
+    /* LINES */
 
-            <strong>
-                Word Count: ${words}
-            </strong>
+    const lineTotal =
+        text
+            ? text.split(/\r?\n/).length
+            : 0;
 
-            <br><br>
 
-            <strong>
-                Line Count: ${lines}
-            </strong>
+    /* UPDATE NUMBERS */
 
-        `;
+    characters.textContent =
+        totalCharacters.toLocaleString();
 
-    });
+    withoutSpaces.textContent =
+        charactersNoSpaces.toLocaleString();
 
-</script>
+    words.textContent =
+        wordTotal.toLocaleString();
 
-<!-- SMARTTOOLS_PHASE6_JS_START -->
-<script>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE HELPER
-========================================================= */
+    lines.textContent =
+        lineTotal.toLocaleString();
 
-(function () {
 
-    "use strict";
+    /* PERCENTAGES */
 
-    function optimizeImages() {
+    let withSpacesPercentage = 0;
 
-        const images =
-            document.querySelectorAll("img");
+    let noSpacesPercentage = 0;
 
-        images.forEach(function (img) {
+    if(totalCharacters > 0){
 
-            if (!img.hasAttribute("loading")) {
+        withSpacesPercentage =
+            Math.round(
+                (totalCharacters / totalCharacters) * 100
+            );
 
-                img.setAttribute(
-                    "loading",
-                    "lazy"
+        noSpacesPercentage =
+            Math.round(
+                (charactersNoSpaces / totalCharacters) * 100
+            );
+
+    }
+
+
+    spacePercent.textContent =
+        withSpacesPercentage + "%";
+
+    nonSpacePercent.textContent =
+        noSpacesPercentage + "%";
+
+
+    spaceProgress.style.width =
+        withSpacesPercentage + "%";
+
+    nonSpaceProgress.style.width =
+        noSpacesPercentage + "%";
+
+
+    /* STATUS */
+
+    if(totalCharacters === 0){
+
+        statusText.textContent =
+            "Ready to count";
+
+    }else{
+
+        statusText.textContent =
+            "Counting live • " +
+            totalCharacters +
+            " characters";
+
+    }
+
+}
+
+
+/* CLEAR */
+
+function clearText(){
+
+    textInput.value = "";
+
+    updateCounter();
+
+    textInput.focus();
+
+    statusText.textContent =
+        "Text cleared";
+
+}
+
+
+/* COPY */
+
+async function copyText(){
+
+    const text =
+        textInput.value;
+
+    if(!text.trim()){
+
+        statusText.textContent =
+            "Nothing to copy";
+
+        return;
+    }
+
+    try{
+
+        await navigator.clipboard.writeText(text);
+
+        statusText.textContent =
+            "Text copied successfully";
+
+    }catch(error){
+
+        textInput.select();
+
+        document.execCommand("copy");
+
+        statusText.textContent =
+            "Text copied successfully";
+
+    }
+
+}
+
+
+/* FAQ */
+
+function toggleFaq(button){
+
+    const item =
+        button.parentElement;
+
+    const isActive =
+        item.classList.contains("active");
+
+
+    document
+        .querySelectorAll(".faq-item")
+        .forEach(faq => {
+
+            faq.classList.remove("active");
+
+            const icon =
+                faq.querySelector(
+                    ".faq-question span"
                 );
 
-            }
-
-            if (!img.hasAttribute("decoding")) {
-
-                img.setAttribute(
-                    "decoding",
-                    "async"
-                );
-
-            }
+            icon.textContent = "+";
 
         });
 
-    }
 
+    if(!isActive){
 
-    function optimizeVideos() {
+        item.classList.add("active");
 
-        document
-            .querySelectorAll("video")
-            .forEach(function (video) {
-
-                if (!video.hasAttribute("preload")) {
-
-                    video.setAttribute(
-                        "preload",
-                        "metadata"
-                    );
-
-                }
-
-            });
+        button.querySelector("span").textContent =
+            "−";
 
     }
 
+}
 
-    function addThemeColor() {
 
-        if (
-            !document.querySelector(
-                'meta[name="theme-color"]'
-            )
-        ) {
+/* MOBILE MENU */
 
-            const meta =
-                document.createElement("meta");
+function toggleMenu(){
 
-            meta.name =
-                "theme-color";
+    const nav =
+        document.querySelector(".nav-links");
 
-            meta.content =
-                "#5b5ff5";
 
-            document.head.appendChild(meta);
-        }
+    if(nav.style.display === "flex"){
+
+        nav.style.display = "";
+
+        return;
 
     }
 
 
-    function init() {
+    nav.style.display = "flex";
 
-        optimizeImages();
-        optimizeVideos();
-        addThemeColor();
+    nav.style.position = "absolute";
 
-    }
+    nav.style.top = "72px";
+
+    nav.style.left = "0";
+
+    nav.style.right = "0";
+
+    nav.style.padding = "20px";
+
+    nav.style.background = "#fff";
+
+    nav.style.flexDirection = "column";
+
+    nav.style.alignItems = "stretch";
+
+    nav.style.boxShadow =
+        "0 15px 35px rgba(20,30,60,.1)";
+
+}
 
 
-    if (
-        document.readyState ===
-        "loading"
-    ) {
+/* INITIAL */
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
+updateCounter();
 
-    } else {
-
-        init();
-
-    }
-
-})();
 </script>
-<!-- SMARTTOOLS_PHASE6_JS_END -->
+
 </body>
 </html>

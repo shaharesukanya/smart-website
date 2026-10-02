@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Color Converter - HEX, RGB & HSL Online | SmartTools</title>
+
+    <meta name="description"
+        content="Free online color converter to convert HEX, RGB and HSL colors. Pick colors visually, copy color values and preview colors instantly.">
+
+    <meta name="keywords"
+        content="color converter, hex to rgb, rgb to hex, hex to hsl, rgb to hsl, color picker, color tool">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://yourdomain.com/color-converter.html">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(99,102,241,.18), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(236,72,153,.14), transparent 30%),
+                #080b14;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(18px);
+            background: rgba(8,11,20,.78);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .nav {
+            max-width: 1180px;
+            margin: auto;
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -.5px;
+        }
+
+        .logo span {
+            color: #8b5cf6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: auto;
+            padding: 55px 22px 80px;
+        }
+
+        .breadcrumbs {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .breadcrumbs span {
+            color: #8b5cf6;
+        }
+
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid rgba(139,92,246,.35);
+            background: rgba(139,92,246,.1);
+            border-radius: 999px;
+            color: #c4b5fd;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 64px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #a78bfa, #f472b6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #aab5c7;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .tool-card {
+            max-width: 1050px;
+            margin: 42px auto 0;
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: 28px;
+            background: rgba(15,23,42,.72);
+            box-shadow: 0 25px 80px rgba(0,0,0,.35);
+            backdrop-filter: blur(20px);
+        }
+
+        .converter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .input-box {
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.08);
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .input-box h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        label {
+            display: block;
+            color: #cbd5e1;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 13px 14px;
+            background: #090d17;
+            border: 1px solid #263044;
+            color: white;
+            border-radius: 12px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139,92,246,.12);
+        }
+
+        .rgb-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .picker-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 18px;
+        }
+
+        input[type="color"] {
+            width: 65px;
+            height: 50px;
+            border: none;
+            padding: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .preview {
+            min-height: 180px;
+            margin-top: 22px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            border: 1px solid rgba(255,255,255,.15);
+            transition: .3s ease;
+        }
+
+        .values {
+            display: grid;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .value-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+
+        .value-row strong {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .value {
+            font-family: Consolas, monospace;
+            color: #e2e8f0;
+            word-break: break-all;
+        }
+
+        .btn {
+            border: none;
+            cursor: pointer;
+            border-radius: 12px;
+            padding: 12px 17px;
+            color: white;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            transition: .25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(99,102,241,.25);
+        }
+
+        .btn.secondary {
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.1);
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .sample-colors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .sample {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,.25);
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .sample:hover {
+            transform: scale(1.12);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .stat {
+            padding: 18px;
+            text-align: center;
+            border-radius: 16px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.07);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .stat span {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .content {
+            max-width: 950px;
+            margin: 70px auto 0;
+        }
+
+        .content-section {
+            margin-bottom: 45px;
+        }
+
+        .content h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content h3 {
+            margin: 22px 0 8px;
+        }
+
+        .content p,
+        .content li {
+            color: #aab5c7;
+            line-height: 1.8;
+        }
+
+        .content ul {
+            padding-left: 22px;
+        }
+
+        .faq {
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        details {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            margin-top: 10px;
+        }
+
+        .cta {
+            margin-top: 50px;
+            padding: 40px 25px;
+            text-align: center;
+            border-radius: 25px;
+            background: linear-gradient(
+                135deg,
+                rgba(99,102,241,.16),
+                rgba(236,72,153,.12)
+            );
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding: 28px 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .error {
+            color: #fca5a5;
+            font-size: 13px;
+            margin-top: 10px;
+            min-height: 18px;
+        }
+
+        @media (max-width: 800px) {
+            .nav-links {
+                display: none;
+            }
+
+            .converter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tool-card {
+                padding: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            h1 {
+                letter-spacing: -1px;
+            }
+
+            .rgb-row {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        SmartTools — simple tools for everyday needs.
+    </div>
+
+    <header>
+        <nav class="nav">
+            <a href="index.html" class="logo">
+                Smart<span>Tools</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="data-analyst.html">Tools</a>
+                <a href="index.html#guides">Guides</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <div class="breadcrumbs">
+            Home / Tools / <span>Color Converter</span>
+        </div>
+
+        <section class="hero">
+
+            <div class="badge">
+                🎨 Developer & Design Tool
+            </div>
+
+            <h1>
+                Color <span class="gradient-text">Converter</span>
+            </h1>
+
+            <p>
+                Convert HEX, RGB and HSL colors instantly.
+                Pick a color visually, preview it and copy the values
+                you need for your website or design project.
+            </p>
+
+        </section>
+
+        <section class="tool-card">
+
+            <div class="converter-grid">
+
+                <!-- HEX -->
+                <div class="input-box">
+
+                    <h3>HEX Color</h3>
+
+                    <label for="hexInput">
+                        Enter HEX value
+                    </label>
+
+                    <input
+                        type="text"
+                        id="hexInput"
+                        value="#6366F1"
+                        placeholder="#6366F1"
+                    >
+
+                    <div class="picker-row">
+
+                        <input
+                            type="color"
+                            id="colorPicker"
+                            value="#6366F1"
+                        >
+
+                        <span style="color:#94a3b8;">
+                            Pick a color visually
+                        </span>
+
+                    </div>
+
+                    <div class="error" id="hexError"></div>
+
+                    <div class="buttons">
+                        <button class="btn" onclick="convertFromHex()">
+                            Convert HEX
+                        </button>
+
+                        <button class="btn secondary" onclick="copyHex()">
+                            Copy HEX
+                        </button>
+                    </div>
+
+                    <div class="sample-colors">
+
+                        <button
+                            class="sample"
+                            style="background:#6366F1"
+                            onclick="setSample('#6366F1')"
+                            title="#6366F1">
+                        </button>
+
+                        <button
+                            class="sample"
+                            style="background:#EF4444"
+                            onclick="setSample('#EF4444')"
+                            title="#EF4444">
+                        </button>
+
+                        <button
+                            class="sample"
+                            style="background:#22C55E"
+                            onclick="setSample('#22C55E')"
+                            title="#22C55E">
+                        </button>
+
+                        <button
+                            class="sample"
+                            style="background:#F59E0B"
+                            onclick="setSample('#F59E0B')"
+                            title="#F59E0B">
+                        </button>
+
+                        <button
+                            class="sample"
+                            style="background:#06B6D4"
+                            onclick="setSample('#06B6D4')"
+                            title="#06B6D4">
+                        </button>
+
+                        <button
+                            class="sample"
+                            style="background:#EC4899"
+                            onclick="setSample('#EC4899')"
+                            title="#EC4899">
+                        </button>
+
+                        <button
+                            class="sample"
+                            style="background:#FFFFFF"
+                            onclick="setSample('#FFFFFF')"
+                            title="#FFFFFF">
+                        </button>
+
+                        <button
+                            class="sample"
+                            style="background:#111827"
+                            onclick="setSample('#111827')"
+                            title="#111827">
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- RGB -->
+                <div class="input-box">
+
+                    <h3>RGB Color</h3>
+
+                    <label>
+                        Enter RGB values
+                    </label>
+
+                    <div class="rgb-row">
+
+                        <input
+                            type="number"
+                            id="rInput"
+                            min="0"
+                            max="255"
+                            value="99"
+                            placeholder="R"
+                        >
+
+                        <input
+                            type="number"
+                            id="gInput"
+                            min="0"
+                            max="255"
+                            value="102"
+                            placeholder="G"
+                        >
+
+                        <input
+                            type="number"
+                            id="bInput"
+                            min="0"
+                            max="255"
+                            value="241"
+                            placeholder="B"
+                        >
+
+                    </div>
+
+                    <div class="error" id="rgbError"></div>
+
+                    <div class="buttons">
+
+                        <button class="btn" onclick="convertFromRGB()">
+                            Convert RGB
+                        </button>
+
+                        <button class="btn secondary" onclick="copyRGB()">
+                            Copy RGB
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="preview" id="colorPreview">
+                #6366F1
+            </div>
+
+            <div class="values">
+
+                <div class="value-row">
+                    <strong>HEX</strong>
+                    <span class="value" id="hexValue">#6366F1</span>
+                </div>
+
+                <div class="value-row">
+                    <strong>RGB</strong>
+                    <span class="value" id="rgbValue">
+                        rgb(99, 102, 241)
+                    </span>
+                </div>
+
+                <div class="value-row">
+                    <strong>HSL</strong>
+                    <span class="value" id="hslValue">
+                        hsl(239, 84%, 67%)
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button class="btn" onclick="copyAll()">
+                    Copy All Values
+                </button>
+
+                <button class="btn secondary" onclick="clearAll()">
+                    Clear
+                </button>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <strong id="statHex">#6366F1</strong>
+                    <span>HEX</span>
+                </div>
+
+                <div class="stat">
+                    <strong id="statR">99</strong>
+                    <span>RED</span>
+                </div>
+
+                <div class="stat">
+                    <strong id="statG">102</strong>
+                    <span>GREEN</span>
+                </div>
+
+                <div class="stat">
+                    <strong id="statB">241</strong>
+                    <span>BLUE</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="content">
+
+            <div class="content-section">
+
+                <h2>What is a Color Converter?</h2>
+
+                <p>
+                    A color converter helps developers and designers
+                    convert colors between common formats such as HEX,
+                    RGB and HSL. This is useful when working with CSS,
+                    websites, UI designs, dashboards and graphics.
+                </p>
+
+            </div>
+
+            <div class="content-section">
+
+                <h2>HEX, RGB and HSL explained</h2>
+
+                <h3>HEX</h3>
+
+                <p>
+                    HEX represents a color using hexadecimal values.
+                    For example, <strong>#FF0000</strong> represents red.
+                </p>
+
+                <h3>RGB</h3>
+
+                <p>
+                    RGB stands for Red, Green and Blue. Each channel
+                    normally uses a value from 0 to 255.
+                </p>
+
+                <h3>HSL</h3>
+
+                <p>
+                    HSL stands for Hue, Saturation and Lightness.
+                    It is often useful when creating color variations
+                    in CSS.
+                </p>
+
+            </div>
+
+            <div class="content-section">
+
+                <h2>Common uses</h2>
+
+                <ul>
+                    <li>CSS website development</li>
+                    <li>UI and UX design</li>
+                    <li>Frontend development</li>
+                    <li>Dashboard design</li>
+                    <li>Brand color systems</li>
+                    <li>Graphic design workflows</li>
+                </ul>
+
+            </div>
+
+            <div class="content-section">
+
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq">
+
+                    <details>
+                        <summary>
+                            What is HEX color?
+                        </summary>
+
+                        <p>
+                            HEX is a hexadecimal representation of a
+                            color commonly used in HTML and CSS.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>
+                            What is RGB?
+                        </summary>
+
+                        <p>
+                            RGB represents a color using red, green
+                            and blue channels, generally from 0 to 255.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>
+                            What is HSL?
+                        </summary>
+
+                        <p>
+                            HSL describes a color using hue,
+                            saturation and lightness.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>
+                            Is this color converter free?
+                        </summary>
+
+                        <p>
+                            Yes. The converter runs directly in your
+                            browser and does not require an account.
+                        </p>
+                    </details>
+
+                </div>
+
+            </div>
+
+            <div class="cta">
+
+                <h2>More SmartTools</h2>
+
+                <p style="margin:12px 0 20px;">
+                    Explore more free developer, data and everyday tools.
+                </p>
+
+                <a href="data-analyst.html" class="btn">
+                    Explore Tools →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 SmartTools. Built for simple everyday tasks.
+    </footer>
+
+
+    <script>
+
+        const hexInput = document.getElementById("hexInput");
+        const colorPicker = document.getElementById("colorPicker");
+
+        const rInput = document.getElementById("rInput");
+        const gInput = document.getElementById("gInput");
+        const bInput = document.getElementById("bInput");
+
+        function validHex(hex) {
+            return /^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$/.test(hex);
+        }
+
+        function normalizeHex(hex) {
+
+            hex = hex.trim();
+
+            if (!hex.startsWith("#")) {
+                hex = "#" + hex;
+            }
+
+            if (/^#[0-9A-Fa-f]{3}$/.test(hex)) {
+
+                hex =
+                    "#" +
+                    hex[1] + hex[1] +
+                    hex[2] + hex[2] +
+                    hex[3] + hex[3];
+
+            }
+
+            return hex.toUpperCase();
+        }
+
+        function hexToRgb(hex) {
+
+            hex = normalizeHex(hex);
+
+            return {
+                r: parseInt(hex.substring(1, 3), 16),
+                g: parseInt(hex.substring(3, 5), 16),
+                b: parseInt(hex.substring(5, 7), 16)
+            };
+        }
+
+        function rgbToHex(r, g, b) {
+
+            return "#" +
+                [r, g, b]
+                    .map(value =>
+                        Number(value)
+                            .toString(16)
+                            .padStart(2, "0")
+                    )
+                    .join("")
+                    .toUpperCase();
+        }
+
+        function rgbToHsl(r, g, b) {
+
+            r /= 255;
+            g /= 255;
+            b /= 255;
+
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
+
+            let h = 0;
+            let s = 0;
+
+            const l = (max + min) / 2;
+
+            if (max !== min) {
+
+                const d = max - min;
+
+                s = l > 0.5
+                    ? d / (2 - max - min)
+                    : d / (max + min);
+
+                switch (max) {
+
+                    case r:
+                        h =
+                            (g - b) / d +
+                            (g < b ? 6 : 0);
+                        break;
+
+                    case g:
+                        h =
+                            (b - r) / d + 2;
+                        break;
+
+                    case b:
+                        h =
+                            (r - g) / d + 4;
+                        break;
+                }
+
+                h /= 6;
+            }
+
+            return {
+                h: Math.round(h * 360),
+                s: Math.round(s * 100),
+                l: Math.round(l * 100)
+            };
+        }
+
+        function updateUI(hex, r, g, b) {
+
+            const hsl = rgbToHsl(r, g, b);
+
+            hex = normalizeHex(hex);
+
+            hexInput.value = hex;
+
+            colorPicker.value = hex;
+
+            rInput.value = r;
+            gInput.value = g;
+            bInput.value = b;
+
+            document.getElementById("hexValue").textContent = hex;
+
+            document.getElementById("rgbValue").textContent =
+                `rgb(${r}, ${g}, ${b})`;
+
+            document.getElementById("hslValue").textContent =
+                `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+
+            document.getElementById("colorPreview").style.background = hex;
+
+            document.getElementById("colorPreview").textContent = hex;
+
+            const brightness =
+                (r * 299 + g * 587 + b * 114) / 1000;
+
+            document.getElementById("colorPreview").style.color =
+                brightness > 150 ? "#111827" : "#ffffff";
+
+            document.getElementById("statHex").textContent = hex;
+            document.getElementById("statR").textContent = r;
+            document.getElementById("statG").textContent = g;
+            document.getElementById("statB").textContent = b;
+
+            document.getElementById("hexError").textContent = "";
+            document.getElementById("rgbError").textContent = "";
+        }
+
+        function convertFromHex() {
+
+            let hex = normalizeHex(hexInput.value);
+
+            if (!validHex(hex)) {
+
+                document.getElementById("hexError").textContent =
+                    "Please enter a valid HEX color, e.g. #6366F1";
+
+                return;
+            }
+
+            const rgb = hexToRgb(hex);
+
+            updateUI(
+                hex,
+                rgb.r,
+                rgb.g,
+                rgb.b
+            );
+        }
+
+        function convertFromRGB() {
+
+            const r = Number(rInput.value);
+            const g = Number(gInput.value);
+            const b = Number(bInput.value);
+
+            if (
+                !Number.isInteger(r) ||
+                !Number.isInteger(g) ||
+                !Number.isInteger(b) ||
+                r < 0 || r > 255 ||
+                g < 0 || g > 255 ||
+                b < 0 || b > 255
+            ) {
+
+                document.getElementById("rgbError").textContent =
+                    "RGB values must be whole numbers from 0 to 255.";
+
+                return;
+            }
+
+            const hex = rgbToHex(r, g, b);
+
+            updateUI(hex, r, g, b);
+        }
+
+        function setSample(hex) {
+
+            hexInput.value = hex;
+
+            convertFromHex();
+        }
+
+        colorPicker.addEventListener("input", function () {
+
+            hexInput.value = this.value;
+
+            convertFromHex();
+
+        });
+
+        function copyText(text) {
+
+            navigator.clipboard.writeText(text)
+                .then(() => {
+
+                    alert("Copied successfully!");
+
+                })
+                .catch(() => {
+
+                    alert("Copy failed. Please copy manually.");
+
+                });
+        }
+
+        function copyHex() {
+
+            copyText(
+                document.getElementById("hexValue").textContent
+            );
+        }
+
+        function copyRGB() {
+
+            copyText(
+                document.getElementById("rgbValue").textContent
+            );
+        }
+
+        function copyAll() {
+
+            const hex =
+                document.getElementById("hexValue").textContent;
+
+            const rgb =
+                document.getElementById("rgbValue").textContent;
+
+            const hsl =
+                document.getElementById("hslValue").textContent;
+
+            copyText(
+                `HEX: ${hex}\nRGB: ${rgb}\nHSL: ${hsl}`
+            );
+        }
+
+        function clearAll() {
+
+            hexInput.value = "";
+            rInput.value = "";
+            gInput.value = "";
+            bInput.value = "";
+
+            document.getElementById("hexError").textContent = "";
+            document.getElementById("rgbError").textContent = "";
+
+            document.getElementById("hexValue").textContent = "—";
+            document.getElementById("rgbValue").textContent = "—";
+            document.getElementById("hslValue").textContent = "—";
+
+            document.getElementById("statHex").textContent = "—";
+            document.getElementById("statR").textContent = "—";
+            document.getElementById("statG").textContent = "—";
+            document.getElementById("statB").textContent = "—";
+
+            document.getElementById("colorPreview").style.background =
+                "#111827";
+
+            document.getElementById("colorPreview").style.color =
+                "#ffffff";
+
+            document.getElementById("colorPreview").textContent =
+                "Preview";
+        }
+
+        convertFromHex();
+
+    </script>
+
+</body>
+</html>

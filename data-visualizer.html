@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Visualizer - Create Charts from CSV | SmartTools</title>
+
+    <meta name="description"
+        content="Create beautiful bar, line, pie and doughnut charts from CSV data with SmartTools Data Visualizer. Free, fast and browser-based.">
+
+    <meta name="keywords"
+        content="data visualizer, CSV chart maker, CSV graph maker, data visualization tool, bar chart, line chart, pie chart, data analyst tools">
+
+    <meta name="author" content="Sukanya Shahare">
+
+    <link rel="canonical" href="data-visualizer.html">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(99,102,241,.18), transparent 35%),
+                radial-gradient(circle at top right, rgba(14,165,233,.15), transparent 30%),
+                #070b16;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: linear-gradient(90deg, #111827, #172554);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(18px);
+            background: rgba(7,11,22,.82);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 72px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -.5px;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            font-size: 14px;
+            transition: .25s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 70px 20px 40px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            padding: 8px 14px;
+            border: 1px solid rgba(96,165,250,.25);
+            background: rgba(96,165,250,.08);
+            border-radius: 999px;
+            color: #93c5fd;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.02;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #60a5fa, #a78bfa, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #94a3b8;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(15,23,42,.78);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 25px 70px rgba(0,0,0,.2);
+        }
+
+        .card h2 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .upload-box {
+            border: 2px dashed rgba(96,165,250,.35);
+            border-radius: 20px;
+            padding: 42px 20px;
+            text-align: center;
+            background: rgba(59,130,246,.04);
+            transition: .3s;
+        }
+
+        .upload-box:hover {
+            border-color: rgba(96,165,250,.8);
+            background: rgba(59,130,246,.08);
+        }
+
+        .upload-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .upload-box h3 {
+            margin-bottom: 8px;
+        }
+
+        .upload-box p {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .upload-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            background: linear-gradient(135deg,#2563eb,#7c3aed);
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            transition: .25s;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37,99,235,.25);
+        }
+
+        .file-name {
+            margin-top: 14px;
+            color: #60a5fa;
+            font-size: 14px;
+            min-height: 20px;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .field label {
+            display: block;
+            color: #cbd5e1;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 13px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.1);
+            background: #0b1220;
+            color: #fff;
+            outline: none;
+        }
+
+        select:focus {
+            border-color: #60a5fa;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            border: 0;
+            cursor: pointer;
+            border-radius: 11px;
+            padding: 12px 18px;
+            font-weight: 700;
+            color: #fff;
+            background: #1e293b;
+            transition: .25s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary {
+            background: linear-gradient(135deg,#2563eb,#7c3aed);
+        }
+
+        .success {
+            background: #047857;
+        }
+
+        .danger {
+            background: #991b1b;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 500px;
+            background: rgba(2,6,23,.65);
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        .chart-wrapper canvas {
+            width: 100% !important;
+            max-height: 560px;
+        }
+
+        .empty-chart {
+            min-height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #64748b;
+            padding: 30px;
+        }
+
+        .empty-chart div {
+            max-width: 420px;
+        }
+
+        .empty-chart strong {
+            display: block;
+            color: #cbd5e1;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .stat {
+            background: rgba(30,41,59,.55);
+            border: 1px solid rgba(255,255,255,.06);
+            padding: 18px;
+            border-radius: 16px;
+        }
+
+        .stat span {
+            display: block;
+            color: #94a3b8;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .stat strong {
+            font-size: 22px;
+        }
+
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 16px;
+        }
+
+        .example {
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px;
+            padding: 18px;
+            background: rgba(15,23,42,.55);
+        }
+
+        .example h3 {
+            margin-bottom: 8px;
+        }
+
+        .example p {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .info-section {
+            max-width: 900px;
+            margin: 70px auto;
+            padding: 0 20px;
+        }
+
+        .info-section h2 {
+            font-size: 30px;
+            margin-bottom: 16px;
+        }
+
+        .info-section p {
+            color: #94a3b8;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .faq {
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        details {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            margin-top: 12px;
+            margin-bottom: 0;
+        }
+
+        footer {
+            margin-top: 80px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding: 35px 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.error {
+            background: rgba(239,68,68,.1);
+            border: 1px solid rgba(239,68,68,.25);
+            color: #fca5a5;
+        }
+
+        .message.success-msg {
+            background: rgba(16,185,129,.1);
+            border: 1px solid rgba(16,185,129,.25);
+            color: #6ee7b7;
+        }
+
+        @media(max-width: 800px) {
+            .nav-links {
+                display: none;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .examples {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-wrapper {
+                min-height: 400px;
+            }
+        }
+
+        @media(max-width: 500px) {
+            .hero {
+                padding-top: 45px;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .card {
+                padding: 18px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — simple tools for everyday needs.
+</div>
+
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="logo">
+            Smart<span>Tools</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="data-analyst.html">Data Analyst</a>
+            <a href="ai-tools.html">AI Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+
+    <div class="badge">
+        📊 Data Analyst Tool
+    </div>
+
+    <h1>
+        Turn Data Into <span>Beautiful Charts</span>
+    </h1>
+
+    <p>
+        Upload your CSV file and create professional bar, line, pie and
+        doughnut charts directly in your browser.
+        No data is uploaded to a server.
+    </p>
+
+</section>
+
+<main class="container">
+
+    <section class="card">
+
+        <h2>Upload Your CSV</h2>
+
+        <p class="card-subtitle">
+            Select a CSV dataset to start visualizing your data.
+        </p>
+
+        <div class="upload-box">
+
+            <div class="upload-icon">📁</div>
+
+            <h3>Drop your CSV data here</h3>
+
+            <p>
+                Your file is processed locally in your browser.
+            </p>
+
+            <label class="upload-btn" for="csvFile">
+                Choose CSV File
+            </label>
+
+            <input
+                type="file"
+                id="csvFile"
+                accept=".csv,text/csv"
+            >
+
+            <div class="file-name" id="fileName"></div>
+
+        </div>
+
+        <div class="message" id="message"></div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>Chart Settings</h2>
+
+        <p class="card-subtitle">
+            Choose which columns should be used for your chart.
+        </p>
+
+        <div class="controls">
+
+            <div class="field">
+
+                <label for="labelColumn">
+                    Label / Category Column
+                </label>
+
+                <select id="labelColumn">
+                    <option value="">
+                        Upload CSV first
+                    </option>
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="valueColumn">
+                    Numeric Value Column
+                </label>
+
+                <select id="valueColumn">
+                    <option value="">
+                        Upload CSV first
+                    </option>
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="chartType">
+                    Chart Type
+                </label>
+
+                <select id="chartType">
+
+                    <option value="bar">
+                        Bar Chart
+                    </option>
+
+                    <option value="line">
+                        Line Chart
+                    </option>
+
+                    <option value="pie">
+                        Pie Chart
+                    </option>
+
+                    <option value="doughnut">
+                        Doughnut Chart
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <button
+                class="primary"
+                onclick="generateChart()">
+                📊 Generate Chart
+            </button>
+
+            <button onclick="loadSample()">
+                🧪 Sample Data
+            </button>
+
+            <button
+                class="success"
+                onclick="downloadChart()">
+                ⬇ Download Chart
+            </button>
+
+            <button onclick="clearAll()">
+                Clear
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>Visualization</h2>
+
+        <p class="card-subtitle">
+            Your generated chart will appear below.
+        </p>
+
+        <div class="chart-wrapper" id="chartArea">
+
+            <div class="empty-chart">
+
+                <div>
+
+                    <strong>
+                        📈 Your chart will appear here
+                    </strong>
+
+                    Upload a CSV file, select your columns,
+                    and click Generate Chart.
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <span>Total Rows</span>
+                <strong id="rowCount">0</strong>
+            </div>
+
+            <div class="stat">
+                <span>Total Columns</span>
+                <strong id="columnCount">0</strong>
+            </div>
+
+            <div class="stat">
+                <span>Chart Type</span>
+                <strong id="currentChart">—</strong>
+            </div>
+
+            <div class="stat">
+                <span>Data Points</span>
+                <strong id="dataPoints">0</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>Quick Examples</h2>
+
+        <p class="card-subtitle">
+            Try these sample datasets to understand how the visualizer works.
+        </p>
+
+        <div class="examples">
+
+            <div class="example">
+
+                <h3>📦 Products</h3>
+
+                <p>
+                    Product names with sales values.
+                    Useful for bar and pie charts.
+                </p>
+
+                <button onclick="loadProductSample()">
+                    Load Products
+                </button>
+
+            </div>
+
+
+            <div class="example">
+
+                <h3>📈 Monthly Sales</h3>
+
+                <p>
+                    Monthly sales data suitable for
+                    line and bar charts.
+                </p>
+
+                <button onclick="loadSalesSample()">
+                    Load Sales
+                </button>
+
+            </div>
+
+
+            <div class="example">
+
+                <h3>👥 Team Performance</h3>
+
+                <p>
+                    Employee performance data for
+                    comparing numeric values.
+                </p>
+
+                <button onclick="loadTeamSample()">
+                    Load Team
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<section class="info-section">
+
+    <h2>What is a Data Visualizer?</h2>
+
+    <p>
+        A data visualizer converts raw information into charts and
+        graphical representations. Charts can make patterns,
+        comparisons and trends easier to understand.
+    </p>
+
+    <p>
+        SmartTools Data Visualizer supports CSV datasets and lets you
+        create bar, line, pie and doughnut charts without installing
+        desktop software.
+    </p>
+
+    <h2>Supported Chart Types</h2>
+
+    <p>
+        <strong>Bar Chart:</strong>
+        Useful for comparing categories.
+    </p>
+
+    <p>
+        <strong>Line Chart:</strong>
+        Useful for showing changes and trends over time.
+    </p>
+
+    <p>
+        <strong>Pie Chart:</strong>
+        Useful for showing proportions between categories.
+    </p>
+
+    <p>
+        <strong>Doughnut Chart:</strong>
+        Similar to a pie chart with a center space,
+        useful for simple category distributions.
+    </p>
+
+    <h2>Privacy</h2>
+
+    <p>
+        CSV processing happens inside your browser.
+        The selected CSV file is not uploaded by this page
+        to a SmartTools server.
+    </p>
+
+</section>
+
+
+<section class="info-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq">
+
+        <details>
+            <summary>
+                Can I create charts from CSV files?
+            </summary>
+
+            <p>
+                Yes. Upload a CSV file and select the label and
+                numeric columns to create a chart.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>
+                Which chart types are supported?
+            </summary>
+
+            <p>
+                SmartTools currently supports bar, line, pie and
+                doughnut charts.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>
+                Is my CSV uploaded to a server?
+            </summary>
+
+            <p>
+                No. The CSV is processed locally in your browser.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>
+                Can I download the chart?
+            </summary>
+
+            <p>
+                Yes. After generating the chart, use the
+                Download Chart button to save it as a PNG image.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>
+                Can I use this tool for data analysis?
+            </summary>
+
+            <p>
+                Yes. It can be useful for quick exploratory
+                visualization of CSV datasets. For advanced
+                statistical analysis, additional analytical tools
+                may be required.
+            </p>
+        </details>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 SmartTools · Created by Sukanya Shahare
+
+</footer>
+
+
+<script>
+
+let csvData = [];
+let headers = [];
+let currentChartInstance = null;
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(text, type = "success-msg") {
+
+    const box = document.getElementById("message");
+
+    box.textContent = text;
+
+    box.className = "message show " + type;
+
+}
+
+
+/* =========================
+   CSV FILE
+========================= */
+
+document
+    .getElementById("csvFile")
+    .addEventListener("change", function(event) {
+
+        const file = event.target.files[0];
+
+        if (!file) return;
+
+        document.getElementById("fileName").textContent =
+            "Selected: " + file.name;
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            try {
+
+                const text = e.target.result;
+
+                processCSV(text);
+
+                showMessage(
+                    "CSV loaded successfully.",
+                    "success-msg"
+                );
+
+            } catch (error) {
+
+                showMessage(
+                    "Could not read this CSV file.",
+                    "error"
+                );
+
+            }
+
+        };
+
+        reader.readAsText(file);
+
+    });
+
+
+/* =========================
+   CSV PARSER
+========================= */
+
+function detectDelimiter(text) {
+
+    const firstLine =
+        text.split(/\r?\n/)[0] || "";
+
+    const delimiters = [",", ";", "\t", "|"];
+
+    let best = ",";
+
+    let highest = -1;
+
+    delimiters.forEach(delimiter => {
+
+        const count =
+            firstLine.split(delimiter).length - 1;
+
+        if (count > highest) {
+
+            highest = count;
+            best = delimiter;
+
+        }
+
+    });
+
+    return best;
+
+}
+
+
+function parseCSV(text) {
+
+    const delimiter = detectDelimiter(text);
+
+    const rows = [];
+
+    let row = [];
+
+    let cell = "";
+
+    let insideQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+
+        const char = text[i];
+
+        const next = text[i + 1];
+
+        if (char === '"' && next === '"') {
+
+            cell += '"';
+
+            i++;
+
+        } else if (char === '"') {
+
+            insideQuotes = !insideQuotes;
+
+        } else if (char === delimiter && !insideQuotes) {
+
+            row.push(cell);
+
+            cell = "";
+
+        } else if (
+            (char === "\n" || char === "\r") &&
+            !insideQuotes
+        ) {
+
+            if (char === "\r" && next === "\n") {
+                i++;
+            }
+
+            row.push(cell);
+
+            if (row.some(value => value.trim() !== "")) {
+                rows.push(row);
+            }
+
+            row = [];
+
+            cell = "";
+
+        } else {
+
+            cell += char;
+
+        }
+
+    }
+
+    if (cell !== "" || row.length > 0) {
+
+        row.push(cell);
+
+        if (row.some(value => value.trim() !== "")) {
+            rows.push(row);
+        }
+
+    }
+
+    return {
+        rows,
+        delimiter
+    };
+
+}
+
+
+/* =========================
+   PROCESS CSV
+========================= */
+
+function processCSV(text) {
+
+    const parsed = parseCSV(text);
+
+    if (parsed.rows.length < 2) {
+
+        throw new Error("CSV does not contain enough data.");
+
+    }
+
+    headers = parsed.rows[0].map(
+        h => h.trim()
+    );
+
+    csvData = parsed.rows
+        .slice(1)
+        .map(row => {
+
+            const obj = {};
+
+            headers.forEach((header, index) => {
+
+                obj[header] =
+                    (row[index] ?? "").trim();
+
+            });
+
+            return obj;
+
+        });
+
+    updateControls();
+
+    updateStats();
+
+}
+
+
+/* =========================
+   UPDATE CONTROLS
+========================= */
+
+function updateControls() {
+
+    const labelSelect =
+        document.getElementById("labelColumn");
+
+    const valueSelect =
+        document.getElementById("valueColumn");
+
+    labelSelect.innerHTML = "";
+
+    valueSelect.innerHTML = "";
+
+    headers.forEach(header => {
+
+        const option1 =
+            document.createElement("option");
+
+        option1.value = header;
+        option1.textContent = header;
+
+        labelSelect.appendChild(option1);
+
+
+        const option2 =
+            document.createElement("option");
+
+        option2.value = header;
+        option2.textContent = header;
+
+        valueSelect.appendChild(option2);
+
+    });
+
+
+    if (headers.length > 1) {
+
+        labelSelect.value = headers[0];
+
+        valueSelect.value = findNumericColumn();
+
+    }
+
+}
+
+
+/* =========================
+   FIND NUMERIC COLUMN
+========================= */
+
+function findNumericColumn() {
+
+    for (const header of headers) {
+
+        let numericCount = 0;
+
+        csvData.forEach(row => {
+
+            const value =
+                Number(
+                    String(row[header])
+                        .replace(/,/g, "")
+                        .replace(/%/g, "")
+                        .trim()
+                );
+
+            if (
+                row[header] !== "" &&
+                Number.isFinite(value)
+            ) {
+                numericCount++;
+            }
+
+        });
+
+        if (numericCount >= Math.max(1, csvData.length * 0.6)) {
+
+            return header;
+
+        }
+
+    }
+
+    return headers[1] || headers[0];
+
+}
+
+
+/* =========================
+   GENERATE CHART
+========================= */
+
+function generateChart() {
+
+    if (!csvData.length) {
+
+        showMessage(
+            "Please upload a CSV file first.",
+            "error"
+        );
+
+        return;
+
+    }
+
+    const labelColumn =
+        document.getElementById("labelColumn").value;
+
+    const valueColumn =
+        document.getElementById("valueColumn").value;
+
+    const chartType =
+        document.getElementById("chartType").value;
+
+
+    if (!labelColumn || !valueColumn) {
+
+        showMessage(
+            "Please select both columns.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const labels = [];
+
+    const values = [];
+
+
+    csvData.forEach(row => {
+
+        const label =
+            row[labelColumn];
+
+        const rawValue =
+            String(row[valueColumn])
+                .replace(/,/g, "")
+                .replace(/%/g, "")
+                .trim();
+
+        const value = Number(rawValue);
+
+        if (
+            label !== "" &&
+            Number.isFinite(value)
+        ) {
+
+            labels.push(label);
+
+            values.push(value);
+
+        }
+
+    });
+
+
+    if (!values.length) {
+
+        showMessage(
+            "The selected value column does not contain enough numeric data.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if (currentChartInstance) {
+
+        currentChartInstance.destroy();
+
+        currentChartInstance = null;
+
+    }
+
+
+    const area =
+        document.getElementById("chartArea");
+
+    area.innerHTML =
+        '<canvas id="mainChart"></canvas>';
+
+
+    const canvas =
+        document.getElementById("mainChart");
+
+
+    const ctx = canvas.getContext("2d");
+
+
+    let backgroundColors = [
+        "rgba(59,130,246,.75)",
+        "rgba(139,92,246,.75)",
+        "rgba(16,185,129,.75)",
+        "rgba(245,158,11,.75)",
+        "rgba(239,68,68,.75)",
+        "rgba(14,165,233,.75)",
+        "rgba(236,72,153,.75)",
+        "rgba(132,204,22,.75)"
+    ];
+
+
+    const colors = labels.map(
+        (_, index) =>
+            backgroundColors[
+                index % backgroundColors.length
+            ]
+    );
+
+
+    currentChartInstance =
+        new Chart(ctx, {
+
+            type: chartType,
+
+            data: {
+
+                labels: labels,
+
+                datasets: [
+
+                    {
+
+                        label: valueColumn,
+
+                        data: values,
+
+                        backgroundColor:
+                            chartType === "pie" ||
+                            chartType === "doughnut"
+                                ? colors
+                                : "rgba(59,130,246,.72)",
+
+                        borderColor:
+                            "rgba(96,165,250,1)",
+
+                        borderWidth: 2,
+
+                        tension: .35,
+
+                        fill:
+                            chartType === "line"
+                                ? true
+                                : false
+
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+
+                        labels: {
+
+                            color: "#e2e8f0"
+
+                        }
+
+                    }
+
+                },
+
+                scales:
+                    chartType === "pie" ||
+                    chartType === "doughnut"
+                        ? {}
+                        : {
+
+                            x: {
+
+                                ticks: {
+                                    color: "#94a3b8"
+                                },
+
+                                grid: {
+                                    color:
+                                        "rgba(255,255,255,.05)"
+                                }
+
+                            },
+
+                            y: {
+
+                                ticks: {
+                                    color: "#94a3b8"
+                                },
+
+                                grid: {
+                                    color:
+                                        "rgba(255,255,255,.05)"
+                                }
+
+                            }
+
+                        }
+
+            }
+
+        });
+
+
+    document.getElementById("currentChart")
+        .textContent =
+            chartType.charAt(0).toUpperCase() +
+            chartType.slice(1);
+
+    document.getElementById("dataPoints")
+        .textContent = values.length;
+
+
+    showMessage(
+        "Chart generated successfully.",
+        "success-msg"
+    );
+
+}
+
+
+/* =========================
+   DOWNLOAD CHART
+========================= */
+
+function downloadChart() {
+
+    if (!currentChartInstance) {
+
+        showMessage(
+            "Generate a chart first.",
+            "error"
+        );
+
+        return;
+
+    }
+
+    const link =
+        document.createElement("a");
+
+    link.download =
+        "smarttools-data-chart.png";
+
+    link.href =
+        currentChartInstance
+            .toBase64Image();
+
+    link.click();
+
+}
+
+
+/* =========================
+   UPDATE STATS
+========================= */
+
+function updateStats() {
+
+    document.getElementById("rowCount")
+        .textContent = csvData.length;
+
+    document.getElementById("columnCount")
+        .textContent = headers.length;
+
+}
+
+
+/* =========================
+   SAMPLE DATA
+========================= */
+
+function loadSample() {
+
+    const sample = `Product,Sales
+Laptop,120
+Phone,180
+Tablet,95
+Monitor,140
+Keyboard,75
+Mouse,110`;
+
+    loadSampleCSV(
+        sample,
+        "sample-products.csv"
+    );
+
+}
+
+
+function loadProductSample() {
+
+    loadSample();
+
+}
+
+
+function loadSalesSample() {
+
+    const sample = `Month,Sales
+January,1200
+February,1450
+March,1700
+April,1550
+May,2100
+June,2450
+July,2300
+August,2800`;
+
+    loadSampleCSV(
+        sample,
+        "monthly-sales.csv"
+    );
+
+}
+
+
+function loadTeamSample() {
+
+    const sample = `Employee,Performance
+Aarav,82
+Priya,91
+Rahul,76
+Sneha,95
+Rohan,88
+Ananya,93`;
+
+    loadSampleCSV(
+        sample,
+        "team-performance.csv"
+    );
+
+}
+
+
+function loadSampleCSV(text, name) {
+
+    document.getElementById("fileName")
+        .textContent =
+            "Loaded: " + name;
+
+    processCSV(text);
+
+    showMessage(
+        "Sample data loaded successfully.",
+        "success-msg"
+    );
+
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+function clearAll() {
+
+    csvData = [];
+
+    headers = [];
+
+    if (currentChartInstance) {
+
+        currentChartInstance.destroy();
+
+        currentChartInstance = null;
+
+    }
+
+
+    document.getElementById("csvFile")
+        .value = "";
+
+    document.getElementById("fileName")
+        .textContent = "";
+
+    document.getElementById("labelColumn")
+        .innerHTML =
+            '<option value="">Upload CSV first</option>';
+
+    document.getElementById("valueColumn")
+        .innerHTML =
+            '<option value="">Upload CSV first</option>';
+
+    document.getElementById("chartArea")
+        .innerHTML = `
+
+        <div class="empty-chart">
+
+            <div>
+
+                <strong>
+                    📈 Your chart will appear here
+                </strong>
+
+                Upload a CSV file, select your columns,
+                and click Generate Chart.
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document.getElementById("rowCount")
+        .textContent = "0";
+
+    document.getElementById("columnCount")
+        .textContent = "0";
+
+    document.getElementById("currentChart")
+        .textContent = "—";
+
+    document.getElementById("dataPoints")
+        .textContent = "0";
+
+
+    document.getElementById("message")
+        .className = "message";
+
+}
+
+</script>
+
+</body>
+</html>

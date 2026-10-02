@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SQL Formatter Online | Beautify SQL Queries | SmartTools</title>
+
+<meta name="description" content="Free online SQL Formatter and Beautifier. Format, clean, minify and copy SQL queries instantly with SmartTools.">
+<meta name="keywords" content="SQL formatter, SQL beautifier, format SQL online, SQL query formatter, SQL minifier">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#070a14">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#070a14;
+    --card:#0d1324;
+    --border:rgba(255,255,255,.09);
+    --text:#f7f8ff;
+    --muted:#9aa6bb;
+    --purple:#765cff;
+    --blue:#28c8ff;
+    --green:#38d996;
+    --red:#ff6477;
+}
+
+body{
+    min-height:100vh;
+    color:var(--text);
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:
+        radial-gradient(circle at 10% 0%,rgba(118,92,255,.18),transparent 28%),
+        radial-gradient(circle at 90% 0%,rgba(40,200,255,.10),transparent 28%),
+        linear-gradient(180deg,#070a14,#090d19,#070a14);
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,textarea{
+    font:inherit;
+}
+
+.topbar{
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-bottom:1px solid var(--border);
+    background:rgba(5,8,18,.75);
+    color:#aab4c8;
+    font-size:13px;
+}
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+    border-bottom:1px solid var(--border);
+    background:rgba(7,10,20,.84);
+    backdrop-filter:blur(18px);
+}
+
+.nav{
+    width:min(1180px,calc(100% - 32px));
+    min-height:74px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:21px;
+    font-weight:900;
+}
+
+.logo-box{
+    width:40px;
+    height:40px;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--purple),var(--blue));
+    box-shadow:0 10px 35px rgba(118,92,255,.3);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    color:#aeb7ca;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.nav-cta{
+    padding:10px 16px;
+    border-radius:11px;
+    border:1px solid rgba(118,92,255,.35);
+    background:rgba(118,92,255,.12);
+    color:white!important;
+}
+
+.hero{
+    width:min(1180px,calc(100% - 32px));
+    margin:auto;
+    padding:78px 0 45px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:999px;
+    border:1px solid rgba(118,92,255,.3);
+    background:rgba(118,92,255,.09);
+    color:#c9c1ff;
+    font-size:12px;
+    font-weight:850;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 15px rgba(56,217,150,.8);
+}
+
+.hero h1{
+    margin-top:22px;
+    font-size:clamp(42px,7vw,76px);
+    line-height:1;
+    letter-spacing:-3px;
+    font-weight:950;
+    background:linear-gradient(110deg,#fff,#bdb2ff,#6ee5ff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:760px;
+    margin:23px auto 0;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.8;
+}
+
+.workspace{
+    width:min(1180px,calc(100% - 32px));
+    margin:auto;
+    padding:20px 0 75px;
+}
+
+.workspace-card{
+    padding:22px;
+    border:1px solid var(--border);
+    border-radius:27px;
+    background:linear-gradient(145deg,rgba(18,25,45,.92),rgba(9,14,27,.92));
+    box-shadow:0 30px 80px rgba(0,0,0,.28);
+}
+
+.editor-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.panel{
+    padding:20px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:rgba(255,255,255,.025);
+}
+
+.panel-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:13px;
+}
+
+.panel-head h2{
+    font-size:17px;
+}
+
+.panel-head span{
+    color:var(--muted);
+    font-size:11px;
+}
+
+textarea{
+    width:100%;
+    min-height:460px;
+    padding:17px;
+    resize:vertical;
+    outline:none;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:#080d1a;
+    color:#dce4f4;
+    font-family:Consolas,Monaco,monospace;
+    font-size:13px;
+    line-height:1.7;
+}
+
+textarea:focus{
+    border-color:rgba(118,92,255,.55);
+    box-shadow:0 0 0 3px rgba(118,92,255,.06);
+}
+
+.output{
+    min-height:460px;
+    overflow:auto;
+    padding:17px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:#080d1a;
+}
+
+.output pre{
+    white-space:pre-wrap;
+    word-break:break-word;
+    color:#dce4f4;
+    font-family:Consolas,Monaco,monospace;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:12px;
+}
+
+button{
+    padding:11px 15px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    cursor:pointer;
+    color:white;
+    background:rgba(255,255,255,.05);
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+    background:rgba(255,255,255,.09);
+}
+
+button.primary{
+    border-color:rgba(118,92,255,.4);
+    background:linear-gradient(135deg,rgba(118,92,255,.3),rgba(40,200,255,.13));
+}
+
+button.green{
+    border-color:rgba(56,217,150,.25);
+    background:rgba(56,217,150,.08);
+}
+
+button.red{
+    border-color:rgba(255,100,119,.25);
+    background:rgba(255,100,119,.08);
+}
+
+.status{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    margin-top:13px;
+    color:#9ca8bc;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.status-dot{
+    flex:0 0 auto;
+    width:8px;
+    height:8px;
+    margin-top:4px;
+    border-radius:50%;
+    background:#8490a6;
+}
+
+.status.success{
+    color:#75e7b4;
+}
+
+.status.success .status-dot{
+    background:var(--green);
+    box-shadow:0 0 12px rgba(56,217,150,.65);
+}
+
+.status.error{
+    color:#ff8493;
+}
+
+.status.error .status-dot{
+    background:var(--red);
+    box-shadow:0 0 12px rgba(255,100,119,.55);
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.stat{
+    padding:18px;
+    border:1px solid var(--border);
+    border-radius:16px;
+    background:rgba(255,255,255,.025);
+}
+
+.stat-label{
+    color:var(--muted);
+    font-size:10px;
+    font-weight:850;
+    letter-spacing:.7px;
+}
+
+.stat-value{
+    margin-top:8px;
+    font-size:24px;
+    font-weight:950;
+}
+
+.info{
+    width:min(1180px,calc(100% - 32px));
+    margin:auto;
+    padding:0 0 80px;
+}
+
+.info-card{
+    padding:34px;
+    border:1px solid var(--border);
+    border-radius:23px;
+    background:rgba(12,18,33,.72);
+}
+
+.info-card h2{
+    font-size:28px;
+}
+
+.info-card h3{
+    margin-top:24px;
+    font-size:17px;
+}
+
+.info-card p{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.8;
+}
+
+.faq{
+    display:grid;
+    gap:9px;
+    margin-top:25px;
+}
+
+details{
+    padding:16px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:rgba(255,255,255,.025);
+}
+
+summary{
+    cursor:pointer;
+    font-size:13px;
+    font-weight:750;
+}
+
+details p{
+    font-size:12px;
+}
+
+footer{
+    border-top:1px solid var(--border);
+    padding:28px 0;
+    color:#7f899e;
+    font-size:12px;
+}
+
+.footer{
+    width:min(1180px,calc(100% - 32px));
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.footer-links{
+    display:flex;
+    gap:18px;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .editor-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .hero{
+        padding-top:55px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .workspace-card{
+        padding:12px;
+    }
+
+    .panel{
+        padding:14px;
+    }
+
+    textarea,
+    .output{
+        min-height:340px;
+    }
+
+    .info-card{
+        padding:22px;
+    }
+
+    .footer{
+        flex-direction:column;
+        gap:14px;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — Clean and readable SQL queries instantly.
+</div>
+
+<header class="navbar">
+
+<div class="nav">
+
+    <a href="index.html" class="logo">
+        <span class="logo-box">S</span>
+        SmartTools
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="index.html#tools">Tools</a>
+
+        <a href="guides.html">Guides</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="data-analyst.html" class="nav-cta">
+            Data Tools
+        </a>
+
+    </nav>
+
+</div>
+
+</header>
+
+
+<main>
+
+<section class="hero">
+
+    <div class="badge">
+        <span class="dot"></span>
+        SQL FORMATTER & BEAUTIFIER
+    </div>
+
+    <h1>
+        Format SQL.<br>
+        Read Queries Faster.
+    </h1>
+
+    <p>
+        Beautify SQL queries into a clean readable structure.
+        Format SELECT, INSERT, UPDATE, DELETE, JOIN, WHERE,
+        GROUP BY, ORDER BY and more directly in your browser.
+    </p>
+
+</section>
+
+
+<section class="workspace">
+
+<div class="workspace-card">
+
+<div class="editor-grid">
+
+<div class="panel">
+
+    <div class="panel-head">
+
+        <h2>SQL Input</h2>
+
+        <span>Paste your query</span>
+
+    </div>
+
+    <textarea
+        id="sqlInput"
+        spellcheck="false"
+        placeholder="SELECT users.name, orders.total FROM users JOIN orders ON users.id = orders.user_id WHERE orders.total > 1000 ORDER BY orders.total DESC;"></textarea>
+
+    <div class="actions">
+
+        <button
+            class="primary"
+            onclick="formatSQL()">
+            ✨ Format SQL
+        </button>
+
+        <button
+            onclick="minifySQL()">
+            🗜 Minify
+        </button>
+
+        <button
+            class="green"
+            onclick="checkSQL()">
+            ✓ Check Query
+        </button>
+
+        <button
+            onclick="loadSample()">
+            Sample
+        </button>
+
+        <button
+            class="red"
+            onclick="clearAll()">
+            Clear
+        </button>
+
+    </div>
+
+    <div id="status" class="status">
+
+        <span class="status-dot"></span>
+
+        <span>Ready</span>
+
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+    <div class="panel-head">
+
+        <h2>Formatted SQL</h2>
+
+        <span>Result</span>
+
+    </div>
+
+    <div class="output">
+
+        <pre id="output">Your formatted SQL will appear here.</pre>
+
+    </div>
+
+    <div class="actions">
+
+        <button
+            class="primary"
+            onclick="copyOutput()">
+            📋 Copy
+        </button>
+
+        <button
+            onclick="downloadSQL()">
+            ↓ Download
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<div class="stats">
+
+    <div class="stat">
+
+        <div class="stat-label">
+            STATEMENT
+        </div>
+
+        <div
+            class="stat-value"
+            id="statType">
+            —
+        </div>
+
+    </div>
+
+    <div class="stat">
+
+        <div class="stat-label">
+            KEYWORDS
+        </div>
+
+        <div
+            class="stat-value"
+            id="statKeywords">
+            0
+        </div>
+
+    </div>
+
+    <div class="stat">
+
+        <div class="stat-label">
+            LINES
+        </div>
+
+        <div
+            class="stat-value"
+            id="statLines">
+            0
+        </div>
+
+    </div>
+
+    <div class="stat">
+
+        <div class="stat-label">
+            CHARACTERS
+        </div>
+
+        <div
+            class="stat-value"
+            id="statChars">
+            0
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="info">
+
+<div class="info-card">
+
+    <h2>
+        Free SQL Formatter Online
+    </h2>
+
+    <p>
+        SmartTools SQL Formatter is a browser-based utility
+        for developers, students, analysts and database users
+        who want cleaner and easier-to-read SQL queries.
+    </p>
+
+
+    <h3>
+        SQL Query Formatting
+    </h3>
+
+    <p>
+        The formatter separates common SQL clauses such as
+        SELECT, FROM, JOIN, WHERE, GROUP BY, HAVING,
+        ORDER BY and LIMIT onto readable lines.
+    </p>
+
+
+    <h3>
+        SQL Minification
+    </h3>
+
+    <p>
+        Minification removes unnecessary whitespace and
+        converts a formatted query into a compact single-line
+        representation.
+    </p>
+
+
+    <h3>
+        Query Checking
+    </h3>
+
+    <p>
+        The checker performs basic client-side checks for
+        common SQL structure and can identify empty queries,
+        unbalanced parentheses and several common formatting
+        problems. It is not a replacement for a database
+        engine.
+    </p>
+
+
+    <h3>
+        Browser-Based Processing
+    </h3>
+
+    <p>
+        Your query is processed directly in your browser.
+        No database connection is required to format or
+        minify a query.
+    </p>
+
+
+    <div class="faq">
+
+        <details>
+
+            <summary>
+                What is an SQL formatter?
+            </summary>
+
+            <p>
+                An SQL formatter reorganizes a SQL query with
+                indentation, spacing and line breaks so that
+                the query is easier to read.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Can this tool execute SQL?
+            </summary>
+
+            <p>
+                No. This tool formats and performs basic
+                client-side checks. It does not execute queries
+                against a database.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Can I minify SQL?
+            </summary>
+
+            <p>
+                Yes. The Minify button removes unnecessary
+                whitespace while preserving the query text.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Is my SQL uploaded to a server?
+            </summary>
+
+            <p>
+                Formatting is performed in your browser and
+                does not require a server-side SQL database.
+            </p>
+
+        </details>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div class="footer">
+
+    <div>
+        © 2026 SmartTools. Built for productivity.
+    </div>
+
+    <div class="footer-links">
+
+        <a href="data-analyst.html">
+            Data Tools
+        </a>
+
+        <a href="privacy-policy.html">
+            Privacy
+        </a>
+
+        <a href="terms.html">
+            Terms
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+const sqlInput =
+document.getElementById("sqlInput");
+
+const output =
+document.getElementById("output");
+
+
+/* FORMAT SQL */
+
+function formatSQL(){
+
+    let sql =
+    sqlInput.value.trim();
+
+    if(!sql){
+
+        setStatus(
+            "Please enter an SQL query first.",
+            true
+        );
+
+        return;
+    }
+
+
+    sql = cleanSpaces(sql);
+
+
+    /*
+       Put major SQL clauses on new lines.
+    */
+
+    const clauses = [
+        "SELECT",
+        "FROM",
+        "INNER JOIN",
+        "LEFT JOIN",
+        "RIGHT JOIN",
+        "FULL OUTER JOIN",
+        "FULL JOIN",
+        "CROSS JOIN",
+        "JOIN",
+        "WHERE",
+        "GROUP BY",
+        "HAVING",
+        "ORDER BY",
+        "LIMIT",
+        "OFFSET",
+        "UNION ALL",
+        "UNION",
+        "EXCEPT",
+        "INTERSECT",
+        "SET",
+        "VALUES",
+        "RETURNING"
+    ];
+
+
+    clauses.forEach(
+        clause => {
+
+            const regex =
+            new RegExp(
+                "\\s+" +
+                clause
+                .replace(
+                    / /g,
+                    "\\s+"
+                ) +
+                "\\b",
+                "gi"
+            );
+
+            sql =
+            sql.replace(
+                regex,
+                "\n" + clause
+            );
+
+        }
+    );
+
+
+    /*
+       Commas in SELECT lists.
+    */
+
+    if(
+        /^SELECT\b/i.test(sql)
+    ){
+
+        const lines =
+        sql.split("\n");
+
+
+        if(lines.length){
+
+            lines[0] =
+            lines[0].replace(
+                /^SELECT\s+/i,
+                "SELECT\n    "
+            );
+
+
+            for(
+                let i=1;
+                i<lines.length;
+                i++
+            ){
+
+                if(
+                    !/^(FROM|INNER|LEFT|RIGHT|FULL|CROSS|JOIN|WHERE|GROUP|HAVING|ORDER|LIMIT|OFFSET|UNION|EXCEPT|INTERSECT|SET|VALUES|RETURNING)\b/i
+                    .test(lines[i].trim())
+                ){
+
+                    lines[i] =
+                    "    " +
+                    lines[i].trim();
+
+                }
+
+            }
+
+            sql =
+            lines.join("\n");
+
+        }
+
+    }
+
+
+    /*
+       Format SET assignments.
+    */
+
+    sql =
+    sql.replace(
+        /\s*,\s*/g,
+        ",\n    "
+    );
+
+
+    /*
+       Basic indentation.
+    */
+
+    sql =
+    sql
+    .split("\n")
+    .map(
+        line => {
+
+            line =
+            line.trim();
+
+            return line;
+
+        }
+    )
+    .filter(
+        line => line
+    )
+    .join("\n");
+
+
+    output.textContent =
+    sql;
+
+
+    sqlInput.value =
+    sql;
+
+
+    updateStats(sql);
+
+
+    setStatus(
+        "SQL formatted successfully.",
+        false,
+        true
+    );
+
+}
+
+
+/* CLEAN SPACES */
+
+function cleanSpaces(sql){
+
+    /*
+       Protect quoted strings approximately
+       by temporarily replacing whitespace inside
+       simple quotes.
+    */
+
+    const strings = [];
+
+    sql =
+    sql.replace(
+        /'(?:''|[^'])*'/g,
+        match => {
+
+            const id =
+            "__SQL_STRING_" +
+            strings.length +
+            "__";
+
+            strings.push(match);
+
+            return id;
+
+        }
+    );
+
+
+    sql =
+    sql.replace(
+        /\s+/g,
+        " "
+    );
+
+
+    sql =
+    sql.replace(
+        /\s*;\s*$/,
+        ";"
+    );
+
+
+    strings.forEach(
+        (value,index) => {
+
+            sql =
+            sql.replace(
+                "__SQL_STRING_" + index + "__",
+                value
+            );
+
+        }
+    );
+
+
+    return sql.trim();
+
+}
+
+
+/* MINIFY */
+
+function minifySQL(){
+
+    let sql =
+    sqlInput.value.trim();
+
+    if(!sql){
+
+        setStatus(
+            "Please enter an SQL query first.",
+            true
+        );
+
+        return;
+    }
+
+
+    sql =
+    cleanSpaces(sql);
+
+
+    sql =
+    sql.replace(
+        /\s*;\s*/g,
+        ";"
+    );
+
+
+    output.textContent =
+    sql;
+
+
+    sqlInput.value =
+    sql;
+
+
+    updateStats(sql);
+
+
+    setStatus(
+        "SQL minified successfully.",
+        false,
+        true
+    );
+
+}
+
+
+/* BASIC CHECK */
+
+function checkSQL(){
+
+    const sql =
+    sqlInput.value.trim();
+
+
+    if(!sql){
+
+        setStatus(
+            "Query is empty.",
+            true
+        );
+
+        return;
+    }
+
+
+    const errors = [];
+
+
+    /*
+       Parentheses check
+    */
+
+    let balance = 0;
+
+    for(
+        const char of sql
+    ){
+
+        if(char === "("){
+            balance++;
+        }
+
+        if(char === ")"){
+            balance--;
+        }
+
+        if(balance < 0){
+            break;
+        }
+
+    }
+
+
+    if(balance !== 0){
+
+        errors.push(
+            "Unbalanced parentheses."
+        );
+
+    }
+
+
+    /*
+       Basic SQL statement check
+    */
+
+    const validStart =
+    /^(SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|WITH|MERGE|TRUNCATE)\b/i;
+
+
+    if(!validStart.test(sql)){
+
+        errors.push(
+            "The query does not start with a commonly supported SQL statement."
+        );
+
+    }
+
+
+    /*
+       Basic SELECT check
+    */
+
+    if(
+        /^SELECT\b/i.test(sql) &&
+        !/\bFROM\b/i.test(sql)
+    ){
+
+        errors.push(
+            "SELECT query appears to be missing FROM."
+        );
+
+    }
+
+
+    if(errors.length){
+
+        output.textContent =
+        errors
+        .map(
+            item => "⚠ " + item
+        )
+        .join("\n");
+
+
+        updateStats(sql);
+
+
+        setStatus(
+            errors.join(" "),
+            true
+        );
+
+        return;
+    }
+
+
+    output.textContent =
+    formatForCheck(sql);
+
+
+    updateStats(sql);
+
+
+    setStatus(
+        "Basic SQL structure looks valid.",
+        false,
+        true
+    );
+
+}
+
+
+/* FORMAT WITHOUT CHANGING INPUT */
+
+function formatForCheck(sql){
+
+    const original =
+    sqlInput.value;
+
+    let temp =
+    sqlInput.value;
+
+    sqlInput.value =
+    sql;
+
+    formatSQL();
+
+    const result =
+    output.textContent;
+
+    sqlInput.value =
+    temp;
+
+    return result;
+
+}
+
+
+/* STATS */
+
+function updateStats(sql){
+
+    const keywordList = [
+
+        "SELECT",
+        "FROM",
+        "WHERE",
+        "JOIN",
+        "INNER",
+        "LEFT",
+        "RIGHT",
+        "FULL",
+        "GROUP",
+        "BY",
+        "HAVING",
+        "ORDER",
+        "LIMIT",
+        "INSERT",
+        "INTO",
+        "VALUES",
+        "UPDATE",
+        "SET",
+        "DELETE",
+        "CREATE",
+        "ALTER",
+        "DROP",
+        "UNION",
+        "WITH"
+
+    ];
+
+
+    let count = 0;
+
+
+    keywordList.forEach(
+        keyword => {
+
+            const regex =
+            new RegExp(
+                "\\b" +
+                keyword +
+                "\\b",
+                "gi"
+            );
+
+            const matches =
+            sql.match(regex);
+
+            if(matches){
+                count += matches.length;
+            }
+
+        }
+    );
+
+
+    let type = "SQL";
+
+
+    const match =
+    sql.match(
+        /^(SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|WITH|MERGE|TRUNCATE)\b/i
+    );
+
+
+    if(match){
+        type =
+        match[1].toUpperCase();
+    }
+
+
+    document
+    .getElementById("statType")
+    .textContent =
+    type;
+
+
+    document
+    .getElementById("statKeywords")
+    .textContent =
+    count;
+
+
+    document
+    .getElementById("statLines")
+    .textContent =
+    sql
+    .split("\n")
+    .length;
+
+
+    document
+    .getElementById("statChars")
+    .textContent =
+    sql.length;
+
+}
+
+
+/* COPY */
+
+async function copyOutput(){
+
+    const text =
+    output.textContent;
+
+
+    if(
+        !text ||
+        text ===
+        "Your formatted SQL will appear here."
+    ){
+
+        setStatus(
+            "Format SQL first.",
+            true
+        );
+
+        return;
+    }
+
+
+    try{
+
+        await navigator
+        .clipboard
+        .writeText(text);
+
+
+        setStatus(
+            "SQL copied to clipboard.",
+            false,
+            true
+        );
+
+    }
+    catch(error){
+
+        setStatus(
+            "Copy failed. Please copy manually.",
+            true
+        );
+
+    }
+
+}
+
+
+/* DOWNLOAD */
+
+function downloadSQL(){
+
+    const text =
+    output.textContent;
+
+
+    if(
+        !text ||
+        text ===
+        "Your formatted SQL will appear here."
+    ){
+
+        setStatus(
+            "Format SQL first.",
+            true
+        );
+
+        return;
+    }
+
+
+    const blob =
+    new Blob(
+        [text],
+        {
+            type:"text/plain"
+        }
+    );
+
+
+    const url =
+    URL.createObjectURL(blob);
+
+
+    const link =
+    document.createElement("a");
+
+
+    link.href =
+    url;
+
+    link.download =
+    "smarttools-query.sql";
+
+
+    document
+    .body
+    .appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+
+    URL.revokeObjectURL(url);
+
+
+    setStatus(
+        "SQL file downloaded.",
+        false,
+        true
+    );
+
+}
+
+
+/* SAMPLE */
+
+function loadSample(){
+
+    const sample =
+`SELECT
+    customers.name,
+    customers.email,
+    orders.order_date,
+    orders.total
+FROM customers
+INNER JOIN orders
+    ON customers.id = orders.customer_id
+WHERE orders.total > 1000
+    AND orders.status = 'completed'
+GROUP BY
+    customers.name,
+    customers.email,
+    orders.order_date,
+    orders.total
+ORDER BY orders.total DESC
+LIMIT 20;`;
+
+
+    sqlInput.value =
+    sample;
+
+
+    formatSQL();
+
+}
+
+
+/* CLEAR */
+
+function clearAll(){
+
+    sqlInput.value = "";
+
+    output.textContent =
+    "Your formatted SQL will appear here.";
+
+
+    document
+    .getElementById("statType")
+    .textContent =
+    "—";
+
+
+    document
+    .getElementById("statKeywords")
+    .textContent =
+    "0";
+
+
+    document
+    .getElementById("statLines")
+    .textContent =
+    "0";
+
+
+    document
+    .getElementById("statChars")
+    .textContent =
+    "0";
+
+
+    setStatus(
+        "Ready.",
+        false
+    );
+
+}
+
+
+/* STATUS */
+
+function setStatus(
+    message,
+    error=false,
+    success=false
+){
+
+    const status =
+    document.getElementById("status");
+
+
+    status.className =
+    "status " +
+    (
+        error
+        ? "error"
+        : success
+        ? "success"
+        : ""
+    );
+
+
+    status
+    .querySelector(
+        "span:last-child"
+    )
+    .textContent =
+    message;
+
+}
+
+
+/* CTRL + ENTER */
+
+sqlInput.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            (event.ctrlKey ||
+             event.metaKey) &&
+            event.key === "Enter"
+        ){
+
+            event.preventDefault();
+
+            formatSQL();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

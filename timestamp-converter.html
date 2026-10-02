@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Timestamp Converter - Unix Timestamp Converter Online | SmartTools</title>
+
+    <meta name="description"
+          content="Convert Unix timestamps to readable dates and dates to Unix timestamps online. Supports seconds and milliseconds. Free Timestamp Converter by SmartTools.">
+
+    <meta name="keywords"
+          content="timestamp converter, Unix timestamp converter, epoch converter, Unix time, timestamp to date, date to timestamp">
+
+    <meta name="author" content="Sukanya Shahare">
+
+    <link rel="canonical" href="https://yourdomain.com/timestamp-converter.html">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(91, 76, 255, 0.18), transparent 30%),
+                radial-gradient(circle at top right, rgba(0, 210, 255, 0.12), transparent 25%),
+                #07111f;
+            color: #eef4ff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: #0b1626;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 9px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #b9c8dc;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            background: rgba(7,17,31,0.88);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #7c8cff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 26px;
+            color: #b9c8dc;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .hero {
+            max-width: 1000px;
+            margin: auto;
+            padding: 70px 20px 40px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: rgba(124,140,255,0.12);
+            border: 1px solid rgba(124,140,255,0.28);
+            color: #aeb8ff;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 6vw, 60px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #8795ff;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #9eb0c8;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px 70px;
+        }
+
+        .tool-card {
+            background: rgba(13, 28, 47, 0.88);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 24px;
+            padding: 26px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.28);
+        }
+
+        .converter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: #091728;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        .panel h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .panel-desc {
+            color: #8093ad;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 13px;
+            color: #aebdd0;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            width: 100%;
+            background: #050d17;
+            color: #eef4ff;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 13px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #7c8cff;
+            box-shadow: 0 0 0 3px rgba(124,140,255,0.10);
+        }
+
+        input[type="datetime-local"] {
+            color-scheme: dark;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            border-radius: 12px;
+            padding: 12px 17px;
+            font-weight: 700;
+            color: white;
+            background: #283954;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            background: #344a6d;
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #6878ff, #8b6cff);
+        }
+
+        .primary:hover {
+            background: linear-gradient(135deg, #7785ff, #997cff);
+        }
+
+        .success {
+            background: linear-gradient(135deg, #167d66, #229b7e);
+        }
+
+        .danger {
+            background: #54283a;
+        }
+
+        .result-box {
+            margin-top: 18px;
+            background: #050d17;
+            border: 1px solid rgba(124,140,255,0.16);
+            border-radius: 14px;
+            padding: 17px;
+        }
+
+        .result-label {
+            color: #8093ad;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .result-value {
+            font-family: Consolas, Monaco, monospace;
+            font-size: 18px;
+            color: #dce4ff;
+            word-break: break-word;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .stat {
+            padding: 17px;
+            background: #091728;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 15px;
+        }
+
+        .stat small {
+            display: block;
+            color: #8498b3;
+            margin-bottom: 4px;
+        }
+
+        .stat strong {
+            font-size: 18px;
+        }
+
+        .message {
+            display: none;
+            padding: 12px 14px;
+            margin-top: 18px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        .message.error {
+            display: block;
+            background: rgba(220,60,90,0.12);
+            border: 1px solid rgba(220,60,90,0.3);
+            color: #ff9caf;
+        }
+
+        .message.success-message {
+            display: block;
+            background: rgba(40,180,130,0.10);
+            border: 1px solid rgba(40,180,130,0.28);
+            color: #7ee4c0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 22px;
+            margin-top: 28px;
+        }
+
+        .info-card {
+            background: rgba(13,28,47,0.72);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .info-card h2 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .info-card h3 {
+            font-size: 17px;
+            margin: 20px 0 8px;
+        }
+
+        .info-card p,
+        .info-card li {
+            color: #98aac1;
+            font-size: 14px;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+        }
+
+        .code-example {
+            margin-top: 14px;
+            padding: 15px;
+            background: #050d17;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 12px;
+            font-family: Consolas, Monaco, monospace;
+            color: #b9c7df;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+
+        .faq {
+            margin-top: 28px;
+        }
+
+        details {
+            background: rgba(13,28,47,0.72);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            margin-bottom: 10px;
+            padding: 15px 17px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            color: #98aac1;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 28px 20px;
+            text-align: center;
+            color: #778ba6;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+
+            .converter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .hero {
+                padding-top: 48px;
+            }
+
+            .tool-card {
+                padding: 17px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        SmartTools — simple tools for everyday needs.
+    </div>
+
+    <nav class="navbar">
+
+        <div class="nav-inner">
+
+            <a href="index.html" class="logo">
+                Smart<span>Tools</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="data-analyst.html">Data Analyst</a>
+                <a href="ai-tools.html">AI Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <header class="hero">
+
+        <div class="badge">
+            ⏱️ Developer Tool
+        </div>
+
+        <h1>
+            Timestamp <span>Converter</span>
+        </h1>
+
+        <p>
+            Convert Unix timestamps to readable dates and convert
+            dates back into Unix timestamps in seconds or milliseconds.
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="tool-card">
+
+            <div class="converter-grid">
+
+                <!-- TIMESTAMP TO DATE -->
+
+                <div class="panel">
+
+                    <h2>
+                        Timestamp → Date
+                    </h2>
+
+                    <p class="panel-desc">
+                        Convert Unix / Epoch timestamp into a readable date.
+                    </p>
+
+                    <div class="field">
+
+                        <label for="timestampInput">
+                            Unix Timestamp
+                        </label>
+
+                        <input
+                            type="text"
+                            id="timestampInput"
+                            placeholder="Example: 1770000000"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="timestampUnit">
+                            Timestamp Unit
+                        </label>
+
+                        <select id="timestampUnit">
+
+                            <option value="auto">
+                                Auto Detect
+                            </option>
+
+                            <option value="seconds">
+                                Seconds
+                            </option>
+
+                            <option value="milliseconds">
+                                Milliseconds
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="buttons">
+
+                        <button
+                            class="primary"
+                            onclick="timestampToDate()"
+                        >
+                            Convert to Date
+                        </button>
+
+                        <button
+                            onclick="setCurrentTimestamp()"
+                        >
+                            Current Time
+                        </button>
+
+                    </div>
+
+
+                    <div class="result-box">
+
+                        <div class="result-label">
+                            Local Date & Time
+                        </div>
+
+                        <div
+                            class="result-value"
+                            id="dateResult"
+                        >
+                            —
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-box">
+
+                        <div class="result-label">
+                            ISO 8601
+                        </div>
+
+                        <div
+                            class="result-value"
+                            id="isoResult"
+                        >
+                            —
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DATE TO TIMESTAMP -->
+
+                <div class="panel">
+
+                    <h2>
+                        Date → Timestamp
+                    </h2>
+
+                    <p class="panel-desc">
+                        Convert a date and time into Unix / Epoch timestamps.
+                    </p>
+
+
+                    <div class="field">
+
+                        <label for="dateInput">
+                            Date & Time
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            id="dateInput"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="outputUnit">
+                            Output Unit
+                        </label>
+
+                        <select id="outputUnit">
+
+                            <option value="seconds">
+                                Seconds
+                            </option>
+
+                            <option value="milliseconds">
+                                Milliseconds
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="buttons">
+
+                        <button
+                            class="primary"
+                            onclick="dateToTimestamp()"
+                        >
+                            Convert to Timestamp
+                        </button>
+
+                        <button
+                            onclick="setNowDate()"
+                        >
+                            Use Current Time
+                        </button>
+
+                    </div>
+
+
+                    <div class="result-box">
+
+                        <div class="result-label">
+                            Unix Timestamp
+                        </div>
+
+                        <div
+                            class="result-value"
+                            id="timestampResult"
+                        >
+                            —
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-box">
+
+                        <div class="result-label">
+                            UTC Date
+                        </div>
+
+                        <div
+                            class="result-value"
+                            id="utcResult"
+                        >
+                            —
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button
+                    onclick="copyAllResults()"
+                >
+                    📋 Copy Results
+                </button>
+
+                <button
+                    class="danger"
+                    onclick="clearAll()"
+                >
+                    ✕ Clear
+                </button>
+
+            </div>
+
+
+            <div id="message" class="message"></div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <small>
+                        Current Unix Seconds
+                    </small>
+
+                    <strong id="currentSeconds">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Current Unix Milliseconds
+                    </small>
+
+                    <strong id="currentMilliseconds">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Browser Timezone
+                    </small>
+
+                    <strong id="timezoneStat">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        UTC Offset
+                    </small>
+
+                    <strong id="offsetStat">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="content-grid">
+
+            <article class="info-card">
+
+                <h2>
+                    What is a Unix Timestamp?
+                </h2>
+
+                <p>
+                    A Unix timestamp represents a point in time as the number
+                    of seconds or milliseconds elapsed since the Unix epoch:
+                    January 1, 1970 at 00:00:00 UTC.
+                </p>
+
+                <h3>
+                    Seconds Example
+                </h3>
+
+                <div class="code-example">
+                    1770000000
+                </div>
+
+                <h3>
+                    Milliseconds Example
+                </h3>
+
+                <div class="code-example">
+                    1770000000000
+                </div>
+
+                <h3>
+                    Common Uses
+                </h3>
+
+                <ul>
+                    <li>API timestamps</li>
+                    <li>Database records</li>
+                    <li>JavaScript applications</li>
+                    <li>Server logs</li>
+                    <li>Data analysis</li>
+                    <li>Event tracking</li>
+                </ul>
+
+            </article>
+
+
+            <article class="info-card">
+
+                <h2>
+                    Timestamp Units
+                </h2>
+
+                <h3>
+                    Seconds
+                </h3>
+
+                <p>
+                    Unix timestamps are commonly represented as
+                    whole seconds, for example:
+                </p>
+
+                <div class="code-example">
+                    1770000000
+                </div>
+
+                <h3>
+                    Milliseconds
+                </h3>
+
+                <p>
+                    JavaScript Date objects use milliseconds internally:
+                </p>
+
+                <div class="code-example">
+                    1770000000000
+                </div>
+
+                <h3>
+                    Auto Detection
+                </h3>
+
+                <p>
+                    Auto Detect estimates whether the supplied timestamp
+                    is in seconds or milliseconds based on its magnitude.
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <section class="faq">
+
+            <h2 style="margin-bottom:15px;">
+                Frequently Asked Questions
+            </h2>
+
+
+            <details>
+
+                <summary>
+                    What is an epoch timestamp?
+                </summary>
+
+                <p>
+                    It is a numeric representation of time measured from
+                    the Unix epoch, January 1, 1970 UTC.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    What is the difference between seconds and milliseconds?
+                </summary>
+
+                <p>
+                    A millisecond is one thousandth of a second.
+                    Therefore a Unix timestamp in milliseconds is generally
+                    about 1,000 times larger than the equivalent timestamp
+                    in seconds.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Does the converter use my computer's timezone?
+                </summary>
+
+                <p>
+                    The local date result uses your browser's local timezone.
+                    The ISO and UTC results provide UTC-based representations.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Can I convert a date back to Unix time?
+                </summary>
+
+                <p>
+                    Yes. Select a date and time and choose seconds or
+                    milliseconds as the output unit.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Is my timestamp sent to a server?
+                </summary>
+
+                <p>
+                    No. The calculations happen directly in your browser.
+                </p>
+
+            </details>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        © 2026 SmartTools · Built by Sukanya Shahare
+    </footer>
+
+
+<script>
+
+function timestampToDate() {
+
+    const input =
+        document.getElementById("timestampInput")
+            .value
+            .trim();
+
+    if (!input) {
+
+        showMessage(
+            "Please enter a Unix timestamp.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if (!/^-?\d+(\.\d+)?$/.test(input)) {
+
+        showMessage(
+            "Please enter a valid numeric timestamp.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    let timestamp =
+        Number(input);
+
+
+    if (!Number.isFinite(timestamp)) {
+
+        showMessage(
+            "Timestamp is too large or invalid.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const unit =
+        document.getElementById("timestampUnit")
+            .value;
+
+
+    if (
+        unit === "seconds" ||
+        (
+            unit === "auto" &&
+            Math.abs(timestamp) < 100000000000
+        )
+    ) {
+
+        timestamp *= 1000;
+
+    }
+
+
+    const date =
+        new Date(timestamp);
+
+
+    if (isNaN(date.getTime())) {
+
+        showMessage(
+            "Unable to convert this timestamp.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    document.getElementById("dateResult")
+        .textContent =
+        date.toLocaleString();
+
+
+    document.getElementById("isoResult")
+        .textContent =
+        date.toISOString();
+
+
+    showMessage(
+        "Timestamp converted successfully.",
+        "success-message"
+    );
+
+}
+
+
+function dateToTimestamp() {
+
+    const input =
+        document.getElementById("dateInput")
+            .value;
+
+
+    if (!input) {
+
+        showMessage(
+            "Please select a date and time.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const date =
+        new Date(input);
+
+
+    if (isNaN(date.getTime())) {
+
+        showMessage(
+            "Invalid date and time.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const milliseconds =
+        date.getTime();
+
+
+    const unit =
+        document.getElementById("outputUnit")
+            .value;
+
+
+    const timestamp =
+        unit === "seconds"
+            ? Math.floor(milliseconds / 1000)
+            : milliseconds;
+
+
+    document.getElementById("timestampResult")
+        .textContent =
+        timestamp;
+
+
+    document.getElementById("utcResult")
+        .textContent =
+        date.toUTCString();
+
+
+    showMessage(
+        "Date converted successfully.",
+        "success-message"
+    );
+
+}
+
+
+function setCurrentTimestamp() {
+
+    const now =
+        Date.now();
+
+
+    document.getElementById("timestampInput")
+        .value =
+        Math.floor(now / 1000);
+
+
+    document.getElementById("timestampUnit")
+        .value =
+        "seconds";
+
+
+    timestampToDate();
+
+}
+
+
+function setNowDate() {
+
+    const now =
+        new Date();
+
+
+    const year =
+        now.getFullYear();
+
+
+    const month =
+        String(
+            now.getMonth() + 1
+        ).padStart(2, "0");
+
+
+    const day =
+        String(
+            now.getDate()
+        ).padStart(2, "0");
+
+
+    const hours =
+        String(
+            now.getHours()
+        ).padStart(2, "0");
+
+
+    const minutes =
+        String(
+            now.getMinutes()
+        ).padStart(2, "0");
+
+
+    document.getElementById("dateInput")
+        .value =
+        `${year}-${month}-${day}T${hours}:${minutes}`;
+
+
+    dateToTimestamp();
+
+}
+
+
+function updateCurrentStats() {
+
+    const now =
+        Date.now();
+
+
+    document.getElementById("currentSeconds")
+        .textContent =
+        Math.floor(now / 1000);
+
+
+    document.getElementById("currentMilliseconds")
+        .textContent =
+        now;
+
+
+    const timezone =
+        Intl.DateTimeFormat()
+            .resolvedOptions()
+            .timeZone;
+
+
+    document.getElementById("timezoneStat")
+        .textContent =
+        timezone || "Local";
+
+
+    const offset =
+        -new Date().getTimezoneOffset();
+
+
+    const sign =
+        offset >= 0 ? "+" : "-";
+
+
+    const absolute =
+        Math.abs(offset);
+
+
+    const hours =
+        String(
+            Math.floor(absolute / 60)
+        ).padStart(2, "0");
+
+
+    const minutes =
+        String(
+            absolute % 60
+        ).padStart(2, "0");
+
+
+    document.getElementById("offsetStat")
+        .textContent =
+        `UTC${sign}${hours}:${minutes}`;
+
+}
+
+
+function copyAllResults() {
+
+    const dateResult =
+        document.getElementById("dateResult")
+            .textContent;
+
+    const isoResult =
+        document.getElementById("isoResult")
+            .textContent;
+
+    const timestampResult =
+        document.getElementById("timestampResult")
+            .textContent;
+
+    const utcResult =
+        document.getElementById("utcResult")
+            .textContent;
+
+
+    const text =
+`Timestamp Converter Results
+
+Local Date & Time:
+${dateResult}
+
+ISO 8601:
+${isoResult}
+
+Unix Timestamp:
+${timestampResult}
+
+UTC Date:
+${utcResult}`;
+
+
+    navigator.clipboard.writeText(text)
+        .then(() => {
+
+            showMessage(
+                "Results copied to clipboard.",
+                "success-message"
+            );
+
+        });
+
+}
+
+
+function clearAll() {
+
+    document.getElementById("timestampInput")
+        .value = "";
+
+    document.getElementById("dateInput")
+        .value = "";
+
+    document.getElementById("dateResult")
+        .textContent = "—";
+
+    document.getElementById("isoResult")
+        .textContent = "—";
+
+    document.getElementById("timestampResult")
+        .textContent = "—";
+
+    document.getElementById("utcResult")
+        .textContent = "—";
+
+
+    document.getElementById("message")
+        .className = "message";
+
+}
+
+
+function showMessage(text, type) {
+
+    const box =
+        document.getElementById("message");
+
+
+    box.textContent =
+        text;
+
+
+    box.className =
+        "message " + type;
+
+}
+
+
+updateCurrentStats();
+
+
+setInterval(
+    updateCurrentStats,
+    1000
+);
+
+</script>
+
+</body>
+</html>

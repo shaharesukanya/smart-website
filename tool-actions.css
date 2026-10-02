@@ -1,0 +1,266 @@
+/* =========================================================
+   SMARTTOOLS - RESULT ACTIONS
+   Copy Result • Share Result • Print Result
+========================================================= */
+
+.smart-result-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 14px;
+    padding: 13px;
+
+    border: 1px solid #e6e8ef;
+    border-radius: 14px;
+
+    background: #fbfcff;
+}
+
+
+/* BUTTON */
+
+.smart-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 40px;
+
+    padding: 9px 14px;
+
+    border: 1px solid #dfe3eb;
+    border-radius: 10px;
+
+    background: #ffffff;
+    color: #394150;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        color 0.18s ease;
+}
+
+
+/* HOVER */
+
+.smart-action:hover:not(:disabled) {
+    transform: translateY(-1px);
+
+    border-color: #c8c5fb;
+
+    color: #5146db;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 18px rgba(16, 24, 40, 0.06);
+}
+
+
+/* PRIMARY */
+
+.smart-action.smart-primary {
+    border-color: transparent;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #584df4,
+            #7353ee
+        );
+
+    box-shadow:
+        0 8px 18px rgba(88, 77, 244, 0.17);
+}
+
+
+.smart-action.smart-primary:hover:not(:disabled) {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4b40df,
+            #6647de
+        );
+
+    box-shadow:
+        0 11px 23px rgba(88, 77, 244, 0.22);
+}
+
+
+/* DISABLED */
+
+.smart-action:disabled {
+    opacity: 0.48;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* STATUS */
+
+.smart-action-status {
+    display: flex;
+    align-items: center;
+
+    min-height: 18px;
+
+    margin-left: auto;
+
+    color: #7d8798;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.smart-action-status.success {
+    color: #0b9b6c;
+}
+
+
+/* PRINT-ONLY AREA */
+
+.smart-print-summary {
+    display: none;
+}
+
+
+/* ================================================
+   MOBILE
+================================================ */
+
+@media (max-width: 640px) {
+
+    .smart-result-actions {
+        align-items: stretch;
+    }
+
+
+    .smart-result-actions .smart-action {
+        flex:
+            1 1
+            calc(50% - 5px);
+    }
+
+
+    .smart-action-status {
+        width: 100%;
+
+        margin-left: 0;
+
+        justify-content: center;
+
+        text-align: center;
+    }
+}
+
+
+/* ================================================
+   PRINT
+================================================ */
+
+@media print {
+
+    body * {
+        visibility: hidden !important;
+    }
+
+
+    .smart-print-summary,
+    .smart-print-summary * {
+        visibility: visible !important;
+    }
+
+
+    .smart-print-summary {
+        display: block !important;
+
+        position: absolute;
+
+        left: 0;
+        top: 0;
+
+        width: 100%;
+
+        padding: 30px;
+
+        background: #ffffff;
+
+        color: #111827;
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+    }
+
+
+    .smart-print-summary h1 {
+        margin:
+            0 0 8px !important;
+
+        color: #111827 !important;
+
+        font-size: 28px !important;
+
+        line-height: 1.2 !important;
+    }
+
+
+    .smart-print-summary .smart-print-meta {
+        margin-bottom: 20px;
+
+        color: #667085;
+
+        font-size: 12px;
+
+        line-height: 1.5;
+    }
+
+
+    .smart-print-summary .smart-print-result {
+        padding: 18px;
+
+        border:
+            1px solid #dfe3eb;
+
+        border-radius: 12px;
+
+        background: #f8fafc;
+
+        color: #101828;
+
+        font-size: 15px;
+
+        line-height: 1.75;
+
+        white-space: pre-wrap;
+
+        overflow-wrap: anywhere;
+    }
+}

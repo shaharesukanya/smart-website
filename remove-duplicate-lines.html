@@ -1,811 +1,1909 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Remove Duplicate Lines Online | SmartTools</title>
+    <title>Remove Duplicate Lines - Clean Repeated Text | SmartTools</title>
 
     <meta name="description"
-        content="Free online duplicate line remover. Remove duplicate and repeated lines from your text quickly and easily with SmartTools.">
+        content="Free SmartTools Remove Duplicate Lines tool to quickly remove repeated lines from text while keeping your useful content clean and organized.">
 
     <meta name="keywords"
-        content="remove duplicate lines, duplicate remover, duplicate line remover, remove repeated lines">
+        content="remove duplicate lines, duplicate line remover, remove repeated lines, duplicate text remover, clean text online, SmartTools">
 
     <meta name="author" content="Sukanya Shahare">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="canonical"
+        href="https://shaharesukanya.github.io/smart-website/remove-duplicate-lines.html">
 
-<link rel="canonical" href="https://shaharesukanya.github.io/smart-website/remove-duplicate-lines.html">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#5b5ff5">
-<meta property="og:title" content="Remove Duplicate Lines Online | SmartTools">
-<meta property="og:description" content="Free online duplicate line remover. Remove duplicate and repeated lines from your text quickly and easily with SmartTools.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://shaharesukanya.github.io/smart-website/remove-duplicate-lines.html">
-<meta property="og:site_name" content="SmartTools">
-<meta name="twitter:card" content="summary">
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Remove Duplicate Lines Online | SmartTools",
-    "url": "https://shaharesukanya.github.io/smart-website/remove-duplicate-lines.html",
-    "description": "Free online duplicate line remover. Remove duplicate and repeated lines from your text quickly and easily with SmartTools.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "name": "SmartTools",
-        "url": "https://shaharesukanya.github.io/smart-website/"
-    }
-}
-</script>
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<!-- SMARTTOOLS_PHASE6_CSS_START -->
-<style>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE + MOBILE SAFETY
-========================================================= */
+    <meta name="theme-color" content="#10182f">
 
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
+    <style>
+        :root {
+            --purple: #6559ef;
+            --purple-dark: #5145d6;
+            --purple-light: #f1efff;
+            --navy: #10182f;
+            --text: #263247;
+            --muted: #7c879a;
+            --bg: #f7f8fc;
+            --white: #ffffff;
+            --border: #e1e5ee;
+            --green: #16c997;
+            --shadow: 0 18px 50px rgba(25, 35, 65, .08);
+        }
 
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-img,
-svg,
-video,
-canvas {
-    max-width: 100%;
-    height: auto;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-a,
-button,
-input,
-select,
-textarea {
-    touch-action: manipulation;
-}
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-button,
-.btn,
-input[type="submit"],
-input[type="button"] {
-    min-height: 44px;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-input,
-select,
-textarea {
-    max-width: 100%;
-    min-width: 0;
-}
+        button,
+        textarea {
+            font: inherit;
+        }
 
-input[type="number"],
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-    width: 100%;
-}
+        .container {
+            width: min(1160px, calc(100% - 40px));
+            margin: auto;
+        }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-span,
-li {
-    overflow-wrap: break-word;
-}
+        /* TOP BAR */
 
-table {
-    width: 100%;
-    max-width: 100%;
-    border-collapse: collapse;
-}
+        .topbar {
+            background: var(--navy);
+            color: #fff;
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .2px;
+        }
 
-.table-wrapper,
-.responsive-table {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
+        .topbar span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
 
-:focus-visible {
-    outline: 3px solid rgba(91,95,245,.35);
-    outline-offset: 3px;
-}
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 0 5px rgba(22, 201, 151, .12);
+            animation: pulse 2s infinite;
+        }
 
-@media (max-width: 900px) {
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
 
-    .hero-grid,
-    .content-grid,
-    .calculator-layout,
-    .tool-layout,
-    .feature-grid,
-    .founder-grid {
-        grid-template-columns: 1fr !important;
-    }
+            50% {
+                transform: scale(1.25);
+                opacity: .7;
+            }
+        }
 
-    .tools-grid,
-    .cards-grid,
-    .grid-4 {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
+        /* NAV */
 
-    .footer-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-}
+        header {
+            background: rgba(255, 255, 255, .96);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(14px);
+        }
 
-@media (max-width: 640px) {
+        .nav {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
 
-    html {
-        scroll-padding-top: 80px;
-    }
+        .logo {
+            font-size: 23px;
+            font-weight: 900;
+            color: var(--navy);
+            letter-spacing: -.7px;
+        }
 
-    body {
-        font-size: 15px;
-        line-height: 1.65;
-    }
+        .logo span {
+            color: var(--purple);
+        }
 
-    .container {
-        width: 92%;
-        max-width: 100%;
-    }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
 
-    h1 {
-        font-size:
-            clamp(34px, 10vw, 46px) !important;
-        line-height: 1.08 !important;
-        letter-spacing: -1.5px !important;
-    }
+        .nav-links a {
+            color: #526075;
+            font-size: 14px;
+            font-weight: 700;
+            transition: .2s ease;
+        }
 
-    h2 {
-        font-size:
-            clamp(27px, 7vw, 36px) !important;
-        line-height: 1.15 !important;
-    }
+        .nav-links a:hover {
+            color: var(--purple);
+        }
 
-    h3 {
-        font-size:
-            clamp(18px, 5vw, 22px);
-    }
+        .menu-btn {
+            display: none;
+            border: 0;
+            background: var(--purple-light);
+            color: var(--purple);
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 22px;
+        }
 
-    .header-inner {
-        min-height: 68px !important;
-        gap: 12px !important;
-    }
+        /* HERO */
 
-    .brand-name {
-        font-size: 21px !important;
-    }
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 74px 0 52px;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(101, 89, 239, .12), transparent 28%),
+                radial-gradient(circle at 90% 20%, rgba(81, 69, 214, .10), transparent 30%),
+                linear-gradient(180deg, #fff 0%, #f7f8fc 100%);
+        }
 
-    .brand-tagline {
-        font-size: 10px !important;
-    }
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(101, 89, 239, .12);
+            border-radius: 50%;
+            right: -120px;
+            top: -120px;
+        }
 
-    nav {
-        gap: 9px !important;
-    }
+        .breadcrumbs {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
 
-    nav a {
-        font-size: 12px !important;
-    }
+        .breadcrumbs a {
+            color: var(--purple);
+        }
 
-    .tools-grid,
-    .cards-grid,
-    .grid-4,
-    .feature-grid,
-    .info-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 1;
+        }
 
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        width: 100%;
-        max-width: 100%;
-    }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--purple-light);
+            color: var(--purple-dark);
+            border: 1px solid rgba(101, 89, 239, .14);
+            border-radius: 999px;
+            padding: 8px 13px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .4px;
+            margin-bottom: 18px;
+        }
 
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        min-height: 48px;
-    }
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--green);
+            border-radius: 50%;
+        }
 
-    textarea {
-        min-height: 130px;
-    }
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.03;
+            letter-spacing: -2.8px;
+            color: var(--navy);
+            margin-bottom: 18px;
+        }
 
-    .btn,
-    .submit-btn,
-    .calculate-btn,
-    .reset-btn,
-    .cta-btn,
-    button[type="submit"] {
-        width: 100%;
-        min-height: 48px;
-    }
+        .hero h1 span {
+            color: var(--purple);
+        }
 
-    .hero-actions,
-    .button-group,
-    .calculator-actions,
-    .form-actions {
-        flex-direction: column !important;
-        width: 100%;
-    }
+        .hero p {
+            max-width: 720px;
+            color: #69758a;
+            font-size: 18px;
+        }
 
-    .tool-search,
-    .search-box,
-    #toolSearch {
-        width: 100% !important;
-    }
+        /* MAIN TOOL */
 
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
+        .tool-section {
+            padding: 10px 0 70px;
+            position: relative;
+            z-index: 2;
+        }
 
-    .dashboard,
-    .hero-visual,
-    .hero-art,
-    .decorative-circle,
-    .floating-card {
-        max-width: 100% !important;
-    }
+        .tool-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
 
-    .section {
-        padding-top: 58px !important;
-        padding-bottom: 58px !important;
-    }
-}
+        .tool-accent {
+            height: 5px;
+            background: linear-gradient(90deg, var(--purple), #8d84ff);
+        }
 
-@media (max-width: 390px) {
+        .tool-inner {
+            padding: 32px;
+        }
 
-    .container {
-        width: 94%;
-    }
+        .tool-head {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 24px;
+        }
 
-    h1 {
-        font-size: 33px !important;
-    }
+        .tool-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: var(--purple-light);
+            display: grid;
+            place-items: center;
+            color: var(--purple);
+            font-size: 25px;
+            flex-shrink: 0;
+        }
 
-    h2 {
-        font-size: 26px !important;
-    }
+        .tool-head h2 {
+            color: var(--navy);
+            font-size: 24px;
+            line-height: 1.2;
+        }
 
-    .brand-name {
-        font-size: 19px !important;
-    }
+        .tool-head p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 3px;
+        }
 
-    .topbar-right {
-        display: none !important;
-    }
+        .editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
 
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        padding-left: 17px !important;
-        padding-right: 17px !important;
-    }
-}
+        .editor-box {
+            display: flex;
+            flex-direction: column;
+        }
 
-@media (prefers-reduced-motion: reduce) {
+        .editor-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 9px;
+        }
 
-    html {
-        scroll-behavior: auto;
-    }
+        .editor-label strong {
+            color: var(--navy);
+            font-size: 14px;
+        }
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-</style>
-<!-- SMARTTOOLS_PHASE6_CSS_END -->
+        .line-count {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 330px;
+            resize: vertical;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
+            outline: none;
+            background: #fbfcff;
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.65;
+            transition: .2s ease;
+        }
+
+        textarea:focus {
+            border-color: var(--purple);
+            box-shadow: 0 0 0 4px rgba(101, 89, 239, .09);
+            background: #fff;
+        }
+
+        .output-area {
+            background: #fbfcff;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .check-option {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 11px 14px;
+            background: #fafaff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: #526075;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .check-option input {
+            accent-color: var(--purple);
+            width: 16px;
+            height: 16px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 13px;
+            padding: 13px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 800;
+            transition: .2s ease;
+        }
+
+        .btn-primary {
+            background: var(--purple);
+            color: #fff;
+            box-shadow: 0 10px 24px rgba(101, 89, 239, .22);
+        }
+
+        .btn-primary:hover {
+            background: var(--purple-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--purple-light);
+            color: var(--purple-dark);
+        }
+
+        .btn-secondary:hover {
+            background: #e8e5ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: #fff;
+            color: #526075;
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--purple);
+            color: var(--purple);
+            transform: translateY(-2px);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .stat {
+            padding: 17px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            background: #fff;
+        }
+
+        .stat strong {
+            display: block;
+            color: var(--navy);
+            font-size: 23px;
+            margin-bottom: 2px;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .status {
+            margin-top: 18px;
+            padding: 12px 14px;
+            background: var(--purple-light);
+            border-radius: 12px;
+            color: var(--purple-dark);
+            font-size: 13px;
+            font-weight: 700;
+            display: none;
+        }
+
+        /* INFO */
+
+        .content-section {
+            padding: 20px 0 70px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 22px;
+        }
+
+        .info-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 10px 35px rgba(25, 35, 65, .05);
+        }
+
+        .info-card h2 {
+            color: var(--navy);
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .info-card h3 {
+            color: var(--navy);
+            font-size: 17px;
+            margin: 20px 0 7px;
+        }
+
+        .info-card p {
+            color: #68758a;
+            font-size: 15px;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .info-card li {
+            color: #68758a;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        .tip-box {
+            margin-top: 20px;
+            background: var(--purple-light);
+            border: 1px solid rgba(101, 89, 239, .13);
+            padding: 17px;
+            border-radius: 14px;
+        }
+
+        .tip-box strong {
+            color: var(--purple-dark);
+        }
+
+        /* FAQ */
+
+        .faq-section {
+            padding: 0 0 70px;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 30px;
+        }
+
+        .section-heading .small-badge {
+            display: inline-block;
+            color: var(--purple);
+            background: var(--purple-light);
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: .5px;
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            color: var(--navy);
+            font-size: 32px;
+            letter-spacing: -.8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        .faq-list {
+            max-width: 850px;
+            margin: auto;
+            display: grid;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            border: 0;
+            background: #fff;
+            padding: 19px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            cursor: pointer;
+            text-align: left;
+            color: var(--navy);
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .faq-plus {
+            color: var(--purple);
+            font-size: 22px;
+            transition: .2s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease;
+        }
+
+        .faq-answer p {
+            padding: 0 20px 19px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .faq-item.active .faq-plus {
+            transform: rotate(45deg);
+        }
+
+        /* RELATED */
+
+        .related-section {
+            padding: 0 0 75px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .related-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 20px;
+            transition: .25s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(101, 89, 239, .35);
+            box-shadow: 0 15px 35px rgba(25, 35, 65, .08);
+        }
+
+        .related-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: var(--purple-light);
+            display: grid;
+            place-items: center;
+            margin-bottom: 13px;
+            font-size: 20px;
+        }
+
+        .related-card h3 {
+            color: var(--navy);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .related-card p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .related-card a {
+            color: var(--purple);
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        /* CTA */
+
+        .cta-section {
+            padding: 0 0 75px;
+        }
+
+        .cta {
+            background:
+                radial-gradient(circle at 85% 20%, rgba(141, 132, 255, .28), transparent 25%),
+                linear-gradient(135deg, #10182f, #1c2550);
+            color: #fff;
+            border-radius: 25px;
+            padding: 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: auto;
+            color: rgba(255, 255, 255, .75);
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            margin-top: 22px;
+            background: #fff;
+            color: var(--purple-dark);
+            padding: 13px 21px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 900;
+            transition: .2s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--navy);
+            color: #fff;
+            padding: 48px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 35px;
+        }
+
+        .footer-brand h2 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand h2 span {
+            color: #8d84ff;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, .62);
+            font-size: 13px;
+            max-width: 320px;
+        }
+
+        .footer-col h3 {
+            font-size: 13px;
+            margin-bottom: 13px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255, 255, 255, .62);
+            font-size: 13px;
+            margin: 9px 0;
+            transition: .2s ease;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: 35px;
+            padding-top: 20px;
+            color: rgba(255, 255, 255, .5);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* ANIMATION */
+
+        .reveal {
+            animation: reveal .65s ease both;
+        }
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .editor-grid,
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1.5fr 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .container {
+                width: min(100% - 28px, 1160px);
+            }
+
+            .nav {
+                min-height: 64px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                left: 14px;
+                right: 14px;
+                top: 70px;
+                background: #fff;
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 15px;
+                box-shadow: var(--shadow);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 11px;
+                border-radius: 9px;
+            }
+
+            .nav-links a:hover {
+                background: var(--purple-light);
+            }
+
+            .hero {
+                padding: 52px 0 35px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.7px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .tool-inner {
+                padding: 20px;
+            }
+
+            textarea {
+                min-height: 250px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cta {
+                padding: 35px 22px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .topbar {
+                font-size: 11px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .tool-head h2 {
+                font-size: 20px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .options {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
-
-<header class="header">
-
-    <div class="logo">
-        SmartTools
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <span>
+            <span class="live-dot"></span>
+            SmartTools — Simple tools for everyday needs.
+        </span>
     </div>
 
 
-    <nav>
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container nav">
 
-        <a href="index.html">Home</a>
+            <a href="index.html" class="logo">
+                Smart<span>Tools</span>
+            </a>
 
-        <a href="index.html#tools">Tools</a>
-
-        <a href="index.html#guides">Guides</a>
-
-        <a href="index.html#about">About</a>
-
-    </nav>
-
-</header>
-
-
-
-<section class="tool-page-hero">
-
-    <div class="container">
-
-        <div class="badge">
-            Free Online Tool
-        </div>
-
-        <h1>Remove Duplicate Lines</h1>
-
-        <p>
-            Remove repeated and duplicate lines from your text
-            quickly and easily.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<section class="calculator-section">
-
-    <div class="container">
-
-        <div class="calculator-box">
-
-            <h2>Remove Duplicate Lines</h2>
-
-            <p>
-                Enter or paste your text below. Each line will be
-                checked for duplicates.
-            </p>
-
-
-            <label for="duplicateText">
-                Enter Your Text
-            </label>
-
-
-            <textarea
-                id="duplicateText"
-                rows="14"
-                placeholder="Enter one item per line..."
-                style="
-                    width:100%;
-                    box-sizing:border-box;
-                    padding:15px;
-                    border:1px solid #d7d9e8;
-                    border-radius:12px;
-                    font-size:16px;
-                    resize:vertical;
-                "
-            ></textarea>
-
-
-
-            <button
-                id="removeDuplicateButton"
-                class="tool-button"
-                type="button"
-                style="
-                    border:none;
-                    cursor:pointer;
-                    width:100%;
-                    margin-top:20px;
-                "
-            >
-                Remove Duplicate Lines
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+                ☰
             </button>
 
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html#tools">Tools</a>
+                <a href="index.html#guides">Guides</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+        </div>
+    </header>
 
 
-            <div
-                id="duplicateResult"
-                class="result"
-                style="
-                    margin-top:20px;
-                    white-space:pre-wrap;
-                    word-break:break-word;
-                "
-            >
-                <strong>
-                    Your cleaned text will appear here.
-                </strong>
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a>
+                &nbsp; / &nbsp;
+                <a href="index.html#tools">Tools</a>
+                &nbsp; / &nbsp;
+                Remove Duplicate Lines
+            </div>
+
+            <div class="hero-content reveal">
+
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    TEXT & PRODUCTIVITY TOOL
+                </div>
+
+                <h1>
+                    Remove Duplicate
+                    <span>Lines</span>
+                </h1>
+
+                <p>
+                    Clean repeated lines from your text in seconds.
+                    Paste your content, remove duplicates and copy the
+                    clean result instantly.
+                </p>
+
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
+    <!-- TOOL -->
+    <section class="tool-section">
 
-<section class="information-section">
+        <div class="container">
 
-    <div class="container">
+            <div class="tool-card reveal">
 
+                <div class="tool-accent"></div>
 
-        <h2>Remove Duplicate Lines Online</h2>
+                <div class="tool-inner">
 
-        <p>
-            SmartTools Duplicate Line Remover is a free online
-            tool that helps you clean text by removing repeated
-            lines. It is useful for lists, data, names, URLs,
-            keywords and other text.
-        </p>
+                    <div class="tool-head">
 
+                        <div class="tool-icon">
+                            🧹
+                        </div>
 
+                        <div>
+                            <h2>Duplicate Line Remover</h2>
+                            <p>
+                                Remove repeated lines while keeping the
+                                original order of your text.
+                            </p>
+                        </div>
 
-        <h2>How Does It Work?</h2>
-
-        <p>
-            The tool checks every line in your text and keeps
-            only the first occurrence of each line. Repeated
-            lines are automatically removed.
-        </p>
-
-
-
-        <h2>How to Use This Tool?</h2>
-
-        <p>
-            Paste your text into the box above and click
-            "Remove Duplicate Lines". The cleaned text will
-            appear below the button.
-        </p>
+                    </div>
 
 
+                    <div class="editor-grid">
 
-        <h2>Example</h2>
+                        <!-- INPUT -->
+                        <div class="editor-box">
 
-        <p>
-            If your text contains the same item multiple times,
-            the tool keeps one copy and removes the repeated
-            copies.
-        </p>
+                            <div class="editor-label">
 
-    </div>
+                                <strong>Your Text</strong>
 
-</section>
+                                <span class="line-count" id="inputCount">
+                                    0 lines
+                                </span>
+
+                            </div>
+
+                            <textarea
+                                id="inputText"
+                                placeholder="Paste your text here...
+
+Example:
+Apple
+Banana
+Apple
+Mango
+Banana
+Orange
+Mango"></textarea>
+
+                        </div>
 
 
+                        <!-- OUTPUT -->
+                        <div class="editor-box">
 
-<footer>
+                            <div class="editor-label">
 
-    <div class="footer-content">
+                                <strong>Clean Result</strong>
+
+                                <span class="line-count" id="outputCount">
+                                    0 lines
+                                </span>
+
+                            </div>
+
+                            <textarea
+                                id="outputText"
+                                class="output-area"
+                                placeholder="Your cleaned text will appear here..."
+                                readonly></textarea>
+
+                        </div>
+
+                    </div>
 
 
-        <div>
+                    <!-- OPTIONS -->
+                    <div class="options">
 
-            <h3>SmartTools</h3>
+                        <label class="check-option">
+                            <input
+                                type="checkbox"
+                                id="ignoreCase"
+                                checked>
+                            Ignore uppercase/lowercase differences
+                        </label>
 
-            <p>
-                Simple and useful online tools for everyday tasks.
-            </p>
+                        <label class="check-option">
+                            <input
+                                type="checkbox"
+                                id="trimLines"
+                                checked>
+                            Ignore extra spaces at line ends
+                        </label>
+
+                        <label class="check-option">
+                            <input
+                                type="checkbox"
+                                id="removeEmpty"
+                                checked>
+                            Remove empty lines
+                        </label>
+
+                    </div>
+
+
+                    <!-- ACTIONS -->
+                    <div class="actions">
+
+                        <button
+                            class="btn btn-primary"
+                            id="removeBtn">
+                            🧹 Remove Duplicates
+                        </button>
+
+                        <button
+                            class="btn btn-secondary"
+                            id="copyBtn">
+                            📋 Copy Result
+                        </button>
+
+                        <button
+                            class="btn btn-outline"
+                            id="clearBtn">
+                            ✕ Clear
+                        </button>
+
+                    </div>
+
+
+                    <!-- STATS -->
+                    <div class="stats">
+
+                        <div class="stat">
+                            <strong id="originalLines">0</strong>
+                            <span>Original Lines</span>
+                        </div>
+
+                        <div class="stat">
+                            <strong id="uniqueLines">0</strong>
+                            <span>Unique Lines</span>
+                        </div>
+
+                        <div class="stat">
+                            <strong id="removedLines">0</strong>
+                            <span>Duplicates Removed</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="status" id="status"></div>
+
+                </div>
+
+            </div>
 
         </div>
 
+    </section>
 
 
-        <div>
+    <!-- INFORMATION -->
+    <section class="content-section">
 
-            <h3>Quick Links</h3>
+        <div class="container">
 
-            <a href="index.html">Home</a>
+            <div class="content-grid">
 
-            <a href="index.html#tools">Tools</a>
+                <article class="info-card">
 
-            <a href="index.html#guides">Guides</a>
+                    <h2>Remove Duplicate Lines Online</h2>
 
-            <a href="index.html#about">About</a>
+                    <p>
+                        The SmartTools Duplicate Line Remover helps you
+                        clean lists, copied data, notes, names, URLs,
+                        keywords and other text containing repeated lines.
+                    </p>
+
+                    <h3>How it works</h3>
+
+                    <p>
+                        The tool checks every line of your text and keeps
+                        the first occurrence of each unique line. Repeated
+                        lines are removed while the original order is
+                        preserved.
+                    </p>
+
+                    <h3>Useful for</h3>
+
+                    <ul>
+                        <li>Cleaning copied lists</li>
+                        <li>Removing repeated names or items</li>
+                        <li>Cleaning keyword lists</li>
+                        <li>Organizing URLs or text data</li>
+                        <li>Preparing text for spreadsheets</li>
+                        <li>Cleaning notes and everyday text</li>
+                    </ul>
+
+                </article>
+
+
+                <aside class="info-card">
+
+                    <h2>Quick Tips</h2>
+
+                    <p>
+                        For the cleanest result, paste one item per line.
+                    </p>
+
+                    <div class="tip-box">
+                        <strong>Example</strong>
+
+                        <p style="margin-top:7px;">
+                            Apple<br>
+                            Banana<br>
+                            Apple<br>
+                            Mango
+                        </p>
+
+                        <p style="margin-top:10px;">
+                            Result:
+                        </p>
+
+                        <p>
+                            Apple<br>
+                            Banana<br>
+                            Mango
+                        </p>
+                    </div>
+
+                    <h3>Privacy</h3>
+
+                    <p>
+                        The tool processes your text directly in your
+                        browser. No account is required.
+                    </p>
+
+                </aside>
+
+            </div>
 
         </div>
 
+    </section>
 
 
-        <div>
+    <!-- FAQ -->
+    <section class="faq-section">
 
-            <h3>Legal</h3>
+        <div class="container">
 
-            <a href="privacy-policy.html">
-                Privacy Policy
-            </a>
+            <div class="section-heading">
 
-            <a href="terms.html">
-                Terms
-            </a>
+                <div class="small-badge">
+                    FAQ
+                </div>
 
-            <a href="contact.html">
-                Contact
-            </a>
+                <h2>Frequently Asked Questions</h2>
+
+                <p>
+                    Common questions about removing duplicate lines.
+                </p>
+
+            </div>
+
+
+            <div class="faq-list">
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        What does this tool do?
+                        <span class="faq-plus">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            It removes repeated lines from your text and
+                            keeps one copy of each unique line.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Does it keep the original order?
+                        <span class="faq-plus">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Yes. The first occurrence of each line is kept,
+                            so the order of unique lines remains unchanged.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Can it ignore uppercase and lowercase differences?
+                        <span class="faq-plus">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Yes. The "Ignore uppercase/lowercase differences"
+                            option allows lines such as "Apple" and "apple"
+                            to be treated as duplicates.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Can I remove empty lines too?
+                        <span class="faq-plus">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Yes. The Remove Empty Lines option is enabled
+                            by default and can be turned off if you want
+                            to preserve blank lines.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button class="faq-question">
+                        Is this tool free?
+                        <span class="faq-plus">+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Yes. SmartTools provides this duplicate line
+                            remover as a free online productivity tool.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
-
-    </div>
-
+    </section>
 
 
-    <div class="footer-bottom">
+    <!-- RELATED TOOLS -->
+    <section class="related-section">
 
-        © 2026 SmartTools. All rights reserved.
+        <div class="container">
 
-    </div>
+            <div class="section-heading">
 
-</footer>
+                <div class="small-badge">
+                    MORE TOOLS
+                </div>
 
+                <h2>Related SmartTools</h2>
 
+                <p>
+                    Explore other useful text and productivity tools.
+                </p>
 
-<script>
-
-document
-    .getElementById("removeDuplicateButton")
-    .addEventListener("click", function () {
-
-
-        const text =
-            document.getElementById("duplicateText").value;
-
-
-        const result =
-            document.getElementById("duplicateResult");
+            </div>
 
 
-        if (text.trim() === "") {
+            <div class="related-grid">
 
-            result.innerHTML =
-                "<strong>Please enter some text.</strong>";
+                <div class="related-card">
 
-            return;
+                    <div class="related-icon">📝</div>
 
+                    <h3>Word Counter</h3>
+
+                    <p>
+                        Count words and characters in your text.
+                    </p>
+
+                    <a href="word-counter.html">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+
+                <div class="related-card">
+
+                    <div class="related-icon">#</div>
+
+                    <h3>Character Counter</h3>
+
+                    <p>
+                        Count characters, words and lines.
+                    </p>
+
+                    <a href="character-counter.html">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+
+                <div class="related-card">
+
+                    <div class="related-icon">🔤</div>
+
+                    <h3>Case Converter</h3>
+
+                    <p>
+                        Change text into different letter cases.
+                    </p>
+
+                    <a href="case-converter.html">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+
+                <div class="related-card">
+
+                    <div class="related-icon">%</div>
+
+                    <h3>Percentage Calculator</h3>
+
+                    <p>
+                        Calculate percentages quickly and easily.
+                    </p>
+
+                    <a href="percentage-calculator.html">
+                        Open Calculator →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta-section">
+
+        <div class="container">
+
+            <div class="cta">
+
+                <h2>
+                    Simple tools. Better productivity.
+                </h2>
+
+                <p>
+                    Explore more free SmartTools calculators,
+                    converters and productivity tools.
+                </p>
+
+                <a href="index.html#tools" class="cta-btn">
+                    Explore All Tools →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <h2>
+                        Smart<span>Tools</span>
+                    </h2>
+
+                    <p>
+                        Simple, useful and easy-to-use online tools
+                        for everyday needs.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-col">
+
+                    <h3>Explore</h3>
+
+                    <a href="index.html">Home</a>
+                    <a href="index.html#tools">All Tools</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+
+                </div>
+
+
+                <div class="footer-col">
+
+                    <h3>Popular Tools</h3>
+
+                    <a href="emi-calculator.html">
+                        EMI Calculator
+                    </a>
+
+                    <a href="gst-calculator.html">
+                        GST Calculator
+                    </a>
+
+                    <a href="sip-calculator.html">
+                        SIP Calculator
+                    </a>
+
+                    <a href="percentage-calculator.html">
+                        Percentage Calculator
+                    </a>
+
+                </div>
+
+
+                <div class="footer-col">
+
+                    <h3>Legal</h3>
+
+                    <a href="privacy-policy.html">
+                        Privacy Policy
+                    </a>
+
+                    <a href="terms.html">
+                        Terms & Conditions
+                    </a>
+
+                    <a href="404.html">
+                        404
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright">
+                © 2026 SmartTools. Created by Sukanya Shahare.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        const inputText = document.getElementById("inputText");
+        const outputText = document.getElementById("outputText");
+
+        const inputCount = document.getElementById("inputCount");
+        const outputCount = document.getElementById("outputCount");
+
+        const originalLines = document.getElementById("originalLines");
+        const uniqueLines = document.getElementById("uniqueLines");
+        const removedLines = document.getElementById("removedLines");
+
+        const ignoreCase = document.getElementById("ignoreCase");
+        const trimLines = document.getElementById("trimLines");
+        const removeEmpty = document.getElementById("removeEmpty");
+
+        const removeBtn = document.getElementById("removeBtn");
+        const copyBtn = document.getElementById("copyBtn");
+        const clearBtn = document.getElementById("clearBtn");
+
+        const status = document.getElementById("status");
+
+
+        function getLines(text) {
+
+            if (!text) {
+                return [];
+            }
+
+            return text.replace(/\r\n/g, "\n").split("\n");
         }
 
 
-        const lines =
-            text.split(/\r?\n/);
+        function updateInputCount() {
+
+            const lines = getLines(inputText.value);
+
+            let count = 0;
+
+            if (inputText.value.trim() !== "") {
+                count = lines.length;
+            }
+
+            inputCount.textContent =
+                count + (count === 1 ? " line" : " lines");
+
+            originalLines.textContent = count;
+        }
 
 
-        const uniqueLines = [];
+        function normalizeLine(line) {
+
+            let value = line;
+
+            if (trimLines.checked) {
+                value = value.trim();
+            }
+
+            if (ignoreCase.checked) {
+                value = value.toLowerCase();
+            }
+
+            return value;
+        }
 
 
-        const seen = new Set();
+        function removeDuplicates() {
 
+            const rawLines = getLines(inputText.value);
 
-        lines.forEach(function(line) {
+            if (!inputText.value.trim()) {
 
-            const cleanLine = line.trim();
+                outputText.value = "";
 
+                outputCount.textContent = "0 lines";
 
-            if (cleanLine === "") {
+                originalLines.textContent = "0";
+                uniqueLines.textContent = "0";
+                removedLines.textContent = "0";
+
+                showStatus("Please enter some text first.");
+
                 return;
             }
 
 
-            const key =
-                cleanLine.toLowerCase();
+            const seen = new Set();
+            const result = [];
+
+            let originalCount = 0;
 
 
-            if (!seen.has(key)) {
+            rawLines.forEach(function (line) {
 
-                seen.add(key);
-
-                uniqueLines.push(cleanLine);
-
-            }
-
-        });
-
-
-        result.innerHTML = `
-
-            <strong>
-                Cleaned Text
-            </strong>
-
-            <br><br>
-
-            ${escapeHTML(uniqueLines.join("\n"))}
-
-            <br><br>
-
-            <strong>
-                Original Lines:
-                ${lines.filter(line => line.trim() !== "").length}
-            </strong>
-
-            <br>
-
-            <strong>
-                Unique Lines:
-                ${uniqueLines.length}
-            </strong>
-
-            <br>
-
-            <strong>
-                Duplicates Removed:
-                ${
-                    lines.filter(line => line.trim() !== "").length
-                    - uniqueLines.length
+                if (removeEmpty.checked && line.trim() === "") {
+                    return;
                 }
-            </strong>
 
-        `;
+                originalCount++;
 
-    });
+                const key = normalizeLine(line);
 
+                if (!seen.has(key)) {
 
+                    seen.add(key);
 
-function escapeHTML(text) {
-
-    return text
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-</script>
-
-
-<!-- SMARTTOOLS_PHASE6_JS_START -->
-<script>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE HELPER
-========================================================= */
-
-(function () {
-
-    "use strict";
-
-    function optimizeImages() {
-
-        const images =
-            document.querySelectorAll("img");
-
-        images.forEach(function (img) {
-
-            if (!img.hasAttribute("loading")) {
-
-                img.setAttribute(
-                    "loading",
-                    "lazy"
-                );
-
-            }
-
-            if (!img.hasAttribute("decoding")) {
-
-                img.setAttribute(
-                    "decoding",
-                    "async"
-                );
-
-            }
-
-        });
-
-    }
-
-
-    function optimizeVideos() {
-
-        document
-            .querySelectorAll("video")
-            .forEach(function (video) {
-
-                if (!video.hasAttribute("preload")) {
-
-                    video.setAttribute(
-                        "preload",
-                        "metadata"
+                    result.push(
+                        trimLines.checked
+                            ? line.trim()
+                            : line
                     );
 
                 }
 
             });
 
-    }
+
+            outputText.value = result.join("\n");
 
 
-    function addThemeColor() {
+            originalLines.textContent = rawLines.length;
 
-        if (
-            !document.querySelector(
-                'meta[name="theme-color"]'
-            )
-        ) {
+            uniqueLines.textContent = result.length;
 
-            const meta =
-                document.createElement("meta");
+            removedLines.textContent =
+                Math.max(0, originalCount - result.length);
 
-            meta.name =
-                "theme-color";
 
-            meta.content =
-                "#5b5ff5";
+            outputCount.textContent =
+                result.length +
+                (result.length === 1 ? " line" : " lines");
 
-            document.head.appendChild(meta);
+
+            showStatus(
+                `${Math.max(0, originalCount - result.length)} duplicate line(s) removed.`
+            );
         }
 
-    }
+
+        async function copyResult() {
+
+            const text = outputText.value;
+
+            if (!text) {
+
+                showStatus("There is no result to copy yet.");
+
+                return;
+            }
 
 
-    function init() {
+            try {
 
-        optimizeImages();
-        optimizeVideos();
-        addThemeColor();
+                await navigator.clipboard.writeText(text);
 
-    }
+                showStatus("Clean result copied to clipboard.");
+
+            } catch (error) {
+
+                outputText.select();
+
+                document.execCommand("copy");
+
+                showStatus("Clean result copied to clipboard.");
+
+            }
+
+        }
 
 
-    if (
-        document.readyState ===
-        "loading"
-    ) {
+        function clearAll() {
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
+            inputText.value = "";
+            outputText.value = "";
 
-    } else {
+            originalLines.textContent = "0";
+            uniqueLines.textContent = "0";
+            removedLines.textContent = "0";
 
-        init();
+            inputCount.textContent = "0 lines";
+            outputCount.textContent = "0 lines";
 
-    }
+            status.style.display = "none";
 
-})();
-</script>
-<!-- SMARTTOOLS_PHASE6_JS_END -->
+            inputText.focus();
+
+        }
+
+
+        function showStatus(message) {
+
+            status.textContent = message;
+
+            status.style.display = "block";
+
+            clearTimeout(window.statusTimer);
+
+            window.statusTimer = setTimeout(function () {
+
+                status.style.display = "none";
+
+            }, 3000);
+        }
+
+
+        inputText.addEventListener("input", updateInputCount);
+
+        removeBtn.addEventListener("click", removeDuplicates);
+
+        copyBtn.addEventListener("click", copyResult);
+
+        clearBtn.addEventListener("click", clearAll);
+
+
+        ignoreCase.addEventListener("change", function () {
+
+            if (inputText.value.trim()) {
+                removeDuplicates();
+            }
+
+        });
+
+
+        trimLines.addEventListener("change", function () {
+
+            if (inputText.value.trim()) {
+                removeDuplicates();
+            }
+
+        });
+
+
+        removeEmpty.addEventListener("change", function () {
+
+            if (inputText.value.trim()) {
+                removeDuplicates();
+            }
+
+        });
+
+
+        /* FAQ */
+
+        document.querySelectorAll(".faq-question").forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const item = button.parentElement;
+
+                const answer = item.querySelector(".faq-answer");
+
+                const isActive = item.classList.contains("active");
+
+
+                document.querySelectorAll(".faq-item").forEach(function (faq) {
+
+                    faq.classList.remove("active");
+
+                    faq.querySelector(".faq-answer").style.maxHeight = null;
+
+                });
+
+
+                if (!isActive) {
+
+                    item.classList.add("active");
+
+                    answer.style.maxHeight =
+                        answer.scrollHeight + "px";
+
+                }
+
+            });
+
+        });
+
+
+        /* MOBILE MENU */
+
+        const menuBtn = document.getElementById("menuBtn");
+
+        const navLinks = document.getElementById("navLinks");
+
+
+        menuBtn.addEventListener("click", function () {
+
+            navLinks.classList.toggle("show");
+
+        });
+
+
+        navLinks.querySelectorAll("a").forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("show");
+
+            });
+
+        });
+
+
+        /* DEMO TEXT */
+
+        inputText.value =
+`Apple
+Banana
+Apple
+Mango
+Banana
+Orange
+Mango`;
+
+        updateInputCount();
+
+        removeDuplicates();
+
+    </script>
+
 </body>
-
 </html>

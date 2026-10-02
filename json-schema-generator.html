@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JSON Schema Generator - Generate JSON Schema Online | SmartTools</title>
+
+    <meta name="description"
+          content="Generate JSON Schema automatically from JSON data. Free online JSON Schema generator for developers, APIs and data validation.">
+
+    <meta name="keywords"
+          content="JSON Schema Generator, JSON to JSON Schema, generate JSON schema, JSON validator schema, API schema generator">
+
+    <meta name="author" content="Sukanya Shahare">
+
+    <link rel="canonical" href="https://yourdomain.com/json-schema-generator.html">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(91, 76, 255, 0.18), transparent 30%),
+                radial-gradient(circle at top right, rgba(0, 210, 255, 0.12), transparent 25%),
+                #07111f;
+            color: #eef4ff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: #0b1626;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 9px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #b9c8dc;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            background: rgba(7,17,31,0.88);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #7c8cff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 26px;
+            color: #b9c8dc;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .hero {
+            max-width: 1000px;
+            margin: auto;
+            padding: 70px 20px 40px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: rgba(124,140,255,0.12);
+            border: 1px solid rgba(124,140,255,0.28);
+            color: #aeb8ff;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 6vw, 60px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #8795ff;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #9eb0c8;
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px 70px;
+        }
+
+        .tool-card {
+            background: rgba(13, 28, 47, 0.88);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 24px;
+            padding: 26px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.28);
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        label {
+            font-size: 13px;
+            color: #aebdd0;
+            font-weight: 600;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            background: #091728;
+            color: #eef4ff;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 12px 13px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #7c8cff;
+            box-shadow: 0 0 0 3px rgba(124,140,255,0.10);
+        }
+
+        .editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .editor-box {
+            background: #091728;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 17px;
+            overflow: hidden;
+        }
+
+        .editor-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #0b1a2d;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .editor-head strong {
+            font-size: 14px;
+        }
+
+        .editor-head span {
+            color: #7f92ad;
+            font-size: 12px;
+        }
+
+        textarea.code {
+            border: none;
+            border-radius: 0;
+            min-height: 430px;
+            resize: vertical;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 13px;
+            line-height: 1.65;
+            background: #050d17;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            border-radius: 12px;
+            padding: 12px 17px;
+            font-weight: 700;
+            color: white;
+            background: #283954;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            background: #344a6d;
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #6878ff, #8b6cff);
+        }
+
+        .primary:hover {
+            background: linear-gradient(135deg, #7785ff, #997cff);
+        }
+
+        .success {
+            background: linear-gradient(135deg, #167d66, #229b7e);
+        }
+
+        .danger {
+            background: #54283a;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .stat {
+            padding: 17px;
+            background: #091728;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 15px;
+        }
+
+        .stat small {
+            display: block;
+            color: #8498b3;
+            margin-bottom: 4px;
+        }
+
+        .stat strong {
+            font-size: 21px;
+        }
+
+        .message {
+            display: none;
+            padding: 12px 14px;
+            margin-top: 18px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        .message.error {
+            display: block;
+            background: rgba(220,60,90,0.12);
+            border: 1px solid rgba(220,60,90,0.3);
+            color: #ff9caf;
+        }
+
+        .message.success-message {
+            display: block;
+            background: rgba(40,180,130,0.10);
+            border: 1px solid rgba(40,180,130,0.28);
+            color: #7ee4c0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 22px;
+            margin-top: 28px;
+        }
+
+        .info-card {
+            background: rgba(13,28,47,0.72);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .info-card h2 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .info-card h3 {
+            font-size: 17px;
+            margin: 20px 0 8px;
+        }
+
+        .info-card p,
+        .info-card li {
+            color: #98aac1;
+            font-size: 14px;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+        }
+
+        .faq {
+            margin-top: 28px;
+        }
+
+        details {
+            background: rgba(13,28,47,0.72);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            margin-bottom: 10px;
+            padding: 15px 17px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            color: #98aac1;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 28px 20px;
+            text-align: center;
+            color: #778ba6;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            .editor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .hero {
+                padding-top: 48px;
+            }
+
+            .tool-card {
+                padding: 17px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        SmartTools — simple tools for everyday needs.
+    </div>
+
+    <nav class="navbar">
+
+        <div class="nav-inner">
+
+            <a href="index.html" class="logo">
+                Smart<span>Tools</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="data-analyst.html">Data Analyst</a>
+                <a href="ai-tools.html">AI Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <header class="hero">
+
+        <div class="badge">
+            🧩 Developer Tool
+        </div>
+
+        <h1>
+            JSON to <span>JSON Schema</span>
+        </h1>
+
+        <p>
+            Generate a JSON Schema automatically from your JSON data.
+            Useful for APIs, validation, documentation and development.
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="tool-card">
+
+            <div class="controls">
+
+                <div class="field">
+
+                    <label for="schemaTitle">
+                        Schema Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="schemaTitle"
+                        value="GeneratedSchema"
+                        placeholder="UserSchema"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="rootName">
+                        Root Property Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="rootName"
+                        value="data"
+                        placeholder="user"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="requiredMode">
+                        Required Fields
+                    </label>
+
+                    <select id="requiredMode">
+
+                        <option value="present">
+                            Fields with values
+                        </option>
+
+                        <option value="all">
+                            All fields
+                        </option>
+
+                        <option value="none">
+                            None
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="editor-grid">
+
+                <div class="editor-box">
+
+                    <div class="editor-head">
+
+                        <strong>
+                            JSON Input
+                        </strong>
+
+                        <span>
+                            Paste JSON
+                        </span>
+
+                    </div>
+
+                    <textarea
+                        id="jsonInput"
+                        class="code"
+                        placeholder='{
+  "id": 1,
+  "name": "Sukanya",
+  "email": "sukanya@example.com"
+}'></textarea>
+
+                </div>
+
+
+                <div class="editor-box">
+
+                    <div class="editor-head">
+
+                        <strong>
+                            JSON Schema
+                        </strong>
+
+                        <span>
+                            Draft 2020-12
+                        </span>
+
+                    </div>
+
+                    <textarea
+                        id="schemaOutput"
+                        class="code"
+                        placeholder="Generated JSON Schema will appear here..."
+                        readonly
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button
+                    class="primary"
+                    onclick="generateSchema()"
+                >
+                    ⚡ Generate Schema
+                </button>
+
+                <button
+                    onclick="validateJSON()"
+                >
+                    ✓ Validate JSON
+                </button>
+
+                <button
+                    onclick="loadSample()"
+                >
+                    🧪 Sample JSON
+                </button>
+
+                <button
+                    onclick="copySchema()"
+                >
+                    📋 Copy Schema
+                </button>
+
+                <button
+                    class="success"
+                    onclick="downloadSchema()"
+                >
+                    ⬇ Download JSON
+                </button>
+
+                <button
+                    class="danger"
+                    onclick="clearAll()"
+                >
+                    ✕ Clear
+                </button>
+
+            </div>
+
+
+            <div id="message" class="message"></div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <small>
+                        JSON Type
+                    </small>
+
+                    <strong id="typeStat">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Properties
+                    </small>
+
+                    <strong id="propertiesStat">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Required
+                    </small>
+
+                    <strong id="requiredStat">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <small>
+                        Schema Size
+                    </small>
+
+                    <strong id="sizeStat">
+                        0 B
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="content-grid">
+
+            <article class="info-card">
+
+                <h2>
+                    What is JSON Schema?
+                </h2>
+
+                <p>
+                    JSON Schema is a standard way to describe the structure,
+                    data types and validation rules of JSON documents.
+                    It is commonly used with APIs and application data.
+                </p>
+
+
+                <h3>
+                    Why use JSON Schema?
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Validate JSON data.
+                    </li>
+
+                    <li>
+                        Document API request and response structures.
+                    </li>
+
+                    <li>
+                        Describe expected data types.
+                    </li>
+
+                    <li>
+                        Make application data contracts easier to understand.
+                    </li>
+
+                </ul>
+
+
+                <h3>
+                    Automatic Type Detection
+                </h3>
+
+                <p>
+                    This tool detects strings, numbers, integers, booleans,
+                    arrays, objects and null values from your JSON input.
+                    Common email and date property names can also receive
+                    appropriate format information.
+                </p>
+
+            </article>
+
+
+            <article class="info-card">
+
+                <h2>
+                    JSON Schema Features
+                </h2>
+
+                <h3>
+                    Object Properties
+                </h3>
+
+                <p>
+                    JSON object keys are converted into schema properties.
+                </p>
+
+
+                <h3>
+                    Required Fields
+                </h3>
+
+                <p>
+                    You can generate required fields based on the selected
+                    required-field mode.
+                </p>
+
+
+                <h3>
+                    Nested Objects
+                </h3>
+
+                <p>
+                    Nested JSON objects are represented using nested
+                    JSON Schema objects.
+                </p>
+
+
+                <h3>
+                    Arrays
+                </h3>
+
+                <p>
+                    Arrays receive an automatically inferred item schema.
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <section class="faq">
+
+            <h2 style="margin-bottom:15px;">
+                Frequently Asked Questions
+            </h2>
+
+
+            <details>
+
+                <summary>
+                    What does this JSON Schema generator do?
+                </summary>
+
+                <p>
+                    It reads your JSON data and creates a JSON Schema
+                    describing its structure and basic data types.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Does this tool upload my JSON?
+                </summary>
+
+                <p>
+                    No. JSON processing happens directly in your browser.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Which JSON Schema version is generated?
+                </summary>
+
+                <p>
+                    The generated schema uses the JSON Schema Draft 2020-12
+                    meta-schema identifier.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Can nested JSON be converted?
+                </summary>
+
+                <p>
+                    Yes. Nested objects and arrays are analyzed recursively.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Is generated schema guaranteed to match every future JSON object?
+                </summary>
+
+                <p>
+                    No. The schema is inferred from the JSON sample you
+                    provide. Different future data may require additional
+                    properties or validation rules.
+                </p>
+
+            </details>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        © 2026 SmartTools · Built by Sukanya Shahare
+    </footer>
+
+
+<script>
+
+let lastSchema = "";
+
+
+function getJSONInput() {
+
+    return document
+        .getElementById("jsonInput")
+        .value
+        .trim();
+
+}
+
+
+function validateJSON() {
+
+    const input = getJSONInput();
+
+    if (!input) {
+
+        showMessage(
+            "Please enter JSON first.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        const data =
+            JSON.parse(input);
+
+
+        updateTypeStats(data);
+
+
+        showMessage(
+            "Valid JSON ✓",
+            "success-message"
+        );
+
+    } catch (error) {
+
+        showMessage(
+            "Invalid JSON: " + error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+function getType(value) {
+
+    if (value === null) {
+        return "null";
+    }
+
+    if (Array.isArray(value)) {
+        return "array";
+    }
+
+    if (typeof value === "number") {
+
+        return Number.isInteger(value)
+            ? "integer"
+            : "number";
+
+    }
+
+    if (typeof value === "boolean") {
+        return "boolean";
+    }
+
+    if (typeof value === "object") {
+        return "object";
+    }
+
+    return "string";
+
+}
+
+
+function detectFormat(key, value) {
+
+    const lowerKey =
+        String(key).toLowerCase();
+
+
+    if (
+        typeof value === "string" &&
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+    ) {
+        return "email";
+    }
+
+
+    if (
+        typeof value === "string" &&
+        /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+        !isNaN(Date.parse(value))
+    ) {
+        return "date";
+    }
+
+
+    if (
+        typeof value === "string" &&
+        (
+            lowerKey.includes("email") ||
+            lowerKey.includes("e-mail")
+        )
+    ) {
+        return "email";
+    }
+
+
+    if (
+        typeof value === "string" &&
+        (
+            lowerKey.includes("date") ||
+            lowerKey.endsWith("_at") ||
+            lowerKey.endsWith("at")
+        )
+    ) {
+        return "date";
+    }
+
+
+    return null;
+
+}
+
+
+function inferSchema(value, key = "") {
+
+    const type =
+        getType(value);
+
+
+    if (type === "null") {
+
+        return {
+            type: ["null", "string"]
+        };
+
+    }
+
+
+    if (
+        type === "string" ||
+        type === "integer" ||
+        type === "number" ||
+        type === "boolean"
+    ) {
+
+        const schema = {
+            type:
+                type === "integer"
+                    ? "integer"
+                    : type
+        };
+
+
+        const format =
+            detectFormat(key, value);
+
+
+        if (format) {
+            schema.format = format;
+        }
+
+
+        return schema;
+
+    }
+
+
+    if (type === "object") {
+
+        return buildObjectSchema(value);
+
+    }
+
+
+    if (type === "array") {
+
+        if (value.length === 0) {
+
+            return {
+                type: "array",
+                items: {}
+            };
+
+        }
+
+
+        const itemSchemas =
+            value.map(item =>
+                inferSchema(item, key)
+            );
+
+
+        const merged =
+            mergeSchemas(itemSchemas);
+
+
+        return {
+            type: "array",
+            items: merged
+        };
+
+    }
+
+
+    return {};
+
+}
+
+
+function buildObjectSchema(obj) {
+
+    const schema = {
+        type: "object",
+        properties: {},
+        additionalProperties: false
+    };
+
+
+    const requiredMode =
+        document.getElementById("requiredMode")
+            .value;
+
+
+    const required = [];
+
+
+    Object.keys(obj).forEach(key => {
+
+        const value = obj[key];
+
+
+        schema.properties[key] =
+            inferSchema(value, key);
+
+
+        if (
+            requiredMode === "all"
+        ) {
+
+            required.push(key);
+
+        } else if (
+            requiredMode === "present" &&
+            value !== null &&
+            value !== undefined &&
+            value !== ""
+        ) {
+
+            required.push(key);
+
+        }
+
+    });
+
+
+    if (required.length > 0) {
+        schema.required = required;
+    }
+
+
+    return schema;
+
+}
+
+
+function mergeSchemas(schemas) {
+
+    if (!schemas.length) {
+        return {};
+    }
+
+
+    const first =
+        JSON.stringify(schemas[0]);
+
+
+    if (
+        schemas.every(
+            schema =>
+                JSON.stringify(schema) === first
+        )
+    ) {
+        return schemas[0];
+    }
+
+
+    const types = [];
+
+
+    schemas.forEach(schema => {
+
+        if (Array.isArray(schema.type)) {
+
+            schema.type.forEach(type => {
+
+                if (!types.includes(type)) {
+                    types.push(type);
+                }
+
+            });
+
+        } else if (
+            schema.type &&
+            !types.includes(schema.type)
+        ) {
+
+            types.push(schema.type);
+
+        }
+
+    });
+
+
+    if (types.length === 1) {
+
+        const base = {
+            type: types[0]
+        };
+
+
+        if (
+            types[0] === "object"
+        ) {
+
+            return mergeObjectSchemas(schemas);
+
+        }
+
+
+        return base;
+
+    }
+
+
+    return {
+        anyOf: schemas
+    };
+
+}
+
+
+function mergeObjectSchemas(schemas) {
+
+    const allKeys = new Set();
+
+
+    schemas.forEach(schema => {
+
+        if (schema.properties) {
+
+            Object.keys(
+                schema.properties
+            ).forEach(key =>
+                allKeys.add(key)
+            );
+
+        }
+
+    });
+
+
+    const properties = {};
+
+
+    allKeys.forEach(key => {
+
+        const matchingSchemas =
+            schemas
+                .filter(
+                    schema =>
+                        schema.properties &&
+                        schema.properties[key]
+                )
+                .map(
+                    schema =>
+                        schema.properties[key]
+                );
+
+
+        properties[key] =
+            mergeSchemas(matchingSchemas);
+
+    });
+
+
+    return {
+        type: "object",
+        properties,
+        additionalProperties: false
+    };
+
+}
+
+
+function generateSchema() {
+
+    const input = getJSONInput();
+
+
+    if (!input) {
+
+        showMessage(
+            "Please enter JSON or load sample data.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    let data;
+
+
+    try {
+
+        data = JSON.parse(input);
+
+    } catch (error) {
+
+        showMessage(
+            "Invalid JSON: " + error.message,
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const titleInput =
+        document.getElementById("schemaTitle")
+            .value
+            .trim();
+
+
+    const rootName =
+        document.getElementById("rootName")
+            .value
+            .trim();
+
+
+    let schema;
+
+
+    if (Array.isArray(data)) {
+
+        schema = {
+
+            $schema:
+                "https://json-schema.org/draft/2020-12/schema",
+
+            title:
+                titleInput || "GeneratedSchema",
+
+            type: "array",
+
+            items:
+                data.length
+                    ? mergeSchemas(
+                        data.map(item =>
+                            inferSchema(item)
+                        )
+                    )
+                    : {}
+
+        };
+
+    } else if (
+        data !== null &&
+        typeof data === "object"
+    ) {
+
+        schema = {
+
+            $schema:
+                "https://json-schema.org/draft/2020-12/schema",
+
+            title:
+                titleInput || "GeneratedSchema",
+
+            $comment:
+                rootName
+                    ? `Generated from property: ${rootName}`
+                    : "Generated by SmartTools",
+
+            ...buildObjectSchema(data)
+
+        };
+
+    } else {
+
+        schema = {
+
+            $schema:
+                "https://json-schema.org/draft/2020-12/schema",
+
+            title:
+                titleInput || "GeneratedSchema",
+
+            ...inferSchema(data)
+
+        };
+
+    }
+
+
+    lastSchema =
+        JSON.stringify(
+            schema,
+            null,
+            2
+        );
+
+
+    document.getElementById("schemaOutput")
+        .value = lastSchema;
+
+
+    updateTypeStats(data);
+
+
+    const propertyCount =
+        countProperties(schema);
+
+
+    const requiredCount =
+        countRequired(schema);
+
+
+    document.getElementById("propertiesStat")
+        .textContent =
+        propertyCount;
+
+
+    document.getElementById("requiredStat")
+        .textContent =
+        requiredCount;
+
+
+    document.getElementById("sizeStat")
+        .textContent =
+        formatBytes(
+            new Blob([lastSchema]).size
+        );
+
+
+    showMessage(
+        "JSON Schema generated successfully.",
+        "success-message"
+    );
+
+}
+
+
+function countProperties(schema) {
+
+    let count = 0;
+
+
+    if (
+        schema &&
+        schema.properties
+    ) {
+
+        count +=
+            Object.keys(
+                schema.properties
+            ).length;
+
+
+        Object.values(
+            schema.properties
+        ).forEach(child => {
+
+            count += countProperties(child);
+
+        });
+
+    }
+
+
+    if (
+        schema &&
+        schema.items &&
+        typeof schema.items === "object"
+    ) {
+
+        count +=
+            countProperties(
+                schema.items
+            );
+
+    }
+
+
+    return count;
+
+}
+
+
+function countRequired(schema) {
+
+    let count = 0;
+
+
+    if (
+        schema &&
+        Array.isArray(schema.required)
+    ) {
+
+        count += schema.required.length;
+
+    }
+
+
+    if (
+        schema &&
+        schema.properties
+    ) {
+
+        Object.values(
+            schema.properties
+        ).forEach(child => {
+
+            count += countRequired(child);
+
+        });
+
+    }
+
+
+    if (
+        schema &&
+        schema.items
+    ) {
+
+        count +=
+            countRequired(schema.items);
+
+    }
+
+
+    return count;
+
+}
+
+
+function updateTypeStats(data) {
+
+    const type =
+        getType(data);
+
+
+    const labels = {
+
+        object: "Object",
+
+        array: "Array",
+
+        string: "String",
+
+        integer: "Integer",
+
+        number: "Number",
+
+        boolean: "Boolean",
+
+        null: "Null"
+
+    };
+
+
+    document.getElementById("typeStat")
+        .textContent =
+        labels[type] || type;
+
+}
+
+
+function loadSample() {
+
+    const sample = {
+
+        id: 101,
+
+        name: "Sukanya",
+
+        email: "sukanya@example.com",
+
+        age: 24,
+
+        active: true,
+
+        registered_date: "2026-09-30",
+
+        address: {
+
+            city: "Nagpur",
+
+            country: "India"
+
+        },
+
+        skills: [
+
+            "HTML",
+
+            "CSS",
+
+            "JavaScript"
+
+        ],
+
+        projects: [
+
+            {
+
+                name: "SmartTools",
+
+                completed: true
+
+            },
+
+            {
+
+                name: "Data Analyst Tools",
+
+                completed: false
+
+            }
+
+        ]
+
+    };
+
+
+    document.getElementById("jsonInput")
+        .value =
+        JSON.stringify(
+            sample,
+            null,
+            2
+        );
+
+
+    showMessage(
+        "Sample JSON loaded.",
+        "success-message"
+    );
+
+}
+
+
+function copySchema() {
+
+    const output =
+        document.getElementById("schemaOutput")
+            .value;
+
+
+    if (!output.trim()) {
+
+        showMessage(
+            "Generate Schema first.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    navigator.clipboard.writeText(
+        output
+    ).then(() => {
+
+        showMessage(
+            "JSON Schema copied.",
+            "success-message"
+        );
+
+    });
+
+}
+
+
+function downloadSchema() {
+
+    const output =
+        document.getElementById("schemaOutput")
+            .value;
+
+
+    if (!output.trim()) {
+
+        showMessage(
+            "Generate Schema first.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const blob =
+        new Blob(
+            [output],
+            {
+                type:
+                    "application/json;charset=utf-8"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href = url;
+
+    link.download =
+        "generated-schema.json";
+
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+
+    URL.revokeObjectURL(url);
+
+
+    showMessage(
+        "JSON Schema downloaded.",
+        "success-message"
+    );
+
+}
+
+
+function clearAll() {
+
+    document.getElementById("jsonInput")
+        .value = "";
+
+    document.getElementById("schemaOutput")
+        .value = "";
+
+
+    lastSchema = "";
+
+
+    document.getElementById("typeStat")
+        .textContent = "—";
+
+    document.getElementById("propertiesStat")
+        .textContent = "0";
+
+    document.getElementById("requiredStat")
+        .textContent = "0";
+
+    document.getElementById("sizeStat")
+        .textContent = "0 B";
+
+
+    document.getElementById("message")
+        .className = "message";
+
+}
+
+
+function formatBytes(bytes) {
+
+    if (!bytes) {
+        return "0 B";
+    }
+
+    if (bytes < 1024) {
+        return bytes + " B";
+    }
+
+    if (bytes < 1024 * 1024) {
+        return (
+            bytes / 1024
+        ).toFixed(1) + " KB";
+    }
+
+    return (
+        bytes / (1024 * 1024)
+    ).toFixed(2) + " MB";
+
+}
+
+
+function showMessage(text, type) {
+
+    const box =
+        document.getElementById("message");
+
+
+    box.textContent = text;
+
+    box.className =
+        "message " + type;
+
+}
+
+</script>
+
+</body>
+</html>

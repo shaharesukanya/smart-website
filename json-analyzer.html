@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JSON Analyzer – Analyze JSON Data Online | SmartTools</title>
+
+<meta name="description"
+content="Analyze JSON data online with SmartTools JSON Analyzer. Check JSON structure, keys, arrays, objects, null values, nesting and data types.">
+
+<meta name="keywords"
+content="JSON analyzer, JSON viewer, JSON formatter, JSON validator, JSON data analyzer, online JSON tool">
+
+<meta name="robots" content="index, follow">
+
+<meta name="theme-color" content="#070a14">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#070a14;
+    --card:#0d1324;
+    --card2:#11182b;
+    --border:rgba(255,255,255,.09);
+    --text:#f6f8ff;
+    --muted:#99a5bb;
+    --purple:#765cff;
+    --blue:#28c8ff;
+    --green:#38d996;
+    --red:#ff6477;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+
+    color:var(--text);
+
+    font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+    background:
+    radial-gradient(
+        circle at 10% 0%,
+        rgba(118,92,255,.17),
+        transparent 29%
+    ),
+    radial-gradient(
+        circle at 90% 0%,
+        rgba(40,200,255,.10),
+        transparent 28%
+    ),
+    linear-gradient(
+        180deg,
+        #070a14,
+        #090d19,
+        #070a14
+    );
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+textarea,
+input{
+    font:inherit;
+}
+
+/* TOP */
+
+.topbar{
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-bottom:1px solid var(--border);
+
+    background:rgba(5,8,18,.75);
+
+    color:#aab4c8;
+
+    font-size:13px;
+}
+
+/* NAV */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    border-bottom:1px solid var(--border);
+
+    background:rgba(7,10,20,.82);
+
+    backdrop-filter:blur(18px);
+}
+
+.nav{
+    width:min(1180px,calc(100% - 32px));
+
+    min-height:74px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    font-size:21px;
+    font-weight:900;
+}
+
+.logo-box{
+    width:40px;
+    height:40px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:13px;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--purple),
+        var(--blue)
+    );
+
+    box-shadow:
+    0 10px 35px rgba(118,92,255,.3);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:25px;
+
+    color:#aeb7ca;
+
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.nav-cta{
+    padding:10px 16px;
+
+    border-radius:11px;
+
+    border:1px solid rgba(118,92,255,.35);
+
+    background:
+    rgba(118,92,255,.12);
+
+    color:white!important;
+}
+
+/* HERO */
+
+.hero{
+    width:min(1180px,calc(100% - 32px));
+
+    margin:auto;
+
+    padding:78px 0 40px;
+
+    text-align:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(118,92,255,.3);
+
+    background:
+    rgba(118,92,255,.09);
+
+    color:#c9c1ff;
+
+    font-size:12px;
+
+    font-weight:850;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+    0 0 15px rgba(56,217,150,.8);
+}
+
+.hero h1{
+    margin-top:21px;
+
+    font-size:
+    clamp(42px,7vw,76px);
+
+    line-height:1;
+
+    letter-spacing:-3px;
+
+    font-weight:950;
+
+    background:
+    linear-gradient(
+        110deg,
+        white,
+        #bdb2ff,
+        #6ee5ff
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.hero p{
+    max-width:750px;
+
+    margin:23px auto 0;
+
+    color:var(--muted);
+
+    font-size:16px;
+
+    line-height:1.8;
+}
+
+/* TOOL */
+
+.workspace{
+    width:min(1180px,calc(100% - 32px));
+
+    margin:auto;
+
+    padding:25px 0 80px;
+}
+
+.workspace-card{
+    padding:22px;
+
+    border:1px solid var(--border);
+
+    border-radius:26px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(18,25,45,.9),
+        rgba(9,14,27,.9)
+    );
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.25);
+}
+
+.workspace-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:18px;
+}
+
+/* INPUT */
+
+.panel{
+    padding:20px;
+
+    border-radius:19px;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.025);
+}
+
+.panel-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:13px;
+}
+
+.panel-title h2{
+    font-size:17px;
+}
+
+.panel-title span{
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+textarea{
+    width:100%;
+
+    min-height:430px;
+
+    resize:vertical;
+
+    padding:17px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    outline:none;
+
+    background:#080d1a;
+
+    color:#dce4f4;
+
+    font-family:
+    Consolas,
+    Monaco,
+    monospace;
+
+    font-size:13px;
+
+    line-height:1.65;
+}
+
+textarea:focus{
+    border-color:
+    rgba(118,92,255,.5);
+}
+
+.actions{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:9px;
+
+    margin-top:12px;
+}
+
+button{
+    border:0;
+
+    cursor:pointer;
+
+    padding:11px 15px;
+
+    border-radius:10px;
+
+    color:white;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.05);
+
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-1px);
+
+    background:
+    rgba(255,255,255,.09);
+}
+
+button.primary{
+    border-color:
+    rgba(118,92,255,.35);
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(118,92,255,.28),
+        rgba(40,200,255,.12)
+    );
+}
+
+button.green{
+    border-color:
+    rgba(56,217,150,.25);
+
+    background:
+    rgba(56,217,150,.09);
+}
+
+/* UPLOAD */
+
+.upload{
+    margin-top:12px;
+
+    padding:13px;
+
+    border:1px dashed
+    rgba(118,92,255,.3);
+
+    border-radius:13px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    text-align:center;
+
+    cursor:pointer;
+}
+
+.upload:hover{
+    border-color:
+    rgba(40,200,255,.5);
+}
+
+#fileInput{
+    display:none;
+}
+
+/* STATUS */
+
+.status{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:12px;
+
+    font-size:12px;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--green);
+}
+
+.status.error .status-dot{
+    background:var(--red);
+}
+
+.status.error{
+    color:#ff8796;
+}
+
+.status.success{
+    color:#72e6b3;
+}
+
+/* RESULT */
+
+.result{
+    min-height:430px;
+
+    overflow:auto;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:#080d1a;
+}
+
+.result pre{
+    padding:17px;
+
+    min-height:430px;
+
+    white-space:pre-wrap;
+    word-break:break-word;
+
+    color:#cbd5e7;
+
+    font-family:
+    Consolas,
+    Monaco,
+    monospace;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+    repeat(6,1fr);
+
+    gap:12px;
+
+    margin-top:18px;
+}
+
+.stat{
+    padding:17px;
+
+    border-radius:16px;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.025);
+}
+
+.stat-label{
+    color:var(--muted);
+
+    font-size:10px;
+
+    font-weight:850;
+
+    letter-spacing:.5px;
+}
+
+.stat-value{
+    margin-top:8px;
+
+    font-size:25px;
+
+    font-weight:950;
+}
+
+/* INSIGHTS */
+
+.insights{
+    margin-top:18px;
+
+    padding:21px;
+
+    border-radius:19px;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.025);
+}
+
+.insights h2{
+    font-size:18px;
+}
+
+.insight-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:15px;
+}
+
+.insight{
+    padding:14px;
+
+    border-radius:13px;
+
+    background:
+    rgba(255,255,255,.025);
+
+    border:1px solid
+    rgba(255,255,255,.06);
+}
+
+.insight-icon{
+    font-size:20px;
+}
+
+.insight strong{
+    display:block;
+
+    margin-top:9px;
+
+    font-size:13px;
+}
+
+.insight p{
+    margin-top:5px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    line-height:1.55;
+}
+
+/* INFO */
+
+.info{
+    margin-top:18px;
+
+    padding:28px;
+
+    border-radius:22px;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(12,18,33,.7);
+}
+
+.info h2{
+    font-size:28px;
+}
+
+.info h3{
+    margin-top:23px;
+
+    font-size:17px;
+}
+
+.info p{
+    margin-top:8px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+/* FAQ */
+
+.faq{
+    margin-top:23px;
+
+    display:grid;
+
+    gap:9px;
+}
+
+details{
+    padding:15px;
+
+    border:1px solid var(--border);
+
+    border-radius:13px;
+
+    background:
+    rgba(255,255,255,.025);
+}
+
+summary{
+    cursor:pointer;
+
+    font-size:13px;
+
+    font-weight:750;
+}
+
+details p{
+    font-size:12px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--border);
+
+    padding:28px 0;
+
+    color:#7f899e;
+
+    font-size:12px;
+}
+
+.footer{
+    width:min(1180px,calc(100% - 32px));
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.footer-links{
+    display:flex;
+
+    gap:17px;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:1050px){
+
+    .stats{
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .workspace-grid{
+        grid-template-columns:1fr;
+    }
+
+    .insight-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero{
+        padding-top:55px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .stats{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .insight-grid{
+        grid-template-columns:1fr;
+    }
+
+    .workspace-card{
+        padding:12px;
+    }
+
+    .panel{
+        padding:14px;
+    }
+
+    textarea,
+    .result,
+    .result pre{
+        min-height:330px;
+    }
+
+    .footer{
+        flex-direction:column;
+
+        gap:14px;
+
+        text-align:center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — Analyze structured data faster.
+</div>
+
+
+<header class="navbar">
+
+<div class="nav">
+
+    <a href="index.html" class="logo">
+
+        <span class="logo-box">
+            S
+        </span>
+
+        SmartTools
+
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html#tools">
+            Tools
+        </a>
+
+        <a href="guides.html">
+            Guides
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a
+            href="data-analyst.html"
+            class="nav-cta">
+
+            Data Tools
+
+        </a>
+
+    </nav>
+
+</div>
+
+</header>
+
+
+<main>
+
+<section class="hero">
+
+    <div class="badge">
+
+        <span class="dot"></span>
+
+        JSON DATA ANALYZER
+
+    </div>
+
+
+    <h1>
+        Understand Your<br>
+        JSON Data.
+    </h1>
+
+
+    <p>
+        Paste JSON or upload a JSON file to validate,
+        format and analyze its structure, keys, arrays,
+        objects, nesting and data types.
+    </p>
+
+</section>
+
+
+<section class="workspace">
+
+<div class="workspace-card">
+
+    <div class="workspace-grid">
+
+
+        <!-- INPUT -->
+
+        <div class="panel">
+
+            <div class="panel-title">
+
+                <h2>
+                    JSON Input
+                </h2>
+
+                <span>
+                    Paste or upload
+                </span>
+
+            </div>
+
+
+            <textarea
+                id="jsonInput"
+                placeholder='{
+  "name": "SmartTools",
+  "tools": 25,
+  "active": true
+}'></textarea>
+
+
+            <div class="actions">
+
+                <button
+                    class="primary"
+                    onclick="analyzeJSON()">
+
+                    Analyze JSON
+
+                </button>
+
+
+                <button
+                    onclick="formatJSON()">
+
+                    Format
+
+                </button>
+
+
+                <button
+                    onclick="clearJSON()">
+
+                    Clear
+
+                </button>
+
+
+                <button
+                    class="green"
+                    onclick="loadSample()">
+
+                    Sample JSON
+
+                </button>
+
+            </div>
+
+
+            <label class="upload">
+
+                📁 Upload JSON File
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept=".json,application/json">
+
+            </label>
+
+
+            <div
+                id="status"
+                class="status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                    Ready for JSON
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="panel">
+
+            <div class="panel-title">
+
+                <h2>
+                    Formatted JSON
+                </h2>
+
+                <span>
+                    Structured preview
+                </span>
+
+            </div>
+
+
+            <div class="result">
+
+                <pre id="result">
+Your formatted JSON will appear here.
+                </pre>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    class="primary"
+                    onclick="downloadJSON()">
+
+                    ↓ Download JSON
+
+                </button>
+
+                <button
+                    onclick="copyJSON()">
+
+                    Copy JSON
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div class="stat-label">
+                VALID
+            </div>
+
+            <div
+                class="stat-value"
+                id="valid">
+                —
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-label">
+                KEYS
+            </div>
+
+            <div
+                class="stat-value"
+                id="keys">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-label">
+                OBJECTS
+            </div>
+
+            <div
+                class="stat-value"
+                id="objects">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-label">
+                ARRAYS
+            </div>
+
+            <div
+                class="stat-value"
+                id="arrays">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-label">
+                NULL
+            </div>
+
+            <div
+                class="stat-value"
+                id="nulls">
+                0
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-label">
+                DEPTH
+            </div>
+
+            <div
+                class="stat-value"
+                id="depth">
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- INSIGHTS -->
+
+    <div class="insights">
+
+        <h2>
+            JSON Insights
+        </h2>
+
+
+        <div
+            class="insight-grid"
+            id="insightGrid">
+
+            <div class="insight">
+
+                <div class="insight-icon">
+                    🧩
+                </div>
+
+                <strong>
+                    Structure
+                </strong>
+
+                <p>
+                    Analyze your JSON to generate structural insights.
+                </p>
+
+            </div>
+
+
+            <div class="insight">
+
+                <div class="insight-icon">
+                    🔢
+                </div>
+
+                <strong>
+                    Data Types
+                </strong>
+
+                <p>
+                    Numeric, text, boolean and null values are detected.
+                </p>
+
+            </div>
+
+
+            <div class="insight">
+
+                <div class="insight-icon">
+                    🌳
+                </div>
+
+                <strong>
+                    Nesting
+                </strong>
+
+                <p>
+                    Nested objects and arrays are measured automatically.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- INFORMATION -->
+
+<section class="workspace">
+
+<div class="info">
+
+    <h2>
+        Online JSON Analyzer
+    </h2>
+
+
+    <p>
+        SmartTools JSON Analyzer helps developers, students,
+        analysts and everyday users understand structured JSON
+        data without installing additional software.
+    </p>
+
+
+    <h3>
+        Validate JSON
+    </h3>
+
+    <p>
+        The analyzer checks whether the supplied JSON can be
+        parsed correctly. Invalid JSON is reported with an
+        error message so you can correct the structure.
+    </p>
+
+
+    <h3>
+        Explore JSON Structure
+    </h3>
+
+    <p>
+        The tool counts keys, objects, arrays, null values
+        and nesting depth to provide a quick overview of
+        the dataset.
+    </p>
+
+
+    <h3>
+        Format JSON
+    </h3>
+
+    <p>
+        Minified or difficult-to-read JSON can be converted
+        into an easy-to-read formatted structure.
+    </p>
+
+
+    <h3>
+        Browser-Based Processing
+    </h3>
+
+    <p>
+        JSON analysis is performed directly in the browser
+        on this page. This makes the tool convenient for
+        quick inspection of local JSON data.
+    </p>
+
+
+    <div class="faq">
+
+        <details>
+
+            <summary>
+                What is JSON?
+            </summary>
+
+            <p>
+                JSON stands for JavaScript Object Notation.
+                It is a lightweight text format commonly used
+                to store and exchange structured data.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Can I upload a JSON file?
+            </summary>
+
+            <p>
+                Yes. Use the JSON upload option to load a
+                local .json file into the analyzer.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Can this tool format JSON?
+            </summary>
+
+            <p>
+                Yes. Use the Format button to convert valid
+                JSON into a readable formatted structure.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Does it count nested JSON?
+            </summary>
+
+            <p>
+                Yes. The analyzer calculates nested object
+                and array structures and estimates the
+                maximum nesting depth.
+            </p>
+
+        </details>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div class="footer">
+
+    <div>
+        © 2026 SmartTools. Built for productivity.
+    </div>
+
+    <div class="footer-links">
+
+        <a href="data-analyst.html">
+            Data Tools
+        </a>
+
+        <a href="privacy-policy.html">
+            Privacy
+        </a>
+
+        <a href="terms.html">
+            Terms
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+let parsedJSON = null;
+
+
+/* FILE UPLOAD */
+
+document
+.getElementById("fileInput")
+.addEventListener(
+    "change",
+    function(){
+
+        const file =
+        this.files[0];
+
+        if(!file){
+            return;
+        }
+
+
+        const reader =
+        new FileReader();
+
+
+        reader.onload =
+        function(event){
+
+            document
+            .getElementById("jsonInput")
+            .value =
+            event.target.result;
+
+
+            analyzeJSON();
+
+        };
+
+
+        reader.readAsText(file);
+
+    }
+);
+
+
+/* ANALYZE */
+
+function analyzeJSON(){
+
+    const input =
+    document
+    .getElementById("jsonInput")
+    .value
+    .trim();
+
+
+    if(!input){
+
+        setStatus(
+            "Please enter or upload JSON.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        parsedJSON =
+        JSON.parse(input);
+
+
+        document
+        .getElementById("valid")
+        .textContent =
+        "YES";
+
+
+        const stats =
+        analyzeStructure(
+            parsedJSON
+        );
+
+
+        document
+        .getElementById("keys")
+        .textContent =
+        stats.keys;
+
+
+        document
+        .getElementById("objects")
+        .textContent =
+        stats.objects;
+
+
+        document
+        .getElementById("arrays")
+        .textContent =
+        stats.arrays;
+
+
+        document
+        .getElementById("nulls")
+        .textContent =
+        stats.nulls;
+
+
+        document
+        .getElementById("depth")
+        .textContent =
+        stats.depth;
+
+
+        document
+        .getElementById("result")
+        .textContent =
+        JSON.stringify(
+            parsedJSON,
+            null,
+            2
+        );
+
+
+        createInsights(
+            stats
+        );
+
+
+        setStatus(
+            "Valid JSON — analysis complete.",
+            false,
+            true
+        );
+
+    }
+    catch(error){
+
+        parsedJSON = null;
+
+
+        document
+        .getElementById("valid")
+        .textContent =
+        "NO";
+
+
+        setStatus(
+            "Invalid JSON: " +
+            error.message,
+            true
+        );
+
+    }
+
+}
+
+
+/* FORMAT */
+
+function formatJSON(){
+
+    const input =
+    document
+    .getElementById("jsonInput")
+    .value
+    .trim();
+
+
+    if(!input){
+
+        setStatus(
+            "Enter JSON first.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const data =
+        JSON.parse(input);
+
+
+        parsedJSON =
+        data;
+
+
+        const formatted =
+        JSON.stringify(
+            data,
+            null,
+            2
+        );
+
+
+        document
+        .getElementById("jsonInput")
+        .value =
+        formatted;
+
+
+        document
+        .getElementById("result")
+        .textContent =
+        formatted;
+
+
+        analyzeJSON();
+
+    }
+    catch(error){
+
+        setStatus(
+            "Cannot format invalid JSON.",
+            true
+        );
+
+    }
+
+}
+
+
+/* STRUCTURE */
+
+function analyzeStructure(value){
+
+    const stats = {
+
+        keys:0,
+
+        objects:0,
+
+        arrays:0,
+
+        nulls:0,
+
+        strings:0,
+
+        numbers:0,
+
+        booleans:0,
+
+        depth:0
+
+    };
+
+
+    function walk(
+        value,
+        currentDepth
+    ){
+
+        stats.depth =
+        Math.max(
+            stats.depth,
+            currentDepth
+        );
+
+
+        if(value === null){
+
+            stats.nulls++;
+
+            return;
+
+        }
+
+
+        if(Array.isArray(value)){
+
+            stats.arrays++;
+
+
+            value.forEach(
+                item => {
+
+                    walk(
+                        item,
+                        currentDepth + 1
+                    );
+
+                }
+            );
+
+
+            return;
+
+        }
+
+
+        if(
+            typeof value === "object"
+        ){
+
+            stats.objects++;
+
+
+            Object.keys(value)
+            .forEach(
+                key => {
+
+                    stats.keys++;
+
+                    walk(
+                        value[key],
+                        currentDepth + 1
+                    );
+
+                }
+            );
+
+
+            return;
+
+        }
+
+
+        if(
+            typeof value === "string"
+        ){
+
+            stats.strings++;
+
+        }
+
+
+        else if(
+            typeof value === "number"
+        ){
+
+            stats.numbers++;
+
+        }
+
+
+        else if(
+            typeof value === "boolean"
+        ){
+
+            stats.booleans++;
+
+        }
+
+    }
+
+
+    walk(
+        value,
+        1
+    );
+
+
+    return stats;
+
+}
+
+
+/* INSIGHTS */
+
+function createInsights(stats){
+
+    const grid =
+    document
+    .getElementById("insightGrid");
+
+
+    grid.innerHTML = "";
+
+
+    addInsight(
+        "🧩",
+        "Structure",
+        `${stats.keys} keys, ${stats.objects} objects and ${stats.arrays} arrays were detected.`
+    );
+
+
+    addInsight(
+        "🔢",
+        "Data Types",
+        `${stats.strings} text, ${stats.numbers} numeric and ${stats.booleans} boolean values were found.`
+    );
+
+
+    addInsight(
+        "🌳",
+        "Nesting",
+        `Maximum detected nesting depth is ${stats.depth} levels.`
+    );
+
+
+    addInsight(
+        "⚠️",
+        "Null Values",
+        `${stats.nulls} null value${stats.nulls === 1 ? "" : "s"} detected.`
+    );
+
+
+    if(stats.arrays > 0){
+
+        addInsight(
+            "📚",
+            "Collections",
+            `Your JSON contains ${stats.arrays} array structure${stats.arrays === 1 ? "" : "s"}.`
+        );
+
+    }
+
+
+    if(stats.objects > 0){
+
+        addInsight(
+            "📦",
+            "Objects",
+            `The dataset contains ${stats.objects} object structure${stats.objects === 1 ? "" : "s"}.`
+        );
+
+    }
+
+}
+
+
+function addInsight(
+    icon,
+    title,
+    message
+){
+
+    const div =
+    document.createElement("div");
+
+
+    div.className =
+    "insight";
+
+
+    div.innerHTML = `
+
+        <div class="insight-icon">
+            ${icon}
+        </div>
+
+        <strong>
+            ${escapeHTML(title)}
+        </strong>
+
+        <p>
+            ${escapeHTML(message)}
+        </p>
+
+    `;
+
+
+    document
+    .getElementById("insightGrid")
+    .appendChild(div);
+
+}
+
+
+/* COPY */
+
+async function copyJSON(){
+
+    if(!parsedJSON){
+
+        setStatus(
+            "Analyze valid JSON first.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    const text =
+    JSON.stringify(
+        parsedJSON,
+        null,
+        2
+    );
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            text
+        );
+
+
+        setStatus(
+            "Formatted JSON copied.",
+            false,
+            true
+        );
+
+    }
+    catch(error){
+
+        setStatus(
+            "Copy failed. Please copy manually.",
+            true
+        );
+
+    }
+
+}
+
+
+/* DOWNLOAD */
+
+function downloadJSON(){
+
+    if(!parsedJSON){
+
+        setStatus(
+            "Analyze valid JSON first.",
+            true
+        );
+
+        return;
+
+    }
+
+
+    const text =
+    JSON.stringify(
+        parsedJSON,
+        null,
+        2
+    );
+
+
+    const blob =
+    new Blob(
+        [text],
+        {
+            type:
+            "application/json"
+        }
+    );
+
+
+    const url =
+    URL.createObjectURL(blob);
+
+
+    const link =
+    document.createElement("a");
+
+
+    link.href =
+    url;
+
+
+    link.download =
+    "smarttools-formatted.json";
+
+
+    document
+    .body
+    .appendChild(link);
+
+
+    link.click();
+
+
+    link.remove();
+
+
+    URL.revokeObjectURL(
+        url
+    );
+
+}
+
+
+/* SAMPLE */
+
+function loadSample(){
+
+    const sample = {
+
+        project:"SmartTools",
+
+        category:"Data Analysis",
+
+        tools:{
+
+            csvAnalyzer:true,
+
+            csvCleaner:true,
+
+            excelAnalyzer:true,
+
+            jsonAnalyzer:true
+
+        },
+
+        users:[
+            {
+                name:"User 1",
+                active:true
+            },
+            {
+                name:"User 2",
+                active:false
+            }
+        ],
+
+        statistics:{
+            visits:12500,
+            conversionRate:4.8,
+            verified:null
+        }
+
+    };
+
+
+    document
+    .getElementById("jsonInput")
+    .value =
+    JSON.stringify(
+        sample,
+        null,
+        2
+    );
+
+
+    analyzeJSON();
+
+}
+
+
+/* CLEAR */
+
+function clearJSON(){
+
+    parsedJSON = null;
+
+
+    document
+    .getElementById("jsonInput")
+    .value = "";
+
+
+    document
+    .getElementById("result")
+    .textContent =
+    "Your formatted JSON will appear here.";
+
+
+    document
+    .getElementById("valid")
+    .textContent =
+    "—";
+
+
+    document
+    .getElementById("keys")
+    .textContent =
+    "0";
+
+
+    document
+    .getElementById("objects")
+    .textContent =
+    "0";
+
+
+    document
+    .getElementById("arrays")
+    .textContent =
+    "0";
+
+
+    document
+    .getElementById("nulls")
+    .textContent =
+    "0";
+
+
+    document
+    .getElementById("depth")
+    .textContent =
+    "0";
+
+
+    document
+    .getElementById("insightGrid")
+    .innerHTML = `
+
+        <div class="insight">
+
+            <div class="insight-icon">
+                🧩
+            </div>
+
+            <strong>
+                Structure
+            </strong>
+
+            <p>
+                Analyze your JSON to generate structural insights.
+            </p>
+
+        </div>
+
+
+        <div class="insight">
+
+            <div class="insight-icon">
+                🔢
+            </div>
+
+            <strong>
+                Data Types
+            </strong>
+
+            <p>
+                Numeric, text, boolean and null values are detected.
+            </p>
+
+        </div>
+
+
+        <div class="insight">
+
+            <div class="insight-icon">
+                🌳
+            </div>
+
+            <strong>
+                Nesting
+            </strong>
+
+            <p>
+                Nested objects and arrays are measured automatically.
+            </p>
+
+        </div>
+
+    `;
+
+
+    setStatus(
+        "Ready for JSON.",
+        false
+    );
+
+}
+
+
+/* STATUS */
+
+function setStatus(
+    message,
+    error = false,
+    success = false
+){
+
+    const status =
+    document
+    .getElementById("status");
+
+
+    status.className =
+    "status " +
+    (
+        error
+        ? "error"
+        : success
+        ? "success"
+        : ""
+    );
+
+
+    status.querySelector("span:last-child")
+    .textContent =
+    message;
+
+}
+
+
+/* ESCAPE */
+
+function escapeHTML(value){
+
+    return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+</script>
+
+</body>
+</html>

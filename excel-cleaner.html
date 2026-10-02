@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Excel Cleaner - Clean XLSX & XLS Files Online | SmartTools</title>
+
+    <meta name="description"
+        content="Free Excel Cleaner to remove duplicate rows, trim spaces, clean column names and remove empty columns from XLSX and XLS files online.">
+
+    <meta name="keywords"
+        content="excel cleaner, xlsx cleaner, xls cleaner, clean excel file, remove duplicates excel, excel data cleaning">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+        href="https://smarttools.example/excel-cleaner.html">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            color: #eef4ff;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(124, 58, 237, 0.18),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at top right,
+                    rgba(6, 182, 212, 0.12),
+                    transparent 30%
+                ),
+                #07111f;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            text-align: center;
+            padding: 10px 20px;
+
+            background: rgba(15, 23, 42, 0.9);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+
+            color: #b9c7dc;
+            font-size: 13px;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background:
+                rgba(7, 17, 31, 0.88);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 18px 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #7c3aed;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+
+            color: #b8c5d9;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+
+            padding:
+                55px 20px 80px;
+        }
+
+        .hero {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+
+            padding: 8px 14px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(124, 58, 237, 0.14);
+
+            border:
+                1px solid rgba(124, 58, 237, 0.35);
+
+            color: #c4b5fd;
+
+            font-size: 13px;
+
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size:
+                clamp(38px, 6vw, 68px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            background:
+                linear-gradient(
+                    90deg,
+                    #8b5cf6,
+                    #22d3ee
+                );
+
+            -webkit-background-clip: text;
+
+            color: transparent;
+        }
+
+        .hero p {
+            color: #9fb0c7;
+
+            line-height: 1.8;
+
+            font-size: 17px;
+        }
+
+        .tool-card {
+            margin-top: 45px;
+
+            padding: 30px;
+
+            border-radius: 24px;
+
+            background:
+                rgba(15, 23, 42, 0.72);
+
+            border:
+                1px solid rgba(255,255,255,0.09);
+
+            box-shadow:
+                0 25px 80px rgba(0,0,0,0.3);
+        }
+
+        .upload-box {
+            border:
+                2px dashed rgba(139,92,246,0.45);
+
+            border-radius: 20px;
+
+            padding: 45px 25px;
+
+            text-align: center;
+
+            background:
+                rgba(124,58,237,0.05);
+
+            transition: 0.3s;
+        }
+
+        .upload-box:hover {
+            border-color: #8b5cf6;
+
+            background:
+                rgba(124,58,237,0.09);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+
+            margin-bottom: 12px;
+        }
+
+        .upload-box h2 {
+            margin-bottom: 8px;
+
+            font-size: 23px;
+        }
+
+        .upload-box p {
+            color: #93a4ba;
+
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .upload-btn {
+            display: inline-block;
+
+            padding: 13px 23px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #4f46e5
+                );
+
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+        .file-name {
+            margin-top: 18px;
+
+            color: #67e8f9;
+
+            font-size: 14px;
+        }
+
+        .controls {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 15px;
+
+            margin-top: 22px;
+        }
+
+        .control-box {
+            padding: 18px;
+
+            border-radius: 15px;
+
+            background: #101b2d;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+        }
+
+        .control-box label {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #aebdd0;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+        select {
+            width: 100%;
+
+            padding: 13px;
+
+            border-radius: 10px;
+
+            background: #162235;
+
+            color: white;
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            outline: none;
+        }
+
+        .check-list {
+            display: grid;
+
+            gap: 10px;
+        }
+
+        .check {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #c4d0df;
+
+            font-size: 14px;
+        }
+
+        .check input {
+            width: 17px;
+            height: 17px;
+
+            accent-color: #8b5cf6;
+        }
+
+        .button-row {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 20px;
+        }
+
+        button {
+            border: 0;
+
+            cursor: pointer;
+
+            border-radius: 12px;
+
+            padding: 14px 20px;
+
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary {
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #4f46e5
+                );
+
+            color: white;
+        }
+
+        .secondary {
+            background: #162235;
+
+            color: #d8e1ef;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-top: 28px;
+        }
+
+        .stat {
+            padding: 20px;
+
+            border-radius: 16px;
+
+            background: #101b2d;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+        }
+
+        .stat-label {
+            color: #8ea0b8;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 27px;
+
+            font-weight: 800;
+        }
+
+        .section {
+            margin-top: 28px;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background: #0d192a;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+        }
+
+        .section h2 {
+            margin-bottom: 18px;
+
+            font-size: 22px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+
+            border-radius: 14px;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 700px;
+        }
+
+        th,
+        td {
+            padding: 13px 15px;
+
+            text-align: left;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.06);
+
+            font-size: 14px;
+        }
+
+        th {
+            background: #142238;
+
+            color: #dce7f6;
+        }
+
+        td {
+            color: #aebdd0;
+        }
+
+        .empty {
+            text-align: center;
+
+            padding: 30px;
+
+            color: #8092aa;
+        }
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-top: 28px;
+        }
+
+        .info-card {
+            padding: 22px;
+
+            background: #0e1a2c;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            border-radius: 18px;
+        }
+
+        .info-card h3 {
+            margin-bottom: 10px;
+
+            font-size: 17px;
+        }
+
+        .info-card p {
+            color: #91a2b9;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+        .content {
+            margin-top: 65px;
+
+            max-width: 900px;
+        }
+
+        .content h2 {
+            font-size: 30px;
+
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            color: #9aabc0;
+
+            line-height: 1.9;
+
+            margin-bottom: 18px;
+        }
+
+        .faq {
+            margin-top: 55px;
+
+            max-width: 900px;
+        }
+
+        .faq h2 {
+            margin-bottom: 20px;
+        }
+
+        details {
+            background: #0d192a;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            border-radius: 14px;
+
+            padding: 17px 19px;
+
+            margin-bottom: 12px;
+        }
+
+        summary {
+            cursor: pointer;
+
+            font-weight: 700;
+        }
+
+        details p {
+            color: #9aabc0;
+
+            line-height: 1.7;
+
+            margin-top: 12px;
+        }
+
+        footer {
+            border-top:
+                1px solid rgba(255,255,255,0.07);
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            color: #75869d;
+
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding:
+                    35px 15px 60px;
+            }
+
+            .tool-card {
+                padding: 18px;
+            }
+
+            .stats {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .upload-box {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                letter-spacing: -1px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — simple tools for everyday needs.
+</div>
+
+<header>
+
+    <nav class="nav">
+
+        <a href="index.html" class="logo">
+            Smart<span>Tools</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="data-analyst.html">
+                Data Analyst
+            </a>
+
+            <a href="ai-tools.html">
+                AI Tools
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <div class="badge">
+            🧹 Data Cleaning Tool
+        </div>
+
+        <h1>
+            Excel <span>Cleaner</span>
+        </h1>
+
+        <p>
+            Clean your Excel spreadsheet quickly by removing duplicate
+            rows, trimming unnecessary spaces, cleaning column names
+            and removing completely empty columns.
+        </p>
+
+    </section>
+
+
+    <section class="tool-card">
+
+        <div class="upload-box">
+
+            <div class="upload-icon">
+                🧹
+            </div>
+
+            <h2>
+                Upload Excel File
+            </h2>
+
+            <p>
+                Supports XLSX and XLS files.
+                Your spreadsheet is processed directly in your browser.
+            </p>
+
+            <label
+                for="excelFile"
+                class="upload-btn">
+                Choose Excel File
+            </label>
+
+            <input
+                type="file"
+                id="excelFile"
+                class="file-input"
+                accept=".xlsx,.xls"
+            >
+
+            <div
+                id="fileName"
+                class="file-name">
+                No file selected
+            </div>
+
+        </div>
+
+
+        <div
+            id="controls"
+            class="controls hidden">
+
+            <div class="control-box">
+
+                <label>
+                    Select Worksheet
+                </label>
+
+                <select id="sheetSelect">
+                </select>
+
+            </div>
+
+
+            <div class="control-box">
+
+                <label>
+                    Cleaning Options
+                </label>
+
+                <div class="check-list">
+
+                    <label class="check">
+
+                        <input
+                            type="checkbox"
+                            id="removeDuplicates"
+                            checked
+                        >
+
+                        Remove duplicate rows
+
+                    </label>
+
+                    <label class="check">
+
+                        <input
+                            type="checkbox"
+                            id="trimSpaces"
+                            checked
+                        >
+
+                        Trim extra spaces
+
+                    </label>
+
+                    <label class="check">
+
+                        <input
+                            type="checkbox"
+                            id="cleanHeaders"
+                            checked
+                        >
+
+                        Clean column names
+
+                    </label>
+
+                    <label class="check">
+
+                        <input
+                            type="checkbox"
+                            id="removeEmptyColumns"
+                            checked
+                        >
+
+                        Remove empty columns
+
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="button-row">
+
+            <button
+                class="primary"
+                onclick="cleanExcel()">
+
+                Clean Excel Data
+
+            </button>
+
+            <button
+                class="secondary"
+                onclick="loadSample()">
+
+                Sample Data
+
+            </button>
+
+            <button
+                class="secondary"
+                onclick="downloadExcel()">
+
+                Download Clean Excel
+
+            </button>
+
+            <button
+                class="secondary"
+                onclick="clearAll()">
+
+                Clear
+
+            </button>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Original Rows
+                </div>
+
+                <div
+                    id="originalRows"
+                    class="stat-value">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Clean Rows
+                </div>
+
+                <div
+                    id="cleanRows"
+                    class="stat-value">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Duplicates Removed
+                </div>
+
+                <div
+                    id="duplicatesRemoved"
+                    class="stat-value">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-label">
+                    Columns
+                </div>
+
+                <div
+                    id="columnsCount"
+                    class="stat-value">
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>
+                Cleaned Data Preview
+            </h2>
+
+            <div
+                id="preview"
+                class="empty">
+
+                Upload an Excel file and clean it
+                to see the result.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <h3>
+                🔁 Remove Duplicates
+            </h3>
+
+            <p>
+                Detects identical rows and keeps only
+                one copy of each record.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                ✨ Clean Spaces
+            </h3>
+
+            <p>
+                Removes unnecessary spaces around
+                cell values for cleaner data.
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h3>
+                📥 Export Excel
+            </h3>
+
+            <p>
+                Download the cleaned spreadsheet as
+                a new XLSX file.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <section class="content">
+
+        <h2>
+            What is an Excel Cleaner?
+        </h2>
+
+        <p>
+            An Excel Cleaner helps prepare spreadsheet data for analysis
+            by identifying and removing common data quality problems.
+            Duplicate records, unnecessary spaces and empty columns can
+            make spreadsheets harder to work with.
+        </p>
+
+        <p>
+            SmartTools Excel Cleaner provides a simple browser-based way
+            to prepare XLSX and XLS files before using them for reporting,
+            data analysis or visualization.
+        </p>
+
+        <h2>
+            Why clean Excel data?
+        </h2>
+
+        <p>
+            Clean data can make analysis easier and reduce problems caused
+            by duplicate records, inconsistent spacing and unused columns.
+            Always review the cleaned file before using it for important
+            business or financial decisions.
+        </p>
+
+    </section>
+
+
+    <section class="faq">
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+
+        <details>
+
+            <summary>
+                Is Excel Cleaner free?
+            </summary>
+
+            <p>
+                Yes. The tool is designed to provide free browser-based
+                spreadsheet cleaning.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Which files can I clean?
+            </summary>
+
+            <p>
+                XLSX and XLS spreadsheet files are supported.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Does it remove duplicate rows?
+            </summary>
+
+            <p>
+                Yes. When the duplicate option is enabled, identical
+                rows are reduced to a single row.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Does the tool upload my Excel file?
+            </summary>
+
+            <p>
+                The cleaning operation is performed in your browser.
+                The page does not intentionally send your spreadsheet
+                data to a SmartTools backend.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                Can I download the cleaned Excel file?
+            </summary>
+
+            <p>
+                Yes. After cleaning, you can download the result as
+                a new XLSX spreadsheet.
+            </p>
+
+        </details>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    © 2026 SmartTools.
+    Built for simple, useful everyday tools.
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+
+<script>
+
+let workbook = null;
+
+let currentFileName = "";
+
+let currentSheetName = "";
+
+let originalData = [];
+
+let cleanedData = [];
+
+let cleanedHeaders = [];
+
+
+const excelFile =
+    document.getElementById("excelFile");
+
+
+excelFile.addEventListener(
+    "change",
+    function () {
+
+        const file =
+            this.files[0];
+
+        if (!file) {
+            return;
+        }
+
+        currentFileName =
+            file.name;
+
+        document.getElementById(
+            "fileName"
+        ).textContent =
+            "Selected: " + file.name;
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function (event) {
+
+                try {
+
+                    const data =
+                        new Uint8Array(
+                            event.target.result
+                        );
+
+
+                    workbook =
+                        XLSX.read(
+                            data,
+                            {
+                                type: "array"
+                            }
+                        );
+
+
+                    const sheetSelect =
+                        document.getElementById(
+                            "sheetSelect"
+                        );
+
+
+                    sheetSelect.innerHTML =
+                        "";
+
+
+                    workbook.SheetNames.forEach(
+                        function (sheetName) {
+
+                            const option =
+                                document.createElement(
+                                    "option"
+                                );
+
+                            option.value =
+                                sheetName;
+
+                            option.textContent =
+                                sheetName;
+
+                            sheetSelect.appendChild(
+                                option
+                            );
+
+                        }
+                    );
+
+
+                    currentSheetName =
+                        workbook.SheetNames[0];
+
+
+                    document
+                        .getElementById(
+                            "controls"
+                        )
+                        .classList.remove(
+                            "hidden"
+                        );
+
+
+                    loadCurrentSheet();
+
+                }
+
+                catch (error) {
+
+                    alert(
+                        "Unable to read this Excel file."
+                    );
+
+                    console.error(error);
+
+                }
+
+            };
+
+
+        reader.readAsArrayBuffer(file);
+
+    }
+);
+
+
+document
+    .getElementById("sheetSelect")
+    .addEventListener(
+        "change",
+        function () {
+
+            currentSheetName =
+                this.value;
+
+            loadCurrentSheet();
+
+        }
+    );
+
+
+function loadCurrentSheet() {
+
+    if (!workbook) {
+        return;
+    }
+
+
+    const sheet =
+        workbook.Sheets[
+            currentSheetName
+        ];
+
+
+    originalData =
+        XLSX.utils.sheet_to_json(
+            sheet,
+            {
+                defval: ""
+            }
+        );
+
+
+    cleanedData = [];
+
+    cleanedHeaders = [];
+
+
+    document.getElementById(
+        "originalRows"
+    ).textContent =
+        originalData.length;
+
+
+    document.getElementById(
+        "cleanRows"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "duplicatesRemoved"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "columnsCount"
+    ).textContent =
+        getColumns(originalData).length;
+
+
+    document.getElementById(
+        "preview"
+    ).innerHTML =
+        `
+        <div class="empty">
+            Click "Clean Excel Data" to process this worksheet.
+        </div>
+        `;
+
+}
+
+
+function getColumns(data) {
+
+    const columns = [];
+
+
+    data.forEach(
+        function (row) {
+
+            Object.keys(row).forEach(
+                function (key) {
+
+                    if (
+                        !columns.includes(key)
+                    ) {
+
+                        columns.push(key);
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    return columns;
+
+}
+
+
+function isEmpty(value) {
+
+    return (
+        value === null ||
+        value === undefined ||
+        String(value).trim() === ""
+    );
+
+}
+
+
+function cleanHeader(header) {
+
+    let result =
+        String(header)
+            .trim()
+            .replace(/\s+/g, " ");
+
+
+    result =
+        result.replace(
+            /[^a-zA-Z0-9 _-]/g,
+            ""
+        );
+
+
+    result =
+        result.replace(
+            /\s+/g,
+            "_"
+        );
+
+
+    return result || "Column";
+
+}
+
+
+function cleanExcel() {
+
+    if (
+        !workbook &&
+        !originalData.length
+    ) {
+
+        alert(
+            "Please upload an Excel file first."
+        );
+
+        return;
+
+    }
+
+
+    if (!originalData.length) {
+
+        alert(
+            "The selected worksheet has no data."
+        );
+
+        return;
+
+    }
+
+
+    const removeDuplicates =
+        document.getElementById(
+            "removeDuplicates"
+        ).checked;
+
+
+    const trimSpaces =
+        document.getElementById(
+            "trimSpaces"
+        ).checked;
+
+
+    const cleanHeadersOption =
+        document.getElementById(
+            "cleanHeaders"
+        ).checked;
+
+
+    const removeEmptyColumns =
+        document.getElementById(
+            "removeEmptyColumns"
+        ).checked;
+
+
+    let columns =
+        getColumns(originalData);
+
+
+    let data =
+        originalData.map(
+            function (row) {
+
+                const newRow = {};
+
+
+                columns.forEach(
+                    function (column) {
+
+                        let value =
+                            row[column] ?? "";
+
+
+                        if (
+                            trimSpaces &&
+                            typeof value === "string"
+                        ) {
+
+                            value =
+                                value.trim()
+                                    .replace(
+                                        /\s+/g,
+                                        " "
+                                    );
+
+                        }
+
+
+                        newRow[column] =
+                            value;
+
+                    }
+                );
+
+
+                return newRow;
+
+            }
+        );
+
+
+    if (removeEmptyColumns) {
+
+        columns =
+            columns.filter(
+                function (column) {
+
+                    return data.some(
+                        function (row) {
+
+                            return !isEmpty(
+                                row[column]
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        data =
+            data.map(
+                function (row) {
+
+                    const newRow = {};
+
+                    columns.forEach(
+                        function (column) {
+
+                            newRow[column] =
+                                row[column];
+
+                        }
+                    );
+
+                    return newRow;
+
+                }
+            );
+
+    }
+
+
+    let headers =
+        columns.map(
+            function (column) {
+
+                return cleanHeadersOption
+                    ? cleanHeader(column)
+                    : column;
+
+            }
+        );
+
+
+    headers =
+        makeUniqueHeaders(headers);
+
+
+    if (cleanHeadersOption) {
+
+        const headerMap = {};
+
+        columns.forEach(
+            function (column, index) {
+
+                headerMap[column] =
+                    headers[index];
+
+            }
+        );
+
+
+        data =
+            data.map(
+                function (row) {
+
+                    const newRow = {};
+
+
+                    columns.forEach(
+                        function (column) {
+
+                            newRow[
+                                headerMap[column]
+                            ] =
+                                row[column];
+
+                        }
+                    );
+
+
+                    return newRow;
+
+                }
+            );
+
+    }
+
+
+    if (removeDuplicates) {
+
+        const seen =
+            new Set();
+
+
+        data =
+            data.filter(
+                function (row) {
+
+                    const signature =
+                        columns
+                            .map(
+                                function (column) {
+
+                                    const key =
+                                        cleanHeadersOption
+                                            ? headers[
+                                                columns.indexOf(
+                                                    column
+                                                )
+                                            ]
+                                            : column;
+
+                                    return String(
+                                        row[key] ?? ""
+                                    ).trim();
+
+                                }
+                            )
+                            .join("||");
+
+
+                    if (
+                        seen.has(signature)
+                    ) {
+
+                        return false;
+
+                    }
+
+
+                    seen.add(signature);
+
+                    return true;
+
+                }
+            );
+
+    }
+
+
+    cleanedData = data;
+
+    cleanedHeaders =
+        cleanHeadersOption
+            ? headers
+            : columns;
+
+
+    const duplicatesRemoved =
+        originalData.length -
+        cleanedData.length;
+
+
+    document.getElementById(
+        "originalRows"
+    ).textContent =
+        originalData.length;
+
+
+    document.getElementById(
+        "cleanRows"
+    ).textContent =
+        cleanedData.length;
+
+
+    document.getElementById(
+        "duplicatesRemoved"
+    ).textContent =
+        duplicatesRemoved;
+
+
+    document.getElementById(
+        "columnsCount"
+    ).textContent =
+        cleanedHeaders.length;
+
+
+    renderPreview();
+
+}
+
+
+function makeUniqueHeaders(headers) {
+
+    const used = {};
+
+    return headers.map(
+        function (header) {
+
+            if (!used[header]) {
+
+                used[header] = 1;
+
+                return header;
+
+            }
+
+
+            used[header]++;
+
+            return (
+                header +
+                "_" +
+                used[header]
+            );
+
+        }
+    );
+
+}
+
+
+function renderPreview() {
+
+    const container =
+        document.getElementById(
+            "preview"
+        );
+
+
+    if (!cleanedData.length) {
+
+        container.innerHTML =
+            `
+            <div class="empty">
+                No cleaned rows available.
+            </div>
+            `;
+
+        return;
+
+    }
+
+
+    const columns =
+        cleanedHeaders;
+
+
+    const rows =
+        cleanedData.slice(0, 10);
+
+
+    let html =
+        `
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+        `;
+
+
+    columns.forEach(
+        function (column) {
+
+            html +=
+                `
+                <th>
+                    ${escapeHTML(column)}
+                </th>
+                `;
+
+        }
+    );
+
+
+    html +=
+        `
+                    </tr>
+
+                </thead>
+
+                <tbody>
+        `;
+
+
+    rows.forEach(
+        function (row) {
+
+            html += "<tr>";
+
+
+            columns.forEach(
+                function (column) {
+
+                    html +=
+                        `
+                        <td>
+                            ${escapeHTML(
+                                row[column]
+                            )}
+                        </td>
+                        `;
+
+                }
+            );
+
+
+            html += "</tr>";
+
+        }
+    );
+
+
+    html +=
+        `
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p style="
+            margin-top:15px;
+            color:#8092aa;
+            font-size:13px;
+        ">
+            Showing first ${rows.length}
+            cleaned rows.
+        </p>
+        `;
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+function downloadExcel() {
+
+    if (!cleanedData.length) {
+
+        alert(
+            "Please clean the Excel data first."
+        );
+
+        return;
+
+    }
+
+
+    const worksheet =
+        XLSX.utils.json_to_sheet(
+            cleanedData
+        );
+
+
+    const newWorkbook =
+        XLSX.utils.book_new();
+
+
+    XLSX.utils.book_append_sheet(
+        newWorkbook,
+        worksheet,
+        "Cleaned Data"
+    );
+
+
+    const originalName =
+        currentFileName
+            .replace(
+                /\.xlsx?$/i,
+                ""
+            );
+
+
+    XLSX.writeFile(
+        newWorkbook,
+        originalName +
+        "-cleaned.xlsx"
+    );
+
+}
+
+
+function loadSample() {
+
+    currentFileName =
+        "SmartTools-Sample.xlsx";
+
+
+    currentSheetName =
+        "Employees";
+
+
+    originalData = [
+
+        {
+            " Name ": " Sukanya ",
+            "Department": " IT ",
+            "Salary": 55000,
+            "Email": "sukanya@example.com"
+        },
+
+        {
+            " Name ": " Rahul ",
+            "Department": " Sales ",
+            "Salary": 48000,
+            "Email": "rahul@example.com"
+        },
+
+        {
+            " Name ": " Priya ",
+            "Department": " HR ",
+            "Salary": 52000,
+            "Email": "priya@example.com"
+        },
+
+        {
+            " Name ": " Rahul ",
+            "Department": " Sales ",
+            "Salary": 48000,
+            "Email": "rahul@example.com"
+        },
+
+        {
+            " Name ": " Amit ",
+            "Department": " IT ",
+            "Salary": 67000,
+            "Email": "amit@example.com"
+        },
+
+        {
+            " Name ": " Neha ",
+            "Department": " Marketing ",
+            "Salary": 50000,
+            "Email": "neha@example.com"
+        },
+
+        {
+            " Name ": " ",
+            "Department": " ",
+            "Salary": "",
+            "Email": ""
+        }
+
+    ];
+
+
+    workbook = null;
+
+
+    document.getElementById(
+        "fileName"
+    ).textContent =
+        "Sample data loaded";
+
+
+    document
+        .getElementById("controls")
+        .classList.add("hidden");
+
+
+    document.getElementById(
+        "originalRows"
+    ).textContent =
+        originalData.length;
+
+
+    document.getElementById(
+        "cleanRows"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "duplicatesRemoved"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "columnsCount"
+    ).textContent =
+        getColumns(
+            originalData
+        ).length;
+
+
+    cleanedData = [];
+
+    cleanedHeaders = [];
+
+
+    renderPreview();
+
+}
+
+
+function clearAll() {
+
+    workbook = null;
+
+    originalData = [];
+
+    cleanedData = [];
+
+    cleanedHeaders = [];
+
+    currentFileName = "";
+
+    currentSheetName = "";
+
+    excelFile.value = "";
+
+
+    document.getElementById(
+        "fileName"
+    ).textContent =
+        "No file selected";
+
+
+    document
+        .getElementById("controls")
+        .classList.add("hidden");
+
+
+    document.getElementById(
+        "originalRows"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "cleanRows"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "duplicatesRemoved"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "columnsCount"
+    ).textContent =
+        "0";
+
+
+    document.getElementById(
+        "preview"
+    ).innerHTML =
+        `
+        <div class="empty">
+            Upload an Excel file and clean it
+            to see the result.
+        </div>
+        `;
+
+}
+
+</script>
+
+</body>
+</html>

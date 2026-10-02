@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Data Dictionary Generator - Free Online Tool | SmartTools</title>
+
+<meta name="description"
+content="Generate a data dictionary from CSV files online for free. Analyze columns, data types, missing values, unique values, minimum, maximum and averages.">
+
+<meta name="keywords"
+content="data dictionary generator, csv data dictionary, data profiling, csv column analyzer, data analyst tool, data quality checker">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://smarttools.com/data-dictionary.html">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top left,rgba(90,70,240,.22),transparent 35%),
+        radial-gradient(circle at bottom right,rgba(0,190,255,.12),transparent 35%),
+        #070b16;
+    color:#f5f7ff;
+    min-height:100vh;
+    line-height:1.6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.topbar{
+    text-align:center;
+    padding:9px 15px;
+    background:rgba(255,255,255,.04);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    color:#bfc8dc;
+    font-size:13px;
+}
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 6%;
+    background:rgba(7,11,22,.84);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:23px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#8b7cff;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    color:#b9c1d5;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.hero{
+    max-width:1100px;
+    margin:auto;
+    padding:65px 20px 35px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 13px;
+    border:1px solid rgba(139,124,255,.3);
+    background:rgba(139,124,255,.08);
+    color:#bdb4ff;
+    border-radius:50px;
+    font-size:12px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(36px,6vw,65px);
+    line-height:1.05;
+    letter-spacing:-2px;
+    margin-bottom:18px;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,#a99cff,#54d9ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:720px;
+    margin:auto;
+    color:#aeb7ca;
+    font-size:17px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.tool-card{
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 25px 70px rgba(0,0,0,.28);
+}
+
+.upload-box{
+    border:2px dashed rgba(139,124,255,.45);
+    border-radius:20px;
+    padding:40px 20px;
+    text-align:center;
+    background:rgba(139,124,255,.05);
+    cursor:pointer;
+    transition:.25s;
+}
+
+.upload-box:hover{
+    border-color:#8b7cff;
+    background:rgba(139,124,255,.09);
+    transform:translateY(-2px);
+}
+
+.upload-icon{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.upload-box h2{
+    font-size:21px;
+    margin-bottom:7px;
+}
+
+.upload-box p{
+    color:#9da8bd;
+    font-size:14px;
+}
+
+#fileInput{
+    display:none;
+}
+
+.file-name{
+    margin-top:15px;
+    text-align:center;
+    color:#cbd4e8;
+    font-size:14px;
+}
+
+.btn-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    padding:12px 18px;
+    border-radius:12px;
+    color:white;
+    font-weight:700;
+    background:linear-gradient(135deg,#7567ff,#4d9cff);
+    transition:.2s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(83,118,255,.25);
+}
+
+button.secondary{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+button.danger{
+    background:rgba(255,80,100,.12);
+    border:1px solid rgba(255,80,100,.25);
+}
+
+.message{
+    margin-top:18px;
+    padding:13px 16px;
+    border-radius:12px;
+    display:none;
+    font-size:14px;
+}
+
+.message.success{
+    display:block;
+    background:rgba(60,220,140,.08);
+    border:1px solid rgba(60,220,140,.2);
+    color:#91e9b8;
+}
+
+.message.error{
+    display:block;
+    background:rgba(255,80,100,.08);
+    border:1px solid rgba(255,80,100,.2);
+    color:#ff9eaa;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin-top:25px;
+}
+
+.stat{
+    padding:20px;
+    border-radius:16px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.stat small{
+    display:block;
+    color:#8994aa;
+    margin-bottom:5px;
+}
+
+.stat strong{
+    font-size:24px;
+}
+
+.table-card{
+    margin-top:25px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.table-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.table-header h3{
+    font-size:16px;
+}
+
+.table-header span{
+    color:#8994aa;
+    font-size:12px;
+}
+
+.table-wrap{
+    overflow:auto;
+    max-height:650px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:950px;
+}
+
+th,td{
+    padding:13px 14px;
+    text-align:left;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    font-size:13px;
+}
+
+th{
+    background:rgba(255,255,255,.055);
+    color:#e0e6f3;
+    position:sticky;
+    top:0;
+    z-index:2;
+}
+
+td{
+    color:#aeb8ca;
+}
+
+.type-badge{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+    background:rgba(84,217,255,.1);
+    color:#8fe5ff;
+}
+
+.type-number{
+    background:rgba(139,124,255,.12);
+    color:#bdb4ff;
+}
+
+.type-date{
+    background:rgba(80,210,140,.1);
+    color:#8de5ad;
+}
+
+.type-boolean{
+    background:rgba(255,190,80,.1);
+    color:#ffd98a;
+}
+
+.empty{
+    padding:60px 20px;
+    text-align:center;
+    color:#7f8aa0;
+}
+
+.content{
+    max-width:1000px;
+    margin:70px auto;
+    padding:0 20px;
+}
+
+.content-section{
+    margin-bottom:50px;
+}
+
+.content h2{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.content h3{
+    margin:22px 0 8px;
+    font-size:19px;
+}
+
+.content p,
+.content li{
+    color:#aab4c8;
+}
+
+.content ul{
+    padding-left:22px;
+}
+
+.faq{
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+details{
+    border-bottom:1px solid rgba(255,255,255,.1);
+    padding:17px 0;
+}
+
+summary{
+    cursor:pointer;
+    font-weight:700;
+}
+
+details p{
+    margin-top:10px;
+}
+
+footer{
+    margin-top:70px;
+    padding:35px 20px;
+    text-align:center;
+    color:#778298;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .tool-card{
+        padding:18px;
+    }
+}
+
+@media(max-width:500px){
+
+    .hero{
+        padding-top:45px;
+    }
+
+    .hero h1{
+        font-size:39px;
+    }
+
+    .btn-row button{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — Free online tools for everyday work
+</div>
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        Smart<span>Tools</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="data-analyst.html">Data Analyst</a>
+        <a href="ai-tools.html">AI Tools</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+</nav>
+
+<header class="hero">
+
+    <div class="badge">
+        DATA ANALYST TOOL
+    </div>
+
+    <h1>
+        Data <span>Dictionary</span> Generator
+    </h1>
+
+    <p>
+        Upload a CSV file and automatically generate a detailed data
+        dictionary with column types, missing values, unique values,
+        ranges and statistics.
+    </p>
+
+</header>
+
+<main class="container">
+
+<section class="tool-card">
+
+    <label for="fileInput" class="upload-box">
+
+        <div class="upload-icon">📋</div>
+
+        <h2>
+            Upload CSV File
+        </h2>
+
+        <p>
+            Click here or drag & drop your CSV file
+        </p>
+
+        <input
+            type="file"
+            id="fileInput"
+            accept=".csv,.txt"
+        >
+
+    </label>
+
+    <div class="file-name" id="fileName">
+        No file selected
+    </div>
+
+    <div class="btn-row">
+
+        <button onclick="analyzeData()">
+            Generate Dictionary
+        </button>
+
+        <button class="secondary" onclick="loadSample()">
+            Sample Data
+        </button>
+
+        <button class="secondary" onclick="downloadReport()">
+            Download Report
+        </button>
+
+        <button class="danger" onclick="clearTool()">
+            Clear
+        </button>
+
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <small>Total Rows</small>
+            <strong id="rowCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Total Columns</small>
+            <strong id="columnCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Numeric Columns</small>
+            <strong id="numericCount">0</strong>
+        </div>
+
+        <div class="stat">
+            <small>Missing Cells</small>
+            <strong id="missingCount">0</strong>
+        </div>
+
+    </div>
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <h3>
+                Column Data Dictionary
+            </h3>
+
+            <span id="tableInfo">
+                No data
+            </span>
+
+        </div>
+
+        <div id="dictionaryTable" class="table-wrap">
+
+            <div class="empty">
+
+                Upload a CSV file to generate
+                the data dictionary.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<section class="content">
+
+<div class="content-section">
+
+<h2>
+    What is a Data Dictionary?
+</h2>
+
+<p>
+    A data dictionary is a structured description of the columns
+    in a dataset. It helps analysts and developers understand what
+    each field contains and how the data can be used.
+</p>
+
+<p style="margin-top:15px;">
+    SmartTools automatically analyzes your CSV and creates a
+    column-level overview including data type, missing values,
+    unique values and numerical statistics.
+</p>
+
+</div>
+
+<div class="content-section">
+
+<h2>
+    What This Tool Analyzes
+</h2>
+
+<ul>
+    <li>Column names</li>
+    <li>Detected data types</li>
+    <li>Total values</li>
+    <li>Missing values</li>
+    <li>Missing percentage</li>
+    <li>Unique values</li>
+    <li>Minimum value for numeric columns</li>
+    <li>Maximum value for numeric columns</li>
+    <li>Average for numeric columns</li>
+</ul>
+
+</div>
+
+<div class="content-section">
+
+<h2>
+    How to Generate a Data Dictionary
+</h2>
+
+<h3>
+    1. Upload CSV
+</h3>
+
+<p>
+    Select your CSV file from your computer.
+</p>
+
+<h3>
+    2. Generate Dictionary
+</h3>
+
+<p>
+    Click Generate Dictionary to analyze every column.
+</p>
+
+<h3>
+    3. Review the results
+</h3>
+
+<p>
+    The generated table shows useful information about every
+    column in your dataset.
+</p>
+
+<h3>
+    4. Download the report
+</h3>
+
+<p>
+    Download a text report containing the generated data dictionary.
+</p>
+
+</div>
+
+<div class="content-section">
+
+<h2>
+    Frequently Asked Questions
+</h2>
+
+<div class="faq">
+
+<details>
+<summary>
+What is a data dictionary used for?
+</summary>
+
+<p>
+A data dictionary helps users understand the structure,
+meaning and characteristics of fields in a dataset.
+</p>
+</details>
+
+<details>
+<summary>
+Which files are supported?
+</summary>
+
+<p>
+This tool is designed for CSV and compatible text-delimited
+files.
+</p>
+</details>
+
+<details>
+<summary>
+What data types are detected?
+</summary>
+
+<p>
+The tool can identify common text, numeric, date and boolean
+values based on the contents of each column.
+</p>
+</details>
+
+<details>
+<summary>
+Does the CSV get uploaded to a server?
+</summary>
+
+<p>
+No. The analysis happens locally in your browser.
+</p>
+</details>
+
+<details>
+<summary>
+Can I download the data dictionary?
+</summary>
+
+<p>
+Yes. Use the Download Report button to save the generated
+dictionary as a text report.
+</p>
+</details>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+    © 2026 SmartTools. Free online tools for everyday needs.
+</footer>
+
+<script>
+
+let currentRows = [];
+let currentHeaders = [];
+let currentDictionary = [];
+
+const fileInput =
+    document.getElementById("fileInput");
+
+const fileName =
+    document.getElementById("fileName");
+
+const message =
+    document.getElementById("message");
+
+const dictionaryTable =
+    document.getElementById("dictionaryTable");
+
+fileInput.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(!file){
+        return;
+    }
+
+    fileName.textContent = file.name;
+
+    const reader = new FileReader();
+
+    reader.onload = function(event){
+
+        try{
+
+            const text = event.target.result;
+
+            const parsed = parseCSV(text);
+
+            currentHeaders = parsed.headers;
+            currentRows = parsed.rows;
+
+            generateDictionary();
+
+            showMessage(
+                "CSV loaded and analyzed successfully.",
+                "success"
+            );
+
+        }catch(error){
+
+            showMessage(
+                error.message,
+                "error"
+            );
+
+        }
+
+    };
+
+    reader.readAsText(file);
+
+});
+
+function parseCSV(text){
+
+    text = text.replace(/^\uFEFF/, "");
+
+    const lines = [];
+
+    let row = [];
+    let cell = "";
+    let insideQuotes = false;
+
+    for(let i = 0; i < text.length; i++){
+
+        const char = text[i];
+
+        const next = text[i + 1];
+
+        if(char === '"' && insideQuotes && next === '"'){
+
+            cell += '"';
+            i++;
+            continue;
+        }
+
+        if(char === '"'){
+
+            insideQuotes = !insideQuotes;
+            continue;
+        }
+
+        if(char === "," && !insideQuotes){
+
+            row.push(cell);
+            cell = "";
+            continue;
+        }
+
+        if((char === "\n" || char === "\r") && !insideQuotes){
+
+            if(char === "\r" && next === "\n"){
+                i++;
+            }
+
+            row.push(cell);
+            cell = "";
+
+            if(row.some(value => value.trim() !== "")){
+                lines.push(row);
+            }
+
+            row = [];
+
+            continue;
+        }
+
+        cell += char;
+    }
+
+    if(cell !== "" || row.length){
+
+        row.push(cell);
+
+        if(row.some(value => value.trim() !== "")){
+            lines.push(row);
+        }
+
+    }
+
+    if(lines.length < 2){
+
+        throw new Error(
+            "CSV must contain a header and at least one data row."
+        );
+
+    }
+
+    const headers =
+        lines[0].map((header,index)=>{
+
+            const clean =
+                header.trim();
+
+            return clean || `Column ${index + 1}`;
+
+        });
+
+    const rows =
+        lines.slice(1).map(values=>{
+
+            const object = {};
+
+            headers.forEach((header,index)=>{
+
+                object[header] =
+                    values[index] !== undefined
+                        ? values[index].trim()
+                        : "";
+
+            });
+
+            return object;
+
+        });
+
+    return {
+        headers,
+        rows
+    };
+}
+
+function generateDictionary(){
+
+    if(!currentHeaders.length){
+        return;
+    }
+
+    currentDictionary = [];
+
+    let totalMissing = 0;
+
+    let numericColumns = 0;
+
+    currentHeaders.forEach(header=>{
+
+        const values =
+            currentRows.map(row =>
+                row[header] ?? ""
+            );
+
+        const nonEmpty =
+            values.filter(value =>
+                String(value).trim() !== ""
+            );
+
+        const missing =
+            values.length - nonEmpty.length;
+
+        totalMissing += missing;
+
+        const unique =
+            new Set(
+                nonEmpty.map(value =>
+                    String(value)
+                )
+            ).size;
+
+        const type =
+            detectType(nonEmpty);
+
+        let min = "—";
+        let max = "—";
+        let average = "—";
+
+        if(type === "Number"){
+
+            numericColumns++;
+
+            const numbers =
+                nonEmpty.map(Number);
+
+            min =
+                Math.min(...numbers);
+
+            max =
+                Math.max(...numbers);
+
+            const sum =
+                numbers.reduce(
+                    (total,value) =>
+                        total + value,
+                    0
+                );
+
+            average =
+                (sum / numbers.length).toFixed(2);
+        }
+
+        const missingPercent =
+            values.length
+                ? ((missing / values.length) * 100).toFixed(1)
+                : "0.0";
+
+        currentDictionary.push({
+
+            column: header,
+
+            type,
+
+            total: values.length,
+
+            missing,
+
+            missingPercent,
+
+            unique,
+
+            min,
+
+            max,
+
+            average
+
+        });
+
+    });
+
+    document.getElementById("rowCount").textContent =
+        currentRows.length;
+
+    document.getElementById("columnCount").textContent =
+        currentHeaders.length;
+
+    document.getElementById("numericCount").textContent =
+        numericColumns;
+
+    document.getElementById("missingCount").textContent =
+        totalMissing;
+
+    document.getElementById("tableInfo").textContent =
+        `${currentHeaders.length} columns analyzed`;
+
+    renderDictionary();
+
+}
+
+function detectType(values){
+
+    if(!values.length){
+        return "Empty";
+    }
+
+    const lowerValues =
+        values.map(value =>
+            String(value).toLowerCase().trim()
+        );
+
+    const allBoolean =
+        lowerValues.every(value =>
+            value === "true" ||
+            value === "false" ||
+            value === "yes" ||
+            value === "no"
+        );
+
+    if(allBoolean){
+        return "Boolean";
+    }
+
+    const allNumbers =
+        values.every(value => {
+
+            const clean =
+                String(value)
+                    .replace(/,/g,"")
+                    .trim();
+
+            return clean !== "" &&
+                   !isNaN(Number(clean));
+
+        });
+
+    if(allNumbers){
+        return "Number";
+    }
+
+    const allDates =
+        values.every(value => {
+
+            const parsed =
+                Date.parse(value);
+
+            return !isNaN(parsed);
+
+        });
+
+    if(allDates){
+        return "Date";
+    }
+
+    return "Text";
+}
+
+function renderDictionary(){
+
+    let html = `
+        <table>
+
+        <thead>
+
+        <tr>
+            <th>Column</th>
+            <th>Data Type</th>
+            <th>Total</th>
+            <th>Missing</th>
+            <th>Missing %</th>
+            <th>Unique</th>
+            <th>Minimum</th>
+            <th>Maximum</th>
+            <th>Average</th>
+        </tr>
+
+        </thead>
+
+        <tbody>
+    `;
+
+    currentDictionary.forEach(item=>{
+
+        let typeClass = "";
+
+        if(item.type === "Number"){
+            typeClass = "type-number";
+        }
+
+        if(item.type === "Date"){
+            typeClass = "type-date";
+        }
+
+        if(item.type === "Boolean"){
+            typeClass = "type-boolean";
+        }
+
+        html += `
+
+        <tr>
+
+            <td>
+                <strong>
+                    ${escapeHTML(item.column)}
+                </strong>
+            </td>
+
+            <td>
+                <span class="type-badge ${typeClass}">
+                    ${item.type}
+                </span>
+            </td>
+
+            <td>
+                ${item.total}
+            </td>
+
+            <td>
+                ${item.missing}
+            </td>
+
+            <td>
+                ${item.missingPercent}%
+            </td>
+
+            <td>
+                ${item.unique}
+            </td>
+
+            <td>
+                ${escapeHTML(String(item.min))}
+            </td>
+
+            <td>
+                ${escapeHTML(String(item.max))}
+            </td>
+
+            <td>
+                ${escapeHTML(String(item.average))}
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+    html += `
+        </tbody>
+        </table>
+    `;
+
+    dictionaryTable.innerHTML = html;
+}
+
+function loadSample(){
+
+    currentHeaders = [
+        "Name",
+        "Age",
+        "City",
+        "Salary",
+        "Active"
+    ];
+
+    currentRows = [
+
+        {
+            Name:"Aarav",
+            Age:"24",
+            City:"Mumbai",
+            Salary:"55000",
+            Active:"true"
+        },
+
+        {
+            Name:"Priya",
+            Age:"27",
+            City:"Pune",
+            Salary:"62000",
+            Active:"true"
+        },
+
+        {
+            Name:"Rahul",
+            Age:"31",
+            City:"Nagpur",
+            Salary:"",
+            Active:"false"
+        },
+
+        {
+            Name:"Neha",
+            Age:"25",
+            City:"Delhi",
+            Salary:"71000",
+            Active:"true"
+        },
+
+        {
+            Name:"Amit",
+            Age:"29",
+            City:"Mumbai",
+            Salary:"68000",
+            Active:"false"
+        }
+
+    ];
+
+    fileName.textContent =
+        "Sample dataset";
+
+    generateDictionary();
+
+    showMessage(
+        "Sample dataset loaded.",
+        "success"
+    );
+}
+
+function downloadReport(){
+
+    if(!currentDictionary.length){
+
+        showMessage(
+            "Please upload or load data first.",
+            "error"
+        );
+
+        return;
+    }
+
+    let report =
+        "SMARTTOOLS DATA DICTIONARY\n";
+
+    report +=
+        "===========================\n\n";
+
+    report +=
+        `Rows: ${currentRows.length}\n`;
+
+    report +=
+        `Columns: ${currentHeaders.length}\n\n`;
+
+    currentDictionary.forEach(item=>{
+
+        report +=
+            `Column: ${item.column}\n`;
+
+        report +=
+            `Data Type: ${item.type}\n`;
+
+        report +=
+            `Total Values: ${item.total}\n`;
+
+        report +=
+            `Missing Values: ${item.missing}\n`;
+
+        report +=
+            `Missing Percentage: ${item.missingPercent}%\n`;
+
+        report +=
+            `Unique Values: ${item.unique}\n`;
+
+        report +=
+            `Minimum: ${item.min}\n`;
+
+        report +=
+            `Maximum: ${item.max}\n`;
+
+        report +=
+            `Average: ${item.average}\n`;
+
+        report +=
+            "---------------------------\n";
+
+    });
+
+    const blob =
+        new Blob(
+            [report],
+            {type:"text/plain"}
+        );
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const link =
+        document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+        "smarttools-data-dictionary.txt";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+    showMessage(
+        "Data dictionary report downloaded.",
+        "success"
+    );
+}
+
+function clearTool(){
+
+    currentRows = [];
+
+    currentHeaders = [];
+
+    currentDictionary = [];
+
+    fileInput.value = "";
+
+    fileName.textContent =
+        "No file selected";
+
+    dictionaryTable.innerHTML = `
+        <div class="empty">
+            Upload a CSV file to generate
+            the data dictionary.
+        </div>
+    `;
+
+    document.getElementById("rowCount").textContent =
+        "0";
+
+    document.getElementById("columnCount").textContent =
+        "0";
+
+    document.getElementById("numericCount").textContent =
+        "0";
+
+    document.getElementById("missingCount").textContent =
+        "0";
+
+    document.getElementById("tableInfo").textContent =
+        "No data";
+
+    hideMessage();
+}
+
+function escapeHTML(value){
+
+    return value
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+function showMessage(text,type){
+
+    message.textContent = text;
+
+    message.className =
+        "message " + type;
+}
+
+function hideMessage(){
+
+    message.textContent = "";
+
+    message.className = "message";
+}
+
+</script>
+
+</body>
+</html>

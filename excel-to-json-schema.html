@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Excel to JSON Schema Generator | SmartTools</title>
+
+    <meta name="description"
+        content="Convert Excel XLSX and XLS files into JSON Schema online. Generate JSON Schema from Excel columns for APIs, validation and developer projects.">
+
+    <meta name="keywords"
+        content="Excel to JSON Schema, XLSX JSON Schema, Excel schema generator, JSON Schema generator, API schema generator, data validation tool">
+
+    <meta name="author" content="Sukanya Shahare">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(99,102,241,.16), transparent 30%),
+                radial-gradient(circle at top right, rgba(14,165,233,.12), transparent 28%),
+                #07111f;
+            color: #e5edf8;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: #0b1728;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #b9c7da;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7,17,31,.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 17px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #7dd3fc;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            color: #b9c7da;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .hero {
+            max-width: 1000px;
+            margin: auto;
+            padding: 70px 20px 35px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(125,211,252,.25);
+            background: rgba(125,211,252,.08);
+            color: #7dd3fc;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 6vw, 64px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #9fb0c6;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(14,28,47,.88);
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: 22px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 25px 70px rgba(0,0,0,.28);
+        }
+
+        .card h2 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .muted {
+            color: #91a3ba;
+            line-height: 1.6;
+        }
+
+        .upload-box {
+            margin-top: 22px;
+            border: 2px dashed #334d6d;
+            border-radius: 18px;
+            padding: 35px 20px;
+            text-align: center;
+            background: rgba(5,15,28,.45);
+            transition: .25s;
+        }
+
+        .upload-box:hover {
+            border-color: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        .upload-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        input[type="file"] {
+            margin-top: 15px;
+            width: 100%;
+            max-width: 500px;
+            color: #b9c7da;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 22px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b9c7da;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #304762;
+            background: #091729;
+            color: #edf5ff;
+            border-radius: 12px;
+            padding: 13px 14px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #7dd3fc;
+            box-shadow: 0 0 0 3px rgba(125,211,252,.08);
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 12px;
+            padding: 13px 18px;
+            cursor: pointer;
+            font-weight: 700;
+            color: white;
+            background: #2563eb;
+            transition: .2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+
+        button.secondary {
+            background: #172942;
+        }
+
+        button.success {
+            background: #047857;
+        }
+
+        button.danger {
+            background: #7f1d1d;
+        }
+
+        .status {
+            display: none;
+            margin-top: 16px;
+            padding: 13px 15px;
+            border-radius: 12px;
+            background: rgba(125,211,252,.07);
+            border: 1px solid rgba(125,211,252,.14);
+            color: #b9dfff;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            background: #091729;
+            border: 1px solid #203650;
+            border-radius: 15px;
+            padding: 18px;
+        }
+
+        .stat small {
+            color: #8396ad;
+            display: block;
+            margin-bottom: 7px;
+        }
+
+        .stat strong {
+            font-size: 23px;
+        }
+
+        .preview-wrap {
+            overflow-x: auto;
+            margin-top: 20px;
+            border: 1px solid #203650;
+            border-radius: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            padding: 11px 13px;
+            border-bottom: 1px solid #203650;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background: #101f34;
+            color: #d8e7f7;
+        }
+
+        td {
+            color: #9fb0c6;
+        }
+
+        textarea {
+            min-height: 430px;
+            resize: vertical;
+            font-family: Consolas, Monaco, monospace;
+            line-height: 1.55;
+            margin-top: 18px;
+        }
+
+        .info-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: #091729;
+            border: 1px solid #203650;
+            border-radius: 14px;
+            color: #9fb0c6;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .content {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .content h2 {
+            margin-bottom: 12px;
+            font-size: 28px;
+        }
+
+        .content p {
+            color: #9fb0c6;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        details {
+            border-top: 1px solid #253b56;
+            padding: 17px 0;
+        }
+
+        details:last-child {
+            border-bottom: 1px solid #253b56;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        footer {
+            margin-top: 70px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding: 35px 20px;
+            text-align: center;
+            color: #8092a9;
+        }
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .options {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            h1 {
+                letter-spacing: -1px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+
+    <div class="topbar">
+        SmartTools — free tools for everyday work, data & development.
+    </div>
+
+    <header>
+        <nav>
+
+            <a href="index.html" class="logo">
+                Smart<span>Tools</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="data-analyst.html">Data Analyst</a>
+                <a href="excel-analyzer.html">Excel Tools</a>
+                <a href="about.html">About</a>
+            </div>
+
+        </nav>
+    </header>
+
+    <section class="hero">
+
+        <div class="badge">
+            Developer + API Tool
+        </div>
+
+        <h1>
+            Excel to JSON Schema
+        </h1>
+
+        <p>
+            Convert Excel XLSX or XLS files into JSON Schema
+            for APIs, data validation and developer projects.
+        </p>
+
+    </section>
+
+    <main class="container">
+
+        <div class="card">
+
+            <h2>Upload Excel File</h2>
+
+            <p class="muted">
+                Upload an Excel workbook and select the worksheet
+                you want to analyze.
+            </p>
+
+            <div class="upload-box">
+
+                <div class="upload-icon">
+                    📋
+                </div>
+
+                <strong>
+                    Choose XLSX or XLS file
+                </strong>
+
+                <br>
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept=".xlsx,.xls"
+                >
+
+            </div>
+
+            <div class="options">
+
+                <div class="field">
+
+                    <label for="sheetSelect">
+                        Worksheet
+                    </label>
+
+                    <select
+                        id="sheetSelect"
+                        disabled
+                    >
+                        <option>
+                            No file selected
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="field">
+
+                    <label for="schemaTitle">
+                        Schema Title
+                    </label>
+
+                    <input
+                        id="schemaTitle"
+                        type="text"
+                        value="Excel Data Schema"
+                        placeholder="Customer Schema"
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button onclick="generateSchema()">
+                    ⚡ Generate Schema
+                </button>
+
+                <button
+                    class="secondary"
+                    onclick="loadSample()"
+                >
+                    🧪 Sample Data
+                </button>
+
+                <button
+                    class="secondary"
+                    onclick="copySchema()"
+                >
+                    📋 Copy Schema
+                </button>
+
+                <button
+                    class="success"
+                    onclick="downloadSchema()"
+                >
+                    ⬇ Download JSON
+                </button>
+
+                <button
+                    class="danger"
+                    onclick="clearAll()"
+                >
+                    🗑 Clear
+                </button>
+
+            </div>
+
+            <div id="status" class="status"></div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>File Statistics</h2>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <small>Rows</small>
+                    <strong id="rowsStat">0</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Columns</small>
+                    <strong id="columnsStat">0</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Worksheet</small>
+                    <strong id="sheetStat">—</strong>
+                </div>
+
+                <div class="stat">
+                    <small>Schema Size</small>
+                    <strong id="sizeStat">0 KB</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Excel Preview</h2>
+
+            <p class="muted">
+                Preview of the selected worksheet.
+            </p>
+
+            <div
+                id="preview"
+                class="preview-wrap"
+            >
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td style="padding:20px;">
+                                Upload an Excel file or load sample data.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Generated JSON Schema</h2>
+
+            <p class="muted">
+                The generated schema describes the detected
+                columns and their basic JSON data types.
+            </p>
+
+            <textarea
+                id="schemaOutput"
+                placeholder="Generated JSON Schema will appear here..."
+            ></textarea>
+
+            <div class="info-box">
+
+                <strong>Note:</strong>
+
+                The schema is generated from the values detected
+                in your spreadsheet. Always review the generated
+                schema before using it in production APIs or
+                validation systems.
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <section class="content">
+
+        <h2>
+            What is JSON Schema?
+        </h2>
+
+        <p>
+            JSON Schema is a standard way to describe the structure,
+            data types and validation rules of JSON data. It is commonly
+            used with APIs, web applications and backend systems.
+        </p>
+
+        <p>
+            SmartTools Excel to JSON Schema Generator analyzes the
+            columns in an Excel worksheet and creates a JSON Schema
+            based on the detected data types.
+        </p>
+
+        <h2>
+            Common Uses
+        </h2>
+
+        <p>
+            Developers can use generated schemas as a starting point
+            for API validation, documentation, frontend forms,
+            backend validation and data-processing workflows.
+        </p>
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+        <details>
+
+            <summary>
+                Can I convert XLSX to JSON Schema?
+            </summary>
+
+            <p>
+                Yes. Upload an XLSX file and generate a JSON Schema
+                from the selected worksheet.
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>
+                Can I use XLS files?
+            </summary>
+
+            <p>
+                Yes. Both XLS and XLSX formats are supported.
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>
+                Does this tool upload my Excel data?
+            </summary>
+
+            <p>
+                The spreadsheet is processed in your browser.
+                The conversion does not require sending the Excel
+                file to a SmartTools server.
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>
+                Which data types are detected?
+            </summary>
+
+            <p>
+                The tool detects common types including strings,
+                integers, numbers, booleans and dates.
+            </p>
+
+        </details>
+
+        <details>
+
+            <summary>
+                Is the generated schema production-ready?
+            </summary>
+
+            <p>
+                It should be treated as a starting point. Review
+                required fields, formats, limits and other validation
+                rules before using it in production.
+            </p>
+
+        </details>
+
+    </section>
+
+    <footer>
+        © 2026 SmartTools · Built by Sukanya Shahare
+    </footer>
+
+    <script>
+
+        let workbook = null;
+        let currentData = [];
+        let generatedSchema = "";
+
+        const fileInput =
+            document.getElementById("fileInput");
+
+        const sheetSelect =
+            document.getElementById("sheetSelect");
+
+        fileInput.addEventListener(
+            "change",
+            handleFile
+        );
+
+        sheetSelect.addEventListener(
+            "change",
+            () => {
+
+                if (!workbook) return;
+
+                loadWorksheet(
+                    sheetSelect.value
+                );
+
+            }
+        );
+
+        async function handleFile(event) {
+
+            const file =
+                event.target.files[0];
+
+            if (!file) return;
+
+            try {
+
+                showStatus(
+                    "Reading Excel file..."
+                );
+
+                const buffer =
+                    await file.arrayBuffer();
+
+                workbook =
+                    XLSX.read(
+                        buffer,
+                        {
+                            type: "array",
+                            cellDates: true
+                        }
+                    );
+
+                sheetSelect.innerHTML = "";
+
+                workbook.SheetNames.forEach(
+                    sheet => {
+
+                        const option =
+                            document.createElement(
+                                "option"
+                            );
+
+                        option.value = sheet;
+                        option.textContent = sheet;
+
+                        sheetSelect.appendChild(
+                            option
+                        );
+
+                    }
+                );
+
+                sheetSelect.disabled = false;
+
+                loadWorksheet(
+                    workbook.SheetNames[0]
+                );
+
+                showStatus(
+                    `Loaded ${file.name}. ${workbook.SheetNames.length} worksheet(s) found.`
+                );
+
+            } catch (error) {
+
+                console.error(error);
+
+                showStatus(
+                    "Could not read this Excel file.",
+                    true
+                );
+
+            }
+
+        }
+
+        function loadWorksheet(sheetName) {
+
+            if (!workbook) return;
+
+            const sheet =
+                workbook.Sheets[sheetName];
+
+            currentData =
+                XLSX.utils.sheet_to_json(
+                    sheet,
+                    {
+                        defval: "",
+                        raw: true
+                    }
+                );
+
+            renderPreview();
+            updateStats();
+
+        }
+
+        function loadSample() {
+
+            currentData = [
+
+                {
+                    Name: "Aarav",
+                    Email: "aarav@example.com",
+                    Age: 25,
+                    Salary: 45000,
+                    Active: true
+                },
+
+                {
+                    Name: "Priya",
+                    Email: "priya@example.com",
+                    Age: 29,
+                    Salary: 52000,
+                    Active: true
+                },
+
+                {
+                    Name: "Rahul",
+                    Email: "rahul@example.com",
+                    Age: 31,
+                    Salary: 61000,
+                    Active: false
+                },
+
+                {
+                    Name: "Neha",
+                    Email: "neha@example.com",
+                    Age: 27,
+                    Salary: 48000,
+                    Active: true
+                }
+
+            ];
+
+            workbook = {
+                SheetNames: ["Customers"],
+                Sheets: {}
+            };
+
+            sheetSelect.innerHTML =
+                `<option value="Customers">Customers</option>`;
+
+            sheetSelect.disabled = false;
+
+            document.getElementById(
+                "schemaTitle"
+            ).value =
+                "Customer Data Schema";
+
+            renderPreview();
+            updateStats();
+
+            showStatus(
+                "Sample data loaded successfully."
+            );
+
+        }
+
+        function renderPreview() {
+
+            const preview =
+                document.getElementById(
+                    "preview"
+                );
+
+            if (!currentData.length) {
+
+                preview.innerHTML = `
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="padding:20px;">
+                                    No rows found.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                `;
+
+                return;
+            }
+
+            const columns =
+                Object.keys(
+                    currentData[0]
+                );
+
+            let html =
+                "<table><thead><tr>";
+
+            columns.forEach(
+                column => {
+
+                    html +=
+                        `<th>${escapeHTML(column)}</th>`;
+
+                }
+            );
+
+            html +=
+                "</tr></thead><tbody>";
+
+            currentData
+                .slice(0, 10)
+                .forEach(row => {
+
+                    html += "<tr>";
+
+                    columns.forEach(
+                        column => {
+
+                            let value =
+                                row[column];
+
+                            if (
+                                value instanceof Date
+                            ) {
+
+                                value =
+                                    value
+                                        .toISOString()
+                                        .split("T")[0];
+
+                            }
+
+                            html += `
+                                <td>
+                                    ${escapeHTML(
+                                        value === null ||
+                                        value === undefined
+                                            ? ""
+                                            : String(value)
+                                    )}
+                                </td>
+                            `;
+
+                        }
+                    );
+
+                    html += "</tr>";
+
+                });
+
+            html +=
+                "</tbody></table>";
+
+            preview.innerHTML = html;
+
+        }
+
+        function generateSchema() {
+
+            if (!currentData.length) {
+
+                showStatus(
+                    "Please upload an Excel file or load sample data first.",
+                    true
+                );
+
+                return;
+            }
+
+            const columns =
+                Object.keys(
+                    currentData[0]
+                );
+
+            const title =
+                document.getElementById(
+                    "schemaTitle"
+                ).value.trim() ||
+                "Excel Data Schema";
+
+            const properties = {};
+
+            const required = [];
+
+            columns.forEach(
+                column => {
+
+                    const safeName =
+                        sanitizePropertyName(
+                            column
+                        );
+
+                    const detected =
+                        detectType(
+                            column
+                        );
+
+                    properties[safeName] = {
+                        type: detected.type
+                    };
+
+                    if (
+                        detected.type === "string" &&
+                        looksLikeEmail(column)
+                    ) {
+
+                        properties[safeName].format =
+                            "email";
+
+                    }
+
+                    if (
+                        detected.type === "string" &&
+                        looksLikeDate(column)
+                    ) {
+
+                        properties[safeName].format =
+                            "date";
+
+                    }
+
+                    const hasValue =
+                        currentData.some(
+                            row =>
+                                row[column] !== "" &&
+                                row[column] !== null &&
+                                row[column] !== undefined
+                        );
+
+                    if (hasValue) {
+                        required.push(safeName);
+                    }
+
+                }
+            );
+
+            const schema = {
+
+                "$schema":
+                    "https://json-schema.org/draft/2020-12/schema",
+
+                "title":
+                    title,
+
+                "description":
+                    "JSON Schema generated from Excel data using SmartTools.",
+
+                "type":
+                    "object",
+
+                "properties":
+                    properties,
+
+                "required":
+                    required,
+
+                "additionalProperties":
+                    false
+
+            };
+
+            generatedSchema =
+                JSON.stringify(
+                    schema,
+                    null,
+                    2
+                );
+
+            document.getElementById(
+                "schemaOutput"
+            ).value =
+                generatedSchema;
+
+            updateStats();
+
+            showStatus(
+                `JSON Schema generated successfully for ${columns.length} column(s).`
+            );
+
+        }
+
+        function detectType(column) {
+
+            const values =
+                currentData
+                    .map(row => row[column])
+                    .filter(value =>
+                        value !== "" &&
+                        value !== null &&
+                        value !== undefined
+                    );
+
+            if (!values.length) {
+
+                return {
+                    type: "string"
+                };
+
+            }
+
+            if (
+                values.every(
+                    value =>
+                        typeof value === "boolean"
+                )
+            ) {
+
+                return {
+                    type: "boolean"
+                };
+
+            }
+
+            if (
+                values.every(
+                    value =>
+                        typeof value === "number" &&
+                        Number.isInteger(value)
+                )
+            ) {
+
+                return {
+                    type: "integer"
+                };
+
+            }
+
+            if (
+                values.every(
+                    value =>
+                        typeof value === "number" &&
+                        Number.isFinite(value)
+                )
+            ) {
+
+                return {
+                    type: "number"
+                };
+
+            }
+
+            if (
+                values.every(
+                    value =>
+                        value instanceof Date
+                )
+            ) {
+
+                return {
+                    type: "string"
+                };
+
+            }
+
+            return {
+                type: "string"
+            };
+
+        }
+
+        function looksLikeEmail(column) {
+
+            const name =
+                String(column)
+                    .toLowerCase();
+
+            return (
+                name.includes("email") ||
+                name.includes("e-mail")
+            );
+
+        }
+
+        function looksLikeDate(column) {
+
+            const name =
+                String(column)
+                    .toLowerCase();
+
+            return (
+                name.includes("date") ||
+                name.includes("dob") ||
+                name.includes("birth")
+            );
+
+        }
+
+        function sanitizePropertyName(name) {
+
+            let clean =
+                String(name)
+                    .trim();
+
+            if (!clean) {
+                clean = "property";
+            }
+
+            return clean;
+
+        }
+
+        function copySchema() {
+
+            const output =
+                document.getElementById(
+                    "schemaOutput"
+                );
+
+            if (!output.value.trim()) {
+
+                showStatus(
+                    "Generate JSON Schema first.",
+                    true
+                );
+
+                return;
+            }
+
+            navigator.clipboard
+                .writeText(
+                    output.value
+                )
+                .then(() => {
+
+                    showStatus(
+                        "JSON Schema copied to clipboard."
+                    );
+
+                })
+                .catch(() => {
+
+                    output.select();
+
+                    document.execCommand(
+                        "copy"
+                    );
+
+                    showStatus(
+                        "JSON Schema copied."
+                    );
+
+                });
+
+        }
+
+        function downloadSchema() {
+
+            const schema =
+                document.getElementById(
+                    "schemaOutput"
+                ).value;
+
+            if (!schema.trim()) {
+
+                showStatus(
+                    "Generate JSON Schema first.",
+                    true
+                );
+
+                return;
+            }
+
+            const blob =
+                new Blob(
+                    [schema],
+                    {
+                        type:
+                            "application/json;charset=utf-8"
+                    }
+                );
+
+            const url =
+                URL.createObjectURL(
+                    blob
+                );
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+            link.href = url;
+
+            link.download =
+                "excel-json-schema.json";
+
+            document.body.appendChild(
+                link
+            );
+
+            link.click();
+
+            link.remove();
+
+            URL.revokeObjectURL(
+                url
+            );
+
+            showStatus(
+                "JSON Schema downloaded."
+            );
+
+        }
+
+        function updateStats() {
+
+            const rows =
+                currentData.length;
+
+            const columns =
+                rows
+                    ? Object.keys(
+                        currentData[0]
+                    ).length
+                    : 0;
+
+            document.getElementById(
+                "rowsStat"
+            ).textContent =
+                rows.toLocaleString();
+
+            document.getElementById(
+                "columnsStat"
+            ).textContent =
+                columns;
+
+            document.getElementById(
+                "sheetStat"
+            ).textContent =
+                sheetSelect.value || "—";
+
+            document.getElementById(
+                "sizeStat"
+            ).textContent =
+                formatSize(
+                    generatedSchema.length
+                );
+
+        }
+
+        function clearAll() {
+
+            workbook = null;
+            currentData = [];
+            generatedSchema = "";
+
+            fileInput.value = "";
+
+            sheetSelect.innerHTML =
+                "<option>No file selected</option>";
+
+            sheetSelect.disabled = true;
+
+            document.getElementById(
+                "schemaOutput"
+            ).value = "";
+
+            document.getElementById(
+                "rowsStat"
+            ).textContent = "0";
+
+            document.getElementById(
+                "columnsStat"
+            ).textContent = "0";
+
+            document.getElementById(
+                "sheetStat"
+            ).textContent = "—";
+
+            document.getElementById(
+                "sizeStat"
+            ).textContent = "0 KB";
+
+            document.getElementById(
+                "preview"
+            ).innerHTML = `
+                <table>
+                    <tbody>
+                        <tr>
+                            <td style="padding:20px;">
+                                Upload an Excel file or load sample data.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+
+            showStatus(
+                "Everything cleared."
+            );
+
+        }
+
+        function showStatus(
+            message,
+            error = false
+        ) {
+
+            const status =
+                document.getElementById(
+                    "status"
+                );
+
+            status.style.display =
+                "block";
+
+            status.style.borderColor =
+                error
+                    ? "rgba(248,113,113,.25)"
+                    : "rgba(125,211,252,.14)";
+
+            status.style.color =
+                error
+                    ? "#fecaca"
+                    : "#b9dfff";
+
+            status.textContent =
+                message;
+
+        }
+
+        function formatSize(bytes) {
+
+            if (!bytes) {
+                return "0 KB";
+            }
+
+            return (
+                bytes / 1024
+            ).toFixed(2) + " KB";
+
+        }
+
+        function escapeHTML(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+    </script>
+
+</body>
+</html>

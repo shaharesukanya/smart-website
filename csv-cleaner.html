@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CSV Cleaner Online - Clean CSV Data Free | SmartTools</title>
+
+<meta name="description"
+content="Free online CSV Cleaner. Remove duplicate rows, trim spaces, clean column names and download your cleaned CSV dataset with SmartTools.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
+    "Segoe UI",sans-serif;
+
+    background:
+    radial-gradient(circle at 10% 10%,rgba(99,102,241,.18),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(6,182,212,.14),transparent 30%),
+    #07111f;
+
+    color:#f8fafc;
+    min-height:100vh;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+
+/* TOP BAR */
+
+.topbar{
+    text-align:center;
+
+    padding:9px 15px;
+
+    background:rgba(15,23,42,.85);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.07);
+
+    color:#cbd5e1;
+
+    font-size:13px;
+}
+
+
+/* NAVBAR */
+
+.navbar{
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:20px 24px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:24px;
+
+    font-weight:900;
+}
+
+.logo span{
+    color:#60a5fa;
+}
+
+.nav{
+    display:flex;
+
+    gap:25px;
+}
+
+.nav a{
+    color:#cbd5e1;
+
+    font-size:14px;
+}
+
+.nav a:hover{
+    color:white;
+}
+
+
+/* HERO */
+
+.hero{
+    max-width:950px;
+
+    margin:auto;
+
+    padding:75px 20px 50px;
+
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:9px 16px;
+
+    border-radius:999px;
+
+    border:
+    1px solid rgba(96,165,250,.3);
+
+    background:
+    rgba(59,130,246,.1);
+
+    color:#93c5fd;
+
+    font-size:13px;
+
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(40px,6vw,68px);
+
+    line-height:1.05;
+
+    letter-spacing:-2px;
+
+    margin-bottom:20px;
+}
+
+.gradient{
+    background:
+    linear-gradient(
+        90deg,
+        #60a5fa,
+        #a78bfa,
+        #22d3ee
+    );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+}
+
+.hero p{
+    max-width:760px;
+
+    margin:auto;
+
+    color:#94a3b8;
+
+    font-size:17px;
+
+    line-height:1.7;
+}
+
+
+/* CONTAINER */
+
+.container{
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:20px;
+}
+
+
+/* UPLOAD */
+
+.upload{
+    text-align:center;
+
+    padding:45px 25px;
+
+    border-radius:28px;
+
+    background:
+    rgba(15,23,42,.82);
+
+    border:
+    1px solid rgba(255,255,255,.09);
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.25);
+}
+
+.upload-icon{
+    width:70px;
+    height:70px;
+
+    margin:0 auto 18px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:20px;
+
+    background:
+    rgba(59,130,246,.13);
+
+    font-size:32px;
+}
+
+.upload h2{
+    font-size:25px;
+
+    margin-bottom:9px;
+}
+
+.upload p{
+    color:#94a3b8;
+
+    margin-bottom:24px;
+}
+
+.file-btn{
+    display:inline-flex;
+
+    padding:14px 24px;
+
+    border-radius:12px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    color:white;
+
+    font-weight:800;
+
+    transition:.25s;
+}
+
+.file-btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 15px 35px rgba(59,130,246,.25);
+}
+
+#fileInput{
+    display:none;
+}
+
+.file-name{
+    margin-top:15px;
+
+    color:#93c5fd;
+
+    font-size:14px;
+}
+
+
+/* MESSAGE */
+
+.message{
+    display:none;
+
+    margin:20px 0;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    text-align:center;
+}
+
+.message.show{
+    display:block;
+}
+
+.success{
+    background:
+    rgba(34,197,94,.1);
+
+    border:
+    1px solid rgba(34,197,94,.25);
+
+    color:#86efac;
+}
+
+.error{
+    background:
+    rgba(239,68,68,.1);
+
+    border:
+    1px solid rgba(239,68,68,.25);
+
+    color:#fca5a5;
+}
+
+
+/* CLEANER */
+
+.workspace{
+    display:none;
+
+    animation:
+    fadeUp .5s ease;
+}
+
+.workspace.show{
+    display:block;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* OPTIONS */
+
+.options{
+    margin-top:22px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:15px;
+}
+
+.option{
+    padding:20px;
+
+    border-radius:18px;
+
+    background:
+    rgba(15,23,42,.8);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+}
+
+.option label{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#e2e8f0;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.option input{
+    width:18px;
+    height:18px;
+
+    accent-color:#2563eb;
+}
+
+.option p{
+    color:#64748b;
+
+    font-size:12px;
+
+    margin-top:8px;
+
+    line-height:1.5;
+}
+
+
+/* STATS */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+
+    margin-top:22px;
+}
+
+.stat{
+    padding:23px;
+
+    border-radius:20px;
+
+    background:
+    rgba(15,23,42,.8);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+}
+
+.stat small{
+    color:#94a3b8;
+}
+
+.stat strong{
+    display:block;
+
+    margin-top:8px;
+
+    font-size:28px;
+}
+
+
+/* PANEL */
+
+.panel{
+    margin-top:20px;
+
+    padding:25px;
+
+    border-radius:22px;
+
+    background:
+    rgba(15,23,42,.8);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+}
+
+.panel h2{
+    font-size:21px;
+
+    margin-bottom:18px;
+}
+
+
+/* TABLE */
+
+.table-wrap{
+    overflow:auto;
+
+    max-height:450px;
+
+    border-radius:14px;
+}
+
+table{
+    width:100%;
+
+    min-width:700px;
+
+    border-collapse:collapse;
+}
+
+th,
+td{
+    padding:12px 14px;
+
+    text-align:left;
+
+    font-size:13px;
+
+    border-bottom:
+    1px solid rgba(255,255,255,.07);
+
+    white-space:nowrap;
+}
+
+th{
+    position:sticky;
+
+    top:0;
+
+    background:#172235;
+
+    color:#bfdbfe;
+}
+
+td{
+    color:#cbd5e1;
+}
+
+
+/* ACTIONS */
+
+.actions{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.btn{
+    border:none;
+
+    padding:13px 20px;
+
+    border-radius:11px;
+
+    font-weight:800;
+}
+
+.primary{
+    background:#2563eb;
+
+    color:white;
+}
+
+.success-btn{
+    background:#16a34a;
+
+    color:white;
+}
+
+.secondary{
+    background:
+    rgba(255,255,255,.08);
+
+    color:#e2e8f0;
+
+    border:
+    1px solid rgba(255,255,255,.08);
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+}
+
+
+/* SEO */
+
+.seo{
+    max-width:900px;
+
+    margin:80px auto;
+
+    padding:20px;
+}
+
+.seo h2{
+    font-size:32px;
+
+    margin-bottom:18px;
+}
+
+.seo h3{
+    margin-top:28px;
+
+    margin-bottom:9px;
+}
+
+.seo p{
+    color:#94a3b8;
+
+    line-height:1.8;
+
+    margin-bottom:12px;
+}
+
+
+/* FOOTER */
+
+footer{
+    margin-top:70px;
+
+    padding:40px 20px;
+
+    text-align:center;
+
+    color:#64748b;
+
+    border-top:
+    1px solid rgba(255,255,255,.08);
+}
+
+footer strong{
+    color:#cbd5e1;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .nav{
+        display:none;
+    }
+
+    .options{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:500px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    .panel{
+        padding:18px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="topbar">
+    SmartTools — Free data cleaning tools for everyone.
+</div>
+
+
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+        Smart<span>Tools</span>
+    </a>
+
+
+    <nav class="nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="data-analyst.html">
+            Data Analyst
+        </a>
+
+        <a href="ai-tools.html">
+            AI Tools
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="badge">
+        🧹 CSV Data Cleaner
+    </div>
+
+
+    <h1>
+        Clean your
+        <span class="gradient">
+            data faster.
+        </span>
+    </h1>
+
+
+    <p>
+        Remove duplicate records, clean spaces,
+        standardize column names and download a
+        cleaner CSV dataset in seconds.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+
+<section class="upload">
+
+    <div class="upload-icon">
+        🧹
+    </div>
+
+
+    <h2>
+        Upload your CSV
+    </h2>
+
+
+    <p>
+        Your data is processed directly in your browser.
+        It does not need to be uploaded to a server.
+    </p>
+
+
+    <label
+        for="fileInput"
+        class="file-btn"
+    >
+        Choose CSV File
+    </label>
+
+
+    <input
+        id="fileInput"
+        type="file"
+        accept=".csv,text/csv"
+    >
+
+
+    <div
+        id="fileName"
+        class="file-name"
+    >
+        No file selected
+    </div>
+
+</section>
+
+
+<div
+    id="message"
+    class="message"
+></div>
+
+
+<section
+    id="workspace"
+    class="workspace"
+>
+
+
+<div class="panel">
+
+    <h2>
+        Cleaning Options
+    </h2>
+
+
+    <div class="options">
+
+
+        <div class="option">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="removeDuplicates"
+                    checked
+                >
+
+                Remove duplicate rows
+
+            </label>
+
+            <p>
+                Keep only the first occurrence
+                of identical rows.
+            </p>
+
+        </div>
+
+
+        <div class="option">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="trimSpaces"
+                    checked
+                >
+
+                Trim extra spaces
+
+            </label>
+
+            <p>
+                Remove unnecessary spaces
+                around cell values.
+            </p>
+
+        </div>
+
+
+        <div class="option">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="cleanHeaders"
+                    checked
+                >
+
+                Clean column names
+
+            </label>
+
+            <p>
+                Remove extra spaces and standardize
+                column names.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="actions">
+
+        <button
+            class="btn primary"
+            id="cleanBtn"
+        >
+            🧹 Clean CSV
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="stats">
+
+
+    <div class="stat">
+
+        <small>
+            Original Rows
+        </small>
+
+        <strong
+            id="originalRows"
+        >
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="stat">
+
+        <small>
+            Clean Rows
+        </small>
+
+        <strong
+            id="cleanRows"
+        >
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="stat">
+
+        <small>
+            Duplicates Removed
+        </small>
+
+        <strong
+            id="removedDuplicates"
+        >
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="stat">
+
+        <small>
+            Columns
+        </small>
+
+        <strong
+            id="columnCount"
+        >
+            0
+        </strong>
+
+    </div>
+
+
+</div>
+
+
+<div class="panel">
+
+    <h2>
+        Cleaned Data Preview
+    </h2>
+
+
+    <div class="table-wrap">
+
+        <table
+            id="previewTable"
+        ></table>
+
+    </div>
+
+
+    <div class="actions">
+
+        <button
+            class="btn success-btn"
+            id="downloadBtn"
+        >
+            📥 Download Cleaned CSV
+        </button>
+
+
+        <button
+            class="btn secondary"
+            id="clearBtn"
+        >
+            Clear
+        </button>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+</div>
+
+
+<section class="seo">
+
+<h2>
+    Free Online CSV Cleaner
+</h2>
+
+
+<p>
+    SmartTools CSV Cleaner is a browser-based data
+    cleaning utility that helps users prepare CSV
+    datasets for analysis, reporting and other
+    data workflows.
+</p>
+
+
+<h3>
+    Remove duplicate CSV rows
+</h3>
+
+<p>
+    Duplicate records can make analysis inaccurate.
+    The CSV Cleaner can detect identical rows and
+    keep only the first occurrence.
+</p>
+
+
+<h3>
+    Clean spaces from data
+</h3>
+
+<p>
+    Extra spaces around values can cause problems
+    when filtering or analyzing datasets. The cleaner
+    can trim unnecessary spaces from cells.
+</p>
+
+
+<h3>
+    Prepare data for analysis
+</h3>
+
+<p>
+    A clean dataset is easier to analyze, visualize
+    and import into other data tools. SmartTools
+    provides simple utilities for these common tasks.
+</p>
+
+</section>
+
+
+<footer>
+
+<p>
+    © <span id="year"></span>
+    <strong>SmartTools</strong>.
+    Free tools for everyday work.
+</p>
+
+
+<p style="margin-top:10px;">
+    Created & maintained by Sukanya Shahare.
+</p>
+
+</footer>
+
+
+<script>
+
+let headers = [];
+
+let data = [];
+
+let cleanedData = [];
+
+let fileName = "";
+
+
+const fileInput =
+document.getElementById(
+    "fileInput"
+);
+
+
+const workspace =
+document.getElementById(
+    "workspace"
+);
+
+
+const message =
+document.getElementById(
+    "message"
+);
+
+
+document.getElementById(
+    "year"
+).textContent =
+new Date().getFullYear();
+
+
+function showMessage(
+    text,
+    type
+){
+
+    message.textContent =
+    text;
+
+    message.className =
+    "message show " + type;
+
+}
+
+
+function safe(value){
+
+    return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function detectDelimiter(text){
+
+    const firstLine =
+    text.split(/\r?\n/)[0];
+
+    const candidates =
+    [",",";","\t","|"];
+
+    let best = ",";
+
+    let bestCount = 0;
+
+
+    candidates.forEach(
+        separator => {
+
+            const count =
+            firstLine.split(
+                separator
+            ).length - 1;
+
+
+            if(count > bestCount){
+
+                bestCount =
+                count;
+
+                best =
+                separator;
+
+            }
+
+        }
+    );
+
+
+    return best;
+
+}
+
+
+function parseCSV(text){
+
+    const delimiter =
+    detectDelimiter(text);
+
+    const rows = [];
+
+    let row = [];
+
+    let cell = "";
+
+    let quoted = false;
+
+
+    for(
+        let i = 0;
+        i < text.length;
+        i++
+    ){
+
+        const char =
+        text[i];
+
+        const next =
+        text[i + 1];
+
+
+        if(char === '"'){
+
+            if(
+                quoted &&
+                next === '"'
+            ){
+
+                cell += '"';
+
+                i++;
+
+            }
+            else{
+
+                quoted =
+                !quoted;
+
+            }
+
+        }
+
+        else if(
+            char === delimiter &&
+            !quoted
+        ){
+
+            row.push(cell);
+
+            cell = "";
+
+        }
+
+        else if(
+            (char === "\n" ||
+             char === "\r") &&
+            !quoted
+        ){
+
+            if(
+                char === "\r" &&
+                next === "\n"
+            ){
+
+                i++;
+
+            }
+
+
+            row.push(cell);
+
+            cell = "";
+
+
+            if(
+                row.some(
+                    value =>
+                    value.trim() !== ""
+                )
+            ){
+
+                rows.push(row);
+
+            }
+
+
+            row = [];
+
+        }
+
+        else{
+
+            cell += char;
+
+        }
+
+    }
+
+
+    if(
+        cell !== "" ||
+        row.length
+    ){
+
+        row.push(cell);
+
+
+        if(
+            row.some(
+                value =>
+                value.trim() !== ""
+            )
+        ){
+
+            rows.push(row);
+
+        }
+
+    }
+
+
+    return rows;
+
+}
+
+
+function cleanHeader(
+    header
+){
+
+    return String(header)
+    .trim()
+    .replace(
+        /\s+/g,
+        " "
+    )
+    .replace(
+        /\s*[-–—]\s*/g,
+        "-"
+    );
+
+}
+
+
+function cleanCell(
+    value
+){
+
+    return String(value ?? "")
+    .trim()
+    .replace(
+        /\s+/g,
+        " "
+    );
+
+}
+
+
+function processData(){
+
+    const removeDuplicates =
+    document.getElementById(
+        "removeDuplicates"
+    ).checked;
+
+
+    const trimSpaces =
+    document.getElementById(
+        "trimSpaces"
+    ).checked;
+
+
+    const cleanHeaders =
+    document.getElementById(
+        "cleanHeaders"
+    ).checked;
+
+
+    let newHeaders =
+    headers.map(
+        header =>
+        cleanHeaders
+        ? cleanHeader(header)
+        : header
+    );
+
+
+    let newData =
+    data.map(
+        row => {
+
+            return row.map(
+                value =>
+                trimSpaces
+                ? cleanCell(value)
+                : value
+            );
+
+        }
+    );
+
+
+    let removed = 0;
+
+
+    if(removeDuplicates){
+
+        const seen =
+        new Set();
+
+
+        newData =
+        newData.filter(
+            row => {
+
+                const key =
+                row.join(
+                    "|||"
+                );
+
+
+                if(
+                    seen.has(key)
+                ){
+
+                    removed++;
+
+                    return false;
+
+                }
+
+
+                seen.add(key);
+
+                return true;
+
+            }
+        );
+
+    }
+
+
+    cleanedData =
+    newData;
+
+
+    headers =
+    newHeaders;
+
+
+    document.getElementById(
+        "originalRows"
+    ).textContent =
+    data.length;
+
+
+    document.getElementById(
+        "cleanRows"
+    ).textContent =
+    cleanedData.length;
+
+
+    document.getElementById(
+        "removedDuplicates"
+    ).textContent =
+    removed;
+
+
+    document.getElementById(
+        "columnCount"
+    ).textContent =
+    headers.length;
+
+
+    renderPreview();
+
+
+    showMessage(
+        `Cleaning complete. ${removed} duplicate rows removed.`,
+        "success"
+    );
+
+}
+
+
+function renderPreview(){
+
+    const table =
+    document.getElementById(
+        "previewTable"
+    );
+
+
+    let html =
+    "<thead><tr>";
+
+
+    headers.forEach(
+        header => {
+
+            html += `
+                <th>
+                    ${safe(header)}
+                </th>
+            `;
+
+        }
+    );
+
+
+    html +=
+    "</tr></thead><tbody>";
+
+
+    cleanedData
+    .slice(0,200)
+    .forEach(
+        row => {
+
+            html +=
+            "<tr>";
+
+
+            headers.forEach(
+                (_,index) => {
+
+                    html += `
+                        <td>
+                            ${safe(
+                                row[index] ?? ""
+                            )}
+                        </td>
+                    `;
+
+                }
+            );
+
+
+            html +=
+            "</tr>";
+
+        }
+    );
+
+
+    html +=
+    "</tbody>";
+
+
+    table.innerHTML =
+    html;
+
+}
+
+
+function csvEscape(
+    value
+){
+
+    const text =
+    String(value ?? "");
+
+
+    if(
+        text.includes('"') ||
+        text.includes(",") ||
+        text.includes("\n") ||
+        text.includes("\r")
+    ){
+
+        return '"' +
+        text.replace(
+            /"/g,
+            '""'
+        ) +
+        '"';
+
+    }
+
+
+    return text;
+
+}
+
+
+function buildCSV(){
+
+    const rows = [];
+
+
+    rows.push(
+        headers.map(
+            csvEscape
+        ).join(",")
+    );
+
+
+    cleanedData.forEach(
+        row => {
+
+            const fixed = [];
+
+
+            for(
+                let i = 0;
+                i < headers.length;
+                i++
+            ){
+
+                fixed.push(
+                    csvEscape(
+                        row[i] ?? ""
+                    )
+                );
+
+            }
+
+
+            rows.push(
+                fixed.join(",")
+            );
+
+        }
+    );
+
+
+    return rows.join("\r\n");
+
+}
+
+
+fileInput.addEventListener(
+    "change",
+    function(){
+
+        const file =
+        fileInput.files[0];
+
+
+        if(!file){
+            return;
+        }
+
+
+        if(
+            !file.name
+            .toLowerCase()
+            .endsWith(".csv")
+        ){
+
+            showMessage(
+                "Please select a CSV file.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        fileName =
+        file.name;
+
+
+        document.getElementById(
+            "fileName"
+        ).textContent =
+        "Selected: " +
+        file.name;
+
+
+        const reader =
+        new FileReader();
+
+
+        reader.onload =
+        function(event){
+
+            try{
+
+                const rows =
+                parseCSV(
+                    event.target.result
+                );
+
+
+                if(rows.length < 2){
+
+                    throw new Error(
+                        "CSV does not contain enough data."
+                    );
+
+                }
+
+
+                headers =
+                rows[0];
+
+
+                data =
+                rows
+                .slice(1)
+                .map(
+                    row => {
+
+                        const fixed = [];
+
+                        for(
+                            let i = 0;
+                            i < headers.length;
+                            i++
+                        ){
+
+                            fixed.push(
+                                row[i] ?? ""
+                            );
+
+                        }
+
+                        return fixed;
+
+                    }
+                );
+
+
+                cleanedData =
+                data.map(
+                    row => [...row]
+                );
+
+
+                document.getElementById(
+                    "originalRows"
+                ).textContent =
+                data.length;
+
+
+                document.getElementById(
+                    "cleanRows"
+                ).textContent =
+                data.length;
+
+
+                document.getElementById(
+                    "columnCount"
+                ).textContent =
+                headers.length;
+
+
+                document.getElementById(
+                    "removedDuplicates"
+                ).textContent =
+                "0";
+
+
+                renderPreview();
+
+
+                workspace.classList.add(
+                    "show"
+                );
+
+
+                showMessage(
+                    "CSV loaded successfully. Choose your cleaning options.",
+                    "success"
+                );
+
+
+                workspace.scrollIntoView({
+                    behavior:"smooth"
+                });
+
+            }
+            catch(error){
+
+                console.error(
+                    error
+                );
+
+
+                showMessage(
+                    "Could not read this CSV file.",
+                    "error"
+                );
+
+            }
+
+        };
+
+
+        reader.readAsText(
+            file
+        );
+
+    }
+);
+
+
+document.getElementById(
+    "cleanBtn"
+).addEventListener(
+    "click",
+    function(){
+
+        if(!data.length){
+
+            showMessage(
+                "Upload a CSV file first.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        processData();
+
+    }
+);
+
+
+document.getElementById(
+    "downloadBtn"
+).addEventListener(
+    "click",
+    function(){
+
+        if(!cleanedData.length){
+
+            showMessage(
+                "Clean your CSV first.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const csv =
+        buildCSV();
+
+
+        const blob =
+        new Blob(
+            [csv],
+            {
+                type:
+                "text/csv;charset=utf-8"
+            }
+        );
+
+
+        const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+        const link =
+        document.createElement(
+            "a"
+        );
+
+
+        link.href =
+        url;
+
+
+        link.download =
+        fileName.replace(
+            /\.csv$/i,
+            ""
+        ) +
+        "-cleaned.csv";
+
+
+        document.body.appendChild(
+            link
+        );
+
+
+        link.click();
+
+
+        link.remove();
+
+
+        URL.revokeObjectURL(
+            url
+        );
+
+
+        showMessage(
+            "Cleaned CSV downloaded successfully.",
+            "success"
+        );
+
+    }
+);
+
+
+document.getElementById(
+    "clearBtn"
+).addEventListener(
+    "click",
+    function(){
+
+        headers = [];
+
+        data = [];
+
+        cleanedData = [];
+
+        fileName = "";
+
+
+        fileInput.value =
+        "";
+
+
+        document.getElementById(
+            "fileName"
+        ).textContent =
+        "No file selected";
+
+
+        workspace.classList.remove(
+            "show"
+        );
+
+
+        message.className =
+        "message";
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+);
+
+</script>
+
+</body>
+</html>

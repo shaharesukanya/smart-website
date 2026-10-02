@@ -1,493 +1,1168 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Loan Calculator - Calculate Monthly Loan Payment | SmartTools</title>
+    <title>Loan Calculator - Estimate Monthly Payment | SmartTools</title>
 
     <meta name="description"
-        content="Use the free SmartTools Loan Calculator to estimate your monthly loan payment, total interest and total repayment based on loan amount, interest rate and tenure.">
+        content="Use the free SmartTools Loan Calculator to estimate monthly loan payment, total interest and total repayment based on loan amount, interest rate and tenure.">
 
     <meta name="keywords"
         content="loan calculator, loan payment calculator, loan calculator online, monthly loan payment calculator, interest calculator, repayment calculator">
 
-    <meta name="author" content="Sukanya Shahare">
-
+    <meta name="author" content="SmartTools">
     <meta name="robots" content="index, follow">
 
-    <link rel="canonical" href="https://shaharesukanya.github.io/smart-website/loan-calculator.html">
+    <link rel="canonical"
+        href="https://shaharesukanya.github.io/smart-website/loan-calculator.html">
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --purple: #6559ef;
+            --purple-dark: #5145d6;
+            --purple-light: #f1efff;
+            --navy: #10182f;
+            --text: #263247;
+            --muted: #7c879a;
+            --bg: #f7f8fc;
+            --white: #ffffff;
+            --border: #e1e5ee;
+            --green: #16c997;
+            --shadow: 0 18px 50px rgba(25,35,65,.08);
+        }
 
-<meta name="theme-color" content="#5b5ff5">
-<meta property="og:title" content="Loan Calculator - Calculate Monthly Loan Payment | SmartTools">
-<meta property="og:description" content="Use the free SmartTools Loan Calculator to estimate your monthly loan payment, total interest and total repayment based on loan amount, interest rate and tenure.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://shaharesukanya.github.io/smart-website/loan-calculator.html">
-<meta property="og:site_name" content="SmartTools">
-<meta name="twitter:card" content="summary">
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Loan Calculator - Calculate Monthly Loan Payment | SmartTools",
-    "url": "https://shaharesukanya.github.io/smart-website/loan-calculator.html",
-    "description": "Use the free SmartTools Loan Calculator to estimate your monthly loan payment, total interest and total repayment based on loan amount, interest rate and tenure.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "name": "SmartTools",
-        "url": "https://shaharesukanya.github.io/smart-website/"
-    }
-}
-</script>
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<!-- SMARTTOOLS_PHASE6_CSS_START -->
-<style>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE + MOBILE SAFETY
-========================================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-img,
-svg,
-video,
-canvas {
-    max-width: 100%;
-    height: auto;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-a,
-button,
-input,
-select,
-textarea {
-    touch-action: manipulation;
-}
+        button,
+        input {
+            font: inherit;
+        }
 
-button,
-.btn,
-input[type="submit"],
-input[type="button"] {
-    min-height: 44px;
-}
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
 
-input,
-select,
-textarea {
-    max-width: 100%;
-    min-width: 0;
-}
+        /* ================= TOP BAR ================= */
 
-input[type="number"],
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-    width: 100%;
-}
+        .topbar {
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+            background: var(--navy);
+            color: #fff;
+            font-size: 12px;
+        }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-span,
-li {
-    overflow-wrap: break-word;
-}
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
 
-table {
-    width: 100%;
-    max-width: 100%;
-    border-collapse: collapse;
-}
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
 
-.table-wrapper,
-.responsive-table {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 0 4px rgba(22,201,151,.12);
+            animation: pulse 2s infinite;
+        }
 
-:focus-visible {
-    outline: 3px solid rgba(91,95,245,.35);
-    outline-offset: 3px;
-}
+        @keyframes pulse {
+            0%,100% {
+                box-shadow: 0 0 0 3px rgba(22,201,151,.10);
+            }
+            50% {
+                box-shadow: 0 0 0 7px rgba(22,201,151,.02);
+            }
+        }
 
-@media (max-width: 900px) {
+        /* ================= HEADER ================= */
 
-    .hero-grid,
-    .content-grid,
-    .calculator-layout,
-    .tool-layout,
-    .feature-grid,
-    .founder-grid {
-        grid-template-columns: 1fr !important;
-    }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,.95);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(225,229,238,.85);
+        }
 
-    .tools-grid,
-    .cards-grid,
-    .grid-4 {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
+        .header-inner {
+            min-height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
 
-    .footer-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-}
+        .logo {
+            font-size: 23px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--navy);
+        }
 
-@media (max-width: 640px) {
+        .logo span {
+            color: var(--purple);
+        }
 
-    html {
-        scroll-padding-top: 80px;
-    }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
 
-    body {
-        font-size: 15px;
-        line-height: 1.65;
-    }
+        nav a {
+            color: #586275;
+            font-size: 13px;
+            font-weight: 700;
+            transition: .25s ease;
+        }
 
-    .container {
-        width: 92%;
-        max-width: 100%;
-    }
+        nav a:hover {
+            color: var(--purple);
+        }
 
-    h1 {
-        font-size:
-            clamp(34px, 10vw, 46px) !important;
-        line-height: 1.08 !important;
-        letter-spacing: -1.5px !important;
-    }
+        /* ================= HERO ================= */
 
-    h2 {
-        font-size:
-            clamp(27px, 7vw, 36px) !important;
-        line-height: 1.15 !important;
-    }
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 72px 0 85px;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(101,89,239,.12), transparent 28%),
+                radial-gradient(circle at 90% 10%, rgba(81,69,214,.10), transparent 25%),
+                linear-gradient(180deg,#fff 0%,#f7f8fc 100%);
+        }
 
-    h3 {
-        font-size:
-            clamp(18px, 5vw, 22px);
-    }
+        .hero::before {
+            content: "";
+            position: absolute;
+            right: -90px;
+            top: 20px;
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            border: 1px solid rgba(101,89,239,.10);
+            animation: floatCircle 7s ease-in-out infinite;
+        }
 
-    .header-inner {
-        min-height: 68px !important;
-        gap: 12px !important;
-    }
+        .hero::after {
+            content: "";
+            position: absolute;
+            left: -80px;
+            bottom: -70px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 1px solid rgba(101,89,239,.08);
+        }
 
-    .brand-name {
-        font-size: 21px !important;
-    }
+        @keyframes floatCircle {
+            0%,100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(18px);
+            }
+        }
 
-    .brand-tagline {
-        font-size: 10px !important;
-    }
+        .breadcrumb {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 22px;
+            color: var(--muted);
+            font-size: 12px;
+        }
 
-    nav {
-        gap: 9px !important;
-    }
+        .breadcrumb a {
+            color: var(--purple);
+            font-weight: 800;
+        }
 
-    nav a {
-        font-size: 12px !important;
-    }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
 
-    .tools-grid,
-    .cards-grid,
-    .grid-4,
-    .feature-grid,
-    .info-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 18px;
+            padding: 8px 13px;
+            border-radius: 999px;
+            background: var(--purple-light);
+            color: var(--purple-dark);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1.3px;
+        }
 
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        width: 100%;
-        max-width: 100%;
-    }
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+        }
 
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        min-height: 48px;
-    }
+        h1 {
+            margin-bottom: 20px;
+            color: var(--navy);
+            font-size: clamp(42px,6vw,68px);
+            line-height: 1.03;
+            letter-spacing: -3px;
+        }
 
-    textarea {
-        min-height: 130px;
-    }
+        .hero-description {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.75;
+        }
 
-    .btn,
-    .submit-btn,
-    .calculate-btn,
-    .reset-btn,
-    .cta-btn,
-    button[type="submit"] {
-        width: 100%;
-        min-height: 48px;
-    }
+        /* ================= MAIN ================= */
 
-    .hero-actions,
-    .button-group,
-    .calculator-actions,
-    .form-actions {
-        flex-direction: column !important;
-        width: 100%;
-    }
+        .main-section {
+            position: relative;
+            z-index: 5;
+            margin-top: -35px;
+            padding-bottom: 80px;
+        }
 
-    .tool-search,
-    .search-box,
-    #toolSearch {
-        width: 100% !important;
-    }
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0,1.6fr) minmax(280px,.75fr);
+            gap: 22px;
+            align-items: start;
+        }
 
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
+        /* ================= CALCULATOR ================= */
 
-    .dashboard,
-    .hero-visual,
-    .hero-art,
-    .decorative-circle,
-    .floating-card {
-        max-width: 100% !important;
-    }
+        .calculator-card {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            background: #fff;
+            box-shadow: var(--shadow);
+            animation: cardIn .7s ease both;
+        }
 
-    .section {
-        padding-top: 58px !important;
-        padding-bottom: 58px !important;
-    }
-}
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-@media (max-width: 390px) {
+        .calculator-accent {
+            height: 5px;
+            background: linear-gradient(90deg,var(--purple),#8279ff);
+        }
 
-    .container {
-        width: 94%;
-    }
+        .calculator-inner {
+            padding: 30px;
+        }
 
-    h1 {
-        font-size: 33px !important;
-    }
+        .calculator-heading {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
 
-    h2 {
-        font-size: 26px !important;
-    }
+        .calculator-icon {
+            width: 54px;
+            height: 54px;
+            display: grid;
+            place-items: center;
+            flex: 0 0 54px;
+            border-radius: 16px;
+            background: var(--purple-light);
+            font-size: 25px;
+        }
 
-    .brand-name {
-        font-size: 19px !important;
-    }
+        .calculator-heading h2 {
+            color: var(--navy);
+            font-size: 23px;
+            letter-spacing: -.7px;
+        }
 
-    .topbar-right {
-        display: none !important;
-    }
+        .calculator-heading p {
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 12px;
+        }
 
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        padding-left: 17px !important;
-        padding-right: 17px !important;
-    }
-}
+        /* ================= FORM ================= */
 
-@media (prefers-reduced-motion: reduce) {
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-    html {
-        scroll-behavior: auto;
-    }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #39445a;
+            font-size: 13px;
+            font-weight: 800;
+        }
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-</style>
-<!-- SMARTTOOLS_PHASE6_CSS_END -->
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-prefix {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--purple);
+            font-size: 15px;
+            font-weight: 900;
+            pointer-events: none;
+        }
+
+        .input-wrap input {
+            width: 100%;
+            min-height: 54px;
+            padding: 0 16px 0 39px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            outline: none;
+            background: #fbfcff;
+            color: var(--text);
+            transition: .25s ease;
+        }
+
+        .input-wrap input:hover {
+            border-color: #cfd4e2;
+        }
+
+        .input-wrap input:focus {
+            border-color: var(--purple);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(101,89,239,.10);
+        }
+
+        .suffix {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 800;
+            pointer-events: none;
+        }
+
+        .input-wrap.has-suffix input {
+            padding-right: 65px;
+        }
+
+        .input-help {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            min-height: 54px;
+            border: 0;
+            border-radius: 13px;
+            background: linear-gradient(135deg,var(--purple),var(--purple-dark));
+            color: #fff;
+            font-size: 14px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 12px 24px rgba(101,89,239,.22);
+            transition: .25s ease;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px rgba(101,89,239,.28);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ================= RESULTS ================= */
+
+        .result-section {
+            display: none;
+            margin-top: 28px;
+            padding-top: 26px;
+            border-top: 1px solid var(--border);
+            animation: resultIn .5s ease both;
+        }
+
+        .result-section.show {
+            display: block;
+        }
+
+        @keyframes resultIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-title {
+            margin-bottom: 14px;
+            color: #4c566a;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 11px;
+        }
+
+        .result-box {
+            padding: 19px 12px;
+            text-align: center;
+            border: 1px solid #e4e7ef;
+            border-radius: 15px;
+            background: linear-gradient(145deg,#fff,#fafaff);
+        }
+
+        .result-label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .result-value {
+            display: block;
+            color: var(--purple);
+            font-size: clamp(22px,4vw,32px);
+            font-weight: 950;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .result-main {
+            margin-top: 14px;
+            padding: 18px;
+            border-radius: 14px;
+            background: var(--purple-light);
+            text-align: center;
+        }
+
+        .result-main small {
+            display: block;
+            margin-bottom: 5px;
+            color: #625bb0;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .result-main strong {
+            color: var(--purple-dark);
+            font-size: 25px;
+        }
+
+        .breakdown {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 11px;
+        }
+
+        .breakdown-box {
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            background: #fafbfe;
+        }
+
+        .breakdown-box span {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .breakdown-box strong {
+            color: #374157;
+            font-size: 14px;
+        }
+
+        .working-box {
+            margin-top: 15px;
+            padding: 16px;
+            border-radius: 13px;
+            border: 1px solid #e4e7ef;
+            background: #fafbfe;
+        }
+
+        .working-box strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #384258;
+            font-size: 12px;
+        }
+
+        .working-box span {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.75;
+        }
+
+        .error-message {
+            display: none;
+            margin-top: 14px;
+            padding: 13px 15px;
+            border: 1px solid #ffd9d9;
+            border-radius: 12px;
+            background: #fff4f4;
+            color: #c04444;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake .3s ease;
+        }
+
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            display: grid;
+            gap: 16px;
+        }
+
+        .side-card {
+            padding: 23px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 12px 35px rgba(20,25,55,.05);
+        }
+
+        .side-card h3 {
+            margin-bottom: 14px;
+            color: var(--navy);
+            font-size: 17px;
+        }
+
+        .overview-list {
+            display: grid;
+            gap: 11px;
+        }
+
+        .overview-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .overview-icon {
+            width: 25px;
+            height: 25px;
+            flex: 0 0 25px;
+            display: grid;
+            place-items: center;
+            border-radius: 8px;
+            background: var(--purple-light);
+            color: var(--purple);
+            font-size: 12px;
+        }
+
+        .trust-card {
+            background: var(--navy);
+            border: 0;
+        }
+
+        .trust-card h3 {
+            color: #fff;
+        }
+
+        .trust-card p {
+            color: #aab3c7;
+            font-size: 12px;
+            line-height: 1.75;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .content-section {
+            padding: 75px 0;
+            background: #fff;
+            border-top: 1px solid var(--border);
+        }
+
+        .content-header {
+            max-width: 760px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+
+        .content-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 9px;
+            color: var(--purple);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1.7px;
+        }
+
+        .content-kicker span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        .content-header h2 {
+            margin-bottom: 10px;
+            color: var(--navy);
+            font-size: clamp(30px,4vw,43px);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+        }
+
+        .content-header p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .info-card {
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 12px 35px rgba(20,25,55,.045);
+        }
+
+        .info-card h3 {
+            margin-bottom: 10px;
+            color: #303a4d;
+            font-size: 18px;
+        }
+
+        .info-card p,
+        .info-card li {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .info-card ol {
+            padding-left: 20px;
+        }
+
+        .formula {
+            margin-top: 14px;
+            padding: 17px;
+            border: 1px solid #e3e1fb;
+            border-radius: 14px;
+            background: linear-gradient(135deg,#f8f7ff,#fff);
+            color: var(--purple-dark);
+            font-size: 14px;
+            font-weight: 900;
+            overflow-x: auto;
+        }
+
+        .example {
+            margin-top: 14px;
+            padding: 14px;
+            border-left: 4px solid var(--green);
+            border-radius: 10px;
+            background: #f4faf8;
+            color: #596477;
+            font-size: 12px;
+        }
+
+        .note {
+            margin-top: 12px;
+            padding: 13px 14px;
+            border-radius: 11px;
+            background: #fafbfe;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        /* ================= FAQ ================= */
+
+        .faq-section {
+            margin-top: 25px;
+        }
+
+        .faq-title {
+            margin-bottom: 16px;
+            color: var(--navy);
+            font-size: 22px;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .faq-item {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: #fff;
+        }
+
+        .faq-question {
+            width: 100%;
+            min-height: 55px;
+            padding: 14px 17px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            border: 0;
+            background: #fff;
+            color: #384258;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 850;
+            cursor: pointer;
+        }
+
+        .faq-plus {
+            color: var(--purple);
+            font-size: 21px;
+            transition: .25s ease;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 17px 17px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.75;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-item.open .faq-plus {
+            transform: rotate(45deg);
+        }
+
+        /* ================= RELATED ================= */
+
+        .related-section {
+            padding: 70px 0;
+            background: var(--bg);
+        }
+
+        .related-title {
+            margin-bottom: 25px;
+            color: var(--navy);
+            font-size: 30px;
+            letter-spacing: -1px;
+            text-align: center;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 13px;
+        }
+
+        .related-card {
+            display: block;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: #fff;
+            transition: .25s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            border-color: #d8d4ff;
+            box-shadow: 0 15px 30px rgba(25,35,65,.07);
+        }
+
+        .related-card strong {
+            display: block;
+            color: var(--purple);
+            font-size: 14px;
+        }
+
+        .related-card span {
+            display: block;
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            padding: 70px 0;
+            background: var(--navy);
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta h2 {
+            margin-bottom: 10px;
+            font-size: clamp(28px,4vw,42px);
+            letter-spacing: -1.5px;
+        }
+
+        .cta p {
+            max-width: 620px;
+            margin: 0 auto 22px;
+            color: #aeb7ca;
+            font-size: 14px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 23px;
+            border-radius: 12px;
+            background: var(--purple);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 900;
+            transition: .25s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            background: #756aff;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            padding: 50px 0 20px;
+            background: #0b1125;
+            color: #fff;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 35px;
+        }
+
+        .footer-brand h3 {
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .footer-brand h3 span {
+            color: #8177ff;
+        }
+
+        .footer-brand p {
+            max-width: 330px;
+            color: #8994ab;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        footer h4 {
+            margin-bottom: 13px;
+            color: #fff;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            color: #8994ab;
+            font-size: 12px;
+            transition: .2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            color: #69748c;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width:850px) {
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width:650px) {
+
+            .topbar-right {
+                display: none;
+            }
+
+            .header-inner {
+                min-height: 66px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            nav a:nth-child(3) {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 0 75px;
+            }
+
+            h1 {
+                font-size: 42px;
+                letter-spacing: -2px;
+            }
+
+            .main-section {
+                margin-top: -25px;
+            }
+
+            .calculator-inner {
+                padding: 20px;
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .breakdown {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section,
+            .related-section,
+            .cta {
+                padding: 55px 0;
+            }
+        }
+
+        @media (max-width:420px) {
+
+            .container {
+                width: 94%;
+            }
+
+            nav {
+                gap: 9px;
+            }
+
+            nav a:nth-child(4),
+            nav a:nth-child(5) {
+                display: none;
+            }
+
+            h1 {
+                font-size: 37px;
+            }
+
+            .calculator-heading h2 {
+                font-size: 20px;
+            }
+
+            .result-value {
+                font-size: 25px;
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration:.01ms !important;
+                animation-iteration-count:1 !important;
+                transition-duration:.01ms !important;
+                scroll-behavior:auto !important;
+            }
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(101,89,239,.30);
+            outline-offset: 3px;
+        }
+    </style>
 </head>
-
 
 <body>
 
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <div class="container topbar-inner">
 
-    <!-- ================= HEADER ================= -->
-
-    <header class="header">
-
-        <div class="container">
-
-            <div class="logo">
-                Smart<span>Tools</span>
+            <div>
+                SmartTools — simple tools for everyday needs.
             </div>
 
+            <div class="topbar-right">
+                <span class="live-dot"></span>
+                Live Calculator
+            </div>
 
-            <nav class="nav">
+        </div>
+    </div>
 
-                <a href="index.html">
-                    Home
-                </a>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-inner">
 
-                <a href="index.html#tools">
-                    Tools
-                </a>
+            <a href="index.html" class="logo">
+                Smart<span>Tools</span>
+            </a>
 
-                <a href="index.html#guides">
-                    Guides
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html#tools">Tools</a>
+                <a href="index.html#guides">Guides</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
             </nav>
 
         </div>
-
     </header>
 
-
-
-    <!-- ================= HERO ================= -->
-
-    <section class="tool-page-hero">
+    <!-- HERO -->
+    <section class="hero">
 
         <div class="container">
 
-            <span class="badge">
-                FREE LOAN CALCULATOR
-            </span>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span> / </span>
+                <span>Loan Calculator</span>
+            </div>
 
-            <h1>
-                Loan Calculator
-            </h1>
+            <div class="hero-content">
 
-            <p>
-                Estimate your monthly loan payment,
-                total interest and total repayment.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= CALCULATOR ================= -->
-
-    <section class="calculator-section">
-
-        <div class="container">
-
-            <div class="calculator-box">
-
-                <h2>
-                    Calculate Your Loan Payment
-                </h2>
-
-                <p>
-                    Enter your loan details below to estimate
-                    your monthly payment and total repayment.
-                </p>
-
-
-                <label for="loanAmount">
-                    Loan Amount (₹)
-                </label>
-
-                <input
-                    type="number"
-                    id="loanAmount"
-                    placeholder="Example: 500000"
-                    min="0"
-                    step="0.01"
-                >
-
-
-                <label for="interestRate">
-                    Annual Interest Rate (%)
-                </label>
-
-                <input
-                    type="number"
-                    id="interestRate"
-                    placeholder="Example: 10"
-                    min="0"
-                    step="0.01"
-                >
-
-
-                <label for="loanTenure">
-                    Loan Tenure (Years)
-                </label>
-
-                <input
-                    type="number"
-                    id="loanTenure"
-                    placeholder="Example: 5"
-                    min="1"
-                    step="1"
-                >
-
-
-                <button
-                    class="tool-button"
-                    onclick="calculateLoan()">
-
-                    Calculate Loan
-
-                </button>
-
-
-                <div
-                    class="result"
-                    id="loanResult">
-
-                    Your loan result will appear here.
-
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    FREE ONLINE CALCULATOR
                 </div>
+
+                <h1>
+                    Loan Calculator
+                </h1>
+
+                <p class="hero-description">
+                    Estimate your monthly loan payment, total interest
+                    and total repayment using your loan amount,
+                    interest rate and tenure.
+                </p>
 
             </div>
 
@@ -495,181 +1170,548 @@ table {
 
     </section>
 
-
-
-    <!-- ================= INFORMATION ================= -->
-
-    <section class="information-section">
+    <!-- MAIN -->
+    <section class="main-section">
 
         <div class="container">
 
-            <div class="calculator-box">
+            <div class="main-grid">
 
+                <!-- CALCULATOR -->
+                <div class="calculator-card">
+
+                    <div class="calculator-accent"></div>
+
+                    <div class="calculator-inner">
+
+                        <div class="calculator-heading">
+
+                            <div class="calculator-icon">
+                                🏦
+                            </div>
+
+                            <div>
+                                <h2>Calculate Your Loan</h2>
+                                <p>Enter your loan details below.</p>
+                            </div>
+
+                        </div>
+
+                        <!-- LOAN AMOUNT -->
+                        <div class="form-group">
+
+                            <label for="loanAmount">
+                                Loan Amount
+                            </label>
+
+                            <div class="input-wrap">
+
+                                <span class="input-prefix">₹</span>
+
+                                <input
+                                    type="number"
+                                    id="loanAmount"
+                                    value="500000"
+                                    min="1"
+                                    step="1000"
+                                    placeholder="Example: 500000"
+                                >
+
+                            </div>
+
+                            <div class="input-help">
+                                Enter the amount you want to borrow.
+                            </div>
+
+                        </div>
+
+                        <!-- INTEREST -->
+                        <div class="form-group">
+
+                            <label for="interestRate">
+                                Annual Interest Rate
+                            </label>
+
+                            <div class="input-wrap has-suffix">
+
+                                <input
+                                    type="number"
+                                    id="interestRate"
+                                    value="10"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="Example: 10"
+                                >
+
+                                <span class="suffix">%</span>
+
+                            </div>
+
+                            <div class="input-help">
+                                Enter the annual interest rate.
+                            </div>
+
+                        </div>
+
+                        <!-- TENURE -->
+                        <div class="form-group">
+
+                            <label for="loanTenure">
+                                Loan Tenure
+                            </label>
+
+                            <div class="input-wrap has-suffix">
+
+                                <input
+                                    type="number"
+                                    id="loanTenure"
+                                    value="5"
+                                    min="1"
+                                    max="50"
+                                    step="1"
+                                    placeholder="Example: 5"
+                                >
+
+                                <span class="suffix">Years</span>
+
+                            </div>
+
+                            <div class="input-help">
+                                Enter the repayment period in years.
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="calculate-btn"
+                            id="calculateBtn">
+                            Calculate Loan →
+                        </button>
+
+                        <div
+                            class="error-message"
+                            id="errorMessage">
+                        </div>
+
+                        <!-- RESULT -->
+                        <div
+                            class="result-section"
+                            id="resultSection">
+
+                            <div class="result-title">
+                                Your Estimated Loan Summary
+                            </div>
+
+                            <div class="result-grid">
+
+                                <div class="result-box">
+
+                                    <span class="result-label">
+                                        Monthly Payment
+                                    </span>
+
+                                    <span
+                                        class="result-value"
+                                        id="monthlyPayment">
+                                        ₹0
+                                    </span>
+
+                                </div>
+
+                                <div class="result-box">
+
+                                    <span class="result-label">
+                                        Total Interest
+                                    </span>
+
+                                    <span
+                                        class="result-value"
+                                        id="totalInterest">
+                                        ₹0
+                                    </span>
+
+                                </div>
+
+                                <div class="result-box">
+
+                                    <span class="result-label">
+                                        Total Payment
+                                    </span>
+
+                                    <span
+                                        class="result-value"
+                                        id="totalPayment">
+                                        ₹0
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="result-main">
+
+                                <small>
+                                    Estimated Monthly Payment
+                                </small>
+
+                                <strong id="mainMonthlyPayment">
+                                    ₹0
+                                </strong>
+
+                            </div>
+
+                            <div class="breakdown">
+
+                                <div class="breakdown-box">
+
+                                    <span>
+                                        Principal Amount
+                                    </span>
+
+                                    <strong id="principalResult">
+                                        ₹0
+                                    </strong>
+
+                                </div>
+
+                                <div class="breakdown-box">
+
+                                    <span>
+                                        Interest Amount
+                                    </span>
+
+                                    <strong id="interestResult">
+                                        ₹0
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="working-box">
+
+                                <strong>
+                                    Calculation Details
+                                </strong>
+
+                                <span id="workingText">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- SIDEBAR -->
+                <aside class="sidebar">
+
+                    <div class="side-card">
+
+                        <h3>
+                            Quick Overview
+                        </h3>
+
+                        <div class="overview-list">
+
+                            <div class="overview-item">
+                                <div class="overview-icon">✓</div>
+                                <span>Estimate monthly loan payment.</span>
+                            </div>
+
+                            <div class="overview-item">
+                                <div class="overview-icon">✓</div>
+                                <span>View total interest payable.</span>
+                            </div>
+
+                            <div class="overview-item">
+                                <div class="overview-icon">✓</div>
+                                <span>See total repayment amount.</span>
+                            </div>
+
+                            <div class="overview-item">
+                                <div class="overview-icon">✓</div>
+                                <span>Works on mobile and desktop.</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="side-card trust-card">
+
+                        <h3>
+                            SmartTools
+                        </h3>
+
+                        <p>
+                            Simple online calculators designed to
+                            make everyday calculations faster and easier.
+                        </p>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTENT -->
+    <section class="content-section">
+
+        <div class="container">
+
+            <div class="content-header">
+
+                <div class="content-kicker">
+                    <span></span>
+                    LOAN & FINANCE
+                </div>
 
                 <h2>
-                    What is a Loan Calculator?
+                    Understand Your Loan Calculation
                 </h2>
 
                 <p>
-                    A loan calculator is an online tool that
-                    helps estimate the regular payment required
-                    to repay a loan based on the loan amount,
-                    interest rate and repayment period.
+                    Learn how the Loan Calculator estimates your
+                    monthly payment, interest and total repayment.
                 </p>
 
+            </div>
 
+            <div class="info-grid">
 
-                <h2>
-                    How Does a Loan Calculator Work?
-                </h2>
+                <!-- WHAT -->
+                <article class="info-card">
 
-                <p>
-                    The calculator uses the loan amount,
-                    annual interest rate and loan tenure to
-                    estimate the monthly payment.
-                </p>
+                    <h3>
+                        What is a Loan Calculator?
+                    </h3>
 
-                <p>
-                    The calculation also estimates the total
-                    amount paid and the total interest over
-                    the selected loan period.
-                </p>
+                    <p>
+                        A loan calculator is an online tool that helps
+                        estimate the regular payment required to repay
+                        a loan based on the loan amount, interest rate
+                        and repayment period.
+                    </p>
 
+                    <p style="margin-top:10px;">
+                        It can help you understand the relationship
+                        between the amount borrowed, interest and
+                        repayment period before making financial decisions.
+                    </p>
 
+                </article>
 
-                <h2>
-                    How to Use the Loan Calculator
-                </h2>
+                <!-- HOW -->
+                <article class="info-card">
 
-                <ol>
+                    <h3>
+                        How to Use the Loan Calculator
+                    </h3>
 
-                    <li>
-                        Enter the loan amount.
-                    </li>
+                    <ol>
 
-                    <li>
-                        Enter the annual interest rate.
-                    </li>
+                        <li>
+                            Enter the loan amount.
+                        </li>
 
-                    <li>
-                        Enter the loan tenure in years.
-                    </li>
+                        <li>
+                            Enter the annual interest rate.
+                        </li>
 
-                    <li>
-                        Click the "Calculate Loan" button.
-                    </li>
+                        <li>
+                            Enter the loan tenure in years.
+                        </li>
 
-                    <li>
-                        View the estimated monthly payment,
-                        total interest and total payment.
-                    </li>
+                        <li>
+                            Click the "Calculate Loan" button.
+                        </li>
 
-                </ol>
+                        <li>
+                            View monthly payment, interest and total payment.
+                        </li>
 
+                    </ol>
 
+                </article>
 
-                <h2>
-                    Example Loan Calculation
-                </h2>
+                <!-- FORMULA -->
+                <article class="info-card">
 
-                <p>
-                    Suppose you borrow ₹5,00,000 at an annual
-                    interest rate of 10% for 5 years.
-                </p>
+                    <h3>
+                        Loan Payment Formula
+                    </h3>
 
-                <p>
-                    Enter these values into the calculator to
-                    estimate your monthly payment and total
-                    repayment.
-                </p>
+                    <p>
+                        For a standard reducing-balance loan,
+                        the monthly payment can be estimated using:
+                    </p>
 
+                    <div class="formula">
+                        EMI = P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1)
+                    </div>
 
+                    <p style="margin-top:10px;">
+                        P = principal loan amount,
+                        r = monthly interest rate,
+                        n = total number of monthly payments.
+                    </p>
 
-                <h2>
-                    Loan Calculator vs EMI Calculator
-                </h2>
+                </article>
 
-                <p>
-                    A loan calculator and an EMI calculator can
-                    use similar loan information and formulas.
-                    The terminology may differ depending on
-                    the type of loan and the calculation being
-                    performed.
-                </p>
+                <!-- EXAMPLE -->
+                <article class="info-card">
 
+                    <h3>
+                        Example Loan Calculation
+                    </h3>
 
+                    <p>
+                        Suppose you borrow ₹5,00,000 at an annual
+                        interest rate of 10% for 5 years.
+                    </p>
 
-                <h2>
-                    Important Information
-                </h2>
+                    <div class="example">
+                        Enter ₹5,00,000, 10% and 5 years into the
+                        calculator to estimate the monthly payment
+                        and total repayment.
+                    </div>
 
-                <p>
-                    The result provided by this calculator is
-                    an estimate. Actual loan payments may vary
-                    depending on lender terms, processing fees,
-                    taxes, insurance, charges and other conditions.
-                </p>
+                    <div class="note">
+                        The displayed amount is an estimate. Actual
+                        loan payments can vary depending on lender
+                        terms, fees, taxes, insurance and other charges.
+                    </div>
 
+                </article>
 
+            </div>
 
-                <h2>
+            <!-- FAQ -->
+            <div class="faq-section">
+
+                <h3 class="faq-title">
                     Frequently Asked Questions
-                </h2>
+                </h3>
 
+                <div class="faq-list">
 
-                <div class="faq">
+                    <div class="faq-item">
 
+                        <button
+                            type="button"
+                            class="faq-question">
 
-                    <h3>
-                        Is this Loan Calculator free?
-                    </h3>
+                            <span>
+                                What does the Loan Calculator calculate?
+                            </span>
 
-                    <p>
-                        Yes. The SmartTools Loan Calculator is
-                        free to use online.
-                    </p>
+                            <span class="faq-plus">+</span>
 
+                        </button>
 
-                    <h3>
-                        What information do I need?
-                    </h3>
+                        <div class="faq-answer">
+                            It estimates the monthly payment, total interest
+                            and total amount paid over the selected loan period.
+                        </div>
 
-                    <p>
-                        You need the loan amount, annual interest
-                        rate and loan tenure.
-                    </p>
+                    </div>
 
+                    <div class="faq-item">
 
-                    <h3>
-                        Can I use this calculator for different loans?
-                    </h3>
+                        <button
+                            type="button"
+                            class="faq-question">
 
-                    <p>
-                        You can use it for loans where the
-                        repayment calculation follows the
-                        standard fixed-payment loan formula.
-                    </p>
+                            <span>
+                                Can I calculate a loan with 0% interest?
+                            </span>
 
+                            <span class="faq-plus">+</span>
 
-                    <h3>
-                        Does the calculator include additional fees?
-                    </h3>
+                        </button>
 
-                    <p>
-                        No. The basic calculation does not include
-                        lender-specific fees, taxes, insurance or
-                        other additional charges.
-                    </p>
+                        <div class="faq-answer">
+                            Yes. When the interest rate is 0%, the calculator
+                            divides the principal amount equally across
+                            the monthly repayment period.
+                        </div>
 
+                    </div>
 
-                    <h3>
-                        Can I use it on mobile?
-                    </h3>
+                    <div class="faq-item">
 
-                    <p>
-                        Yes. The calculator works in modern
-                        web browsers on mobile devices.
-                    </p>
+                        <button
+                            type="button"
+                            class="faq-question">
+
+                            <span>
+                                Is the Loan Calculator accurate?
+                            </span>
+
+                            <span class="faq-plus">+</span>
+
+                        </button>
+
+                        <div class="faq-answer">
+                            The calculator provides a mathematical estimate
+                            based on the values entered. Actual lender
+                            payments may differ because of fees, taxes,
+                            insurance, lender terms and other conditions.
+                        </div>
+
+                    </div>
+
+                    <div class="faq-item">
+
+                        <button
+                            type="button"
+                            class="faq-question">
+
+                            <span>
+                                What is the difference between Loan and EMI Calculator?
+                            </span>
+
+                            <span class="faq-plus">+</span>
+
+                        </button>
+
+                        <div class="faq-answer">
+                            Both can use similar loan information and formulas.
+                            A Loan Calculator generally focuses on the overall
+                            repayment picture, while an EMI Calculator commonly
+                            focuses on the periodic installment.
+                        </div>
+
+                    </div>
+
+                    <div class="faq-item">
+
+                        <button
+                            type="button"
+                            class="faq-question">
+
+                            <span>
+                                Can I use this calculator on mobile?
+                            </span>
+
+                            <span class="faq-plus">+</span>
+
+                        </button>
+
+                        <div class="faq-answer">
+                            Yes. SmartTools is designed to work across
+                            mobile phones, tablets and desktop computers.
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -679,66 +1721,98 @@ table {
 
     </section>
 
-
-
-    <!-- ================= MORE TOOLS ================= -->
-
-    <section class="tools-section">
+    <!-- RELATED TOOLS -->
+    <section class="related-section">
 
         <div class="container">
 
-            <div class="section-heading">
+            <h2 class="related-title">
+                Explore More SmartTools
+            </h2>
 
-                <span class="badge">
-                    MORE CALCULATORS
-                </span>
-
-                <h2>
-                    Explore More SmartTools
-                </h2>
-
-                <p>
-                    Try our other free online calculators.
-                </p>
-
-            </div>
-
-
-            <div class="hero-buttons">
-
-
-                <a
-                    href="age-calculator.html"
-                    class="tool-button">
-
-                    Age Calculator
-
-                </a>
-
+            <div class="related-grid">
 
                 <a
                     href="emi-calculator.html"
-                    class="tool-button secondary">
+                    class="related-card">
 
-                    EMI Calculator
+                    <strong>
+                        EMI Calculator →
+                    </strong>
+
+                    <span>
+                        Calculate monthly EMI, interest and total payment.
+                    </span>
 
                 </a>
-
 
                 <a
                     href="sip-calculator.html"
-                    class="tool-button secondary">
+                    class="related-card">
 
-                    SIP Calculator
+                    <strong>
+                        SIP Calculator →
+                    </strong>
+
+                    <span>
+                        Estimate SIP investment value and returns.
+                    </span>
 
                 </a>
 
+                <a
+                    href="gst-calculator.html"
+                    class="related-card">
+
+                    <strong>
+                        GST Calculator →
+                    </strong>
+
+                    <span>
+                        Calculate GST amount and final price.
+                    </span>
+
+                </a>
 
                 <a
-                    href="index.html#tools"
-                    class="tool-button secondary">
+                    href="percentage-calculator.html"
+                    class="related-card">
 
-                    View All Tools
+                    <strong>
+                        Percentage Calculator →
+                    </strong>
+
+                    <span>
+                        Calculate percentages quickly.
+                    </span>
+
+                </a>
+
+                <a
+                    href="discount-calculator.html"
+                    class="related-card">
+
+                    <strong>
+                        Discount Calculator →
+                    </strong>
+
+                    <span>
+                        Calculate savings and final price.
+                    </span>
+
+                </a>
+
+                <a
+                    href="age-calculator.html"
+                    class="related-card">
+
+                    <strong>
+                        Age Calculator →
+                    </strong>
+
+                    <span>
+                        Calculate exact age in years, months and days.
+                    </span>
 
                 </a>
 
@@ -748,59 +1822,81 @@ table {
 
     </section>
 
+    <!-- CTA -->
+    <section class="cta">
 
+        <div class="container">
 
-    <!-- ================= FOOTER ================= -->
+            <h2>
+                More SmartTools for Everyday Needs
+            </h2>
 
+            <p>
+                Explore free calculators and useful online tools
+                designed to make everyday calculations simpler.
+            </p>
+
+            <a
+                href="index.html#tools"
+                class="cta-btn">
+                Explore All Tools →
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
     <footer>
 
         <div class="container">
 
-            <div class="footer-content">
+            <div class="footer-grid">
 
-
-                <div>
+                <div class="footer-brand">
 
                     <h3>
-                        SmartTools
+                        Smart<span>Tools</span>
                     </h3>
 
                     <p>
-                        Simple and useful online tools
-                        for everyday needs.
+                        Simple and useful online tools for everyday needs.
+                        Free, fast and easy to use.
                     </p>
 
                 </div>
 
-
                 <div>
 
                     <h4>
-                        Quick Links
+                        Explore
                     </h4>
 
-                    <a href="index.html">
-                        Home
-                    </a>
+                    <div class="footer-links">
 
-                    <a href="index.html#tools">
-                        Tools
-                    </a>
+                        <a href="index.html">
+                            Home
+                        </a>
 
-                    <a href="index.html#guides">
-                        Guides
-                    </a>
+                        <a href="index.html#tools">
+                            All Tools
+                        </a>
 
-                    <a href="about.html">
-                        About
-                    </a>
+                        <a href="emi-calculator.html">
+                            EMI Calculator
+                        </a>
 
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
+                        <a href="gst-calculator.html">
+                            GST Calculator
+                        </a>
+
+                        <a href="sip-calculator.html">
+                            SIP Calculator
+                        </a>
+
+                    </div>
 
                 </div>
-
 
                 <div>
 
@@ -808,150 +1904,292 @@ table {
                         Legal
                     </h4>
 
-                    <a href="privacy-policy.html">
-                        Privacy Policy
-                    </a>
+                    <div class="footer-links">
 
-                    <a href="terms.html">
-                        Terms & Conditions
-                    </a>
+                        <a href="about.html">
+                            About
+                        </a>
 
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+
+                        <a href="privacy-policy.html">
+                            Privacy Policy
+                        </a>
+
+                        <a href="terms.html">
+                            Terms & Conditions
+                        </a>
+
+                    </div>
 
                 </div>
 
             </div>
 
-
             <div class="footer-bottom">
-
-                <p>
-                    © 2026 SmartTools. All rights reserved.
-                </p>
-
+                © 2026 SmartTools. Created and maintained by Sukanya Shahare.
             </div>
 
         </div>
 
     </footer>
 
+    <script>
+        "use strict";
 
+        const loanAmountInput =
+            document.getElementById("loanAmount");
 
-    <script src="script.js"></script>
+        const interestRateInput =
+            document.getElementById("interestRate");
 
-<!-- SMARTTOOLS_PHASE6_JS_START -->
-<script>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE HELPER
-========================================================= */
+        const loanTenureInput =
+            document.getElementById("loanTenure");
 
-(function () {
+        const calculateBtn =
+            document.getElementById("calculateBtn");
 
-    "use strict";
+        const resultSection =
+            document.getElementById("resultSection");
 
-    function optimizeImages() {
+        const errorMessage =
+            document.getElementById("errorMessage");
 
-        const images =
-            document.querySelectorAll("img");
+        const monthlyPayment =
+            document.getElementById("monthlyPayment");
 
-        images.forEach(function (img) {
+        const totalInterest =
+            document.getElementById("totalInterest");
 
-            if (!img.hasAttribute("loading")) {
+        const totalPayment =
+            document.getElementById("totalPayment");
 
-                img.setAttribute(
-                    "loading",
-                    "lazy"
-                );
+        const mainMonthlyPayment =
+            document.getElementById("mainMonthlyPayment");
 
+        const principalResult =
+            document.getElementById("principalResult");
+
+        const interestResult =
+            document.getElementById("interestResult");
+
+        const workingText =
+            document.getElementById("workingText");
+
+        /* ================= FORMAT INR ================= */
+
+        function formatINR(value) {
+
+            return "₹" + Number(value).toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
+        }
+
+        /* ================= CALCULATE LOAN ================= */
+
+        function calculateLoan() {
+
+            errorMessage.classList.remove("show");
+            resultSection.classList.remove("show");
+
+            const principal =
+                Number(loanAmountInput.value);
+
+            const annualRate =
+                Number(interestRateInput.value);
+
+            const years =
+                Number(loanTenureInput.value);
+
+            /* Validation */
+
+            if (
+                !Number.isFinite(principal) ||
+                principal <= 0
+            ) {
+
+                errorMessage.textContent =
+                    "Please enter a valid loan amount greater than ₹0.";
+
+                errorMessage.classList.add("show");
+
+                return;
             }
 
-            if (!img.hasAttribute("decoding")) {
+            if (
+                !Number.isFinite(annualRate) ||
+                annualRate < 0
+            ) {
 
-                img.setAttribute(
-                    "decoding",
-                    "async"
-                );
+                errorMessage.textContent =
+                    "Please enter a valid interest rate.";
 
+                errorMessage.classList.add("show");
+
+                return;
             }
+
+            if (
+                !Number.isFinite(years) ||
+                years <= 0
+            ) {
+
+                errorMessage.textContent =
+                    "Please enter a valid loan tenure.";
+
+                errorMessage.classList.add("show");
+
+                return;
+            }
+
+            if (years > 50) {
+
+                errorMessage.textContent =
+                    "Loan tenure cannot be more than 50 years.";
+
+                errorMessage.classList.add("show");
+
+                return;
+            }
+
+            /* Monthly calculations */
+
+            const months =
+                Math.round(years * 12);
+
+            const monthlyRate =
+                annualRate / 12 / 100;
+
+            let monthly;
+
+            /* 0% interest */
+
+            if (monthlyRate === 0) {
+
+                monthly =
+                    principal / months;
+
+            } else {
+
+                const factor =
+                    Math.pow(
+                        1 + monthlyRate,
+                        months
+                    );
+
+                monthly =
+                    principal *
+                    monthlyRate *
+                    factor /
+                    (factor - 1);
+            }
+
+            const total =
+                monthly * months;
+
+            const interest =
+                total - principal;
+
+            /* Display */
+
+            monthlyPayment.textContent =
+                formatINR(monthly);
+
+            totalInterest.textContent =
+                formatINR(interest);
+
+            totalPayment.textContent =
+                formatINR(total);
+
+            mainMonthlyPayment.textContent =
+                formatINR(monthly);
+
+            principalResult.textContent =
+                formatINR(principal);
+
+            interestResult.textContent =
+                formatINR(interest);
+
+            /* Working */
+
+            workingText.textContent =
+                `Loan amount ${formatINR(principal)}, ` +
+                `annual interest rate ${annualRate.toFixed(2)}%, ` +
+                `and tenure ${years} year${years === 1 ? "" : "s"} ` +
+                `(${months} monthly payments) produce an estimated ` +
+                `monthly payment of ${formatINR(monthly)}. ` +
+                `Estimated total interest is ${formatINR(interest)} ` +
+                `and estimated total repayment is ${formatINR(total)}.`;
+
+            resultSection.classList.add("show");
+
+            resultSection.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        }
+
+        calculateBtn.addEventListener(
+            "click",
+            calculateLoan
+        );
+
+        /* ================= ENTER KEY ================= */
+
+        [
+            loanAmountInput,
+            interestRateInput,
+            loanTenureInput
+        ].forEach(function(input) {
+
+            input.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Enter") {
+                        calculateLoan();
+                    }
+
+                }
+            );
 
         });
 
-    }
+        /* ================= FAQ ================= */
 
+        document.querySelectorAll(".faq-question")
+            .forEach(function(button) {
 
-    function optimizeVideos() {
+                button.addEventListener(
+                    "click",
+                    function() {
 
-        document
-            .querySelectorAll("video")
-            .forEach(function (video) {
+                        const item =
+                            button.closest(".faq-item");
 
-                if (!video.hasAttribute("preload")) {
+                        const isOpen =
+                            item.classList.contains("open");
 
-                    video.setAttribute(
-                        "preload",
-                        "metadata"
-                    );
+                        document
+                            .querySelectorAll(".faq-item")
+                            .forEach(function(otherItem) {
+                                otherItem.classList.remove("open");
+                            });
 
-                }
+                        if (!isOpen) {
+                            item.classList.add("open");
+                        }
+
+                    }
+                );
 
             });
 
-    }
+    </script>
 
-
-    function addThemeColor() {
-
-        if (
-            !document.querySelector(
-                'meta[name="theme-color"]'
-            )
-        ) {
-
-            const meta =
-                document.createElement("meta");
-
-            meta.name =
-                "theme-color";
-
-            meta.content =
-                "#5b5ff5";
-
-            document.head.appendChild(meta);
-        }
-
-    }
-
-
-    function init() {
-
-        optimizeImages();
-        optimizeVideos();
-        addThemeColor();
-
-    }
-
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
-
-    } else {
-
-        init();
-
-    }
-
-})();
-</script>
-<!-- SMARTTOOLS_PHASE6_JS_END -->
 </body>
-
 </html>

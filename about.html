@@ -1,1109 +1,1806 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>About SmartTools | Sukanya Shahare</title>
-
-    <meta
-        name="description"
-        content="Learn about SmartTools, its founder Sukanya Shahare, and the mission behind practical online calculators, converters and productivity tools."
-    >
-
-    <meta
-        name="keywords"
-        content="SmartTools, Sukanya Shahare, online calculators, online tools, converters, productivity tools"
-    >
-
-    <meta name="robots" content="index, follow">
-
-    <link
-        rel="canonical"
-        href="https://shaharesukanya.github.io/smart-website/about.html"
-    >
-
-    <meta property="og:title" content="About SmartTools">
-    <meta
-        property="og:description"
-        content="Meet the founder behind SmartTools and learn about the project's mission."
-    >
-    <meta property="og:type" content="website">
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f6f7fb;
-            color: #101828;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255,255,255,0.97);
-            border-bottom: 1px solid #e5e7eb;
-            backdrop-filter: blur(12px);
-        }
-
-        .header-inner {
-            max-width: 1180px;
-            margin: auto;
-            min-height: 84px;
-            padding: 0 22px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 25px;
-        }
-
-        /* NEW LOGO - NO IMAGE REQUIRED */
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #111827;
-            flex-shrink: 0;
-        }
-
-        .logo-mark {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: linear-gradient(
-                135deg,
-                #4f46e5,
-                #7c3aed
-            );
-
-            color: white;
-            font-size: 19px;
-            font-weight: 900;
-
-            box-shadow:
-                0 8px 18px rgba(79,70,229,0.22);
-        }
-
-        .logo-text {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 26px;
-        }
-
-        .nav a {
-            color: #475467;
-            font-size: 15px;
-            font-weight: 700;
-            transition: 0.2s ease;
-        }
-
-        .nav a:hover {
-            color: #4f46e5;
-        }
-
-        .nav-cta {
-            background: #4f46e5;
-            color: white !important;
-
-            padding: 12px 18px;
-            border-radius: 11px;
-
-            box-shadow:
-                0 8px 20px rgba(79,70,229,0.20);
-        }
-
-        .nav-cta:hover {
-            background: #4338ca !important;
-            transform: translateY(-1px);
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            max-width: 1000px;
-            margin: auto;
-            padding: 72px 22px 50px;
-            text-align: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-
-            padding: 8px 14px;
-            margin-bottom: 18px;
-
-            border: 1px solid #dfe4ff;
-            border-radius: 999px;
-
-            background: #eef2ff;
-            color: #4f46e5;
-
-            font-size: 13px;
-            font-weight: 800;
-        }
-
-        .hero h1 {
-            margin: 0;
-
-            font-size: clamp(42px, 6vw, 66px);
-            line-height: 1.05;
-            letter-spacing: -2.5px;
-        }
-
-        .hero h1 span {
-            color: #4f46e5;
-        }
-
-        .hero p {
-            max-width: 760px;
-            margin: 20px auto 0;
-
-            color: #667085;
-            font-size: 18px;
-            line-height: 1.75;
-        }
-
-        /* =========================
-           FOUNDER CARD
-        ========================= */
-
-        .founder-section {
-            max-width: 1180px;
-            margin: auto;
-            padding: 20px 22px 80px;
-        }
-
-        .founder-card {
-            position: relative;
-
-            display: grid;
-            grid-template-columns: 330px 1fr;
-            align-items: center;
-
-            gap: 58px;
-
-            padding: 58px;
-
-            background: white;
-
-            border: 1px solid #e4e7ec;
-            border-radius: 30px;
-
-            box-shadow:
-                0 25px 70px rgba(16,24,40,0.08);
-
-            overflow: hidden;
-        }
-
-        .decor-one {
-            position: absolute;
-            width: 260px;
-            height: 260px;
-
-            top: -120px;
-            left: -110px;
-
-            border-radius: 50%;
-            background: #eef2ff;
-        }
-
-        .decor-two {
-            position: absolute;
-            width: 180px;
-            height: 180px;
-
-            right: -90px;
-            bottom: -90px;
-
-            border-radius: 50%;
-            background: #f5f3ff;
-        }
-
-        /* =========================
-           FOUNDER PHOTO
-        ========================= */
-
-        .founder-photo-area {
-            position: relative;
-            z-index: 2;
-
-            display: flex;
-            justify-content: center;
-        }
-
-        .photo-frame {
-            width: 260px;
-            height: 260px;
-
-            padding: 7px;
-
-            border-radius: 50%;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #4f46e5,
-                    #7c3aed,
-                    #6366f1
-                );
-
-            box-shadow:
-                0 25px 50px rgba(79,70,229,0.25);
-        }
-
-        .founder-photo {
-            width: 100%;
-            height: 100%;
-
-            display: block;
-
-            border-radius: 50%;
-
-            object-fit: cover;
-
-            background: #eef2ff;
-
-            border: 5px solid white;
-        }
-
-        /* =========================
-           FOUNDER CONTENT
-        ========================= */
-
-        .founder-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .founder-label {
-            display: inline-flex;
-
-            padding: 8px 13px;
-
-            border-radius: 9px;
-
-            background: #eef2ff;
-            color: #4f46e5;
-
-            font-size: 13px;
-            font-weight: 800;
-
-            margin-bottom: 17px;
-        }
-
-        .founder-content h2 {
-            margin: 0;
-
-            font-size: 42px;
-            line-height: 1.12;
-            letter-spacing: -1px;
-        }
-
-        .founder-role {
-            margin-top: 11px;
-
-            color: #4f46e5;
-
-            font-size: 17px;
-            font-weight: 800;
-        }
-
-        .founder-description {
-            margin-top: 25px;
-        }
-
-        .founder-description p {
-            margin: 0 0 17px;
-
-            color: #667085;
-            font-size: 17px;
-            line-height: 1.8;
-        }
-
-        .highlights {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-
-            margin-top: 25px;
-        }
-
-        .highlight {
-            padding: 10px 13px;
-
-            border: 1px solid #e4e7ec;
-            border-radius: 10px;
-
-            background: #f8fafc;
-
-            color: #344054;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           MISSION
-        ========================= */
-
-        .mission {
-            max-width: 1180px;
-            margin: auto;
-
-            padding: 0 22px 80px;
-        }
-
-        .section-heading {
-            text-align: center;
-            max-width: 720px;
-            margin: auto auto 35px;
-        }
-
-        .section-heading h2 {
-            margin: 0;
-
-            font-size: 36px;
-            letter-spacing: -0.8px;
-        }
-
-        .section-heading p {
-            margin: 14px 0 0;
-
-            color: #667085;
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        .mission-grid {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 22px;
-        }
-
-        .mission-card {
-            background: white;
-
-            border: 1px solid #e4e7ec;
-            border-radius: 20px;
-
-            padding: 30px;
-
-            transition: 0.25s ease;
-        }
-
-        .mission-card:hover {
-            transform: translateY(-5px);
-
-            box-shadow:
-                0 18px 40px rgba(16,24,40,0.08);
-        }
-
-        .mission-icon {
-            width: 54px;
-            height: 54px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 15px;
-
-            background: #eef2ff;
-
-            font-size: 25px;
-
-            margin-bottom: 18px;
-        }
-
-        .mission-card h3 {
-            margin: 0 0 10px;
-
-            font-size: 19px;
-        }
-
-        .mission-card p {
-            margin: 0;
-
-            color: #667085;
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        /* =========================
-           CTA
-        ========================= */
-
-        .cta-section {
-            max-width: 1080px;
-            margin: auto;
-
-            padding: 0 22px 85px;
-        }
-
-        .cta {
-            padding: 55px 30px;
-
-            text-align: center;
-
-            border-radius: 28px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #312e81,
-                    #4f46e5
-                );
-
-            box-shadow:
-                0 25px 55px rgba(79,70,229,0.20);
-
-            color: white;
-        }
-
-        .cta h2 {
-            margin: 0;
-
-            font-size: 35px;
-        }
-
-        .cta p {
-            max-width: 650px;
-
-            margin: 15px auto 27px;
-
-            color: #e0e7ff;
-
-            line-height: 1.7;
-        }
-
-        .cta-button {
-            display: inline-block;
-
-            padding: 13px 21px;
-
-            background: white;
-            color: #3730a3;
-
-            border-radius: 11px;
-
-            font-weight: 800;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        .footer {
-            background: #0f172a;
-            color: #cbd5e1;
-
-            padding: 52px 22px 24px;
-        }
-
-        .footer-inner {
-            max-width: 1180px;
-            margin: auto;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-
-            gap: 45px;
-
-            padding-bottom: 35px;
-        }
-
-        .footer-logo {
-            color: white;
-
-            font-size: 22px;
-            font-weight: 800;
-
-            margin-bottom: 13px;
-        }
-
-        .footer-text {
-            max-width: 430px;
-
-            color: #94a3b8;
-
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .footer-title {
-            color: white;
-
-            font-weight: 800;
-
-            margin-bottom: 15px;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .footer-links a {
-            color: #94a3b8;
-            font-size: 14px;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .copyright {
-            padding-top: 22px;
-
-            border-top: 1px solid #1e293b;
-
-            text-align: center;
-
-            color: #64748b;
-
-            font-size: 13px;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .nav {
-                gap: 14px;
-            }
-
-            .nav a:not(.nav-cta) {
-                display: none;
-            }
-
-            .founder-card {
-                grid-template-columns: 1fr;
-
-                text-align: center;
-
-                padding: 45px 28px;
-            }
-
-            .highlights {
-                justify-content: center;
-            }
-
-            .mission-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .header-inner {
-                min-height: 75px;
-                padding: 0 16px;
-            }
-
-            .logo-text {
-                font-size: 20px;
-            }
-
-            .logo-mark {
-                width: 40px;
-                height: 40px;
-            }
-
-            .hero {
-                padding-top: 55px;
-            }
-
-            .hero h1 {
-                font-size: 40px;
-                letter-spacing: -1.5px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .photo-frame {
-                width: 205px;
-                height: 205px;
-            }
-
-            .founder-content h2 {
-                font-size: 32px;
-            }
-
-            .founder-description p {
-                font-size: 15px;
-            }
-
-            .mission-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta {
-                padding: 40px 22px;
-            }
-
-            .cta h2 {
-                font-size: 28px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-
-    <script type="application/ld+json">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About SmartTools | Meet Sukanya Shahare</title>
+<meta name="description" content="Learn about SmartTools, its purpose, tools and creator Sukanya Shahare. SmartTools provides practical calculators, converters and productivity tools for everyday needs.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Sukanya Shahare">
+<meta name="theme-color" content="#5b5ff5">
+
+<link rel="canonical" href="https://shaharesukanya.github.io/smart-website/about.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<meta property="og:title" content="About SmartTools | Meet Sukanya Shahare">
+<meta property="og:description" content="Learn about SmartTools, its purpose, tools and creator Sukanya Shahare.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shaharesukanya.github.io/smart-website/about.html">
+<meta property="og:site_name" content="SmartTools">
+<meta property="og:image" content="https://shaharesukanya.github.io/smart-website/smarttools-logo.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About SmartTools | Meet Sukanya Shahare">
+<meta name="twitter:description" content="Learn about SmartTools, its purpose, tools and creator Sukanya Shahare.">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
     {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "About SmartTools",
-        "url": "https://shaharesukanya.github.io/smart-website/about.html",
-        "description": "Learn about SmartTools and its founder.",
-        "mainEntity": {
-            "@type": "Person",
-            "name": "Sukanya Shahare",
-            "jobTitle": "Founder & CEO",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "SmartTools"
-            }
+      "@type":"WebPage",
+      "@id":"https://shaharesukanya.github.io/smart-website/about.html#webpage",
+      "url":"https://shaharesukanya.github.io/smart-website/about.html",
+      "name":"About SmartTools | Meet Sukanya Shahare",
+      "description":"Learn about SmartTools, its purpose, tools and creator Sukanya Shahare.",
+      "isPartOf":{"@id":"https://shaharesukanya.github.io/smart-website/#website"},
+      "inLanguage":"en"
+    },
+    {
+      "@type":"Person",
+      "@id":"https://shaharesukanya.github.io/smart-website/about.html#sukanya-shahare",
+      "name":"Sukanya Shahare",
+      "jobTitle":"Founder & Creator of SmartTools",
+      "url":"https://shaharesukanya.github.io/smart-website/about.html",
+      "image":"https://shaharesukanya.github.io/smart-website/sukanya-shahare.jpg"
+    },
+    {
+      "@type":"BreadcrumbList",
+      "@id":"https://shaharesukanya.github.io/smart-website/about.html#breadcrumb",
+      "itemListElement":[
+        {
+          "@type":"ListItem",
+          "position":1,
+          "name":"SmartTools",
+          "item":"https://shaharesukanya.github.io/smart-website/"
+        },
+        {
+          "@type":"ListItem",
+          "position":2,
+          "name":"About",
+          "item":"https://shaharesukanya.github.io/smart-website/about.html"
         }
+      ]
     }
-    </script>
+  ]
+}
+</script>
+
+<style>
+:root{
+  --primary:#5b5ff5;
+  --primary-dark:#474be3;
+  --violet:#7653ef;
+  --ink:#111827;
+  --muted:#667085;
+  --soft:#f7f8fc;
+  --soft-2:#eef1ff;
+  --border:#e6e8f0;
+  --white:#ffffff;
+  --success:#119c74;
+  --shadow-sm:0 10px 30px rgba(17,24,39,.06);
+  --shadow-md:0 22px 60px rgba(17,24,39,.09);
+  --shadow-lg:0 30px 90px rgba(17,24,39,.12);
+  --radius-xl:28px;
+  --radius-lg:22px;
+  --radius-md:16px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+
+.container{
+  width:min(1160px,92%);
+  margin:0 auto;
+}
+
+/* HEADER */
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(230,232,240,.95);
+}
+
+.header-inner{
+  min-height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+
+.brand{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  font-weight:900;
+  letter-spacing:-.02em;
+}
+
+.brand-mark{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  background:linear-gradient(135deg,var(--primary),var(--violet));
+  box-shadow:0 10px 26px rgba(91,95,245,.28);
+  font-size:16px;
+}
+
+.brand-text{
+  font-size:20px;
+}
+
+.brand-text span{color:var(--primary)}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.nav a{
+  padding:10px 13px;
+  border-radius:12px;
+  color:#475467;
+  font-size:14px;
+  font-weight:750;
+  transition:.2s ease;
+}
+
+.nav a:hover,
+.nav a.active{
+  color:var(--primary);
+  background:#f3f4ff;
+}
+
+.nav-cta{
+  color:#fff !important;
+  background:linear-gradient(135deg,var(--primary),var(--violet));
+  box-shadow:0 10px 24px rgba(91,95,245,.22);
+}
+
+.nav-cta:hover{
+  color:#fff !important;
+  transform:translateY(-1px);
+}
+
+.menu-toggle{
+  display:none;
+  width:44px;
+  height:44px;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:12px;
+  cursor:pointer;
+  color:var(--ink);
+}
+
+.menu-lines{
+  width:20px;
+  height:14px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.menu-lines span{
+  height:2px;
+  width:100%;
+  background:currentColor;
+  border-radius:5px;
+}
+
+/* HERO */
+.page-hero{
+  padding:72px 0 36px;
+  background:
+    radial-gradient(circle at 8% 12%,rgba(91,95,245,.09),transparent 28%),
+    radial-gradient(circle at 92% 6%,rgba(118,83,239,.08),transparent 24%),
+    linear-gradient(180deg,#fbfbff 0%,#fff 100%);
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#eef0ff;
+  border:1px solid #dde1ff;
+  color:#4f46e5;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.eyebrow-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#5b5ff5;
+  box-shadow:0 0 0 5px rgba(91,95,245,.10);
+}
+
+.hero-copy{
+  max-width:850px;
+  margin-top:18px;
+}
+
+.hero-copy h1{
+  font-size:clamp(42px,6vw,70px);
+  line-height:1.03;
+  letter-spacing:-.05em;
+  margin-bottom:18px;
+}
+
+.hero-copy h1 span{
+  background:linear-gradient(135deg,var(--primary),var(--violet));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero-copy p{
+  max-width:780px;
+  color:var(--muted);
+  font-size:18px;
+}
+
+/* FOUNDER CARD */
+.founder-wrap{
+  padding:28px 0 88px;
+  background:#fff;
+}
+
+.founder-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:370px 1fr;
+  gap:54px;
+  align-items:center;
+  padding:48px;
+  border:1px solid var(--border);
+  border-radius:32px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 0 0,rgba(91,95,245,.08),transparent 27%),
+    radial-gradient(circle at 100% 100%,rgba(118,83,239,.07),transparent 25%),
+    #fff;
+  box-shadow:var(--shadow-md);
+}
+
+.founder-card:before,
+.founder-card:after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.founder-card:before{
+  width:230px;
+  height:230px;
+  background:#eef1ff;
+  top:-130px;
+  left:-100px;
+}
+
+.founder-card:after{
+  width:210px;
+  height:210px;
+  background:#f5f1ff;
+  right:-100px;
+  bottom:-120px;
+}
+
+.photo-col{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.photo-ring{
+  width:272px;
+  height:272px;
+  padding:8px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#5b5ff5,#7b53f6);
+  box-shadow:0 26px 60px rgba(91,95,245,.20);
+}
+
+.photo-inner{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  overflow:hidden;
+  background:#eef1ff;
+  border:5px solid #fff;
+  position:relative;
+}
+
+.photo-inner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+.photo-fallback{
+  position:absolute;
+  inset:0;
+  display:none;
+  place-items:center;
+  background:linear-gradient(135deg,#eef1ff,#f7f8ff);
+  color:var(--primary);
+  font-size:64px;
+  font-weight:900;
+}
+
+.photo-badge{
+  margin-top:16px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 13px;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:850;
+  color:#475467;
+  box-shadow:var(--shadow-sm);
+}
+
+.status-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#15b87a;
+  box-shadow:0 0 0 5px rgba(21,184,122,.10);
+}
+
+.founder-content{
+  position:relative;
+  z-index:1;
+}
+
+.section-kicker{
+  color:var(--primary);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.founder-content h2{
+  font-size:clamp(40px,5vw,60px);
+  line-height:1;
+  letter-spacing:-.045em;
+  margin-bottom:10px;
+}
+
+.founder-content h2 span{
+  color:var(--primary);
+}
+
+.role{
+  font-size:19px;
+  font-weight:850;
+  color:#4f46e5;
+  margin-bottom:20px;
+}
+
+.founder-content .lead{
+  color:#475467;
+  font-size:17px;
+  max-width:730px;
+  margin-bottom:18px;
+}
+
+.founder-content .body-copy{
+  color:var(--muted);
+  max-width:760px;
+  margin-bottom:25px;
+}
+
+.pill-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:26px;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:10px 13px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fbfcff;
+  color:#344054;
+  font-size:13px;
+  font-weight:800;
+}
+
+.pill-check{
+  color:#0e9f6e;
+  font-weight:900;
+}
+
+.action-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:0 18px;
+  border-radius:13px;
+  font-weight:850;
+  font-size:14px;
+  transition:.2s ease;
+}
+
+.btn-primary{
+  color:#fff;
+  background:linear-gradient(135deg,var(--primary),var(--violet));
+  box-shadow:0 14px 28px rgba(91,95,245,.22);
+}
+
+.btn-primary:hover{
+  transform:translateY(-1px);
+}
+
+.btn-light{
+  color:#344054;
+  border:1px solid var(--border);
+  background:#fff;
+}
+
+.btn-light:hover{
+  border-color:#cfd3df;
+  transform:translateY(-1px);
+}
+
+/* MISSION / STATS */
+.section{
+  padding:88px 0;
+}
+
+.soft-section{
+  background:var(--soft);
+}
+
+.center-heading{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 42px;
+}
+
+.center-heading h2{
+  font-size:clamp(30px,4vw,46px);
+  line-height:1.08;
+  letter-spacing:-.035em;
+  margin:12px 0;
+}
+
+.center-heading p{
+  color:var(--muted);
+  font-size:16px;
+}
+
+.mission-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.mission-card{
+  padding:28px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+
+.mission-icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:#eef0ff;
+  color:var(--primary);
+  font-size:22px;
+  margin-bottom:18px;
+}
+
+.mission-card h3{
+  font-size:19px;
+  margin-bottom:9px;
+}
+
+.mission-card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* STATS */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.stat-card{
+  text-align:center;
+  padding:26px 18px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+
+.stat-card strong{
+  display:block;
+  font-size:34px;
+  line-height:1;
+  letter-spacing:-.04em;
+  color:var(--primary);
+  margin-bottom:8px;
+}
+
+.stat-card span{
+  color:var(--muted);
+  font-size:13px;
+  font-weight:750;
+}
+
+/* VALUES */
+.values-layout{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:32px;
+  align-items:start;
+}
+
+.values-panel{
+  padding:34px;
+  border:1px solid var(--border);
+  border-radius:24px;
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+
+.values-panel h3{
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+.values-panel > p{
+  color:var(--muted);
+  margin-bottom:24px;
+}
+
+.value-list{
+  display:grid;
+  gap:13px;
+}
+
+.value-item{
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:12px;
+  align-items:start;
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:15px;
+  background:#fbfcff;
+}
+
+.value-number{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:linear-gradient(135deg,#eef0ff,#f3efff);
+  color:var(--primary);
+  font-weight:900;
+}
+
+.value-item strong{
+  display:block;
+  margin-bottom:3px;
+  font-size:14px;
+}
+
+.value-item span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.quote-card{
+  padding:38px;
+  border-radius:26px;
+  background:linear-gradient(135deg,#111827,#252d46);
+  color:#fff;
+  min-height:100%;
+  box-shadow:var(--shadow-md);
+  position:relative;
+  overflow:hidden;
+}
+
+.quote-card:after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:rgba(255,255,255,.07);
+  right:-80px;
+  bottom:-80px;
+}
+
+.quote-mark{
+  font-size:48px;
+  line-height:1;
+  opacity:.7;
+}
+
+.quote-card blockquote{
+  position:relative;
+  z-index:1;
+  font-size:27px;
+  line-height:1.25;
+  letter-spacing:-.02em;
+  margin:10px 0 25px;
+}
+
+.quote-card .quote-note{
+  color:#c8cede;
+  font-size:14px;
+}
+
+/* WHAT WE BUILD */
+.tools-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.tool-mini{
+  padding:23px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+
+.tool-mini b{
+  display:block;
+  font-size:15px;
+  margin-bottom:6px;
+}
+
+.tool-mini span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* CTA */
+.cta{
+  padding:0 0 95px;
+}
+
+.cta-card{
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding:56px 30px;
+  border-radius:30px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(255,255,255,.13),transparent 24%),
+    radial-gradient(circle at 100% 100%,rgba(255,255,255,.10),transparent 25%),
+    linear-gradient(135deg,#4f46e5,#6d4eea);
+  box-shadow:var(--shadow-lg);
+}
+
+.cta-card h2{
+  font-size:clamp(31px,4vw,46px);
+  line-height:1.05;
+  letter-spacing:-.04em;
+  margin:10px 0 12px;
+}
+
+.cta-card p{
+  max-width:650px;
+  margin:0 auto 25px;
+  color:#e9eaff;
+}
+
+.cta-card .btn{
+  color:#4f46e5;
+  background:#fff;
+  box-shadow:0 12px 26px rgba(0,0,0,.16);
+}
+
+.cta-card .btn:hover{
+  transform:translateY(-1px);
+}
+
+/* FOOTER */
+.footer{
+  background:#101522;
+  color:#eef1f7;
+  padding:58px 0 24px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:30px;
+}
+
+.footer-brand-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:13px;
+}
+
+.footer-brand-row .brand-mark{
+  box-shadow:none;
+}
+
+.footer-brand-name{
+  font-size:19px;
+  font-weight:900;
+}
+
+.footer p{
+  color:#aeb7c8;
+  font-size:13px;
+  max-width:350px;
+}
+
+.footer h3{
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#fff;
+  margin-bottom:13px;
+}
+
+.footer a{
+  display:block;
+  width:max-content;
+  color:#aeb7c8;
+  font-size:13px;
+  margin:8px 0;
+}
+
+.footer a:hover{color:#fff}
+
+.footer-bottom{
+  margin-top:34px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.10);
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  color:#8893a7;
+  font-size:12px;
+}
+
+/* MOBILE */
+@media (max-width:900px){
+  .nav{
+    position:absolute;
+    top:80px;
+    right:4%;
+    width:min(330px,92%);
+    padding:12px;
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    box-shadow:var(--shadow-lg);
+  }
+
+  .nav.open{display:flex}
+  .nav a{width:100%}
+  .nav-cta{text-align:center}
+  .menu-toggle{display:block}
+
+  .founder-card{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+
+  .founder-content{text-align:center}
+  .founder-content .lead,
+  .founder-content .body-copy{margin-left:auto;margin-right:auto}
+  .pill-row,
+  .action-row{justify-content:center}
+
+  .values-layout{grid-template-columns:1fr}
+}
+
+@media (max-width:760px){
+  .mission-grid,
+  .stats-grid,
+  .tools-strip{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (max-width:640px){
+  .page-hero{
+    padding-top:48px;
+  }
+
+  .hero-copy h1{
+    font-size:42px;
+  }
+
+  .hero-copy p{
+    font-size:16px;
+  }
+
+  .founder-wrap{
+    padding-bottom:65px;
+  }
+
+  .founder-card{
+    padding:28px 20px;
+    border-radius:24px;
+  }
+
+  .photo-ring{
+    width:220px;
+    height:220px;
+  }
+
+  .founder-content h2{
+    font-size:42px;
+  }
+
+  .role{
+    font-size:17px;
+  }
+
+  .section{
+    padding:65px 0;
+  }
+
+  .mission-grid,
+  .stats-grid,
+  .tools-strip,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .values-panel,
+  .quote-card{
+    padding:24px;
+  }
+
+  .quote-card blockquote{
+    font-size:23px;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+  }
+}
+
+/* =====================================================
+   FINAL PROFESSIONAL FOOTER
+   Only footer styling is overridden here.
+===================================================== */
+
+.footer-pro{
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 8% 12%, rgba(91,95,245,.22), transparent 25%),
+        radial-gradient(circle at 92% 88%, rgba(124,82,239,.20), transparent 28%),
+        linear-gradient(135deg,#0b1223 0%,#11182b 52%,#101b2d 100%);
+    color:#fff;
+    padding:72px 0 24px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer-pro-glow{
+    position:absolute;
+    width:360px;
+    height:360px;
+    border-radius:50%;
+    pointer-events:none;
+}
+
+.footer-pro-glow-left{
+    top:-220px;
+    left:-160px;
+    background:radial-gradient(circle,rgba(91,95,245,.22),transparent 68%);
+}
+
+.footer-pro-glow-right{
+    right:-170px;
+    bottom:-210px;
+    background:radial-gradient(circle,rgba(124,82,239,.20),transparent 68%);
+}
+
+.footer-pro-inner{
+    position:relative;
+    z-index:2;
+}
+
+.footer-pro-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+    gap:52px;
+    padding-bottom:46px;
+}
+
+.footer-pro-logo-wrap{
+    display:inline-flex;
+    align-items:center;
+    gap:13px;
+    margin-bottom:18px;
+}
+
+.footer-pro-logo{
+    width:52px;
+    height:52px;
+    display:grid;
+    place-items:center;
+    border-radius:16px;
+    color:#fff;
+    font-size:17px;
+    font-weight:900;
+    background:linear-gradient(135deg,#5b5ff5,#7b53f6);
+    box-shadow:0 13px 32px rgba(91,95,245,.30);
+}
+
+.footer-pro-brand-name{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:-.03em;
+}
+
+.footer-pro-brand-name span{
+    color:#8177ff;
+}
+
+.footer-pro-brand p,
+.footer-pro-brand > p{
+    max-width:395px;
+    color:#aeb8cc;
+    font-size:14px;
+    line-height:1.8;
+}
+
+.footer-pro-online{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    margin-top:20px;
+    padding:10px 14px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:999px;
+    background:rgba(255,255,255,.045);
+    color:#e8edf9;
+    font-size:12px;
+    font-weight:800;
+}
+
+.footer-pro-online-dot{
+    width:8px;
+    height:8px;
+    flex:0 0 auto;
+    border-radius:50%;
+    background:#18c991;
+    box-shadow:0 0 0 5px rgba(24,201,145,.09);
+}
+
+.footer-pro-column h3{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin:5px 0 19px;
+    color:#fff;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+}
+
+.footer-pro-heading-bar{
+    width:24px;
+    height:3px;
+    border-radius:999px;
+    background:linear-gradient(90deg,#5b5ff5,#9a7dff);
+}
+
+.footer-pro-column a{
+    position:relative;
+    display:block;
+    width:max-content;
+    margin-bottom:12px;
+    color:#aeb8cc;
+    font-size:14px;
+    transition:color .2s ease,transform .2s ease;
+}
+
+.footer-pro-column a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-3px;
+    width:0;
+    height:1px;
+    background:#7f74ff;
+    transition:width .2s ease;
+}
+
+.footer-pro-column a:hover{
+    color:#fff;
+    transform:translateX(3px);
+}
+
+.footer-pro-column a:hover::after{
+    width:100%;
+}
+
+.footer-pro-features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    padding:25px 0;
+    border-top:1px solid rgba(255,255,255,.09);
+    border-bottom:1px solid rgba(255,255,255,.09);
+}
+
+.footer-pro-feature{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:16px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+    transition:transform .2s ease,background .2s ease,border-color .2s ease;
+}
+
+.footer-pro-feature:hover{
+    transform:translateY(-2px);
+    background:rgba(255,255,255,.06);
+    border-color:rgba(124,112,255,.26);
+}
+
+.footer-pro-feature-icon{
+    width:43px;
+    height:43px;
+    flex:0 0 auto;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    background:rgba(91,95,245,.17);
+    color:#a19aff;
+    font-weight:900;
+}
+
+.footer-pro-feature-icon.purple{
+    background:rgba(139,91,255,.15);
+    color:#b797ff;
+}
+
+.footer-pro-feature-icon.green{
+    background:rgba(24,201,145,.13);
+    color:#31dca8;
+}
+
+.footer-pro-feature strong{
+    display:block;
+    margin-bottom:3px;
+    color:#fff;
+    font-size:13px;
+}
+
+.footer-pro-feature span{
+    display:block;
+    color:#8d99b0;
+    font-size:11px;
+    line-height:1.5;
+}
+
+.footer-pro-update{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding:19px 0;
+    color:#8f9ab0;
+    font-size:12px;
+}
+
+.footer-pro-maintained{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.footer-pro-time{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.footer-pro-time strong{
+    color:#dfe6f4;
+    font-weight:800;
+}
+
+.footer-pro-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#7f8ba1;
+    font-size:12px;
+}
+
+.footer-pro-bottom strong{
+    color:#dfe5f3;
+}
+
+.footer-pro-tagline{
+    color:#95a0b5;
+    font-weight:750;
+}
+
+.footer-pro-tagline span{
+    margin:0 5px;
+    color:#7168ff;
+}
+
+@media(max-width:980px){
+    .footer-pro-grid{
+        grid-template-columns:1.4fr 1fr 1fr;
+        gap:38px;
+    }
+
+    .footer-pro-brand{
+        grid-column:1/-1;
+    }
+}
+
+@media(max-width:720px){
+    .footer-pro-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-pro-brand{
+        grid-column:1/-1;
+    }
+
+    .footer-pro-features{
+        grid-template-columns:1fr;
+    }
+
+    .footer-pro-update{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .footer-pro-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+
+@media(max-width:560px){
+    .footer-pro{
+        padding:58px 0 22px;
+    }
+
+    .footer-pro-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .footer-pro-brand{
+        grid-column:auto;
+    }
+
+    .footer-pro-logo{
+        width:48px;
+        height:48px;
+    }
+
+    .footer-pro-brand-name{
+        font-size:20px;
+    }
+
+    .footer-pro-brand > p{
+        font-size:13px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="SmartTools Home">
+      <span class="brand-mark" aria-hidden="true">ST</span>
+      <span class="brand-text">Smart<span>Tools</span></span>
+    </a>
 
-        <div class="header-inner">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+      <span class="menu-lines" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
 
-            <a href="index.html" class="logo">
+    <nav class="nav" id="siteNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="smarttools-dashboard.html">All Tools</a>
+      <a href="guides.html">Guides</a>
+      <a class="active" href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-cta" href="smarttools-dashboard.html">Explore Tools →</a>
+    </nav>
+  </div>
+</header>
 
-                <div class="logo-mark">
-                    ST
-                </div>
+<main>
 
-                <div class="logo-text">
-                    SmartTools
-                </div>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        About SmartTools
+      </span>
 
-            </a>
-
-            <nav class="nav">
-
-                <a href="index.html">
-                    Home
-                </a>
-
-                <a href="smarttools-dashboard.html">
-                    All Tools
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-                <a
-                    href="smarttools-dashboard.html"
-                    class="nav-cta"
-                >
-                    Explore Tools
-                </a>
-
-            </nav>
-
-        </div>
-
-    </header>
-
-
-    <!-- HERO -->
-    <section class="hero">
-
-        <div class="hero-badge">
-            ✦ About SmartTools
-        </div>
-
-        <h1>
-            Simple Tools.
-            <span>Useful Results.</span>
-        </h1>
-
+      <div class="hero-copy">
+        <h1>Built to make everyday tasks <span>simpler.</span></h1>
         <p>
-            SmartTools is being built as a practical collection of
-            online calculators, converters and everyday productivity
-            tools designed to be simple, clear and easy to use.
+          SmartTools is a growing collection of calculators, converters and productivity utilities
+          designed to help people get useful answers quickly, with clear interfaces and no unnecessary complexity.
         </p>
+      </div>
+    </div>
+  </section>
 
-    </section>
+  <section class="founder-wrap">
+    <div class="container">
+      <div class="founder-card">
 
+        <div class="photo-col">
+          <div class="photo-ring">
+            <div class="photo-inner">
+              <img id="founderPhoto" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAYGBgYHBgcICAcKCwoLCg8ODAwODxYQERAREBYiFRkVFRkVIh4kHhweJB42KiYmKjY+NDI0PkxERExfWl98fKcBBgYGBgcGBwgIBwoLCgsKDw4MDA4PFhAREBEQFiIVGRUVGRUiHiQeHB4kHjYqJiYqNj40MjQ+TERETF9aX3x8p//CABEIAaQBaAMBIgACEQEDEQH/xAAxAAEAAgMBAQAAAAAAAAAAAAAAAgMBBAUGBwEBAQEBAQAAAAAAAAAAAAAAAAECAwT/2gAMAwEAAhADEAAAAvUiAoIAAAAAAAAAAAAAAAAAAAACggAAAAAAAjpVvvKa8ezeQ7J1lF4AAAAAAAAAAAAAAAAAMGeZpeUNzUqwWYhkzOvJZ1uLg+l2eN9bVogAAAAAAAAAAAAAADHmcebMQBiUiucrirFkVqxdBK9/RwfSNnwvuCQAAAAAAAAAAAAAGnueXPPVZlLDNuwatvQtzvnS6OxLw5d2MvCh2tWzlV72pvnX7LxnTs96AAAAAAAAAAAAACHgPV+LWucdrNn0bN/HWnZnKWvM8rXXsRNLX6WucrndXQ1y0c21dMfQ9vz3oUAAAAAAAAAAAAA8n57scWW7t6fe59k8ympTjMwyVjOEhXbCzV5Hd1ZfMQ2dXpw9D67wXvdZAAAAAAAAAAAAA8TyuzpZ3196qrn23J8vZs381TJMFzjGEzXjWL4aeSrz3rOCzq/RfB+/68shAAAAAAAAAAABA8q1Otz6pyhN36mZ1z93Mo2pVzMauxSaltkrJVMxrUb9K6nsvn/venCYsAAAAAAAAAAAYzg8f09Pc5d7OX1qF5uh2q9ZlculndVZm1VXVrTxO/z989SzanLfi6E1w/a+V9ZvlYNYAAAAAAAAAAAU3UL5rd09vj32s4sWCzJVC/XFldxSlWWRukmuvgVV21Vo+m8937nYHTiAAAAAAAAAAA19iqXhYnjj6Nq2m6psYI61+qW3aFlW16t0bWxr2koSiV0X6qY7XH7Gs7I6cQAAAAAAAAAAANDm+h0cdNO/Wvx1njNYjXA2c68qsxRg2c6t0WsYIat/Hs63e8/6HfENZAAAAAAAAAAAAec9H5Bdvc893OXfbhiUasdyNtGZxaro2orq72JzEq1JV5/Z0N8vWd/g97pzCAAAAAAAAAAAAHl/Uah4Tqc6vHT1dvM3sddjNVqYxYK8WxquKqHO3eWci2WenL1nZ5fU1gAAAAAAAAAAAAAq4tVeb3NY9HPYp498WRhnWzLSxW7XqiSVpTq7l1z4zEqunLa9J5irWPpFvzfo17d5/rRtCUAAAAAAAUVe4HFs9TxOJiyckCq+q49frb3N4ei/Es53DM8kFkTGMxKenob+uXh9fao78SO1LrE9ZhnI3Ov5xL7re+bbsvvHC7UsxAABDi12+Z5nV1nq8vCwysxlM2NHd083EsZt95x+lr8e2JU38+plSMhGFlEbGxKPTh4iq6rrzjdVJLad/RM4znUgkIJYljsURj3e/wCB97nWRKov8hWtpYlvAlZhJUc5yV72ptRpxtrljLGT125ye/z3wNjFfH07EoTGJFqhLZudzX2tDr5/G1SxvEZ4vrb52/pWQmwZxPGpDEksYTxm49z4b0cvpRjVXgPa+J3lLEtZZNM4yQYMwswb/OspxrGM4Ot67yfqMacnt62Omhdr38+88IS1dbnOnDq8roc3fLyGbK+mWJLEo2VGFlZbhmyGJRMYlDNxv6Gc36OgzvzPFjPeMSjLUzjOLGWTGJRJ3a+zLXrThEckvZ9P5Tv51Twp6Fenu5Pe5aoq3Nabo8x19Hryh6fT3I8xq7+hrORqZziRdrdDQJTrnqQjnEua7K4RJfcuc568zdVPpmUmNTKFtmMhHGcGd7R383QrnGos4zel6Pyvq8ocP0Us68b3/LX9c+t1/OZyj6SnolO1G7G/H6O/z94zmOdSU69gt09nXqNldlQhZTE4sxXOFsdFzmdp4s3jEcS0jbVZEsThqRxnEZ39DfjnBY4ziWfs/E+wy2tjW2+e/H831vke2N7Vs2NT044a2IzhN+Q0N/Q688ZLG5p7hVDOLIWV2VGi+jNTrlCZVAzu+6mzWJwk1KbabM2/GcbkITjDc05E6t3RzY4yHpPN9uO7t6m3z6V+H955vU421o3dceulTscN7FV1U147S29TryGdMbmpvxpI5sjZXZUde+nNjPFhKu2iqxz3txlnpicMzs18ShjW5g6ZjGUYYyN/ndPl41jOcWY6fM2o9Zu6W7z6OD3vJVyoTdufoOx5f0HLXSpuqxvxersUduWDNOhz+hHMsrnYnCVQpsqxrGxRdZLX2deopsXYxZX0zi2rMsKr9bN35V2bzCM41gR0eZ1OZmozhWMxR7be5XU5dJeE9r4HpltV53mv1Xk+9l6OEscevhKpR7cs5xnR0Od0cuZlLUESFe50+e+LKm7WVc6wil3B0zCJmy1TN27TecRKxkjagZuvAqOSPUdg5b0vFnSbVJ0xjpGb66Jw6eBiduecmo6Bm87dDvbxz3o+NCvZN5VFkwf/xAAC/9oADAMBAAIAAwAAACH33333333333333333333333z33333333TnTn333333333333333333UEGkTn333333333333333n/AJFRs1tR999999999999999wNWz/AD6R9fffffffffffffQIFL/hoG5NPffffffffffffZUky1Dkcpe/ffffffffffffTLNg9PVrE3PffffffffffffSMQPRRSa4HvfffffffffffbTWfOR5F+0effffffffffffeE0oUbY2x6Rvfffffffffffbp+gAVZ68r/fffffffffffffSrptiiMqkL/ffffffffffffecB3Szn+vvfffffffffffffb+Pm/yT56FfffffffffffffeMde4ZefNm9P/fffffffeJHt91cplgA17ueISPPffeNVFYQtDKlEFPfgwzaaD3/bkHUbsEgO9rgMD6iDUWeXCfcL3EXfZtJzfCRQ6MVKCrbV/BVXtpXjYjHL5C7FvY1hdt7c3KvRvJmaqs1APOJrX6HBP2wI5FFIZZSDADQETlrfQwf8+sAimYGqTcSUERHmD2cBeW8QsmJnhBmZhRyPtBdkfVCyfrdA3aqQuPpdHanGuWnQHOQUWdzHPPIvIggAQ/v4o3QQPgYvgf8A/8QAAv/aAAwDAQACAAMAAAAQ/wDP/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/f8A/wD/AP8A/wD/AMM/tv8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8AvsEENLT/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wAAAEEIAPP/AP8A/wD/AP8A/wD/AP8A/wD/APrCBDCACCB//wD/AP8A/wD/AP8A/wD/AP8A/gDADDBBDA+//wD/AP8A/wD/AP8A/wD/AP8ACABCFJBBDU//AP8A/wD/AP8A/wD/AP8A/wDDABCRBDBAA/8A/wD/AP8A/wD/AP8A/wD/APDBCBBBACA2/wD/AP8A/wD/AP8A/wD/AP8A/ABC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"
+                alt="Sukanya Shahare - Founder and Creator of SmartTools"
+                width="260"
+                height="260"
+                loading="eager"
+                decoding="async"
+              >
+              <div class="photo-fallback" id="photoFallback" aria-hidden="true">SS</div>
+            </div>
+          </div>
 
-    <!-- FOUNDER -->
-    <section class="founder-section">
+          <div class="photo-badge">
+            <span class="status-dot"></span>
+            SmartTools Founder
+          </div>
+        </div>
 
-        <div class="founder-card">
+        <div class="founder-content">
+          <div class="section-kicker">Founder &amp; Creator</div>
 
-            <div class="decor-one"></div>
-            <div class="decor-two"></div>
+          <h2>Sukanya <span>Shahare</span></h2>
+          <div class="role">Founder &amp; Creator of SmartTools</div>
 
-            <!-- PHOTO -->
-            <div class="founder-photo-area">
+          <p class="lead">
+            SmartTools is being developed with one practical idea:
+            useful online tools should feel easy to find, simple to understand and comfortable to use.
+          </p>
 
-                <div class="photo-frame">
+          <p class="body-copy">
+            The project brings calculators, converters, text utilities, date and time tools,
+            health references and other everyday web utilities together in one place.
+            The focus is on clear presentation, responsive layouts and straightforward results.
+          </p>
 
-                    <img
-                        src="sukanya-shahare.jpg"
-                        alt="Sukanya Shahare, Founder and CEO of SmartTools"
-                        class="founder-photo"
-                    >
+          <div class="pill-row" role="list" aria-label="SmartTools principles">
+            <span class="pill"><span class="pill-check">✓</span> Practical tools</span>
+            <span class="pill"><span class="pill-check">✓</span> Clear results</span>
+            <span class="pill"><span class="pill-check">✓</span> Mobile friendly</span>
+            <span class="pill"><span class="pill-check">✓</span> Continuous improvements</span>
+          </div>
 
+          <div class="action-row">
+            <a class="btn btn-primary" href="smarttools-dashboard.html">Explore SmartTools →</a>
+            <a class="btn btn-light" href="contact.html">Contact SmartTools</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft-section">
+    <div class="container">
+
+      <div class="center-heading">
+        <span class="eyebrow">Our Purpose</span>
+        <h2>Simple tools. Useful outcomes.</h2>
+        <p>
+          SmartTools is focused on reducing small everyday friction — from quick calculations
+          to conversions and text cleanup.
+        </p>
+      </div>
+
+      <div class="mission-grid">
+        <article class="mission-card">
+          <div class="mission-icon" aria-hidden="true">⚡</div>
+          <h3>Fast to use</h3>
+          <p>Open a tool, enter the values you need and get a clear result without unnecessary steps.</p>
+        </article>
+
+        <article class="mission-card">
+          <div class="mission-icon" aria-hidden="true">◫</div>
+          <h3>Easy to understand</h3>
+          <p>Tool explanations, formulas and examples are presented in a straightforward way.</p>
+        </article>
+
+        <article class="mission-card">
+          <div class="mission-icon" aria-hidden="true">⌁</div>
+          <h3>Useful across devices</h3>
+          <p>The website is designed to work comfortably across desktop, tablet and mobile screens.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="center-heading">
+        <span class="eyebrow">SmartTools at a Glance</span>
+        <h2>A growing toolkit for everyday needs.</h2>
+        <p>
+          The collection continues to expand as new use cases, improvements and educational guides are added.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <strong>32+</strong>
+          <span>Tools available</span>
+        </div>
+        <div class="stat-card">
+          <strong>24/7</strong>
+          <span>Online access</span>
+        </div>
+        <div class="stat-card">
+          <strong>Free</strong>
+          <span>Basic tool access</span>
+        </div>
+        <div class="stat-card">
+          <strong>1</strong>
+          <span>Simple destination</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section soft-section">
+    <div class="container">
+
+      <div class="values-layout">
+
+        <div class="values-panel">
+          <div class="section-kicker">What matters here</div>
+          <h3>How SmartTools is being built</h3>
+          <p>
+            The project is shaped around practical website principles rather than simply adding more features.
+          </p>
+
+          <div class="value-list">
+            <div class="value-item">
+              <div class="value-number">01</div>
+              <div>
+                <strong>Useful before flashy</strong>
+                <span>Features should solve a real task and remain easy to use.</span>
+              </div>
+            </div>
+
+            <div class="value-item">
+              <div class="value-number">02</div>
+              <div>
+                <strong>Clear over complicated</strong>
+                <span>Labels, explanations and results should be understandable at a glance.</span>
+              </div>
+            </div>
+
+            <div class="value-item">
+              <div class="value-number">03</div>
+              <div>
+                <strong>Designed for real screens</strong>
+                <span>Responsive layouts matter because many users access tools on phones.</span>
+              </div>
+            </div>
+
+            <div class="value-item">
+              <div class="value-number">04</div>
+              <div>
+                <strong>Improved over time</strong>
+                <span>Tools, content and interface details can be refined as the project grows.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="quote-card">
+          <div class="quote-mark" aria-hidden="true">“</div>
+          <blockquote>
+            Make the useful thing easy to discover, easy to understand and easy to use.
+          </blockquote>
+          <div class="quote-note">
+            A simple product principle behind the SmartTools project.
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="center-heading">
+        <span class="eyebrow">What You Can Find</span>
+        <h2>More than just calculators.</h2>
+        <p>
+          SmartTools combines several categories of everyday utilities in one place.
+        </p>
+      </div>
+
+      <div class="tools-strip">
+        <div class="tool-mini">
+          <b>Finance &amp; Money</b>
+          <span>EMI, GST, SIP, loan, discount, interest, salary and other money-related calculators.</span>
+        </div>
+
+        <div class="tool-mini">
+          <b>Math &amp; Conversions</b>
+          <span>Percentages, averages, ratios, fractions, distance, temperature, weight and more.</span>
+        </div>
+
+        <div class="tool-mini">
+          <b>Text &amp; Productivity</b>
+          <span>Word count, character count, case conversion, duplicate-line cleanup and text sorting.</span>
+        </div>
+
+        <div class="tool-mini">
+          <b>Date, Time &amp; More</b>
+          <span>Age, date difference, time duration, pace, BMI, password generation and other utilities.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <div class="section-kicker" style="color:#ececff;">SMARTTOOLS</div>
+        <h2>Find a tool for your next everyday task.</h2>
+        <p>
+          Explore the full collection of calculators, converters, text tools and practical utilities.
+        </p>
+        <a class="btn" href="smarttools-dashboard.html">Explore All Tools →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer footer-pro">
+
+    <div class="footer-pro-glow footer-pro-glow-left"></div>
+    <div class="footer-pro-glow footer-pro-glow-right"></div>
+
+    <div class="container footer-pro-inner">
+
+        <div class="footer-pro-grid">
+
+            <!-- BRAND -->
+            <div class="footer-pro-brand">
+
+                <a href="index.html" class="footer-pro-logo-wrap" aria-label="SmartTools Home">
+
+                    <span class="footer-pro-logo">ST</span>
+
+                    <span class="footer-pro-brand-name">
+                        Smart<span>Tools</span>
+                    </span>
+
+                </a>
+
+                <p>
+                    Free online calculators, converters and useful productivity tools
+                    for everyday needs — designed to be simple, clear and easy to use.
+                </p>
+
+                <div class="footer-pro-online">
+                    <span class="footer-pro-online-dot"></span>
+                    SmartTools is available online
                 </div>
 
             </div>
 
 
-            <!-- CONTENT -->
-            <div class="founder-content">
+            <!-- EXPLORE -->
+            <div class="footer-pro-column">
 
-                <div class="founder-label">
-                    SMARTTOOLS FOUNDER
-                </div>
+                <h3>
+                    <span class="footer-pro-heading-bar"></span>
+                    Explore
+                </h3>
 
-                <h2>
-                    Sukanya Shahare
-                </h2>
+                <a href="index.html">Home</a>
+                <a href="smarttools-dashboard.html">All Tools</a>
+                <a href="guides.html">Guides</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
 
-                <div class="founder-role">
-                    Founder &amp; CEO, SmartTools
-                </div>
+            </div>
 
-                <div class="founder-description">
 
-                    <p>
-                        SmartTools is being developed with the goal of
-                        creating a practical collection of everyday
-                        online tools that are easy to discover and
-                        simple to use.
-                    </p>
+            <!-- POPULAR -->
+            <div class="footer-pro-column">
 
-                    <p>
-                        The project focuses on useful calculators,
-                        converters, productivity utilities and other
-                        web-based tools that can help people complete
-                        common tasks quickly.
-                    </p>
+                <h3>
+                    <span class="footer-pro-heading-bar"></span>
+                    Popular Tools
+                </h3>
 
-                </div>
+                <a href="emi-calculator.html">EMI Calculator</a>
+                <a href="gst-calculator.html">GST Calculator</a>
+                <a href="sip-calculator.html">SIP Calculator</a>
+                <a href="percentage-calculator.html">Percentage Calculator</a>
+                <a href="bmi-calculator.html">BMI Calculator</a>
 
-                <div class="highlights">
+            </div>
 
-                    <div class="highlight">
-                        ✓ Practical Tools
-                    </div>
 
-                    <div class="highlight">
-                        ✓ Simple Experience
-                    </div>
+            <!-- SUPPORT & LEGAL -->
+            <div class="footer-pro-column">
 
-                    <div class="highlight">
-                        ✓ Mobile Friendly
-                    </div>
+                <h3>
+                    <span class="footer-pro-heading-bar"></span>
+                    Support &amp; Legal
+                </h3>
 
-                    <div class="highlight">
-                        ✓ Continuous Improvements
-                    </div>
-
-                </div>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+                <a href="404.html">404 Page</a>
 
             </div>
 
         </div>
 
-    </section>
 
+        <!-- TRUST / FEATURE ROW -->
+        <div class="footer-pro-features">
 
-    <!-- MISSION -->
-    <section class="mission">
-
-        <div class="section-heading">
-
-            <h2>
-                What SmartTools Focuses On
-            </h2>
-
-            <p>
-                The platform is designed around practical features
-                rather than unnecessary complexity.
-            </p>
-
-        </div>
-
-
-        <div class="mission-grid">
-
-            <div class="mission-card">
-
-                <div class="mission-icon">
-                    🧮
-                </div>
-
-                <h3>
-                    Everyday Calculators
-                </h3>
-
-                <p>
-                    Useful calculators for finance, mathematics,
-                    health, percentages, loans, investments and more.
-                </p>
-
-            </div>
-
-
-            <div class="mission-card">
-
-                <div class="mission-icon">
-                    🔄
-                </div>
-
-                <h3>
-                    Easy Conversions
-                </h3>
-
-                <p>
-                    Convert common measurements, temperatures,
-                    weights, lengths and digital storage units.
-                </p>
-
-            </div>
-
-
-            <div class="mission-card">
-
-                <div class="mission-icon">
-                    ⚡
-                </div>
-
-                <h3>
-                    Productivity Tools
-                </h3>
-
-                <p>
-                    Browser-based utilities designed to make
-                    everyday text and information tasks easier.
-                </p>
-
-            </div>
-
-
-            <div class="mission-card">
-
-                <div class="mission-icon">
-                    📱
-                </div>
-
-                <h3>
-                    Mobile Friendly
-                </h3>
-
-                <p>
-                    Tools are designed to work comfortably on
-                    phones, tablets and desktop devices.
-                </p>
-
-            </div>
-
-
-            <div class="mission-card">
-
-                <div class="mission-icon">
-                    🔐
-                </div>
-
-                <h3>
-                    Privacy Conscious
-                </h3>
-
-                <p>
-                    Many utilities run directly in the browser,
-                    helping keep simple tasks local to the device.
-                </p>
-
-            </div>
-
-
-            <div class="mission-card">
-
-                <div class="mission-icon">
-                    🚀
-                </div>
-
-                <h3>
-                    Continuous Improvement
-                </h3>
-
-                <p>
-                    SmartTools is being improved with new tools,
-                    better usability and clearer information.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CTA -->
-    <section class="cta-section">
-
-        <div class="cta">
-
-            <h2>
-                Explore SmartTools
-            </h2>
-
-            <p>
-                Discover calculators, converters and productivity
-                utilities built for everyday needs.
-            </p>
-
-            <a
-                href="smarttools-dashboard.html"
-                class="cta-button"
-            >
-                Explore All Tools →
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer class="footer">
-
-        <div class="footer-inner">
-
-            <div class="footer-grid">
-
+            <div class="footer-pro-feature">
+                <div class="footer-pro-feature-icon">✓</div>
                 <div>
-
-                    <div class="footer-logo">
-                        SmartTools
-                    </div>
-
-                    <div class="footer-text">
-                        Practical online tools designed to make
-                        everyday calculations, conversions and
-                        simple tasks easier.
-                    </div>
-
+                    <strong>Easy to Use</strong>
+                    <span>Clean interfaces and clear results.</span>
                 </div>
-
-
-                <div>
-
-                    <div class="footer-title">
-                        Quick Links
-                    </div>
-
-                    <div class="footer-links">
-
-                        <a href="index.html">
-                            Home
-                        </a>
-
-                        <a href="smarttools-dashboard.html">
-                            All Tools
-                        </a>
-
-                        <a href="about.html">
-                            About
-                        </a>
-
-                        <a href="contact.html">
-                            Contact
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div>
-
-                    <div class="footer-title">
-                        Legal
-                    </div>
-
-                    <div class="footer-links">
-
-                        <a href="privacy-policy.html">
-                            Privacy Policy
-                        </a>
-
-                        <a href="terms.html">
-                            Terms of Use
-                        </a>
-
-                    </div>
-
-                </div>
-
             </div>
 
+            <div class="footer-pro-feature">
+                <div class="footer-pro-feature-icon purple">⚡</div>
+                <div>
+                    <strong>Useful Tools</strong>
+                    <span>Practical tools for everyday tasks.</span>
+                </div>
+            </div>
 
-            <div class="copyright">
-                © 2026 SmartTools. All rights reserved.
+            <div class="footer-pro-feature">
+                <div class="footer-pro-feature-icon green">◉</div>
+                <div>
+                    <strong>Mobile Friendly</strong>
+                    <span>Designed for phones, tablets and desktops.</span>
+                </div>
             </div>
 
         </div>
 
-    </footer>
+
+        <!-- UPDATE ROW -->
+        <div class="footer-pro-update">
+
+            <div class="footer-pro-maintained">
+                <span class="footer-pro-online-dot"></span>
+                SmartTools is regularly improved and maintained.
+            </div>
+
+            <div class="footer-pro-time">
+                <span>Last updated:</span>
+                <strong id="footer-live-date">--</strong>
+                <span>•</span>
+                <strong id="footer-live-time">--</strong>
+                <span>• India Time</span>
+            </div>
+
+        </div>
+
+
+        <!-- BOTTOM -->
+        <div class="footer-pro-bottom">
+
+            <div>
+                © <span id="footer-year">2026</span> SmartTools.
+                Created &amp; maintained by
+                <strong>Sukanya Shahare</strong>.
+            </div>
+
+            <div class="footer-pro-tagline">
+                Simple tools <span>•</span> Smart results
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+(function(){
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("siteNav");
+
+  if(toggle && nav){
+    toggle.addEventListener("click", function(){
+      const open = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    });
+
+    nav.addEventListener("click", function(event){
+      if(event.target.closest("a")){
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded","false");
+        toggle.setAttribute("aria-label","Open navigation menu");
+      }
+    });
+
+    document.addEventListener("click", function(event){
+      if(!nav.contains(event.target) && !toggle.contains(event.target)){
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded","false");
+      }
+    });
+
+    window.addEventListener("resize", function(){
+      if(window.innerWidth > 900){
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded","false");
+      }
+    });
+  }
+
+  const photo = document.getElementById("founderPhoto");
+  const fallback = document.getElementById("photoFallback");
+
+  if(photo){
+    photo.addEventListener("error", function(){
+      photo.style.display = "none";
+      if(fallback) fallback.style.display = "grid";
+    });
+  }
+
+  const year = document.getElementById("year");
+  if(year){
+    year.textContent = new Date().getFullYear();
+  }
+})();
+</script>
+
+
+<script>
+(function () {
+    function updateFooterClock() {
+        const now = new Date();
+
+        const dateEl = document.getElementById("footer-live-date");
+        const timeEl = document.getElementById("footer-live-time");
+        const yearEl = document.getElementById("footer-year");
+
+        if (dateEl) {
+            dateEl.textContent = now.toLocaleDateString("en-IN", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+                timeZone: "Asia/Kolkata"
+            });
+        }
+
+        if (timeEl) {
+            timeEl.textContent = now.toLocaleTimeString("en-IN", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                timeZone: "Asia/Kolkata"
+            });
+        }
+
+        if (yearEl) {
+            yearEl.textContent = String(now.getFullYear());
+        }
+    }
+
+    updateFooterClock();
+    setInterval(updateFooterClock, 1000);
+})();
+</script>
 
 </body>
 </html>

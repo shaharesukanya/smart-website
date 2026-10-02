@@ -1,965 +1,1374 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
 
-    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Counter - Count Words & Characters Online | SmartTools</title>
 
-    <title>Word Counter - Count Words Online | SmartTools</title>
+<meta name="description" content="Free SmartTools Word Counter to count words, characters, sentences, lines and reading time instantly. Fast, simple and mobile friendly.">
 
-    <meta name="description"
-        content="Count words and characters online with the free SmartTools Word Counter. Quickly check word count for essays, articles, assignments and other text.">
-
-    <meta name="keywords"
-        content="word counter, word count, word counter online, count words, character count, online word counter">
-
-    <meta name="author" content="Sukanya Shahare">
-
-    <meta name="robots" content="index, follow">
-
-    <link rel="stylesheet" href="style.css">
+<meta name="keywords" content="word counter, word count, character counter, online word counter, text counter, writing tool">
 
 <link rel="canonical" href="https://shaharesukanya.github.io/smart-website/word-counter.html">
-<meta name="theme-color" content="#5b5ff5">
-<meta property="og:title" content="Word Counter - Count Words Online | SmartTools">
-<meta property="og:description" content="Count words and characters online with the free SmartTools Word Counter. Quickly check word count for essays, articles, assignments and other text.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://shaharesukanya.github.io/smart-website/word-counter.html">
-<meta property="og:site_name" content="SmartTools">
-<meta name="twitter:card" content="summary">
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Word Counter - Count Words Online | SmartTools",
-    "url": "https://shaharesukanya.github.io/smart-website/word-counter.html",
-    "description": "Count words and characters online with the free SmartTools Word Counter. Quickly check word count for essays, articles, assignments and other text.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "name": "SmartTools",
-        "url": "https://shaharesukanya.github.io/smart-website/"
-    }
-}
-</script>
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<!-- SMARTTOOLS_PHASE6_CSS_START -->
+
 <style>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE + MOBILE SAFETY
-========================================================= */
-
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+:root{
+    --purple:#6559ef;
+    --purple-dark:#5145d6;
+    --purple-light:#f1efff;
+    --navy:#10182f;
+    --text:#263247;
+    --muted:#7c879a;
+    --bg:#f7f8fc;
+    --white:#ffffff;
+    --border:#e1e5ee;
+    --green:#16c997;
+    --shadow:0 18px 50px rgba(25,35,65,.08);
 }
 
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-img,
-svg,
-video,
-canvas {
-    max-width: 100%;
-    height: auto;
+html{
+    scroll-behavior:smooth;
 }
 
-a,
-button,
-input,
-select,
-textarea {
-    touch-action: manipulation;
+body{
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
 }
 
-button,
-.btn,
-input[type="submit"],
-input[type="button"] {
-    min-height: 44px;
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
-input,
-select,
-textarea {
-    max-width: 100%;
-    min-width: 0;
+.container{
+    width:min(1160px,92%);
+    margin:auto;
 }
 
-input[type="number"],
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-    width: 100%;
+/* TOP BAR */
+.topbar{
+    background:var(--navy);
+    color:#fff;
+    text-align:center;
+    padding:9px 15px;
+    font-size:13px;
+    letter-spacing:.2px;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-span,
-li {
-    overflow-wrap: break-word;
+.live-dot{
+    display:inline-block;
+    width:7px;
+    height:7px;
+    background:var(--green);
+    border-radius:50%;
+    margin-right:7px;
+    box-shadow:0 0 0 4px rgba(22,201,151,.12);
 }
 
-table {
-    width: 100%;
-    max-width: 100%;
-    border-collapse: collapse;
+/* NAVBAR */
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(225,229,238,.8);
 }
 
-.table-wrapper,
-.responsive-table {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+.nav-inner{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
 }
 
-:focus-visible {
-    outline: 3px solid rgba(91,95,245,.35);
-    outline-offset: 3px;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:22px;
+    font-weight:800;
+    color:var(--navy);
 }
 
-@media (max-width: 900px) {
+.logo-mark{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    font-weight:900;
+    background:linear-gradient(135deg,var(--purple),#8379ff);
+    box-shadow:0 8px 20px rgba(101,89,239,.25);
+}
 
-    .hero-grid,
-    .content-grid,
-    .calculator-layout,
-    .tool-layout,
-    .feature-grid,
-    .founder-grid {
-        grid-template-columns: 1fr !important;
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:26px;
+    font-size:14px;
+    font-weight:600;
+    color:#586276;
+}
+
+.nav-links a{
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--purple);
+}
+
+.nav-cta{
+    padding:10px 16px;
+    border-radius:10px;
+    background:var(--purple);
+    color:#fff!important;
+}
+
+.mobile-menu{
+    display:none;
+    border:0;
+    background:var(--purple-light);
+    color:var(--purple);
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    font-size:21px;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:72px 0 55px;
+    background:
+        radial-gradient(circle at 85% 15%,rgba(101,89,239,.13),transparent 28%),
+        radial-gradient(circle at 10% 80%,rgba(101,89,239,.07),transparent 25%),
+        linear-gradient(180deg,#fff 0%,#f7f8fc 100%);
+}
+
+.breadcrumb{
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:24px;
+}
+
+.breadcrumb a{
+    color:var(--purple);
+    font-weight:600;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 13px;
+    background:var(--purple-light);
+    color:var(--purple-dark);
+    border-radius:999px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.5px;
+    margin-bottom:18px;
+}
+
+.badge span{
+    width:7px;
+    height:7px;
+    background:var(--green);
+    border-radius:50%;
+}
+
+.hero h1{
+    font-size:clamp(38px,6vw,66px);
+    line-height:1.05;
+    letter-spacing:-2.5px;
+    color:var(--navy);
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:var(--purple);
+}
+
+.hero p{
+    max-width:720px;
+    font-size:18px;
+    color:var(--muted);
+}
+
+/* MAIN TOOL */
+.tool-section{
+    padding:25px 0 75px;
+    margin-top:-10px;
+}
+
+.tool-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    animation:fadeUp .7s ease both;
+}
+
+.tool-top{
+    height:6px;
+    background:linear-gradient(90deg,var(--purple),#887eff);
+}
+
+.tool-body{
+    padding:34px;
+}
+
+.tool-heading{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:24px;
+}
+
+.tool-icon{
+    width:54px;
+    height:54px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    background:var(--purple-light);
+    color:var(--purple);
+    font-size:25px;
+}
+
+.tool-heading h2{
+    font-size:25px;
+    color:var(--navy);
+}
+
+.tool-heading p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* TEXTAREA */
+.text-box{
+    position:relative;
+}
+
+textarea{
+    width:100%;
+    min-height:300px;
+    resize:vertical;
+    border:2px solid var(--border);
+    border-radius:17px;
+    padding:20px;
+    outline:none;
+    font-family:inherit;
+    font-size:16px;
+    line-height:1.7;
+    color:var(--text);
+    background:#fbfcff;
+    transition:.25s;
+}
+
+textarea:focus{
+    border-color:var(--purple);
+    box-shadow:0 0 0 4px rgba(101,89,239,.08);
+    background:#fff;
+}
+
+.text-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-top:14px;
+}
+
+.action-group{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    border:0;
+    border-radius:11px;
+    padding:11px 17px;
+    font-family:inherit;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn-primary{
+    background:var(--purple);
+    color:#fff;
+    box-shadow:0 8px 18px rgba(101,89,239,.2);
+}
+
+.btn-primary:hover{
+    background:var(--purple-dark);
+    transform:translateY(-2px);
+}
+
+.btn-light{
+    background:var(--purple-light);
+    color:var(--purple-dark);
+}
+
+.btn-light:hover{
+    background:#e7e4ff;
+    transform:translateY(-2px);
+}
+
+/* STATS */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    margin-top:24px;
+}
+
+.stat{
+    padding:20px 14px;
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:15px;
+    text-align:center;
+    transition:.25s;
+}
+
+.stat:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(25,35,65,.07);
+}
+
+.stat-value{
+    display:block;
+    font-size:25px;
+    font-weight:800;
+    color:var(--purple);
+}
+
+.stat-label{
+    display:block;
+    margin-top:4px;
+    color:var(--muted);
+    font-size:12px;
+    font-weight:600;
+}
+
+/* INFO */
+.info-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+    margin-top:25px;
+}
+
+.info-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px;
+    box-shadow:0 10px 35px rgba(25,35,65,.04);
+}
+
+.info-card h3{
+    color:var(--navy);
+    margin-bottom:12px;
+    font-size:21px;
+}
+
+.info-card p{
+    color:var(--muted);
+    font-size:15px;
+}
+
+.info-card ul{
+    padding-left:20px;
+    color:var(--muted);
+}
+
+.info-card li{
+    margin:8px 0;
+}
+
+/* FAQ */
+.faq-section{
+    padding:75px 0;
+    background:#fff;
+}
+
+.section-kicker{
+    color:var(--purple);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    margin-bottom:10px;
+}
+
+.section-title{
+    font-size:38px;
+    line-height:1.15;
+    color:var(--navy);
+    margin-bottom:35px;
+}
+
+.faq-list{
+    max-width:850px;
+}
+
+.faq-item{
+    border:1px solid var(--border);
+    border-radius:15px;
+    margin-bottom:12px;
+    overflow:hidden;
+    background:#fff;
+}
+
+.faq-question{
+    width:100%;
+    border:0;
+    background:#fff;
+    padding:19px 21px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    text-align:left;
+    font-family:inherit;
+    font-size:15px;
+    font-weight:700;
+    color:var(--navy);
+    cursor:pointer;
+}
+
+.faq-question span{
+    color:var(--purple);
+    font-size:20px;
+}
+
+.faq-answer{
+    display:none;
+    padding:0 21px 20px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+.faq-item.active .faq-answer{
+    display:block;
+}
+
+/* RELATED */
+.related{
+    padding:75px 0;
+}
+
+.related-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+
+.related-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:22px;
+    transition:.25s;
+}
+
+.related-card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
+}
+
+.related-card .mini-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:var(--purple-light);
+    color:var(--purple);
+    margin-bottom:14px;
+    font-size:20px;
+}
+
+.related-card h3{
+    font-size:17px;
+    color:var(--navy);
+    margin-bottom:6px;
+}
+
+.related-card p{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:14px;
+}
+
+.related-card a{
+    color:var(--purple);
+    font-size:13px;
+    font-weight:800;
+}
+
+/* FOOTER */
+footer{
+    background:var(--navy);
+    color:#fff;
+    padding:55px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:45px;
+    padding-bottom:35px;
+}
+
+.footer-brand h2{
+    font-size:25px;
+    margin-bottom:12px;
+}
+
+.footer-brand p{
+    max-width:450px;
+    color:#aeb7ca;
+    font-size:14px;
+}
+
+footer h4{
+    margin-bottom:15px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    color:#aeb7ca;
+    font-size:14px;
+}
+
+.footer-links a:hover{
+    color:#fff;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    color:#8e99b0;
+    font-size:12px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
     }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4 {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
-    }
-
-    .footer-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
-@media (max-width: 640px) {
+/* RESPONSIVE */
+@media(max-width:900px){
 
-    html {
-        scroll-padding-top: 80px;
+    .nav-links{
+        display:none;
     }
 
-    body {
-        font-size: 15px;
-        line-height: 1.65;
+    .mobile-menu{
+        display:block;
     }
 
-    .container {
-        width: 92%;
-        max-width: 100%;
+    .stats{
+        grid-template-columns:repeat(3,1fr);
     }
 
-    h1 {
-        font-size:
-            clamp(34px, 10vw, 46px) !important;
-        line-height: 1.08 !important;
-        letter-spacing: -1.5px !important;
+    .related-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    h2 {
-        font-size:
-            clamp(27px, 7vw, 36px) !important;
-        line-height: 1.15 !important;
-    }
-
-    h3 {
-        font-size:
-            clamp(18px, 5vw, 22px);
-    }
-
-    .header-inner {
-        min-height: 68px !important;
-        gap: 12px !important;
-    }
-
-    .brand-name {
-        font-size: 21px !important;
-    }
-
-    .brand-tagline {
-        font-size: 10px !important;
-    }
-
-    nav {
-        gap: 9px !important;
-    }
-
-    nav a {
-        font-size: 12px !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4,
-    .feature-grid,
-    .info-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        min-height: 48px;
-    }
-
-    textarea {
-        min-height: 130px;
-    }
-
-    .btn,
-    .submit-btn,
-    .calculate-btn,
-    .reset-btn,
-    .cta-btn,
-    button[type="submit"] {
-        width: 100%;
-        min-height: 48px;
-    }
-
-    .hero-actions,
-    .button-group,
-    .calculator-actions,
-    .form-actions {
-        flex-direction: column !important;
-        width: 100%;
-    }
-
-    .tool-search,
-    .search-box,
-    #toolSearch {
-        width: 100% !important;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .dashboard,
-    .hero-visual,
-    .hero-art,
-    .decorative-circle,
-    .floating-card {
-        max-width: 100% !important;
-    }
-
-    .section {
-        padding-top: 58px !important;
-        padding-bottom: 58px !important;
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
     }
 }
 
-@media (max-width: 390px) {
+@media(max-width:650px){
 
-    .container {
-        width: 94%;
+    .hero{
+        padding:48px 0 40px;
     }
 
-    h1 {
-        font-size: 33px !important;
+    .hero h1{
+        letter-spacing:-1.5px;
     }
 
-    h2 {
-        font-size: 26px !important;
+    .hero p{
+        font-size:16px;
     }
 
-    .brand-name {
-        font-size: 19px !important;
+    .tool-body{
+        padding:20px;
     }
 
-    .topbar-right {
-        display: none !important;
+    textarea{
+        min-height:250px;
     }
 
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        padding-left: 17px !important;
-        padding-right: 17px !important;
+    .text-actions{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    .action-group{
+        width:100%;
+    }
+
+    .action-group .btn{
+        flex:1;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .related-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media(max-width:420px){
 
-    html {
-        scroll-behavior: auto;
+    .stats{
+        grid-template-columns:1fr 1fr;
     }
 
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
+    .stat-value{
+        font-size:21px;
+    }
+
+    .tool-heading h2{
+        font-size:21px;
     }
 }
 </style>
-<!-- SMARTTOOLS_PHASE6_CSS_END -->
 </head>
-
 
 <body>
 
+<!-- TOP BAR -->
+<div class="topbar">
+    <span class="live-dot"></span>
+    SmartTools — simple tools for everyday needs.
+</div>
 
-    <!-- ================= HEADER ================= -->
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="container nav-inner">
 
-    <header class="header">
+        <a href="index.html" class="logo">
+            <span class="logo-mark">S</span>
+            SmartTools
+        </a>
 
-        <div class="container">
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#tools">Tools</a>
+            <a href="index.html#guides">Guides</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="index.html#tools" class="nav-cta">Explore Tools</a>
+        </nav>
 
-            <div class="logo">
-                Smart<span>Tools</span>
-            </div>
+        <button class="mobile-menu" onclick="toggleMenu()" aria-label="Menu">
+            ☰
+        </button>
 
+    </div>
+</header>
 
-            <nav class="nav">
+<!-- HERO -->
+<section class="hero">
 
-                <a href="index.html">
-                    Home
-                </a>
+    <div class="container">
 
-                <a href="index.html#tools">
-                    Tools
-                </a>
-
-                <a href="index.html#guides">
-                    Guides
-                </a>
-
-                <a href="about.html">
-                    About
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-            </nav>
-
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            &nbsp; / &nbsp;
+            Text Tools
+            &nbsp; / &nbsp;
+            Word Counter
         </div>
 
-    </header>
+        <div class="hero-content">
 
-
-
-    <!-- ================= HERO ================= -->
-
-    <section class="tool-page-hero">
-
-        <div class="container">
-
-            <span class="badge">
+            <div class="badge">
+                <span></span>
                 FREE TEXT TOOL
-            </span>
+            </div>
 
             <h1>
-                Word Counter
+                Word Counter for
+                <span>fast writing checks.</span>
             </h1>
 
             <p>
-                Count words and characters in your text
-                quickly with our free online word counter.
+                Count words, characters, sentences, lines and estimated
+                reading time instantly. Paste or type your text below.
             </p>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
+<!-- TOOL -->
+<section class="tool-section">
 
-    <!-- ================= WORD COUNTER ================= -->
+    <div class="container">
 
-    <section class="calculator-section">
+        <div class="tool-card">
 
-        <div class="container">
+            <div class="tool-top"></div>
 
-            <div class="calculator-box">
+            <div class="tool-body">
 
-                <h2>
-                    Count Your Words
-                </h2>
+                <div class="tool-heading">
 
-                <p>
-                    Type or paste your text into the box below.
-                </p>
+                    <div class="tool-icon">
+                        📝
+                    </div>
 
+                    <div>
+                        <h2>Word Counter</h2>
+                        <p>Start typing or paste your text below.</p>
+                    </div>
 
-                <label for="wordText">
-                    Enter Your Text
-                </label>
+                </div>
 
-                <textarea
-                    id="wordText"
-                    rows="12"
-                    placeholder="Type or paste your text here..."
-                ></textarea>
+                <div class="text-box">
 
+                    <textarea
+                        id="textInput"
+                        placeholder="Type or paste your text here..."
+                        spellcheck="true"
+                        aria-label="Enter text to count"
+                    ></textarea>
 
-                <button
-                    type="button"
-                    class="tool-button"
-                    id="wordCountButton">
+                </div>
 
-                    Count Words
+                <div class="text-actions">
 
+                    <div>
+                        <span id="statusText" style="font-size:13px;color:var(--muted);">
+                            Ready to count
+                        </span>
+                    </div>
+
+                    <div class="action-group">
+
+                        <button
+                            class="btn btn-light"
+                            onclick="copyText()"
+                            type="button"
+                        >
+                            Copy
+                        </button>
+
+                        <button
+                            class="btn btn-light"
+                            onclick="clearText()"
+                            type="button"
+                        >
+                            Clear
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- STATS -->
+
+                <div class="stats">
+
+                    <div class="stat">
+                        <span class="stat-value" id="wordCount">0</span>
+                        <span class="stat-label">Words</span>
+                    </div>
+
+                    <div class="stat">
+                        <span class="stat-value" id="charCount">0</span>
+                        <span class="stat-label">Characters</span>
+                    </div>
+
+                    <div class="stat">
+                        <span class="stat-value" id="charNoSpace">0</span>
+                        <span class="stat-label">Without Spaces</span>
+                    </div>
+
+                    <div class="stat">
+                        <span class="stat-value" id="sentenceCount">0</span>
+                        <span class="stat-label">Sentences</span>
+                    </div>
+
+                    <div class="stat">
+                        <span class="stat-value" id="lineCount">0</span>
+                        <span class="stat-label">Lines</span>
+                    </div>
+
+                </div>
+
+                <div style="margin-top:12px;text-align:right;color:var(--muted);font-size:13px;">
+                    Estimated reading time:
+                    <strong id="readingTime" style="color:var(--purple);">
+                        0 min
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- INFORMATION -->
+<section class="container" style="padding-bottom:75px;">
+
+    <div class="info-grid">
+
+        <article class="info-card">
+
+            <h3>What is a Word Counter?</h3>
+
+            <p>
+                A word counter is an online writing tool that quickly
+                measures the number of words in your text. SmartTools also
+                provides character, sentence and line counts so you can
+                understand your content at a glance.
+            </p>
+
+        </article>
+
+        <article class="info-card">
+
+            <h3>Useful for</h3>
+
+            <ul>
+                <li>Essays and assignments</li>
+                <li>Blog posts and articles</li>
+                <li>Social media content</li>
+                <li>Applications and cover letters</li>
+                <li>SEO content writing</li>
+            </ul>
+
+        </article>
+
+        <article class="info-card">
+
+            <h3>How counting works</h3>
+
+            <p>
+                Words are detected by separating non-empty text sections
+                around whitespace. Characters include spaces and punctuation,
+                while the separate character count ignores spaces.
+            </p>
+
+        </article>
+
+        <article class="info-card">
+
+            <h3>Reading time</h3>
+
+            <p>
+                Reading time is estimated using approximately 200 words per
+                minute. The displayed value is an estimate and can vary
+                depending on reading speed and the type of content.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+
+    <div class="container">
+
+        <div class="section-kicker">
+            WORD COUNTER FAQ
+        </div>
+
+        <h2 class="section-title">
+            Common questions about word counting.
+        </h2>
+
+        <div class="faq-list">
+
+            <div class="faq-item">
+
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How does the Word Counter work?
+                    <span>+</span>
                 </button>
 
+                <div class="faq-answer">
+                    The tool analyzes the text you enter and calculates
+                    words, characters, characters without spaces, sentences
+                    and lines instantly.
+                </div>
 
-                <div
-                    class="result"
-                    id="wordResult">
+            </div>
 
-                    Your word count will appear here.
+            <div class="faq-item">
 
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Does the Word Counter work on mobile?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    Yes. SmartTools Word Counter is designed to work on
+                    phones, tablets and desktop browsers.
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Are my words uploaded to a server?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    The counting in this page is performed directly in your
+                    browser using JavaScript. No server request is required
+                    for the counting feature.
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What is the estimated reading time?
+                    <span>+</span>
+                </button>
+
+                <div class="faq-answer">
+                    SmartTools estimates reading time using approximately
+                    200 words per minute. Actual reading speed may differ.
                 </div>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
+<!-- RELATED TOOLS -->
+<section class="related">
 
-    <!-- ================= INFORMATION ================= -->
+    <div class="container">
 
-    <section class="information-section">
+        <div class="section-kicker">
+            MORE SMARTTOOLS
+        </div>
 
-        <div class="container">
+        <h2 class="section-title">
+            Related tools
+        </h2>
 
-            <div class="calculator-box">
+        <div class="related-grid">
 
+            <article class="related-card">
 
-                <h2>
-                    What is a Word Counter?
-                </h2>
+                <div class="mini-icon">#</div>
 
-                <p>
-                    A word counter is an online tool that
-                    counts the number of words in a piece
-                    of text.
-                </p>
-
-                <p>
-                    It can be useful for students, writers,
-                    bloggers, content creators and professionals
-                    who need to meet specific word-count limits.
-                </p>
-
-
-
-                <h2>
-                    How Does the Word Counter Work?
-                </h2>
+                <h3>Character Counter</h3>
 
                 <p>
-                    The tool checks the text you enter and
-                    separates words based on spaces and
-                    other whitespace characters.
+                    Count characters, words and lines in your text.
                 </p>
 
+                <a href="character-counter.html">
+                    Open Tool →
+                </a>
 
+            </article>
 
-                <h2>
-                    How to Use the Word Counter
-                </h2>
+            <article class="related-card">
 
-                <ol>
+                <div class="mini-icon">Aa</div>
 
-                    <li>
-                        Type or paste your text into the text box.
-                    </li>
-
-                    <li>
-                        Click the "Count Words" button.
-                    </li>
-
-                    <li>
-                        Your total word count will be displayed.
-                    </li>
-
-                </ol>
-
-
-
-                <h2>
-                    Example
-                </h2>
+                <h3>Case Converter</h3>
 
                 <p>
-                    If you enter:
+                    Convert text between uppercase and lowercase formats.
                 </p>
+
+                <a href="case-converter.html">
+                    Open Tool →
+                </a>
+
+            </article>
+
+            <article class="related-card">
+
+                <div class="mini-icon">🧹</div>
+
+                <h3>Remove Duplicate Lines</h3>
 
                 <p>
-                    <strong>
-                        SmartTools makes online calculations simple.
-                    </strong>
+                    Clean repeated lines from your text instantly.
                 </p>
+
+                <a href="remove-duplicate-lines.html">
+                    Open Tool →
+                </a>
+
+            </article>
+
+            <article class="related-card">
+
+                <div class="mini-icon">%</div>
+
+                <h3>Percentage Calculator</h3>
 
                 <p>
-                    The calculator will count the words in
-                    the sentence.
+                    Calculate percentages quickly for everyday maths.
                 </p>
 
+                <a href="percentage-calculator.html">
+                    Open Calculator →
+                </a>
 
+            </article>
 
-                <h2>
-                    Who Can Use a Word Counter?
-                </h2>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <h2>SmartTools</h2>
 
                 <p>
-                    A word counter can be useful for students
-                    writing assignments, writers preparing
-                    articles, bloggers creating content,
-                    professionals preparing reports and anyone
-                    who needs to check text length.
+                    Simple, useful and free online tools for everyday
+                    calculations, writing and productivity.
                 </p>
 
+            </div>
 
+            <div>
 
-                <h2>
-                    Frequently Asked Questions
-                </h2>
+                <h4>Explore</h4>
 
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#tools">All Tools</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
 
-                <div class="faq">
+            </div>
 
+            <div>
 
-                    <h3>
-                        Is this Word Counter free?
-                    </h3>
+                <h4>Popular Tools</h4>
 
-                    <p>
-                        Yes. The SmartTools Word Counter is
-                        free to use online.
-                    </p>
-
-
-                    <h3>
-                        Can I paste a long article?
-                    </h3>
-
-                    <p>
-                        Yes. You can paste your text into
-                        the text area and calculate the
-                        word count.
-                    </p>
-
-
-                    <h3>
-                        Does it work on mobile?
-                    </h3>
-
-                    <p>
-                        Yes. The Word Counter works on
-                        modern mobile and desktop browsers.
-                    </p>
-
-
-                    <h3>
-                        Does the tool store my text?
-                    </h3>
-
-                    <p>
-                        The basic word counting calculation
-                        is performed directly in your browser.
-                    </p>
-
+                <div class="footer-links">
+                    <a href="emi-calculator.html">EMI Calculator</a>
+                    <a href="gst-calculator.html">GST Calculator</a>
+                    <a href="sip-calculator.html">SIP Calculator</a>
+                    <a href="age-calculator.html">Age Calculator</a>
                 </div>
 
             </div>
 
         </div>
 
-    </section>
+        <div class="footer-bottom">
 
+            <span>
+                © 2026 SmartTools. All rights reserved.
+            </span>
 
-
-    <!-- ================= MORE TOOLS ================= -->
-
-    <section class="tools-section">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span class="badge">
-                    MORE TEXT TOOLS
-                </span>
-
-                <h2>
-                    Explore More SmartTools
-                </h2>
-
-                <p>
-                    Try our other useful text tools.
-                </p>
-
-            </div>
-
-
-            <div class="hero-buttons">
-
-
-                <a
-                    href="character-counter.html"
-                    class="tool-button">
-
-                    Character Counter
-
-                </a>
-
-
-                <a
-                    href="case-converter.html"
-                    class="tool-button secondary">
-
-                    Case Converter
-
-                </a>
-
-
-                <a
-                    href="remove-duplicate-lines.html"
-                    class="tool-button secondary">
-
-                    Remove Duplicate Lines
-
-                </a>
-
-
-                <a
-                    href="index.html#tools"
-                    class="tool-button secondary">
-
-                    View All Tools
-
-                </a>
-
-            </div>
+            <span>
+                <a href="privacy-policy.html">Privacy</a>
+                &nbsp; · &nbsp;
+                <a href="terms.html">Terms</a>
+                &nbsp; · &nbsp;
+                <a href="404.html">404</a>
+            </span>
 
         </div>
 
-    </section>
+    </div>
 
+</footer>
 
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <div class="container">
-
-            <div class="footer-content">
-
-
-                <div>
-
-                    <h3>
-                        SmartTools
-                    </h3>
-
-                    <p>
-                        Simple and useful online tools
-                        for everyday needs.
-                    </p>
-
-                </div>
-
-
-                <div>
-
-                    <h4>
-                        Quick Links
-                    </h4>
-
-                    <a href="index.html">
-                        Home
-                    </a>
-
-                    <a href="index.html#tools">
-                        Tools
-                    </a>
-
-                    <a href="index.html#guides">
-                        Guides
-                    </a>
-
-                    <a href="about.html">
-                        About
-                    </a>
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                </div>
-
-
-                <div>
-
-                    <h4>
-                        Legal
-                    </h4>
-
-                    <a href="privacy-policy.html">
-                        Privacy Policy
-                    </a>
-
-                    <a href="terms.html">
-                        Terms & Conditions
-                    </a>
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="footer-bottom">
-
-                <p>
-                    © 2026 SmartTools. All rights reserved.
-                </p>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-
-    <!-- ================= WORD COUNTER JAVASCRIPT ================= -->
-
-    <script>
-
-        document
-            .getElementById("wordCountButton")
-            .addEventListener("click", function () {
-
-                const text =
-                    document.getElementById("wordText").value.trim();
-
-                const result =
-                    document.getElementById("wordResult");
-
-
-                if (text === "") {
-
-                    result.innerHTML = `
-                        <strong>
-                            Word Count: 0
-                        </strong>
-                    `;
-
-                    return;
-                }
-
-
-                const words =
-                    text.split(/\s+/).filter(Boolean);
-
-
-                const wordCount =
-                    words.length;
-
-
-                const characterCount =
-                    text.length;
-
-
-                const characterWithoutSpaces =
-                    text.replace(/\s/g, "").length;
-
-
-                result.innerHTML = `
-
-                    <strong>
-                        Word Count: ${wordCount}
-                    </strong>
-
-                    <br><br>
-
-                    <strong>
-                        Characters: ${characterCount}
-                    </strong>
-
-                    <br><br>
-
-                    <strong>
-                        Characters Without Spaces:
-                        ${characterWithoutSpaces}
-                    </strong>
-
-                `;
-
-            });
-
-    </script>
-
-
-<!-- SMARTTOOLS_PHASE6_JS_START -->
 <script>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE HELPER
-========================================================= */
 
-(function () {
+/* TEXT ELEMENTS */
 
-    "use strict";
+const textInput = document.getElementById("textInput");
 
-    function optimizeImages() {
+const wordCount = document.getElementById("wordCount");
+const charCount = document.getElementById("charCount");
+const charNoSpace = document.getElementById("charNoSpace");
+const sentenceCount = document.getElementById("sentenceCount");
+const lineCount = document.getElementById("lineCount");
+const readingTime = document.getElementById("readingTime");
+const statusText = document.getElementById("statusText");
 
-        const images =
-            document.querySelectorAll("img");
 
-        images.forEach(function (img) {
+/* LIVE COUNTER */
 
-            if (!img.hasAttribute("loading")) {
+textInput.addEventListener("input", updateCounts);
 
-                img.setAttribute(
-                    "loading",
-                    "lazy"
-                );
 
-            }
+function updateCounts(){
 
-            if (!img.hasAttribute("decoding")) {
+    const text = textInput.value;
 
-                img.setAttribute(
-                    "decoding",
-                    "async"
-                );
+    /* WORDS */
 
-            }
+    const trimmed = text.trim();
+
+    const words = trimmed
+        ? trimmed.split(/\s+/).filter(Boolean)
+        : [];
+
+    const wordTotal = words.length;
+
+
+    /* CHARACTERS */
+
+    const characters = text.length;
+
+    const charactersWithoutSpaces =
+        text.replace(/\s/g,"").length;
+
+
+    /* SENTENCES */
+
+    const sentences = trimmed
+        ? trimmed
+            .split(/[.!?]+/)
+            .map(item => item.trim())
+            .filter(Boolean)
+            .length
+        : 0;
+
+
+    /* LINES */
+
+    const lines = text
+        ? text.split(/\r?\n/).length
+        : 0;
+
+
+    /* READING TIME */
+
+    const minutes = wordTotal === 0
+        ? 0
+        : Math.max(1, Math.ceil(wordTotal / 200));
+
+
+    /* UPDATE UI */
+
+    wordCount.textContent = wordTotal.toLocaleString();
+
+    charCount.textContent = characters.toLocaleString();
+
+    charNoSpace.textContent =
+        charactersWithoutSpaces.toLocaleString();
+
+    sentenceCount.textContent =
+        sentences.toLocaleString();
+
+    lineCount.textContent =
+        lines.toLocaleString();
+
+    readingTime.textContent =
+        minutes + (minutes === 1 ? " min" : " min");
+
+
+    statusText.textContent =
+        wordTotal === 0
+            ? "Ready to count"
+            : "Counting live • " + wordTotal + " words";
+
+}
+
+
+/* CLEAR */
+
+function clearText(){
+
+    textInput.value = "";
+
+    updateCounts();
+
+    textInput.focus();
+
+    statusText.textContent = "Text cleared";
+}
+
+
+/* COPY */
+
+async function copyText(){
+
+    const text = textInput.value;
+
+    if(!text.trim()){
+
+        statusText.textContent = "Nothing to copy";
+
+        return;
+    }
+
+    try{
+
+        await navigator.clipboard.writeText(text);
+
+        statusText.textContent = "Text copied successfully";
+
+    }catch(error){
+
+        textInput.select();
+
+        document.execCommand("copy");
+
+        statusText.textContent = "Text copied successfully";
+    }
+
+}
+
+
+/* FAQ */
+
+function toggleFaq(button){
+
+    const item = button.parentElement;
+
+    const isActive =
+        item.classList.contains("active");
+
+    document
+        .querySelectorAll(".faq-item")
+        .forEach(faq => {
+
+            faq.classList.remove("active");
+
+            const icon =
+                faq.querySelector(".faq-question span");
+
+            icon.textContent = "+";
 
         });
 
-    }
 
+    if(!isActive){
 
-    function optimizeVideos() {
+        item.classList.add("active");
 
-        document
-            .querySelectorAll("video")
-            .forEach(function (video) {
-
-                if (!video.hasAttribute("preload")) {
-
-                    video.setAttribute(
-                        "preload",
-                        "metadata"
-                    );
-
-                }
-
-            });
+        button.querySelector("span").textContent = "−";
 
     }
 
-
-    function addThemeColor() {
-
-        if (
-            !document.querySelector(
-                'meta[name="theme-color"]'
-            )
-        ) {
-
-            const meta =
-                document.createElement("meta");
-
-            meta.name =
-                "theme-color";
-
-            meta.content =
-                "#5b5ff5";
-
-            document.head.appendChild(meta);
-        }
-
-    }
+}
 
 
-    function init() {
+/* MOBILE MENU */
 
-        optimizeImages();
-        optimizeVideos();
-        addThemeColor();
+function toggleMenu(){
+
+    const nav = document.querySelector(".nav-links");
+
+    if(nav.style.display === "flex"){
+
+        nav.style.display = "";
+
+    }else{
+
+        nav.style.display = "flex";
+
+        nav.style.position = "absolute";
+        nav.style.top = "72px";
+        nav.style.left = "0";
+        nav.style.right = "0";
+        nav.style.padding = "20px";
+        nav.style.background = "#fff";
+        nav.style.flexDirection = "column";
+        nav.style.alignItems = "stretch";
+        nav.style.boxShadow =
+            "0 15px 35px rgba(20,30,60,.1)";
 
     }
 
+}
 
-    if (
-        document.readyState ===
-        "loading"
-    ) {
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
-        );
+/* INITIAL */
 
-    } else {
+updateCounts();
 
-        init();
-
-    }
-
-})();
 </script>
-<!-- SMARTTOOLS_PHASE6_JS_END -->
-</body>
 
+</body>
 </html>

@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Data Analyst Tools – CSV & Excel Analysis | SmartTools</title>
+
+<meta name="description" content="SmartTools Data Analyst workspace with CSV Analyzer, CSV Cleaner, Data Dashboard and Excel Analyzer. Analyze data, find duplicates, missing values and create insights.">
+
+<meta name="keywords" content="data analyst tools, CSV analyzer, CSV cleaner, Excel analyzer, data dashboard, data analysis tools">
+
+<meta name="robots" content="index, follow">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#070a14;
+    --bg2:#0b1020;
+    --card:#0d1324;
+    --border:rgba(255,255,255,.09);
+    --text:#f7f8ff;
+    --muted:#9ca7bd;
+    --purple:#765cff;
+    --blue:#28c8ff;
+    --green:#38d996;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+    color:var(--text);
+
+    background:
+    radial-gradient(
+        circle at 10% 0%,
+        rgba(118,92,255,.18),
+        transparent 28%
+    ),
+    radial-gradient(
+        circle at 90% 0%,
+        rgba(40,200,255,.10),
+        transparent 28%
+    ),
+    linear-gradient(
+        180deg,
+        #070a14,
+        #090d19,
+        #070a14
+    );
+
+    min-height:100vh;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* TOP BAR */
+
+.topbar{
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-bottom:1px solid var(--border);
+
+    color:#aab4c8;
+
+    font-size:13px;
+
+    background:rgba(5,8,18,.7);
+}
+
+/* NAV */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    border-bottom:1px solid var(--border);
+
+    background:rgba(7,10,20,.82);
+
+    backdrop-filter:blur(18px);
+}
+
+.nav{
+    width:min(1180px,calc(100% - 32px));
+
+    min-height:74px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    font-size:21px;
+    font-weight:900;
+}
+
+.logo-box{
+    width:40px;
+    height:40px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:13px;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--purple),
+        var(--blue)
+    );
+
+    box-shadow:
+    0 10px 35px rgba(118,92,255,.3);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:26px;
+
+    color:#aeb7ca;
+
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.nav-cta{
+    padding:11px 17px;
+
+    border-radius:12px;
+
+    color:white!important;
+
+    border:1px solid rgba(118,92,255,.35);
+
+    background:
+    rgba(118,92,255,.12);
+}
+
+/* HERO */
+
+.hero{
+    width:min(1180px,calc(100% - 32px));
+
+    margin:auto;
+
+    padding:80px 0 55px;
+
+    text-align:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:8px 14px;
+
+    border:1px solid rgba(118,92,255,.3);
+
+    border-radius:999px;
+
+    color:#c8c0ff;
+
+    background:
+    rgba(118,92,255,.09);
+
+    font-size:12px;
+    font-weight:800;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+    0 0 15px var(--green);
+}
+
+.hero h1{
+    margin-top:22px;
+
+    font-size:
+    clamp(42px,7vw,76px);
+
+    line-height:1;
+
+    letter-spacing:-3px;
+
+    font-weight:950;
+
+    background:
+    linear-gradient(
+        110deg,
+        #ffffff,
+        #bdb2ff,
+        #6ee5ff
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.hero p{
+    max-width:730px;
+
+    margin:24px auto 0;
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:16px;
+}
+
+/* STATS */
+
+.stats{
+    width:min(900px,100%);
+
+    margin:40px auto 0;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:13px;
+}
+
+.stat{
+    padding:19px;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    background:
+    rgba(255,255,255,.025);
+}
+
+.stat strong{
+    display:block;
+
+    font-size:27px;
+
+    font-weight:950;
+}
+
+.stat span{
+    display:block;
+
+    margin-top:5px;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+/* TOOLS */
+
+.tools-section{
+    width:min(1180px,calc(100% - 32px));
+
+    margin:auto;
+
+    padding:25px 0 85px;
+}
+
+.section-heading{
+    margin-bottom:28px;
+}
+
+.kicker{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    color:#a99cff;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    letter-spacing:1.5px;
+}
+
+.kicker span{
+    width:26px;
+    height:2px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        90deg,
+        var(--purple),
+        var(--blue)
+    );
+}
+
+.section-heading h2{
+    margin-top:12px;
+
+    font-size:36px;
+
+    letter-spacing:-1px;
+}
+
+.section-heading p{
+    margin-top:7px;
+
+    color:var(--muted);
+
+    font-size:14px;
+}
+
+/* TOOL GRID */
+
+.tools-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:16px;
+}
+
+.tool-card{
+    position:relative;
+
+    min-height:310px;
+
+    padding:23px;
+
+    display:flex;
+    flex-direction:column;
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(18,25,45,.9),
+        rgba(9,14,27,.9)
+    );
+
+    transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+
+    overflow:hidden;
+}
+
+.tool-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:130px;
+    height:130px;
+
+    right:-60px;
+    top:-60px;
+
+    border-radius:50%;
+
+    background:
+    rgba(118,92,255,.12);
+
+    filter:blur(5px);
+}
+
+.tool-card:hover{
+    transform:translateY(-7px);
+
+    border-color:
+    rgba(118,92,255,.38);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.28);
+}
+
+.tool-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.tool-icon{
+    width:51px;
+    height:51px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:15px;
+
+    background:
+    rgba(118,92,255,.12);
+
+    border:1px solid
+    rgba(118,92,255,.15);
+
+    font-size:23px;
+}
+
+.tool-tag{
+    padding:6px 9px;
+
+    border-radius:999px;
+
+    color:#b9b0ff;
+
+    background:
+    rgba(118,92,255,.09);
+
+    font-size:10px;
+
+    font-weight:850;
+}
+
+.tool-card h3{
+    margin-top:24px;
+
+    font-size:19px;
+}
+
+.tool-card p{
+    margin-top:10px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.tool-features{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    margin-top:17px;
+}
+
+.feature{
+    padding:6px 8px;
+
+    border-radius:8px;
+
+    background:
+    rgba(255,255,255,.035);
+
+    border:1px solid
+    rgba(255,255,255,.06);
+
+    color:#9da8bc;
+
+    font-size:10px;
+}
+
+.open-tool{
+    margin-top:auto;
+
+    padding-top:22px;
+
+    color:#a99cff;
+
+    font-size:13px;
+
+    font-weight:900;
+}
+
+.open-tool span{
+    transition:.2s;
+}
+
+.tool-card:hover .open-tool span{
+    margin-left:5px;
+}
+
+/* WORKFLOW */
+
+.workflow{
+    width:min(1180px,calc(100% - 32px));
+
+    margin:auto;
+
+    padding:10px 0 80px;
+}
+
+.workflow-card{
+    padding:32px;
+
+    border-radius:25px;
+
+    border:1px solid var(--border);
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(118,92,255,.08),
+        rgba(40,200,255,.035)
+    );
+}
+
+.workflow-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:20px;
+
+    margin-top:27px;
+}
+
+.step{
+    position:relative;
+
+    padding:20px;
+
+    border-radius:17px;
+
+    background:
+    rgba(255,255,255,.025);
+
+    border:1px solid
+    rgba(255,255,255,.06);
+}
+
+.step-number{
+    width:32px;
+    height:32px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:10px;
+
+    background:
+    rgba(118,92,255,.16);
+
+    color:#bcb3ff;
+
+    font-size:12px;
+
+    font-weight:900;
+}
+
+.step h3{
+    margin-top:14px;
+
+    font-size:15px;
+}
+
+.step p{
+    margin-top:7px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+/* SEO */
+
+.seo{
+    width:min(1180px,calc(100% - 32px));
+
+    margin:auto;
+
+    padding-bottom:80px;
+}
+
+.seo-card{
+    padding:34px;
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    background:
+    rgba(12,18,33,.72);
+}
+
+.seo-card h2{
+    font-size:28px;
+}
+
+.seo-card h3{
+    margin-top:24px;
+
+    font-size:17px;
+}
+
+.seo-card p{
+    margin-top:9px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+/* FAQ */
+
+.faq{
+    margin-top:25px;
+
+    display:grid;
+
+    gap:9px;
+}
+
+details{
+    padding:16px;
+
+    border-radius:13px;
+
+    border:1px solid var(--border);
+
+    background:
+    rgba(255,255,255,.025);
+}
+
+summary{
+    cursor:pointer;
+
+    font-weight:750;
+
+    font-size:14px;
+}
+
+details p{
+    margin-top:10px;
+
+    font-size:13px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--border);
+
+    padding:28px 0;
+
+    color:#7f899e;
+
+    font-size:12px;
+}
+
+.footer{
+    width:min(1180px,calc(100% - 32px));
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.footer-links{
+    display:flex;
+
+    gap:18px;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+/* MOBILE */
+
+@media(max-width:1050px){
+
+    .tools-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .workflow-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        padding-top:55px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .tools-grid{
+        grid-template-columns:1fr;
+    }
+
+    .workflow-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-heading h2{
+        font-size:29px;
+    }
+
+    .workflow-card,
+    .seo-card{
+        padding:22px;
+    }
+
+    .footer{
+        flex-direction:column;
+
+        gap:15px;
+
+        text-align:center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+    SmartTools — Data analysis made simple.
+</div>
+
+
+<!-- NAV -->
+
+<header class="navbar">
+
+    <div class="nav">
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-box">
+                S
+            </span>
+
+            SmartTools
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#tools">
+                Tools
+            </a>
+
+            <a href="guides.html">
+                Guides
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="#data-tools" class="nav-cta">
+                Data Tools
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="badge">
+        <span class="dot"></span>
+        SMARTTOOLS DATA WORKSPACE
+    </div>
+
+
+    <h1>
+        Analyze Your Data<br>
+        With Confidence.
+    </h1>
+
+
+    <p>
+        A growing collection of practical data analysis tools
+        for CSV, Excel and everyday datasets. Clean your data,
+        explore statistics, visualize information and discover
+        useful insights.
+    </p>
+
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong>4+</strong>
+            <span>Data Analysis Tools</span>
+        </div>
+
+        <div class="stat">
+            <strong>100%</strong>
+            <span>Browser-Based Workflow</span>
+        </div>
+
+        <div class="stat">
+            <strong>Free</strong>
+            <span>Everyday Data Utilities</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DATA TOOLS -->
+
+<section class="tools-section" id="data-tools">
+
+    <div class="section-heading">
+
+        <div class="kicker">
+            <span></span>
+            DATA ANALYST TOOLS
+        </div>
+
+        <h2>
+            Everything you need to inspect data
+        </h2>
+
+        <p>
+            Choose a tool and start working with your dataset.
+        </p>
+
+    </div>
+
+
+    <div class="tools-grid">
+
+
+        <!-- CSV ANALYZER -->
+
+        <article class="tool-card">
+
+            <div class="tool-top">
+
+                <div class="tool-icon">
+                    📊
+                </div>
+
+                <span class="tool-tag">
+                    ANALYZE
+                </span>
+
+            </div>
+
+
+            <h3>
+                CSV Analyzer
+            </h3>
+
+
+            <p>
+                Explore CSV files with row counts, columns,
+                missing values, duplicate records and
+                numerical statistics.
+            </p>
+
+
+            <div class="tool-features">
+
+                <span class="feature">
+                    Statistics
+                </span>
+
+                <span class="feature">
+                    Missing Data
+                </span>
+
+                <span class="feature">
+                    Charts
+                </span>
+
+            </div>
+
+
+            <a
+                href="csv-analyzer.html"
+                class="open-tool">
+
+                Open CSV Analyzer
+                <span>→</span>
+
+            </a>
+
+        </article>
+
+
+        <!-- CSV CLEANER -->
+
+        <article class="tool-card">
+
+            <div class="tool-top">
+
+                <div class="tool-icon">
+                    🧹
+                </div>
+
+                <span class="tool-tag">
+                    CLEAN
+                </span>
+
+            </div>
+
+
+            <h3>
+                CSV Cleaner
+            </h3>
+
+
+            <p>
+                Clean messy CSV datasets by removing duplicate
+                rows, trimming spaces and improving column names.
+            </p>
+
+
+            <div class="tool-features">
+
+                <span class="feature">
+                    Duplicates
+                </span>
+
+                <span class="feature">
+                    Spaces
+                </span>
+
+                <span class="feature">
+                    Columns
+                </span>
+
+            </div>
+
+
+            <a
+                href="csv-cleaner.html"
+                class="open-tool">
+
+                Open CSV Cleaner
+                <span>→</span>
+
+            </a>
+
+        </article>
+
+
+        <!-- DATA DASHBOARD -->
+
+        <article class="tool-card">
+
+            <div class="tool-top">
+
+                <div class="tool-icon">
+                    📈
+                </div>
+
+                <span class="tool-tag">
+                    DASHBOARD
+                </span>
+
+            </div>
+
+
+            <h3>
+                Data Dashboard
+            </h3>
+
+
+            <p>
+                Turn dataset information into a visual dashboard
+                with charts, statistics, summaries and automatic
+                data insights.
+            </p>
+
+
+            <div class="tool-features">
+
+                <span class="feature">
+                    Dashboard
+                </span>
+
+                <span class="feature">
+                    Charts
+                </span>
+
+                <span class="feature">
+                    Insights
+                </span>
+
+            </div>
+
+
+            <a
+                href="data-analyst.html"
+                class="open-tool">
+
+                Open Dashboard
+                <span>→</span>
+
+            </a>
+
+        </article>
+
+
+        <!-- EXCEL ANALYZER -->
+
+        <article class="tool-card">
+
+            <div class="tool-top">
+
+                <div class="tool-icon">
+                    📗
+                </div>
+
+                <span class="tool-tag">
+                    EXCEL
+                </span>
+
+            </div>
+
+
+            <h3>
+                Excel Analyzer
+            </h3>
+
+
+            <p>
+                Analyze XLSX and XLS spreadsheets, inspect
+                worksheets, detect missing values, duplicates,
+                statistics and visualize columns.
+            </p>
+
+
+            <div class="tool-features">
+
+                <span class="feature">
+                    XLSX
+                </span>
+
+                <span class="feature">
+                    Sheets
+                </span>
+
+                <span class="feature">
+                    Charts
+                </span>
+
+            </div>
+
+
+            <a
+                href="excel-analyzer.html"
+                class="open-tool">
+
+                Open Excel Analyzer
+                <span>→</span>
+
+            </a>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- WORKFLOW -->
+
+<section class="workflow">
+
+    <div class="workflow-card">
+
+        <div class="section-heading">
+
+            <div class="kicker">
+                <span></span>
+                SIMPLE WORKFLOW
+            </div>
+
+            <h2>
+                From raw data to useful insights
+            </h2>
+
+            <p>
+                Use the SmartTools data workflow to inspect,
+                clean and understand your dataset.
+            </p>
+
+        </div>
+
+
+        <div class="workflow-grid">
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <h3>
+                    Upload
+                </h3>
+
+                <p>
+                    Choose your CSV or Excel dataset.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <h3>
+                    Inspect
+                </h3>
+
+                <p>
+                    Understand rows, columns and data quality.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <h3>
+                    Clean
+                </h3>
+
+                <p>
+                    Identify duplicates, spaces and missing data.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <h3>
+                    Analyze
+                </h3>
+
+                <p>
+                    Use statistics, charts and insights to understand
+                    your dataset.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SEO -->
+
+<section class="seo">
+
+    <div class="seo-card">
+
+        <h2>
+            Free Data Analyst Tools Online
+        </h2>
+
+
+        <p>
+            SmartTools brings together practical online data
+            analysis utilities for students, developers,
+            analysts, business users and anyone who works
+            with spreadsheets or datasets.
+        </p>
+
+
+        <h3>
+            CSV Data Analysis
+        </h3>
+
+        <p>
+            CSV Analyzer helps you quickly inspect a CSV dataset,
+            including rows, columns, missing values, duplicate
+            records and numerical statistics.
+        </p>
+
+
+        <h3>
+            Clean Your CSV Data
+        </h3>
+
+        <p>
+            CSV Cleaner helps prepare datasets before analysis
+            by removing duplicate rows, trimming unnecessary
+            spaces and cleaning column names.
+        </p>
+
+
+        <h3>
+            Analyze Excel Files
+        </h3>
+
+        <p>
+            Excel Analyzer supports common XLSX and XLS
+            spreadsheets and provides worksheet statistics,
+            data-quality information, column analysis and charts.
+        </p>
+
+
+        <h3>
+            Data Dashboard
+        </h3>
+
+        <p>
+            The Data Dashboard brings data analysis into a
+            visual interface so that important information can
+            be understood more quickly.
+        </p>
+
+
+        <div class="faq">
+
+            <details>
+
+                <summary>
+                    What data files can SmartTools analyze?
+                </summary>
+
+                <p>
+                    The current Data Analyst workspace supports
+                    CSV and Excel XLSX/XLS files.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Do I need to install software?
+                </summary>
+
+                <p>
+                    No. These tools are designed to work directly
+                    in a modern web browser.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    What can I do with the CSV Analyzer?
+                </summary>
+
+                <p>
+                    You can inspect rows, columns, missing cells,
+                    duplicates, numerical statistics and data
+                    visualizations.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Can I analyze Excel worksheets?
+                </summary>
+
+                <p>
+                    Yes. Excel Analyzer supports XLSX and XLS
+                    workbooks and allows you to inspect worksheets.
+                </p>
+
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer">
+
+        <div>
+            © 2026 SmartTools. Built for productivity.
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="privacy-policy.html">
+                Privacy
+            </a>
+
+            <a href="terms.html">
+                Terms
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

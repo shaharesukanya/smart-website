@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTTP Status Code Checker & Lookup | SmartTools</title>
+
+    <meta name="description"
+          content="Free HTTP Status Code lookup tool. Search HTTP response codes such as 200, 301, 404 and 500 with simple explanations and common use cases.">
+
+    <meta name="keywords"
+          content="HTTP status code, HTTP status code checker, HTTP status lookup, 200 status code, 404 status code, 500 status code, API developer tools">
+
+    <meta name="author" content="Sukanya Shahare">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+          href="https://yourdomain.com/http-status-code.html">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(99,102,241,.18), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(14,165,233,.14), transparent 30%),
+                #070b14;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: linear-gradient(90deg, #111827, #172554, #111827);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7,11,20,.84);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .nav-inner {
+            max-width: 1180px;
+            margin: auto;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #818cf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #a5b4fc;
+        }
+
+        .hero {
+            max-width: 1050px;
+            margin: auto;
+            padding: 70px 20px 35px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(129,140,248,.25);
+            background: rgba(99,102,241,.09);
+            color: #a5b4fc;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #818cf8, #38bdf8);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 730px;
+            margin: auto;
+            color: #94a3b8;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .tool-wrapper {
+            max-width: 1120px;
+            margin: 25px auto 70px;
+            padding: 0 20px;
+        }
+
+        .tool-card {
+            background: rgba(15,23,42,.82);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 30px 80px rgba(0,0,0,.3);
+        }
+
+        .search-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .search-row input {
+            flex: 1;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 13px;
+            border: 1px solid #263247;
+            background: #080d18;
+            color: #f8fafc;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99,102,241,.1);
+        }
+
+        .search-row button {
+            min-width: 130px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-weight: 700;
+            cursor: pointer;
+            color: white;
+            background: #1e293b;
+            border: 1px solid #334155;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            background: #293548;
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #6366f1, #2563eb);
+            border: none;
+        }
+
+        .primary:hover {
+            background: linear-gradient(135deg, #818cf8, #3b82f6);
+        }
+
+        .danger {
+            background: #3f1d2e;
+            border-color: #6b2948;
+        }
+
+        .result {
+            display: none;
+            margin-bottom: 25px;
+            padding: 24px;
+            border-radius: 20px;
+            background: linear-gradient(
+                135deg,
+                rgba(99,102,241,.10),
+                rgba(14,165,233,.07)
+            );
+            border: 1px solid rgba(129,140,248,.18);
+        }
+
+        .result-top {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 16px;
+        }
+
+        .status-number {
+            width: 90px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 18px;
+            background: #111827;
+            border: 1px solid #334155;
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .result h2 {
+            font-size: 23px;
+            margin-bottom: 5px;
+        }
+
+        .result p {
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .category {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: rgba(129,140,248,.12);
+            color: #a5b4fc;
+            font-size: 12px;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .quick-btn {
+            padding: 12px 8px;
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            margin: 28px 0 14px;
+        }
+
+        .codes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .code-card {
+            padding: 17px;
+            border-radius: 16px;
+            background: #0a101d;
+            border: 1px solid rgba(255,255,255,.07);
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .code-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(129,140,248,.4);
+        }
+
+        .code-card strong {
+            display: inline-block;
+            font-size: 19px;
+            margin-right: 8px;
+        }
+
+        .code-card span {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .code-card p {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .message {
+            min-height: 22px;
+            margin-top: 10px;
+            color: #fca5a5;
+            font-size: 14px;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 0 auto 70px;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            margin-bottom: 35px;
+        }
+
+        .content-section h2 {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            padding-left: 22px;
+        }
+
+        .faq {
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 15px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            background: rgba(15,23,42,.65);
+        }
+
+        .faq button {
+            width: 100%;
+            text-align: left;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            padding: 17px;
+            font-size: 15px;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 17px 17px;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .cta {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 24px;
+            background: linear-gradient(
+                135deg,
+                rgba(79,70,229,.18),
+                rgba(14,165,233,.12)
+            );
+            border: 1px solid rgba(129,140,248,.15);
+        }
+
+        .cta h2 {
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding: 25px 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none;
+            }
+
+            .quick-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .codes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .tool-card {
+                padding: 18px;
+            }
+
+            .search-row {
+                flex-direction: column;
+            }
+
+            .search-row button {
+                width: 100%;
+            }
+
+            .quick-grid,
+            .codes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .status-number {
+                width: 100%;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — simple tools for everyday needs.
+</div>
+
+<nav class="navbar">
+
+    <div class="nav-inner">
+
+        <a href="index.html" class="logo">
+            Smart<span>Tools</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="data-analyst.html">Data Tools</a>
+            <a href="ai-tools.html">AI Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </div>
+
+</nav>
+
+<section class="hero">
+
+    <div class="badge">
+        Developer & API Utility
+    </div>
+
+    <h1>
+        HTTP Status <span>Code Lookup</span>
+    </h1>
+
+    <p>
+        Search common HTTP response status codes and quickly understand
+        what codes such as 200, 301, 404 and 500 mean.
+    </p>
+
+</section>
+
+<main class="tool-wrapper">
+
+    <div class="tool-card">
+
+        <div class="search-row">
+
+            <input
+                type="text"
+                id="codeInput"
+                placeholder="Enter HTTP status code, e.g. 404"
+                inputmode="numeric"
+            >
+
+            <button class="primary" onclick="searchCode()">
+                Search
+            </button>
+
+            <button onclick="showAll()">
+                All Codes
+            </button>
+
+        </div>
+
+        <div class="message" id="message"></div>
+
+        <div class="result" id="result">
+
+            <div class="result-top">
+
+                <div class="status-number" id="resultCode">
+                    200
+                </div>
+
+                <div>
+
+                    <h2 id="resultTitle">
+                        OK
+                    </h2>
+
+                    <span class="category" id="resultCategory">
+                        Success
+                    </span>
+
+                </div>
+
+            </div>
+
+            <p id="resultDescription"></p>
+
+        </div>
+
+        <h2 class="section-title">
+            Common HTTP Status Codes
+        </h2>
+
+        <div class="quick-grid">
+
+            <button class="quick-btn" onclick="selectCode(200)">
+                200 OK
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(201)">
+                201 Created
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(204)">
+                204 No Content
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(301)">
+                301 Moved
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(302)">
+                302 Found
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(304)">
+                304 Not Modified
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(400)">
+                400 Bad Request
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(401)">
+                401 Unauthorized
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(403)">
+                403 Forbidden
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(404)">
+                404 Not Found
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(405)">
+                405 Method Not Allowed
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(429)">
+                429 Too Many
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(500)">
+                500 Server Error
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(502)">
+                502 Bad Gateway
+            </button>
+
+            <button class="quick-btn" onclick="selectCode(503)">
+                503 Unavailable
+            </button>
+
+        </div>
+
+        <h2 class="section-title">
+            Status Code Reference
+        </h2>
+
+        <div class="codes-grid" id="codesGrid"></div>
+
+    </div>
+
+</main>
+
+<section class="content">
+
+    <div class="content-section">
+
+        <h2>What is an HTTP Status Code?</h2>
+
+        <p>
+            An HTTP status code is a three-digit response sent by a server
+            after receiving an HTTP request. It provides information about
+            how the request was handled.
+        </p>
+
+    </div>
+
+    <div class="content-section">
+
+        <h2>HTTP Status Code Categories</h2>
+
+        <ul>
+            <li><strong>1xx</strong> — Informational responses</li>
+            <li><strong>2xx</strong> — Successful responses</li>
+            <li><strong>3xx</strong> — Redirection responses</li>
+            <li><strong>4xx</strong> — Client error responses</li>
+            <li><strong>5xx</strong> — Server error responses</li>
+        </ul>
+
+    </div>
+
+    <div class="content-section">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                What does HTTP 200 mean?
+            </button>
+
+            <div class="faq-answer">
+                HTTP 200 indicates that a request was successfully processed.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                What does HTTP 404 mean?
+            </button>
+
+            <div class="faq-answer">
+                HTTP 404 indicates that the requested resource could not
+                be found by the server.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                What does HTTP 500 mean?
+            </button>
+
+            <div class="faq-answer">
+                HTTP 500 indicates that the server encountered an unexpected
+                condition that prevented it from completing the request.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                What is the difference between 401 and 403?
+            </button>
+
+            <div class="faq-answer">
+                401 is generally used when valid authentication credentials
+                are required, while 403 indicates that the server understood
+                the request but is refusing to fulfill it.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                Is this HTTP status code tool free?
+            </button>
+
+            <div class="faq-answer">
+                Yes. The SmartTools HTTP Status Code Lookup is free to use.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cta">
+
+    <h2>Explore More Developer Tools</h2>
+
+    <p>
+        Explore JSON, CSV, SQL, Excel, Base64, JWT, URL and other
+        developer utilities.
+    </p>
+
+    <a href="data-analyst.html">
+        <button class="primary">
+            Explore Data Tools →
+        </button>
+    </a>
+
+</section>
+
+<footer>
+    © 2026 SmartTools · Built by Sukanya Shahare
+</footer>
+
+<script>
+
+const statusCodes = {
+
+    100: {
+        title: "Continue",
+        category: "Informational",
+        description:
+            "The server has received the initial part of the request and the client may continue."
+    },
+
+    101: {
+        title: "Switching Protocols",
+        category: "Informational",
+        description:
+            "The server is switching to a protocol requested by the client."
+    },
+
+    200: {
+        title: "OK",
+        category: "Success",
+        description:
+            "The request was successfully processed."
+    },
+
+    201: {
+        title: "Created",
+        category: "Success",
+        description:
+            "The request succeeded and resulted in a new resource being created."
+    },
+
+    202: {
+        title: "Accepted",
+        category: "Success",
+        description:
+            "The request has been accepted for processing, although processing may not be complete."
+    },
+
+    204: {
+        title: "No Content",
+        category: "Success",
+        description:
+            "The request was successfully processed but there is no content to return."
+    },
+
+    206: {
+        title: "Partial Content",
+        category: "Success",
+        description:
+            "The server is delivering only part of the requested resource."
+    },
+
+    301: {
+        title: "Moved Permanently",
+        category: "Redirection",
+        description:
+            "The requested resource has been assigned a new permanent URL."
+    },
+
+    302: {
+        title: "Found",
+        category: "Redirection",
+        description:
+            "The requested resource is temporarily available at another URL."
+    },
+
+    303: {
+        title: "See Other",
+        category: "Redirection",
+        description:
+            "The response directs the client to another resource, commonly using GET."
+    },
+
+    304: {
+        title: "Not Modified",
+        category: "Redirection",
+        description:
+            "The cached representation can be used because the resource has not changed."
+    },
+
+    307: {
+        title: "Temporary Redirect",
+        category: "Redirection",
+        description:
+            "The requested resource is temporarily available at another URL while preserving the request method."
+    },
+
+    308: {
+        title: "Permanent Redirect",
+        category: "Redirection",
+        description:
+            "The requested resource has a permanent new URL while preserving the request method."
+    },
+
+    400: {
+        title: "Bad Request",
+        category: "Client Error",
+        description:
+            "The server cannot process the request because the request is invalid or malformed."
+    },
+
+    401: {
+        title: "Unauthorized",
+        category: "Client Error",
+        description:
+            "The request requires valid authentication credentials."
+    },
+
+    403: {
+        title: "Forbidden",
+        category: "Client Error",
+        description:
+            "The server understood the request but refuses to fulfill it."
+    },
+
+    404: {
+        title: "Not Found",
+        category: "Client Error",
+        description:
+            "The requested resource could not be found."
+    },
+
+    405: {
+        title: "Method Not Allowed",
+        category: "Client Error",
+        description:
+            "The HTTP method used in the request is not allowed for the requested resource."
+    },
+
+    406: {
+        title: "Not Acceptable",
+        category: "Client Error",
+        description:
+            "The server cannot provide a response matching the acceptable representations requested by the client."
+    },
+
+    408: {
+        title: "Request Timeout",
+        category: "Client Error",
+        description:
+            "The server timed out while waiting for the request."
+    },
+
+    409: {
+        title: "Conflict",
+        category: "Client Error",
+        description:
+            "The request conflicts with the current state of the target resource."
+    },
+
+    410: {
+        title: "Gone",
+        category: "Client Error",
+        description:
+            "The requested resource is no longer available and is not expected to become available again."
+    },
+
+    415: {
+        title: "Unsupported Media Type",
+        category: "Client Error",
+        description:
+            "The server does not support the media format of the request data."
+    },
+
+    422: {
+        title: "Unprocessable Content",
+        category: "Client Error",
+        description:
+            "The server understands the request content but cannot process the contained instructions."
+    },
+
+    429: {
+        title: "Too Many Requests",
+        category: "Client Error",
+        description:
+            "The client has sent too many requests within a given amount of time."
+    },
+
+    500: {
+        title: "Internal Server Error",
+        category: "Server Error",
+        description:
+            "The server encountered an unexpected condition that prevented it from completing the request."
+    },
+
+    501: {
+        title: "Not Implemented",
+        category: "Server Error",
+        description:
+            "The server does not support the functionality required to fulfill the request."
+    },
+
+    502: {
+        title: "Bad Gateway",
+        category: "Server Error",
+        description:
+            "A gateway or proxy received an invalid response from an upstream server."
+    },
+
+    503: {
+        title: "Service Unavailable",
+        category: "Server Error",
+        description:
+            "The server is currently unable to handle the request, often because of temporary overload or maintenance."
+    },
+
+    504: {
+        title: "Gateway Timeout",
+        category: "Server Error",
+        description:
+            "A gateway or proxy did not receive a timely response from an upstream server."
+    }
+
+};
+
+const codeInput = document.getElementById("codeInput");
+const result = document.getElementById("result");
+const resultCode = document.getElementById("resultCode");
+const resultTitle = document.getElementById("resultTitle");
+const resultCategory = document.getElementById("resultCategory");
+const resultDescription = document.getElementById("resultDescription");
+const message = document.getElementById("message");
+const codesGrid = document.getElementById("codesGrid");
+
+function renderCodes() {
+
+    codesGrid.innerHTML = "";
+
+    Object.keys(statusCodes).forEach(code => {
+
+        const data = statusCodes[code];
+
+        const card = document.createElement("div");
+
+        card.className = "code-card";
+
+        card.onclick = function () {
+            selectCode(Number(code));
+        };
+
+        card.innerHTML = `
+            <div>
+                <strong>${code}</strong>
+                <span>${data.title}</span>
+            </div>
+            <p>${data.category}</p>
+        `;
+
+        codesGrid.appendChild(card);
+
+    });
+
+}
+
+function searchCode() {
+
+    const value = codeInput.value.trim();
+
+    if (!value) {
+
+        showError("Please enter an HTTP status code.");
+
+        return;
+    }
+
+    const code = Number(value);
+
+    if (!Number.isInteger(code) || code < 100 || code > 599) {
+
+        showError(
+            "Please enter a valid three-digit HTTP status code."
+        );
+
+        return;
+    }
+
+    displayCode(code);
+
+}
+
+function selectCode(code) {
+
+    codeInput.value = code;
+
+    displayCode(code);
+
+}
+
+function displayCode(code) {
+
+    const data = statusCodes[code];
+
+    if (!data) {
+
+        result.style.display = "none";
+
+        showError(
+            "This status code is not included in the current SmartTools reference."
+        );
+
+        return;
+    }
+
+    resultCode.textContent = code;
+    resultTitle.textContent = data.title;
+    resultCategory.textContent = data.category;
+    resultDescription.textContent = data.description;
+
+    result.style.display = "block";
+
+    message.textContent =
+        "✓ Status code information found.";
+
+    message.style.color = "#86efac";
+
+}
+
+function showAll() {
+
+    result.style.display = "none";
+
+    codeInput.value = "";
+
+    message.textContent =
+        "Showing the HTTP status code reference.";
+
+    message.style.color = "#86efac";
+
+    codesGrid.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
+
+codeInput.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        searchCode();
+    }
+
+});
+
+function showError(text) {
+
+    message.textContent = "⚠ " + text;
+    message.style.color = "#fca5a5";
+
+}
+
+function toggleFAQ(button) {
+
+    const answer = button.nextElementSibling;
+
+    const isOpen =
+        answer.style.display === "block";
+
+    document
+        .querySelectorAll(".faq-answer")
+        .forEach(item => {
+            item.style.display = "none";
+        });
+
+    answer.style.display =
+        isOpen ? "none" : "block";
+
+}
+
+renderCodes();
+
+</script>
+
+</body>
+</html>

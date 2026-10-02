@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CSV Analyzer Online - Free Data Analysis Tool | SmartTools</title>
+
+<meta name="description"
+content="Analyze CSV files online for free. View rows, columns, missing values, duplicates, numeric statistics, charts and data previews with SmartTools.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(99,102,241,.18),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(6,182,212,.14),transparent 30%),
+        #07111f;
+    color:#f8fafc;
+    min-height:100vh;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.topbar{
+    text-align:center;
+    padding:9px 15px;
+    background:rgba(15,23,42,.85);
+    border-bottom:1px solid rgba(255,255,255,.07);
+    color:#cbd5e1;
+    font-size:13px;
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    padding:20px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#60a5fa;
+}
+
+.nav{
+    display:flex;
+    gap:25px;
+}
+
+.nav a{
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+.nav a:hover{
+    color:white;
+}
+
+.hero{
+    max-width:950px;
+    margin:auto;
+    padding:75px 20px 50px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:9px 16px;
+    border-radius:999px;
+    border:1px solid rgba(96,165,250,.3);
+    background:rgba(59,130,246,.1);
+    color:#93c5fd;
+    font-size:13px;
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(40px,6vw,68px);
+    line-height:1.05;
+    letter-spacing:-2px;
+    margin-bottom:20px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:760px;
+    margin:auto;
+    color:#94a3b8;
+    font-size:17px;
+    line-height:1.7;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+.upload{
+    text-align:center;
+    padding:45px 25px;
+    border-radius:28px;
+    background:rgba(15,23,42,.82);
+    border:1px solid rgba(255,255,255,.09);
+    box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
+
+.upload-icon{
+    width:70px;
+    height:70px;
+    margin:0 auto 18px;
+    display:grid;
+    place-items:center;
+    border-radius:20px;
+    background:rgba(59,130,246,.13);
+    font-size:32px;
+}
+
+.upload h2{
+    font-size:25px;
+    margin-bottom:9px;
+}
+
+.upload p{
+    color:#94a3b8;
+    margin-bottom:24px;
+}
+
+.file-btn{
+    display:inline-flex;
+    padding:14px 24px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    font-weight:800;
+    transition:.25s;
+}
+
+.file-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 15px 35px rgba(59,130,246,.25);
+}
+
+#fileInput{
+    display:none;
+}
+
+.file-name{
+    margin-top:15px;
+    color:#93c5fd;
+    font-size:14px;
+}
+
+.message{
+    display:none;
+    margin:20px 0;
+    padding:14px 18px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.message.show{
+    display:block;
+}
+
+.success{
+    background:rgba(34,197,94,.1);
+    border:1px solid rgba(34,197,94,.25);
+    color:#86efac;
+}
+
+.error{
+    background:rgba(239,68,68,.1);
+    border:1px solid rgba(239,68,68,.25);
+    color:#fca5a5;
+}
+
+.dashboard{
+    display:none;
+    animation:fadeUp .5s ease;
+}
+
+.dashboard.show{
+    display:block;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:22px;
+}
+
+.stat{
+    padding:23px;
+    border-radius:20px;
+    background:rgba(15,23,42,.8);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.stat small{
+    color:#94a3b8;
+}
+
+.stat strong{
+    display:block;
+    margin-top:8px;
+    font-size:28px;
+}
+
+.panel{
+    margin-top:20px;
+    padding:25px;
+    border-radius:22px;
+    background:rgba(15,23,42,.8);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.panel h2{
+    font-size:21px;
+    margin-bottom:18px;
+}
+
+.table-wrap{
+    overflow:auto;
+    max-height:470px;
+    border-radius:14px;
+}
+
+table{
+    width:100%;
+    min-width:700px;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:12px 14px;
+    text-align:left;
+    font-size:13px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    white-space:nowrap;
+}
+
+th{
+    position:sticky;
+    top:0;
+    background:#172235;
+    color:#bfdbfe;
+}
+
+td{
+    color:#cbd5e1;
+}
+
+.column-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.column-card{
+    padding:20px;
+    border-radius:17px;
+    background:rgba(30,41,59,.55);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.column-card h3{
+    margin-bottom:13px;
+    word-break:break-word;
+}
+
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:7px 0;
+    border-bottom:1px solid rgba(255,255,255,.05);
+    color:#94a3b8;
+    font-size:13px;
+}
+
+.info-row strong{
+    color:#e2e8f0;
+}
+
+.chart-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.chart-box{
+    padding:20px;
+    border-radius:18px;
+    background:rgba(30,41,59,.45);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.chart-box h3{
+    margin-bottom:18px;
+}
+
+.bar-chart{
+    display:flex;
+    align-items:flex-end;
+    gap:8px;
+    height:220px;
+    overflow-x:auto;
+    padding-top:15px;
+}
+
+.bar{
+    min-width:32px;
+    flex:1;
+    max-width:55px;
+    height:var(--height);
+    border-radius:7px 7px 2px 2px;
+    background:linear-gradient(to top,#2563eb,#22d3ee);
+    position:relative;
+}
+
+.bar span{
+    position:absolute;
+    bottom:100%;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:10px;
+    color:#cbd5e1;
+    margin-bottom:5px;
+    white-space:nowrap;
+}
+
+.bar-labels{
+    display:flex;
+    gap:8px;
+    margin-top:8px;
+    overflow-x:auto;
+}
+
+.bar-labels span{
+    min-width:32px;
+    flex:1;
+    max-width:55px;
+    text-align:center;
+    color:#64748b;
+    font-size:10px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.btn{
+    border:none;
+    padding:13px 20px;
+    border-radius:11px;
+    font-weight:800;
+}
+
+.primary{
+    background:#2563eb;
+    color:white;
+}
+
+.secondary{
+    background:rgba(255,255,255,.08);
+    color:#e2e8f0;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.seo{
+    max-width:900px;
+    margin:80px auto;
+    padding:20px;
+}
+
+.seo h2{
+    font-size:32px;
+    margin-bottom:18px;
+}
+
+.seo h3{
+    margin-top:28px;
+    margin-bottom:9px;
+}
+
+.seo p{
+    color:#94a3b8;
+    line-height:1.8;
+    margin-bottom:12px;
+}
+
+footer{
+    margin-top:70px;
+    padding:40px 20px;
+    text-align:center;
+    color:#64748b;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+footer strong{
+    color:#cbd5e1;
+}
+
+@media(max-width:800px){
+
+    .nav{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .column-grid,
+    .chart-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:500px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    .panel{
+        padding:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — Free data analysis tools for everyone.
+</div>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        Smart<span>Tools</span>
+    </a>
+
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="data-analyst.html">Data Analyst</a>
+        <a href="ai-tools.html">AI Tools</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="badge">
+        📊 CSV Data Analyzer
+    </div>
+
+    <h1>
+        Understand your
+        <span class="gradient">
+            CSV data instantly.
+        </span>
+    </h1>
+
+    <p>
+        Upload a CSV file and get an instant overview
+        of rows, columns, missing values, duplicates,
+        data types, statistics and visual insights.
+    </p>
+
+</section>
+
+<div class="container">
+
+<section class="upload">
+
+    <div class="upload-icon">
+        📁
+    </div>
+
+    <h2>
+        Upload your CSV file
+    </h2>
+
+    <p>
+        Your dataset is processed directly in your browser.
+        No server upload is required.
+    </p>
+
+    <label
+        for="fileInput"
+        class="file-btn"
+    >
+        Choose CSV File
+    </label>
+
+    <input
+        id="fileInput"
+        type="file"
+        accept=".csv,text/csv"
+    >
+
+    <div
+        id="fileName"
+        class="file-name"
+    >
+        No file selected
+    </div>
+
+</section>
+
+<div
+    id="message"
+    class="message"
+></div>
+
+
+<section
+    id="dashboard"
+    class="dashboard"
+>
+
+<div class="stats">
+
+    <div class="stat">
+        <small>Rows</small>
+        <strong id="rowCount">0</strong>
+    </div>
+
+    <div class="stat">
+        <small>Columns</small>
+        <strong id="columnCount">0</strong>
+    </div>
+
+    <div class="stat">
+        <small>Missing Cells</small>
+        <strong id="missingCount">0</strong>
+    </div>
+
+    <div class="stat">
+        <small>Duplicate Rows</small>
+        <strong id="duplicateCount">0</strong>
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+    <h2>
+        Dataset Overview
+    </h2>
+
+    <div
+        id="columnGrid"
+        class="column-grid"
+    ></div>
+
+</div>
+
+
+<div class="panel">
+
+    <h2>
+        Data Visualization
+    </h2>
+
+    <div class="chart-grid">
+
+        <div class="chart-box">
+
+            <h3>
+                Numeric Data
+            </h3>
+
+            <div
+                id="numericChart"
+                class="bar-chart"
+            ></div>
+
+            <div
+                id="numericLabels"
+                class="bar-labels"
+            ></div>
+
+        </div>
+
+
+        <div class="chart-box">
+
+            <h3>
+                Missing Values by Column
+            </h3>
+
+            <div
+                id="missingChart"
+                class="bar-chart"
+            ></div>
+
+            <div
+                id="missingLabels"
+                class="bar-labels"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="panel">
+
+    <h2>
+        Data Preview
+    </h2>
+
+    <div class="table-wrap">
+
+        <table id="previewTable"></table>
+
+    </div>
+
+</div>
+
+
+<div class="actions">
+
+    <button
+        class="btn primary"
+        id="downloadReport"
+    >
+        📥 Download Analysis Report
+    </button>
+
+    <button
+        class="btn secondary"
+        id="clearBtn"
+    >
+        Clear
+    </button>
+
+</div>
+
+</section>
+
+</div>
+
+
+<section class="seo">
+
+<h2>
+    Free Online CSV Analyzer
+</h2>
+
+<p>
+    SmartTools CSV Analyzer helps users quickly
+    understand the structure and quality of a CSV
+    dataset without installing complicated software.
+</p>
+
+<h3>
+    What does the CSV Analyzer check?
+</h3>
+
+<p>
+    The analyzer checks row and column counts,
+    missing cells, duplicate records, column data
+    types, numeric statistics and provides a preview
+    of the uploaded dataset.
+</p>
+
+<h3>
+    Is my CSV uploaded to a server?
+</h3>
+
+<p>
+    No server upload is required for the analysis.
+    The file is read and processed locally in the
+    browser.
+</p>
+
+<h3>
+    Who can use this tool?
+</h3>
+
+<p>
+    Students, data analysts, developers, researchers
+    and anyone working with CSV or spreadsheet data
+    can use this tool for quick data inspection.
+</p>
+
+</section>
+
+
+<footer>
+
+<p>
+    © <span id="year"></span>
+    <strong>SmartTools</strong>.
+    Free tools for everyday work.
+</p>
+
+<p style="margin-top:10px;">
+    Created & maintained by Sukanya Shahare.
+</p>
+
+</footer>
+
+
+<script>
+
+let headers = [];
+let data = [];
+let fileName = "";
+
+const fileInput =
+document.getElementById("fileInput");
+
+const dashboard =
+document.getElementById("dashboard");
+
+const message =
+document.getElementById("message");
+
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+
+function showMessage(text,type){
+
+    message.textContent = text;
+
+    message.className =
+    "message show " + type;
+
+}
+
+
+function safe(value){
+
+    return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function detectDelimiter(text){
+
+    const firstLine =
+    text.split(/\r?\n/)[0];
+
+    const candidates = [",",";","\t","|"];
+
+    let best = ",";
+    let bestCount = 0;
+
+    candidates.forEach(separator=>{
+
+        const count =
+        firstLine.split(separator).length - 1;
+
+        if(count > bestCount){
+
+            bestCount = count;
+            best = separator;
+
+        }
+
+    });
+
+    return best;
+
+}
+
+
+function parseCSV(text){
+
+    const delimiter =
+    detectDelimiter(text);
+
+    const rows = [];
+
+    let row = [];
+    let cell = "";
+    let quoted = false;
+
+
+    for(
+        let i=0;
+        i<text.length;
+        i++
+    ){
+
+        const char = text[i];
+        const next = text[i+1];
+
+
+        if(char === '"'){
+
+            if(quoted && next === '"'){
+
+                cell += '"';
+                i++;
+
+            }else{
+
+                quoted = !quoted;
+
+            }
+
+        }
+        else if(
+            char === delimiter &&
+            !quoted
+        ){
+
+            row.push(cell);
+            cell = "";
+
+        }
+        else if(
+            (char === "\n" || char === "\r") &&
+            !quoted
+        ){
+
+            if(char === "\r" && next === "\n"){
+                i++;
+            }
+
+            row.push(cell);
+            cell = "";
+
+            if(
+                row.some(
+                    value => value.trim() !== ""
+                )
+            ){
+
+                rows.push(row);
+
+            }
+
+            row = [];
+
+        }
+        else{
+
+            cell += char;
+
+        }
+
+    }
+
+
+    if(cell !== "" || row.length){
+
+        row.push(cell);
+
+        if(
+            row.some(
+                value => value.trim() !== ""
+            )
+        ){
+
+            rows.push(row);
+
+        }
+
+    }
+
+    return rows;
+
+}
+
+
+function isNumeric(values){
+
+    let valid = 0;
+
+    values.forEach(value=>{
+
+        if(
+            String(value).trim() !== "" &&
+            !isNaN(Number(value))
+        ){
+
+            valid++;
+
+        }
+
+    });
+
+    return values.length > 0 &&
+    valid / values.length >= .8;
+
+}
+
+
+function getColumnInfo(){
+
+    return headers.map(
+        (header,index)=>{
+
+            const values =
+            data.map(row=>row[index] ?? "");
+
+            const missing =
+            values.filter(
+                value =>
+                String(value).trim() === ""
+            ).length;
+
+            const numeric =
+            isNumeric(values);
+
+            let min = null;
+            let max = null;
+            let average = null;
+
+            if(numeric){
+
+                const numbers =
+                values
+                .filter(
+                    value =>
+                    String(value).trim() !== ""
+                )
+                .map(Number);
+
+                if(numbers.length){
+
+                    min = Math.min(...numbers);
+                    max = Math.max(...numbers);
+
+                    average =
+                    numbers.reduce(
+                        (sum,value)=>
+                        sum + value,
+                        0
+                    ) / numbers.length;
+
+                }
+
+            }
+
+            return {
+                header,
+                values,
+                missing,
+                numeric,
+                min,
+                max,
+                average
+            };
+
+        }
+    );
+
+}
+
+
+function countDuplicates(){
+
+    const seen = new Set();
+    let duplicates = 0;
+
+    data.forEach(row=>{
+
+        const key =
+        row.join("|||");
+
+        if(seen.has(key)){
+
+            duplicates++;
+
+        }else{
+
+            seen.add(key);
+
+        }
+
+    });
+
+    return duplicates;
+
+}
+
+
+function renderColumnInfo(){
+
+    const grid =
+    document.getElementById("columnGrid");
+
+    const info =
+    getColumnInfo();
+
+
+    grid.innerHTML = info.map(column=>{
+
+        return `
+        <div class="column-card">
+
+            <h3>
+                ${safe(column.header)}
+            </h3>
+
+            <div class="info-row">
+                <span>Type</span>
+                <strong>
+                    ${column.numeric ? "Numeric" : "Text"}
+                </strong>
+            </div>
+
+            <div class="info-row">
+                <span>Missing</span>
+                <strong>
+                    ${column.missing}
+                </strong>
+            </div>
+
+            ${
+                column.numeric
+                ?
+                `
+                <div class="info-row">
+                    <span>Minimum</span>
+                    <strong>
+                        ${formatNumber(column.min)}
+                    </strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Maximum</span>
+                    <strong>
+                        ${formatNumber(column.max)}
+                    </strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Average</span>
+                    <strong>
+                        ${formatNumber(column.average)}
+                    </strong>
+                </div>
+                `
+                :
+                `
+                <div class="info-row">
+                    <span>Unique values</span>
+                    <strong>
+                        ${new Set(column.values).size}
+                    </strong>
+                </div>
+                `
+            }
+
+        </div>
+        `;
+
+    }).join("");
+
+}
+
+
+function formatNumber(value){
+
+    if(value === null || value === undefined){
+        return "-";
+    }
+
+    return Number(value)
+    .toLocaleString(
+        undefined,
+        {
+            maximumFractionDigits:2
+        }
+    );
+
+}
+
+
+function renderChart(
+    elementId,
+    labelsId,
+    labels,
+    values
+){
+
+    const chart =
+    document.getElementById(elementId);
+
+    const labelBox =
+    document.getElementById(labelsId);
+
+
+    if(!values.length){
+
+        chart.innerHTML =
+        "<div style='color:#64748b;padding:20px'>No data available</div>";
+
+        labelBox.innerHTML = "";
+
+        return;
+
+    }
+
+
+    const max =
+    Math.max(...values,1);
+
+
+    chart.innerHTML =
+    values.map(
+        (value,index)=>{
+
+            const height =
+            Math.max(
+                8,
+                (value / max) * 100
+            );
+
+            return `
+                <div
+                    class="bar"
+                    style="--height:${height}%"
+                    title="${safe(labels[index])}: ${value}"
+                >
+                    <span>${formatNumber(value)}</span>
+                </div>
+            `;
+
+        }
+    ).join("");
+
+
+    labelBox.innerHTML =
+    labels.map(
+        label =>
+        `<span title="${safe(label)}">
+            ${safe(label)}
+        </span>`
+    ).join("");
+
+}
+
+
+function renderCharts(){
+
+    const info =
+    getColumnInfo();
+
+
+    const numeric =
+    info.filter(
+        column => column.numeric
+    ).slice(0,12);
+
+
+    renderChart(
+        "numericChart",
+        "numericLabels",
+        numeric.map(
+            column => column.header
+        ),
+        numeric.map(
+            column =>
+            column.average ?? 0
+        )
+    );
+
+
+    const missing =
+    info.slice(0,12);
+
+
+    renderChart(
+        "missingChart",
+        "missingLabels",
+        missing.map(
+            column => column.header
+        ),
+        missing.map(
+            column => column.missing
+        )
+    );
+
+}
+
+
+function renderPreview(){
+
+    const table =
+    document.getElementById("previewTable");
+
+
+    let html =
+    "<thead><tr>";
+
+
+    headers.forEach(header=>{
+
+        html += `
+            <th>
+                ${safe(header)}
+            </th>
+        `;
+
+    });
+
+
+    html += "</tr></thead><tbody>";
+
+
+    data.slice(0,200)
+    .forEach(row=>{
+
+        html += "<tr>";
+
+        headers.forEach(
+            (_,index)=>{
+
+                html += `
+                    <td>
+                        ${safe(
+                            row[index] ?? ""
+                        )}
+                    </td>
+                `;
+
+            }
+        );
+
+        html += "</tr>";
+
+    });
+
+
+    html += "</tbody>";
+
+    table.innerHTML = html;
+
+}
+
+
+function analyze(rows){
+
+    if(rows.length < 2){
+
+        throw new Error(
+            "CSV file does not contain enough data."
+        );
+
+    }
+
+
+    headers =
+    rows[0].map(
+        (value,index)=>
+        value.trim() ||
+        `Column ${index+1}`
+    );
+
+
+    data =
+    rows.slice(1).map(row=>{
+
+        const fixed = [];
+
+        for(
+            let i=0;
+            i<headers.length;
+            i++
+        ){
+
+            fixed.push(
+                row[i] ?? ""
+            );
+
+        }
+
+        return fixed;
+
+    });
+
+
+    const missing =
+    data.reduce(
+        (total,row)=>
+        total +
+        row.filter(
+            value =>
+            String(value).trim() === ""
+        ).length,
+        0
+    );
+
+
+    const duplicates =
+    countDuplicates();
+
+
+    document.getElementById("rowCount")
+    .textContent =
+    data.length;
+
+
+    document.getElementById("columnCount")
+    .textContent =
+    headers.length;
+
+
+    document.getElementById("missingCount")
+    .textContent =
+    missing;
+
+
+    document.getElementById("duplicateCount")
+    .textContent =
+    duplicates;
+
+
+    renderColumnInfo();
+
+    renderCharts();
+
+    renderPreview();
+
+
+    dashboard.classList.add("show");
+
+
+    showMessage(
+        "CSV analyzed successfully.",
+        "success"
+    );
+
+
+    dashboard.scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+fileInput.addEventListener(
+"change",
+function(){
+
+    const file =
+    fileInput.files[0];
+
+    if(!file){
+        return;
+    }
+
+
+    if(
+        !file.name
+        .toLowerCase()
+        .endsWith(".csv")
+    ){
+
+        showMessage(
+            "Please select a CSV file.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    fileName = file.name;
+
+
+    document.getElementById("fileName")
+    .textContent =
+    "Selected: " + file.name;
+
+
+    const reader =
+    new FileReader();
+
+
+    reader.onload =
+    function(event){
+
+        try{
+
+            const rows =
+            parseCSV(event.target.result);
+
+            analyze(rows);
+
+        }
+        catch(error){
+
+            console.error(error);
+
+            showMessage(
+                "Could not analyze this CSV file.",
+                "error"
+            );
+
+        }
+
+    };
+
+
+    reader.readAsText(file);
+
+});
+
+
+document.getElementById(
+"downloadReport"
+).addEventListener(
+"click",
+function(){
+
+    if(!data.length){
+
+        showMessage(
+            "Upload a CSV file first.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const info =
+    getColumnInfo();
+
+
+    const missing =
+    document.getElementById(
+        "missingCount"
+    ).textContent;
+
+
+    const duplicates =
+    document.getElementById(
+        "duplicateCount"
+    ).textContent;
+
+
+    let report = "";
+
+
+    report +=
+    "SMARTTOOLS CSV ANALYSIS REPORT\n";
+
+    report +=
+    "================================\n\n";
+
+
+    report +=
+    "File: " + fileName + "\n";
+
+    report +=
+    "Rows: " + data.length + "\n";
+
+    report +=
+    "Columns: " + headers.length + "\n";
+
+    report +=
+    "Missing Cells: " + missing + "\n";
+
+    report +=
+    "Duplicate Rows: " + duplicates + "\n\n";
+
+
+    report +=
+    "COLUMN ANALYSIS\n";
+
+    report +=
+    "---------------\n\n";
+
+
+    info.forEach(column=>{
+
+        report +=
+        "Column: " +
+        column.header +
+        "\n";
+
+        report +=
+        "Type: " +
+        (
+            column.numeric
+            ? "Numeric"
+            : "Text"
+        ) +
+        "\n";
+
+        report +=
+        "Missing: " +
+        column.missing +
+        "\n";
+
+
+        if(column.numeric){
+
+            report +=
+            "Minimum: " +
+            formatNumber(column.min) +
+            "\n";
+
+            report +=
+            "Maximum: " +
+            formatNumber(column.max) +
+            "\n";
+
+            report +=
+            "Average: " +
+            formatNumber(column.average) +
+            "\n";
+
+        }else{
+
+            report +=
+            "Unique values: " +
+            new Set(column.values).size +
+            "\n";
+
+        }
+
+
+        report += "\n";
+
+    });
+
+
+    const blob =
+    new Blob(
+        [report],
+        {
+            type:"text/plain;charset=utf-8"
+        }
+    );
+
+
+    const url =
+    URL.createObjectURL(blob);
+
+
+    const link =
+    document.createElement("a");
+
+
+    link.href = url;
+
+    link.download =
+    fileName.replace(
+        /\.csv$/i,
+        ""
+    ) +
+    "-analysis-report.txt";
+
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+
+    showMessage(
+        "Analysis report downloaded.",
+        "success"
+    );
+
+});
+
+
+document.getElementById(
+"clearBtn"
+).addEventListener(
+"click",
+function(){
+
+    headers = [];
+    data = [];
+    fileName = "";
+
+    fileInput.value = "";
+
+    document.getElementById(
+        "fileName"
+    ).textContent =
+    "No file selected";
+
+
+    dashboard.classList.remove(
+        "show"
+    );
+
+
+    message.className =
+    "message";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+</script>
+
+</body>
+</html>

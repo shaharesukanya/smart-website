@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JWT Decoder Online | Decode JSON Web Token - SmartTools</title>
+
+    <meta name="description"
+          content="Free online JWT Decoder. Decode JSON Web Token header and payload instantly in your browser. No server upload required.">
+
+    <meta name="keywords"
+          content="JWT decoder, JWT token decoder, JSON Web Token decoder, decode JWT online, JWT parser, developer tools">
+
+    <meta name="author" content="Sukanya Shahare">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+          href="https://yourdomain.com/jwt-decoder.html">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(99,102,241,.18), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(14,165,233,.14), transparent 30%),
+                #070b14;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            background: linear-gradient(90deg, #111827, #172554, #111827);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7,11,20,.84);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .nav-inner {
+            max-width: 1180px;
+            margin: auto;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #818cf8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #a5b4fc;
+        }
+
+        .hero {
+            max-width: 1050px;
+            margin: auto;
+            padding: 70px 20px 35px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(129,140,248,.25);
+            background: rgba(99,102,241,.09);
+            color: #a5b4fc;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #818cf8, #38bdf8);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 730px;
+            margin: auto;
+            color: #94a3b8;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .tool-wrapper {
+            max-width: 1120px;
+            margin: 25px auto 70px;
+            padding: 0 20px;
+        }
+
+        .tool-card {
+            background: rgba(15,23,42,.82);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 30px 80px rgba(0,0,0,.3);
+        }
+
+        .card-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card-title h2 {
+            font-size: 22px;
+        }
+
+        .privacy {
+            color: #86efac;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .notice {
+            padding: 14px 16px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            background: rgba(245,158,11,.08);
+            border: 1px solid rgba(245,158,11,.18);
+            color: #fcd34d;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .field-label {
+            display: block;
+            color: #cbd5e1;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 9px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 210px;
+            resize: vertical;
+            padding: 18px;
+            border-radius: 16px;
+            border: 1px solid #263247;
+            background: #080d18;
+            color: #f8fafc;
+            outline: none;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.65;
+            transition: .25s ease;
+        }
+
+        textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99,102,241,.1);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .stat {
+            background: rgba(30,41,59,.65);
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 14px;
+            padding: 15px;
+        }
+
+        .stat small {
+            display: block;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .stat strong {
+            font-size: 18px;
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        button {
+            border: 0;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-weight: 700;
+            cursor: pointer;
+            color: white;
+            background: #1e293b;
+            border: 1px solid #334155;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            background: #293548;
+        }
+
+        .primary {
+            background: linear-gradient(135deg, #6366f1, #2563eb);
+            border: none;
+        }
+
+        .primary:hover {
+            background: linear-gradient(135deg, #818cf8, #3b82f6);
+        }
+
+        .danger {
+            background: #3f1d2e;
+            border-color: #6b2948;
+        }
+
+        .message {
+            min-height: 22px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .result-card {
+            background: #080d18;
+            border: 1px solid #263247;
+            border-radius: 18px;
+            padding: 18px;
+        }
+
+        .result-card h3 {
+            margin-bottom: 12px;
+            font-size: 17px;
+        }
+
+        pre {
+            min-height: 210px;
+            max-height: 450px;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            padding: 17px;
+            border-radius: 13px;
+            background: #050911;
+            color: #cbd5e1;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .info-card {
+            padding: 20px;
+            border-radius: 18px;
+            background: rgba(15,23,42,.75);
+            border: 1px solid rgba(255,255,255,.07);
+        }
+
+        .info-card h3 {
+            margin-bottom: 9px;
+            font-size: 17px;
+        }
+
+        .info-card p {
+            color: #94a3b8;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 0 auto 70px;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            margin-bottom: 35px;
+        }
+
+        .content-section h2 {
+            font-size: 28px;
+            margin-bottom: 14px;
+        }
+
+        .content-section p,
+        .content-section li {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            padding-left: 22px;
+        }
+
+        .faq {
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 15px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            background: rgba(15,23,42,.65);
+        }
+
+        .faq button {
+            width: 100%;
+            text-align: left;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            padding: 17px;
+            font-size: 15px;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 17px 17px;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .cta {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 24px;
+            background: linear-gradient(
+                135deg,
+                rgba(79,70,229,.18),
+                rgba(14,165,233,.12)
+            );
+            border: 1px solid rgba(129,140,248,.15);
+        }
+
+        .cta h2 {
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding: 25px 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats,
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .tool-card {
+                padding: 18px;
+            }
+
+            .stats,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-title {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            textarea {
+                min-height: 200px;
+            }
+
+            .button-row button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="topbar">
+    SmartTools — simple tools for everyday needs.
+</div>
+
+<nav class="navbar">
+
+    <div class="nav-inner">
+
+        <a href="index.html" class="logo">
+            Smart<span>Tools</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="data-analyst.html">Data Tools</a>
+            <a href="ai-tools.html">AI Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </div>
+
+</nav>
+
+<section class="hero">
+
+    <div class="badge">
+        API & Developer Utility
+    </div>
+
+    <h1>
+        JWT <span>Decoder</span>
+    </h1>
+
+    <p>
+        Decode the header and payload of a JSON Web Token instantly in your
+        browser. No server upload and no token verification is performed.
+    </p>
+
+</section>
+
+<main class="tool-wrapper">
+
+    <div class="tool-card">
+
+        <div class="card-title">
+
+            <h2>JSON Web Token Decoder</h2>
+
+            <div class="privacy">
+                ✓ Browser based
+            </div>
+
+        </div>
+
+        <div class="notice">
+            ⚠️ <strong>Security note:</strong>
+            This tool only decodes JWT header and payload data.
+            It does NOT verify the signature or prove that a token is valid.
+            Never paste sensitive production tokens into tools unless you
+            understand the security implications.
+        </div>
+
+        <label class="field-label" for="jwtInput">
+            JWT Token
+        </label>
+
+        <textarea
+            id="jwtInput"
+            placeholder="Paste your JWT token here..."
+        ></textarea>
+
+        <div class="stats">
+
+            <div class="stat">
+                <small>Token Length</small>
+                <strong id="tokenLength">0</strong>
+            </div>
+
+            <div class="stat">
+                <small>Parts</small>
+                <strong id="partsCount">0</strong>
+            </div>
+
+            <div class="stat">
+                <small>Algorithm</small>
+                <strong id="algorithm">—</strong>
+            </div>
+
+            <div class="stat">
+                <small>Status</small>
+                <strong id="status">Waiting</strong>
+            </div>
+
+        </div>
+
+        <div class="button-row">
+
+            <button class="primary" onclick="decodeJWT()">
+                Decode JWT
+            </button>
+
+            <button onclick="sampleJWT()">
+                Sample JWT
+            </button>
+
+            <button onclick="copyHeader()">
+                Copy Header
+            </button>
+
+            <button onclick="copyPayload()">
+                Copy Payload
+            </button>
+
+            <button onclick="clearTool()">
+                Clear
+            </button>
+
+        </div>
+
+        <div class="message" id="message"></div>
+
+        <div class="result-grid">
+
+            <div class="result-card">
+
+                <h3>JWT Header</h3>
+
+                <pre id="headerOutput">No header decoded yet.</pre>
+
+            </div>
+
+            <div class="result-card">
+
+                <h3>JWT Payload</h3>
+
+                <pre id="payloadOutput">No payload decoded yet.</pre>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <h3>🔎 Decode</h3>
+
+            <p>
+                Reads the Base64URL encoded header and payload from a JWT
+                and displays them as formatted JSON.
+            </p>
+
+        </div>
+
+        <div class="info-card">
+
+            <h3>🧩 JWT Structure</h3>
+
+            <p>
+                A standard signed JWT generally contains three sections:
+                header, payload and signature.
+            </p>
+
+        </div>
+
+        <div class="info-card">
+
+            <h3>🔐 No Verification</h3>
+
+            <p>
+                Decoding a token does not verify its signature. The displayed
+                information should therefore not be treated as authenticated.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+<section class="content">
+
+    <div class="content-section">
+
+        <h2>What is a JWT?</h2>
+
+        <p>
+            JWT stands for JSON Web Token. It is a compact format commonly
+            used to transfer claims between systems. JWTs are frequently
+            encountered in authentication and API applications.
+        </p>
+
+    </div>
+
+    <div class="content-section">
+
+        <h2>JWT Structure</h2>
+
+        <p>
+            A typical JWT contains three Base64URL-encoded sections separated
+            by periods:
+        </p>
+
+        <ul>
+            <li>Header — contains token metadata such as the algorithm.</li>
+            <li>Payload — contains claims and application data.</li>
+            <li>Signature — used to verify that the token was not altered.</li>
+        </ul>
+
+    </div>
+
+    <div class="content-section">
+
+        <h2>Important Security Information</h2>
+
+        <p>
+            JWT decoding and JWT verification are different operations.
+            Anyone who has a JWT can usually decode its header and payload.
+            Therefore, decoded data should not automatically be considered
+            trustworthy. Signature verification requires the appropriate
+            cryptographic verification process and key.
+        </p>
+
+    </div>
+
+    <div class="content-section">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                Can this tool verify a JWT?
+            </button>
+
+            <div class="faq-answer">
+                No. This tool only decodes the header and payload. It does
+                not verify the JWT signature.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                Is JWT encrypted?
+            </button>
+
+            <div class="faq-answer">
+                A standard signed JWT is generally encoded, not encrypted.
+                Its header and payload can usually be decoded without a
+                secret key.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                What are the three parts of a JWT?
+            </button>
+
+            <div class="faq-answer">
+                Header, payload and signature are the three sections of a
+                standard signed JWT.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                Is this JWT decoder free?
+            </button>
+
+            <div class="faq-answer">
+                Yes. The SmartTools JWT Decoder is free to use.
+            </div>
+
+        </div>
+
+        <div class="faq">
+
+            <button onclick="toggleFAQ(this)">
+                Is my JWT uploaded to a server?
+            </button>
+
+            <div class="faq-answer">
+                The decoding in this page is performed locally in your
+                browser. No backend request is required for decoding.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cta">
+
+    <h2>Explore More Developer Tools</h2>
+
+    <p>
+        Work with JSON, CSV, SQL, Excel, Base64, URLs and other developer
+        utilities.
+    </p>
+
+    <a href="data-analyst.html">
+        <button class="primary">
+            Explore Data Tools →
+        </button>
+    </a>
+
+</section>
+
+<footer>
+    © 2026 SmartTools · Built by Sukanya Shahare
+</footer>
+
+<script>
+
+const jwtInput = document.getElementById("jwtInput");
+
+const tokenLength = document.getElementById("tokenLength");
+const partsCount = document.getElementById("partsCount");
+const algorithm = document.getElementById("algorithm");
+const status = document.getElementById("status");
+
+const headerOutput = document.getElementById("headerOutput");
+const payloadOutput = document.getElementById("payloadOutput");
+
+const message = document.getElementById("message");
+
+jwtInput.addEventListener("input", function () {
+
+    tokenLength.textContent = jwtInput.value.trim().length;
+
+    const parts = jwtInput.value.trim()
+        ? jwtInput.value.trim().split(".").length
+        : 0;
+
+    partsCount.textContent = parts;
+
+});
+
+function base64UrlDecode(value) {
+
+    let base64 = value
+        .replace(/-/g, "+")
+        .replace(/_/g, "/");
+
+    while (base64.length % 4 !== 0) {
+        base64 += "=";
+    }
+
+    const binary = atob(base64);
+
+    const bytes = Uint8Array.from(
+        binary,
+        char => char.charCodeAt(0)
+    );
+
+    return new TextDecoder("utf-8").decode(bytes);
+
+}
+
+function decodeJWT() {
+
+    const token = jwtInput.value.trim();
+
+    if (!token) {
+
+        showError("Please paste a JWT token first.");
+
+        return;
+    }
+
+    const parts = token.split(".");
+
+    tokenLength.textContent = token.length;
+    partsCount.textContent = parts.length;
+
+    if (parts.length !== 3) {
+
+        status.textContent = "Invalid";
+
+        showError(
+            "A standard JWT should contain 3 sections separated by dots."
+        );
+
+        return;
+    }
+
+    try {
+
+        const headerText = base64UrlDecode(parts[0]);
+        const payloadText = base64UrlDecode(parts[1]);
+
+        const header = JSON.parse(headerText);
+        const payload = JSON.parse(payloadText);
+
+        headerOutput.textContent =
+            JSON.stringify(header, null, 2);
+
+        payloadOutput.textContent =
+            JSON.stringify(payload, null, 2);
+
+        algorithm.textContent =
+            header.alg || "—";
+
+        status.textContent = "Decoded";
+
+        showSuccess(
+            "JWT header and payload decoded successfully."
+        );
+
+    } catch (error) {
+
+        headerOutput.textContent =
+            "Unable to decode header.";
+
+        payloadOutput.textContent =
+            "Unable to decode payload.";
+
+        algorithm.textContent = "—";
+        status.textContent = "Error";
+
+        showError(
+            "Invalid JWT structure or invalid JSON/Base64URL data."
+        );
+
+    }
+
+}
+
+function sampleJWT() {
+
+    /*
+     * Example token only.
+     * It is NOT a real authenticated production token.
+     */
+
+    jwtInput.value =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9." +
+        "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlN1a2FueWEiLCJpYXQiOjE3MDAwMDAwMDB9." +
+        "example-signature";
+
+    tokenLength.textContent =
+        jwtInput.value.length;
+
+    partsCount.textContent = "3";
+
+    headerOutput.textContent =
+        "Click “Decode JWT” to decode the sample.";
+
+    payloadOutput.textContent =
+        "Click “Decode JWT” to decode the sample.";
+
+    algorithm.textContent = "—";
+    status.textContent = "Ready";
+
+    showSuccess("Sample JWT loaded.");
+
+}
+
+async function copyHeader() {
+
+    const text = headerOutput.textContent;
+
+    if (!text || text === "No header decoded yet.") {
+
+        showError("Decode a JWT first.");
+
+        return;
+    }
+
+    await copyText(text);
+
+}
+
+async function copyPayload() {
+
+    const text = payloadOutput.textContent;
+
+    if (!text || text === "No payload decoded yet.") {
+
+        showError("Decode a JWT first.");
+
+        return;
+    }
+
+    await copyText(text);
+
+}
+
+async function copyText(text) {
+
+    try {
+
+        await navigator.clipboard.writeText(text);
+
+        showSuccess("Copied to clipboard.");
+
+    } catch (error) {
+
+        const temp = document.createElement("textarea");
+
+        temp.value = text;
+
+        document.body.appendChild(temp);
+
+        temp.select();
+
+        document.execCommand("copy");
+
+        temp.remove();
+
+        showSuccess("Copied to clipboard.");
+
+    }
+
+}
+
+function clearTool() {
+
+    jwtInput.value = "";
+
+    tokenLength.textContent = "0";
+    partsCount.textContent = "0";
+    algorithm.textContent = "—";
+    status.textContent = "Waiting";
+
+    headerOutput.textContent =
+        "No header decoded yet.";
+
+    payloadOutput.textContent =
+        "No payload decoded yet.";
+
+    message.textContent = "";
+
+}
+
+function showSuccess(text) {
+
+    message.textContent = "✓ " + text;
+
+    message.style.color = "#86efac";
+
+}
+
+function showError(text) {
+
+    message.textContent = "⚠ " + text;
+
+    message.style.color = "#fca5a5";
+
+    status.textContent = "Error";
+
+}
+
+function toggleFAQ(button) {
+
+    const answer = button.nextElementSibling;
+
+    const isOpen =
+        answer.style.display === "block";
+
+    document
+        .querySelectorAll(".faq-answer")
+        .forEach(item => {
+            item.style.display = "none";
+        });
+
+    answer.style.display =
+        isOpen ? "none" : "block";
+
+}
+
+</script>
+
+</body>
+</html>

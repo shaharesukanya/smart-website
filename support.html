@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Support SmartTools | Help Keep SmartTools Free</title>
+
+    <meta
+        name="description"
+        content="Support SmartTools and help us continue building free online calculators, converters and useful productivity tools."
+    >
+
+    <meta name="robots" content="index, follow">
+
+    <link
+        rel="canonical"
+        href="https://shaharesukanya.github.io/smart-website/support.html"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family:
+                Inter,
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f7f8ff,
+                    #ffffff 45%,
+                    #f5f7ff
+                );
+
+            color: #202635;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        header {
+            background: rgba(255,255,255,.96);
+            border-bottom: 1px solid #e8eaf1;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .brand {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -.6px;
+        }
+
+        .brand span {
+            color: #635bff;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #596274;
+            transition: .2s ease;
+        }
+
+        nav a:hover {
+            color: #635bff;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 85px 0 45px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: #ecebff;
+            color: #5d55e8;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .7px;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: clamp(36px, 6vw, 62px);
+            line-height: 1.08;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 20px auto 0;
+            color: #697386;
+            font-size: 17px;
+        }
+
+        /* MAIN CARD */
+
+        .support-section {
+            padding: 30px 0 85px;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e6e8ef;
+            border-radius: 25px;
+            padding: 32px;
+            box-shadow:
+                0 22px 60px rgba(35, 42, 70, .08);
+        }
+
+        .card h2 {
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #687285;
+            font-size: 15px;
+        }
+
+        /* PAYMENT CARDS */
+
+        .payment-card {
+            margin-top: 22px;
+            padding: 22px;
+            border: 1px solid #e6e8ef;
+            border-radius: 20px;
+            background: #fafbff;
+        }
+
+        .payment-card h3 {
+            font-size: 19px;
+            margin-bottom: 7px;
+        }
+
+        .payment-card p {
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .payment-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 20px;
+            border-radius: 13px;
+            background: #635bff;
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            transition: .2s ease;
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 12px 25px rgba(99,91,255,.25);
+        }
+
+        .disabled-btn {
+            background: #dfe2ea;
+            color: #7b8495;
+            cursor: not-allowed;
+        }
+
+        /* RIGHT */
+
+        .ad-box {
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #cdd2df;
+            border-radius: 20px;
+            background: #fafbfc;
+            color: #8891a2;
+            text-align: center;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .ad-box strong {
+            display: block;
+            color: #687285;
+            margin-bottom: 8px;
+        }
+
+        .info-list {
+            margin-top: 22px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 14px;
+            border-radius: 14px;
+            background: #f7f8fc;
+        }
+
+        .info-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ecebff;
+            color: #635bff;
+            font-weight: 800;
+            flex: 0 0 30px;
+        }
+
+        .info-item strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .info-item span {
+            display: block;
+            font-size: 12px;
+            color: #7b8495;
+        }
+
+        /* CTA */
+
+        .bottom-cta {
+            margin-top: 25px;
+            padding: 35px;
+            text-align: center;
+            border-radius: 24px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #f0efff,
+                    #f7f8ff
+                );
+            border: 1px solid #e5e3ff;
+        }
+
+        .bottom-cta h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .bottom-cta p {
+            max-width: 650px;
+            margin: auto;
+            color: #687285;
+            font-size: 14px;
+        }
+
+        .view-tools {
+            display: inline-flex;
+            margin-top: 20px;
+            padding: 13px 20px;
+            border-radius: 12px;
+            background: #202635;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 20px;
+            padding: 55px 0 25px;
+            background: #171b28;
+            color: #ffffff;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 14px;
+            font-size: 18px;
+        }
+
+        footer p,
+        footer a {
+            color: #aeb5c5;
+            font-size: 14px;
+        }
+
+        footer a {
+            display: block;
+            margin-top: 9px;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #303545;
+            color: #8e96a8;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .header-inner {
+                min-height: 68px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a:nth-child(n+3) {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .card {
+                padding: 23px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="container header-inner">
+
+        <a href="index.html" class="brand">
+            Smart<span>Tools</span>
+        </a>
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="smarttools-dashboard.html">
+                Tools
+            </a>
+
+            <a href="guides.html">
+                Guides
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <span class="badge">
+                SUPPORT SMARTTOOLS
+            </span>
+
+            <h1>
+                Help Us Keep SmartTools Free
+            </h1>
+
+            <p>
+                SmartTools is built to provide useful calculators,
+                converters and productivity tools for everyday needs.
+                Your support can help us maintain and improve the website.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUPPORT AREA -->
+
+    <section class="support-section">
+
+        <div class="container">
+
+            <div class="support-grid">
+
+
+                <!-- LEFT -->
+
+                <div class="card">
+
+                    <h2>
+                        Support SmartTools
+                    </h2>
+
+                    <p>
+                        We are building SmartTools as a useful collection
+                        of simple and free online tools. You can support
+                        the project through the payment options provided here.
+                    </p>
+
+
+                    <div class="payment-card">
+
+                        <h3>
+                            💳 Online Payment
+                        </h3>
+
+                        <p>
+                            Add your secure payment-link URL below after
+                            creating a payment link with your payment provider.
+                        </p>
+
+                        <!--
+                        IMPORTANT:
+
+                        Replace the # below with YOUR real payment link.
+
+                        Example:
+
+                        https://rzp.io/l/your-payment-link
+
+                        Do NOT put your bank account number here.
+                        -->
+
+                        <a
+                            href="#"
+                            class="payment-btn disabled-btn"
+                            onclick="showPaymentMessage(event)"
+                        >
+                            Payment Link Coming Soon
+                        </a>
+
+                    </div>
+
+
+                    <div class="payment-card">
+
+                        <h3>
+                            ❤️ Every Contribution Helps
+                        </h3>
+
+                        <p>
+                            Your contribution can help with hosting,
+                            maintenance, new tools and continued improvements.
+                        </p>
+
+                        <a
+                            href="index.html"
+                            class="view-tools"
+                        >
+                            Explore Free Tools →
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT -->
+
+                <div class="card">
+
+                    <h2>
+                        SmartTools Ad Space
+                    </h2>
+
+                    <p>
+                        This area is reserved for future Google AdSense
+                        advertisements after the website is approved
+                        and the official AdSense code is available.
+                    </p>
+
+
+                    <!-- AD READY SPACE -->
+
+                    <div class="ad-box">
+
+                        <div>
+
+                            <strong>
+                                Advertisement
+                            </strong>
+
+                            <span>
+                                AdSense space reserved
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-list">
+
+                        <div class="info-item">
+
+                            <div class="info-icon">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Free tools
+                                </strong>
+
+                                <span>
+                                    Calculators and useful tools remain
+                                    available for everyday use.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <div class="info-icon">
+                                ⚡
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Continuous improvement
+                                </strong>
+
+                                <span>
+                                    New tools, guides and improvements
+                                    can be added over time.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-item">
+
+                            <div class="info-icon">
+                                🔒
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Secure payment provider
+                                </strong>
+
+                                <span>
+                                    Payment processing should happen
+                                    through a trusted payment provider.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CTA -->
+
+            <div class="bottom-cta">
+
+                <h2>
+                    Explore SmartTools
+                </h2>
+
+                <p>
+                    Calculate, convert and simplify everyday tasks
+                    with our growing collection of online tools.
+                </p>
+
+                <a
+                    href="smarttools-dashboard.html"
+                    class="view-tools"
+                >
+                    View All Tools →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container footer-grid">
+
+
+        <div>
+
+            <h3>
+                SmartTools
+            </h3>
+
+            <p>
+                Free online calculators, converters and useful
+                productivity tools for everyday needs.
+            </p>
+
+            <p style="margin-top:10px;">
+                Created & maintained by Sukanya Shahare.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="smarttools-dashboard.html">
+                All Tools
+            </a>
+
+            <a href="guides.html">
+                Guides
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Legal
+            </h3>
+
+            <a href="privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            <a href="terms.html">
+                Terms & Conditions
+            </a>
+
+            <a href="support.html">
+                Support SmartTools
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="container copyright">
+
+        © 2026 SmartTools.
+        Created & maintained by Sukanya Shahare.
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    function showPaymentMessage(event) {
+
+        event.preventDefault();
+
+        alert(
+            "Payment option will be activated after the secure payment link is connected."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

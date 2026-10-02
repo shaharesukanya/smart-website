@@ -1,377 +1,1851 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
 
-    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GST Calculator - Calculate GST Online | SmartTools</title>
 
-    <title>GST Calculator - Calculate GST Online | SmartTools</title>
+<meta name="description"
+content="Use the free SmartTools GST Calculator to calculate GST amount and final price quickly and easily.">
 
-    <meta name="description"
-        content="Use the free SmartTools GST Calculator to calculate GST amount, final price, and price before GST. Quickly calculate GST for different tax rates.">
+<meta name="robots" content="index, follow">
 
-    <meta name="keywords"
-        content="GST calculator, GST calculator online, calculate GST, GST amount calculator, GST inclusive price, GST exclusive price">
-
-    <meta name="author" content="Sukanya Shahare">
-
-    <meta name="robots" content="index, follow">
-
-    <link rel="canonical" href="https://shaharesukanya.github.io/smart-website/gst-calculator.html">
-
-    <link rel="stylesheet" href="style.css">
-
-<meta name="theme-color" content="#5b5ff5">
-<meta property="og:title" content="GST Calculator - Calculate GST Online | SmartTools">
-<meta property="og:description" content="Use the free SmartTools GST Calculator to calculate GST amount, final price, and price before GST. Quickly calculate GST for different tax rates.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://shaharesukanya.github.io/smart-website/gst-calculator.html">
-<meta property="og:site_name" content="SmartTools">
-<meta name="twitter:card" content="summary">
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "GST Calculator - Calculate GST Online | SmartTools",
-    "url": "https://shaharesukanya.github.io/smart-website/gst-calculator.html",
-    "description": "Use the free SmartTools GST Calculator to calculate GST amount, final price, and price before GST. Quickly calculate GST for different tax rates.",
-    "isPartOf": {
-        "@type": "WebSite",
-        "name": "SmartTools",
-        "url": "https://shaharesukanya.github.io/smart-website/"
-    }
-}
-</script>
-<!-- SMARTTOOLS_PAGE_SCHEMA -->
-<!-- SMARTTOOLS_PHASE6_CSS_START -->
 <style>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE + MOBILE SAFETY
-========================================================= */
+:root{
+    --purple:#6559ef;
+    --purple-dark:#5145d6;
+    --purple-light:#f1efff;
 
-html {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
+    --navy:#10182f;
+    --text:#263247;
+    --muted:#7c879a;
+
+    --bg:#f7f8fc;
+    --white:#ffffff;
+
+    --border:#e1e5ee;
+
+    --green:#16c997;
+
+    --shadow:0 18px 50px rgba(25,35,65,.08);
 }
 
-body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-img,
-svg,
-video,
-canvas {
-    max-width: 100%;
-    height: auto;
+html{
+    scroll-behavior:smooth;
 }
 
-a,
+body{
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:var(--bg);
+    color:var(--text);
+
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
 button,
-input,
-select,
-textarea {
-    touch-action: manipulation;
+input{
+    font:inherit;
 }
 
-button,
-.btn,
-input[type="submit"],
-input[type="button"] {
-    min-height: 44px;
+/* ================= TOP BAR ================= */
+
+.topbar{
+    background:var(--navy);
+    color:#d8deea;
+
+    text-align:center;
+
+    padding:9px 15px;
+
+    font-size:11px;
+    font-weight:700;
 }
 
-input,
-select,
-textarea {
-    max-width: 100%;
-    min-width: 0;
+/* ================= HEADER ================= */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(255,255,255,.96);
+
+    border-bottom:1px solid var(--border);
+
+    backdrop-filter:blur(14px);
 }
 
-input[type="number"],
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-    width: 100%;
+.nav{
+    width:min(1160px,92%);
+
+    min-height:72px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-span,
-li {
-    overflow-wrap: break-word;
+.logo{
+    font-size:24px;
+
+    font-weight:950;
+
+    letter-spacing:-1px;
+
+    color:var(--navy);
 }
 
-table {
-    width: 100%;
-    max-width: 100%;
-    border-collapse: collapse;
+.logo span{
+    color:var(--purple);
 }
 
-.table-wrapper,
-.responsive-table {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+.nav-links{
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
 }
 
-:focus-visible {
-    outline: 3px solid rgba(91,95,245,.35);
-    outline-offset: 3px;
+.nav-links a{
+    color:#5d687b;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    transition:.25s ease;
 }
 
-@media (max-width: 900px) {
+.nav-links a:hover{
+    color:var(--purple);
+}
 
-    .hero-grid,
-    .content-grid,
-    .calculator-layout,
-    .tool-layout,
-    .feature-grid,
-    .founder-grid {
-        grid-template-columns: 1fr !important;
+.nav-button{
+    background:var(--purple);
+
+    color:white !important;
+
+    padding:10px 17px;
+
+    border-radius:10px;
+
+    box-shadow:
+        0 8px 22px rgba(101,89,239,.22);
+}
+
+.nav-button:hover{
+    transform:translateY(-2px);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    padding:78px 0 62px;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(101,89,239,.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(128,109,245,.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f5f3ff,
+            #ffffff 55%,
+            #f7f8fc
+        );
+
+    border-bottom:1px solid var(--border);
+}
+
+.container{
+    width:min(1160px,92%);
+
+    margin:auto;
+}
+
+.breadcrumb{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:22px;
+
+    color:#8994a7;
+
+    font-size:11px;
+}
+
+.breadcrumb a{
+    color:var(--purple);
+
+    font-weight:850;
+}
+
+.badge{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:var(--purple-light);
+
+    border:1px solid #dedaff;
+
+    color:var(--purple);
+
+    font-size:10px;
+
+    font-weight:950;
+
+    letter-spacing:1px;
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 0 5px rgba(22,201,151,.10);
+}
+
+.hero h1{
+    margin-top:19px;
+
+    font-size:clamp(40px,5vw,60px);
+
+    line-height:1.04;
+
+    letter-spacing:-3px;
+
+    color:#172139;
+}
+
+.hero h1 span{
+    color:var(--purple);
+}
+
+.hero-description{
+    max-width:720px;
+
+    margin-top:14px;
+
+    color:var(--muted);
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    padding:58px 0 70px;
+}
+
+.main-layout{
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1.55fr)
+        minmax(280px,.72fr);
+
+    gap:22px;
+
+    align-items:start;
+}
+
+/* ================= CARD ================= */
+
+.card{
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+}
+
+/* ================= CALCULATOR ================= */
+
+.calculator-card{
+    position:relative;
+
+    padding:32px;
+
+    overflow:hidden;
+}
+
+.calculator-card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            #806df5
+        );
+}
+
+.calculator-header{
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-bottom:27px;
+}
+
+.calculator-header h2{
+    font-size:25px;
+
+    letter-spacing:-.8px;
+}
+
+.calculator-header p{
+    margin-top:5px;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.calculator-icon{
+    width:50px;
+    height:50px;
+
+    flex:0 0 50px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:14px;
+
+    background:var(--purple-light);
+
+    color:var(--purple);
+
+    font-size:11px;
+
+    font-weight:950;
+}
+
+/* ================= FORM ================= */
+
+.form-group{
+    margin-bottom:21px;
+}
+
+.form-label{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:9px;
+
+    color:#354057;
+
+    font-size:12px;
+
+    font-weight:850;
+}
+
+.form-label span{
+    color:#939daf;
+
+    font-weight:700;
+}
+
+.input-wrapper{
+    position:relative;
+}
+
+.currency{
+    position:absolute;
+
+    left:16px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#8a95a8;
+
+    font-weight:900;
+}
+
+.amount-input{
+    width:100%;
+
+    height:53px;
+
+    padding:
+        0
+        15px
+        0
+        39px;
+
+    border:1px solid #d8deea;
+
+    border-radius:12px;
+
+    outline:none;
+
+    background:#fff;
+
+    color:#263247;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    transition:.2s ease;
+}
+
+.amount-input:focus{
+    border-color:var(--purple);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(101,89,239,.10);
+}
+
+/* ================= GST RATES ================= */
+
+.rate-buttons{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:9px;
+}
+
+.rate-button{
+    height:47px;
+
+    border:1px solid #d8deea;
+
+    border-radius:11px;
+
+    background:white;
+
+    color:#586377;
+
+    font-size:12px;
+
+    font-weight:850;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+}
+
+.rate-button:hover{
+    border-color:#bdb7ff;
+
+    color:var(--purple);
+
+    transform:translateY(-1px);
+}
+
+.rate-button.active{
+    background:var(--purple-light);
+
+    color:var(--purple);
+
+    border-color:var(--purple);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(101,89,239,.08);
+}
+
+/* ================= CALCULATE BUTTON ================= */
+
+.calculate-button{
+    width:100%;
+
+    height:54px;
+
+    margin-top:4px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            #806df5
+        );
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:950;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 13px 28px
+        rgba(101,89,239,.24);
+
+    transition:.25s ease;
+}
+
+.calculate-button:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 18px 35px
+        rgba(101,89,239,.30);
+}
+
+.calculate-button:active{
+    transform:scale(.99);
+}
+
+/* ================= RESULT ================= */
+
+.result{
+    display:none;
+
+    margin-top:22px;
+}
+
+.result.show{
+    display:block;
+
+    animation:
+        resultAppear
+        .35s
+        ease;
+}
+
+@keyframes resultAppear{
+    from{
+        opacity:0;
+        transform:translateY(10px);
     }
 
-    .tools-grid,
-    .cards-grid,
-    .grid-4 {
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.result-main{
+    padding:22px;
+
+    border:1px solid #ddd9ff;
+
+    border-radius:17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f2f0ff,
+            #fafaff
+        );
+}
+
+.result-label{
+    color:#8994a7;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:.7px;
+}
+
+.result-total{
+    margin-top:4px;
+
+    color:#3028a8;
+
+    font-size:31px;
+
+    font-weight:950;
+
+    letter-spacing:-1px;
+}
+
+.result-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+
+    margin-top:10px;
+}
+
+.result-item{
+    padding:16px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    background:white;
+}
+
+.result-item strong{
+    display:block;
+
+    margin-top:4px;
+
+    color:#344057;
+
+    font-size:16px;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    padding:26px;
+}
+
+.sidebar h3{
+    margin-bottom:10px;
+
+    font-size:18px;
+
+    letter-spacing:-.4px;
+}
+
+.sidebar-description{
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:1.75;
+}
+
+.sidebar-list{
+    margin-top:17px;
+
+    padding-left:19px;
+}
+
+.sidebar-list li{
+    margin-bottom:7px;
+
+    color:#6f7b8f;
+
+    font-size:12px;
+}
+
+.trust-list{
+    display:grid;
+
+    gap:9px;
+
+    margin-top:21px;
+}
+
+.trust-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    background:#fafbfe;
+}
+
+.trust-dot{
+    width:8px;
+    height:8px;
+
+    flex:0 0 8px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(22,201,151,.08);
+}
+
+.trust-item span{
+    color:#5f6b7f;
+
+    font-size:11px;
+
+    font-weight:750;
+}
+
+/* ================= CONTENT ================= */
+
+.content-section{
+    padding-bottom:25px;
+}
+
+.content-card{
+    padding:32px;
+}
+
+.content-card h2{
+    margin-bottom:11px;
+
+    color:#263247;
+
+    font-size:25px;
+
+    letter-spacing:-.7px;
+}
+
+.content-card h3{
+    margin-top:27px;
+
+    margin-bottom:8px;
+
+    color:#344057;
+
+    font-size:16px;
+}
+
+.content-card p,
+.content-card li{
+    color:#6f7b8f;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+.content-card ol{
+    padding-left:20px;
+
+    margin-top:9px;
+}
+
+.formula-box{
+    margin:19px 0;
+
+    padding:18px;
+
+    border:1px solid #e0dcff;
+
+    border-radius:14px;
+
+    background:#faf9ff;
+
+    color:#4d4772;
+
+    font-weight:850;
+}
+
+/* ================= FAQ ================= */
+
+.faq{
+    display:grid;
+
+    gap:9px;
+
+    margin-top:17px;
+}
+
+.faq details{
+    border:1px solid var(--border);
+
+    border-radius:13px;
+
+    background:white;
+
+    overflow:hidden;
+}
+
+.faq summary{
+    padding:16px;
+
+    cursor:pointer;
+
+    color:#354057;
+
+    font-size:12px;
+
+    font-weight:850;
+}
+
+.faq-answer{
+    padding:
+        0
+        16px
+        16px;
+
+    color:#6f7b8f;
+
+    font-size:12px;
+
+    line-height:1.7;
+}
+
+/* ================= RELATED ================= */
+
+.related-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+
+    margin-top:18px;
+}
+
+.related-card{
+    padding:17px;
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    background:white;
+
+    transition:.25s ease;
+}
+
+.related-card:hover{
+    transform:translateY(-3px);
+
+    border-color:#cfcaff;
+
+    box-shadow:
+        0 12px 25px
+        rgba(30,40,70,.07);
+}
+
+.related-card strong{
+    display:block;
+
+    color:var(--purple);
+
+    font-size:12px;
+}
+
+.related-card span{
+    display:block;
+
+    margin-top:5px;
+
+    color:#8792a5;
+
+    font-size:10px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    margin-top:35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b1227,
+            #17183a
+        );
+
+    color:white;
+}
+
+.footer-inner{
+    width:min(1160px,92%);
+
+    margin:auto;
+
+    padding:
+        50px
+        0
+        25px;
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr
+        1fr;
+
+    gap:35px;
+}
+
+.footer h3{
+    margin-bottom:12px;
+
+    font-size:18px;
+}
+
+.footer p,
+.footer a{
+    color:#aab5cf;
+
+    font-size:12px;
+
+    line-height:1.7;
+}
+
+.footer a{
+    display:block;
+
+    margin:8px 0;
+
+    transition:.2s;
+}
+
+.footer a:hover{
+    color:white;
+
+    transform:translateX(3px);
+}
+
+.footer-bottom{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-top:30px;
+
+    padding-top:20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.10);
+
+    color:#8996b3;
+
+    font-size:10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+
+    .main-layout{
+        grid-template-columns:1fr;
+    }
+
+    .related-grid{
         grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
+            repeat(2,1fr);
     }
 
-    .footer-grid {
+    .footer-grid{
         grid-template-columns:
-            repeat(2, minmax(0, 1fr)) !important;
+            repeat(2,1fr);
     }
 }
 
-@media (max-width: 640px) {
+@media(max-width:600px){
 
-    html {
-        scroll-padding-top: 80px;
+    .nav-links{
+        display:none;
     }
 
-    body {
-        font-size: 15px;
-        line-height: 1.65;
+    .hero{
+        padding:
+            52px
+            0
+            43px;
     }
 
-    .container {
-        width: 92%;
-        max-width: 100%;
+    .hero h1{
+        font-size:40px;
+
+        letter-spacing:-2px;
     }
 
-    h1 {
-        font-size:
-            clamp(34px, 10vw, 46px) !important;
-        line-height: 1.08 !important;
-        letter-spacing: -1.5px !important;
+    .main{
+        padding-top:38px;
     }
 
-    h2 {
-        font-size:
-            clamp(27px, 7vw, 36px) !important;
-        line-height: 1.15 !important;
-    }
-
-    h3 {
-        font-size:
-            clamp(18px, 5vw, 22px);
-    }
-
-    .header-inner {
-        min-height: 68px !important;
-        gap: 12px !important;
-    }
-
-    .brand-name {
-        font-size: 21px !important;
-    }
-
-    .brand-tagline {
-        font-size: 10px !important;
-    }
-
-    nav {
-        gap: 9px !important;
-    }
-
-    nav a {
-        font-size: 12px !important;
-    }
-
-    .tools-grid,
-    .cards-grid,
-    .grid-4,
-    .feature-grid,
-    .info-grid,
-    .footer-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .card,
-    .tool-card,
     .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        width: 100%;
-        max-width: 100%;
+    .sidebar,
+    .content-card{
+        padding:22px;
     }
 
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        min-height: 48px;
+    .rate-buttons{
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
-    textarea {
-        min-height: 130px;
+    .result-grid{
+        grid-template-columns:1fr;
     }
 
-    .btn,
-    .submit-btn,
-    .calculate-btn,
-    .reset-btn,
-    .cta-btn,
-    button[type="submit"] {
-        width: 100%;
-        min-height: 48px;
+    .related-grid{
+        grid-template-columns:1fr;
     }
 
-    .hero-actions,
-    .button-group,
-    .calculator-actions,
-    .form-actions {
-        flex-direction: column !important;
-        width: 100%;
+    .footer-grid{
+        grid-template-columns:1fr;
     }
 
-    .tool-search,
-    .search-box,
-    #toolSearch {
-        width: 100% !important;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .dashboard,
-    .hero-visual,
-    .hero-art,
-    .decorative-circle,
-    .floating-card {
-        max-width: 100% !important;
-    }
-
-    .section {
-        padding-top: 58px !important;
-        padding-bottom: 58px !important;
-    }
-}
-
-@media (max-width: 390px) {
-
-    .container {
-        width: 94%;
-    }
-
-    h1 {
-        font-size: 33px !important;
-    }
-
-    h2 {
-        font-size: 26px !important;
-    }
-
-    .brand-name {
-        font-size: 19px !important;
-    }
-
-    .topbar-right {
-        display: none !important;
-    }
-
-    .card,
-    .tool-card,
-    .calculator-card,
-    .content-card,
-    .policy-card,
-    .terms-card,
-    .contact-card {
-        padding-left: 17px !important;
-        padding-right: 17px !important;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
+    .footer-bottom{
+        flex-direction:column;
     }
 }
 </style>
-<!-- SMARTTOOLS_PHASE6_CSS_END -->
 </head>
-
 
 <body>
 
+<!-- ================= TOP BAR ================= -->
 
-    <!-- ================= HEADER ================= -->
+<div class="topbar">
+    SmartTools — simple tools for everyday needs.
+</div>
 
-    <header class="header">
 
-        <div class="container">
+<!-- ================= HEADER ================= -->
 
-            <div class="logo">
-                Smart<span>Tools</span>
+<header class="header">
+
+    <div class="nav">
+
+        <a href="index.html" class="logo">
+            Smart<span>Tools</span>
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#tools">
+                Tools
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a
+                href="#calculator"
+                class="nav-button"
+            >
+                Calculate GST
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="breadcrumb">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <span>›</span>
+
+            <span>
+                Calculators
+            </span>
+
+            <span>›</span>
+
+            <span>
+                GST Calculator
+            </span>
+
+        </div>
+
+
+        <div class="badge">
+
+            <span class="badge-dot"></span>
+
+            GST CALCULATOR
+
+        </div>
+
+
+        <h1>
+            GST <span>Calculator</span>
+        </h1>
+
+
+        <p class="hero-description">
+
+            Calculate GST amount, original amount and final price
+            quickly with a clean, professional and mobile-friendly
+            SmartTools calculator.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CALCULATOR ================= -->
+
+<main
+    class="main"
+    id="calculator"
+>
+
+    <div class="container">
+
+        <div class="main-layout">
+
+
+            <!-- CALCULATOR CARD -->
+
+            <section class="card calculator-card">
+
+                <div class="calculator-header">
+
+                    <div>
+
+                        <h2>
+                            Calculate GST
+                        </h2>
+
+                        <p>
+                            Enter the amount and choose the applicable GST rate.
+                        </p>
+
+                    </div>
+
+
+                    <div class="calculator-icon">
+                        GST
+                    </div>
+
+                </div>
+
+
+                <!-- AMOUNT -->
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="amount"
+                    >
+
+                        <span style="color:#354057;font-weight:850">
+                            Amount
+                        </span>
+
+                        <span>
+                            Indian Rupees
+                        </span>
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <span class="currency">
+                            ₹
+                        </span>
+
+                        <input
+                            id="amount"
+                            class="amount-input"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="Enter amount"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- GST RATE -->
+
+                <div class="form-group">
+
+                    <label class="form-label">
+
+                        <span style="color:#354057;font-weight:850">
+                            GST Rate
+                        </span>
+
+                        <span id="rateText">
+                            18%
+                        </span>
+
+                    </label>
+
+
+                    <div class="rate-buttons">
+
+                        <button
+                            type="button"
+                            class="rate-button"
+                            data-rate="5"
+                        >
+                            5%
+                        </button>
+
+                        <button
+                            type="button"
+                            class="rate-button"
+                            data-rate="12"
+                        >
+                            12%
+                        </button>
+
+                        <button
+                            type="button"
+                            class="rate-button active"
+                            data-rate="18"
+                        >
+                            18%
+                        </button>
+
+                        <button
+                            type="button"
+                            class="rate-button"
+                            data-rate="28"
+                        >
+                            28%
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CALCULATE -->
+
+                <button
+                    type="button"
+                    class="calculate-button"
+                    id="calculate"
+                >
+                    Calculate GST →
+                </button>
+
+
+                <!-- RESULT -->
+
+                <div
+                    class="result"
+                    id="result"
+                >
+
+                    <div class="result-main">
+
+                        <div class="result-label">
+                            Final Amount
+                        </div>
+
+                        <div
+                            class="result-total"
+                            id="finalAmount"
+                        >
+                            ₹0.00
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-grid">
+
+                        <div class="result-item">
+
+                            <div class="result-label">
+                                Original Amount
+                            </div>
+
+                            <strong id="originalAmount">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="result-item">
+
+                            <div class="result-label">
+                                GST Amount
+                            </div>
+
+                            <strong id="gstAmount">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SIDEBAR -->
+
+            <aside class="card sidebar">
+
+                <h3>
+                    Quick Overview
+                </h3>
+
+                <p class="sidebar-description">
+
+                    Use this calculator to add GST to an original
+                    amount and instantly see the final price.
+
+                </p>
+
+
+                <ol class="sidebar-list">
+
+                    <li>
+                        Enter the original amount.
+                    </li>
+
+                    <li>
+                        Select the GST rate.
+                    </li>
+
+                    <li>
+                        Click Calculate GST.
+                    </li>
+
+                    <li>
+                        Review your result.
+                    </li>
+
+                </ol>
+
+
+                <div class="trust-list">
+
+                    <div class="trust-item">
+
+                        <span class="trust-dot"></span>
+
+                        <span>
+                            Fast calculation
+                        </span>
+
+                    </div>
+
+
+                    <div class="trust-item">
+
+                        <span class="trust-dot"></span>
+
+                        <span>
+                            Mobile friendly
+                        </span>
+
+                    </div>
+
+
+                    <div class="trust-item">
+
+                        <span class="trust-dot"></span>
+
+                        <span>
+                            Simple interface
+                        </span>
+
+                    </div>
+
+
+                    <div class="trust-item">
+
+                        <span class="trust-dot"></span>
+
+                        <span>
+                            Free to use
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= GST INFORMATION ================= -->
+
+<section class="content-section">
+
+    <div class="container">
+
+        <article class="card content-card">
+
+            <h2>
+                GST Calculator
+            </h2>
+
+            <p>
+
+                SmartTools GST Calculator helps you quickly calculate
+                the GST amount and the final amount after GST is added.
+
+            </p>
+
+
+            <div class="formula-box">
+
+                GST Amount =
+                Original Amount × GST Rate ÷ 100
+
+                <br><br>
+
+                Final Amount =
+                Original Amount + GST Amount
+
             </div>
 
 
-            <nav class="nav">
+            <h3>
+                Example
+            </h3>
+
+            <p>
+
+                Suppose the original amount is ₹1,000
+                and the GST rate is 18%.
+
+            </p>
+
+            <p>
+
+                GST Amount:
+
+                <strong>
+                    ₹1,000 × 18 ÷ 100 = ₹180
+                </strong>
+
+            </p>
+
+            <p>
+
+                Final Amount:
+
+                <strong>
+                    ₹1,000 + ₹180 = ₹1,180
+                </strong>
+
+            </p>
+
+
+            <h3>
+                How to Use the GST Calculator
+            </h3>
+
+            <ol>
+
+                <li>
+                    Enter the original amount.
+                </li>
+
+                <li>
+                    Select the applicable GST rate.
+                </li>
+
+                <li>
+                    Click the Calculate GST button.
+                </li>
+
+                <li>
+                    View the GST amount and final amount.
+                </li>
+
+            </ol>
+
+
+            <h3>
+                Common GST Rates
+            </h3>
+
+            <p>
+
+                Depending on the applicable goods or services,
+                different GST rates may apply. Common rates include
+                5%, 12%, 18% and 28%.
+
+            </p>
+
+            <p>
+
+                The applicable rate depends on the relevant goods
+                or services and current tax rules.
+
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section class="content-section">
+
+    <div class="container">
+
+        <article class="card content-card">
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+
+            <div class="faq">
+
+
+                <details>
+
+                    <summary>
+                        Is this GST Calculator free?
+                    </summary>
+
+                    <div class="faq-answer">
+
+                        Yes. The SmartTools GST Calculator
+                        is free to use online.
+
+                    </div>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        What GST rates are available?
+                    </summary>
+
+                    <div class="faq-answer">
+
+                        This calculator currently provides
+                        5%, 12%, 18% and 28% options.
+
+                    </div>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        What is GST on ₹1,000 at 18%?
+                    </summary>
+
+                    <div class="faq-answer">
+
+                        GST is ₹180 and the amount after
+                        adding GST is ₹1,180.
+
+                    </div>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Can I use this calculator on mobile?
+                    </summary>
+
+                    <div class="faq-answer">
+
+                        Yes. The calculator works in modern
+                        web browsers on mobile devices.
+
+                    </div>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Is this a tax filing result?
+                    </summary>
+
+                    <div class="faq-answer">
+
+                        No. This calculator provides an
+                        informational calculation. Actual tax
+                        treatment can depend on applicable rules
+                        and transaction details.
+
+                    </div>
+
+                </details>
+
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RELATED TOOLS ================= -->
+
+<section class="content-section">
+
+    <div class="container">
+
+        <article class="card content-card">
+
+            <h2>
+                Explore More Tools
+            </h2>
+
+
+            <div class="related-grid">
+
+                <a
+                    href="emi-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        EMI Calculator
+                    </strong>
+
+                    <span>
+                        Calculate EMI →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="loan-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        Loan Calculator
+                    </strong>
+
+                    <span>
+                        Calculate Loan →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="percentage-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        Percentage Calculator
+                    </strong>
+
+                    <span>
+                        Calculate Percentage →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="discount-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        Discount Calculator
+                    </strong>
+
+                    <span>
+                        Calculate Discount →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="sip-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        SIP Calculator
+                    </strong>
+
+                    <span>
+                        Calculate SIP →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="age-calculator.html"
+                    class="related-card"
+                >
+
+                    <strong>
+                        Age Calculator
+                    </strong>
+
+                    <span>
+                        Calculate Age →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-grid">
+
+
+            <div>
+
+                <h3>
+                    SmartTools
+                </h3>
+
+                <p>
+
+                    Simple online calculators and useful tools
+                    for everyday needs.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Explore
+                </h3>
 
                 <a href="index.html">
                     Home
                 </a>
 
                 <a href="index.html#tools">
-                    Tools
-                </a>
-
-                <a href="index.html#guides">
-                    Guides
+                    All Tools
                 </a>
 
                 <a href="about.html">
@@ -382,583 +1856,216 @@ table {
                     Contact
                 </a>
 
-            </nav>
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Legal
+                </h3>
+
+                <a href="privacy-policy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms & Conditions
+                </a>
+
+            </div>
+
 
         </div>
 
-    </header>
 
+        <div class="footer-bottom">
 
-
-    <!-- ================= HERO ================= -->
-
-    <section class="tool-page-hero">
-
-        <div class="container">
-
-            <span class="badge">
-                FREE GST CALCULATOR
+            <span>
+                © 2026 SmartTools.
+                Created & maintained by Sukanya Shahare.
             </span>
 
-            <h1>
-                GST Calculator
-            </h1>
-
-            <p>
-                Calculate GST amount and final price quickly
-                with our free online GST calculator.
-            </p>
+            <span>
+                Simple tools • Smart results
+            </span>
 
         </div>
 
-    </section>
+    </div>
 
+</footer>
 
 
-    <!-- ================= CALCULATOR ================= -->
+<!-- ================= JAVASCRIPT ================= -->
 
-    <section class="calculator-section">
-
-        <div class="container">
-
-            <div class="calculator-box">
-
-                <h2>
-                    Calculate GST
-                </h2>
-
-                <p>
-                    Enter the amount and GST rate to calculate
-                    the GST amount and final price.
-                </p>
-
-
-                <label for="gstAmount">
-                    Amount
-                </label>
-
-                <input
-                    type="number"
-                    id="gstAmount"
-                    placeholder="Example: 1000"
-                    min="0"
-                    step="0.01"
-                >
-
-
-                <label for="gstRate">
-                    GST Rate (%)
-                </label>
-
-                <select
-                    id="gstRate">
-
-                    <option value="5">
-                        5%
-                    </option>
-
-                    <option value="12">
-                        12%
-                    </option>
-
-                    <option value="18"
-                        selected>
-                        18%
-                    </option>
-
-                    <option value="28">
-                        28%
-                    </option>
-
-                </select>
-
-
-                <button
-                    class="tool-button"
-                    onclick="calculateGST()">
-
-                    Calculate GST
-
-                </button>
-
-
-                <div
-                    class="result"
-                    id="gstResult">
-
-                    Your GST result will appear here.
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= INFORMATION ================= -->
-
-    <section class="information-section">
-
-        <div class="container">
-
-            <div class="calculator-box">
-
-
-                <h2>
-                    What is GST?
-                </h2>
-
-                <p>
-                    GST stands for Goods and Services Tax.
-                    It is a consumption-based tax applied
-                    to the supply of goods and services.
-                </p>
-
-
-                <h2>
-                    How is GST Calculated?
-                </h2>
-
-                <p>
-                    When GST is added to a price, the basic
-                    calculation is:
-                </p>
-
-                <p>
-                    <strong>
-                        GST Amount = Original Amount × GST Rate ÷ 100
-                    </strong>
-                </p>
-
-                <p>
-                    The final amount after adding GST is:
-                </p>
-
-                <p>
-                    <strong>
-                        Final Amount = Original Amount + GST Amount
-                    </strong>
-                </p>
-
-
-
-                <h2>
-                    Example
-                </h2>
-
-                <p>
-                    Suppose the original amount is ₹1,000
-                    and the GST rate is 18%.
-                </p>
-
-                <p>
-                    GST amount:
-                </p>
-
-                <p>
-                    <strong>
-                        ₹1,000 × 18 ÷ 100 = ₹180
-                    </strong>
-                </p>
-
-                <p>
-                    Final amount:
-                </p>
-
-                <p>
-                    <strong>
-                        ₹1,000 + ₹180 = ₹1,180
-                    </strong>
-                </p>
-
-
-
-                <h2>
-                    How to Use the GST Calculator
-                </h2>
-
-                <ol>
-
-                    <li>
-                        Enter the original amount.
-                    </li>
-
-                    <li>
-                        Select the applicable GST rate.
-                    </li>
-
-                    <li>
-                        Click the "Calculate GST" button.
-                    </li>
-
-                    <li>
-                        View the GST amount and final amount.
-                    </li>
-
-                </ol>
-
-
-
-                <h2>
-                    Common GST Rates
-                </h2>
-
-                <p>
-                    Depending on the applicable goods or services,
-                    different GST rates may apply. Common rates
-                    include 5%, 12%, 18% and 28%.
-                </p>
-
-                <p>
-                    The applicable rate depends on the relevant
-                    goods or services and current tax rules.
-                </p>
-
-
-
-                <h2>
-                    Frequently Asked Questions
-                </h2>
-
-
-                <div class="faq">
-
-
-                    <h3>
-                        Is this GST Calculator free?
-                    </h3>
-
-                    <p>
-                        Yes. The SmartTools GST Calculator
-                        is free to use online.
-                    </p>
-
-
-                    <h3>
-                        What GST rates are available?
-                    </h3>
-
-                    <p>
-                        This calculator currently provides
-                        5%, 12%, 18% and 28% options.
-                    </p>
-
-
-                    <h3>
-                        What is GST on ₹1,000 at 18%?
-                    </h3>
-
-                    <p>
-                        GST is ₹180 and the amount after
-                        adding GST is ₹1,180.
-                    </p>
-
-
-                    <h3>
-                        Can I use this calculator on mobile?
-                    </h3>
-
-                    <p>
-                        Yes. The calculator works in modern
-                        web browsers on mobile devices.
-                    </p>
-
-
-                    <h3>
-                        Is the calculated GST a tax filing result?
-                    </h3>
-
-                    <p>
-                        No. This calculator provides an
-                        informational calculation. Actual tax
-                        treatment can depend on the applicable
-                        rules and transaction details.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= MORE TOOLS ================= -->
-
-    <section class="tools-section">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span class="badge">
-                    MORE CALCULATORS
-                </span>
-
-                <h2>
-                    Explore More SmartTools
-                </h2>
-
-                <p>
-                    Try our other free online calculators.
-                </p>
-
-            </div>
-
-
-            <div class="hero-buttons">
-
-
-                <a
-                    href="age-calculator.html"
-                    class="tool-button">
-
-                    Age Calculator
-
-                </a>
-
-
-                <a
-                    href="emi-calculator.html"
-                    class="tool-button secondary">
-
-                    EMI Calculator
-
-                </a>
-
-
-                <a
-                    href="percentage-calculator.html"
-                    class="tool-button secondary">
-
-                    Percentage Calculator
-
-                </a>
-
-
-                <a
-                    href="index.html#tools"
-                    class="tool-button secondary">
-
-                    View All Tools
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <div class="container">
-
-            <div class="footer-content">
-
-
-                <div>
-
-                    <h3>
-                        SmartTools
-                    </h3>
-
-                    <p>
-                        Simple and useful online tools
-                        for everyday needs.
-                    </p>
-
-                </div>
-
-
-                <div>
-
-                    <h4>
-                        Quick Links
-                    </h4>
-
-                    <a href="index.html">
-                        Home
-                    </a>
-
-                    <a href="index.html#tools">
-                        Tools
-                    </a>
-
-                    <a href="index.html#guides">
-                        Guides
-                    </a>
-
-                    <a href="about.html">
-                        About
-                    </a>
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                </div>
-
-
-                <div>
-
-                    <h4>
-                        Legal
-                    </h4>
-
-                    <a href="privacy-policy.html">
-                        Privacy Policy
-                    </a>
-
-                    <a href="terms.html">
-                        Terms & Conditions
-                    </a>
-
-                    <a href="contact.html">
-                        Contact Us
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="footer-bottom">
-
-                <p>
-                    © 2026 SmartTools. All rights reserved.
-                </p>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-
-    <script src="script.js"></script>
-
-<!-- SMARTTOOLS_PHASE6_JS_START -->
 <script>
-/* =========================================================
-   SMARTTOOLS PERFORMANCE HELPER
-========================================================= */
 
-(function () {
+(function(){
 
-    "use strict";
+    const amountInput =
+        document.getElementById("amount");
 
-    function optimizeImages() {
+    const calculateButton =
+        document.getElementById("calculate");
 
-        const images =
-            document.querySelectorAll("img");
+    const result =
+        document.getElementById("result");
 
-        images.forEach(function (img) {
+    const finalAmount =
+        document.getElementById("finalAmount");
 
-            if (!img.hasAttribute("loading")) {
+    const originalAmount =
+        document.getElementById("originalAmount");
 
-                img.setAttribute(
-                    "loading",
-                    "lazy"
-                );
+    const gstAmount =
+        document.getElementById("gstAmount");
 
-            }
+    const rateText =
+        document.getElementById("rateText");
 
-            if (!img.hasAttribute("decoding")) {
+    const rateButtons =
+        document.querySelectorAll(".rate-button");
 
-                img.setAttribute(
-                    "decoding",
-                    "async"
-                );
 
-            }
+    let gstRate = 18;
 
-        });
+
+    function formatMoney(value){
+
+        return "₹" +
+            Number(value).toLocaleString(
+                "en-IN",
+                {
+                    minimumFractionDigits:2,
+                    maximumFractionDigits:2
+                }
+            );
 
     }
 
 
-    function optimizeVideos() {
+    function calculateGST(){
 
-        document
-            .querySelectorAll("video")
-            .forEach(function (video) {
+        const amount =
+            Number(amountInput.value);
 
-                if (!video.hasAttribute("preload")) {
 
-                    video.setAttribute(
-                        "preload",
-                        "metadata"
+        if(
+            !Number.isFinite(amount) ||
+            amount < 0
+        ){
+
+            result.classList.add("show");
+
+            finalAmount.textContent =
+                "Enter a valid amount";
+
+            originalAmount.textContent =
+                "—";
+
+            gstAmount.textContent =
+                "—";
+
+            return;
+
+        }
+
+
+        const gst =
+            amount * gstRate / 100;
+
+
+        const total =
+            amount + gst;
+
+
+        originalAmount.textContent =
+            formatMoney(amount);
+
+
+        gstAmount.textContent =
+            formatMoney(gst);
+
+
+        finalAmount.textContent =
+            formatMoney(total);
+
+
+        result.classList.add("show");
+
+    }
+
+
+    rateButtons.forEach(function(button){
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                rateButtons.forEach(
+                    function(item){
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                gstRate =
+                    Number(
+                        button.dataset.rate
                     );
+
+
+                rateText.textContent =
+                    gstRate + "%";
+
+
+                if(
+                    amountInput.value.trim()
+                    !== ""
+                ){
+
+                    calculateGST();
 
                 }
 
-            });
-
-    }
-
-
-    function addThemeColor() {
-
-        if (
-            !document.querySelector(
-                'meta[name="theme-color"]'
-            )
-        ) {
-
-            const meta =
-                document.createElement("meta");
-
-            meta.name =
-                "theme-color";
-
-            meta.content =
-                "#5b5ff5";
-
-            document.head.appendChild(meta);
-        }
-
-    }
-
-
-    function init() {
-
-        optimizeImages();
-        optimizeVideos();
-        addThemeColor();
-
-    }
-
-
-    if (
-        document.readyState ===
-        "loading"
-    ) {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            init
+            }
         );
 
-    } else {
+    });
 
-        init();
 
-    }
+    calculateButton.addEventListener(
+        "click",
+        calculateGST
+    );
+
+
+    amountInput.addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                calculateGST();
+
+            }
+
+        }
+    );
 
 })();
-</script>
-<!-- SMARTTOOLS_PHASE6_JS_END -->
-</body>
 
+</script>
+
+</body>
 </html>
